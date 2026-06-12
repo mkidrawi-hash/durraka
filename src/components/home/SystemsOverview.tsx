@@ -39,12 +39,12 @@ export default function SystemsOverview() {
     <section className="bg-white py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-3 mb-4">
-            <div className="w-8 h-px bg-accent" />
-            <span className="text-accent text-sm font-semibold tracking-widest uppercase">What We Manufacture</span>
-            <div className="w-8 h-px bg-accent" />
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="w-8 h-px bg-accent flex-shrink-0" />
+            <span className="text-accent text-xs sm:text-sm font-semibold tracking-wider sm:tracking-widest uppercase whitespace-nowrap">What We Manufacture</span>
+            <div className="w-8 h-px bg-accent flex-shrink-0" />
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-navy mb-4">Our Systems</h2>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-navy mb-4">Our Systems</h2>
           <p className="text-gray-500 max-w-xl mx-auto text-base leading-relaxed">
             A comprehensive range of GFRC and GRC architectural products, each engineered to the highest standards
             of quality and precision.

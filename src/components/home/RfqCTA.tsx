@@ -4,10 +4,10 @@ export default function RfqCTA() {
   return (
     <section className="bg-navy py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="inline-flex items-center gap-3 mb-6">
-          <div className="w-8 h-px bg-accent" />
-          <span className="text-accent text-sm font-semibold tracking-widest uppercase">Get Started</span>
-          <div className="w-8 h-px bg-accent" />
+        <div className="flex items-center justify-center gap-3 mb-6">
+          <div className="w-8 h-px bg-accent flex-shrink-0" />
+          <span className="text-accent text-xs sm:text-sm font-semibold tracking-wider sm:tracking-widest uppercase whitespace-nowrap">Get Started</span>
+          <div className="w-8 h-px bg-accent flex-shrink-0" />
         </div>
 
         <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
@@ -21,7 +21,7 @@ export default function RfqCTA() {
 
         <div className="flex flex-wrap gap-4 justify-center">
           <Link
-            href="/rfq"
+            href="/request-quotation"
             className="px-10 py-4 bg-accent text-white font-semibold rounded-sm hover:bg-accent-dark transition-colors text-base"
           >
             Request for Quotation

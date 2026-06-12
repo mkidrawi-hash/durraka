@@ -29,12 +29,12 @@ export default function ProjectsPreview() {
     <section className="bg-gray-50 py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-3 mb-4">
-            <div className="w-8 h-px bg-accent" />
-            <span className="text-accent text-sm font-semibold tracking-widest uppercase">Our Work</span>
-            <div className="w-8 h-px bg-accent" />
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="w-8 h-px bg-accent flex-shrink-0" />
+            <span className="text-accent text-xs sm:text-sm font-semibold tracking-wider sm:tracking-widest uppercase whitespace-nowrap">Our Work</span>
+            <div className="w-8 h-px bg-accent flex-shrink-0" />
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-navy mb-4">Featured Projects</h2>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-navy mb-4">Featured Projects</h2>
           <p className="text-gray-500 max-w-xl mx-auto text-base leading-relaxed">
             Delivering landmark façade solutions across the Kingdom — from towers to heritage restorations.
           </p>
@@ -46,14 +46,16 @@ export default function ProjectsPreview() {
               key={project.id}
               className="group bg-white rounded-sm overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300"
             >
-              {/* Image placeholder */}
+              {/* Project visual — architectural grid pattern */}
               <div className="h-56 bg-navy relative overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center opacity-10">
-                  <svg className="w-24 h-24 text-white" fill="none" stroke="currentColor" strokeWidth={1} viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-                  </svg>
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-navy/80 to-transparent" />
+                <div
+                  className="absolute inset-0 opacity-[0.07]"
+                  style={{
+                    backgroundImage:
+                      'repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(255,255,255,1) 39px,rgba(255,255,255,1) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(255,255,255,1) 39px,rgba(255,255,255,1) 40px)',
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/30 to-transparent" />
                 <div className="absolute bottom-4 left-4">
                   <span className="text-accent text-xs font-semibold tracking-wider uppercase bg-navy/70 px-2 py-1 rounded-sm">
                     {project.category}

@@ -14,9 +14,9 @@ export default function SystemsPage() {
       {/* Page header */}
       <div className="bg-navy py-24 px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="inline-flex items-center gap-3 mb-4">
-            <div className="w-8 h-px bg-accent" />
-            <span className="text-accent text-sm font-semibold tracking-widest uppercase">What We Manufacture</span>
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-8 h-px bg-accent flex-shrink-0" />
+            <span className="text-accent text-xs sm:text-sm font-semibold tracking-wider sm:tracking-widest uppercase">What We Manufacture</span>
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">Our Systems</h1>
           <p className="text-white/70 text-lg max-w-2xl">
@@ -58,7 +58,7 @@ export default function SystemsPage() {
             requirements — from concept to Kingdom-wide delivery.
           </p>
           <Link
-            href="/rfq"
+            href="/request-quotation"
             className="inline-block px-8 py-4 bg-accent text-white font-semibold rounded-sm hover:bg-accent-dark transition-colors"
           >
             Submit Your Requirements
