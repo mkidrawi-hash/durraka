@@ -219,9 +219,10 @@ export async function POST(req: NextRequest) {
     // Send notification email — failure blocks submission
     const resend = new Resend(apiKey)
     const recipient = process.env.RFQ_INTERNAL_EMAIL ?? 'mkidrawi@gmail.com'
+    const fromEmail = process.env.RFQ_FROM_EMAIL ?? 'Durraka RFQ <onboarding@resend.dev>'
 
     const { error: emailError } = await resend.emails.send({
-      from: 'Durraka RFQ <noreply@durraka.com>',
+      from: fromEmail,
       to: [recipient],
       subject: `New RFQ Submitted — ${payload.projectName} — ${reference}`,
       html: buildEmailHTML(payload, reference, timestamp),

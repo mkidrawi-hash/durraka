@@ -124,6 +124,7 @@ Copy `.env.example` to `.env.local` for local development. **Never commit `.env.
 |---|---|---|
 | `RESEND_API_KEY` | Yes | Resend API key for email delivery |
 | `RFQ_INTERNAL_EMAIL` | No | Notification recipient (default: `mkidrawi@gmail.com`) |
+| `RFQ_FROM_EMAIL` | No | Sender address (default: `Durraka RFQ <onboarding@resend.dev>`) |
 | `GOOGLE_SHEETS_CLIENT_EMAIL` | For Sheets | Service account email from Google Cloud |
 | `GOOGLE_SHEETS_PRIVATE_KEY` | For Sheets | Private key (replace real newlines with `\n`) |
 | `GOOGLE_SHEETS_SPREADSHEET_ID` | For Sheets | ID from the Google Sheet URL |
@@ -138,9 +139,20 @@ Copy `.env.example` to `.env.local` for local development. **Never commit `.env.
 1. Create a free account at [resend.com](https://resend.com)
 2. Go to **API Keys** → **Create API Key**
 3. Copy the key (starts with `re_`) into `RESEND_API_KEY`
-4. For production: verify your sending domain in Resend → **Domains** and update the `from` address in `src/app/api/rfq/route.ts` from `noreply@durraka.com` to your verified domain
 
-> For local testing without a verified domain, Resend will deliver test emails to your Resend dashboard inbox regardless of the `from` address.
+**Sender address (`RFQ_FROM_EMAIL`)**
+
+| Stage | Value |
+|---|---|
+| Initial testing | `Durraka RFQ <onboarding@resend.dev>` (default — no domain verification needed) |
+| Production | `Durraka RFQ <noreply@durraka.com>` (requires durraka.com verified in Resend) |
+
+To go live with a custom domain:
+1. In Resend, go to **Domains → Add Domain** and enter `durraka.com`
+2. Add the provided DNS records (SPF, DKIM) to your domain registrar
+3. Once verified, set `RFQ_FROM_EMAIL=Durraka RFQ <noreply@durraka.com>` in Vercel env vars and redeploy
+
+> During testing with `onboarding@resend.dev`, emails are only delivered to addresses you have verified in your Resend account. Use a verified test address for `RFQ_INTERNAL_EMAIL` when testing locally.
 
 ---
 
