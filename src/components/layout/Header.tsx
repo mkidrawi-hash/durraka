@@ -27,7 +27,7 @@ export default function Header() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
             <div className="w-10 h-10 bg-accent rounded-sm flex items-center justify-center font-bold text-white text-xl">
@@ -59,7 +59,7 @@ export default function Header() {
               </Link>
             ))}
             <Link
-              href="/rfq"
+              href="/request-quotation"
               className="ml-4 px-5 py-2.5 bg-accent text-white text-sm font-semibold rounded-sm hover:bg-accent-dark transition-colors"
             >
               Request a Quote
@@ -111,7 +111,7 @@ export default function Header() {
               </Link>
             ))}
             <Link
-              href="/rfq"
+              href="/request-quotation"
               className="mt-2 px-4 py-3 bg-accent text-white text-sm font-semibold rounded-sm text-center hover:bg-accent-dark transition-colors"
             >
               Request a Quote

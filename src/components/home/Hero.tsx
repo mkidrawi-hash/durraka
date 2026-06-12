@@ -16,9 +16,9 @@ export default function Hero() {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28">
         <div className="max-w-3xl">
-          <div className="inline-flex items-center gap-3 mb-8">
-            <div className="w-10 h-px bg-accent" />
-            <span className="text-accent text-sm font-semibold tracking-widest uppercase">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="w-8 h-px bg-accent flex-shrink-0" />
+            <span className="text-accent text-xs sm:text-sm font-semibold tracking-wider sm:tracking-widest uppercase">
               GFRC &amp; GRC Specialists — Saudi Arabia
             </span>
           </div>
@@ -36,7 +36,7 @@ export default function Hero() {
 
           <div className="flex flex-wrap gap-4">
             <Link
-              href="/rfq"
+              href="/request-quotation"
               className="px-8 py-4 bg-accent text-white font-semibold rounded-sm hover:bg-accent-dark transition-colors text-base"
             >
               Request a Quote
