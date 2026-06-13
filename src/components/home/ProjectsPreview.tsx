@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import ImagePlaceholder from '@/components/ui/ImagePlaceholder'
 
 const FEATURED_PROJECTS = [
   {
@@ -46,22 +47,12 @@ export default function ProjectsPreview() {
               key={project.id}
               className="group bg-white rounded-sm overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300"
             >
-              {/* Project visual — architectural grid pattern */}
-              <div className="h-56 bg-navy relative overflow-hidden">
-                <div
-                  className="absolute inset-0 opacity-[0.07]"
-                  style={{
-                    backgroundImage:
-                      'repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(255,255,255,1) 39px,rgba(255,255,255,1) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(255,255,255,1) 39px,rgba(255,255,255,1) 40px)',
-                  }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/30 to-transparent" />
-                <div className="absolute bottom-4 left-4">
-                  <span className="text-accent text-xs font-semibold tracking-wider uppercase bg-navy/70 px-2 py-1 rounded-sm">
-                    {project.category}
-                  </span>
-                </div>
-              </div>
+              <ImagePlaceholder
+                category="project"
+                alt={project.title}
+                className="h-56"
+                badge={project.category}
+              />
 
               <div className="p-6">
                 <h3 className="text-navy font-bold text-lg mb-3 group-hover:text-accent transition-colors">
