@@ -1,5 +1,8 @@
 import Link from 'next/link'
 import { NAV_LINKS, CONTACT_INFO } from '@/lib/constants'
+import SocialLinks from '@/components/social/SocialLinks'
+
+const MAPS_URL = 'https://maps.app.goo.gl/G8pBA8gHzH8o5DdGA'
 
 const LEGAL_LINKS = [
   { label: 'Privacy Policy', href: '/privacy-policy' },
@@ -27,6 +30,9 @@ export default function Footer() {
               Saudi Arabia&#39;s specialized manufacturer of GFRC &amp; GRC façade cladding, mashrabiya
               systems, architectural domes, cornices, and custom decorative elements.
             </p>
+            <div className="mt-5">
+              <SocialLinks variant="dark" size="sm" />
+            </div>
           </div>
 
           {/* Navigation */}
@@ -67,7 +73,17 @@ export default function Footer() {
           <div>
             <h3 className="text-white/40 text-xs font-semibold tracking-widest uppercase mb-4">Contact</h3>
             <ul className="space-y-3">
-              <li className="text-white/70 text-sm">{CONTACT_INFO.address}</li>
+              <li>
+                <Link
+                  href={MAPS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="View Durraka office location on Google Maps"
+                  className="text-white/70 hover:text-accent text-sm transition-colors"
+                >
+                  {CONTACT_INFO.address}
+                </Link>
+              </li>
               <li>
                 <a
                   href={`tel:${CONTACT_INFO.phone}`}
