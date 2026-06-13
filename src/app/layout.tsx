@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
+import FloatingWhatsAppButton from '@/components/social/FloatingWhatsAppButton'
 
 const inter = Inter({ subsets: ['latin'], display: 'swap' })
 
@@ -43,6 +44,7 @@ export default function RootLayout({
         <Header />
         <main className="pt-16 sm:pt-20">{children}</main>
         <Footer />
+        <FloatingWhatsAppButton />
       </body>
     </html>
   )
