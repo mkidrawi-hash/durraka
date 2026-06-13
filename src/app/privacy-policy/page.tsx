@@ -16,8 +16,9 @@ const sections = [
     content: (
       <>
         <p>
-          When you submit a Request for Quotation (RFQ) through our website, we collect the
-          information you provide, which may include:
+          When you interact with the Durraka website — including submitting a Request for
+          Quotation (RFQ), using our contact form, or requesting product catalog downloads — we
+          may collect the information you provide, which may include:
         </p>
         <ul>
           <li>Full name and job title</li>
@@ -26,12 +27,12 @@ const sections = [
           <li>Project name and project location</li>
           <li>Project type, estimated area, and target delivery date</li>
           <li>Required GFRC/GRC systems or product categories</li>
-          <li>Technical notes or project requirements you choose to include</li>
+          <li>Technical notes, project requirements, or catalog items you request</li>
         </ul>
         <p>
-          We may also collect basic technical information through our hosting and analytics
-          infrastructure, such as browser type, device type, and pages visited. This data is
-          aggregated and not used to identify individual users.
+          We may also collect basic technical information through our hosting infrastructure,
+          such as browser type, device type, and pages visited. This data is aggregated and not
+          used to identify individual users.
         </p>
       </>
     ),
@@ -41,11 +42,15 @@ const sections = [
     heading: 'How We Use Your Information',
     content: (
       <>
-        <p>Information submitted through our RFQ form is used exclusively to:</p>
+        <p>
+          Information submitted through our RFQ form, contact form, or catalog request is used
+          exclusively to:
+        </p>
         <ul>
           <li>Review your project requirements and assess technical feasibility</li>
           <li>Contact you to clarify scope, specifications, or project details</li>
           <li>Prepare a commercial or technical follow-up response</li>
+          <li>Fulfil catalog or documentation requests</li>
           <li>Log your enquiry internally for CRM and project tracking purposes</li>
         </ul>
         <p>
@@ -95,11 +100,19 @@ const sections = [
           You may request correction or deletion of the personal information you have submitted to
           us. To exercise this right, contact us at:
         </p>
-        <p>
-          <a href="mailto:info@durraka.com" className="text-accent hover:underline font-medium">
-            info@durraka.com
-          </a>
-        </p>
+        <ul className="!list-none !pl-0 space-y-1">
+          <li>
+            <a href="mailto:info@durraka.com" className="text-accent hover:underline font-medium">
+              info@durraka.com
+            </a>
+          </li>
+          <li>
+            <a href="tel:+966126192224" className="text-gray-700 hover:text-accent transition-colors">
+              +966 12 619 2224
+            </a>
+          </li>
+          <li className="text-gray-600">Saudi Arabia</li>
+        </ul>
         <p>
           We will respond to valid requests within a reasonable timeframe and confirm the action
           taken.
@@ -158,7 +171,8 @@ export default function PrivacyPolicyPage() {
           Durraka Factory for Industry (&ldquo;Durraka&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;,
           or &ldquo;our&rdquo;) is committed to handling the information you share with us
           responsibly. This Privacy Policy explains what information we collect when you use our
-          website or submit a Request for Quotation, how we use it, and your rights in relation to it.
+          website, submit a Request for Quotation, use our contact form, or request catalog
+          materials — and how we use it.
         </p>
 
         <div className="space-y-12">

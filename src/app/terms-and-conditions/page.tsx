@@ -100,9 +100,9 @@ const sections = [
     content: (
       <p>
         These Terms &amp; Conditions are governed by and construed in accordance with the laws of
-        the Kingdom of Saudi Arabia, to the extent applicable. Any dispute arising from the use
-        of this website or the submission of enquiries shall be subject to the jurisdiction of
-        the competent courts of Saudi Arabia.
+        the Kingdom of Saudi Arabia. Any dispute arising from the use of this website or the
+        submission of enquiries shall be subject to the jurisdiction of the competent courts of
+        Saudi Arabia.
       </p>
     ),
   },
@@ -125,13 +125,21 @@ const sections = [
       <>
         <p>
           For questions regarding these Terms &amp; Conditions or any aspect of our website,
-          please contact us at:
+          please contact us:
         </p>
-        <p>
-          <a href="mailto:info@durraka.com" className="text-accent hover:underline font-medium">
-            info@durraka.com
-          </a>
-        </p>
+        <ul className="!list-none !pl-0 space-y-1">
+          <li>
+            <a href="mailto:info@durraka.com" className="text-accent hover:underline font-medium">
+              info@durraka.com
+            </a>
+          </li>
+          <li>
+            <a href="tel:+966126192224" className="text-gray-700 hover:text-accent transition-colors">
+              +966 12 619 2224
+            </a>
+          </li>
+          <li className="text-gray-600">Saudi Arabia</li>
+        </ul>
       </>
     ),
   },
