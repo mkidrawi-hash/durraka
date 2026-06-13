@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import ImagePlaceholder from '@/components/ui/ImagePlaceholder'
 
 export const metadata: Metadata = {
   title: 'Projects',
@@ -94,20 +95,12 @@ export default function ProjectsPage() {
               key={project.id}
               className="group bg-white border border-gray-100 rounded-sm overflow-hidden hover:shadow-xl transition-all duration-300"
             >
-              {/* Image placeholder */}
-              <div className="h-48 bg-navy relative">
-                <div className="absolute inset-0 flex items-center justify-center opacity-10">
-                  <svg className="w-20 h-20 text-white" fill="none" stroke="currentColor" strokeWidth={0.75} viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-                  </svg>
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-navy/70 to-transparent" />
-                <div className="absolute bottom-3 left-4">
-                  <span className="text-accent text-xs font-semibold bg-navy/70 px-2 py-1 rounded-sm uppercase tracking-wide">
-                    {project.category}
-                  </span>
-                </div>
-              </div>
+              <ImagePlaceholder
+                category="project"
+                alt={project.title}
+                className="h-48"
+                badge={project.category}
+              />
 
               <div className="p-6">
                 <h3 className="text-navy font-bold text-lg mb-2 group-hover:text-accent transition-colors">
