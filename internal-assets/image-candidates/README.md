@@ -7,16 +7,31 @@ Next.js at a public URL, so internal-only assets must never go there.
 **Nothing in this folder is published on durraka.com.** These are working files for the
 team: review, editing, and internal reference only.
 
-## Current candidates
+## Candidates that MUST stay internal (never under `public/`)
 
-| Drop file as | Classification | Use | Status |
-|---|---|---|---|
-| `fac1.jpg` | approved-after-editing | Factory / Process section only | Needs editing — crop shadows & clutter, improve exposure. Never use as hero. |
-| `fac8.jpg` | approved-after-editing | About page or Factory / Process section | Needs editing — crop around moulds, improve clarity, blur background people. |
-| `sitepic6.jpg` | internal-docs | Internal project-delivery reference only | Internal only — do not publish. Site looks unfinished; heavy crop & clean required before any public use. |
+| Drop file as | Classification | Reason |
+|---|---|---|
+| `sitepic6.jpg` | internal-docs | Site looks unfinished; not premium. Heavy crop & clean required before any public use. |
+| `7.jpg` | internal-docs | **NDA** — visible official government-authority emblem. Do not publish. |
+| `8.jpg` | internal-docs | **NDA** — visible official government-authority emblem + delivery context. Do not publish. |
+| `4.jpg` | internal-docs (NDA review) | On hold pending NDA approval. Do not publish until cleared, and only then after editing. |
 
-Captions and full classification details are tracked in the root
+## Pending-edit candidates (may go public *after* editing → `public/images/...`)
+
+These are stored here as working originals; the edited, cleaned exports go to the target
+public folder per `IMAGE_REGISTER.md`.
+
+| Drop file as | Target after edit | Notes |
+|---|---|---|
+| `fac1.jpg`, `fac8.jpg` | `public/images/factory/` | Factory / process. Never use as hero. |
+| `6.jpg` ⭐, `2.jpg` ⭐, `3.jpg` ⭐ | `public/images/systems/` or `projects/` | **Priority** — prepare these first. |
+| `1.jpg`, `5.jpg`, `9.jpg` | `public/images/projects/` | Crop vehicles / scaffolding / people / signs first. |
+
+Captions and full per-file required edits are tracked in the root
 [`IMAGE_REGISTER.md`](../../IMAGE_REGISTER.md) under **Internal / Pending Image Candidates**.
+
+> **NDA reminder:** never show client names, official logos, holy-site names, or identifiable
+> project names anywhere on the public site. Keep all captions abstract.
 
 ## Promotion path
 
