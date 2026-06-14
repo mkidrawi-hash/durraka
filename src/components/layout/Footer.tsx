@@ -15,14 +15,13 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="md:col-span-2 lg:col-span-2">
-            <Link href="/" className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 bg-accent rounded-sm flex items-center justify-center font-bold text-white text-xl">
-                D
-              </div>
-              <div>
-                <div className="text-white font-bold text-lg leading-tight tracking-wide">DURRAKA</div>
-                <div className="text-white/50 text-xs tracking-widest uppercase">Factory for Industry</div>
-              </div>
+            <Link href="/" className="flex items-center mb-4" aria-label="Durraka Factory for Industry">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/logos/durraka-logo-header-white-red.svg"
+                alt="Durraka Factory for Industry logo"
+                className="h-[40px] sm:h-[48px] w-auto object-contain"
+              />
             </Link>
             <p className="text-white/60 text-sm leading-relaxed max-w-sm mt-4">
               Saudi Arabia&#39;s specialized manufacturer of GFRC &amp; GRC façade cladding, mashrabiya
