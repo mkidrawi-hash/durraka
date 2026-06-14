@@ -84,10 +84,30 @@ Examples:
 
 ---
 
+## Internal / Pending Image Candidates
+
+Images received but **NOT** cleared for public Projects or Hero use. They are factory/process
+or internal-reference candidates only, pending the required edits below.
+
+> **Storage policy:** anything placed under `public/` is served publicly by Next.js at a real
+> URL. Internal-only binaries therefore live in `internal-assets/image-candidates/` (outside
+> `public/`) so they are never served. Promote a candidate to `public/images/factory/` only
+> after its required edits are done **and** the Pre-Publish Checklist passes.
+
+| Source file | Classification | Intended use | Caption | Required edits | Public? |
+|---|---|---|---|---|---|
+| `fac1.jpg` | `approved-after-editing` | Factory / Process section only | GFRC elements staged for project preparation and delivery. | Crop shadows & clutter; improve exposure. **Never use as hero.** | After editing |
+| `fac8.jpg` | `approved-after-editing` | About page or Factory / Process section | Factory preparation of custom GFRC architectural elements. | Crop around moulds; improve clarity; blur background people. | After editing |
+| `sitepic6.jpg` | `internal-docs` | Internal project-delivery reference only | — | Heavy crop & clean-up required before any public use. | **No — internal only** (site looks unfinished; not premium marketing) |
+
+---
+
 ## Asset Log
 
 _Add a row here each time an image is classified or promoted._
 
 | File | Classification | Alt text | Added by | Date |
 |---|---|---|---|---|
-| — | — | — | — | — |
+| `fac1.jpg` | `approved-after-editing` | GFRC elements staged for project preparation and delivery. | mkidrawi | 2026-06-14 |
+| `fac8.jpg` | `approved-after-editing` | Factory preparation of custom GFRC architectural elements. | mkidrawi | 2026-06-14 |
+| `sitepic6.jpg` | `internal-docs` | Internal delivery reference — not for public use. | mkidrawi | 2026-06-14 |
