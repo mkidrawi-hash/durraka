@@ -12,7 +12,7 @@ export default function SystemsPage() {
   return (
     <div className="min-h-screen">
       {/* Page header */}
-      <div className="bg-navy py-24 px-4">
+      <div className="bg-navy pt-16 pb-8 sm:py-24 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-8 h-px bg-accent flex-shrink-0" />
@@ -35,7 +35,7 @@ export default function SystemsPage() {
             backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='0' y1='40' x2='40' y2='0' stroke='%23ffffff' stroke-width='0.4'/%3E%3C/svg%3E")`,
           }}
         />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-16 sm:py-20">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {SYSTEMS.map((system) => (
               <div
@@ -46,13 +46,16 @@ export default function SystemsPage() {
                   <div className="w-2.5 h-2.5 bg-accent rounded-full" />
                 </div>
                 <div>
-                  <h2 className="text-white font-bold text-lg mb-2.5 group-hover:text-accent transition-colors">
+                  <h2 className="text-white font-bold text-base sm:text-lg mb-2 group-hover:text-accent transition-colors">
                     {system.title}
                   </h2>
-                  <p className="text-white/55 text-sm leading-relaxed mb-3">{system.description}</p>
-                  <span className="text-accent/80 text-xs font-semibold tracking-wide uppercase">
-                    Custom engineering available
-                  </span>
+                  <p className="text-white/50 text-sm leading-relaxed">{system.description}</p>
+                  <div className="flex items-center gap-1.5 mt-1">
+                    <div className="w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0" />
+                    <span className="text-[10px] text-white/40 tracking-widest uppercase">
+                      Custom engineering available
+                    </span>
+                  </div>
                 </div>
               </div>
             ))}
