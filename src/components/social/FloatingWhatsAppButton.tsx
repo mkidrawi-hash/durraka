@@ -22,16 +22,15 @@ export default function FloatingWhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Contact Durraka on WhatsApp"
+      style={{
+        // Respects iPhone home-bar safe area; falls back to 20px on standard devices
+        bottom: 'calc(env(safe-area-inset-bottom) + 20px)',
+        right: '20px',
+      }}
       className={[
-        // Position — bottom-right, above any mobile browser chrome
-        'fixed bottom-6 right-4 sm:bottom-8 sm:right-6',
-        // Layout
-        'flex items-center gap-2 z-40',
-        // Shape & colour — WhatsApp green so it's instantly recognisable
+        'fixed flex items-center gap-2 z-40',
         'bg-[#25D366] text-white rounded-full shadow-lg',
-        // Collapsed (icon only) on mobile, label visible from sm up
         'px-3 py-3 sm:px-4 sm:py-3',
-        // Hover / focus
         'hover:bg-[#1ebe5d] hover:-translate-y-0.5',
         'transition-all duration-200',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2',

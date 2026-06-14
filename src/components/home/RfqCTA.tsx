@@ -15,8 +15,8 @@ export default function RfqCTA() {
         </h2>
 
         <p className="text-white/70 text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
-          Submit your project details and our engineering team will prepare a tailored proposal within 48 hours.
-          Kingdom-wide delivery. Custom engineering included.
+          Submit your project details and our team will review the scope, drawings, timeline,
+          and technical requirements before preparing the next step.
         </p>
 
         <div className="flex flex-wrap gap-4 justify-center">
@@ -24,7 +24,7 @@ export default function RfqCTA() {
             href="/request-quotation"
             className="px-10 py-4 bg-accent text-white font-semibold rounded-sm hover:bg-accent-dark transition-colors text-base"
           >
-            Request for Quotation
+            Request a Quotation
           </Link>
           <Link
             href="/contact"

@@ -4,21 +4,21 @@ import ImagePlaceholder from '@/components/ui/ImagePlaceholder'
 const FEATURED_PROJECTS = [
   {
     id: 1,
-    title: 'Riyadh Mixed-Use Tower',
+    title: 'Commercial Façade Package',
     category: 'GFRC Façade Cladding',
     location: 'Riyadh, KSA',
     area: '12,400 m²',
   },
   {
     id: 2,
-    title: 'Heritage District Mashrabiya',
+    title: 'Mashrabiya Screen Package',
     category: 'Mashrabiya Systems',
     location: 'Jeddah, KSA',
     area: '3,800 m²',
   },
   {
     id: 3,
-    title: 'Grand Mosque Extension',
+    title: 'Domes & Cornices Package',
     category: 'Domes & Cornices',
     location: 'Medina, KSA',
     area: '6,200 m²',

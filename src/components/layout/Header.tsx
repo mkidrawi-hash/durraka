@@ -62,7 +62,7 @@ export default function Header() {
               href="/request-quotation"
               className="ml-4 px-5 py-2.5 bg-accent text-white text-sm font-semibold rounded-sm hover:bg-accent-dark transition-colors"
             >
-              Request a Quote
+              Request a Quotation
             </Link>
           </nav>
 
@@ -114,7 +114,7 @@ export default function Header() {
               href="/request-quotation"
               className="mt-2 px-4 py-3 bg-accent text-white text-sm font-semibold rounded-sm text-center hover:bg-accent-dark transition-colors"
             >
-              Request a Quote
+              Request a Quotation
             </Link>
           </div>
         </div>

@@ -24,14 +24,15 @@ export default function Hero() {
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-            Precision Façade
-            <span className="block text-accent">Solutions Built</span>
-            <span className="block">for the Kingdom</span>
+            Engineered GFRC
+            <span className="block text-accent">Architectural Systems</span>
+            <span className="block">for Landmark Projects</span>
           </h1>
 
           <p className="text-white/70 text-lg sm:text-xl leading-relaxed mb-10 max-w-2xl">
-            Durraka Factory delivers high-performance GFRC/GRC façade cladding, mashrabiya systems,
-            architectural domes, and custom decorative elements — engineered and manufactured in Saudi Arabia.
+            Durraka Factory for Industry manufactures GFRC façade cladding, mashrabiya panels,
+            cornices, domes, columns, decorative elements, and custom architectural systems for
+            projects across Saudi Arabia.
           </p>
 
           <div className="flex flex-wrap gap-4">
@@ -39,13 +40,13 @@ export default function Hero() {
               href="/request-quotation"
               className="px-8 py-4 bg-accent text-white font-semibold rounded-sm hover:bg-accent-dark transition-colors text-base"
             >
-              Request a Quote
+              Request a Quotation
             </Link>
             <Link
               href="/systems"
               className="px-8 py-4 border border-white/30 text-white font-semibold rounded-sm hover:bg-white/10 transition-colors text-base"
             >
-              Our Systems
+              View GFRC Systems
             </Link>
           </div>
         </div>

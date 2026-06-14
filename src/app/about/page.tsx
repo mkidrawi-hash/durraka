@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'Learn about Durraka Factory for Industry — Saudi Arabia\'s leading GFRC/GRC façade manufacturer with 280,000 m² annual production capacity.',
+    'Durraka Factory for Industry — a specialist GFRC/GRC façade manufacturer with 280,000 m² annual production capacity, serving projects across Saudi Arabia.',
 }
 
 export default function AboutPage() {
@@ -24,13 +24,13 @@ export default function AboutPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <div>
-            <h2 className="text-2xl font-bold text-navy mb-6">Building Saudi Arabia&#39;s Skyline</h2>
+            <h2 className="text-2xl font-bold text-navy mb-6">Precision-Engineered GFRC Architectural Systems</h2>
             <div className="space-y-4 text-gray-600 leading-relaxed">
               <p>
                 Durraka Factory for Industry is a Saudi-based specialist manufacturer of Glass Fibre Reinforced
                 Concrete (GFRC/GRC) architectural elements. We supply façade cladding, mashrabiya screens,
-                domes, cornices, columns, and bespoke decorative elements for some of the Kingdom&#39;s most
-                demanding construction projects.
+                domes, cornices, columns, and bespoke decorative elements for construction projects across
+                the Kingdom.
               </p>
               <p>
                 With an annual production capacity of 280,000 m² and 24/7 manufacturing operations, we are
@@ -49,8 +49,8 @@ export default function AboutPage() {
             <div className="bg-gray-50 p-8 border-l-4 border-accent rounded-sm">
               <h3 className="text-navy font-bold text-lg mb-3">Our Mission</h3>
               <p className="text-gray-600 text-sm leading-relaxed">
-                To be the Kingdom&#39;s most trusted GFRC/GRC façade manufacturer — delivering
-                precision-engineered architectural elements that enhance the built environment of Saudi Arabia.
+                To deliver precision-engineered GFRC/GRC architectural systems that meet the highest standards
+                of quality, engineering, and on-site performance for projects across Saudi Arabia.
               </p>
             </div>
 
@@ -75,8 +75,8 @@ export default function AboutPage() {
               {[
                 { value: '280,000 m²', label: 'Annual Capacity' },
                 { value: '24/7', label: 'Operations' },
-                { value: 'KSA-wide', label: 'Delivery' },
-                { value: '100%', label: 'Custom Engineering' },
+                { value: 'Kingdom-wide', label: 'Project Delivery' },
+                { value: 'Custom', label: 'Project Engineering' },
               ].map((stat) => (
                 <div key={stat.label} className="bg-navy p-6 rounded-sm text-center">
                   <div className="text-accent font-bold text-xl mb-1">{stat.value}</div>

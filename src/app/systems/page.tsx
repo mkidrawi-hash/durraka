@@ -12,7 +12,7 @@ export default function SystemsPage() {
   return (
     <div className="min-h-screen">
       {/* Page header */}
-      <div className="bg-navy py-24 px-4">
+      <div className="bg-navy pt-16 pb-8 sm:py-24 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-8 h-px bg-accent flex-shrink-0" />
@@ -26,43 +26,59 @@ export default function SystemsPage() {
         </div>
       </div>
 
-      {/* Systems grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {SYSTEMS.map((system) => (
-            <div
-              key={system.id}
-              className="group flex gap-6 p-8 border border-gray-100 rounded-sm hover:border-accent hover:shadow-lg transition-all duration-300"
-            >
-              <div className="w-12 h-12 bg-navy/5 rounded-sm flex-shrink-0 flex items-center justify-center group-hover:bg-accent transition-colors duration-300">
-                <div className="w-3 h-3 bg-navy rounded-full group-hover:bg-white transition-colors duration-300" />
+      {/* Systems grid — dark section continues from header */}
+      <div className="bg-navy relative">
+        {/* Diagonal texture layer */}
+        <div
+          className="absolute inset-0 pointer-events-none opacity-[0.03]"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='0' y1='40' x2='40' y2='0' stroke='%23ffffff' stroke-width='0.4'/%3E%3C/svg%3E")`,
+          }}
+        />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-16 sm:py-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {SYSTEMS.map((system) => (
+              <div
+                key={system.id}
+                className="group flex gap-5 p-6 sm:p-8 bg-white/[0.04] border border-white/[0.08] rounded-sm hover:border-accent/40 hover:bg-white/[0.07] transition-all duration-300"
+              >
+                <div className="w-11 h-11 bg-white/[0.08] rounded-sm flex-shrink-0 flex items-center justify-center group-hover:bg-accent/20 transition-colors duration-300">
+                  <div className="w-2.5 h-2.5 bg-accent rounded-full" />
+                </div>
+                <div>
+                  <h2 className="text-white font-bold text-base sm:text-lg mb-2 group-hover:text-accent transition-colors">
+                    {system.title}
+                  </h2>
+                  <p className="text-white/50 text-sm leading-relaxed">{system.description}</p>
+                  <div className="flex items-center gap-1.5 mt-1">
+                    <div className="w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0" />
+                    <span className="text-[10px] text-white/40 tracking-widest uppercase">
+                      Custom engineering available
+                    </span>
+                  </div>
+                </div>
               </div>
-              <div>
-                <h2 className="text-navy font-bold text-xl mb-3 group-hover:text-accent transition-colors">
-                  {system.title}
-                </h2>
-                <p className="text-gray-500 text-sm leading-relaxed mb-4">{system.description}</p>
-                <span className="text-accent text-xs font-semibold tracking-wide uppercase">
-                  Custom engineering available
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        {/* CTA banner */}
-        <div className="mt-16 bg-navy rounded-sm p-8 sm:p-12 text-center">
-          <h2 className="text-2xl font-bold text-white mb-4">Need a Custom Solution?</h2>
-          <p className="text-white/70 mb-8 max-w-lg mx-auto text-sm leading-relaxed">
-            Our engineering team designs and manufactures bespoke GFRC/GRC elements to project-specific
-            requirements — from concept to Kingdom-wide delivery.
-          </p>
-          <Link
-            href="/request-quotation"
-            className="inline-block px-8 py-4 bg-accent text-white font-semibold rounded-sm hover:bg-accent-dark transition-colors"
-          >
-            Submit Your Requirements
-          </Link>
+          {/* CTA — seamless within dark section */}
+          <div className="mt-16 border-t border-white/[0.08] pt-14 text-center">
+            <p className="text-accent text-xs font-semibold tracking-widest uppercase mb-4">Get Started</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">Need a Custom Solution?</h2>
+            <p className="text-white/55 mb-8 max-w-lg mx-auto text-sm leading-relaxed">
+              Our engineering team designs and manufactures bespoke GFRC/GRC elements to
+              project-specific requirements — from concept to Kingdom-wide delivery.
+            </p>
+            <Link
+              href="/request-quotation"
+              className="inline-flex items-center gap-2.5 px-8 py-4 border border-accent text-white font-semibold rounded-sm hover:bg-accent/10 transition-colors text-sm"
+            >
+              Submit Your Requirements
+              <svg className="w-4 h-4 text-accent flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+          </div>
         </div>
       </div>
     </div>

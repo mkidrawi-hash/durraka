@@ -4,7 +4,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Catalog',
   description:
-    'Download the Durraka Factory technical catalog for GFRC/GRC façade systems, specifications, and product data sheets.',
+    'Request access to Durraka Factory technical catalogs, datasheets, and product specifications for GFRC/GRC architectural systems.',
 }
 
 const CATALOG_ITEMS = [
@@ -28,13 +28,23 @@ export default function CatalogPage() {
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">Product Catalog</h1>
           <p className="text-white/70 text-lg max-w-2xl">
-            Technical specifications, system data sheets, and product catalogs for our complete GFRC/GRC range.
+            Technical specifications, system data sheets, and product catalogs for our complete
+            GFRC/GRC range. Access is available upon request.
           </p>
         </div>
       </div>
 
       {/* Catalog grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+
+        {/* Access notice */}
+        <div className="bg-navy/5 border border-navy/10 rounded-sm p-5 mb-10 text-sm text-gray-600 leading-relaxed">
+          <strong className="text-navy">Access Note:</strong> Detailed technical documents,
+          datasheets, and project-specific information may require technical review or project
+          qualification before release. Please contact our technical team to request the
+          relevant documents for your project.
+        </div>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {CATALOG_ITEMS.map((doc) => (
             <div
@@ -64,27 +74,43 @@ export default function CatalogPage() {
                   <p className="text-gray-400 text-xs">{doc.pages} &middot; PDF</p>
                 </div>
               </div>
-              <button className="w-full py-2.5 border border-gray-200 text-navy text-xs font-semibold rounded-sm hover:bg-navy hover:text-white hover:border-navy transition-all">
+              <Link
+                href="/contact"
+                className="block w-full py-2.5 border border-gray-200 text-navy text-xs font-semibold rounded-sm text-center hover:bg-navy hover:text-white hover:border-navy transition-all"
+              >
                 Request Access
-              </button>
+              </Link>
             </div>
           ))}
         </div>
 
         {/* Full catalog CTA */}
         <div className="bg-gray-50 rounded-sm p-8 sm:p-12 text-center border border-gray-100">
-          <h2 className="text-2xl font-bold text-navy mb-4">Need the Full Catalog Package?</h2>
-          <p className="text-gray-500 mb-8 max-w-lg mx-auto text-sm leading-relaxed">
-            Contact our technical team to receive the complete Durraka catalog set, including product data
-            sheets, installation guidelines, and structural specifications.
+          <h2 className="text-2xl font-bold text-navy mb-4">Request Catalog Access</h2>
+          <p className="text-gray-500 mb-4 max-w-lg mx-auto text-sm leading-relaxed">
+            Contact our technical team to receive the complete Durraka catalog set, including
+            product datasheets, installation guidelines, and structural specifications.
           </p>
-          <Link
-            href="/contact"
-            className="inline-block px-8 py-4 bg-navy text-white font-semibold rounded-sm hover:bg-navy-light transition-colors"
-          >
-            Contact Technical Team
-          </Link>
+          <p className="text-gray-400 mb-8 max-w-lg mx-auto text-xs leading-relaxed">
+            Detailed technical documents may require project qualification or technical review
+            before release. Our team will respond to all catalog requests.
+          </p>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Link
+              href="/contact"
+              className="inline-block px-8 py-4 bg-navy text-white font-semibold rounded-sm hover:bg-navy-light transition-colors"
+            >
+              Contact Technical Team
+            </Link>
+            <Link
+              href="/request-quotation"
+              className="inline-block px-8 py-4 border border-navy/30 text-navy font-semibold rounded-sm hover:border-accent hover:text-accent transition-colors"
+            >
+              Request a Quotation
+            </Link>
+          </div>
         </div>
+
       </div>
     </div>
   )
