@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, ChangeEvent, FormEvent } from 'react'
+import { useState, useRef, ChangeEvent, FormEvent } from 'react'
 import Link from 'next/link'
 
 const SYSTEMS_OPTIONS = [
@@ -12,6 +12,20 @@ const SYSTEMS_OPTIONS = [
   'Custom Decorative Elements',
   'Multiple Systems',
 ]
+
+const ACCEPTED_FORMATS = '.pdf,.dwg,.dxf,.xls,.xlsx,.doc,.docx,.jpg,.jpeg,.png,.zip'
+const ACCEPTED_LABEL = 'PDF, DWG, DXF, XLS, XLSX, DOC, DOCX, JPG, PNG, ZIP · Max 25 MB per file'
+const MAX_FILE_BYTES = 25 * 1024 * 1024
+
+const FILE_SLOT_LABELS = [
+  'BOQ / Bill of Quantities',
+  'Architectural Drawings',
+  'Structural Drawings',
+  'Reference Images / Renderings',
+]
+
+type FileSlot = { label: string; file: File | null }
+type AttachedFileMeta = { name: string; size: number; type: string; slot: string }
 
 type FormData = {
   projectName: string
@@ -27,6 +41,10 @@ type FormData = {
   phone: string
   clientType: string
   notes: string
+  largeFileLink: string
+  fileLinkNotes: string
+  drawingsNotAvailable: boolean
+  needDrawingSupport: boolean
   website: string // honeypot
 }
 
@@ -44,25 +62,67 @@ const EMPTY_FORM: FormData = {
   phone: '',
   clientType: '',
   notes: '',
+  largeFileLink: '',
+  fileLinkNotes: '',
+  drawingsNotAvailable: false,
+  needDrawingSupport: false,
   website: '',
 }
+
+const EMPTY_SLOTS = (): FileSlot[] => FILE_SLOT_LABELS.map((label) => ({ label, file: null }))
 
 type SubmitState = 'idle' | 'loading' | 'success' | 'error'
 
 const inputClass =
   'w-full px-4 py-3 border border-gray-200 rounded-sm focus:border-accent focus:outline-none text-sm'
 
+function formatBytes(bytes: number): string {
+  if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(0) + ' KB'
+  return (bytes / (1024 * 1024)).toFixed(1) + ' MB'
+}
+
 export default function RFQForm() {
   const [formData, setFormData] = useState<FormData>(EMPTY_FORM)
+  const [fileSlots, setFileSlots] = useState<FileSlot[]>(EMPTY_SLOTS())
+  const [fileErrors, setFileErrors] = useState<(string | null)[]>(Array(4).fill(null))
   const [submitState, setSubmitState] = useState<SubmitState>('idle')
   const [errorMessage, setErrorMessage] = useState('')
   const [reference, setReference] = useState('')
+  const fileInputRefs = useRef<(HTMLInputElement | null)[]>([null, null, null, null])
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
   ) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
+    const { name, type } = e.target
+    if (type === 'checkbox') {
+      const checked = (e.target as HTMLInputElement).checked
+      setFormData((prev) => {
+        const next = { ...prev, [name]: checked }
+        if (name === 'drawingsNotAvailable' && !checked) {
+          next.needDrawingSupport = false
+        }
+        return next
+      })
+    } else {
+      setFormData((prev) => ({ ...prev, [name]: e.target.value }))
+    }
+  }
+
+  const handleFileChange = (idx: number, e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0] ?? null
+    if (file && file.size > MAX_FILE_BYTES) {
+      setFileErrors((prev) => prev.map((err, i) => (i === idx ? 'File exceeds 25 MB limit.' : err)))
+      e.target.value = ''
+      return
+    }
+    setFileErrors((prev) => prev.map((err, i) => (i === idx ? null : err)))
+    setFileSlots((prev) => prev.map((s, i) => (i === idx ? { ...s, file } : s)))
+  }
+
+  const clearFile = (idx: number) => {
+    setFileSlots((prev) => prev.map((s, i) => (i === idx ? { ...s, file: null } : s)))
+    setFileErrors((prev) => prev.map((err, i) => (i === idx ? null : err)))
+    if (fileInputRefs.current[idx]) fileInputRefs.current[idx]!.value = ''
   }
 
   const validate = (): string | null => {
@@ -75,7 +135,7 @@ export default function RFQForm() {
       ['systemRequired', 'System required'],
     ]
     for (const [field, label] of required) {
-      if (!formData[field].trim()) return `${label} is required.`
+      if (!String(formData[field]).trim()) return `${label} is required.`
     }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       return 'Please enter a valid email address.'
@@ -96,11 +156,15 @@ export default function RFQForm() {
     setSubmitState('loading')
     setErrorMessage('')
 
+    const attachments: AttachedFileMeta[] = fileSlots
+      .filter((s) => s.file)
+      .map((s) => ({ name: s.file!.name, size: s.file!.size, type: s.file!.type, slot: s.label }))
+
     try {
       const res = await fetch('/api/rfq', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, attachments }),
       })
 
       const json = (await res.json()) as { success?: boolean; reference?: string; error?: string }
@@ -153,6 +217,8 @@ export default function RFQForm() {
           <button
             onClick={() => {
               setFormData(EMPTY_FORM)
+              setFileSlots(EMPTY_SLOTS())
+              setFileErrors(Array(4).fill(null))
               setSubmitState('idle')
               setReference('')
             }}
@@ -379,6 +445,127 @@ export default function RFQForm() {
                 ))}
               </select>
             </div>
+          </div>
+        </fieldset>
+
+        {/* Project Attachments */}
+        <fieldset>
+          <legend className="text-navy font-bold text-xl mb-2 pb-3 border-b border-gray-100 w-full">
+            Project Attachments
+          </legend>
+          <p className="text-gray-400 text-xs mb-6">
+            Optional. Attach relevant documents to help our team prepare. Files are not uploaded —
+            only file names are included in the request notification.
+          </p>
+
+          {/* File upload slots */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+            {fileSlots.map((slot, idx) => (
+              <div key={slot.label} className="border border-dashed border-gray-200 rounded-sm p-4">
+                <p className="text-xs font-semibold text-navy mb-3">{slot.label}</p>
+
+                {slot.file ? (
+                  <div className="flex items-center gap-2 bg-navy/5 rounded-sm px-3 py-2 mb-2">
+                    <svg className="w-3.5 h-3.5 text-navy flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+                    </svg>
+                    <span className="text-navy text-xs truncate flex-1">{slot.file.name}</span>
+                    <span className="text-gray-400 text-xs flex-shrink-0">{formatBytes(slot.file.size)}</span>
+                    <button
+                      type="button"
+                      onClick={() => clearFile(idx)}
+                      className="text-gray-400 hover:text-accent transition-colors flex-shrink-0 ml-1"
+                      aria-label="Remove file"
+                    >
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </button>
+                  </div>
+                ) : (
+                  <label className="flex items-center gap-2 cursor-pointer group">
+                    <div className="flex-1 flex items-center gap-2 px-3 py-2 border border-gray-200 rounded-sm group-hover:border-accent transition-colors">
+                      <svg className="w-4 h-4 text-gray-400 group-hover:text-accent transition-colors flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
+                      </svg>
+                      <span className="text-gray-400 text-xs group-hover:text-accent transition-colors">Choose file</span>
+                    </div>
+                    <input
+                      ref={(el) => { fileInputRefs.current[idx] = el }}
+                      type="file"
+                      accept={ACCEPTED_FORMATS}
+                      className="sr-only"
+                      onChange={(e) => handleFileChange(idx, e)}
+                    />
+                  </label>
+                )}
+
+                {fileErrors[idx] && (
+                  <p className="text-accent text-xs mt-1.5">{fileErrors[idx]}</p>
+                )}
+                <p className="text-gray-300 text-[10px] mt-2 leading-relaxed">{ACCEPTED_LABEL}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Large file link */}
+          <div className="mb-5">
+            <label className="block text-sm font-semibold text-navy mb-2">Large File Link</label>
+            <input
+              type="url"
+              name="largeFileLink"
+              placeholder="Paste Google Drive, OneDrive, Dropbox, or WeTransfer link..."
+              value={formData.largeFileLink}
+              onChange={handleChange}
+              className={inputClass}
+            />
+            <p className="text-gray-400 text-xs mt-1.5">
+              Use for large files, full drawing sets, or zipped packages.
+            </p>
+          </div>
+
+          {/* File link notes */}
+          <div className="mb-6">
+            <label className="block text-sm font-semibold text-navy mb-2">File Link Notes</label>
+            <textarea
+              name="fileLinkNotes"
+              rows={3}
+              placeholder="Describe what's in the link, folder structure, or access instructions..."
+              value={formData.fileLinkNotes}
+              onChange={handleChange}
+              className={inputClass + ' resize-none'}
+            />
+          </div>
+
+          {/* Drawings not available checkbox */}
+          <div>
+            <label className="flex items-start gap-3 cursor-pointer">
+              <input
+                type="checkbox"
+                name="drawingsNotAvailable"
+                checked={formData.drawingsNotAvailable}
+                onChange={handleChange}
+                className="w-4 h-4 mt-0.5 accent-[#D71920] flex-shrink-0"
+              />
+              <span className="text-sm text-navy">Drawings are not available yet</span>
+            </label>
+
+            {formData.drawingsNotAvailable && (
+              <div className="mt-3 ml-7 p-4 bg-navy/5 border border-navy/10 rounded-sm">
+                <label className="flex items-start gap-3 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    name="needDrawingSupport"
+                    checked={formData.needDrawingSupport}
+                    onChange={handleChange}
+                    className="w-4 h-4 mt-0.5 accent-[#D71920] flex-shrink-0"
+                  />
+                  <span className="text-sm text-navy leading-relaxed">
+                    I need Durraka to support with preliminary drawings / shop drawings for review
+                  </span>
+                </label>
+              </div>
+            )}
           </div>
         </fieldset>
 

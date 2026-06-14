@@ -16,6 +16,11 @@ export interface RFQPayload {
   deliveryDate?: string
   systemRequired: string
   notes?: string
+  attachments?: Array<{ name: string; size: number; type: string; slot: string }>
+  largeFileLink?: string
+  fileLinkNotes?: string
+  drawingsNotAvailable?: boolean
+  needDrawingSupport?: boolean
   website?: string // honeypot — must be empty
 }
 
@@ -45,6 +50,11 @@ function formatTimestamp(d: Date): string {
   )
 }
 
+function formatBytes(bytes: number): string {
+  if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(0) + ' KB'
+  return (bytes / (1024 * 1024)).toFixed(1) + ' MB'
+}
+
 // ── Email ─────────────────────────────────────────────────────────────────────
 
 function buildEmailHTML(p: RFQPayload, ref: string, timestamp: string): string {
@@ -57,6 +67,36 @@ function buildEmailHTML(p: RFQPayload, ref: string, timestamp: string): string {
   const section = (title: string) =>
     `<h2 style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#071B3B;
       margin:24px 0 10px;padding-bottom:6px;border-bottom:2px solid #D71920">${title}</h2>`
+
+  // Build attachments section
+  const hasFiles = p.attachments && p.attachments.length > 0
+  const hasLink = p.largeFileLink && p.largeFileLink.trim()
+  const hasNotes = p.fileLinkNotes && p.fileLinkNotes.trim()
+  const hasAny = hasFiles || hasLink || hasNotes || p.drawingsNotAvailable
+
+  const attachmentsRows = hasAny
+    ? `
+      ${hasFiles
+        ? p.attachments!.map((f) =>
+            row(f.slot, `${f.name} <span style="font-weight:400;color:#888">(${formatBytes(f.size)})</span>`)
+          ).join('')
+        : ''
+      }
+      ${hasLink
+        ? row('Large File Link', `<a href="${p.largeFileLink}" style="color:#D71920;text-decoration:none;word-break:break-all">${p.largeFileLink}</a>`)
+        : ''
+      }
+      ${hasNotes
+        ? row('File Link Notes', p.fileLinkNotes!.replace(/\n/g, '<br>'))
+        : ''
+      }
+      ${row('Drawings Available', p.drawingsNotAvailable ? 'No — not available yet' : 'Yes / Not specified')}
+      ${p.drawingsNotAvailable
+        ? row('Drawing Support Requested', p.needDrawingSupport ? 'Yes' : 'No')
+        : ''
+      }
+    `
+    : row('Attachments', 'No attachments provided')
 
   return `<!DOCTYPE html>
 <html>
@@ -108,9 +148,14 @@ function buildEmailHTML(p: RFQPayload, ref: string, timestamp: string): string {
         : ''
     }
 
+    ${section('Attachments')}
+    <table style="width:100%;border-collapse:collapse">
+      ${attachmentsRows}
+    </table>
+
     <div style="margin-top:24px;padding:12px 14px;background:#f0f4f9;font-size:11px;color:#666;line-height:1.7">
-      <b>Attachments:</b> File attachments are not supported via web submission.
-      Follow up by email to request drawings or references from the client.<br>
+      <b>Note:</b> Files listed above were not uploaded — only file names and sizes are recorded.
+      Contact the client to request drawing files or references directly.<br>
       <b>Source:</b> Durraka Website — /request-quotation
     </div>
 
@@ -144,9 +189,11 @@ async function appendToSheets(
 
   const sheets = google.sheets({ version: 'v4', auth })
 
+  const attachmentNames = (p.attachments ?? []).map((f) => f.name).join(', ')
+
   await sheets.spreadsheets.values.append({
     spreadsheetId,
-    range: `${tabName}!A:P`,
+    range: `${tabName}!A:R`,
     valueInputOption: 'USER_ENTERED',
     requestBody: {
       values: [
@@ -166,6 +213,8 @@ async function appendToSheets(
           p.deliveryDate ?? '',
           p.systemRequired,
           p.notes ?? '',
+          attachmentNames,
+          p.largeFileLink ?? '',
           'Durraka Website',
         ],
       ],
