@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     template: '%s | Durraka Factory',
   },
   description:
-    'Saudi Arabia\'s leading manufacturer of GFRC/GRC façade cladding, mashrabiya systems, domes, cornices, columns, and custom decorative architectural elements.',
+    'Durraka Factory for Industry — specialist manufacturer of GFRC/GRC façade cladding, mashrabiya systems, domes, cornices, columns, and custom decorative architectural elements for projects across Saudi Arabia.',
   keywords: [
     'GFRC',
     'GRC',

@@ -109,7 +109,7 @@ function buildEmailHTML(p: RFQPayload, ref: string, timestamp: string): string {
     }
 
     <div style="margin-top:24px;padding:12px 14px;background:#f0f4f9;font-size:11px;color:#666;line-height:1.7">
-      <b>Attachments:</b> File attachments are not yet supported via web submission.
+      <b>Attachments:</b> File attachments are not supported via web submission.
       Follow up by email to request drawings or references from the client.<br>
       <b>Source:</b> Durraka Website — /request-quotation
     </div>
@@ -173,6 +173,9 @@ async function appendToSheets(
   })
 }
 
+// ── CRM / database hook (extend here to integrate a CRM or database) ──────────
+// async function saveToCRM(p: RFQPayload, ref: string): Promise<void> { ... }
+
 // ── Route handler ─────────────────────────────────────────────────────────────
 
 export async function POST(req: NextRequest) {
@@ -207,41 +210,39 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    const apiKey = process.env.RESEND_API_KEY
-    if (!apiKey) {
-      console.error('[RFQ] RESEND_API_KEY is not configured')
-      return NextResponse.json({ error: 'Email service is not configured.' }, { status: 500 })
-    }
-
     const reference = generateReference()
     const timestamp = formatTimestamp(new Date())
 
-    // Send notification email — failure blocks submission
-    const resend = new Resend(apiKey)
-    const recipient = process.env.RFQ_INTERNAL_EMAIL ?? 'mkidrawi@gmail.com'
-    const fromEmail = process.env.RFQ_FROM_EMAIL ?? 'Durraka RFQ <onboarding@resend.dev>'
+    // ── Email notification (non-blocking when unconfigured) ───────────────────
+    const apiKey = process.env.EMAIL_SERVICE_API_KEY
+    if (!apiKey) {
+      // Not configured — log for admin review, do not expose error to visitor
+      console.warn('[RFQ] EMAIL_SERVICE_API_KEY is not set — submission received but email skipped. Reference:', reference)
+    } else {
+      const resend = new Resend(apiKey)
+      const recipient = process.env.RFQ_TO_EMAIL ?? 'info@durraka.com'
+      const fromEmail = process.env.RFQ_FROM_EMAIL ?? 'Durraka RFQ <no-reply@durraka.com>'
 
-    const { error: emailError } = await resend.emails.send({
-      from: fromEmail,
-      to: [recipient],
-      subject: `New RFQ Submitted — ${payload.projectName} — ${reference}`,
-      html: buildEmailHTML(payload, reference, timestamp),
+      const { error: emailError } = await resend.emails.send({
+        from: fromEmail,
+        to: [recipient],
+        subject: `New RFQ — ${payload.projectName} — ${reference}`,
+        html: buildEmailHTML(payload, reference, timestamp),
+      })
+
+      if (emailError) {
+        // Email failed — log for admin, still return success so submission is not lost
+        console.error('[RFQ] Email send error:', emailError, '— Reference:', reference)
+      }
+    }
+
+    // ── Google Sheets log (always non-blocking) ───────────────────────────────
+    appendToSheets(payload, reference, timestamp).catch((err) => {
+      console.error('[RFQ] Google Sheets append failed:', err)
     })
 
-    if (emailError) {
-      console.error('[RFQ] Resend error:', emailError)
-      return NextResponse.json(
-        { error: 'Could not send the notification email. Please try again.' },
-        { status: 500 },
-      )
-    }
-
-    // Append to Google Sheets — failure is non-blocking
-    try {
-      await appendToSheets(payload, reference, timestamp)
-    } catch (sheetsErr) {
-      console.error('[RFQ] Google Sheets append failed:', sheetsErr)
-    }
+    // ── CRM hook placeholder ──────────────────────────────────────────────────
+    // saveToCRM(payload, reference).catch((err) => console.error('[RFQ] CRM save failed:', err))
 
     return NextResponse.json({ success: true, reference })
   } catch (err) {

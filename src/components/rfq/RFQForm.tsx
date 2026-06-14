@@ -139,8 +139,9 @@ export default function RFQForm() {
           Request Submitted Successfully
         </h2>
         <p className="text-gray-500 text-sm mb-8 leading-relaxed">
-          Our engineering team has received your quotation request and will respond within
-          48 business hours. Please quote the reference number below in all correspondence.
+          Thank you. Your request has been received for review. Our team will review the scope
+          and requirements and contact you with the next steps.
+          Please quote the reference number below in all correspondence.
         </p>
 
         <div className="inline-block bg-navy/5 border border-navy/20 rounded-sm px-10 py-5 mb-10">
@@ -427,8 +428,15 @@ export default function RFQForm() {
             {submitState === 'loading' ? 'Submitting…' : 'Submit Request for Quotation'}
           </button>
           <p className="text-gray-400 text-xs mt-3">
-            Fields marked <span className="text-accent">*</span> are required. We will respond
-            within 48 business hours. Your information is kept confidential.
+            Fields marked <span className="text-accent">*</span> are required.
+            Your information is kept confidential.
+          </p>
+          <p className="text-gray-400 text-xs mt-4 leading-relaxed border-t border-gray-100 pt-4">
+            <strong className="text-gray-500">Disclaimer:</strong> Submitting an RFQ through
+            this website does not create a binding quotation, contract, purchase order, or
+            commitment by Durraka Factory for Industry. All requests are subject to technical
+            review, commercial evaluation, project scope confirmation, drawing review, and
+            written approval.
           </p>
         </div>
 

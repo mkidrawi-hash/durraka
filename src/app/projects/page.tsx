@@ -4,68 +4,68 @@ import ImagePlaceholder from '@/components/ui/ImagePlaceholder'
 export const metadata: Metadata = {
   title: 'Projects',
   description:
-    'Explore Durraka Factory\'s portfolio of completed GFRC/GRC façade projects across Saudi Arabia.',
+    'Explore Durraka Factory\'s portfolio of GFRC/GRC façade projects delivered across Saudi Arabia.',
 }
 
 const PROJECTS = [
   {
     id: 1,
-    title: 'Riyadh Mixed-Use Tower',
+    title: 'Commercial Façade Package',
     category: 'GFRC Façade Cladding',
     location: 'Riyadh, KSA',
     area: '12,400 m²',
     year: '2023',
     description:
-      'Full façade cladding system for a 35-storey mixed-use development in the heart of Riyadh.',
+      'Full façade cladding system for a multi-storey mixed-use development, including panel fabrication, engineering coordination, and site delivery.',
   },
   {
     id: 2,
-    title: 'Heritage District Mashrabiya',
+    title: 'Mashrabiya Screen Package',
     category: 'Mashrabiya Systems',
     location: 'Jeddah, KSA',
     area: '3,800 m²',
     year: '2023',
     description:
-      'Custom geometric mashrabiya screens for a heritage-inspired retail and hospitality complex.',
+      'Custom geometric mashrabiya screens for a heritage-inspired retail and hospitality complex, designed to project-specific geometric specifications.',
   },
   {
     id: 3,
-    title: 'Grand Mosque Extension',
+    title: 'Domes & Cornices Package',
     category: 'Domes & Cornices',
     location: 'Medina, KSA',
     area: '6,200 m²',
     year: '2022',
     description:
-      'Decorative domes, cornices, and architectural ornamentation for a mosque expansion project.',
+      'Decorative domes, cornices, and architectural ornamentation elements, engineered and manufactured to exacting design requirements.',
   },
   {
     id: 4,
-    title: 'Luxury Villa Development',
+    title: 'Residential Decorative Package',
     category: 'Custom Decorative Elements',
     location: 'Al Khobar, KSA',
     area: '2,100 m²',
     year: '2022',
     description:
-      'Bespoke columns, cornices, and exterior decorative features for a high-end residential community.',
+      'Bespoke columns, cornices, and exterior decorative features for a high-end residential development, produced to custom profiles.',
   },
   {
     id: 5,
-    title: 'Government Complex Cladding',
+    title: 'Government Façade Package',
     category: 'GFRC Façade Cladding',
     location: 'Dammam, KSA',
     area: '18,600 m²',
     year: '2023',
-    description: 'Large-scale façade cladding system for a government administrative complex.',
+    description: 'Large-scale façade cladding system for a government administrative complex, including structural panel design and Kingdom-wide delivery.',
   },
   {
     id: 6,
-    title: 'Hotel Colonnade',
+    title: 'Hospitality Column Package',
     category: 'Columns & Pillars',
     location: 'Riyadh, KSA',
     area: '900 m²',
     year: '2022',
     description:
-      'Custom GRC columns and pilasters for the entrance colonnade of a 5-star hotel.',
+      'Custom GRC columns and pilasters for the entrance colonnade of a hospitality project, cast to bespoke classical profiles.',
   },
 ]
 
@@ -81,8 +81,9 @@ export default function ProjectsPage() {
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">Our Projects</h1>
           <p className="text-white/70 text-lg max-w-2xl">
-            From landmark towers to heritage restorations — our GFRC and GRC solutions are delivered
-            across the Kingdom.
+            A selection of GFRC and GRC façade packages delivered across the Kingdom.
+            Project references are presented in abstract form due to confidentiality
+            obligations and client approval requirements.
           </p>
         </div>
       </div>
@@ -117,6 +118,12 @@ export default function ProjectsPage() {
             </div>
           ))}
         </div>
+
+        <p className="text-center text-gray-400 text-xs mt-12 max-w-xl mx-auto leading-relaxed">
+          Project references are presented in abstract form due to confidentiality obligations,
+          client approvals, and NDA requirements. Detailed project information is available on
+          request during the qualification process.
+        </p>
       </div>
     </div>
   )

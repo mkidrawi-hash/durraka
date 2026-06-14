@@ -21,15 +21,15 @@ export const METRICS = [
     description: 'Continuous production to meet project deadlines',
   },
   {
-    value: 'KSA',
+    value: 'Kingdom-wide',
     unit: '',
-    label: 'Kingdom-wide Delivery',
+    label: 'Project Delivery',
     description: 'Projects delivered across Saudi Arabia',
   },
   {
-    value: '100%',
+    value: 'Custom',
     unit: '',
-    label: 'Custom Engineering',
+    label: 'Project Engineering',
     description: 'Tailored solutions for every project',
   },
 ]
@@ -74,7 +74,10 @@ export const SYSTEMS = [
 ]
 
 export const CONTACT_INFO = {
-  address: 'Riyadh, Kingdom of Saudi Arabia',
+  address: 'Main Office — Jeddah, Saudi Arabia',
+  addressShort: 'JBSA 2372',
   email: 'info@durraka.com',
-  phone: '+966 11 000 0000',
+  phone: '+966 12 619 2224',
 }
+
+export const MAPS_URL = 'https://maps.app.goo.gl/G8pBA8gHzH8o5DdGA?g_st=iw'

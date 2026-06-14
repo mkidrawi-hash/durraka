@@ -1,8 +1,6 @@
 import Link from 'next/link'
-import { NAV_LINKS, CONTACT_INFO } from '@/lib/constants'
+import { NAV_LINKS, CONTACT_INFO, MAPS_URL } from '@/lib/constants'
 import SocialLinks from '@/components/social/SocialLinks'
-
-const MAPS_URL = 'https://maps.app.goo.gl/G8pBA8gHzH8o5DdGA'
 
 const LEGAL_LINKS = [
   { label: 'Privacy Policy', href: '/privacy-policy' },

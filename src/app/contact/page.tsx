@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { CONTACT_INFO } from '@/lib/constants'
+import { CONTACT_INFO, MAPS_URL } from '@/lib/constants'
 import SocialLinks from '@/components/social/SocialLinks'
 import { SOCIAL_LINKS } from '@/lib/social-links'
 
@@ -9,8 +9,6 @@ export const metadata: Metadata = {
   description:
     'Get in touch with Durraka Factory for Industry — GFRC/GRC façade specialists in Saudi Arabia.',
 }
-
-const MAPS_URL = 'https://maps.app.goo.gl/G8pBA8gHzH8o5DdGA'
 
 export default function ContactPage() {
   return (
