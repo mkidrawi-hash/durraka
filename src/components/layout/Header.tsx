@@ -29,14 +29,20 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center group" aria-label="Durraka Factory for Industry">
-            <div className="px-2 py-1.5 rounded-[10px] bg-white/[0.04] border border-white/10">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/images/logos/durraka-logo-header-white-red.svg"
-                alt="Durraka Factory for Industry logo"
-                className="h-[44px] sm:h-[52px] w-auto object-contain"
-              />
+          <Link href="/" className="flex items-center gap-3 group" aria-label="Durraka Factory for Industry">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/logos/durraka-logo-header-white-red.svg"
+              alt="Durraka Factory for Industry logo"
+              className="h-[42px] sm:h-[52px] w-auto flex-shrink-0"
+            />
+            <div>
+              <p className="text-white font-bold text-base sm:text-lg leading-tight tracking-[0.06em] uppercase group-hover:text-accent transition-colors">
+                Durraka
+              </p>
+              <p className="text-white/50 text-[10px] sm:text-xs tracking-[0.18em] uppercase mt-0.5">
+                Factory for Industry
+              </p>
             </div>
           </Link>
 

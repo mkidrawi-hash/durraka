@@ -15,15 +15,25 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="md:col-span-2 lg:col-span-2">
-            <Link href="/" className="flex items-center mb-4" aria-label="Durraka Factory for Industry">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/images/logos/durraka-logo-header-white-red.svg"
-                alt="Durraka Factory for Industry logo"
-                className="h-[44px] sm:h-[52px] w-auto object-contain"
-              />
-            </Link>
-            <p className="text-white/60 text-sm leading-relaxed max-w-sm mt-4">
+            <div className="mb-6">
+              <Link href="/" aria-label="Durraka Factory for Industry">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/logos/durraka-logo-header-white-red.svg"
+                  alt="Durraka Factory for Industry logo"
+                  className="h-[64px] sm:h-[76px] w-auto"
+                />
+              </Link>
+              <div className="mt-3">
+                <p className="text-white font-bold text-base leading-tight tracking-wide">
+                  Durraka Factory for Industry
+                </p>
+                <p className="text-accent text-xs font-semibold tracking-widest uppercase mt-1">
+                  GFRC &amp; GRC Architectural Systems
+                </p>
+              </div>
+            </div>
+            <p className="text-white/60 text-sm leading-relaxed max-w-sm">
               Saudi Arabia&#39;s specialized manufacturer of GFRC &amp; GRC façade cladding, mashrabiya
               systems, architectural domes, cornices, and custom decorative elements.
             </p>
