@@ -106,6 +106,7 @@ type Project = {
   tag: string
   description: string
   image: string
+  objectPosition: string
   Illustration: IllustrationComponent
 }
 
@@ -116,6 +117,7 @@ const FEATURED_PROJECTS: Project[] = [
     tag: 'Signature GFRC Entrance',
     description: 'Monumental entrances crafted in GFRC with timeless architectural impact.',
     image: '/images/projects/grand-entrance-gfrc.png',
+    objectPosition: 'center',
     Illustration: FacadeIllustration,
   },
   {
@@ -124,6 +126,7 @@ const FEATURED_PROJECTS: Project[] = [
     tag: 'Classical Architectural Elements',
     description: 'Elegant columns and porticos engineered for strength and refined detail.',
     image: '/images/projects/column-portico-gfrc.png',
+    objectPosition: 'center',
     Illustration: DomesIllustration,
   },
   {
@@ -132,6 +135,7 @@ const FEATURED_PROJECTS: Project[] = [
     tag: 'Custom Dome System',
     description: 'Lightweight GFRC domes and vaults with exceptional precision and durability.',
     image: '/images/projects/dome-vault-gfrc.png',
+    objectPosition: 'center top',
     Illustration: DomesIllustration,
   },
   {
@@ -139,7 +143,8 @@ const FEATURED_PROJECTS: Project[] = [
     title: 'Ornamental Façade Package',
     tag: 'Decorative GFRC Façade',
     description: 'Intricate façades that elevate buildings with ornamental excellence.',
-    image: '/images/projects/ornamental-facade-gfrc.png',
+    image: '/images/projects/architectural-cladding-gfrc.png',
+    objectPosition: 'center',
     Illustration: FacadeIllustration,
   },
   {
@@ -148,6 +153,7 @@ const FEATURED_PROJECTS: Project[] = [
     tag: 'Patterned Screen System',
     description: 'Bespoke screens that balance privacy, light, and architectural identity.',
     image: '/images/projects/mashrabiya-screen-gfrc.png',
+    objectPosition: 'center',
     Illustration: MashrabiyaIllustration,
   },
   {
@@ -155,7 +161,8 @@ const FEATURED_PROJECTS: Project[] = [
     title: 'Architectural Cladding Package',
     tag: 'Exterior Cladding & Profiles',
     description: 'Premium GFRC cladding systems for high-performance exterior finishes.',
-    image: '/images/projects/architectural-cladding-gfrc.png',
+    image: '/images/projects/ornamental-facade-gfrc.png',
+    objectPosition: 'center',
     Illustration: FacadeIllustration,
   },
 ]
@@ -166,11 +173,11 @@ function ProjectCard({ project }: { project: Project }) {
 
   return (
     <div className="group bg-white rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-200/60">
-      {/* 4:3 image area */}
-      <div className="relative overflow-hidden aspect-[4/3] bg-[#071B3B]">
+      {/* Image area — taller on mobile, 4:3 on sm+ */}
+      <div className="relative overflow-hidden aspect-[5/4] sm:aspect-[4/3] bg-[#071B3B]">
         {/* Architectural illustration — always rendered as background / fallback */}
         <Illustration uid={project.id} />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#071B3B]/80 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#071B3B]/70 via-transparent to-transparent" />
         {/* Real project image — covers illustration when present */}
         {!imgError && (
           // eslint-disable-next-line @next/next/no-img-element
@@ -178,24 +185,33 @@ function ProjectCard({ project }: { project: Project }) {
             src={project.image}
             alt={project.title}
             className="absolute inset-0 w-full h-full object-cover"
+            style={{ objectPosition: project.objectPosition }}
             onError={() => setImgError(true)}
           />
         )}
         {/* Tag badge */}
         <div className="absolute bottom-3 left-3 z-10">
-          <span className="text-accent text-[10px] font-semibold tracking-wider uppercase bg-[#071B3B]/85 px-2.5 py-1 rounded-sm backdrop-blur-sm">
+          <span className="text-accent text-[10px] font-semibold tracking-wider uppercase leading-none bg-[#071B3B]/85 px-2.5 py-1 rounded-sm backdrop-blur-sm">
             {project.tag}
           </span>
         </div>
       </div>
 
       <div className="p-5">
-        <h3 className="text-navy font-bold text-base leading-snug mb-2 group-hover:text-accent transition-colors">
+        <h3 className="text-navy font-bold text-[17px] sm:text-[15px] leading-snug mb-2 group-hover:text-accent transition-colors">
           {project.title}
         </h3>
-        <p className="text-gray-400 text-xs leading-relaxed">
+        <p className="text-gray-400 text-[13px] sm:text-xs leading-relaxed">
           {project.description}
         </p>
+        <div className="mt-3 pt-3 border-t border-gray-100 flex items-center justify-end">
+          <svg
+            className="w-4 h-4 text-accent/30 group-hover:text-accent group-hover:translate-x-0.5 transition-all duration-200"
+            fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </div>
       </div>
     </div>
   )
