@@ -53,6 +53,7 @@ export type SystemPageData = {
   designGuidanceTitle?: string
   designGuidance: GuidanceItem[]
   infoRequired?: string[]
+  finishesIntro?: string
   ctaTitle: string
   ctaBody?: string
 }
@@ -221,8 +222,7 @@ export function SystemPageLayout({ data }: { data: SystemPageData }) {
           </div>
           <h2 className="text-xl sm:text-2xl font-bold text-navy mb-2">Finish Directions</h2>
           <p className="text-gray-500 text-sm max-w-xl mb-10 leading-relaxed">
-            A range of surface finish directions is available to suit different design intentions
-            and architectural contexts.
+            {data.finishesIntro ?? 'A range of surface finish directions is available to suit different design intentions and architectural contexts.'}
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
             {finishes.map((f) => (
