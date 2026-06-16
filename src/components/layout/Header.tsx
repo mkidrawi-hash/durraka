@@ -35,7 +35,7 @@ export default function Header() {
               <img
                 src="/images/logos/durraka-logo-header-white-red.svg"
                 alt="Durraka Factory for Industry logo"
-                className="h-[38px] sm:h-[46px] w-auto object-contain"
+                className="h-[44px] sm:h-[52px] w-auto object-contain"
               />
             </div>
           </Link>

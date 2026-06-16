@@ -20,7 +20,7 @@ export default function Footer() {
               <img
                 src="/images/logos/durraka-logo-header-white-red.svg"
                 alt="Durraka Factory for Industry logo"
-                className="h-[40px] sm:h-[48px] w-auto object-contain"
+                className="h-[44px] sm:h-[52px] w-auto object-contain"
               />
             </Link>
             <p className="text-white/60 text-sm leading-relaxed max-w-sm mt-4">
