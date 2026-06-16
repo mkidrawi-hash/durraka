@@ -19,20 +19,20 @@ export default function Hero() {
         style={{ paddingBottom: 'calc(64px + env(safe-area-inset-bottom))' }}
       >
         <div className="max-w-3xl">
-          <div className="flex items-center gap-3 mb-8">
+          <div className="flex items-center gap-3 mb-5 sm:mb-8">
             <div className="w-8 h-px bg-accent flex-shrink-0" />
             <span className="text-accent text-xs sm:text-sm font-semibold tracking-wider sm:tracking-widest uppercase">
               GFRC &amp; GRC Specialists — Saudi Arabia
             </span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+          <h1 className="text-[28px] sm:text-5xl lg:text-6xl font-bold text-white leading-[1.15] mb-5 sm:mb-6">
             Engineered GFRC
             <span className="block text-accent">Architectural Systems</span>
             <span className="block">for Landmark Projects</span>
           </h1>
 
-          <p className="text-white/80 text-base sm:text-lg leading-relaxed mb-10 max-w-2xl">
+          <p className="text-white/80 text-sm sm:text-lg leading-relaxed mb-8 sm:mb-10 max-w-2xl">
             Durraka Factory for Industry manufactures GFRC façade cladding, mashrabiya panels,
             cornices, domes, columns, decorative elements, and custom architectural systems for
             projects across Saudi Arabia.

@@ -17,7 +17,7 @@ export default function RfqCTA() {
           Ready to Start Your Project?
         </h2>
 
-        <p className="text-white/80 text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+        <p className="text-white/90 text-sm sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
           Submit your project details and our team will review the scope, drawings, timeline,
           and technical requirements before preparing the next step.
         </p>

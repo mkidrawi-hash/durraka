@@ -12,25 +12,25 @@ export const METRICS = [
     value: 'Large-Scale',
     unit: '',
     label: 'Manufacturing',
-    description: 'Scalable GFRC/GRC production capability for major architectural projects.',
+    description: 'Large-scale GFRC/GRC production capability.',
   },
   {
     value: '24/7',
     unit: '',
     label: 'Production Operations',
-    description: 'Continuous production to meet project deadlines.',
+    description: 'Round-the-clock output to meet any deadline.',
   },
   {
     value: 'Kingdom-Wide',
     unit: '',
     label: 'Delivery',
-    description: 'Projects delivered across Saudi Arabia.',
+    description: 'Delivered across all regions of Saudi Arabia.',
   },
   {
     value: 'Custom',
     unit: '',
-    label: 'Project Engineering',
-    description: 'Tailored engineering solutions for every project.',
+    label: 'Engineering',
+    description: 'Tailored solutions for every project.',
   },
 ]
 
@@ -74,8 +74,8 @@ export const SYSTEMS = [
 ]
 
 export const CONTACT_INFO = {
-  address: 'Main Office — Jeddah, Saudi Arabia',
-  addressLine2: 'Office 203, 2nd Floor',
+  address: 'Office 203, 2nd Floor',
+  addressLine2: 'JBSA 2372, Jeddah, Saudi Arabia',
   email: 'info@durraka.com',
   phone: '+966 12 619 2224',
 }

@@ -56,7 +56,7 @@ export default function SystemsOverview() {
           {SYSTEMS.map((system) => (
             <div
               key={system.id}
-              className="group p-7 sm:p-8 border border-gray-100 rounded-sm hover:border-accent hover:shadow-md transition-all duration-300"
+              className="group p-7 sm:p-8 border border-gray-200/80 rounded-sm hover:border-accent/60 hover:shadow-md bg-white transition-all duration-300"
             >
               <div className="w-16 h-16 sm:w-14 sm:h-14 bg-navy/5 rounded-sm flex items-center justify-center text-navy mb-4 group-hover:bg-accent group-hover:text-white transition-all duration-300 flex-shrink-0">
                 {SYSTEM_ICONS[system.id]}
