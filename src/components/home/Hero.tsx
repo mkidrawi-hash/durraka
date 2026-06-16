@@ -14,37 +14,40 @@ export default function Hero() {
       {/* Left accent bar */}
       <div className="absolute left-0 top-0 bottom-0 w-1 bg-accent" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28">
+      <div
+        className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-28"
+        style={{ paddingBottom: 'calc(64px + env(safe-area-inset-bottom))' }}
+      >
         <div className="max-w-3xl">
-          <div className="flex items-center gap-3 mb-8">
+          <div className="flex items-center gap-3 mb-5 sm:mb-8">
             <div className="w-8 h-px bg-accent flex-shrink-0" />
             <span className="text-accent text-xs sm:text-sm font-semibold tracking-wider sm:tracking-widest uppercase">
               GFRC &amp; GRC Specialists — Saudi Arabia
             </span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+          <h1 className="text-[28px] sm:text-5xl lg:text-6xl font-bold text-white leading-[1.15] mb-5 sm:mb-6">
             Engineered GFRC
             <span className="block text-accent">Architectural Systems</span>
             <span className="block">for Landmark Projects</span>
           </h1>
 
-          <p className="text-white/70 text-lg sm:text-xl leading-relaxed mb-10 max-w-2xl">
+          <p className="text-white/80 text-sm sm:text-lg leading-relaxed mb-8 sm:mb-10 max-w-2xl">
             Durraka Factory for Industry manufactures GFRC façade cladding, mashrabiya panels,
             cornices, domes, columns, decorative elements, and custom architectural systems for
             projects across Saudi Arabia.
           </p>
 
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
             <Link
               href="/request-quotation"
-              className="px-8 py-4 bg-accent text-white font-semibold rounded-sm hover:bg-accent-dark transition-colors text-base"
+              className="min-h-[56px] flex items-center justify-center px-8 py-3.5 bg-accent text-white font-semibold rounded-sm hover:bg-accent-dark transition-colors text-base"
             >
               Request a Quotation
             </Link>
             <Link
               href="/systems"
-              className="px-8 py-4 border border-white/30 text-white font-semibold rounded-sm hover:bg-white/10 transition-colors text-base"
+              className="min-h-[56px] flex items-center justify-center px-8 py-3.5 border border-white/50 text-white font-semibold rounded-sm hover:bg-white/10 transition-colors text-base"
             >
               View GFRC Systems
             </Link>

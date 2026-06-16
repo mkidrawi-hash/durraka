@@ -44,7 +44,10 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <p className="text-navy font-semibold text-sm mb-1">Address</p>
-                  <p className="text-gray-500 text-sm mb-2">{CONTACT_INFO.address}</p>
+                  <div className="text-gray-500 text-sm mb-2">
+                    <p>{CONTACT_INFO.address}</p>
+                    <p>{CONTACT_INFO.addressLine2}</p>
+                  </div>
                   <Link
                     href={MAPS_URL}
                     target="_blank"
