@@ -1,81 +1,64 @@
+'use client'
+
+import { useState } from 'react'
 import Link from 'next/link'
 
-function FacadeIllustration() {
+// Architectural illustrations — shown as fallback until real image loads
+
+function FacadeIllustration({ uid }: { uid: string }) {
+  const g = `fg-${uid}`
   return (
-    <svg
-      className="absolute inset-0 w-full h-full"
-      viewBox="0 0 200 150"
-      preserveAspectRatio="xMidYMid slice"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 150" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <linearGradient id="fg-grad" x1="0" y1="0" x2="1" y2="1">
+        <linearGradient id={g} x1="0" y1="0" x2="1" y2="1">
           <stop offset="0%" stopColor="#0f2d58" />
           <stop offset="100%" stopColor="#071B3B" />
         </linearGradient>
       </defs>
-      <rect width="200" height="150" fill="url(#fg-grad)" />
+      <rect width="200" height="150" fill={`url(#${g})`} />
       <g opacity="0.24" stroke="white" fill="none">
-        {/* Main building rectangle */}
         <rect x="50" y="20" width="100" height="110" strokeWidth="1.2" />
-        {/* Horizontal cladding panel courses */}
         <line x1="50" y1="38" x2="150" y2="38" strokeWidth="0.7" />
         <line x1="50" y1="56" x2="150" y2="56" strokeWidth="0.7" />
         <line x1="50" y1="74" x2="150" y2="74" strokeWidth="0.7" />
         <line x1="50" y1="92" x2="150" y2="92" strokeWidth="0.7" />
         <line x1="50" y1="110" x2="150" y2="110" strokeWidth="0.7" />
-        {/* Center vertical division */}
         <line x1="100" y1="20" x2="100" y2="130" strokeWidth="0.5" strokeDasharray="3 2" />
-        {/* Panel modules — left column */}
         <rect x="55" y="24" width="39" height="12" fill="white" fillOpacity="0.07" strokeWidth="0" />
         <rect x="55" y="42" width="39" height="12" fill="white" fillOpacity="0.07" strokeWidth="0" />
         <rect x="55" y="60" width="39" height="12" fill="white" fillOpacity="0.07" strokeWidth="0" />
-        {/* Panel modules — right column */}
         <rect x="106" y="24" width="39" height="12" fill="white" fillOpacity="0.07" strokeWidth="0" />
         <rect x="106" y="42" width="39" height="12" fill="white" fillOpacity="0.07" strokeWidth="0" />
         <rect x="106" y="60" width="39" height="12" fill="white" fillOpacity="0.07" strokeWidth="0" />
-        {/* Cornice top */}
         <rect x="44" y="14" width="112" height="7" strokeWidth="0.9" />
-        {/* Base */}
         <rect x="44" y="129" width="112" height="5" strokeWidth="0.8" />
       </g>
-      {/* Red accent bar */}
       <rect x="0" y="0" width="3" height="150" fill="#D71920" fillOpacity="0.6" />
     </svg>
   )
 }
 
-function MashrabiyaIllustration() {
+function MashrabiyaIllustration({ uid }: { uid: string }) {
+  const g = `mg-${uid}`
   return (
-    <svg
-      className="absolute inset-0 w-full h-full"
-      viewBox="0 0 200 150"
-      preserveAspectRatio="xMidYMid slice"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 150" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <linearGradient id="mg-grad" x1="0" y1="1" x2="1" y2="0">
+        <linearGradient id={g} x1="0" y1="1" x2="1" y2="0">
           <stop offset="0%" stopColor="#071B3B" />
           <stop offset="100%" stopColor="#102847" />
         </linearGradient>
       </defs>
-      <rect width="200" height="150" fill="url(#mg-grad)" />
+      <rect width="200" height="150" fill={`url(#${g})`} />
       <g opacity="0.24" stroke="white" fill="none">
-        {/* Outer pointed arch */}
         <path d="M58 142 L58 74 Q58 8 100 8 Q142 8 142 74 L142 142" strokeWidth="1.4" />
-        {/* Inner arch */}
         <path d="M72 142 L72 78 Q72 28 100 28 Q128 28 128 78 L128 142" strokeWidth="0.8" />
-        {/* Lattice verticals */}
         <line x1="86" y1="52" x2="86" y2="142" strokeWidth="0.55" />
         <line x1="100" y1="28" x2="100" y2="142" strokeWidth="0.55" />
         <line x1="114" y1="52" x2="114" y2="142" strokeWidth="0.55" />
-        {/* Lattice horizontals */}
         <line x1="58" y1="88" x2="142" y2="88" strokeWidth="0.55" />
         <line x1="58" y1="108" x2="142" y2="108" strokeWidth="0.55" />
         <line x1="58" y1="128" x2="142" y2="128" strokeWidth="0.55" />
-        {/* Diamond accent at apex */}
         <path d="M100 8 L107 22 L100 36 L93 22 Z" strokeWidth="0.9" />
-        {/* Side columns */}
         <rect x="44" y="42" width="12" height="100" strokeWidth="0.8" />
         <rect x="144" y="42" width="12" height="100" strokeWidth="0.8" />
       </g>
@@ -84,40 +67,29 @@ function MashrabiyaIllustration() {
   )
 }
 
-function DomesIllustration() {
+function DomesIllustration({ uid }: { uid: string }) {
+  const g = `dg-${uid}`
   return (
-    <svg
-      className="absolute inset-0 w-full h-full"
-      viewBox="0 0 200 150"
-      preserveAspectRatio="xMidYMid slice"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 150" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <linearGradient id="dg-grad" x1="0" y1="0" x2="0" y2="1">
+        <linearGradient id={g} x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stopColor="#0d2650" />
           <stop offset="100%" stopColor="#071B3B" />
         </linearGradient>
       </defs>
-      <rect width="200" height="150" fill="url(#dg-grad)" />
+      <rect width="200" height="150" fill={`url(#${g})`} />
       <g opacity="0.24" stroke="white" fill="none">
-        {/* Main dome curve */}
         <path d="M28 102 Q28 18 100 18 Q172 18 172 102" strokeWidth="1.4" />
-        {/* Inner dome */}
         <path d="M50 102 Q50 38 100 38 Q150 38 150 102" strokeWidth="0.8" />
-        {/* Dome ribs */}
         <line x1="100" y1="18" x2="28" y2="102" strokeWidth="0.5" />
         <line x1="100" y1="18" x2="57" y2="102" strokeWidth="0.5" />
         <line x1="100" y1="18" x2="100" y2="102" strokeWidth="0.5" />
         <line x1="100" y1="18" x2="143" y2="102" strokeWidth="0.5" />
         <line x1="100" y1="18" x2="172" y2="102" strokeWidth="0.5" />
-        {/* Horizontal ring */}
         <ellipse cx="100" cy="62" rx="36" ry="7" strokeWidth="0.65" />
-        {/* Drum / base rectangle */}
         <rect x="36" y="102" width="128" height="16" strokeWidth="0.9" />
-        {/* Cornice lines */}
         <line x1="28" y1="118" x2="172" y2="118" strokeWidth="0.6" />
         <line x1="18" y1="122" x2="182" y2="122" strokeWidth="0.6" />
-        {/* Lantern at apex */}
         <circle cx="100" cy="18" r="5" strokeWidth="0.9" />
         <line x1="100" y1="6" x2="100" y2="13" strokeWidth="0.9" />
       </g>
@@ -126,40 +98,108 @@ function DomesIllustration() {
   )
 }
 
-type IllustrationComponent = React.FC
+type IllustrationComponent = React.FC<{ uid: string }>
 
-const ILLUSTRATION_MAP: Record<string, IllustrationComponent> = {
-  'GFRC Façade Cladding': FacadeIllustration,
-  'Mashrabiya Systems': MashrabiyaIllustration,
-  'Domes & Cornices': DomesIllustration,
+type Project = {
+  id: string
+  title: string
+  tag: string
+  description: string
+  image: string
+  Illustration: IllustrationComponent
 }
 
-const FEATURED_PROJECTS = [
+const FEATURED_PROJECTS: Project[] = [
   {
-    id: 1,
-    title: 'Commercial Façade Package',
-    description: 'Full GFRC panel cladding system for a large-scale commercial development.',
-    category: 'GFRC Façade Cladding',
-    location: 'Riyadh, KSA',
-    area: '12,400 m²',
+    id: 'p1',
+    title: 'Grand Entrance Package',
+    tag: 'Signature GFRC Entrance',
+    description: 'Monumental entrances crafted in GFRC with timeless architectural impact.',
+    image: '/images/projects/grand-entrance-gfrc.jpg',
+    Illustration: FacadeIllustration,
   },
   {
-    id: 2,
+    id: 'p2',
+    title: 'Column & Portico Package',
+    tag: 'Classical Architectural Elements',
+    description: 'Elegant columns and porticos engineered for strength and refined detail.',
+    image: '/images/projects/column-portico-gfrc.jpg',
+    Illustration: DomesIllustration,
+  },
+  {
+    id: 'p3',
+    title: 'Dome & Vault Package',
+    tag: 'Custom Dome System',
+    description: 'Lightweight GFRC domes and vaults with exceptional precision and durability.',
+    image: '/images/projects/dome-vault-gfrc.jpg',
+    Illustration: DomesIllustration,
+  },
+  {
+    id: 'p4',
+    title: 'Ornamental Façade Package',
+    tag: 'Decorative GFRC Façade',
+    description: 'Intricate façades that elevate buildings with ornamental excellence.',
+    image: '/images/projects/ornamental-facade-gfrc.jpg',
+    Illustration: FacadeIllustration,
+  },
+  {
+    id: 'p5',
     title: 'Mashrabiya Screen Package',
-    description: 'Custom perforated GRC screens with traditional geometric detailing.',
-    category: 'Mashrabiya Systems',
-    location: 'Jeddah, KSA',
-    area: '3,800 m²',
+    tag: 'Patterned Screen System',
+    description: 'Bespoke screens that balance privacy, light, and architectural identity.',
+    image: '/images/projects/mashrabiya-screen-gfrc.jpg',
+    Illustration: MashrabiyaIllustration,
   },
   {
-    id: 3,
-    title: 'Domes & Cornices Package',
-    description: 'Architectural dome structures and decorative cornice profiles in GFRC.',
-    category: 'Domes & Cornices',
-    location: 'Medina, KSA',
-    area: '6,200 m²',
+    id: 'p6',
+    title: 'Architectural Cladding Package',
+    tag: 'Exterior Cladding & Profiles',
+    description: 'Premium GFRC cladding systems for high-performance exterior finishes.',
+    image: '/images/projects/architectural-cladding-gfrc.jpg',
+    Illustration: FacadeIllustration,
   },
 ]
+
+function ProjectCard({ project }: { project: Project }) {
+  const [imgError, setImgError] = useState(false)
+  const { Illustration } = project
+
+  return (
+    <div className="group bg-white rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-200/60">
+      {/* 4:3 image area */}
+      <div className="relative overflow-hidden aspect-[4/3] bg-[#071B3B]">
+        {/* Architectural illustration — always rendered as background / fallback */}
+        <Illustration uid={project.id} />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#071B3B]/80 via-transparent to-transparent" />
+        {/* Real project image — covers illustration when present */}
+        {!imgError && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={project.image}
+            alt={project.title}
+            className="absolute inset-0 w-full h-full object-cover"
+            onError={() => setImgError(true)}
+          />
+        )}
+        {/* Tag badge */}
+        <div className="absolute bottom-3 left-3 z-10">
+          <span className="text-accent text-[10px] font-semibold tracking-wider uppercase bg-[#071B3B]/85 px-2.5 py-1 rounded-sm backdrop-blur-sm">
+            {project.tag}
+          </span>
+        </div>
+      </div>
+
+      <div className="p-5">
+        <h3 className="text-navy font-bold text-base leading-snug mb-2 group-hover:text-accent transition-colors">
+          {project.title}
+        </h3>
+        <p className="text-gray-400 text-xs leading-relaxed">
+          {project.description}
+        </p>
+      </div>
+    </div>
+  )
+}
 
 export default function ProjectsPreview() {
   return (
@@ -178,49 +218,10 @@ export default function ProjectsPreview() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-7">
-          {FEATURED_PROJECTS.map((project) => {
-            const Illustration = ILLUSTRATION_MAP[project.category] ?? FacadeIllustration
-            return (
-              <div
-                key={project.id}
-                className="group bg-white rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-200/60"
-              >
-                {/* Architectural illustration placeholder — 4:3 */}
-                <div className="relative overflow-hidden aspect-[4/3] bg-[#071B3B]">
-                  <Illustration />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#071B3B]/80 via-transparent to-transparent" />
-                  {/* Category tag */}
-                  <div className="absolute bottom-3 left-3">
-                    <span className="text-accent text-[10px] font-semibold tracking-wider uppercase bg-[#071B3B]/85 px-2.5 py-1 rounded-sm backdrop-blur-sm">
-                      {project.category}
-                    </span>
-                  </div>
-                </div>
-
-                <div className="p-5">
-                  <h3 className="text-navy font-bold text-base leading-snug mb-2 group-hover:text-accent transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-400 text-xs leading-relaxed mb-3">
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap items-center justify-between gap-y-1.5 gap-x-2 pt-2 border-t border-gray-100">
-                    <span className="flex items-center gap-1.5 text-[11px] text-gray-400">
-                      <svg className="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                      </svg>
-                      {project.location}
-                    </span>
-                    <span className="text-[11px] font-semibold text-navy/60 bg-navy/5 px-2 py-0.5 rounded-sm tabular-nums">
-                      {project.area}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            )
-          })}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 sm:gap-7">
+          {FEATURED_PROJECTS.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
         </div>
 
         <div className="text-center mt-10 sm:mt-14">
