@@ -9,28 +9,28 @@ export const NAV_LINKS = [
 
 export const METRICS = [
   {
-    value: '280,000',
-    unit: 'm²',
-    label: 'Annual Production Capacity',
-    description: 'State-of-the-art manufacturing at scale',
+    value: 'Large-Scale',
+    unit: '',
+    label: 'Manufacturing',
+    description: 'Scalable GFRC/GRC production capability for major architectural projects.',
   },
   {
     value: '24/7',
     unit: '',
-    label: 'Manufacturing Operations',
-    description: 'Continuous production to meet project deadlines',
+    label: 'Production Operations',
+    description: 'Continuous production to meet project deadlines.',
   },
   {
-    value: 'Kingdom-wide',
+    value: 'Kingdom-Wide',
     unit: '',
-    label: 'Project Delivery',
-    description: 'Projects delivered across Saudi Arabia',
+    label: 'Delivery',
+    description: 'Projects delivered across Saudi Arabia.',
   },
   {
     value: 'Custom',
     unit: '',
     label: 'Project Engineering',
-    description: 'Tailored solutions for every project',
+    description: 'Tailored engineering solutions for every project.',
   },
 ]
 
