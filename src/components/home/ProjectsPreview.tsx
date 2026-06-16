@@ -115,7 +115,7 @@ const FEATURED_PROJECTS: Project[] = [
     title: 'Grand Entrance Package',
     tag: 'Signature GFRC Entrance',
     description: 'Monumental entrances crafted in GFRC with timeless architectural impact.',
-    image: '/images/projects/grand-entrance-gfrc.jpg',
+    image: '/images/projects/grand-entrance-gfrc.png',
     Illustration: FacadeIllustration,
   },
   {
@@ -123,7 +123,7 @@ const FEATURED_PROJECTS: Project[] = [
     title: 'Column & Portico Package',
     tag: 'Classical Architectural Elements',
     description: 'Elegant columns and porticos engineered for strength and refined detail.',
-    image: '/images/projects/column-portico-gfrc.jpg',
+    image: '/images/projects/column-portico-gfrc.png',
     Illustration: DomesIllustration,
   },
   {
@@ -131,7 +131,7 @@ const FEATURED_PROJECTS: Project[] = [
     title: 'Dome & Vault Package',
     tag: 'Custom Dome System',
     description: 'Lightweight GFRC domes and vaults with exceptional precision and durability.',
-    image: '/images/projects/dome-vault-gfrc.jpg',
+    image: '/images/projects/dome-vault-gfrc.png',
     Illustration: DomesIllustration,
   },
   {
@@ -139,7 +139,7 @@ const FEATURED_PROJECTS: Project[] = [
     title: 'Ornamental Façade Package',
     tag: 'Decorative GFRC Façade',
     description: 'Intricate façades that elevate buildings with ornamental excellence.',
-    image: '/images/projects/ornamental-facade-gfrc.jpg',
+    image: '/images/projects/ornamental-facade-gfrc.png',
     Illustration: FacadeIllustration,
   },
   {
@@ -147,7 +147,7 @@ const FEATURED_PROJECTS: Project[] = [
     title: 'Mashrabiya Screen Package',
     tag: 'Patterned Screen System',
     description: 'Bespoke screens that balance privacy, light, and architectural identity.',
-    image: '/images/projects/mashrabiya-screen-gfrc.jpg',
+    image: '/images/projects/mashrabiya-screen-gfrc.png',
     Illustration: MashrabiyaIllustration,
   },
   {
@@ -155,7 +155,7 @@ const FEATURED_PROJECTS: Project[] = [
     title: 'Architectural Cladding Package',
     tag: 'Exterior Cladding & Profiles',
     description: 'Premium GFRC cladding systems for high-performance exterior finishes.',
-    image: '/images/projects/architectural-cladding-gfrc.jpg',
+    image: '/images/projects/architectural-cladding-gfrc.png',
     Illustration: FacadeIllustration,
   },
 ]
