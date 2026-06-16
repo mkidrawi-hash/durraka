@@ -97,10 +97,6 @@ function FacadeSystemDiagram() {
       <line x1="189" y1="20"  x2="358" y2="20" stroke="#D71920" strokeWidth="0.8" strokeDasharray="4 2" />
       <CalloutBadge n={6} cx={368} cy={20} />
 
-      {/* Caption */}
-      <text x="65" y="286" fontSize="7" fill="#071B3B" fillOpacity="0.3" fontFamily="monospace" letterSpacing="0.8">
-        FAÇADE SYSTEM — VISUAL INTENT ONLY — NO INSTALLATION DETAILS
-      </text>
     </svg>
   )
 }
@@ -237,7 +233,7 @@ export default function FacadeCladdingPage() {
     { type: 'textured',    label: 'Textured Finish',        desc: 'Controlled surface texture for depth and visual character.' },
     { type: 'stone',       label: 'Stone-Like Finish',      desc: 'Architectural finish inspired by natural stone aesthetics.' },
     { type: 'concrete',    label: 'Concrete-Look Finish',   desc: 'Minimal cementitious appearance for contemporary projects.' },
-    { type: 'ribbed',      label: 'Ribbed Finish',          desc: 'Vertical or horizontal rib pattern for directional façade rhythm.' },
+    { type: 'color',       label: 'Custom Colour Finish',   desc: 'Project-based colour direction developed to match design intent.' },
     { type: 'heritage',    label: 'Heritage-Inspired Finish', desc: 'Finish direction suitable for traditional and regional architectural language.' },
     { type: 'custom',      label: 'Project-Specific Finish', desc: 'Custom surface direction reviewed according to project requirements.' },
   ]
@@ -375,7 +371,7 @@ export default function FacadeCladdingPage() {
             {/* Diagram */}
             <div className="lg:col-span-3 bg-[#F8F9FA] border border-navy/10 p-6 sm:p-8 rounded-sm">
               <p className="text-navy/35 text-[10px] font-mono tracking-widest uppercase mb-4">
-                Fig. 1 — Façade Elevation · Design Intent Only
+                GFRC / GRC Façade Cladding System — Overview
               </p>
               <FacadeSystemDiagram />
             </div>
@@ -395,11 +391,6 @@ export default function FacadeCladdingPage() {
                   </li>
                 ))}
               </ol>
-              <div className="mt-6 pt-5 border-t border-navy/8">
-                <p className="text-navy/35 text-[10px] font-mono tracking-wide leading-relaxed uppercase">
-                  Visual intent only. No construction<br />details or methodology shown.
-                </p>
-              </div>
             </div>
           </div>
         </div>
@@ -453,9 +444,9 @@ export default function FacadeCladdingPage() {
             ))}
           </div>
 
-          <p className="text-navy/35 text-[11px] font-mono mt-6 leading-relaxed max-w-2xl">
-            Final finish selection should be confirmed through approved samples or project-specific
-            mockups where required. Swatches shown are schematic representations only.
+          <p className="text-navy/40 text-[11px] mt-6 leading-relaxed max-w-2xl">
+            Surface swatches are schematic representations only. Final finish direction is confirmed
+            during project review and approved sample / mockup process where required.
           </p>
         </div>
       </div>
@@ -540,9 +531,8 @@ export default function FacadeCladdingPage() {
               <p className="text-navy/55 text-xs leading-relaxed">
                 <span className="font-semibold text-navy/70">Technical Note: </span>
                 This page is provided for material understanding, design guidance, and early project
-                coordination only. Final fixing details, structural calculations, and project-specific
-                connections are issued only through approved shop drawings and project-specific
-                engineering submissions.
+                coordination only. Project-specific engineering details are issued through approved
+                project submissions where required.
               </p>
             </div>
           </div>
