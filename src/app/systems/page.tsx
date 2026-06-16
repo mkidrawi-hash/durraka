@@ -50,11 +50,21 @@ export default function SystemsPage() {
                     {system.title}
                   </h2>
                   <p className="text-white/50 text-sm leading-relaxed">{system.description}</p>
-                  <div className="flex items-center gap-1.5 mt-1">
-                    <div className="w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0" />
-                    <span className="text-[10px] text-white/40 tracking-widest uppercase">
-                      Custom engineering available
-                    </span>
+                  <div className="flex items-center gap-3 mt-2 flex-wrap">
+                    <div className="flex items-center gap-1.5">
+                      <div className="w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0" />
+                      <span className="text-[10px] text-white/40 tracking-widest uppercase">
+                        Custom engineering available
+                      </span>
+                    </div>
+                    {system.id === 'facade-cladding' && (
+                      <Link
+                        href="/systems/facade-cladding"
+                        className="text-[10px] text-accent/70 hover:text-accent tracking-widest uppercase underline underline-offset-2 transition-colors"
+                      >
+                        View System →
+                      </Link>
+                    )}
                   </div>
                 </div>
               </div>
