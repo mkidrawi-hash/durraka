@@ -4,6 +4,13 @@
 
 html {
   scroll-behavior: smooth;
+  color-scheme: light;
+  scroll-padding-top: 84px;
+}
+
+/* Prevent automatic browser dark-mode inversion */
+:root {
+  color-scheme: light;
 }
 
 /* RTL overrides for future Arabic locale */

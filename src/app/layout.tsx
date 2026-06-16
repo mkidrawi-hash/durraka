@@ -1,11 +1,15 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Poppins } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import FloatingWhatsAppButton from '@/components/social/FloatingWhatsAppButton'
 
-const inter = Inter({ subsets: ['latin'], display: 'swap' })
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: {
@@ -40,9 +44,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" dir="ltr">
-      <body className={inter.className}>
+      <body className={poppins.className}>
         <Header />
-        <main className="pt-16 sm:pt-20">{children}</main>
+        {/* pt matches fixed header height: 84px mobile, 80px (h-20) sm+ */}
+        <main className="pt-[84px] sm:pt-20">{children}</main>
         <Footer />
         <FloatingWhatsAppButton />
       </body>

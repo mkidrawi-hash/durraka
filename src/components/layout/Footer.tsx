@@ -10,21 +10,21 @@ const LEGAL_LINKS = [
 export default function Footer() {
   return (
     <footer className="bg-white border-t border-navy/10 text-navy">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 sm:gap-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10">
 
           {/* Brand */}
           <div className="md:col-span-2 lg:col-span-2">
-            <div className="mb-6">
+            <div className="mb-5">
               <Link href="/" aria-label="Durraka Factory for Industry">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/images/logos/durraka-logo-original-red-blue.svg"
                   alt="Durraka Factory for Industry logo"
-                  className="h-[72px] sm:h-[88px] w-auto"
+                  className="h-[60px] sm:h-[76px] w-auto"
                 />
               </Link>
-              <div className="mt-4">
+              <div className="mt-3">
                 <p className="text-navy font-bold text-base leading-tight tracking-wide">
                   Durraka Factory for Industry
                 </p>
@@ -37,15 +37,15 @@ export default function Footer() {
               Saudi Arabia&#39;s specialized manufacturer of GFRC &amp; GRC façade cladding, mashrabiya
               systems, architectural domes, cornices, and custom decorative elements.
             </p>
-            <div className="mt-6">
+            <div className="mt-5">
               <SocialLinks variant="light" size="sm" />
             </div>
           </div>
 
           {/* Navigation */}
           <div>
-            <h3 className="text-navy/40 text-xs font-semibold tracking-widest uppercase mb-5">Navigation</h3>
-            <ul className="space-y-3">
+            <h3 className="text-navy/40 text-xs font-semibold tracking-widest uppercase mb-4">Navigation</h3>
+            <ul className="space-y-2.5">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
                   <Link
@@ -61,8 +61,8 @@ export default function Footer() {
 
           {/* Legal */}
           <div>
-            <h3 className="text-navy/40 text-xs font-semibold tracking-widest uppercase mb-5">Legal</h3>
-            <ul className="space-y-3">
+            <h3 className="text-navy/40 text-xs font-semibold tracking-widest uppercase mb-4">Legal</h3>
+            <ul className="space-y-2.5">
               {LEGAL_LINKS.map((link) => (
                 <li key={link.href}>
                   <Link
@@ -78,8 +78,8 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-navy/40 text-xs font-semibold tracking-widest uppercase mb-5">Contact</h3>
-            <ul className="space-y-4">
+            <h3 className="text-navy/40 text-xs font-semibold tracking-widest uppercase mb-4">Contact</h3>
+            <ul className="space-y-3.5">
               <li>
                 <Link
                   href={MAPS_URL}
@@ -97,7 +97,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href={`tel:${CONTACT_INFO.phone}`}
+                  href="tel:+966126192224"
                   className="flex items-center gap-2.5 text-navy/60 hover:text-accent text-sm leading-relaxed transition-colors group"
                 >
                   <svg className="w-4 h-4 flex-shrink-0 text-navy/30 group-hover:text-accent transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -108,7 +108,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href={`mailto:${CONTACT_INFO.email}`}
+                  href="mailto:info@durraka.com"
                   className="flex items-center gap-2.5 text-navy/60 hover:text-accent text-sm leading-relaxed transition-colors group"
                 >
                   <svg className="w-4 h-4 flex-shrink-0 text-navy/30 group-hover:text-accent transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -122,12 +122,16 @@ export default function Footer() {
 
         </div>
 
-        {/* Bottom bar */}
-        <div className="border-t border-navy/10 mt-14 pt-8">
+        {/* Bottom bar — extra padding so floating WA button never covers copyright */}
+        <div
+          className="border-t border-navy/10 mt-10 sm:mt-12 pt-6"
+          style={{ paddingBottom: 'calc(96px + env(safe-area-inset-bottom))' }}
+        >
           <p className="text-navy/40 text-xs">
             &copy; {new Date().getFullYear()} Durraka Factory for Industry. All rights reserved.
           </p>
         </div>
+
       </div>
     </footer>
   )

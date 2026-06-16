@@ -8,7 +8,7 @@ export default function Metrics() {
           {METRICS.map((metric, index) => (
             <div
               key={index}
-              className="text-center p-4 sm:p-6 border border-white/10 rounded-sm hover:border-accent/50 transition-colors group"
+              className="text-center p-4 sm:p-6 border border-white/[0.12] rounded-sm hover:border-accent/50 transition-colors group"
             >
               <div className="flex items-end justify-center gap-1 mb-2">
                 <span className="text-xl sm:text-3xl lg:text-4xl font-bold text-white group-hover:text-accent transition-colors leading-tight break-words">
@@ -19,7 +19,7 @@ export default function Metrics() {
                 )}
               </div>
               <div className="text-white font-semibold text-[11px] sm:text-sm mb-2 leading-snug">{metric.label}</div>
-              <div className="text-white/50 text-[10px] sm:text-xs leading-relaxed">{metric.description}</div>
+              <div className="text-[#B8C0D4] text-[10px] sm:text-xs leading-relaxed">{metric.description}</div>
             </div>
           ))}
         </div>
