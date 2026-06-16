@@ -38,8 +38,9 @@ export default function SystemsPage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-16 sm:py-20">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {SYSTEMS.map((system) => (
-              <div
+              <Link
                 key={system.id}
+                href={`/systems/${system.id}`}
                 className="group flex gap-5 p-6 sm:p-8 bg-white/[0.04] border border-white/[0.08] rounded-sm hover:border-accent/40 hover:bg-white/[0.07] transition-all duration-300"
               >
                 <div className="w-11 h-11 bg-white/[0.08] rounded-sm flex-shrink-0 flex items-center justify-center group-hover:bg-accent/20 transition-colors duration-300">
@@ -57,17 +58,12 @@ export default function SystemsPage() {
                         Custom engineering available
                       </span>
                     </div>
-                    {system.id === 'facade-cladding' && (
-                      <Link
-                        href="/systems/facade-cladding"
-                        className="text-[10px] text-accent/70 hover:text-accent tracking-widest uppercase underline underline-offset-2 transition-colors"
-                      >
-                        View System →
-                      </Link>
-                    )}
+                    <span className="text-[10px] text-accent/70 group-hover:text-accent tracking-widest uppercase transition-colors">
+                      View System →
+                    </span>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 
