@@ -75,7 +75,7 @@ export const SYSTEMS = [
 
 export const CONTACT_INFO = {
   address: 'Main Office — Jeddah, Saudi Arabia',
-  addressShort: 'JBSA 2372',
+  addressLine2: 'Office 203, 2nd Floor',
   email: 'info@durraka.com',
   phone: '+966 12 619 2224',
 }
