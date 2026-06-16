@@ -9,7 +9,7 @@ export const NAV_LINKS = [
 
 export const METRICS = [
   {
-    value: 'Large-Scale',
+    value: 'Large-scale',
     unit: '',
     label: 'Manufacturing',
     description: 'Large-scale GFRC/GRC production capability.',
@@ -17,11 +17,11 @@ export const METRICS = [
   {
     value: '24/7',
     unit: '',
-    label: 'Production Operations',
+    label: 'Production',
     description: 'Round-the-clock output to meet any deadline.',
   },
   {
-    value: 'Kingdom-Wide',
+    value: 'Kingdom-wide',
     unit: '',
     label: 'Delivery',
     description: 'Delivered across all regions of Saudi Arabia.',

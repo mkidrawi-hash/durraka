@@ -41,13 +41,13 @@ export default function Hero() {
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
             <Link
               href="/request-quotation"
-              className="min-h-[52px] flex items-center justify-center px-8 py-3.5 bg-accent text-white font-semibold rounded-sm hover:bg-accent-dark transition-colors text-base"
+              className="min-h-[56px] flex items-center justify-center px-8 py-3.5 bg-accent text-white font-semibold rounded-sm hover:bg-accent-dark transition-colors text-base"
             >
               Request a Quotation
             </Link>
             <Link
               href="/systems"
-              className="min-h-[52px] flex items-center justify-center px-8 py-3.5 border border-white/50 text-white font-semibold rounded-sm hover:bg-white/10 transition-colors text-base"
+              className="min-h-[56px] flex items-center justify-center px-8 py-3.5 border border-white/50 text-white font-semibold rounded-sm hover:bg-white/10 transition-colors text-base"
             >
               View GFRC Systems
             </Link>

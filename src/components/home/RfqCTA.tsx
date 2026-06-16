@@ -13,7 +13,7 @@ export default function RfqCTA() {
           <div className="w-8 h-px bg-accent flex-shrink-0" />
         </div>
 
-        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
+        <h2 className="text-2xl sm:text-4xl font-bold text-white mb-6">
           Ready to Start Your Project?
         </h2>
 
@@ -25,13 +25,13 @@ export default function RfqCTA() {
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
           <Link
             href="/request-quotation"
-            className="min-h-[52px] flex items-center justify-center px-10 py-3.5 bg-accent text-white font-semibold rounded-sm hover:bg-accent-dark transition-colors text-base"
+            className="min-h-[56px] flex items-center justify-center px-10 py-3.5 bg-accent text-white font-semibold rounded-sm hover:bg-accent-dark transition-colors text-base"
           >
             Request a Quotation
           </Link>
           <Link
             href="/contact"
-            className="min-h-[52px] flex items-center justify-center px-10 py-3.5 border border-white/50 text-white font-semibold rounded-sm hover:bg-white/10 transition-colors text-base"
+            className="min-h-[56px] flex items-center justify-center px-10 py-3.5 border border-white/50 text-white font-semibold rounded-sm hover:bg-white/10 transition-colors text-base"
           >
             Contact Us
           </Link>

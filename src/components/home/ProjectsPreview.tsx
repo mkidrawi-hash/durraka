@@ -1,67 +1,137 @@
 import Link from 'next/link'
 
-// Architectural SVG patterns — each is distinct and recognisable per project type
-
-function FacadePattern({ uid }: { uid: string }) {
+function FacadeIllustration() {
   return (
-    <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      className="absolute inset-0 w-full h-full"
+      viewBox="0 0 200 150"
+      preserveAspectRatio="xMidYMid slice"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <defs>
-        <pattern id={`fp-${uid}`} x="0" y="0" width="60" height="24" patternUnits="userSpaceOnUse">
-          <line x1="0" y1="12" x2="60" y2="12" stroke="white" strokeWidth="0.6" strokeOpacity="0.25"/>
-          <line x1="0" y1="24" x2="60" y2="24" stroke="white" strokeWidth="1.2" strokeOpacity="0.14"/>
-          <line x1="20" y1="0" x2="20" y2="24" stroke="white" strokeWidth="0.5" strokeOpacity="0.14"/>
-          <line x1="40" y1="0" x2="40" y2="24" stroke="white" strokeWidth="0.5" strokeOpacity="0.14"/>
-        </pattern>
+        <linearGradient id="fg-grad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#0f2d58" />
+          <stop offset="100%" stopColor="#071B3B" />
+        </linearGradient>
       </defs>
-      <rect width="100%" height="100%" fill={`url(#fp-${uid})`}/>
-      {/* Subtle accent bar */}
-      <rect x="0" y="0" width="3" height="100%" fill="#D71920" fillOpacity="0.5"/>
+      <rect width="200" height="150" fill="url(#fg-grad)" />
+      <g opacity="0.24" stroke="white" fill="none">
+        {/* Main building rectangle */}
+        <rect x="50" y="20" width="100" height="110" strokeWidth="1.2" />
+        {/* Horizontal cladding panel courses */}
+        <line x1="50" y1="38" x2="150" y2="38" strokeWidth="0.7" />
+        <line x1="50" y1="56" x2="150" y2="56" strokeWidth="0.7" />
+        <line x1="50" y1="74" x2="150" y2="74" strokeWidth="0.7" />
+        <line x1="50" y1="92" x2="150" y2="92" strokeWidth="0.7" />
+        <line x1="50" y1="110" x2="150" y2="110" strokeWidth="0.7" />
+        {/* Center vertical division */}
+        <line x1="100" y1="20" x2="100" y2="130" strokeWidth="0.5" strokeDasharray="3 2" />
+        {/* Panel modules — left column */}
+        <rect x="55" y="24" width="39" height="12" fill="white" fillOpacity="0.07" strokeWidth="0" />
+        <rect x="55" y="42" width="39" height="12" fill="white" fillOpacity="0.07" strokeWidth="0" />
+        <rect x="55" y="60" width="39" height="12" fill="white" fillOpacity="0.07" strokeWidth="0" />
+        {/* Panel modules — right column */}
+        <rect x="106" y="24" width="39" height="12" fill="white" fillOpacity="0.07" strokeWidth="0" />
+        <rect x="106" y="42" width="39" height="12" fill="white" fillOpacity="0.07" strokeWidth="0" />
+        <rect x="106" y="60" width="39" height="12" fill="white" fillOpacity="0.07" strokeWidth="0" />
+        {/* Cornice top */}
+        <rect x="44" y="14" width="112" height="7" strokeWidth="0.9" />
+        {/* Base */}
+        <rect x="44" y="129" width="112" height="5" strokeWidth="0.8" />
+      </g>
+      {/* Red accent bar */}
+      <rect x="0" y="0" width="3" height="150" fill="#D71920" fillOpacity="0.6" />
     </svg>
   )
 }
 
-function MashrabiyaPattern({ uid }: { uid: string }) {
+function MashrabiyaIllustration() {
   return (
-    <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      className="absolute inset-0 w-full h-full"
+      viewBox="0 0 200 150"
+      preserveAspectRatio="xMidYMid slice"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <defs>
-        <pattern id={`mp-${uid}`} x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
-          <circle cx="16" cy="16" r="7" fill="none" stroke="white" strokeWidth="0.6" strokeOpacity="0.25"/>
-          <line x1="0" y1="16" x2="32" y2="16" stroke="white" strokeWidth="0.4" strokeOpacity="0.2"/>
-          <line x1="16" y1="0" x2="16" y2="32" stroke="white" strokeWidth="0.4" strokeOpacity="0.2"/>
-          <line x1="0" y1="0" x2="32" y2="32" stroke="white" strokeWidth="0.3" strokeOpacity="0.12"/>
-          <line x1="32" y1="0" x2="0" y2="32" stroke="white" strokeWidth="0.3" strokeOpacity="0.12"/>
-          <circle cx="16" cy="16" r="2.5" fill="white" fillOpacity="0.12"/>
-        </pattern>
+        <linearGradient id="mg-grad" x1="0" y1="1" x2="1" y2="0">
+          <stop offset="0%" stopColor="#071B3B" />
+          <stop offset="100%" stopColor="#102847" />
+        </linearGradient>
       </defs>
-      <rect width="100%" height="100%" fill={`url(#mp-${uid})`}/>
-      <rect x="0" y="0" width="3" height="100%" fill="#D71920" fillOpacity="0.5"/>
+      <rect width="200" height="150" fill="url(#mg-grad)" />
+      <g opacity="0.24" stroke="white" fill="none">
+        {/* Outer pointed arch */}
+        <path d="M58 142 L58 74 Q58 8 100 8 Q142 8 142 74 L142 142" strokeWidth="1.4" />
+        {/* Inner arch */}
+        <path d="M72 142 L72 78 Q72 28 100 28 Q128 28 128 78 L128 142" strokeWidth="0.8" />
+        {/* Lattice verticals */}
+        <line x1="86" y1="52" x2="86" y2="142" strokeWidth="0.55" />
+        <line x1="100" y1="28" x2="100" y2="142" strokeWidth="0.55" />
+        <line x1="114" y1="52" x2="114" y2="142" strokeWidth="0.55" />
+        {/* Lattice horizontals */}
+        <line x1="58" y1="88" x2="142" y2="88" strokeWidth="0.55" />
+        <line x1="58" y1="108" x2="142" y2="108" strokeWidth="0.55" />
+        <line x1="58" y1="128" x2="142" y2="128" strokeWidth="0.55" />
+        {/* Diamond accent at apex */}
+        <path d="M100 8 L107 22 L100 36 L93 22 Z" strokeWidth="0.9" />
+        {/* Side columns */}
+        <rect x="44" y="42" width="12" height="100" strokeWidth="0.8" />
+        <rect x="144" y="42" width="12" height="100" strokeWidth="0.8" />
+      </g>
+      <rect x="0" y="0" width="3" height="150" fill="#D71920" fillOpacity="0.6" />
     </svg>
   )
 }
 
-function DomesPattern({ uid }: { uid: string }) {
+function DomesIllustration() {
   return (
-    <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      className="absolute inset-0 w-full h-full"
+      viewBox="0 0 200 150"
+      preserveAspectRatio="xMidYMid slice"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <defs>
-        <pattern id={`dp-${uid}`} x="0" y="0" width="80" height="60" patternUnits="userSpaceOnUse">
-          <path d="M0 60 Q40 4 80 60" fill="none" stroke="white" strokeWidth="1" strokeOpacity="0.28"/>
-          <path d="M0 60 Q40 20 80 60" fill="none" stroke="white" strokeWidth="0.6" strokeOpacity="0.16"/>
-          <path d="M0 60 Q40 36 80 60" fill="none" stroke="white" strokeWidth="0.35" strokeOpacity="0.1"/>
-          <line x1="40" y1="4" x2="40" y2="60" stroke="white" strokeWidth="0.4" strokeOpacity="0.12"/>
-        </pattern>
+        <linearGradient id="dg-grad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#0d2650" />
+          <stop offset="100%" stopColor="#071B3B" />
+        </linearGradient>
       </defs>
-      <rect width="100%" height="100%" fill={`url(#dp-${uid})`}/>
-      <rect x="0" y="0" width="3" height="100%" fill="#D71920" fillOpacity="0.5"/>
+      <rect width="200" height="150" fill="url(#dg-grad)" />
+      <g opacity="0.24" stroke="white" fill="none">
+        {/* Main dome curve */}
+        <path d="M28 102 Q28 18 100 18 Q172 18 172 102" strokeWidth="1.4" />
+        {/* Inner dome */}
+        <path d="M50 102 Q50 38 100 38 Q150 38 150 102" strokeWidth="0.8" />
+        {/* Dome ribs */}
+        <line x1="100" y1="18" x2="28" y2="102" strokeWidth="0.5" />
+        <line x1="100" y1="18" x2="57" y2="102" strokeWidth="0.5" />
+        <line x1="100" y1="18" x2="100" y2="102" strokeWidth="0.5" />
+        <line x1="100" y1="18" x2="143" y2="102" strokeWidth="0.5" />
+        <line x1="100" y1="18" x2="172" y2="102" strokeWidth="0.5" />
+        {/* Horizontal ring */}
+        <ellipse cx="100" cy="62" rx="36" ry="7" strokeWidth="0.65" />
+        {/* Drum / base rectangle */}
+        <rect x="36" y="102" width="128" height="16" strokeWidth="0.9" />
+        {/* Cornice lines */}
+        <line x1="28" y1="118" x2="172" y2="118" strokeWidth="0.6" />
+        <line x1="18" y1="122" x2="182" y2="122" strokeWidth="0.6" />
+        {/* Lantern at apex */}
+        <circle cx="100" cy="18" r="5" strokeWidth="0.9" />
+        <line x1="100" y1="6" x2="100" y2="13" strokeWidth="0.9" />
+      </g>
+      <rect x="0" y="0" width="3" height="150" fill="#D71920" fillOpacity="0.6" />
     </svg>
   )
 }
 
-type PatternComponent = React.FC<{ uid: string }>
+type IllustrationComponent = React.FC
 
-const PATTERN_MAP: Record<string, PatternComponent> = {
-  'GFRC Façade Cladding': FacadePattern,
-  'Mashrabiya Systems': MashrabiyaPattern,
-  'Domes & Cornices': DomesPattern,
+const ILLUSTRATION_MAP: Record<string, IllustrationComponent> = {
+  'GFRC Façade Cladding': FacadeIllustration,
+  'Mashrabiya Systems': MashrabiyaIllustration,
+  'Domes & Cornices': DomesIllustration,
 }
 
 const FEATURED_PROJECTS = [
@@ -110,16 +180,16 @@ export default function ProjectsPreview() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-7">
           {FEATURED_PROJECTS.map((project) => {
-            const Pattern = PATTERN_MAP[project.category] ?? FacadePattern
+            const Illustration = ILLUSTRATION_MAP[project.category] ?? FacadeIllustration
             return (
               <div
                 key={project.id}
                 className="group bg-white rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-200/60"
               >
-                {/* Placeholder image — 4:3 aspect ratio */}
-                <div className="relative overflow-hidden aspect-[4/3] bg-[#0b1e38]">
-                  <Pattern uid={String(project.id)} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#071B3B]/90 via-[#071B3B]/20 to-transparent" />
+                {/* Architectural illustration placeholder — 4:3 */}
+                <div className="relative overflow-hidden aspect-[4/3] bg-[#071B3B]">
+                  <Illustration />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#071B3B]/80 via-transparent to-transparent" />
                   {/* Category tag */}
                   <div className="absolute bottom-3 left-3">
                     <span className="text-accent text-[10px] font-semibold tracking-wider uppercase bg-[#071B3B]/85 px-2.5 py-1 rounded-sm backdrop-blur-sm">

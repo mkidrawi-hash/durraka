@@ -21,7 +21,7 @@ export default function Metrics() {
                 </div>
                 <div className="text-white font-semibold text-[11px] sm:text-sm leading-snug">{metric.label}</div>
               </div>
-              <div className="text-[#B8C0D4] text-[10px] sm:text-xs leading-relaxed mt-auto pt-2.5">{metric.description}</div>
+              <div className="text-[#B8C0D4] text-xs leading-relaxed mt-auto pt-2.5">{metric.description}</div>
             </div>
           ))}
         </div>
