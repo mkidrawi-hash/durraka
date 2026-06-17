@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { CalloutBadge, LeaderLine } from '@/components/systems/diagram'
 import { DiagramEnlarger } from '@/components/systems/DiagramEnlarger'
+import { StickyMobileCTA } from './StickyMobileCTA'
+import { SOCIAL_LINKS } from '@/lib/social-links'
 
 export const metadata: Metadata = {
   title: 'Grand Entrance Package | GFRC / GRC Architectural Entrance Systems | Durraka',
@@ -9,18 +11,21 @@ export const metadata: Metadata = {
     'Premium GFRC / GRC grand entrance package for villas, majlis, hospitality, palaces, and landmark façades. Custom columns, frames, cornices, arches, and decorative elements by Durraka Factory for Industry.',
 }
 
+// ─── Data ──────────────────────────────────────────────────────────────────
+
 const INCLUDED_ITEMS = [
   {
     title: 'Entrance Columns',
     desc: 'Architectural columns scaled to the entrance proportion and façade character.',
     icon: (
-      <svg viewBox="0 0 40 40" fill="none" className="w-8 h-8">
-        <rect x="8" y="6" width="6" height="30" rx="1" stroke="#071B3B" strokeWidth="1.5" fill="#071B3B" fillOpacity="0.07" />
-        <rect x="26" y="6" width="6" height="30" rx="1" stroke="#071B3B" strokeWidth="1.5" fill="#071B3B" fillOpacity="0.07" />
-        <rect x="5" y="4" width="12" height="4" rx="0.5" stroke="#071B3B" strokeWidth="1.2" fill="#071B3B" fillOpacity="0.1" />
-        <rect x="23" y="4" width="12" height="4" rx="0.5" stroke="#071B3B" strokeWidth="1.2" fill="#071B3B" fillOpacity="0.1" />
-        <rect x="5" y="34" width="12" height="3" rx="0.5" stroke="#071B3B" strokeWidth="1.2" fill="#071B3B" fillOpacity="0.1" />
-        <rect x="23" y="34" width="12" height="3" rx="0.5" stroke="#071B3B" strokeWidth="1.2" fill="#071B3B" fillOpacity="0.1" />
+      <svg viewBox="0 0 44 44" fill="none" className="w-10 h-10" aria-hidden="true">
+        <rect x="8" y="12" width="7" height="20" stroke="#071B3B" strokeWidth="1.3" />
+        <rect x="5" y="9" width="13" height="4" stroke="#071B3B" strokeWidth="1.1" />
+        <rect x="5" y="32" width="13" height="4" stroke="#071B3B" strokeWidth="1.1" />
+        <rect x="29" y="12" width="7" height="20" stroke="#071B3B" strokeWidth="1.3" />
+        <rect x="26" y="9" width="13" height="4" stroke="#071B3B" strokeWidth="1.1" />
+        <rect x="26" y="32" width="13" height="4" stroke="#071B3B" strokeWidth="1.1" />
+        <line x1="3" y1="9" x2="41" y2="9" stroke="#071B3B" strokeOpacity="0.3" strokeWidth="0.8" />
       </svg>
     ),
   },
@@ -28,11 +33,12 @@ const INCLUDED_ITEMS = [
     title: 'Feature Arch or Frame',
     desc: 'A strong entrance frame or arch element to define the main arrival point.',
     icon: (
-      <svg viewBox="0 0 40 40" fill="none" className="w-8 h-8">
-        <path d="M 10 34 L 10 20 A 10 10 0 0 1 30 20 L 30 34" stroke="#071B3B" strokeWidth="1.5" fill="#071B3B" fillOpacity="0.07" />
-        <rect x="7" y="34" width="26" height="3" rx="0.5" stroke="#071B3B" strokeWidth="1.2" fill="#071B3B" fillOpacity="0.1" />
-        <rect x="7" y="5" width="3" height="29" rx="0.5" stroke="#071B3B" strokeWidth="1" fill="#071B3B" fillOpacity="0.1" />
-        <rect x="30" y="5" width="3" height="29" rx="0.5" stroke="#071B3B" strokeWidth="1" fill="#071B3B" fillOpacity="0.1" />
+      <svg viewBox="0 0 44 44" fill="none" className="w-10 h-10" aria-hidden="true">
+        <path d="M 9 37 L 9 20 A 13 13 0 0 1 35 20 L 35 37" stroke="#071B3B" strokeWidth="1.4" />
+        <rect x="5" y="20" width="4" height="17" stroke="#071B3B" strokeWidth="1" />
+        <rect x="35" y="20" width="4" height="17" stroke="#071B3B" strokeWidth="1" />
+        <line x1="3" y1="37" x2="41" y2="37" stroke="#071B3B" strokeWidth="1.2" />
+        <line x1="22" y1="7" x2="22" y2="11" stroke="#071B3B" strokeWidth="1" strokeOpacity="0.5" />
       </svg>
     ),
   },
@@ -40,12 +46,13 @@ const INCLUDED_ITEMS = [
     title: 'Cornice Line',
     desc: 'Horizontal architectural detailing to complete the upper composition.',
     icon: (
-      <svg viewBox="0 0 40 40" fill="none" className="w-8 h-8">
-        <rect x="4" y="10" width="32" height="7" rx="0.5" stroke="#071B3B" strokeWidth="1.5" fill="#071B3B" fillOpacity="0.08" />
-        <rect x="6" y="17" width="28" height="4" rx="0.5" stroke="#071B3B" strokeWidth="1" fill="#071B3B" fillOpacity="0.05" />
-        <rect x="6" y="21" width="28" height="3" rx="0.5" stroke="#071B3B" strokeWidth="0.8" fill="#071B3B" fillOpacity="0.04" />
-        <line x1="4" y1="26" x2="36" y2="26" stroke="#071B3B" strokeWidth="1" strokeOpacity="0.25" />
-        <rect x="4" y="28" width="32" height="9" rx="0.5" stroke="#071B3B" strokeWidth="1.2" fill="#071B3B" fillOpacity="0.05" />
+      <svg viewBox="0 0 44 44" fill="none" className="w-10 h-10" aria-hidden="true">
+        <line x1="24" y1="36" x2="24" y2="14" stroke="#071B3B" strokeWidth="1.2" />
+        <polyline points="24,14 17,14 17,18 11,18 11,22 24,22" stroke="#071B3B" strokeWidth="1.3" />
+        <line x1="24" y1="22" x2="24" y2="36" stroke="#071B3B" strokeOpacity="0.35" strokeWidth="1" />
+        <line x1="9" y1="22" x2="26" y2="22" stroke="#071B3B" strokeOpacity="0.2" strokeWidth="0.7" strokeDasharray="3 2" />
+        <line x1="9" y1="28" x2="13" y2="28" stroke="#071B3B" strokeOpacity="0.25" strokeWidth="0.7" />
+        <line x1="11" y1="18" x2="11" y2="30" stroke="#071B3B" strokeOpacity="0.25" strokeWidth="0.7" />
       </svg>
     ),
   },
@@ -53,15 +60,15 @@ const INCLUDED_ITEMS = [
     title: 'Decorative Panels',
     desc: 'Patterned or plain GFRC / GRC panels based on the design direction.',
     icon: (
-      <svg viewBox="0 0 40 40" fill="none" className="w-8 h-8">
-        <rect x="4" y="4" width="14" height="14" rx="1" stroke="#071B3B" strokeWidth="1.4" fill="#071B3B" fillOpacity="0.07" />
-        <rect x="22" y="4" width="14" height="14" rx="1" stroke="#071B3B" strokeWidth="1.4" fill="#071B3B" fillOpacity="0.07" />
-        <rect x="4" y="22" width="14" height="14" rx="1" stroke="#071B3B" strokeWidth="1.4" fill="#071B3B" fillOpacity="0.07" />
-        <rect x="22" y="22" width="14" height="14" rx="1" stroke="#071B3B" strokeWidth="1.4" fill="#071B3B" fillOpacity="0.07" />
-        <line x1="9" y1="9" x2="13" y2="9" stroke="#071B3B" strokeWidth="0.7" strokeOpacity="0.3" />
-        <line x1="27" y1="9" x2="31" y2="9" stroke="#071B3B" strokeWidth="0.7" strokeOpacity="0.3" />
-        <line x1="9" y1="27" x2="13" y2="27" stroke="#071B3B" strokeWidth="0.7" strokeOpacity="0.3" />
-        <line x1="27" y1="27" x2="31" y2="27" stroke="#071B3B" strokeWidth="0.7" strokeOpacity="0.3" />
+      <svg viewBox="0 0 44 44" fill="none" className="w-10 h-10" aria-hidden="true">
+        <rect x="5" y="5" width="34" height="34" stroke="#071B3B" strokeWidth="1.3" />
+        <rect x="9" y="9" width="26" height="10" stroke="#071B3B" strokeWidth="0.9" />
+        <line x1="9" y1="23" x2="35" y2="23" stroke="#071B3B" strokeOpacity="0.35" strokeWidth="0.8" />
+        <line x1="9" y1="27" x2="35" y2="27" stroke="#071B3B" strokeOpacity="0.35" strokeWidth="0.8" />
+        <line x1="9" y1="31" x2="35" y2="31" stroke="#071B3B" strokeOpacity="0.35" strokeWidth="0.8" />
+        <line x1="15" y1="9" x2="15" y2="19" stroke="#071B3B" strokeOpacity="0.25" strokeWidth="0.7" />
+        <line x1="22" y1="9" x2="22" y2="19" stroke="#071B3B" strokeOpacity="0.25" strokeWidth="0.7" />
+        <line x1="29" y1="9" x2="29" y2="19" stroke="#071B3B" strokeOpacity="0.25" strokeWidth="0.7" />
       </svg>
     ),
   },
@@ -69,9 +76,12 @@ const INCLUDED_ITEMS = [
     title: 'Custom Profiles',
     desc: 'Project-based profiles developed according to drawings and visual intent.',
     icon: (
-      <svg viewBox="0 0 40 40" fill="none" className="w-8 h-8">
-        <polyline points="6,34 6,22 12,22 12,16 18,16 18,10 26,10 26,6 34,6 34,34" stroke="#071B3B" strokeWidth="1.5" fill="#071B3B" fillOpacity="0.06" />
-        <line x1="4" y1="34" x2="36" y2="34" stroke="#071B3B" strokeWidth="1.2" />
+      <svg viewBox="0 0 44 44" fill="none" className="w-10 h-10" aria-hidden="true">
+        <polyline points="5,37 5,29 11,29 11,23 17,23 17,17 23,17 23,11 35,11 35,37" stroke="#071B3B" strokeWidth="1.4" />
+        <line x1="3" y1="37" x2="41" y2="37" stroke="#071B3B" strokeWidth="1.2" />
+        <line x1="37" y1="11" x2="41" y2="11" stroke="#071B3B" strokeOpacity="0.35" strokeWidth="0.8" />
+        <line x1="37" y1="37" x2="41" y2="37" stroke="#071B3B" strokeOpacity="0.35" strokeWidth="0.8" />
+        <line x1="39" y1="11" x2="39" y2="37" stroke="#071B3B" strokeOpacity="0.35" strokeWidth="0.8" />
       </svg>
     ),
   },
@@ -79,13 +89,15 @@ const INCLUDED_ITEMS = [
     title: 'Engineering Review',
     desc: 'Coordination review based on project drawings before production planning.',
     icon: (
-      <svg viewBox="0 0 40 40" fill="none" className="w-8 h-8">
-        <rect x="7" y="4" width="22" height="28" rx="1.5" stroke="#071B3B" strokeWidth="1.4" fill="#071B3B" fillOpacity="0.05" />
-        <line x1="12" y1="12" x2="24" y2="12" stroke="#071B3B" strokeWidth="1" strokeOpacity="0.4" />
-        <line x1="12" y1="17" x2="24" y2="17" stroke="#071B3B" strokeWidth="1" strokeOpacity="0.4" />
-        <line x1="12" y1="22" x2="20" y2="22" stroke="#071B3B" strokeWidth="1" strokeOpacity="0.4" />
-        <circle cx="28" cy="31" r="7" fill="white" stroke="#D71920" strokeWidth="1.5" />
-        <path d="M 24.5 31 L 27 33.5 L 32 28" stroke="#D71920" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <svg viewBox="0 0 44 44" fill="none" className="w-10 h-10" aria-hidden="true">
+        <rect x="6" y="4" width="22" height="28" rx="1" stroke="#071B3B" strokeWidth="1.3" />
+        <line x1="10" y1="10" x2="24" y2="10" stroke="#071B3B" strokeOpacity="0.4" strokeWidth="0.9" />
+        <line x1="10" y1="14" x2="22" y2="14" stroke="#071B3B" strokeOpacity="0.4" strokeWidth="0.9" />
+        <line x1="10" y1="18" x2="24" y2="18" stroke="#071B3B" strokeOpacity="0.4" strokeWidth="0.9" />
+        <line x1="10" y1="22" x2="20" y2="22" stroke="#071B3B" strokeOpacity="0.3" strokeWidth="0.7" strokeDasharray="3 2" />
+        <line x1="6" y1="26" x2="28" y2="26" stroke="#071B3B" strokeOpacity="0.4" strokeWidth="0.8" />
+        <circle cx="33" cy="35" r="8" stroke="#D71920" strokeWidth="1.4" fill="white" />
+        <path d="M 29.5 35 L 32 37.5 L 37 31.5" stroke="#D71920" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
   },
@@ -103,28 +115,90 @@ const BEST_FOR = [
 
 const STYLES = [
   {
-    name: 'Contemporary Saudi',
+    name: 'Contemporary Façade',
     desc: 'Clean geometric lines with a modern Saudi architectural identity, refined for contemporary developments.',
+    pattern: (
+      <svg viewBox="0 0 160 72" fill="none" className="w-full h-full" aria-hidden="true">
+        <rect width="160" height="72" fill="#F1F5F9" />
+        {Array.from({ length: 9 }).map((_, i) => (
+          <rect key={i} x={12 + i * 16} y="16" width="8" height="40" stroke="#CBD5E1" strokeWidth="0.8" fill="none" />
+        ))}
+        <line x1="0" y1="12" x2="160" y2="12" stroke="#CBD5E1" strokeWidth="0.8" />
+        <line x1="0" y1="60" x2="160" y2="60" stroke="#CBD5E1" strokeWidth="0.8" />
+      </svg>
+    ),
   },
   {
     name: 'Hijazi Inspired',
     desc: 'Drawing on the Hijazi architectural vocabulary with ornamental layering and regional surface expression.',
+    pattern: (
+      <svg viewBox="0 0 160 72" fill="none" className="w-full h-full" aria-hidden="true">
+        <rect width="160" height="72" fill="#F1F5F9" />
+        {Array.from({ length: 5 }).map((_, i) => (
+          <path key={i} d={`M ${16 + i * 26} 56 L ${16 + i * 26} 36 A 13 13 0 0 1 ${42 + i * 26} 36 L ${42 + i * 26} 56`}
+            stroke="#CBD5E1" strokeWidth="0.9" fill="none" />
+        ))}
+        <line x1="0" y1="56" x2="160" y2="56" stroke="#CBD5E1" strokeWidth="0.8" />
+        <line x1="0" y1="20" x2="160" y2="20" stroke="#CBD5E1" strokeWidth="0.5" strokeDasharray="4 3" />
+      </svg>
+    ),
   },
   {
     name: 'Najdi Inspired',
     desc: 'Rooted in the Najdi heritage language — bold geometric forms, deep reveals, and strong linear character.',
+    pattern: (
+      <svg viewBox="0 0 160 72" fill="none" className="w-full h-full" aria-hidden="true">
+        <rect width="160" height="72" fill="#F1F5F9" />
+        <polyline points="0,56 20,20 40,56 60,20 80,56 100,20 120,56 140,20 160,56" stroke="#CBD5E1" strokeWidth="0.9" fill="none" />
+        <line x1="0" y1="16" x2="160" y2="16" stroke="#CBD5E1" strokeWidth="0.8" />
+        <line x1="0" y1="60" x2="160" y2="60" stroke="#CBD5E1" strokeWidth="0.8" />
+      </svg>
+    ),
   },
   {
-    name: 'Classical Entrance',
+    name: 'Classical / Heritage',
     desc: 'Columnar composition with cornice, frieze, and classical order elements adapted to the project scale.',
+    pattern: (
+      <svg viewBox="0 0 160 72" fill="none" className="w-full h-full" aria-hidden="true">
+        <rect width="160" height="72" fill="#F1F5F9" />
+        {[28, 68, 92, 132].map((x) => (
+          <g key={x}>
+            <rect x={x} y="18" width="10" height="38" stroke="#CBD5E1" strokeWidth="0.9" />
+            <rect x={x - 3} y="14" width="16" height="5" stroke="#CBD5E1" strokeWidth="0.8" />
+            <rect x={x - 3} y="56" width="16" height="5" stroke="#CBD5E1" strokeWidth="0.8" />
+          </g>
+        ))}
+        <line x1="0" y1="12" x2="160" y2="12" stroke="#CBD5E1" strokeWidth="1" />
+      </svg>
+    ),
   },
   {
-    name: 'Minimal Modern',
+    name: 'Modern Minimal',
     desc: 'Restrained composition with precise lines, minimal surface relief, and refined material expression.',
+    pattern: (
+      <svg viewBox="0 0 160 72" fill="none" className="w-full h-full" aria-hidden="true">
+        <rect width="160" height="72" fill="#F1F5F9" />
+        <line x1="0" y1="36" x2="160" y2="36" stroke="#CBD5E1" strokeWidth="1.2" />
+        <line x1="0" y1="28" x2="160" y2="28" stroke="#CBD5E1" strokeWidth="0.5" />
+        <line x1="0" y1="44" x2="160" y2="44" stroke="#CBD5E1" strokeWidth="0.5" />
+        <rect x="60" y="16" width="40" height="40" stroke="#CBD5E1" strokeWidth="0.8" fill="none" />
+      </svg>
+    ),
   },
   {
     name: 'Custom Architectural Identity',
     desc: 'A direction developed specifically for the project based on provided references, drawings, and design intent.',
+    pattern: (
+      <svg viewBox="0 0 160 72" fill="none" className="w-full h-full" aria-hidden="true">
+        <rect width="160" height="72" fill="#F1F5F9" />
+        <path d="M 50 56 L 50 36 A 30 30 0 0 1 110 36 L 110 56" stroke="#CBD5E1" strokeWidth="0.9" fill="none" />
+        <line x1="0" y1="56" x2="160" y2="56" stroke="#CBD5E1" strokeWidth="0.8" />
+        <rect x="20" y="14" width="12" height="42" stroke="#CBD5E1" strokeWidth="0.8" />
+        <rect x="128" y="14" width="12" height="42" stroke="#CBD5E1" strokeWidth="0.8" />
+        <line x1="0" y1="12" x2="160" y2="12" stroke="#CBD5E1" strokeWidth="0.6" />
+        <line x1="80" y1="6" x2="80" y2="12" stroke="#D71920" strokeWidth="1" strokeOpacity="0.5" />
+      </svg>
+    ),
   },
 ]
 
@@ -132,22 +206,84 @@ const FINISHES = [
   {
     label: 'Smooth Architectural Finish',
     desc: 'Clean, refined surface suitable for contemporary compositions.',
+    swatch: (
+      <svg viewBox="0 0 160 56" className="w-full" aria-hidden="true">
+        <defs>
+          <linearGradient id="sw1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="#E8EDF2" />
+            <stop offset="100%" stopColor="#D1D9E0" />
+          </linearGradient>
+        </defs>
+        <rect width="160" height="56" fill="url(#sw1)" />
+      </svg>
+    ),
   },
   {
     label: 'Stone-Like Texture',
     desc: 'A textured surface that evokes natural stone without the weight or maintenance burden.',
+    swatch: (
+      <svg viewBox="0 0 160 56" className="w-full" aria-hidden="true">
+        <rect width="160" height="56" fill="#DDE3E9" />
+        {Array.from({ length: 14 }).map((_, i) => (
+          <line key={i} x1={0} y1={4 + i * 4} x2={160} y2={6 + i * 4}
+            stroke="#B8C4CD" strokeWidth="0.7" strokeOpacity={0.6 - i * 0.02} />
+        ))}
+        {Array.from({ length: 8 }).map((_, i) => (
+          <line key={i} x1={i * 22} y1={0} x2={i * 22 + 10} y2={56}
+            stroke="#C8D0D8" strokeWidth="0.5" strokeOpacity="0.4" />
+        ))}
+      </svg>
+    ),
   },
   {
     label: 'Sandblast-Inspired Finish',
     desc: 'Open-grained surface treatment creating a warm, tactile quality for heritage-influenced designs.',
+    swatch: (
+      <svg viewBox="0 0 160 56" className="w-full" aria-hidden="true">
+        <rect width="160" height="56" fill="#E4DECE" />
+        {Array.from({ length: 120 }).map((_, i) => {
+          const x = (i * 37) % 160
+          const y = (i * 23 + Math.floor(i / 7) * 13) % 56
+          return <circle key={i} cx={x} cy={y} r="0.7" fill="#C8BA9E" fillOpacity="0.6" />
+        })}
+      </svg>
+    ),
   },
   {
     label: 'Custom Colour Matching',
     desc: 'Colour-matched to the project palette, scheme, or specific material reference samples.',
+    swatch: (
+      <svg viewBox="0 0 160 56" className="w-full" aria-hidden="true">
+        <defs>
+          <linearGradient id="sw4" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="#C8D4DC" />
+            <stop offset="40%" stopColor="#D8E4EC" />
+            <stop offset="70%" stopColor="#E0CFC4" />
+            <stop offset="100%" stopColor="#D4CABC" />
+          </linearGradient>
+        </defs>
+        <rect width="160" height="56" fill="url(#sw4)" />
+        <line x1="53" y1="0" x2="53" y2="56" stroke="white" strokeWidth="0.5" strokeOpacity="0.4" />
+        <line x1="107" y1="0" x2="107" y2="56" stroke="white" strokeWidth="0.5" strokeOpacity="0.4" />
+      </svg>
+    ),
   },
   {
     label: 'Heritage-Inspired Surface',
     desc: 'A surface expression referencing traditional material culture and regional architectural identity.',
+    swatch: (
+      <svg viewBox="0 0 160 56" className="w-full" aria-hidden="true">
+        <rect width="160" height="56" fill="#D6C9B4" />
+        {Array.from({ length: 8 }).map((_, i) => (
+          <line key={`h${i}`} x1={0} y1={7 + i * 7} x2={160} y2={7 + i * 7}
+            stroke="#BCA98A" strokeWidth="0.6" strokeOpacity="0.5" />
+        ))}
+        {Array.from({ length: 11 }).map((_, i) => (
+          <line key={`v${i}`} x1={14 + i * 14} y1={0} x2={14 + i * 14} y2={56}
+            stroke="#BCA98A" strokeWidth="0.5" strokeOpacity="0.4" />
+        ))}
+      </svg>
+    ),
   },
 ]
 
@@ -185,15 +321,108 @@ const CALLOUTS = [
 ]
 
 const RFQ_ITEMS = [
-  'Elevation drawings or façade concept',
-  'Approximate entrance width and height',
-  'Project location',
-  'Preferred architectural style',
-  'Required finish or colour direction',
-  'Quantity or number of entrances',
-  'Target timeline',
-  'Any available reference images',
+  {
+    key: 'drawings',
+    label: 'Elevation drawings or façade concept',
+    icon: (
+      <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5 text-accent flex-shrink-0" stroke="currentColor" aria-hidden="true">
+        <rect x="3" y="2" width="11" height="15" rx="1" strokeWidth="1.3" />
+        <line x1="6" y1="6" x2="11" y2="6" strokeWidth="1" strokeOpacity="0.6" />
+        <line x1="6" y1="9" x2="11" y2="9" strokeWidth="1" strokeOpacity="0.6" />
+        <line x1="6" y1="12" x2="9" y2="12" strokeWidth="1" strokeOpacity="0.6" />
+        <circle cx="15" cy="15" r="3.5" strokeWidth="1.2" fill="white" />
+        <path d="M 13.5 15 L 14.8 16.3 L 17 13.5" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+  },
+  {
+    key: 'dimensions',
+    label: 'Approximate entrance width and height',
+    icon: (
+      <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5 text-accent flex-shrink-0" stroke="currentColor" aria-hidden="true">
+        <line x1="2" y1="4" x2="2" y2="16" strokeWidth="1.3" />
+        <line x1="18" y1="4" x2="18" y2="16" strokeWidth="1.3" />
+        <line x1="2" y1="10" x2="18" y2="10" strokeWidth="1" strokeDasharray="3 2" strokeOpacity="0.6" />
+        <line x1="2" y1="4" x2="6" y2="4" strokeWidth="1.2" />
+        <line x1="14" y1="4" x2="18" y2="4" strokeWidth="1.2" />
+        <line x1="2" y1="16" x2="6" y2="16" strokeWidth="1.2" />
+        <line x1="14" y1="16" x2="18" y2="16" strokeWidth="1.2" />
+      </svg>
+    ),
+  },
+  {
+    key: 'location',
+    label: 'Project location',
+    icon: (
+      <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5 text-accent flex-shrink-0" stroke="currentColor" aria-hidden="true">
+        <path d="M 10 2 A 4 4 0 0 1 14 6 C 14 10 10 17 10 17 C 10 17 6 10 6 6 A 4 4 0 0 1 10 2 Z" strokeWidth="1.3" />
+        <circle cx="10" cy="6" r="1.5" strokeWidth="1" />
+      </svg>
+    ),
+  },
+  {
+    key: 'style',
+    label: 'Preferred architectural style',
+    icon: (
+      <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5 text-accent flex-shrink-0" stroke="currentColor" aria-hidden="true">
+        <path d="M 4 15 L 4 9 A 6 6 0 0 1 16 9 L 16 15" strokeWidth="1.3" />
+        <line x1="2" y1="15" x2="18" y2="15" strokeWidth="1.2" />
+        <rect x="1" y="3" width="18" height="3" rx="0.5" strokeWidth="1" strokeOpacity="0.5" />
+      </svg>
+    ),
+  },
+  {
+    key: 'finish',
+    label: 'Required finish or colour direction',
+    icon: (
+      <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5 text-accent flex-shrink-0" stroke="currentColor" aria-hidden="true">
+        <rect x="2" y="6" width="16" height="10" rx="1" strokeWidth="1.3" />
+        <line x1="8" y1="6" x2="8" y2="16" strokeWidth="0.9" strokeOpacity="0.4" />
+        <line x1="14" y1="6" x2="14" y2="16" strokeWidth="0.9" strokeOpacity="0.4" />
+        <line x1="2" y1="11" x2="18" y2="11" strokeWidth="0.9" strokeOpacity="0.3" strokeDasharray="3 2" />
+        <line x1="10" y1="2" x2="10" y2="5" strokeWidth="1.1" />
+      </svg>
+    ),
+  },
+  {
+    key: 'quantity',
+    label: 'Quantity or number of entrances',
+    icon: (
+      <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5 text-accent flex-shrink-0" stroke="currentColor" aria-hidden="true">
+        <rect x="2" y="6" width="7" height="11" rx="0.5" strokeWidth="1.2" />
+        <rect x="11" y="6" width="7" height="11" rx="0.5" strokeWidth="1.2" />
+        <rect x="6" y="2" width="8" height="5" rx="0.5" strokeWidth="1" strokeOpacity="0.5" />
+      </svg>
+    ),
+  },
+  {
+    key: 'timeline',
+    label: 'Target timeline',
+    icon: (
+      <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5 text-accent flex-shrink-0" stroke="currentColor" aria-hidden="true">
+        <rect x="2" y="4" width="16" height="14" rx="1" strokeWidth="1.3" />
+        <line x1="6" y1="2" x2="6" y2="6" strokeWidth="1.2" />
+        <line x1="14" y1="2" x2="14" y2="6" strokeWidth="1.2" />
+        <line x1="2" y1="8" x2="18" y2="8" strokeWidth="1" />
+        <line x1="6" y1="12" x2="10" y2="12" strokeWidth="1" strokeOpacity="0.5" />
+        <line x1="6" y1="15" x2="14" y2="15" strokeWidth="1" strokeOpacity="0.5" />
+      </svg>
+    ),
+  },
+  {
+    key: 'references',
+    label: 'Any available reference images',
+    icon: (
+      <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5 text-accent flex-shrink-0" stroke="currentColor" aria-hidden="true">
+        <rect x="2" y="3" width="16" height="14" rx="1" strokeWidth="1.3" />
+        <path d="M 2 13 L 6 9 L 10 13 L 14 9 L 18 13" strokeWidth="1" strokeOpacity="0.5" />
+        <circle cx="6.5" cy="7" r="1.5" strokeWidth="1" />
+      </svg>
+    ),
+  },
 ]
+
+// ─── Diagram ────────────────────────────────────────────────────────────────
 
 function Diagram() {
   return (
@@ -269,7 +498,7 @@ function Diagram() {
       <LeaderLine x1="310" y1="74" x2="378" y2="74" />
       <CalloutBadge n={4} cx={387} cy={74} />
 
-      {/* Callout 5 — Arch zone, right upper (leader from arch curve) */}
+      {/* Callout 5 — Arch zone, right upper */}
       <LeaderLine x1="238" y1="80" x2="378" y2="40" />
       <CalloutBadge n={5} cx={387} cy={32} />
 
@@ -280,62 +509,101 @@ function Diagram() {
   )
 }
 
+// ─── Page ───────────────────────────────────────────────────────────────────
+
 export default function GrandEntrancePackagePage() {
   return (
     <div className="bg-white">
 
       {/* ── 1. Hero ─────────────────────────────────────────────── */}
-      <section className="bg-navy pt-14 pb-16 sm:pt-20 sm:pb-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section
+        className="relative bg-navy pt-16 pb-20 sm:pt-24 sm:pb-28 overflow-hidden"
+        style={{
+          backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.055) 1px, transparent 1px)',
+          backgroundSize: '28px 28px',
+        }}
+      >
+        {/* Architectural silhouette — decorative, right side, desktop only */}
+        <div className="absolute right-0 top-0 bottom-0 w-[45%] overflow-hidden pointer-events-none hidden lg:block" aria-hidden="true">
+          <svg viewBox="0 0 400 500" fill="none" className="absolute right-[-40px] bottom-0 h-[110%] opacity-[0.055]">
+            <rect x="60" y="30" width="280" height="470" stroke="white" strokeWidth="2.5" />
+            <rect x="60" y="30" width="46" height="470" stroke="white" strokeWidth="1.5" fill="white" fillOpacity="0.25" />
+            <rect x="294" y="30" width="46" height="470" stroke="white" strokeWidth="1.5" fill="white" fillOpacity="0.25" />
+            <rect x="38" y="6" width="324" height="28" stroke="white" strokeWidth="1.8" />
+            <rect x="44" y="24" width="312" height="10" stroke="white" strokeWidth="1" />
+            <path d="M 150 130 A 50 50 0 0 1 250 130" stroke="white" strokeWidth="1.5" />
+            <rect x="195" y="80" width="10" height="14" stroke="white" strokeWidth="1.2" />
+            <rect x="160" y="130" width="80" height="370" stroke="white" strokeWidth="1.2" />
+            <line x1="200" y1="130" x2="200" y2="500" stroke="white" strokeWidth="0.6" strokeDasharray="5 4" />
+          </svg>
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           {/* Breadcrumb */}
-          <nav className="mb-8 flex items-center gap-1.5 text-white/40 text-[11px] font-mono tracking-wider uppercase" aria-label="Breadcrumb">
-            <Link href="/" className="hover:text-white/70 transition-colors">Home</Link>
+          <nav className="mb-10 flex items-center gap-1.5 text-white/35 text-[11px] font-mono tracking-wider uppercase" aria-label="Breadcrumb">
+            <Link href="/" className="hover:text-white/60 transition-colors">Home</Link>
             <span>/</span>
             <span>Packages</span>
             <span>/</span>
-            <span className="text-white/70">Grand Entrance Package</span>
+            <span className="text-white/60">Grand Entrance Package</span>
           </nav>
 
-          <div className="max-w-3xl">
+          <div className="max-w-2xl">
             {/* Eyebrow */}
-            <div className="flex items-center gap-3 mb-5">
-              <div className="w-6 h-px bg-accent flex-shrink-0" />
-              <span className="text-accent text-[11px] sm:text-xs font-semibold tracking-widest uppercase">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-8 h-px bg-accent flex-shrink-0" />
+              <span className="text-accent text-[11px] font-semibold tracking-[0.2em] uppercase">
                 Architectural Package
               </span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-5">
-              Grand Entrance Package
+            <h1 className="text-[32px] sm:text-[44px] lg:text-[52px] font-bold text-white leading-[1.1] tracking-tight mb-6">
+              Grand Entrance<br className="sm:hidden" /> Package
             </h1>
 
-            <p className="text-white/70 text-sm sm:text-base leading-relaxed mb-4 max-w-2xl">
-              A premium GFRC / GRC entrance composition designed for villas, majlis, hospitality projects, palaces, and landmark façades.
+            <p className="text-white/75 text-[15px] sm:text-base leading-relaxed mb-3 max-w-xl">
+              A premium GFRC / GRC entrance composition for villas, majlis, hospitality projects, palaces, and landmark façades.
             </p>
 
-            <p className="text-white/55 text-sm leading-relaxed mb-8 max-w-2xl">
-              Combine columns, frames, cornices, arches, and decorative elements into one coordinated façade entrance package, developed around your project drawings and architectural direction.
+            <p className="text-white/50 text-sm leading-relaxed mb-10 max-w-xl">
+              Columns, frames, cornices, arches, and decorative elements — coordinated into a single package and developed around your project drawings and architectural direction.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-3 mb-8">
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row gap-3 mb-10">
               <Link
                 href="/request-quotation"
-                className="min-h-[52px] flex items-center justify-center px-8 py-3 bg-accent text-white font-semibold rounded-sm hover:bg-accent-dark transition-colors text-sm"
+                className="min-h-[54px] flex items-center justify-center px-9 py-3.5 bg-accent text-white font-semibold rounded-sm hover:bg-accent-dark transition-colors text-sm tracking-wide"
               >
                 Request a Quotation
               </Link>
               <Link
-                href="/contact"
-                className="min-h-[52px] flex items-center justify-center px-8 py-3 border border-white/30 text-white font-semibold rounded-sm hover:bg-white/10 transition-colors text-sm"
+                href={SOCIAL_LINKS.whatsapp.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="min-h-[54px] flex items-center justify-center gap-2.5 px-9 py-3.5 border border-white/25 text-white font-semibold rounded-sm hover:bg-white/08 transition-colors text-sm"
               >
+                <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 flex-shrink-0 text-[#25D366]" aria-hidden="true">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                </svg>
                 Speak to a Sales Engineer
               </Link>
             </div>
 
-            <p className="text-white/35 text-[11px] tracking-wide">
-              Customisable by scale, style, finish, and project requirements.
-            </p>
+            {/* Stat bar */}
+            <div className="flex items-center gap-6 sm:gap-8 pt-8 border-t border-white/10">
+              {[
+                { value: '6', label: 'Package Elements' },
+                { value: 'Custom', label: 'Every Project' },
+                { value: 'KSA', label: 'Manufactured' },
+              ].map((stat) => (
+                <div key={stat.label}>
+                  <div className="text-white font-bold text-base sm:text-lg leading-none mb-1">{stat.value}</div>
+                  <div className="text-white/35 text-[10px] tracking-widest uppercase">{stat.label}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -343,25 +611,41 @@ export default function GrandEntrancePackagePage() {
       {/* ── 2. Package Overview ──────────────────────────────────── */}
       <section className="py-14 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="flex items-center gap-3 mb-5">
-              <div className="w-6 h-px bg-accent flex-shrink-0" />
-              <span className="text-accent text-[11px] sm:text-xs font-semibold tracking-widest uppercase">
-                Overview
-              </span>
+          <div className="lg:grid lg:grid-cols-5 lg:gap-16 items-start">
+            <div className="lg:col-span-3 mb-10 lg:mb-0">
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-6 h-px bg-accent flex-shrink-0" />
+                <span className="text-accent text-[11px] font-semibold tracking-[0.2em] uppercase">Overview</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-bold text-navy mb-5 leading-snug">
+                A Complete Architectural Entrance Composition
+              </h2>
+              <p className="text-gray-500 text-sm sm:text-[15px] leading-relaxed mb-5">
+                The Grand Entrance Package is designed to help developers, consultants, and private clients create a strong first impression using coordinated GFRC / GRC architectural elements. Each package can be adapted to the project scale, façade language, regional identity, and required finish.
+              </p>
+              <p className="text-gray-500 text-sm sm:text-[15px] leading-relaxed">
+                Rather than specifying individual elements separately, the package provides a coordinated design approach — ensuring columns, frames, cornices, and panels work together as a unified architectural composition from the outset.
+              </p>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl font-bold text-navy mb-5 leading-snug">
-              A Complete Architectural Entrance Composition
-            </h2>
-
-            <p className="text-gray-500 text-sm sm:text-base leading-relaxed mb-5">
-              The Grand Entrance Package is designed to help developers, consultants, and private clients create a strong first impression using coordinated GFRC / GRC architectural elements. Each package can be adapted to the project scale, façade language, regional identity, and required finish.
-            </p>
-
-            <p className="text-gray-500 text-sm sm:text-base leading-relaxed">
-              Rather than specifying individual elements separately, the package provides a coordinated design approach — ensuring columns, frames, cornices, and panels work together as a unified architectural composition from the outset.
-            </p>
+            {/* Quick facts panel */}
+            <div className="lg:col-span-2">
+              <div className="bg-gray-50 border border-gray-100 rounded-sm p-6 space-y-5">
+                <p className="text-navy/40 text-[10px] font-mono tracking-widest uppercase">Package Summary</p>
+                {[
+                  { label: 'Package Type', value: 'Architectural Entrance' },
+                  { label: 'Delivery Scope', value: 'GFRC / GRC Elements' },
+                  { label: 'Design Approach', value: 'Project-Specific' },
+                  { label: 'Customisation', value: 'Scale, Style & Finish' },
+                  { label: 'Availability', value: 'Kingdom-wide Delivery' },
+                ].map((fact) => (
+                  <div key={fact.label} className="flex items-start justify-between gap-4 pb-4 border-b border-gray-100 last:border-0 last:pb-0">
+                    <span className="text-navy/50 text-xs">{fact.label}</span>
+                    <span className="text-navy font-semibold text-xs text-right">{fact.value}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -372,21 +656,20 @@ export default function GrandEntrancePackagePage() {
           <div className="text-center mb-10 sm:mb-14">
             <div className="flex items-center justify-center gap-3 mb-4">
               <div className="w-6 h-px bg-accent flex-shrink-0" />
-              <span className="text-accent text-[11px] sm:text-xs font-semibold tracking-widest uppercase">
-                Package Contents
-              </span>
+              <span className="text-accent text-[11px] font-semibold tracking-[0.2em] uppercase">Package Contents</span>
               <div className="w-6 h-px bg-accent flex-shrink-0" />
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-navy">
-              What&apos;s Included
-            </h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-navy">What&apos;s Included</h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            {INCLUDED_ITEMS.map((item) => (
-              <div key={item.title} className="bg-white border border-gray-100 rounded-sm p-6 hover:shadow-md transition-shadow">
-                <div className="mb-4">{item.icon}</div>
-                <h3 className="text-navy font-bold text-sm mb-2">{item.title}</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+            {INCLUDED_ITEMS.map((item, i) => (
+              <div key={item.title} className="bg-white border border-gray-100 rounded-sm p-6 hover:shadow-md transition-shadow group">
+                <div className="flex items-start justify-between mb-5">
+                  {item.icon}
+                  <span className="text-navy/15 font-bold text-2xl leading-none">{String(i + 1).padStart(2, '0')}</span>
+                </div>
+                <h3 className="text-navy font-bold text-sm mb-2 group-hover:text-accent transition-colors">{item.title}</h3>
                 <p className="text-gray-400 text-xs leading-relaxed">{item.desc}</p>
               </div>
             ))}
@@ -397,28 +680,33 @@ export default function GrandEntrancePackagePage() {
       {/* ── 4. Best For ─────────────────────────────────────────── */}
       <section className="py-14 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="flex items-center gap-3 mb-5">
-              <div className="w-6 h-px bg-accent flex-shrink-0" />
-              <span className="text-accent text-[11px] sm:text-xs font-semibold tracking-widest uppercase">
-                Applications
-              </span>
+          <div className="lg:grid lg:grid-cols-5 lg:gap-16 items-start">
+            <div className="lg:col-span-2 mb-8 lg:mb-0">
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-6 h-px bg-accent flex-shrink-0" />
+                <span className="text-accent text-[11px] font-semibold tracking-[0.2em] uppercase">Applications</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-bold text-navy mb-4 leading-snug">
+                Best Suited For
+              </h2>
+              <p className="text-gray-400 text-sm leading-relaxed">
+                The Grand Entrance Package is appropriate for any project requiring a coordinated, high-quality GFRC / GRC entrance composition.
+              </p>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-navy mb-8 sm:mb-10">
-              Best Suited For
-            </h2>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {BEST_FOR.map((item) => (
-                <div key={item} className="flex items-start gap-3">
-                  <div className="mt-1 w-5 h-5 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
-                    <svg className="w-2.5 h-2.5 text-accent" fill="currentColor" viewBox="0 0 8 8">
-                      <path d="M1 4l2 2 4-4" stroke="currentColor" strokeWidth="1.2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                  <span className="text-navy text-sm leading-relaxed">{item}</span>
-                </div>
-              ))}
+            <div className="lg:col-span-3">
+              <ul className="space-y-1">
+                {BEST_FOR.map((item) => (
+                  <li key={item} className="flex items-center gap-4 py-3.5 border-b border-gray-100 last:border-0">
+                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-accent/10 flex items-center justify-center">
+                      <svg className="w-3 h-3 text-accent" fill="none" stroke="currentColor" viewBox="0 0 12 12" aria-hidden="true">
+                        <path d="M2 6l3 3 5-5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </div>
+                    <span className="text-navy text-sm leading-relaxed">{item}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
@@ -430,25 +718,27 @@ export default function GrandEntrancePackagePage() {
           <div className="text-center mb-10 sm:mb-14">
             <div className="flex items-center justify-center gap-3 mb-4">
               <div className="w-6 h-px bg-accent flex-shrink-0" />
-              <span className="text-accent text-[11px] sm:text-xs font-semibold tracking-widest uppercase">
-                Design Directions
-              </span>
+              <span className="text-accent text-[11px] font-semibold tracking-[0.2em] uppercase">Design Directions</span>
               <div className="w-6 h-px bg-accent flex-shrink-0" />
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-navy mb-3">
-              Style Options
-            </h2>
-            <p className="text-gray-400 text-sm max-w-xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl font-bold text-navy mb-3">Style Options</h2>
+            <p className="text-gray-400 text-sm max-w-xl mx-auto leading-relaxed">
               The following represent available design directions, not pre-approved or finalised styles. Each direction is refined according to the project&apos;s architectural intent.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
             {STYLES.map((style) => (
-              <div key={style.name} className="bg-white border border-gray-100 rounded-sm p-6">
-                <div className="w-8 h-[3px] bg-accent mb-4" />
-                <h3 className="text-navy font-bold text-sm mb-2">{style.name}</h3>
-                <p className="text-gray-400 text-xs leading-relaxed">{style.desc}</p>
+              <div key={style.name} className="bg-white border border-gray-100 rounded-sm overflow-hidden hover:shadow-md transition-shadow">
+                {/* Pattern thumbnail placeholder */}
+                <div className="w-full h-[72px] overflow-hidden">
+                  {style.pattern}
+                </div>
+                <div className="p-5">
+                  <div className="w-6 h-[2.5px] bg-accent mb-3" />
+                  <h3 className="text-navy font-bold text-sm mb-2">{style.name}</h3>
+                  <p className="text-gray-400 text-xs leading-relaxed">{style.desc}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -461,22 +751,18 @@ export default function GrandEntrancePackagePage() {
           <div className="text-center mb-10 sm:mb-12">
             <div className="flex items-center justify-center gap-3 mb-4">
               <div className="w-6 h-px bg-accent flex-shrink-0" />
-              <span className="text-accent text-[11px] sm:text-xs font-semibold tracking-widest uppercase">
-                System Overview
-              </span>
+              <span className="text-accent text-[11px] font-semibold tracking-[0.2em] uppercase">System Overview</span>
               <div className="w-6 h-px bg-accent flex-shrink-0" />
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-navy mb-3">
-              Composition Diagram
-            </h2>
-            <p className="text-gray-400 text-sm max-w-lg mx-auto">
+            <h2 className="text-2xl sm:text-3xl font-bold text-navy mb-3">Composition Diagram</h2>
+            <p className="text-gray-400 text-sm max-w-lg mx-auto leading-relaxed">
               A simplified front-elevation overview of the Grand Entrance Package composition and its key architectural zones.
             </p>
           </div>
 
           <div className="max-w-3xl mx-auto">
             <div className="bg-white border border-navy/10 p-2 sm:p-5 rounded-sm">
-              <p className="text-[#071B3B]/35 text-[9px] sm:text-[10px] font-mono tracking-widest uppercase mb-3">
+              <p className="text-[#071B3B]/30 text-[9px] sm:text-[10px] font-mono tracking-widest uppercase mb-3">
                 Grand Entrance Package — Composition Overview
               </p>
               <DiagramEnlarger title="Grand Entrance Package">
@@ -485,15 +771,15 @@ export default function GrandEntrancePackagePage() {
             </div>
 
             {/* Callout reference grid */}
-            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5">
               {CALLOUTS.map((c) => (
-                <div key={c.n} className="flex items-start gap-3">
-                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-accent flex items-center justify-center">
-                    <span className="text-white text-[10px] font-bold leading-none">{c.n}</span>
+                <div key={c.n} className="flex items-start gap-3.5 py-3 border-b border-gray-100 last:border-0 sm:[&:nth-last-child(2)]:border-0">
+                  <div className="flex-shrink-0 w-7 h-7 rounded-full bg-accent flex items-center justify-center">
+                    <span className="text-white text-[11px] font-bold leading-none">{c.n}</span>
                   </div>
-                  <div>
-                    <p className="text-navy font-semibold text-xs">{c.label}</p>
-                    <p className="text-gray-400 text-[11px] leading-relaxed mt-0.5">{c.desc}</p>
+                  <div className="min-w-0">
+                    <p className="text-navy font-semibold text-[13px] mb-1">{c.label}</p>
+                    <p className="text-gray-400 text-xs leading-relaxed">{c.desc}</p>
                   </div>
                 </div>
               ))}
@@ -508,28 +794,29 @@ export default function GrandEntrancePackagePage() {
           <div className="text-center mb-10 sm:mb-12">
             <div className="flex items-center justify-center gap-3 mb-4">
               <div className="w-6 h-px bg-accent flex-shrink-0" />
-              <span className="text-accent text-[11px] sm:text-xs font-semibold tracking-widest uppercase">
-                Surface Quality
-              </span>
+              <span className="text-accent text-[11px] font-semibold tracking-[0.2em] uppercase">Surface Quality</span>
               <div className="w-6 h-px bg-accent flex-shrink-0" />
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-navy mb-3">
-              Finish Options
-            </h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-navy mb-3">Finish Options</h2>
           </div>
 
-          <div className="max-w-4xl mx-auto">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {FINISHES.map((f) => (
-                <div key={f.label} className="bg-white border border-gray-100 rounded-sm p-5">
-                  <div className="w-full h-1 bg-navy/08 rounded mb-4" style={{ background: 'rgba(7,27,59,0.08)' }} />
-                  <h3 className="text-navy font-semibold text-xs mb-1.5">{f.label}</h3>
-                  <p className="text-gray-400 text-[11px] leading-relaxed">{f.desc}</p>
+                <div key={f.label} className="bg-white border border-gray-100 rounded-sm overflow-hidden hover:shadow-md transition-shadow">
+                  {/* Swatch area */}
+                  <div className="w-full h-14 overflow-hidden">
+                    {f.swatch}
+                  </div>
+                  <div className="p-5">
+                    <h3 className="text-navy font-semibold text-[13px] mb-1.5">{f.label}</h3>
+                    <p className="text-gray-400 text-xs leading-relaxed">{f.desc}</p>
+                  </div>
                 </div>
               ))}
             </div>
 
-            <p className="mt-6 text-center text-gray-400 text-[11px] leading-relaxed max-w-lg mx-auto">
+            <p className="mt-7 text-center text-gray-400 text-xs leading-relaxed max-w-lg mx-auto">
               Finish selection is reviewed based on project requirements, approved samples, and intended architectural expression.
             </p>
           </div>
@@ -542,34 +829,30 @@ export default function GrandEntrancePackagePage() {
           <div className="max-w-3xl mx-auto">
             <div className="flex items-center gap-3 mb-5">
               <div className="w-6 h-px bg-accent flex-shrink-0" />
-              <span className="text-accent text-[11px] sm:text-xs font-semibold tracking-widest uppercase">
-                Quotation
-              </span>
+              <span className="text-accent text-[11px] font-semibold tracking-[0.2em] uppercase">Quotation</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-bold text-navy mb-3">
               Information Required for Quotation
             </h2>
             <p className="text-gray-400 text-sm leading-relaxed mb-8">
-              To prepare an accurate quotation for the Grand Entrance Package, the following information is requested where available.
+              To prepare an accurate quotation, the following information is requested where available. Not all items are required — share what you have.
             </p>
 
-            <ul className="space-y-3 mb-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10">
               {RFQ_ITEMS.map((item) => (
-                <li key={item} className="flex items-start gap-3 py-3 border-b border-gray-100 last:border-0">
-                  <div className="mt-0.5 w-5 h-5 rounded-sm bg-navy/05 border border-navy/10 flex items-center justify-center flex-shrink-0">
-                    <div className="w-1.5 h-1.5 rounded-full bg-accent" />
-                  </div>
-                  <span className="text-navy text-sm">{item}</span>
-                </li>
+                <div key={item.key} className="flex items-start gap-3.5 p-4 bg-gray-50 border border-gray-100 rounded-sm">
+                  <div className="mt-0.5 text-accent">{item.icon}</div>
+                  <span className="text-navy text-sm leading-relaxed">{item.label}</span>
+                </div>
               ))}
-            </ul>
+            </div>
 
             <Link
               href="/request-quotation"
-              className="w-full sm:w-auto min-h-[52px] inline-flex items-center justify-center px-10 py-3 bg-accent text-white font-semibold rounded-sm hover:bg-accent-dark transition-colors text-sm"
+              className="w-full sm:w-auto min-h-[54px] inline-flex items-center justify-center gap-2 px-10 py-3.5 bg-accent text-white font-semibold rounded-sm hover:bg-accent-dark transition-colors text-sm"
             >
               Submit Your Entrance Package RFQ
-              <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </Link>
@@ -585,9 +868,7 @@ export default function GrandEntrancePackagePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="flex items-center justify-center gap-3 mb-6">
             <div className="w-8 h-px bg-accent flex-shrink-0" />
-            <span className="text-accent text-[11px] sm:text-xs font-semibold tracking-widest uppercase">
-              Get Started
-            </span>
+            <span className="text-accent text-[11px] font-semibold tracking-[0.2em] uppercase">Get Started</span>
             <div className="w-8 h-px bg-accent flex-shrink-0" />
           </div>
 
@@ -595,7 +876,7 @@ export default function GrandEntrancePackagePage() {
             Ready to Create a Landmark Entrance?
           </h2>
 
-          <p className="text-white/70 text-sm sm:text-base max-w-xl mx-auto mb-10 leading-relaxed">
+          <p className="text-white/65 text-sm sm:text-base max-w-xl mx-auto mb-10 leading-relaxed">
             Share your drawings, dimensions, and design direction. Durraka&apos;s team will review your requirements and help define a suitable GFRC / GRC entrance package for your project.
           </p>
 
@@ -604,17 +885,25 @@ export default function GrandEntrancePackagePage() {
               href="/request-quotation"
               className="min-h-[56px] flex items-center justify-center px-10 py-3.5 bg-accent text-white font-semibold rounded-sm hover:bg-accent-dark transition-colors text-sm sm:text-base"
             >
-              Request a Quotation
+              Request Consultation
             </Link>
             <Link
-              href="/contact"
-              className="min-h-[56px] flex items-center justify-center px-10 py-3.5 border border-white/40 text-white font-semibold rounded-sm hover:bg-white/10 transition-colors text-sm sm:text-base"
+              href={SOCIAL_LINKS.whatsapp.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="min-h-[56px] flex items-center justify-center gap-2.5 px-10 py-3.5 border border-white/30 text-white font-semibold rounded-sm hover:bg-white/08 transition-colors text-sm sm:text-base"
             >
-              Speak to a Sales Engineer
+              <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 text-[#25D366]" aria-hidden="true">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+              </svg>
+              Talk to a Sales Engineer
             </Link>
           </div>
         </div>
       </section>
+
+      {/* Mobile sticky CTA — appears after 300px scroll, bottom sheet */}
+      <StickyMobileCTA />
 
     </div>
   )
