@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { NAV_LINKS } from '@/lib/constants'
@@ -36,11 +37,13 @@ export default function Header() {
         <div className="flex items-center justify-between h-[84px] sm:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group" aria-label="Durraka Factory for Industry">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src="/images/logos/durraka-logo-original-red-blue.svg"
               alt="Durraka Factory for Industry logo"
+              width={54}
+              height={52}
               className="h-[42px] sm:h-[52px] w-auto flex-shrink-0"
+              priority
             />
             <div>
               <p className="text-navy font-bold text-base sm:text-lg leading-tight tracking-[0.06em] uppercase group-hover:text-accent transition-colors">

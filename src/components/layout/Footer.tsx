@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { NAV_LINKS, CONTACT_INFO, MAPS_URL } from '@/lib/constants'
 import { SOCIAL_LINKS } from '@/lib/social-links'
@@ -17,10 +18,11 @@ export default function Footer() {
           <div className="col-span-2 lg:col-span-2">
             <div className="mb-4">
               <Link href="/" aria-label="Durraka Factory for Industry">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src="/images/logos/durraka-logo-original-red-blue.svg"
                   alt="Durraka Factory for Industry logo"
+                  width={67}
+                  height={64}
                   className="h-[48px] sm:h-[64px] w-auto"
                 />
               </Link>
