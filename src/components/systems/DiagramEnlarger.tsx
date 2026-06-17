@@ -10,8 +10,6 @@ interface DiagramEnlargerProps {
 export function DiagramEnlarger({ title, children }: DiagramEnlargerProps) {
   const [isOpen, setIsOpen] = useState(false)
   const triggerRef = useRef<HTMLButtonElement>(null)
-  // Stores fixed body-level elements hidden when modal opens, so we can restore them
-  const hiddenEls = useRef<Array<{ el: HTMLElement; prev: string }>>([])
 
   const close = useCallback(() => {
     setIsOpen(false)
@@ -22,36 +20,13 @@ export function DiagramEnlarger({ title, children }: DiagramEnlargerProps) {
     if (isOpen) {
       document.body.classList.add('diagram-modal-open')
       document.body.style.overflow = 'hidden'
-
-      // Hide every position:fixed direct child of <body> (third-party widgets,
-      // accessibility buttons, WhatsApp button, header, etc.).
-      // The modal itself is nested inside <main>, not a direct body child,
-      // so it is never selected here.
-      hiddenEls.current = []
-      Array.from(document.body.children).forEach((child) => {
-        const el = child as HTMLElement
-        const computed = window.getComputedStyle(el)
-        if (computed.position === 'fixed') {
-          hiddenEls.current.push({ el, prev: el.style.display })
-          el.style.display = 'none'
-        }
-      })
     } else {
       document.body.classList.remove('diagram-modal-open')
       document.body.style.overflow = ''
-      hiddenEls.current.forEach(({ el, prev }) => {
-        el.style.display = prev
-      })
-      hiddenEls.current = []
     }
-
     return () => {
       document.body.classList.remove('diagram-modal-open')
       document.body.style.overflow = ''
-      hiddenEls.current.forEach(({ el, prev }) => {
-        el.style.display = prev
-      })
-      hiddenEls.current = []
     }
   }, [isOpen])
 
