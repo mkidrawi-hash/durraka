@@ -108,6 +108,7 @@ type Project = {
   image: string
   objectPosition: string
   Illustration: IllustrationComponent
+  href?: string
 }
 
 const FEATURED_PROJECTS: Project[] = [
@@ -119,6 +120,7 @@ const FEATURED_PROJECTS: Project[] = [
     image: '/images/projects/grand-entrance-gfrc.png',
     objectPosition: 'center',
     Illustration: FacadeIllustration,
+    href: '/packages/grand-entrance-package',
   },
   {
     id: 'p2',
@@ -171,7 +173,7 @@ function ProjectCard({ project }: { project: Project }) {
   const [imgError, setImgError] = useState(false)
   const { Illustration } = project
 
-  return (
+  const inner = (
     <div className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-200/60">
       {/* Image area — taller on mobile, 4:3 on sm+ */}
       <div className="relative overflow-hidden rounded-t-2xl aspect-[5/4] sm:aspect-[4/3] bg-[#071B3B]">
@@ -219,6 +221,15 @@ function ProjectCard({ project }: { project: Project }) {
       </div>
     </div>
   )
+
+  if (project.href) {
+    return (
+      <Link href={project.href} className="block">
+        {inner}
+      </Link>
+    )
+  }
+  return inner
 }
 
 export default function ProjectsPreview() {
