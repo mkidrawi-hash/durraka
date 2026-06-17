@@ -17,3 +17,8 @@ html {
 [dir='rtl'] {
   text-align: right;
 }
+
+/* Hide floating widgets (WhatsApp button, etc.) while diagram modal is open */
+.diagram-modal-open [data-floating] {
+  display: none !important;
+}

@@ -13,12 +13,14 @@ export function DiagramEnlarger({ title, children }: DiagramEnlargerProps) {
 
   useEffect(() => {
     if (!isOpen) return
-    const prev = document.body.style.overflow
+    const prevOverflow = document.body.style.overflow
     document.body.style.overflow = 'hidden'
+    document.body.classList.add('diagram-modal-open')
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') close() }
     window.addEventListener('keydown', onKey)
     return () => {
-      document.body.style.overflow = prev
+      document.body.style.overflow = prevOverflow
+      document.body.classList.remove('diagram-modal-open')
       window.removeEventListener('keydown', onKey)
     }
   }, [isOpen, close])
@@ -92,22 +94,20 @@ export function DiagramEnlarger({ title, children }: DiagramEnlargerProps) {
           <div className="absolute inset-0 flex items-end sm:items-center justify-center sm:p-6 pointer-events-none">
 
             {/*
-              Panel — auto height, capped at 90dvh.
-              pointer-events-auto restores interactivity for the panel itself.
-              Clicks inside the panel don't bubble to the backdrop.
+              Mobile: panel is fixed 90vh bottom-sheet (height: 90vh).
+              Desktop (sm+): panel is auto-height, capped at 90dvh (height: auto; max-height: 90dvh).
             */}
             <div
-              className="pointer-events-auto relative w-full rounded-t-2xl sm:max-w-3xl sm:rounded-2xl bg-white shadow-2xl"
-              style={{ maxHeight: '90dvh' }}
+              className="pointer-events-auto relative w-full sm:max-w-3xl bg-white shadow-2xl flex flex-col h-[90vh] max-h-[90vh] rounded-t-[24px] sm:h-auto sm:max-h-[90dvh] sm:rounded-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Drag handle — mobile only */}
-              <div className="sm:hidden flex justify-center pt-2.5 pb-0.5" aria-hidden="true">
+              <div className="sm:hidden flex justify-center pt-2.5 pb-0.5 flex-shrink-0" aria-hidden="true">
                 <div className="w-8 h-1 rounded-full bg-gray-200" />
               </div>
 
               {/* Header */}
-              <div className="px-4 sm:px-6 py-3.5 border-b border-gray-100 flex items-center justify-between">
+              <div className="px-4 sm:px-6 py-3.5 border-b border-gray-100 flex items-center justify-between flex-shrink-0">
                 <div>
                   <p className="text-[#071B3B] font-bold text-sm leading-tight">{title}</p>
                   <p className="text-[#071B3B]/40 text-[10px] font-mono tracking-widest uppercase mt-0.5">
@@ -125,26 +125,19 @@ export function DiagramEnlarger({ title, children }: DiagramEnlargerProps) {
                 </button>
               </div>
 
-              {/*
-                Body:
-                – No flex-1, no flex-grow, no min-height, no justify-content.
-                – overflow-y-auto: scrolls only when content exceeds max-height.
-                – max-height = 90dvh minus handle (~16px) minus header (~57px) minus buffer
-                  ≈ calc(90dvh - 90px)
-                – When content is SHORT (normal SVG diagram): body height = content height.
-                  Panel wraps tightly. NO blank space below the note.
-                – When content is TALL (unlikely): body scrolls internally.
-              */}
+              {/* Body — scrollable, fills remaining panel height */}
               <div
                 className="overflow-y-auto"
-                style={{ maxHeight: 'calc(90dvh - 90px)' }}
+                style={{
+                  flex: '1 1 auto',
+                  WebkitOverflowScrolling: 'touch' as const,
+                  paddingBottom: 'calc(32px + env(safe-area-inset-bottom))',
+                } as React.CSSProperties}
               >
-                <div className="px-4 sm:px-6 py-5 sm:py-8 max-w-2xl mx-auto">
-                  {/* Diagram at full container width */}
+                <div className="px-4 sm:px-6 pt-5 sm:pt-8 max-w-2xl mx-auto">
                   <div className="w-full">
                     {children}
                   </div>
-                  {/* Note sits 16px below diagram — plain margin, no spacer, no flex */}
                   <p
                     className="text-gray-400 text-[11px] leading-relaxed"
                     style={{ marginTop: '16px', paddingTop: '14px', borderTop: '1px solid #f3f4f6' }}
