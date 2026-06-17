@@ -32,7 +32,7 @@ export function DiagramEnlarger({ title, children }: DiagramEnlargerProps) {
         <button
           onClick={() => setIsOpen(true)}
           aria-label="View larger system diagram"
-          className="mt-3 flex items-center gap-1.5 text-[#071B3B]/40 hover:text-[#D71920] text-[11px] font-medium transition-colors group"
+          className="mt-2 flex items-center gap-1.5 text-[#071B3B]/40 hover:text-[#D71920] text-[11px] font-medium transition-colors group"
         >
           <svg
             className="w-3.5 h-3.5 flex-shrink-0"
@@ -48,17 +48,19 @@ export function DiagramEnlarger({ title, children }: DiagramEnlargerProps) {
               d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15"
             />
           </svg>
-          <span className="group-hover:underline underline-offset-2">View Larger Diagram</span>
+          {/* "Tap to enlarge" on mobile, "View Larger Diagram" on desktop */}
+          <span className="sm:hidden group-hover:underline underline-offset-2">Tap to enlarge</span>
+          <span className="hidden sm:inline group-hover:underline underline-offset-2">View Larger Diagram</span>
         </button>
       </div>
 
-      {/* Full-screen / centred modal */}
+      {/* Modal — bottom sheet on mobile, centred card on desktop */}
       {isOpen && (
         <div
           role="dialog"
           aria-modal="true"
           aria-label={`${title} — enlarged diagram`}
-          className="fixed inset-0 z-[200] flex items-center justify-center p-0 sm:p-6"
+          className="fixed inset-0 z-[200] flex items-end sm:items-center justify-center sm:p-6"
         >
           {/* Backdrop */}
           <div
@@ -67,11 +69,21 @@ export function DiagramEnlarger({ title, children }: DiagramEnlargerProps) {
             aria-hidden="true"
           />
 
-          {/* Panel — full-screen on mobile, max-w-3xl centred card on desktop */}
-          <div className="relative z-10 w-full h-full sm:h-auto sm:max-w-3xl sm:rounded-2xl bg-white shadow-2xl flex flex-col overflow-hidden">
+          {/*
+            Panel:
+            – Mobile: full-width bottom sheet, rounded top corners, max 90dvh so it
+              never overflows the viewport. Content scrolls internally.
+            – Desktop (sm+): centred card, max-w-3xl, fully rounded.
+          */}
+          <div className="relative z-10 w-full max-h-[90dvh] rounded-t-2xl sm:max-w-3xl sm:max-h-[90vh] sm:rounded-2xl bg-white shadow-2xl flex flex-col overflow-hidden">
+
+            {/* Drag handle (mobile only) */}
+            <div className="sm:hidden flex justify-center pt-2.5 pb-1 flex-shrink-0">
+              <div className="w-8 h-1 rounded-full bg-[#071B3B]/20" />
+            </div>
 
             {/* Header */}
-            <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 border-b border-[#071B3B]/[0.08] flex-shrink-0">
+            <div className="flex items-center justify-between px-4 sm:px-6 py-3 border-b border-[#071B3B]/[0.08] flex-shrink-0">
               <div>
                 <p className="text-[#071B3B] font-bold text-sm leading-tight">{title}</p>
                 <p className="text-[#071B3B]/40 text-[10px] font-mono tracking-widest uppercase mt-0.5">
@@ -89,17 +101,21 @@ export function DiagramEnlarger({ title, children }: DiagramEnlargerProps) {
               </button>
             </div>
 
-            {/* Diagram — scrollable, rendered at full modal width */}
-            <div className="flex-1 overflow-auto p-4 sm:p-10 flex items-start sm:items-center justify-center">
+            {/*
+              Content: flex-1 + min-h-0 lets the area shrink rather than overflow.
+              overflow-auto adds scrollbars only when the diagram exceeds available height.
+              The SVG renders at full modal width — much larger than the inline version.
+            */}
+            <div className="flex-1 min-h-0 overflow-auto p-3 sm:p-8">
               <div className="w-full">
                 {children}
               </div>
             </div>
 
             {/* Footer note */}
-            <div className="px-4 sm:px-6 py-3 border-t border-[#071B3B]/[0.06] flex-shrink-0 bg-[#F8F9FA]">
+            <div className="px-4 sm:px-6 py-2.5 border-t border-[#071B3B]/[0.06] flex-shrink-0 bg-[#F8F9FA]">
               <p className="text-[#071B3B]/35 text-[10px] leading-relaxed">
-                Note: Diagram is simplified for presentation purposes. No installation or structural details are shown.
+                Note: Diagram is simplified for presentation purposes only.
               </p>
             </div>
           </div>

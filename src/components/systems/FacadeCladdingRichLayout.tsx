@@ -165,8 +165,8 @@ export function FacadeCladdingRichLayout({ content, heroImage = '/images/project
             {/* Tabs */}
             <div className="lg:col-span-2">
               {/* Tab strip */}
-              <div className="overflow-x-auto -mx-1">
-                <div className="flex gap-1 min-w-max px-1 border-b border-[#071B3B]/[0.08] mb-6">
+              <div className="overflow-x-auto scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0">
+                <div className="flex min-w-max border-b border-[#071B3B]/[0.08] mb-5">
                   {tabs.labels.map((label, i) => (
                     <button
                       key={i}

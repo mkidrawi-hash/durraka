@@ -10,35 +10,35 @@ const LEGAL_LINKS = [
 export default function Footer() {
   return (
     <footer className="bg-white border-t border-navy/10 text-navy">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-5 sm:gap-8">
 
           {/* Brand */}
           <div className="col-span-2 lg:col-span-2">
-            <div className="mb-5">
+            <div className="mb-4">
               <Link href="/" aria-label="Durraka Factory for Industry">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/images/logos/durraka-logo-original-red-blue.svg"
                   alt="Durraka Factory for Industry logo"
-                  className="h-[60px] sm:h-[76px] w-auto"
+                  className="h-[48px] sm:h-[64px] w-auto"
                 />
               </Link>
-              <div className="mt-3">
-                <p className="text-navy font-bold text-base leading-tight tracking-wide">
+              <div className="mt-2">
+                <p className="text-navy font-bold text-sm leading-tight tracking-wide">
                   Durraka Factory for Industry
                 </p>
-                <p className="text-accent text-xs font-semibold tracking-widest uppercase mt-1">
+                <p className="text-accent text-[11px] font-semibold tracking-widest uppercase mt-0.5">
                   GFRC &amp; GRC Architectural Systems
                 </p>
               </div>
             </div>
-            <p className="text-navy/60 text-sm leading-relaxed max-w-sm">
+            <p className="text-navy/60 text-xs sm:text-sm leading-relaxed max-w-sm">
               Saudi Arabia&#39;s specialized manufacturer of GFRC &amp; GRC façade cladding, mashrabiya
               systems, architectural domes, cornices, and custom decorative elements.
             </p>
             {/* Social links with visible labels */}
-            <div className="mt-5 flex flex-wrap gap-x-4 gap-y-2">
+            <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2">
               <a
                 href={SOCIAL_LINKS.linkedin.href}
                 target="_blank"
@@ -68,13 +68,13 @@ export default function Footer() {
 
           {/* Navigation */}
           <div>
-            <h3 className="text-navy/40 text-xs font-semibold tracking-widest uppercase mb-4">Navigation</h3>
-            <ul className="space-y-2.5">
+            <h3 className="text-navy/40 text-xs font-semibold tracking-widest uppercase mb-3">Navigation</h3>
+            <ul className="space-y-2">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-navy/60 hover:text-accent text-sm leading-relaxed transition-colors"
+                    className="text-navy/60 hover:text-accent text-xs sm:text-sm leading-relaxed transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -85,13 +85,13 @@ export default function Footer() {
 
           {/* Legal */}
           <div>
-            <h3 className="text-navy/40 text-xs font-semibold tracking-widest uppercase mb-4">Legal</h3>
-            <ul className="space-y-2.5">
+            <h3 className="text-navy/40 text-xs font-semibold tracking-widest uppercase mb-3">Legal</h3>
+            <ul className="space-y-2">
               {LEGAL_LINKS.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-navy/60 hover:text-accent text-sm leading-relaxed transition-colors"
+                    className="text-navy/60 hover:text-accent text-xs sm:text-sm leading-relaxed transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -102,8 +102,8 @@ export default function Footer() {
 
           {/* Contact */}
           <div className="col-span-2 lg:col-span-1">
-            <h3 className="text-navy/40 text-xs font-semibold tracking-widest uppercase mb-4">Contact</h3>
-            <ul className="space-y-3.5">
+            <h3 className="text-navy/40 text-xs font-semibold tracking-widest uppercase mb-3">Contact</h3>
+            <ul className="space-y-2.5">
               <li>
                 <Link
                   href={MAPS_URL}
@@ -162,8 +162,8 @@ export default function Footer() {
 
         {/* Bottom bar — extra padding so floating WA button never covers copyright */}
         <div
-          className="border-t border-navy/10 mt-10 sm:mt-12 pt-6"
-          style={{ paddingBottom: 'calc(96px + env(safe-area-inset-bottom))' }}
+          className="border-t border-navy/10 mt-7 sm:mt-10 pt-5"
+          style={{ paddingBottom: 'calc(88px + env(safe-area-inset-bottom))' }}
         >
           <p className="text-navy/40 text-xs">
             &copy; {new Date().getFullYear()} Durraka Factory for Industry. All rights reserved.
