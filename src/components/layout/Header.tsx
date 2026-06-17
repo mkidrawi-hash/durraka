@@ -42,7 +42,7 @@ export default function Header() {
               alt="Durraka Factory for Industry logo"
               width={54}
               height={52}
-              className="h-[42px] sm:h-[52px] w-auto flex-shrink-0"
+              className="h-[46px] sm:h-[52px] w-auto flex-shrink-0"
               priority
             />
             <div>

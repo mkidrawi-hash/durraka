@@ -119,9 +119,9 @@ const STYLES = [
     desc: 'Clean geometric lines with a modern Saudi architectural identity, refined for contemporary developments.',
     pattern: (
       <svg viewBox="0 0 160 72" fill="none" className="w-full h-full" aria-hidden="true">
-        <rect width="160" height="72" fill="#F1F5F9" />
+        <rect width="160" height="72" fill="#EDF3FA" />
         {Array.from({ length: 9 }).map((_, i) => (
-          <rect key={i} x={12 + i * 16} y="16" width="8" height="40" stroke="#CBD5E1" strokeWidth="0.8" fill="none" />
+          <rect key={i} x={12 + i * 16} y="16" width="8" height="40" stroke="#B8CCE0" strokeWidth="0.9" fill="none" />
         ))}
         <line x1="0" y1="12" x2="160" y2="12" stroke="#CBD5E1" strokeWidth="0.8" />
         <line x1="0" y1="60" x2="160" y2="60" stroke="#CBD5E1" strokeWidth="0.8" />
@@ -133,7 +133,7 @@ const STYLES = [
     desc: 'Drawing on the Hijazi architectural vocabulary with ornamental layering and regional surface expression.',
     pattern: (
       <svg viewBox="0 0 160 72" fill="none" className="w-full h-full" aria-hidden="true">
-        <rect width="160" height="72" fill="#F1F5F9" />
+        <rect width="160" height="72" fill="#F3EFF9" />
         {Array.from({ length: 5 }).map((_, i) => (
           <path key={i} d={`M ${16 + i * 26} 56 L ${16 + i * 26} 36 A 13 13 0 0 1 ${42 + i * 26} 36 L ${42 + i * 26} 56`}
             stroke="#CBD5E1" strokeWidth="0.9" fill="none" />
@@ -148,8 +148,8 @@ const STYLES = [
     desc: 'Rooted in the Najdi heritage language — bold geometric forms, deep reveals, and strong linear character.',
     pattern: (
       <svg viewBox="0 0 160 72" fill="none" className="w-full h-full" aria-hidden="true">
-        <rect width="160" height="72" fill="#F1F5F9" />
-        <polyline points="0,56 20,20 40,56 60,20 80,56 100,20 120,56 140,20 160,56" stroke="#CBD5E1" strokeWidth="0.9" fill="none" />
+        <rect width="160" height="72" fill="#EDF5EC" />
+        <polyline points="0,56 20,20 40,56 60,20 80,56 100,20 120,56 140,20 160,56" stroke="#9FBFA0" strokeWidth="1.1" fill="none" />
         <line x1="0" y1="16" x2="160" y2="16" stroke="#CBD5E1" strokeWidth="0.8" />
         <line x1="0" y1="60" x2="160" y2="60" stroke="#CBD5E1" strokeWidth="0.8" />
       </svg>
@@ -160,7 +160,7 @@ const STYLES = [
     desc: 'Columnar composition with cornice, frieze, and classical order elements adapted to the project scale.',
     pattern: (
       <svg viewBox="0 0 160 72" fill="none" className="w-full h-full" aria-hidden="true">
-        <rect width="160" height="72" fill="#F1F5F9" />
+        <rect width="160" height="72" fill="#FAF7ED" />
         {[28, 68, 92, 132].map((x) => (
           <g key={x}>
             <rect x={x} y="18" width="10" height="38" stroke="#CBD5E1" strokeWidth="0.9" />
@@ -177,8 +177,8 @@ const STYLES = [
     desc: 'Restrained composition with precise lines, minimal surface relief, and refined material expression.',
     pattern: (
       <svg viewBox="0 0 160 72" fill="none" className="w-full h-full" aria-hidden="true">
-        <rect width="160" height="72" fill="#F1F5F9" />
-        <line x1="0" y1="36" x2="160" y2="36" stroke="#CBD5E1" strokeWidth="1.2" />
+        <rect width="160" height="72" fill="#F5F9FA" />
+        <line x1="0" y1="36" x2="160" y2="36" stroke="#A8C0CC" strokeWidth="1.4" />
         <line x1="0" y1="28" x2="160" y2="28" stroke="#CBD5E1" strokeWidth="0.5" />
         <line x1="0" y1="44" x2="160" y2="44" stroke="#CBD5E1" strokeWidth="0.5" />
         <rect x="60" y="16" width="40" height="40" stroke="#CBD5E1" strokeWidth="0.8" fill="none" />
@@ -190,8 +190,8 @@ const STYLES = [
     desc: 'A direction developed specifically for the project based on provided references, drawings, and design intent.',
     pattern: (
       <svg viewBox="0 0 160 72" fill="none" className="w-full h-full" aria-hidden="true">
-        <rect width="160" height="72" fill="#F1F5F9" />
-        <path d="M 50 56 L 50 36 A 30 30 0 0 1 110 36 L 110 56" stroke="#CBD5E1" strokeWidth="0.9" fill="none" />
+        <rect width="160" height="72" fill="#FAF0EE" />
+        <path d="M 50 56 L 50 36 A 30 30 0 0 1 110 36 L 110 56" stroke="#D4A89E" strokeWidth="1.0" fill="none" />
         <line x1="0" y1="56" x2="160" y2="56" stroke="#CBD5E1" strokeWidth="0.8" />
         <rect x="20" y="14" width="12" height="42" stroke="#CBD5E1" strokeWidth="0.8" />
         <rect x="128" y="14" width="12" height="42" stroke="#CBD5E1" strokeWidth="0.8" />
@@ -207,14 +207,16 @@ const FINISHES = [
     label: 'Smooth Architectural Finish',
     desc: 'Clean, refined surface suitable for contemporary compositions.',
     swatch: (
-      <svg viewBox="0 0 160 56" className="w-full" aria-hidden="true">
+      <svg viewBox="0 0 160 72" className="w-full" aria-hidden="true">
         <defs>
           <linearGradient id="sw1" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#E8EDF2" />
-            <stop offset="100%" stopColor="#D1D9E0" />
+            <stop offset="0%" stopColor="#ECF0F5" />
+            <stop offset="100%" stopColor="#CDD6DF" />
           </linearGradient>
         </defs>
-        <rect width="160" height="56" fill="url(#sw1)" />
+        <rect width="160" height="72" fill="url(#sw1)" />
+        {/* Subtle diagonal sheen */}
+        <line x1="0" y1="72" x2="90" y2="0" stroke="white" strokeWidth="28" strokeOpacity="0.14" />
       </svg>
     ),
   },
@@ -222,15 +224,15 @@ const FINISHES = [
     label: 'Stone-Like Texture',
     desc: 'A textured surface that evokes natural stone without the weight or maintenance burden.',
     swatch: (
-      <svg viewBox="0 0 160 56" className="w-full" aria-hidden="true">
-        <rect width="160" height="56" fill="#DDE3E9" />
-        {Array.from({ length: 14 }).map((_, i) => (
-          <line key={i} x1={0} y1={4 + i * 4} x2={160} y2={6 + i * 4}
-            stroke="#B8C4CD" strokeWidth="0.7" strokeOpacity={0.6 - i * 0.02} />
+      <svg viewBox="0 0 160 72" className="w-full" aria-hidden="true">
+        <rect width="160" height="72" fill="#D5DDE5" />
+        {Array.from({ length: 18 }).map((_, i) => (
+          <line key={i} x1={0} y1={4 + i * 4} x2={160} y2={5 + i * 4}
+            stroke="#A8B6C2" strokeWidth="0.8" strokeOpacity={0.65 - i * 0.015} />
         ))}
-        {Array.from({ length: 8 }).map((_, i) => (
-          <line key={i} x1={i * 22} y1={0} x2={i * 22 + 10} y2={56}
-            stroke="#C8D0D8" strokeWidth="0.5" strokeOpacity="0.4" />
+        {Array.from({ length: 7 }).map((_, i) => (
+          <line key={i} x1={i * 24} y1={0} x2={i * 24 + 12} y2={72}
+            stroke="#BCC8D2" strokeWidth="0.5" strokeOpacity="0.35" />
         ))}
       </svg>
     ),
@@ -239,12 +241,12 @@ const FINISHES = [
     label: 'Sandblast-Inspired Finish',
     desc: 'Open-grained surface treatment creating a warm, tactile quality for heritage-influenced designs.',
     swatch: (
-      <svg viewBox="0 0 160 56" className="w-full" aria-hidden="true">
-        <rect width="160" height="56" fill="#E4DECE" />
-        {Array.from({ length: 120 }).map((_, i) => {
+      <svg viewBox="0 0 160 72" className="w-full" aria-hidden="true">
+        <rect width="160" height="72" fill="#E6DDD0" />
+        {Array.from({ length: 160 }).map((_, i) => {
           const x = (i * 37) % 160
-          const y = (i * 23 + Math.floor(i / 7) * 13) % 56
-          return <circle key={i} cx={x} cy={y} r="0.7" fill="#C8BA9E" fillOpacity="0.6" />
+          const y = (i * 23 + Math.floor(i / 7) * 13) % 72
+          return <circle key={i} cx={x} cy={y} r="0.8" fill="#B89870" fillOpacity="0.65" />
         })}
       </svg>
     ),
@@ -253,18 +255,18 @@ const FINISHES = [
     label: 'Custom Colour Matching',
     desc: 'Colour-matched to the project palette, scheme, or specific material reference samples.',
     swatch: (
-      <svg viewBox="0 0 160 56" className="w-full" aria-hidden="true">
+      <svg viewBox="0 0 160 72" className="w-full" aria-hidden="true">
         <defs>
           <linearGradient id="sw4" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#C8D4DC" />
-            <stop offset="40%" stopColor="#D8E4EC" />
-            <stop offset="70%" stopColor="#E0CFC4" />
-            <stop offset="100%" stopColor="#D4CABC" />
+            <stop offset="0%" stopColor="#B8C8D6" />
+            <stop offset="30%" stopColor="#D2E2EE" />
+            <stop offset="60%" stopColor="#E4D4C8" />
+            <stop offset="100%" stopColor="#CEC0B0" />
           </linearGradient>
         </defs>
-        <rect width="160" height="56" fill="url(#sw4)" />
-        <line x1="53" y1="0" x2="53" y2="56" stroke="white" strokeWidth="0.5" strokeOpacity="0.4" />
-        <line x1="107" y1="0" x2="107" y2="56" stroke="white" strokeWidth="0.5" strokeOpacity="0.4" />
+        <rect width="160" height="72" fill="url(#sw4)" />
+        <line x1="53" y1="0" x2="53" y2="72" stroke="white" strokeWidth="0.8" strokeOpacity="0.5" />
+        <line x1="107" y1="0" x2="107" y2="72" stroke="white" strokeWidth="0.8" strokeOpacity="0.5" />
       </svg>
     ),
   },
@@ -272,15 +274,15 @@ const FINISHES = [
     label: 'Heritage-Inspired Surface',
     desc: 'A surface expression referencing traditional material culture and regional architectural identity.',
     swatch: (
-      <svg viewBox="0 0 160 56" className="w-full" aria-hidden="true">
-        <rect width="160" height="56" fill="#D6C9B4" />
-        {Array.from({ length: 8 }).map((_, i) => (
+      <svg viewBox="0 0 160 72" className="w-full" aria-hidden="true">
+        <rect width="160" height="72" fill="#D4C4A8" />
+        {Array.from({ length: 10 }).map((_, i) => (
           <line key={`h${i}`} x1={0} y1={7 + i * 7} x2={160} y2={7 + i * 7}
-            stroke="#BCA98A" strokeWidth="0.6" strokeOpacity="0.5" />
+            stroke="#A8855A" strokeWidth="0.7" strokeOpacity="0.55" />
         ))}
         {Array.from({ length: 11 }).map((_, i) => (
-          <line key={`v${i}`} x1={14 + i * 14} y1={0} x2={14 + i * 14} y2={56}
-            stroke="#BCA98A" strokeWidth="0.5" strokeOpacity="0.4" />
+          <line key={`v${i}`} x1={14 + i * 14} y1={0} x2={14 + i * 14} y2={72}
+            stroke="#A8855A" strokeWidth="0.6" strokeOpacity="0.45" />
         ))}
       </svg>
     ),
@@ -484,27 +486,27 @@ function Diagram() {
 
       {/* Callout 1 — Main entrance frame, left mid */}
       <LeaderLine x1="52" y1="182" x2="22" y2="182" />
-      <CalloutBadge n={1} cx={13} cy={182} />
+      <CalloutBadge n={1} cx={13} cy={182} r={11} size={10} />
 
       {/* Callout 2 — Side columns, right mid */}
       <LeaderLine x1="348" y1="147" x2="378" y2="147" />
-      <CalloutBadge n={2} cx={387} cy={147} />
+      <CalloutBadge n={2} cx={387} cy={147} r={11} size={10} />
 
       {/* Callout 3 — Upper cornice, left top */}
       <LeaderLine x1="38" y1="28" x2="22" y2="28" />
-      <CalloutBadge n={3} cx={13} cy={28} />
+      <CalloutBadge n={3} cx={13} cy={28} r={11} size={10} />
 
       {/* Callout 4 — Decorative panels, right upper */}
       <LeaderLine x1="310" y1="74" x2="378" y2="74" />
-      <CalloutBadge n={4} cx={387} cy={74} />
+      <CalloutBadge n={4} cx={387} cy={74} r={11} size={10} />
 
       {/* Callout 5 — Arch zone, right upper */}
       <LeaderLine x1="238" y1="80" x2="378" y2="40" />
-      <CalloutBadge n={5} cx={387} cy={32} />
+      <CalloutBadge n={5} cx={387} cy={32} r={11} size={10} />
 
       {/* Callout 6 — Customisation zone, left lower */}
       <LeaderLine x1="90" y1="218" x2="22" y2="218" />
-      <CalloutBadge n={6} cx={13} cy={218} />
+      <CalloutBadge n={6} cx={13} cy={218} r={11} size={10} />
     </svg>
   )
 }
@@ -805,7 +807,7 @@ export default function GrandEntrancePackagePage() {
               {FINISHES.map((f) => (
                 <div key={f.label} className="bg-white border border-gray-100 rounded-sm overflow-hidden hover:shadow-md transition-shadow">
                   {/* Swatch area */}
-                  <div className="w-full h-14 overflow-hidden">
+                  <div className="w-full h-[72px] overflow-hidden">
                     {f.swatch}
                   </div>
                   <div className="p-5">

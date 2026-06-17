@@ -47,13 +47,30 @@ export function DiagramEnlarger({ title, children }: DiagramEnlargerProps) {
           ref={triggerRef}
           onClick={() => setIsOpen(true)}
           aria-label="View larger system diagram"
-          className="mt-2 flex items-center gap-1.5 text-[#071B3B]/40 hover:text-[#D71920] text-[11px] font-medium transition-colors group"
+          className={[
+            'mt-3 flex items-center gap-2 transition-colors group',
+            // Mobile: full-width bar with visible border
+            'w-full justify-center py-2.5 px-4',
+            'bg-[#071B3B]/[0.04] border border-[#071B3B]/[0.10] rounded-sm',
+            'hover:bg-[#071B3B]/[0.07] active:bg-[#071B3B]/[0.10]',
+            // Desktop: reset to subtle inline
+            'sm:w-auto sm:justify-start sm:py-0 sm:px-0 sm:gap-1.5',
+            'sm:bg-transparent sm:border-0 sm:rounded-none',
+            'sm:hover:bg-transparent sm:active:bg-transparent',
+          ].join(' ')}
         >
-          <svg className="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <svg
+            className="w-4 h-4 sm:w-3.5 sm:h-3.5 flex-shrink-0 text-[#071B3B]/55 sm:text-[#071B3B]/40 group-hover:text-[#D71920] transition-colors"
+            fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"
+          >
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
           </svg>
-          <span className="sm:hidden group-hover:underline underline-offset-2">Tap to enlarge</span>
-          <span className="hidden sm:inline group-hover:underline underline-offset-2">View Larger Diagram</span>
+          <span className="sm:hidden text-[#071B3B]/60 text-[12px] font-semibold tracking-wide group-hover:text-[#071B3B] transition-colors">
+            Tap to enlarge diagram
+          </span>
+          <span className="hidden sm:inline text-[#071B3B]/40 group-hover:text-[#D71920] text-[11px] font-medium group-hover:underline underline-offset-2 transition-colors">
+            View Larger Diagram
+          </span>
         </button>
       </div>
 

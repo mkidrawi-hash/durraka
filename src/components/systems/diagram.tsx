@@ -1,10 +1,14 @@
-export function CalloutBadge({ n, cx, cy }: { n: number; cx: number; cy: number }) {
+export function CalloutBadge({
+  n, cx, cy, r = 9, size = 8.5,
+}: {
+  n: number; cx: number; cy: number; r?: number; size?: number
+}) {
   return (
     <g>
-      <circle cx={cx} cy={cy} r="9" fill="#D71920" />
+      <circle cx={cx} cy={cy} r={r} fill="#D71920" />
       <text
         x={cx} y={cy + 4}
-        textAnchor="middle" fontSize="8.5" fontWeight="bold"
+        textAnchor="middle" fontSize={size} fontWeight="bold"
         fill="white" fontFamily="sans-serif"
       >
         {n}
