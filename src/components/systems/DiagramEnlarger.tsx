@@ -10,24 +10,48 @@ interface DiagramEnlargerProps {
 export function DiagramEnlarger({ title, children }: DiagramEnlargerProps) {
   const [isOpen, setIsOpen] = useState(false)
   const triggerRef = useRef<HTMLButtonElement>(null)
+  // Stores fixed body-level elements hidden when modal opens, so we can restore them
+  const hiddenEls = useRef<Array<{ el: HTMLElement; prev: string }>>([])
 
   const close = useCallback(() => {
     setIsOpen(false)
     setTimeout(() => triggerRef.current?.focus(), 0)
   }, [])
 
-  // Lock body scroll and hide all floating widgets when modal is open
   useEffect(() => {
     if (isOpen) {
       document.body.classList.add('diagram-modal-open')
       document.body.style.overflow = 'hidden'
+
+      // Hide every position:fixed direct child of <body> (third-party widgets,
+      // accessibility buttons, WhatsApp button, header, etc.).
+      // The modal itself is nested inside <main>, not a direct body child,
+      // so it is never selected here.
+      hiddenEls.current = []
+      Array.from(document.body.children).forEach((child) => {
+        const el = child as HTMLElement
+        const computed = window.getComputedStyle(el)
+        if (computed.position === 'fixed') {
+          hiddenEls.current.push({ el, prev: el.style.display })
+          el.style.display = 'none'
+        }
+      })
     } else {
       document.body.classList.remove('diagram-modal-open')
       document.body.style.overflow = ''
+      hiddenEls.current.forEach(({ el, prev }) => {
+        el.style.display = prev
+      })
+      hiddenEls.current = []
     }
+
     return () => {
       document.body.classList.remove('diagram-modal-open')
       document.body.style.overflow = ''
+      hiddenEls.current.forEach(({ el, prev }) => {
+        el.style.display = prev
+      })
+      hiddenEls.current = []
     }
   }, [isOpen])
 
@@ -58,34 +82,6 @@ export function DiagramEnlarger({ title, children }: DiagramEnlargerProps) {
         </button>
       </div>
 
-      {/*
-        Modal architecture (mobile bottom-sheet / desktop centred):
-
-        ┌──────────────────────────────────────────────┐  fixed inset-0 z-[99999]
-        │  dark backdrop — fills space above panel     │
-        │  (clicking backdrop closes modal)            │
-        │                                              │
-        │  ┌────────────────────────────────────────┐  │
-        │  │  PANEL — height: auto, max 90vh        │  │
-        │  │  Wraps content. Never taller than 90vh.│  │
-        │  │  ─────────────────────────────────     │  │
-        │  │  drag handle (mobile only)             │  │
-        │  │  header (title + close button)         │  │
-        │  │  ─────────────────────────────────     │  │
-        │  │  BODY — display: block, NOT flex       │  │
-        │  │  max-height: calc(90vh - 112px)        │  │
-        │  │  overflow-y: auto (scrolls if tall)    │  │
-        │  │    • diagram SVG                       │  │
-        │  │    • note directly below diagram       │  │
-        │  │    • safe-area bottom padding only     │  │
-        │  │  ← panel ends here, no blank stretch → │  │
-        │  └────────────────────────────────────────┘  │
-        └──────────────────────────────────────────────┘
-
-        Key invariant: body is display:block (not flex). Panel is height:auto.
-        Short content → panel wraps tightly → no blank space.
-        Tall content → body scrolls internally (max-height cap).
-      */}
       {isOpen && (
         <div
           role="dialog"
@@ -104,13 +100,7 @@ export function DiagramEnlarger({ title, children }: DiagramEnlargerProps) {
           {/* Position wrapper — bottom on mobile, centred on desktop */}
           <div className="absolute inset-0 flex items-end sm:items-center justify-center sm:p-6 pointer-events-none">
 
-            {/*
-              Panel:
-              - height: auto → wraps content, never forces blank space
-              - max-height: 90vh (mobile) / 90dvh (desktop) → caps tall content
-              - overflow: hidden → clips content to rounded corners
-              - NO flex-col, NO fixed height
-            */}
+            {/* Panel: height:auto, capped at 90vh. No flex-col — block layout only. */}
             <div
               className="pointer-events-auto relative w-full sm:max-w-3xl bg-white shadow-2xl overflow-hidden rounded-t-[24px] sm:rounded-2xl max-h-[90vh] sm:max-h-[90dvh]"
               onClick={(e) => e.stopPropagation()}
@@ -120,7 +110,7 @@ export function DiagramEnlarger({ title, children }: DiagramEnlargerProps) {
                 <div className="w-12 h-[5px] rounded-full bg-gray-200" />
               </div>
 
-              {/* Header — relative so close button can be absolutely positioned */}
+              {/* Header */}
               <div className="relative px-4 sm:px-6 pt-5 sm:pt-3.5 pb-4 border-b border-gray-100">
                 <p className="text-[#071B3B] font-bold text-[22px] sm:text-sm leading-tight pr-14">
                   {title}
@@ -128,7 +118,6 @@ export function DiagramEnlarger({ title, children }: DiagramEnlargerProps) {
                 <p className="text-gray-400 text-[13px] sm:text-[10px] tracking-[0.22em] uppercase mt-1.5 sm:mt-0.5">
                   System Diagram
                 </p>
-                {/* Close button — absolute, vertically centred, 44×44 tap target */}
                 <button
                   onClick={close}
                   aria-label="Close diagram"
@@ -140,13 +129,7 @@ export function DiagramEnlarger({ title, children }: DiagramEnlargerProps) {
                 </button>
               </div>
 
-              {/*
-                Body:
-                - display: block (not flex) → height is content height, not stretched
-                - max-height: calc(90vh - 112px) → 112px = handle (~28px) + header (~84px)
-                - overflow-y: auto → scrolls only when content exceeds max-height
-                - paddingBottom with env(safe-area-inset-bottom) → iPhone home bar clearance
-              */}
+              {/* Body — display:block prevents flex stretching; max-height caps scroll */}
               <div
                 className="overflow-y-auto"
                 style={{
@@ -159,11 +142,7 @@ export function DiagramEnlarger({ title, children }: DiagramEnlargerProps) {
                   className="px-4 sm:px-6 pt-5 sm:pt-8 max-w-2xl mx-auto"
                   style={{ paddingBottom: 'calc(24px + env(safe-area-inset-bottom))' }}
                 >
-                  {/* Diagram at full container width */}
-                  <div className="w-full">
-                    {children}
-                  </div>
-                  {/* Note sits directly below diagram — no spacer, no flex */}
+                  <div className="w-full">{children}</div>
                   <p
                     className="text-gray-400 text-[12px] leading-relaxed"
                     style={{
