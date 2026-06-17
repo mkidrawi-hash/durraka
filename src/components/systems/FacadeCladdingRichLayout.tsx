@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { CalloutBadge, LeaderLine } from '@/components/systems/diagram'
+import { DiagramEnlarger } from '@/components/systems/DiagramEnlarger'
 
 export type FacadeCallout = { n: number; label: string; desc: string }
 export type FacadeAccordionItem = { label: string; content: string | string[] }
@@ -153,9 +154,11 @@ export function FacadeCladdingRichLayout({ content, heroImage = '/images/project
             {/* Diagram */}
             <div className="lg:col-span-3">
               <div className="bg-white rounded-sm border border-[#071B3B]/[0.08] p-2 sm:p-5">
-                <p className="text-[#071B3B]/40 text-[10px] font-mono tracking-widest uppercase mb-4">{diagramLabel}</p>
-                <FacadeDiagram />
-                <p className="text-[#071B3B]/35 text-[10px] mt-4 leading-relaxed">{diagramNote}</p>
+                <p className="text-[#071B3B]/40 text-[10px] font-mono tracking-widest uppercase mb-3">{diagramLabel}</p>
+                <DiagramEnlarger title={hero.title}>
+                  <FacadeDiagram />
+                </DiagramEnlarger>
+                <p className="text-[#071B3B]/35 text-[10px] mt-2 leading-relaxed">{diagramNote}</p>
               </div>
             </div>
 
@@ -168,7 +171,7 @@ export function FacadeCladdingRichLayout({ content, heroImage = '/images/project
                     <button
                       key={i}
                       onClick={() => setActiveTab(i)}
-                      className={`whitespace-nowrap text-xs font-semibold tracking-wide px-3 py-3 border-b-2 transition-colors ${
+                      className={`whitespace-nowrap text-[13px] font-semibold tracking-wide px-3 py-3 border-b-2 transition-colors ${
                         activeTab === i
                           ? 'border-[#D71920] text-[#D71920]'
                           : 'border-transparent text-[#071B3B]/50 hover:text-[#071B3B]'

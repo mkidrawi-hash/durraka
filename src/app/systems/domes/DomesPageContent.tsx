@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { CalloutBadge, LeaderLine } from '@/components/systems/diagram'
+import { DiagramEnlarger } from '@/components/systems/DiagramEnlarger'
 import { FinishSwatch } from '@/components/systems/FinishSwatch'
 import { DEFAULT_FINISHES } from '@/components/systems/SystemPageLayout'
 
@@ -195,12 +196,14 @@ export default function DomesPageContent() {
           <h2 className="text-xl sm:text-2xl font-bold text-[#071B3B] mb-7">System Overview</h2>
           <div className="grid lg:grid-cols-5 gap-6 lg:gap-10 items-start">
             {/* Diagram */}
-            <div className="lg:col-span-3 bg-[#F8F9FA] border border-[#071B3B]/[0.08] p-3 sm:p-5 rounded-sm">
+            <div className="lg:col-span-3 bg-white border border-[#071B3B]/[0.08] p-2 sm:p-5 rounded-sm">
               <p className="text-[#071B3B]/35 text-[10px] font-mono tracking-widest uppercase mb-3">
-                Domes & Vaults — Overview
+                Domes &amp; Vaults — Overview
               </p>
-              <DomeDiagram />
-              <p className="text-[#071B3B]/35 text-[10px] mt-3 leading-relaxed">
+              <DiagramEnlarger title="Domes &amp; Vaults">
+                <DomeDiagram />
+              </DiagramEnlarger>
+              <p className="text-[#071B3B]/35 text-[10px] mt-2 leading-relaxed">
                 Note: Diagram is simplified for presentation purposes.
               </p>
             </div>

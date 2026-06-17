@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { FinishSwatch } from './FinishSwatch'
+import { DiagramEnlarger } from './DiagramEnlarger'
 
 export const DEFAULT_FINISHES = [
   { type: 'smooth',      label: 'Smooth Finish',            desc: 'Clean architectural surface for contemporary façade expressions.' },
@@ -167,11 +168,13 @@ export function SystemPageLayout({ data }: { data: SystemPageData }) {
             {data.diagramDescription ?? 'A simplified visual overview of the system. This diagram represents design intent and system logic only.'}
           </p>
           <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-start">
-            <div className="lg:col-span-3 bg-[#F8F9FA] border border-navy/10 p-6 sm:p-8 rounded-sm">
-              <p className="text-navy/35 text-[10px] font-mono tracking-widest uppercase mb-4">
+            <div className="lg:col-span-3 bg-white border border-navy/10 p-2 sm:p-5 rounded-sm">
+              <p className="text-navy/35 text-[10px] font-mono tracking-widest uppercase mb-3">
                 {data.diagramLabel ?? `${data.title} — Overview`}
               </p>
-              <Diagram />
+              <DiagramEnlarger title={data.title}>
+                <Diagram />
+              </DiagramEnlarger>
             </div>
             <div className="lg:col-span-2">
               <ol className="space-y-4">
