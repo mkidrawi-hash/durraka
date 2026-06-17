@@ -324,31 +324,70 @@ const CALLOUTS = [
 
 const RFQ_ITEMS = [
   {
-    key: 'drawings',
-    label: 'Elevation drawings or façade concept',
+    key: 'boq',
+    label: 'BOQ / quantity schedule',
     icon: (
       <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5 text-accent flex-shrink-0" stroke="currentColor" aria-hidden="true">
-        <rect x="3" y="2" width="11" height="15" rx="1" strokeWidth="1.3" />
-        <line x1="6" y1="6" x2="11" y2="6" strokeWidth="1" strokeOpacity="0.6" />
-        <line x1="6" y1="9" x2="11" y2="9" strokeWidth="1" strokeOpacity="0.6" />
-        <line x1="6" y1="12" x2="9" y2="12" strokeWidth="1" strokeOpacity="0.6" />
-        <circle cx="15" cy="15" r="3.5" strokeWidth="1.2" fill="white" />
-        <path d="M 13.5 15 L 14.8 16.3 L 17 13.5" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+        <rect x="2" y="2" width="16" height="16" rx="1" strokeWidth="1.3" />
+        <line x1="2" y1="6.5" x2="18" y2="6.5" strokeWidth="1.1" />
+        <line x1="7" y1="2" x2="7" y2="18" strokeWidth="0.9" strokeOpacity="0.5" />
+        <line x1="13" y1="2" x2="13" y2="18" strokeWidth="0.9" strokeOpacity="0.5" />
+        <line x1="2" y1="10.5" x2="18" y2="10.5" strokeWidth="0.7" strokeOpacity="0.35" />
+        <line x1="2" y1="14" x2="18" y2="14" strokeWidth="0.7" strokeOpacity="0.35" />
       </svg>
     ),
   },
   {
-    key: 'dimensions',
-    label: 'Approximate entrance width and height',
+    key: 'arch-drawings',
+    label: 'Architectural drawings',
     icon: (
       <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5 text-accent flex-shrink-0" stroke="currentColor" aria-hidden="true">
-        <line x1="2" y1="4" x2="2" y2="16" strokeWidth="1.3" />
-        <line x1="18" y1="4" x2="18" y2="16" strokeWidth="1.3" />
-        <line x1="2" y1="10" x2="18" y2="10" strokeWidth="1" strokeDasharray="3 2" strokeOpacity="0.6" />
-        <line x1="2" y1="4" x2="6" y2="4" strokeWidth="1.2" />
-        <line x1="14" y1="4" x2="18" y2="4" strokeWidth="1.2" />
-        <line x1="2" y1="16" x2="6" y2="16" strokeWidth="1.2" />
-        <line x1="14" y1="16" x2="18" y2="16" strokeWidth="1.2" />
+        <rect x="2" y="2" width="16" height="16" rx="1" strokeWidth="1.3" />
+        <line x1="2" y1="15" x2="18" y2="15" strokeWidth="1" />
+        <line x1="9" y1="15" x2="9" y2="18" strokeWidth="1" />
+        <path d="M 5 5 L 5 12 L 13 12" strokeWidth="1.1" strokeOpacity="0.65" />
+        <path d="M 9 9.5 A 3.5 3.5 0 0 1 12.5 6" strokeWidth="1" strokeOpacity="0.5" strokeDasharray="2 1.5" />
+      </svg>
+    ),
+  },
+  {
+    key: 'facade-elevations',
+    label: 'Facade elevations showing the entrance area',
+    icon: (
+      <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5 text-accent flex-shrink-0" stroke="currentColor" aria-hidden="true">
+        <line x1="1" y1="17" x2="19" y2="17" strokeWidth="1.3" />
+        <rect x="2" y="9" width="4" height="8" strokeWidth="1.1" />
+        <rect x="14" y="9" width="4" height="8" strokeWidth="1.1" />
+        <path d="M 6 17 L 6 11 A 4 4 0 0 1 14 11 L 14 17" strokeWidth="1.2" />
+        <line x1="1" y1="5" x2="19" y2="5" strokeWidth="0.8" strokeOpacity="0.4" strokeDasharray="2 2" />
+        <line x1="10" y1="3" x2="10" y2="6.5" strokeWidth="0.9" strokeOpacity="0.5" />
+      </svg>
+    ),
+  },
+  {
+    key: 'entrance-sections',
+    label: 'Entrance sections and typical details',
+    icon: (
+      <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5 text-accent flex-shrink-0" stroke="currentColor" aria-hidden="true">
+        <line x1="1" y1="17" x2="19" y2="17" strokeWidth="1.3" />
+        <line x1="2" y1="3" x2="2" y2="17" strokeWidth="1.3" />
+        <path d="M 2 11 L 5 11 L 5 8 L 9 8 L 9 5 L 13 5 L 13 8 L 18 8" strokeWidth="1.1" />
+        <line x1="10" y1="2" x2="10" y2="18" strokeWidth="0.7" strokeOpacity="0.35" strokeDasharray="3 2" />
+      </svg>
+    ),
+  },
+  {
+    key: 'structural',
+    label: 'Structural drawings or support information',
+    icon: (
+      <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5 text-accent flex-shrink-0" stroke="currentColor" aria-hidden="true">
+        <line x1="3" y1="4" x2="17" y2="4" strokeWidth="1.5" />
+        <line x1="3" y1="16" x2="17" y2="16" strokeWidth="1.5" />
+        <line x1="10" y1="4" x2="10" y2="16" strokeWidth="1.5" />
+        <line x1="3" y1="4" x2="3" y2="7" strokeWidth="1" strokeOpacity="0.45" />
+        <line x1="17" y1="4" x2="17" y2="7" strokeWidth="1" strokeOpacity="0.45" />
+        <line x1="3" y1="13" x2="3" y2="16" strokeWidth="1" strokeOpacity="0.45" />
+        <line x1="17" y1="13" x2="17" y2="16" strokeWidth="1" strokeOpacity="0.45" />
       </svg>
     ),
   },
@@ -387,19 +426,20 @@ const RFQ_ITEMS = [
     ),
   },
   {
-    key: 'quantity',
-    label: 'Quantity or number of entrances',
+    key: 'scope-quantity',
+    label: 'Scope quantity and repeated entrance types',
     icon: (
       <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5 text-accent flex-shrink-0" stroke="currentColor" aria-hidden="true">
-        <rect x="2" y="6" width="7" height="11" rx="0.5" strokeWidth="1.2" />
-        <rect x="11" y="6" width="7" height="11" rx="0.5" strokeWidth="1.2" />
-        <rect x="6" y="2" width="8" height="5" rx="0.5" strokeWidth="1" strokeOpacity="0.5" />
+        <line x1="1" y1="17" x2="19" y2="17" strokeWidth="1.2" />
+        <path d="M 1 17 L 1 11 A 3.5 3.5 0 0 1 8 11 L 8 17" strokeWidth="1.2" />
+        <path d="M 8 17 L 8 12 A 3 3 0 0 1 14 12 L 14 17" strokeWidth="1" strokeOpacity="0.7" />
+        <path d="M 14 17 L 14 13 A 2.5 2.5 0 0 1 19 13 L 19 17" strokeWidth="0.9" strokeOpacity="0.45" />
       </svg>
     ),
   },
   {
     key: 'timeline',
-    label: 'Target timeline',
+    label: 'Target quotation / production / installation timeline',
     icon: (
       <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5 text-accent flex-shrink-0" stroke="currentColor" aria-hidden="true">
         <rect x="2" y="4" width="16" height="14" rx="1" strokeWidth="1.3" />
@@ -413,7 +453,7 @@ const RFQ_ITEMS = [
   },
   {
     key: 'references',
-    label: 'Any available reference images',
+    label: 'Design references or approved concept images',
     icon: (
       <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5 text-accent flex-shrink-0" stroke="currentColor" aria-hidden="true">
         <rect x="2" y="3" width="16" height="14" rx="1" strokeWidth="1.3" />
@@ -837,7 +877,7 @@ export default function GrandEntrancePackagePage() {
               Information Required for Quotation
             </h2>
             <p className="text-gray-400 text-sm leading-relaxed mb-8">
-              To prepare an accurate quotation, the following information is requested where available. Not all items are required — share what you have.
+              To prepare an accurate quotation, the following project information is required.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10">
