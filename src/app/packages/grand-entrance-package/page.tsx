@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { CalloutBadge, LeaderLine } from '@/components/systems/diagram'
 import { DiagramEnlarger } from '@/components/systems/DiagramEnlarger'
 import { StickyMobileCTA } from './StickyMobileCTA'
+import { CollapsibleContent } from '@/components/packages/CollapsibleContent'
 import { SOCIAL_LINKS } from '@/lib/social-links'
 
 export const metadata: Metadata = {
@@ -659,7 +660,7 @@ export default function GrandEntrancePackagePage() {
       {/* ── 3. What's Included ──────────────────────────────────── */}
       <section className="py-14 sm:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10 sm:mb-14">
+          <div className="text-center mb-3 sm:mb-14">
             <div className="flex items-center justify-center gap-3 mb-4">
               <div className="w-6 h-px bg-accent flex-shrink-0" />
               <span className="text-accent text-[11px] font-semibold tracking-[0.2em] uppercase">Package Contents</span>
@@ -668,6 +669,7 @@ export default function GrandEntrancePackagePage() {
             <h2 className="text-2xl sm:text-3xl font-bold text-navy">What&apos;s Included</h2>
           </div>
 
+          <CollapsibleContent label="Show all 6 items">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
             {INCLUDED_ITEMS.map((item, i) => (
               <div key={item.title} className="bg-white border border-gray-100 rounded-sm p-6 hover:shadow-md transition-shadow group">
@@ -680,6 +682,7 @@ export default function GrandEntrancePackagePage() {
               </div>
             ))}
           </div>
+          </CollapsibleContent>
         </div>
       </section>
 
@@ -687,7 +690,7 @@ export default function GrandEntrancePackagePage() {
       <section className="py-14 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:grid lg:grid-cols-5 lg:gap-16 items-start">
-            <div className="lg:col-span-2 mb-8 lg:mb-0">
+            <div className="lg:col-span-2 mb-3 lg:mb-0">
               <div className="flex items-center gap-3 mb-5">
                 <div className="w-6 h-px bg-accent flex-shrink-0" />
                 <span className="text-accent text-[11px] font-semibold tracking-[0.2em] uppercase">Applications</span>
@@ -701,6 +704,7 @@ export default function GrandEntrancePackagePage() {
             </div>
 
             <div className="lg:col-span-3">
+              <CollapsibleContent label="Show project types">
               <ul className="space-y-1">
                 {BEST_FOR.map((item) => (
                   <li key={item} className="flex items-center gap-4 py-3.5 border-b border-gray-100 last:border-0">
@@ -713,6 +717,7 @@ export default function GrandEntrancePackagePage() {
                   </li>
                 ))}
               </ul>
+              </CollapsibleContent>
             </div>
           </div>
         </div>
@@ -721,18 +726,19 @@ export default function GrandEntrancePackagePage() {
       {/* ── 5. Design Style Options ─────────────────────────────── */}
       <section className="py-14 sm:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10 sm:mb-14">
+          <div className="text-center mb-3 sm:mb-14">
             <div className="flex items-center justify-center gap-3 mb-4">
               <div className="w-6 h-px bg-accent flex-shrink-0" />
               <span className="text-accent text-[11px] font-semibold tracking-[0.2em] uppercase">Design Directions</span>
               <div className="w-6 h-px bg-accent flex-shrink-0" />
             </div>
             <h2 className="text-2xl sm:text-3xl font-bold text-navy mb-3">Style Options</h2>
-            <p className="text-gray-400 text-sm max-w-xl mx-auto leading-relaxed">
+            <p className="text-gray-400 text-sm max-w-xl mx-auto leading-relaxed hidden sm:block">
               The following represent available design directions, not pre-approved or finalised styles. Each direction is refined according to the project&apos;s architectural intent.
             </p>
           </div>
 
+          <CollapsibleContent label="Show 6 style directions">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
             {STYLES.map((style) => (
               <div key={style.name} className="bg-white border border-gray-100 rounded-sm overflow-hidden hover:shadow-md transition-shadow">
@@ -748,6 +754,7 @@ export default function GrandEntrancePackagePage() {
               </div>
             ))}
           </div>
+          </CollapsibleContent>
         </div>
       </section>
 
@@ -797,7 +804,7 @@ export default function GrandEntrancePackagePage() {
       {/* ── 7. Finish Options ───────────────────────────────────── */}
       <section className="py-14 sm:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10 sm:mb-12">
+          <div className="text-center mb-3 sm:mb-12">
             <div className="flex items-center justify-center gap-3 mb-4">
               <div className="w-6 h-px bg-accent flex-shrink-0" />
               <span className="text-accent text-[11px] font-semibold tracking-[0.2em] uppercase">Surface Quality</span>
@@ -806,6 +813,7 @@ export default function GrandEntrancePackagePage() {
             <h2 className="text-2xl sm:text-3xl font-bold text-navy mb-3">Finish Options</h2>
           </div>
 
+          <CollapsibleContent label="Show finish options">
           <div className="max-w-5xl mx-auto">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {FINISHES.map((f) => (
@@ -823,9 +831,10 @@ export default function GrandEntrancePackagePage() {
             </div>
 
             <p className="mt-7 text-center text-gray-400 text-xs leading-relaxed max-w-lg mx-auto">
-              Finish selection is reviewed based on project requirements, approved samples, and intended architectural expression.
+              Final finishes are subject to sample approval and project specifications.
             </p>
           </div>
+          </CollapsibleContent>
         </div>
       </section>
 
@@ -840,11 +849,12 @@ export default function GrandEntrancePackagePage() {
             <h2 className="text-2xl sm:text-3xl font-bold text-navy mb-3">
               Information Required for Quotation
             </h2>
-            <p className="text-gray-400 text-sm leading-relaxed mb-8">
+            <p className="text-gray-400 text-sm leading-relaxed mb-5">
               To prepare an accurate quotation, please share the following. Where drawings are not yet finalised, approximate information is sufficient.
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10">
+            <CollapsibleContent label="Show requirements" defaultOpen={true}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10 mt-5 sm:mt-0">
               {RFQ_ITEMS.map((item) => (
                 <div key={item.key} className="flex items-start gap-3.5 p-4 bg-gray-50 border border-gray-100 rounded-sm">
                   <div className="mt-0.5 flex-shrink-0 text-accent">{item.icon}</div>
@@ -855,6 +865,7 @@ export default function GrandEntrancePackagePage() {
                 </div>
               ))}
             </div>
+            </CollapsibleContent>
 
             <div className="flex flex-col sm:flex-row gap-3">
               <Link
