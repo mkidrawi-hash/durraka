@@ -260,6 +260,7 @@ export default function RFQForm() {
         </div>
 
         {/* Project Information */}
+        <div className="border border-gray-100 sm:border-0 rounded-sm p-5 sm:p-0">
         <fieldset>
           <legend className="text-navy font-bold text-xl mb-6 pb-3 border-b border-gray-100 w-full">
             Project Information
@@ -352,8 +353,10 @@ export default function RFQForm() {
             </div>
           </div>
         </fieldset>
+        </div>
 
         {/* Your Details */}
+        <div className="border border-gray-100 sm:border-0 rounded-sm p-5 sm:p-0">
         <fieldset>
           <legend className="text-navy font-bold text-xl mb-6 pb-3 border-b border-gray-100 w-full">
             Your Details
@@ -447,22 +450,60 @@ export default function RFQForm() {
             </div>
           </div>
         </fieldset>
+        </div>
 
         {/* Project Attachments */}
+        <div className="border border-gray-100 sm:border-0 rounded-sm p-5 sm:p-0">
         <fieldset>
           <legend className="text-navy font-bold text-xl mb-2 pb-3 border-b border-gray-100 w-full">
             Project Attachments
           </legend>
-          <p className="text-gray-400 text-xs mb-6">
-            Optional. Attach relevant documents to help our team prepare. Files are not uploaded —
-            only file names are included in the request notification.
+          <p className="text-gray-400 text-xs mb-4 leading-relaxed">
+            Optional attachments. Upload only what is available. If drawings are not ready, you can still submit the request.
+            Files are not uploaded — only file names are included in the request notification.
           </p>
+
+          {/* Drawings not available checkbox — shown first so users know attachments are optional */}
+          <div className="mb-6">
+            <label className="flex items-start gap-3 cursor-pointer">
+              <input
+                type="checkbox"
+                name="drawingsNotAvailable"
+                checked={formData.drawingsNotAvailable}
+                onChange={handleChange}
+                className="w-4 h-4 mt-0.5 accent-[#D71920] flex-shrink-0"
+              />
+              <span className="text-sm text-navy">Drawings are not available yet</span>
+            </label>
+
+            {formData.drawingsNotAvailable && (
+              <div className="mt-3 ms-7 p-4 bg-navy/5 border border-navy/10 rounded-sm">
+                <label className="flex items-start gap-3 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    name="needDrawingSupport"
+                    checked={formData.needDrawingSupport}
+                    onChange={handleChange}
+                    className="w-4 h-4 mt-0.5 accent-[#D71920] flex-shrink-0"
+                  />
+                  <span className="text-sm text-navy leading-relaxed">
+                    I need Durraka to support with preliminary drawings / shop drawings for review
+                  </span>
+                </label>
+              </div>
+            )}
+          </div>
 
           {/* File upload slots */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
             {fileSlots.map((slot, idx) => (
               <div key={slot.label} className="border border-dashed border-gray-200 rounded-sm p-4">
-                <p className="text-xs font-semibold text-navy mb-3">{slot.label}</p>
+                <p className="text-xs font-semibold text-navy mb-1">{slot.label}</p>
+                {idx === 0 && (
+                  <p className="text-[11px] text-gray-400 mb-2.5 leading-relaxed">
+                    Upload BOQ if available. We can also review drawings to estimate quantities.
+                  </p>
+                )}
 
                 {slot.file ? (
                   <div className="flex items-center gap-2 bg-navy/5 rounded-sm px-3 py-2 mb-2">
@@ -537,44 +578,16 @@ export default function RFQForm() {
             />
           </div>
 
-          {/* Drawings not available checkbox */}
-          <div>
-            <label className="flex items-start gap-3 cursor-pointer">
-              <input
-                type="checkbox"
-                name="drawingsNotAvailable"
-                checked={formData.drawingsNotAvailable}
-                onChange={handleChange}
-                className="w-4 h-4 mt-0.5 accent-[#D71920] flex-shrink-0"
-              />
-              <span className="text-sm text-navy">Drawings are not available yet</span>
-            </label>
-
-            {formData.drawingsNotAvailable && (
-              <div className="mt-3 ml-7 p-4 bg-navy/5 border border-navy/10 rounded-sm">
-                <label className="flex items-start gap-3 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    name="needDrawingSupport"
-                    checked={formData.needDrawingSupport}
-                    onChange={handleChange}
-                    className="w-4 h-4 mt-0.5 accent-[#D71920] flex-shrink-0"
-                  />
-                  <span className="text-sm text-navy leading-relaxed">
-                    I need Durraka to support with preliminary drawings / shop drawings for review
-                  </span>
-                </label>
-              </div>
-            )}
-          </div>
         </fieldset>
+        </div>
 
         {/* Technical Notes */}
-        <div>
-          <label className="block text-sm font-semibold text-navy mb-2">
+        <div className="border border-gray-100 sm:border-0 rounded-sm p-5 sm:p-0">
+          <label htmlFor="rfq-notes" className="block text-navy font-bold text-xl mb-6 pb-3 border-b border-gray-100 w-full">
             Project Notes / Requirements
           </label>
           <textarea
+            id="rfq-notes"
             name="notes"
             rows={5}
             placeholder="Describe your project, any special requirements, design references, or questions..."
