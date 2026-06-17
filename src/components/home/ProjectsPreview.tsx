@@ -177,7 +177,7 @@ function ProjectCard({ project }: { project: Project }) {
       <div className="relative overflow-hidden aspect-[5/4] sm:aspect-[4/3] bg-[#071B3B]">
         {/* Architectural illustration — always rendered as background / fallback */}
         <Illustration uid={project.id} />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#071B3B]/70 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#071B3B]/45 via-transparent to-transparent" />
         {/* Real project image — covers illustration when present */}
         {!imgError && (
           // eslint-disable-next-line @next/next/no-img-element
@@ -204,7 +204,10 @@ function ProjectCard({ project }: { project: Project }) {
         <p className="text-gray-400 text-[13px] sm:text-xs leading-relaxed">
           {project.description}
         </p>
-        <div className="mt-3 pt-3 border-t border-gray-100 flex items-center justify-end">
+        <div className="mt-3 pt-3 border-t border-gray-100 flex items-center justify-between">
+          <span className="text-accent/50 group-hover:text-accent text-[11px] font-semibold tracking-wider uppercase transition-colors">
+            View Project
+          </span>
           <svg
             className="w-4 h-4 text-accent/30 group-hover:text-accent group-hover:translate-x-0.5 transition-all duration-200"
             fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -234,7 +237,7 @@ export default function ProjectsPreview() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 sm:gap-7">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
           {FEATURED_PROJECTS.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
