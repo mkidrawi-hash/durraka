@@ -99,6 +99,7 @@ function FacadeDiagram() {
 export function FacadeCladdingRichLayout({ content, heroImage = '/images/projects/grand-entrance-gfrc.png' }: { content: FacadeContent; heroImage?: string }) {
   const [activeTab, setActiveTab] = useState(0)
   const [openIdx, setOpenIdx] = useState<number | null>(0)
+  const [showAllAccordion, setShowAllAccordion] = useState(false)
   const { dir, hero, featureIcons, tabs, callouts, accordion, cta, diagramLabel, diagramNote, technicalNote } = content
 
   return (
@@ -151,7 +152,7 @@ export function FacadeCladdingRichLayout({ content, heroImage = '/images/project
           <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
             {/* Diagram */}
             <div className="lg:col-span-3">
-              <div className="bg-white rounded-sm border border-[#071B3B]/[0.08] p-4 sm:p-6">
+              <div className="bg-white rounded-sm border border-[#071B3B]/[0.08] p-2 sm:p-5">
                 <p className="text-[#071B3B]/40 text-[10px] font-mono tracking-widest uppercase mb-4">{diagramLabel}</p>
                 <FacadeDiagram />
                 <p className="text-[#071B3B]/35 text-[10px] mt-4 leading-relaxed">{diagramNote}</p>
@@ -162,12 +163,12 @@ export function FacadeCladdingRichLayout({ content, heroImage = '/images/project
             <div className="lg:col-span-2">
               {/* Tab strip */}
               <div className="overflow-x-auto -mx-1">
-                <div className="flex min-w-max px-1 border-b border-[#071B3B]/[0.08] mb-6">
+                <div className="flex gap-1 min-w-max px-1 border-b border-[#071B3B]/[0.08] mb-6">
                   {tabs.labels.map((label, i) => (
                     <button
                       key={i}
                       onClick={() => setActiveTab(i)}
-                      className={`whitespace-nowrap text-xs font-semibold tracking-wide px-4 py-2.5 border-b-2 transition-colors ${
+                      className={`whitespace-nowrap text-xs font-semibold tracking-wide px-3 py-3 border-b-2 transition-colors ${
                         activeTab === i
                           ? 'border-[#D71920] text-[#D71920]'
                           : 'border-transparent text-[#071B3B]/50 hover:text-[#071B3B]'
@@ -246,7 +247,7 @@ export function FacadeCladdingRichLayout({ content, heroImage = '/images/project
             <span className="text-[#D71920] text-xs font-semibold tracking-widest uppercase">System Information</span>
           </div>
           <div className="divide-y divide-[#071B3B]/[0.08]">
-            {accordion.map((item, i) => (
+            {(showAllAccordion ? accordion : accordion.slice(0, 3)).map((item, i) => (
               <div key={i} className="py-5">
                 <button
                   onClick={() => setOpenIdx(openIdx === i ? null : i)}
@@ -267,6 +268,11 @@ export function FacadeCladdingRichLayout({ content, heroImage = '/images/project
                 )}
               </div>
             ))}
+            {accordion.length > 3 && !showAllAccordion && (
+              <button onClick={() => setShowAllAccordion(true)} className="mt-3 w-full flex items-center justify-center gap-2 py-3 border border-[#071B3B]/15 rounded-sm text-[#071B3B]/60 text-sm font-medium hover:text-[#071B3B] hover:border-[#071B3B]/30 transition-colors">
+                Show more <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4"><path fillRule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" /></svg>
+              </button>
+            )}
           </div>
         </div>
       </div>

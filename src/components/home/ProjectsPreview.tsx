@@ -172,9 +172,9 @@ function ProjectCard({ project }: { project: Project }) {
   const { Illustration } = project
 
   return (
-    <div className="group bg-white rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-200/60">
+    <div className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-200/60">
       {/* Image area — taller on mobile, 4:3 on sm+ */}
-      <div className="relative overflow-hidden aspect-[5/4] sm:aspect-[4/3] bg-[#071B3B]">
+      <div className="relative overflow-hidden rounded-t-2xl aspect-[5/4] sm:aspect-[4/3] bg-[#071B3B]">
         {/* Architectural illustration — always rendered as background / fallback */}
         <Illustration uid={project.id} />
         <div className="absolute inset-0 bg-gradient-to-t from-[#071B3B]/45 via-transparent to-transparent" />
@@ -186,6 +186,7 @@ function ProjectCard({ project }: { project: Project }) {
             alt={project.title}
             className="absolute inset-0 w-full h-full object-cover"
             style={{ objectPosition: project.objectPosition }}
+            loading="lazy"
             onError={() => setImgError(true)}
           />
         )}

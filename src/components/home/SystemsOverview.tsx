@@ -120,7 +120,7 @@ export default function SystemsOverview() {
     <section className="bg-white pt-[72px] pb-9 sm:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <div className="text-center mb-10 sm:mb-16">
+        <div className="text-center mb-8 sm:mb-14">
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="w-8 h-px bg-accent flex-shrink-0" />
             <span className="text-accent text-xs sm:text-sm font-semibold tracking-wider sm:tracking-widest uppercase whitespace-nowrap">What We Manufacture</span>
@@ -137,9 +137,9 @@ export default function SystemsOverview() {
           {SYSTEMS.map((system) => (
             <div
               key={system.id}
-              className="group p-7 sm:p-8 border border-gray-200/80 rounded-sm hover:border-accent/60 hover:shadow-md bg-white transition-all duration-300"
+              className="group p-5 sm:p-8 border border-gray-200/80 rounded-sm hover:border-accent/60 hover:shadow-md bg-white transition-all duration-300"
             >
-              <div className="w-16 h-16 sm:w-14 sm:h-14 bg-navy/5 rounded-sm flex items-center justify-center text-navy mb-4 group-hover:bg-accent group-hover:text-white transition-all duration-300 flex-shrink-0">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 bg-navy/5 rounded-sm flex items-center justify-center text-navy mb-4 group-hover:bg-accent group-hover:text-white transition-all duration-300 flex-shrink-0">
                 {SYSTEM_ICONS[system.id]}
               </div>
               <h3 className="text-navy font-bold text-xl sm:text-lg mb-2.5 group-hover:text-accent transition-colors leading-snug">
