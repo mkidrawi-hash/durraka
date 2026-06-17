@@ -324,22 +324,9 @@ const CALLOUTS = [
 
 const RFQ_ITEMS = [
   {
-    key: 'boq',
-    label: 'BOQ / quantity schedule',
-    icon: (
-      <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5 text-accent flex-shrink-0" stroke="currentColor" aria-hidden="true">
-        <rect x="2" y="2" width="16" height="16" rx="1" strokeWidth="1.3" />
-        <line x1="2" y1="6.5" x2="18" y2="6.5" strokeWidth="1.1" />
-        <line x1="7" y1="2" x2="7" y2="18" strokeWidth="0.9" strokeOpacity="0.5" />
-        <line x1="13" y1="2" x2="13" y2="18" strokeWidth="0.9" strokeOpacity="0.5" />
-        <line x1="2" y1="10.5" x2="18" y2="10.5" strokeWidth="0.7" strokeOpacity="0.35" />
-        <line x1="2" y1="14" x2="18" y2="14" strokeWidth="0.7" strokeOpacity="0.35" />
-      </svg>
-    ),
-  },
-  {
     key: 'arch-drawings',
     label: 'Architectural drawings',
+    desc: 'Plans, elevations, sections, entrance details, and any relevant façade drawings.',
     icon: (
       <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5 text-accent flex-shrink-0" stroke="currentColor" aria-hidden="true">
         <rect x="2" y="2" width="16" height="16" rx="1" strokeWidth="1.3" />
@@ -351,34 +338,9 @@ const RFQ_ITEMS = [
     ),
   },
   {
-    key: 'facade-elevations',
-    label: 'Facade elevations showing the entrance area',
-    icon: (
-      <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5 text-accent flex-shrink-0" stroke="currentColor" aria-hidden="true">
-        <line x1="1" y1="17" x2="19" y2="17" strokeWidth="1.3" />
-        <rect x="2" y="9" width="4" height="8" strokeWidth="1.1" />
-        <rect x="14" y="9" width="4" height="8" strokeWidth="1.1" />
-        <path d="M 6 17 L 6 11 A 4 4 0 0 1 14 11 L 14 17" strokeWidth="1.2" />
-        <line x1="1" y1="5" x2="19" y2="5" strokeWidth="0.8" strokeOpacity="0.4" strokeDasharray="2 2" />
-        <line x1="10" y1="3" x2="10" y2="6.5" strokeWidth="0.9" strokeOpacity="0.5" />
-      </svg>
-    ),
-  },
-  {
-    key: 'entrance-sections',
-    label: 'Entrance sections and typical details',
-    icon: (
-      <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5 text-accent flex-shrink-0" stroke="currentColor" aria-hidden="true">
-        <line x1="1" y1="17" x2="19" y2="17" strokeWidth="1.3" />
-        <line x1="2" y1="3" x2="2" y2="17" strokeWidth="1.3" />
-        <path d="M 2 11 L 5 11 L 5 8 L 9 8 L 9 5 L 13 5 L 13 8 L 18 8" strokeWidth="1.1" />
-        <line x1="10" y1="2" x2="10" y2="18" strokeWidth="0.7" strokeOpacity="0.35" strokeDasharray="3 2" />
-      </svg>
-    ),
-  },
-  {
     key: 'structural',
-    label: 'Structural drawings or support information',
+    label: 'Structural drawings',
+    desc: 'Main structural drawings or available details related to the entrance opening and support conditions.',
     icon: (
       <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5 text-accent flex-shrink-0" stroke="currentColor" aria-hidden="true">
         <line x1="3" y1="4" x2="17" y2="4" strokeWidth="1.5" />
@@ -392,54 +354,52 @@ const RFQ_ITEMS = [
     ),
   },
   {
-    key: 'location',
-    label: 'Project location',
+    key: 'boq',
+    label: 'BOQ / quantity schedule, if available',
+    desc: 'If not available, our team can estimate approximate quantities from the provided drawings.',
     icon: (
       <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5 text-accent flex-shrink-0" stroke="currentColor" aria-hidden="true">
-        <path d="M 10 2 A 4 4 0 0 1 14 6 C 14 10 10 17 10 17 C 10 17 6 10 6 6 A 4 4 0 0 1 10 2 Z" strokeWidth="1.3" />
-        <circle cx="10" cy="6" r="1.5" strokeWidth="1" />
+        <rect x="2" y="2" width="16" height="16" rx="1" strokeWidth="1.3" />
+        <line x1="2" y1="6.5" x2="18" y2="6.5" strokeWidth="1.1" />
+        <line x1="7" y1="2" x2="7" y2="18" strokeWidth="0.9" strokeOpacity="0.5" />
+        <line x1="13" y1="2" x2="13" y2="18" strokeWidth="0.9" strokeOpacity="0.5" />
+        <line x1="2" y1="10.5" x2="18" y2="10.5" strokeWidth="0.7" strokeOpacity="0.35" />
+        <line x1="2" y1="14" x2="18" y2="14" strokeWidth="0.7" strokeOpacity="0.35" />
       </svg>
     ),
   },
   {
-    key: 'style',
-    label: 'Preferred architectural style',
+    key: 'dimensions',
+    label: 'Entrance dimensions',
+    desc: 'Approximate entrance width, height, and overall opening dimensions if drawings are not yet finalized.',
     icon: (
       <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5 text-accent flex-shrink-0" stroke="currentColor" aria-hidden="true">
-        <path d="M 4 15 L 4 9 A 6 6 0 0 1 16 9 L 16 15" strokeWidth="1.3" />
-        <line x1="2" y1="15" x2="18" y2="15" strokeWidth="1.2" />
-        <rect x="1" y="3" width="18" height="3" rx="0.5" strokeWidth="1" strokeOpacity="0.5" />
+        <line x1="2" y1="4" x2="2" y2="16" strokeWidth="1.3" />
+        <line x1="18" y1="4" x2="18" y2="16" strokeWidth="1.3" />
+        <line x1="2" y1="10" x2="18" y2="10" strokeWidth="1" strokeDasharray="3 2" strokeOpacity="0.6" />
+        <line x1="2" y1="4" x2="6" y2="4" strokeWidth="1.2" />
+        <line x1="14" y1="4" x2="18" y2="4" strokeWidth="1.2" />
+        <line x1="2" y1="16" x2="6" y2="16" strokeWidth="1.2" />
+        <line x1="14" y1="16" x2="18" y2="16" strokeWidth="1.2" />
       </svg>
     ),
   },
   {
-    key: 'finish',
-    label: 'Required finish or colour direction',
+    key: 'design-intent',
+    label: 'Design intent or reference style',
+    desc: 'Any reference images, sketches, mood boards, or preferred architectural style.',
     icon: (
       <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5 text-accent flex-shrink-0" stroke="currentColor" aria-hidden="true">
-        <rect x="2" y="6" width="16" height="10" rx="1" strokeWidth="1.3" />
-        <line x1="8" y1="6" x2="8" y2="16" strokeWidth="0.9" strokeOpacity="0.4" />
-        <line x1="14" y1="6" x2="14" y2="16" strokeWidth="0.9" strokeOpacity="0.4" />
-        <line x1="2" y1="11" x2="18" y2="11" strokeWidth="0.9" strokeOpacity="0.3" strokeDasharray="3 2" />
-        <line x1="10" y1="2" x2="10" y2="5" strokeWidth="1.1" />
+        <rect x="2" y="3" width="16" height="14" rx="1" strokeWidth="1.3" />
+        <path d="M 2 13 L 6 9 L 10 13 L 14 9 L 18 13" strokeWidth="1" strokeOpacity="0.5" />
+        <circle cx="6.5" cy="7" r="1.5" strokeWidth="1" />
       </svg>
     ),
   },
   {
-    key: 'scope-quantity',
-    label: 'Scope quantity and repeated entrance types',
-    icon: (
-      <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5 text-accent flex-shrink-0" stroke="currentColor" aria-hidden="true">
-        <line x1="1" y1="17" x2="19" y2="17" strokeWidth="1.2" />
-        <path d="M 1 17 L 1 11 A 3.5 3.5 0 0 1 8 11 L 8 17" strokeWidth="1.2" />
-        <path d="M 8 17 L 8 12 A 3 3 0 0 1 14 12 L 14 17" strokeWidth="1" strokeOpacity="0.7" />
-        <path d="M 14 17 L 14 13 A 2.5 2.5 0 0 1 19 13 L 19 17" strokeWidth="0.9" strokeOpacity="0.45" />
-      </svg>
-    ),
-  },
-  {
-    key: 'timeline',
-    label: 'Target quotation / production / installation timeline',
+    key: 'location-timeline',
+    label: 'Project location and timeline',
+    desc: 'City, site location, expected tender or construction timeline.',
     icon: (
       <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5 text-accent flex-shrink-0" stroke="currentColor" aria-hidden="true">
         <rect x="2" y="4" width="16" height="14" rx="1" strokeWidth="1.3" />
@@ -452,13 +412,17 @@ const RFQ_ITEMS = [
     ),
   },
   {
-    key: 'references',
-    label: 'Design references or approved concept images',
+    key: 'scope',
+    label: 'Scope required',
+    desc: 'Manufacturing only, manufacturing and installation, or design development support.',
     icon: (
       <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5 text-accent flex-shrink-0" stroke="currentColor" aria-hidden="true">
-        <rect x="2" y="3" width="16" height="14" rx="1" strokeWidth="1.3" />
-        <path d="M 2 13 L 6 9 L 10 13 L 14 9 L 18 13" strokeWidth="1" strokeOpacity="0.5" />
-        <circle cx="6.5" cy="7" r="1.5" strokeWidth="1" />
+        <rect x="2" y="3.5" width="4" height="4" rx="0.8" strokeWidth="1.1" />
+        <line x1="8" y1="5.5" x2="18" y2="5.5" strokeWidth="1" />
+        <rect x="2" y="9" width="4" height="4" rx="0.8" strokeWidth="1.1" fill="currentColor" fillOpacity="0.18" />
+        <line x1="8" y1="11" x2="18" y2="11" strokeWidth="1" />
+        <rect x="2" y="14.5" width="4" height="4" rx="0.8" strokeWidth="1.1" />
+        <line x1="8" y1="16.5" x2="18" y2="16.5" strokeWidth="1" strokeOpacity="0.45" />
       </svg>
     ),
   },
@@ -473,7 +437,7 @@ function Diagram() {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className="w-full max-w-2xl mx-auto"
-      aria-label="Simplified grand entrance composition diagram"
+      aria-label="Simplified diagram of typical grand entrance components"
     >
       <rect width="400" height="265" fill="#F8F9FA" />
 
@@ -618,7 +582,7 @@ export default function GrandEntrancePackagePage() {
                 href="/request-quotation"
                 className="min-h-[54px] flex items-center justify-center px-9 py-3.5 bg-accent text-white font-semibold rounded-sm hover:bg-accent-dark transition-colors text-sm tracking-wide"
               >
-                Request a Quotation
+                Request Grand Entrance Quotation
               </Link>
               <Link
                 href={SOCIAL_LINKS.whatsapp.href}
@@ -629,7 +593,7 @@ export default function GrandEntrancePackagePage() {
                 <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 flex-shrink-0 text-[#25D366]" aria-hidden="true">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                 </svg>
-                Speak to a Sales Engineer
+                Share Drawings for Review
               </Link>
             </div>
 
@@ -787,25 +751,25 @@ export default function GrandEntrancePackagePage() {
         </div>
       </section>
 
-      {/* ── 6. Composition Diagram ──────────────────────────────── */}
+      {/* ── 6. Component Overview ───────────────────────────────── */}
       <section className="py-14 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10 sm:mb-12">
             <div className="flex items-center justify-center gap-3 mb-4">
               <div className="w-6 h-px bg-accent flex-shrink-0" />
-              <span className="text-accent text-[11px] font-semibold tracking-[0.2em] uppercase">System Overview</span>
+              <span className="text-accent text-[11px] font-semibold tracking-[0.2em] uppercase">Package Components</span>
               <div className="w-6 h-px bg-accent flex-shrink-0" />
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-navy mb-3">Composition Diagram</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-navy mb-3">Typical Grand Entrance Components</h2>
             <p className="text-gray-400 text-sm max-w-lg mx-auto leading-relaxed">
-              A simplified front-elevation overview of the Grand Entrance Package composition and its key architectural zones.
+              A simplified front-elevation overview of the key GFRC / GRC architectural elements included in the Grand Entrance Package.
             </p>
           </div>
 
           <div className="max-w-3xl mx-auto">
             <div className="bg-white border border-navy/10 p-2 sm:p-5 rounded-sm">
               <p className="text-[#071B3B]/30 text-[9px] sm:text-[10px] font-mono tracking-widest uppercase mb-3">
-                Grand Entrance Package — Composition Overview
+                Grand Entrance Package — Component Overview
               </p>
               <DiagramEnlarger title="Grand Entrance Package">
                 <Diagram />
@@ -877,27 +841,43 @@ export default function GrandEntrancePackagePage() {
               Information Required for Quotation
             </h2>
             <p className="text-gray-400 text-sm leading-relaxed mb-8">
-              To prepare an accurate quotation, the following project information is required.
+              To prepare an accurate quotation, please share the following. Where drawings are not yet finalised, approximate information is sufficient.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10">
               {RFQ_ITEMS.map((item) => (
                 <div key={item.key} className="flex items-start gap-3.5 p-4 bg-gray-50 border border-gray-100 rounded-sm">
-                  <div className="mt-0.5 text-accent">{item.icon}</div>
-                  <span className="text-navy text-sm leading-relaxed">{item.label}</span>
+                  <div className="mt-0.5 flex-shrink-0 text-accent">{item.icon}</div>
+                  <div className="min-w-0">
+                    <p className="text-navy text-sm font-semibold leading-snug mb-1">{item.label}</p>
+                    <p className="text-gray-400 text-xs leading-relaxed">{item.desc}</p>
+                  </div>
                 </div>
               ))}
             </div>
 
-            <Link
-              href="/request-quotation"
-              className="w-full sm:w-auto min-h-[54px] inline-flex items-center justify-center gap-2 px-10 py-3.5 bg-accent text-white font-semibold rounded-sm hover:bg-accent-dark transition-colors text-sm"
-            >
-              Submit Your Entrance Package RFQ
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Link
+                href="/request-quotation"
+                className="min-h-[54px] inline-flex items-center justify-center gap-2 px-9 py-3.5 bg-accent text-white font-semibold rounded-sm hover:bg-accent-dark transition-colors text-sm"
+              >
+                Request Grand Entrance Quotation
+                <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+              <Link
+                href={SOCIAL_LINKS.whatsapp.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="min-h-[54px] inline-flex items-center justify-center gap-2.5 px-9 py-3.5 border border-navy/20 text-navy font-semibold rounded-sm hover:bg-navy/5 transition-colors text-sm"
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 flex-shrink-0 text-[#25D366]" aria-hidden="true">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                </svg>
+                Share Drawings for Review
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -927,7 +907,7 @@ export default function GrandEntrancePackagePage() {
               href="/request-quotation"
               className="min-h-[56px] flex items-center justify-center px-10 py-3.5 bg-accent text-white font-semibold rounded-sm hover:bg-accent-dark transition-colors text-sm sm:text-base"
             >
-              Request Consultation
+              Request Grand Entrance Quotation
             </Link>
             <Link
               href={SOCIAL_LINKS.whatsapp.href}
@@ -938,7 +918,7 @@ export default function GrandEntrancePackagePage() {
               <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 text-[#25D366]" aria-hidden="true">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
               </svg>
-              Talk to a Sales Engineer
+              Share Drawings for Review
             </Link>
           </div>
         </div>
