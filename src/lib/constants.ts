@@ -1,8 +1,8 @@
 export const NAV_LINKS = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
-  { label: 'Systems', href: '/systems' },
-  { label: 'Projects', href: '/projects' },
+  { label: 'Capabilities', href: '/systems' },
+  { label: 'Packages', href: '/projects' },
   { label: 'Catalog', href: '/catalog' },
   { label: 'Contact', href: '/contact' },
 ]
@@ -37,19 +37,19 @@ export const METRICS = [
 export const SYSTEMS = [
   {
     id: 'facade-cladding',
-    title: 'GFRC/GRC Façade Cladding',
+    title: 'GFRC/GRC Cladding',
     description:
       'High-performance glass fibre reinforced concrete panels engineered for modern and heritage façades.',
   },
   {
     id: 'mashrabiya',
-    title: 'Mashrabiya Systems',
+    title: 'Mashrabiya & Facade Screens',
     description:
       'Intricate perforated screens combining traditional Islamic geometry with contemporary manufacturing precision.',
   },
   {
     id: 'domes',
-    title: 'Domes & Vaults',
+    title: 'Domes & Crowns',
     description:
       'Architecturally significant domes and vaulted elements crafted with structural integrity and aesthetic refinement.',
   },
@@ -61,13 +61,13 @@ export const SYSTEMS = [
   },
   {
     id: 'columns',
-    title: 'Columns & Pillars',
+    title: 'Columns & Pilasters',
     description:
-      'Classical and contemporary columns in GFRC, engineered for beauty and structural performance.',
+      'Classical and contemporary columns and pilasters in GFRC, engineered for beauty and structural performance.',
   },
   {
     id: 'custom',
-    title: 'Custom Decorative Elements',
+    title: 'Decorative & Custom Elements',
     description:
       'Bespoke architectural ornamentation designed and manufactured to project-specific requirements.',
   },

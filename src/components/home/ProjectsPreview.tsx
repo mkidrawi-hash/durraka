@@ -105,6 +105,7 @@ type Project = {
   title: string
   tag: string
   description: string
+  systems: string[]
   image: string
   objectPosition: string
   Illustration: IllustrationComponent
@@ -114,9 +115,10 @@ type Project = {
 const FEATURED_PROJECTS: Project[] = [
   {
     id: 'p1',
-    title: 'Grand Entrance Package',
-    tag: 'Signature GFRC Entrance',
-    description: 'Monumental entrances crafted in GFRC with timeless architectural impact.',
+    title: 'Grand Entrance & Gate Scope',
+    tag: 'Integrated Entrance Scope',
+    description: 'Complete GFRC/GRC package for landmark entrance gates and arrival facades — columns, arches, cornices, decorative frames, and facade cladding.',
+    systems: ['Columns', 'Cornices', 'Decorative', 'Cladding'],
     image: '/images/projects/grand-entrance-gfrc.png',
     objectPosition: 'center',
     Illustration: FacadeIllustration,
@@ -124,45 +126,50 @@ const FEATURED_PROJECTS: Project[] = [
   },
   {
     id: 'p2',
-    title: 'Column & Portico Package',
-    tag: 'Classical Architectural Elements',
-    description: 'Elegant columns and porticos engineered for strength and refined detail.',
+    title: 'Villa & Palace Architectural Scope',
+    tag: 'Palace & Villa Scope',
+    description: 'Comprehensive GFRC/GRC package for luxury palaces and villas — classical columns, ornamental cornices, domes, and full facade cladding.',
+    systems: ['Columns', 'Cornices', 'Domes', 'Cladding', 'Decorative'],
     image: '/images/projects/column-portico-gfrc.png',
     objectPosition: 'center',
     Illustration: DomesIllustration,
   },
   {
     id: 'p3',
-    title: 'Dome & Vault Package',
-    tag: 'Custom Dome System',
-    description: 'Lightweight GFRC domes and vaults with exceptional precision and durability.',
+    title: 'Heritage & Regional Architecture Scope',
+    tag: 'Heritage Architecture Scope',
+    description: 'Full scope for heritage-inspired and regionally influenced architecture — decorative domes, mashrabiya screens, cornices, and ornamental elements.',
+    systems: ['Domes', 'Mashrabiya', 'Cornices', 'Decorative'],
     image: '/images/projects/dome-vault-gfrc.png',
     objectPosition: 'center top',
     Illustration: DomesIllustration,
   },
   {
     id: 'p4',
-    title: 'Ornamental Façade Package',
-    tag: 'Decorative GFRC Façade',
-    description: 'Intricate façades that elevate buildings with ornamental excellence.',
+    title: 'Complete GFRC/GRC Facade Scope',
+    tag: 'Full Facade Scope',
+    description: 'Integrated large-scale facade package for commercial and institutional buildings — cladding panels, columns, cornices, screens, and custom details.',
+    systems: ['Cladding', 'Columns', 'Cornices', 'Mashrabiya', 'Decorative'],
     image: '/images/projects/architectural-cladding-gfrc.png',
     objectPosition: 'center',
     Illustration: FacadeIllustration,
   },
   {
     id: 'p5',
-    title: 'Mashrabiya Screen Package',
-    tag: 'Patterned Screen System',
-    description: 'Bespoke screens that balance privacy, light, and architectural identity.',
+    title: 'Custom Architectural Components Scope',
+    tag: 'Custom Components Scope',
+    description: 'Custom-engineered GFRC/GRC components for projects requiring bespoke ornamental elements — patterned screens, decorative panels, and profile details.',
+    systems: ['Mashrabiya', 'Decorative', 'Cornices'],
     image: '/images/projects/mashrabiya-screen-gfrc.png',
     objectPosition: 'center',
     Illustration: MashrabiyaIllustration,
   },
   {
     id: 'p6',
-    title: 'Architectural Cladding Package',
-    tag: 'Exterior Cladding & Profiles',
-    description: 'Premium GFRC cladding systems for high-performance exterior finishes.',
+    title: 'Hospitality & Landmark Facade Scope',
+    tag: 'Hospitality Facade Scope',
+    description: 'Integrated facade package for luxury hotels and landmark developments — facade cladding, architectural columns, cornices, and ornamental details.',
+    systems: ['Cladding', 'Columns', 'Cornices', 'Decorative'],
     image: '/images/projects/ornamental-facade-gfrc.png',
     objectPosition: 'center',
     Illustration: FacadeIllustration,
@@ -204,20 +211,33 @@ function ProjectCard({ project }: { project: Project }) {
         <h3 className="text-navy font-bold text-[17px] sm:text-[15px] leading-snug mb-2 group-hover:text-accent transition-colors">
           {project.title}
         </h3>
-        <p className="text-gray-400 text-[13px] sm:text-xs leading-relaxed">
+        <p className="text-gray-400 text-[13px] sm:text-xs leading-relaxed mb-3">
           {project.description}
         </p>
-        <div className="mt-3 pt-3 border-t border-gray-100 flex items-center justify-between">
-          <span className="text-accent/50 group-hover:text-accent text-[11px] font-semibold tracking-wider uppercase transition-colors">
-            View Project
-          </span>
-          <svg
-            className="w-4 h-4 text-accent/30 group-hover:text-accent group-hover:translate-x-0.5 transition-all duration-200"
-            fill="none" stroke="currentColor" viewBox="0 0 24 24"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+        {/* System capability chips */}
+        <div className="flex flex-wrap gap-1.5 mb-3">
+          {project.systems.map((sys) => (
+            <span
+              key={sys}
+              className="text-[9px] font-semibold tracking-widest uppercase px-2 py-0.5 bg-navy/[0.05] border border-navy/[0.08] text-navy/50 rounded-sm"
+            >
+              {sys}
+            </span>
+          ))}
         </div>
+        {project.href && (
+          <div className="pt-3 border-t border-gray-100 flex items-center justify-between">
+            <span className="text-accent/50 group-hover:text-accent text-[11px] font-semibold tracking-wider uppercase transition-colors">
+              View Package
+            </span>
+            <svg
+              className="w-4 h-4 text-accent/30 group-hover:text-accent group-hover:translate-x-0.5 transition-all duration-200"
+              fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </div>
+        )}
       </div>
     </div>
   )
@@ -243,9 +263,9 @@ export default function ProjectsPreview() {
             <span className="text-accent text-xs sm:text-sm font-semibold tracking-wider sm:tracking-widest uppercase whitespace-nowrap">Our Work</span>
             <div className="w-8 h-px bg-accent flex-shrink-0" />
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-navy mb-3">Featured Projects</h2>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-navy mb-3">Project Scope Packages</h2>
           <p className="text-gray-500 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
-            Delivering landmark façade solutions across the Kingdom.
+            Each project scope combines multiple GFRC/GRC capabilities into a single integrated package — matched to your architectural drawings and delivered across the Kingdom.
           </p>
         </div>
 
@@ -260,7 +280,7 @@ export default function ProjectsPreview() {
             href="/projects"
             className="inline-flex items-center gap-2 px-8 py-4 bg-accent text-white font-semibold rounded-sm hover:bg-accent-dark transition-colors text-sm sm:text-base shadow-md"
           >
-            View All Projects
+            View All Packages
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>

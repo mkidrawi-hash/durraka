@@ -106,7 +106,7 @@ export function PackageDetailLayout({ data }: { data: PackageDetailData }) {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 pt-14 sm:pt-20 pb-16 sm:pb-24">
           <nav aria-label="Breadcrumb" className="flex items-center gap-2 mb-8 text-xs text-white/40">
             <Link href="/projects" className="hover:text-white/70 transition-colors">
-              Projects
+              Packages
             </Link>
             <span aria-hidden="true">›</span>
             <span className="text-white/60">{hero.title}</span>

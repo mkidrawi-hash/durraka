@@ -3,9 +3,9 @@ import Link from 'next/link'
 import { SYSTEMS } from '@/lib/constants'
 
 export const metadata: Metadata = {
-  title: 'Systems',
+  title: 'GFRC/GRC Capabilities',
   description:
-    'Explore Durraka Factory\'s full range of GFRC/GRC architectural systems — façade cladding, mashrabiya, domes, cornices, columns, and custom elements.',
+    'Explore Durraka\'s integrated GFRC/GRC manufacturing capabilities — cladding, mashrabiya screens, domes, cornices, columns, and decorative elements, combinable in any project scope.',
 }
 
 export default function SystemsPage() {
@@ -18,10 +18,9 @@ export default function SystemsPage() {
             <div className="w-8 h-px bg-accent flex-shrink-0" />
             <span className="text-accent text-xs sm:text-sm font-semibold tracking-wider sm:tracking-widest uppercase">What We Manufacture</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">Our Systems</h1>
+          <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">GFRC/GRC Capabilities</h1>
           <p className="text-white/70 text-lg max-w-2xl">
-            A complete portfolio of GFRC and GRC architectural systems, each engineered to deliver exceptional
-            aesthetics and structural performance.
+            Six integrated GFRC/GRC manufacturing capabilities — from cladding and columns to domes, cornices, mashrabiya screens, and custom decorative elements. Most project scopes combine several of these into a single integrated package.
           </p>
         </div>
       </div>

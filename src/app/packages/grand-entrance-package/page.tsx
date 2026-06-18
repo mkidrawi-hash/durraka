@@ -11,11 +11,11 @@ export const metadata: Metadata = {
 
 const data: PackageDetailData = {
   hero: {
-    eyebrow: 'Signature Package',
-    title: 'Grand Entrance Package',
+    eyebrow: 'Project Scope Package',
+    title: 'Grand Entrance & Gate Scope',
     subtitle: 'Monumental entrances. Engineered in GFRC/GRC.',
     description:
-      'A comprehensive architectural package for luxury entrance systems — GFRC/GRC columns, arches, cornices, and custom details, all precision-manufactured to project drawings.',
+      'An integrated GFRC/GRC scope for landmark entrance gates and arrival facades — combining columns, cornices, decorative frames, arches, and cladding into a single precision-manufactured package.',
     ctaLabel: 'Request Similar Package',
     ctaHref: '/request-quotation',
     heroImage: '/images/projects/grand-entrance-gfrc.png',

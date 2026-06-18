@@ -85,7 +85,7 @@ export function SystemPageLayout({ data }: { data: SystemPageData }) {
               href="/systems"
               className="text-accent text-xs font-semibold tracking-widest uppercase hover:text-white transition-colors"
             >
-              Our Systems
+              Capabilities
             </Link>
             <div className="w-4 h-px bg-white/20" />
             <span className="text-white/40 text-xs tracking-widest uppercase">{data.breadcrumb}</span>
