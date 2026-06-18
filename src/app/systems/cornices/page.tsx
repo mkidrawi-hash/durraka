@@ -84,7 +84,7 @@ export default function CornicesPage() {
       breadcrumb: 'Cornices & Profiles',
       subtitle: 'Shadow line. Profile depth. Façade character.',
       heroDescription: 'GFRC / GRC cornice and profile systems — roofline cornices, façade bands, opening surrounds, and edge expressions produced to custom profiles for classical and contemporary architecture.',
-      heroImage: '/images/projects/ornamental-facade-gfrc.png',
+      heroImage: '/images/projects/grand-entrance-gfrc.png',
       heroImageAlt: 'Architectural GFRC cornice and profile façade elements',
       heroObjectPosition: 'center',
       whatTitle: 'What are GFRC / GRC Cornices & Profiles?',

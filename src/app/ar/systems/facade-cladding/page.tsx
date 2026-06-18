@@ -117,5 +117,5 @@ const content: FacadeContent = {
 }
 
 export default function FacadeCladdingArPage() {
-  return <FacadeCladdingRichLayout content={content} heroImage="/images/projects/grand-entrance-gfrc.png" />
+  return <FacadeCladdingRichLayout content={content} heroImage="/images/projects/architectural-cladding-gfrc.png" />
 }
