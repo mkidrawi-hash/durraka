@@ -1,0 +1,292 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" font-family="'Segoe UI', Arial, sans-serif">
+  <!-- Background -->
+  <rect width="1600" height="900" fill="#FFFFFF"/>
+
+  <!-- Left panel brand bar -->
+  <rect x="0" y="0" width="950" height="48" fill="#071B3B"/>
+  <rect x="0" y="0" width="4" height="48" fill="#D71920"/>
+  <text x="20" y="30" fill="#FFFFFF" font-size="10" font-weight="700" letter-spacing="3" text-anchor="start" opacity="0.7">DURRAKA FACTORY FOR INDUSTRY</text>
+  <text x="920" y="30" fill="#D71920" font-size="10" font-weight="700" letter-spacing="2" text-anchor="end" opacity="0.9">GRC / GFRC</text>
+
+  <!-- Main illustration area background -->
+  <rect x="0" y="48" width="950" height="802" fill="#F4F6F9"/>
+
+  <!-- Subtle grid -->
+  <line x1="0" y1="200" x2="950" y2="200" stroke="#071B3B" stroke-width="0.3" opacity="0.07"/>
+  <line x1="0" y1="400" x2="950" y2="400" stroke="#071B3B" stroke-width="0.3" opacity="0.07"/>
+  <line x1="0" y1="600" x2="950" y2="600" stroke="#071B3B" stroke-width="0.3" opacity="0.07"/>
+  <line x1="200" y1="48" x2="200" y2="850" stroke="#071B3B" stroke-width="0.3" opacity="0.07"/>
+  <line x1="475" y1="48" x2="475" y2="850" stroke="#071B3B" stroke-width="0.3" opacity="0.07"/>
+  <line x1="750" y1="48" x2="750" y2="850" stroke="#071B3B" stroke-width="0.3" opacity="0.07"/>
+
+  <!-- ── COLUMN ILLUSTRATION ── -->
+
+  <!-- Ground / floor line -->
+  <line x1="60" y1="760" x2="900" y2="760" stroke="#071B3B" stroke-width="1.5" opacity="0.2"/>
+  <!-- Floor slab -->
+  <rect x="60" y="760" width="840" height="18" fill="#071B3B" opacity="0.08" stroke="#071B3B" stroke-width="1" opacity="0.15"/>
+
+  <!-- Entablature / architrave (top beam) -->
+  <rect x="80" y="88" width="790" height="28" fill="#FFFFFF" stroke="#071B3B" stroke-width="1.5"/>
+  <!-- Frieze -->
+  <rect x="80" y="116" width="790" height="22" fill="#FFFFFF" stroke="#071B3B" stroke-width="1.2"/>
+  <!-- Triglyphs in frieze -->
+  <rect x="100" y="120" width="16" height="14" fill="#071B3B" opacity="0.1" stroke="#071B3B" stroke-width="0.8"/>
+  <rect x="200" y="120" width="16" height="14" fill="#071B3B" opacity="0.1" stroke="#071B3B" stroke-width="0.8"/>
+  <rect x="300" y="120" width="16" height="14" fill="#071B3B" opacity="0.1" stroke="#071B3B" stroke-width="0.8"/>
+  <rect x="400" y="120" width="16" height="14" fill="#071B3B" opacity="0.1" stroke="#071B3B" stroke-width="0.8"/>
+  <rect x="500" y="120" width="16" height="14" fill="#071B3B" opacity="0.1" stroke="#071B3B" stroke-width="0.8"/>
+  <rect x="600" y="120" width="16" height="14" fill="#071B3B" opacity="0.1" stroke="#071B3B" stroke-width="0.8"/>
+  <rect x="700" y="120" width="16" height="14" fill="#071B3B" opacity="0.1" stroke="#071B3B" stroke-width="0.8"/>
+  <rect x="800" y="120" width="16" height="14" fill="#071B3B" opacity="0.1" stroke="#071B3B" stroke-width="0.8"/>
+  <!-- Cornice under entablature -->
+  <rect x="80" y="138" width="790" height="16" fill="#FFFFFF" stroke="#071B3B" stroke-width="1.5"/>
+  <rect x="80" y="138" width="790" height="4" fill="#D71920" opacity="0.5"/>
+  <rect x="80" y="148" width="790" height="6" fill="#071B3B" opacity="0.05"/>
+
+  <!-- ── THREE COLUMNS ── -->
+
+  <!-- Column 1 (left) centered at x=220 -->
+  <!-- Capital - Corinthian style suggestion -->
+  <!-- Abacus (top slab) -->
+  <rect x="175" y="154" width="90" height="14" fill="#FFFFFF" stroke="#071B3B" stroke-width="1.5"/>
+  <rect x="175" y="154" width="90" height="4" fill="#071B3B" opacity="0.07"/>
+  <!-- Echinus / capital bell -->
+  <path d="M 175 168 Q 180 192 197 206 L 243 206 Q 260 192 265 168 Z" fill="#FFFFFF" stroke="#071B3B" stroke-width="1.5"/>
+  <!-- Acanthus leaf suggestions on capital -->
+  <path d="M 197 206 Q 192 218 200 226 Q 208 220 220 206" fill="none" stroke="#071B3B" stroke-width="0.8" opacity="0.4"/>
+  <path d="M 243 206 Q 248 218 240 226 Q 232 220 220 206" fill="none" stroke="#071B3B" stroke-width="0.8" opacity="0.4"/>
+  <path d="M 207 206 Q 204 222 212 230" fill="none" stroke="#071B3B" stroke-width="0.7" opacity="0.3"/>
+  <path d="M 233 206 Q 236 222 228 230" fill="none" stroke="#071B3B" stroke-width="0.7" opacity="0.3"/>
+  <!-- Neck / astragal ring -->
+  <rect x="193" y="226" width="54" height="8" fill="#FFFFFF" stroke="#071B3B" stroke-width="1.2"/>
+  <rect x="193" y="226" width="54" height="3" fill="#071B3B" opacity="0.07"/>
+  <!-- Column shaft -->
+  <rect x="196" y="234" width="48" height="436" fill="#FFFFFF" stroke="#071B3B" stroke-width="1.5"/>
+  <!-- Shaft entasis (subtle taper illusion with line) -->
+  <line x1="244" y1="234" x2="240" y2="650" stroke="#071B3B" stroke-width="0.5" opacity="0.1"/>
+  <!-- Shaft fluting lines -->
+  <line x1="204" y1="234" x2="204" y2="660" stroke="#071B3B" stroke-width="0.6" opacity="0.18"/>
+  <line x1="212" y1="234" x2="212" y2="660" stroke="#071B3B" stroke-width="0.6" opacity="0.18"/>
+  <line x1="220" y1="234" x2="220" y2="660" stroke="#071B3B" stroke-width="0.6" opacity="0.18"/>
+  <line x1="228" y1="234" x2="228" y2="660" stroke="#071B3B" stroke-width="0.6" opacity="0.18"/>
+  <line x1="236" y1="234" x2="236" y2="660" stroke="#071B3B" stroke-width="0.6" opacity="0.18"/>
+  <!-- Base / plinth -->
+  <rect x="186" y="658" width="68" height="18" fill="#FFFFFF" stroke="#071B3B" stroke-width="1.5"/>
+  <rect x="186" y="658" width="68" height="5" fill="#071B3B" opacity="0.07"/>
+  <!-- Torus (round molding) -->
+  <rect x="181" y="676" width="78" height="12" fill="#FFFFFF" stroke="#071B3B" stroke-width="1.5"/>
+  <rect x="181" y="676" width="78" height="5" fill="#071B3B" opacity="0.06" rx="2"/>
+  <!-- Plinth (square base) -->
+  <rect x="175" y="688" width="90" height="20" fill="#FFFFFF" stroke="#071B3B" stroke-width="1.8"/>
+  <rect x="175" y="688" width="90" height="6" fill="#071B3B" opacity="0.07"/>
+  <!-- Stylobate step -->
+  <rect x="165" y="708" width="110" height="14" fill="#FFFFFF" stroke="#071B3B" stroke-width="1.2"/>
+  <rect x="155" y="722" width="130" height="12" fill="#FFFFFF" stroke="#071B3B" stroke-width="1.2"/>
+  <rect x="155" y="722" width="130" height="4" fill="#071B3B" opacity="0.06"/>
+
+  <!-- Column 2 (center) centered at x=475 -->
+  <!-- Abacus -->
+  <rect x="430" y="154" width="90" height="14" fill="#FFFFFF" stroke="#071B3B" stroke-width="1.5"/>
+  <rect x="430" y="154" width="90" height="4" fill="#071B3B" opacity="0.07"/>
+  <!-- Capital bell -->
+  <path d="M 430 168 Q 435 192 452 206 L 498 206 Q 515 192 520 168 Z" fill="#FFFFFF" stroke="#071B3B" stroke-width="1.5"/>
+  <path d="M 452 206 Q 447 218 455 226 Q 463 220 475 206" fill="none" stroke="#071B3B" stroke-width="0.8" opacity="0.4"/>
+  <path d="M 498 206 Q 503 218 495 226 Q 487 220 475 206" fill="none" stroke="#071B3B" stroke-width="0.8" opacity="0.4"/>
+  <path d="M 462 206 Q 459 222 467 230" fill="none" stroke="#071B3B" stroke-width="0.7" opacity="0.3"/>
+  <path d="M 488 206 Q 491 222 483 230" fill="none" stroke="#071B3B" stroke-width="0.7" opacity="0.3"/>
+  <!-- Neck ring -->
+  <rect x="448" y="226" width="54" height="8" fill="#FFFFFF" stroke="#071B3B" stroke-width="1.2"/>
+  <rect x="448" y="226" width="54" height="3" fill="#071B3B" opacity="0.07"/>
+  <!-- Shaft -->
+  <rect x="451" y="234" width="48" height="436" fill="#FFFFFF" stroke="#071B3B" stroke-width="1.5"/>
+  <line x1="459" y1="234" x2="459" y2="660" stroke="#071B3B" stroke-width="0.6" opacity="0.18"/>
+  <line x1="467" y1="234" x2="467" y2="660" stroke="#071B3B" stroke-width="0.6" opacity="0.18"/>
+  <line x1="475" y1="234" x2="475" y2="660" stroke="#071B3B" stroke-width="0.6" opacity="0.18"/>
+  <line x1="483" y1="234" x2="483" y2="660" stroke="#071B3B" stroke-width="0.6" opacity="0.18"/>
+  <line x1="491" y1="234" x2="491" y2="660" stroke="#071B3B" stroke-width="0.6" opacity="0.18"/>
+  <!-- Base -->
+  <rect x="441" y="658" width="68" height="18" fill="#FFFFFF" stroke="#071B3B" stroke-width="1.5"/>
+  <rect x="441" y="658" width="68" height="5" fill="#071B3B" opacity="0.07"/>
+  <rect x="436" y="676" width="78" height="12" fill="#FFFFFF" stroke="#071B3B" stroke-width="1.5"/>
+  <rect x="436" y="676" width="78" height="5" fill="#071B3B" opacity="0.06" rx="2"/>
+  <rect x="430" y="688" width="90" height="20" fill="#FFFFFF" stroke="#071B3B" stroke-width="1.8"/>
+  <rect x="430" y="688" width="90" height="6" fill="#071B3B" opacity="0.07"/>
+  <rect x="420" y="708" width="110" height="14" fill="#FFFFFF" stroke="#071B3B" stroke-width="1.2"/>
+  <rect x="410" y="722" width="130" height="12" fill="#FFFFFF" stroke="#071B3B" stroke-width="1.2"/>
+  <rect x="410" y="722" width="130" height="4" fill="#071B3B" opacity="0.06"/>
+
+  <!-- Column 3 (right) centered at x=730 -->
+  <!-- Abacus -->
+  <rect x="685" y="154" width="90" height="14" fill="#FFFFFF" stroke="#071B3B" stroke-width="1.5"/>
+  <rect x="685" y="154" width="90" height="4" fill="#071B3B" opacity="0.07"/>
+  <!-- Capital bell -->
+  <path d="M 685 168 Q 690 192 707 206 L 753 206 Q 770 192 775 168 Z" fill="#FFFFFF" stroke="#071B3B" stroke-width="1.5"/>
+  <path d="M 707 206 Q 702 218 710 226 Q 718 220 730 206" fill="none" stroke="#071B3B" stroke-width="0.8" opacity="0.4"/>
+  <path d="M 753 206 Q 758 218 750 226 Q 742 220 730 206" fill="none" stroke="#071B3B" stroke-width="0.8" opacity="0.4"/>
+  <path d="M 717 206 Q 714 222 722 230" fill="none" stroke="#071B3B" stroke-width="0.7" opacity="0.3"/>
+  <path d="M 743 206 Q 746 222 738 230" fill="none" stroke="#071B3B" stroke-width="0.7" opacity="0.3"/>
+  <!-- Neck ring -->
+  <rect x="703" y="226" width="54" height="8" fill="#FFFFFF" stroke="#071B3B" stroke-width="1.2"/>
+  <rect x="703" y="226" width="54" height="3" fill="#071B3B" opacity="0.07"/>
+  <!-- Shaft -->
+  <rect x="706" y="234" width="48" height="436" fill="#FFFFFF" stroke="#071B3B" stroke-width="1.5"/>
+  <line x1="714" y1="234" x2="714" y2="660" stroke="#071B3B" stroke-width="0.6" opacity="0.18"/>
+  <line x1="722" y1="234" x2="722" y2="660" stroke="#071B3B" stroke-width="0.6" opacity="0.18"/>
+  <line x1="730" y1="234" x2="730" y2="660" stroke="#071B3B" stroke-width="0.6" opacity="0.18"/>
+  <line x1="738" y1="234" x2="738" y2="660" stroke="#071B3B" stroke-width="0.6" opacity="0.18"/>
+  <line x1="746" y1="234" x2="746" y2="660" stroke="#071B3B" stroke-width="0.6" opacity="0.18"/>
+  <!-- Base -->
+  <rect x="696" y="658" width="68" height="18" fill="#FFFFFF" stroke="#071B3B" stroke-width="1.5"/>
+  <rect x="696" y="658" width="68" height="5" fill="#071B3B" opacity="0.07"/>
+  <rect x="691" y="676" width="78" height="12" fill="#FFFFFF" stroke="#071B3B" stroke-width="1.5"/>
+  <rect x="691" y="676" width="78" height="5" fill="#071B3B" opacity="0.06" rx="2"/>
+  <rect x="685" y="688" width="90" height="20" fill="#FFFFFF" stroke="#071B3B" stroke-width="1.8"/>
+  <rect x="685" y="688" width="90" height="6" fill="#071B3B" opacity="0.07"/>
+  <rect x="675" y="708" width="110" height="14" fill="#FFFFFF" stroke="#071B3B" stroke-width="1.2"/>
+  <rect x="665" y="722" width="130" height="12" fill="#FFFFFF" stroke="#071B3B" stroke-width="1.2"/>
+  <rect x="665" y="722" width="130" height="4" fill="#071B3B" opacity="0.06"/>
+
+  <!-- Dimension lines (vertical for shaft) -->
+  <line x1="152" y1="154" x2="152" y2="760" stroke="#071B3B" stroke-width="0.8" opacity="0.2" stroke-dasharray="3,3"/>
+  <line x1="146" y1="154" x2="158" y2="154" stroke="#071B3B" stroke-width="0.8" opacity="0.2"/>
+  <line x1="146" y1="760" x2="158" y2="760" stroke="#071B3B" stroke-width="0.8" opacity="0.2"/>
+  <text x="143" y="465" fill="#071B3B" font-size="8" opacity="0.25" text-anchor="middle" transform="rotate(-90, 143, 465)" letter-spacing="1">COLUMN HEIGHT</text>
+
+  <!-- ── CALLOUT LINES & NUMBERS ── -->
+
+  <!-- Callout 1: Column Shaft — shaft of center column -->
+  <line x1="499" y1="440" x2="880" y2="440" stroke="#D71920" stroke-width="1" opacity="0.7" stroke-dasharray="4,3"/>
+  <circle cx="499" cy="440" r="5" fill="#D71920"/>
+  <circle cx="880" cy="440" r="14" fill="#D71920"/>
+  <text x="880" y="445" fill="#FFFFFF" font-size="11" font-weight="800" text-anchor="middle">1</text>
+
+  <!-- Callout 2: Base Profile — base of left column -->
+  <line x1="244" y1="700" x2="140" y2="750" stroke="#D71920" stroke-width="1" opacity="0.7" stroke-dasharray="4,3"/>
+  <circle cx="244" cy="700" r="5" fill="#D71920"/>
+  <circle cx="140" cy="750" r="14" fill="#D71920"/>
+  <text x="140" y="755" fill="#FFFFFF" font-size="11" font-weight="800" text-anchor="middle">2</text>
+
+  <!-- Callout 3: Capital Detail — capital of center column -->
+  <line x1="520" y1="186" x2="880" y2="270" stroke="#D71920" stroke-width="1" opacity="0.7" stroke-dasharray="4,3"/>
+  <circle cx="520" cy="186" r="5" fill="#D71920"/>
+  <circle cx="880" cy="270" r="14" fill="#D71920"/>
+  <text x="880" y="275" fill="#FFFFFF" font-size="11" font-weight="800" text-anchor="middle">3</text>
+
+  <!-- Callout 4: Entrance Framing Role — space between columns -->
+  <line x1="348" y1="500" x2="140" y2="550" stroke="#D71920" stroke-width="1" opacity="0.7" stroke-dasharray="4,3"/>
+  <circle cx="348" cy="500" r="5" fill="#D71920"/>
+  <circle cx="140" cy="550" r="14" fill="#D71920"/>
+  <text x="140" y="555" fill="#FFFFFF" font-size="11" font-weight="800" text-anchor="middle">4</text>
+
+  <!-- Callout 5: Vertical Rhythm — entablature -->
+  <line x1="475" y1="110" x2="140" y2="200" stroke="#D71920" stroke-width="1" opacity="0.7" stroke-dasharray="4,3"/>
+  <circle cx="475" cy="110" r="5" fill="#D71920"/>
+  <circle cx="140" cy="200" r="14" fill="#D71920"/>
+  <text x="140" y="205" fill="#FFFFFF" font-size="11" font-weight="800" text-anchor="middle">5</text>
+
+  <!-- Callout 6: Decorative Character — right column capital -->
+  <line x1="685" y1="200" x2="880" y2="155" stroke="#D71920" stroke-width="1" opacity="0.7" stroke-dasharray="4,3"/>
+  <circle cx="685" cy="200" r="5" fill="#D71920"/>
+  <circle cx="880" cy="155" r="14" fill="#D71920"/>
+  <text x="880" y="160" fill="#FFFFFF" font-size="11" font-weight="800" text-anchor="middle">6</text>
+
+  <!-- Callout labels -->
+  <text x="858" y="422" fill="#071B3B" font-size="9" font-weight="700" letter-spacing="1" text-anchor="end" opacity="0.6">COLUMN SHAFT</text>
+  <text x="162" y="732" fill="#071B3B" font-size="9" font-weight="700" letter-spacing="1" opacity="0.6">BASE PROFILE</text>
+  <text x="858" y="252" fill="#071B3B" font-size="9" font-weight="700" letter-spacing="1" text-anchor="end" opacity="0.6">CAPITAL DETAIL</text>
+  <text x="162" y="532" fill="#071B3B" font-size="9" font-weight="700" letter-spacing="1" opacity="0.6">ENTRANCE FRAMING</text>
+  <text x="162" y="182" fill="#071B3B" font-size="9" font-weight="700" letter-spacing="1" opacity="0.6">ENTABLATURE</text>
+  <text x="858" y="137" fill="#071B3B" font-size="9" font-weight="700" letter-spacing="1" text-anchor="end" opacity="0.6">DECORATIVE CHARACTER</text>
+
+  <!-- Left panel footer strip -->
+  <rect x="0" y="850" width="950" height="50" fill="#E8EBF0"/>
+  <rect x="0" y="850" width="950" height="1" fill="#071B3B" opacity="0.12"/>
+  <text x="30" y="871" fill="#071B3B" font-size="8.5" opacity="0.5" letter-spacing="0.5">For design understanding and early scope coordination only.</text>
+  <text x="30" y="886" fill="#071B3B" font-size="8.5" opacity="0.5" letter-spacing="0.5">Detailed fixing, connection, and installation information is excluded.</text>
+
+  <!-- Divider line -->
+  <rect x="947" y="0" width="3" height="900" fill="#D71920" opacity="0.85"/>
+
+  <!-- ── RIGHT PANEL ── -->
+  <rect x="950" y="0" width="650" height="900" fill="#071B3B"/>
+  <rect x="950" y="0" width="650" height="4" fill="#D71920"/>
+
+  <!-- Title block -->
+  <rect x="985" y="40" width="38" height="3" fill="#D71920"/>
+  <text x="985" y="90" fill="#FFFFFF" font-size="26" font-weight="800" letter-spacing="-0.5">Column &amp;</text>
+  <text x="985" y="125" fill="#FFFFFF" font-size="26" font-weight="800" letter-spacing="-0.5">Capital</text>
+  <text x="985" y="160" fill="#D71920" font-size="26" font-weight="800" letter-spacing="-0.5">Overview</text>
+  <text x="985" y="192" fill="#FFFFFF" font-size="11" opacity="0.45" letter-spacing="1.5">GRC / GFRC ARCHITECTURAL FEATURE</text>
+  <rect x="985" y="210" width="580" height="1" fill="#FFFFFF" opacity="0.08"/>
+
+  <!-- Content cards -->
+  <rect x="985" y="228" width="278" height="140" rx="2" fill="#FFFFFF" opacity="0.04" stroke="#FFFFFF" stroke-width="0.5" stroke-opacity="0.1"/>
+  <rect x="985" y="228" width="3" height="140" fill="#D71920"/>
+  <text x="1002" y="254" fill="#D71920" font-size="9" font-weight="800" letter-spacing="2">01 — COLUMN SHAFT</text>
+  <text x="1002" y="276" fill="#FFFFFF" font-size="11.5" opacity="0.8" font-weight="600">Vertical Structural Form</text>
+  <foreignObject x="1002" y="286" width="248" height="72">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="color:rgba(255,255,255,0.55);font-size:10.5px;line-height:1.6;font-family:Arial,sans-serif;">The column shaft is the primary vertical element, manufactured as hollow GRC/GFRC casing sections assembled on site. Fluted, smooth, or textured surfaces are produced per project specification and drawing.</div>
+  </foreignObject>
+
+  <rect x="1277" y="228" width="278" height="140" rx="2" fill="#FFFFFF" opacity="0.04" stroke="#FFFFFF" stroke-width="0.5" stroke-opacity="0.1"/>
+  <rect x="1277" y="228" width="3" height="140" fill="#D71920"/>
+  <text x="1294" y="254" fill="#D71920" font-size="9" font-weight="800" letter-spacing="2">02 — BASE PROFILE</text>
+  <text x="1294" y="276" fill="#FFFFFF" font-size="11.5" opacity="0.8" font-weight="600">Foundation Detail</text>
+  <foreignObject x="1294" y="286" width="248" height="72">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="color:rgba(255,255,255,0.55);font-size:10.5px;line-height:1.6;font-family:Arial,sans-serif;">Column bases — comprising torus molding, plinth, and step profiles — are produced as GRC/GFRC components. Classical orders (Doric, Ionic, Corinthian) and custom profiles are available.</div>
+  </foreignObject>
+
+  <rect x="985" y="386" width="278" height="140" rx="2" fill="#FFFFFF" opacity="0.04" stroke="#FFFFFF" stroke-width="0.5" stroke-opacity="0.1"/>
+  <rect x="985" y="386" width="3" height="140" fill="#D71920"/>
+  <text x="1002" y="412" fill="#D71920" font-size="9" font-weight="800" letter-spacing="2">03 — CAPITAL DETAIL</text>
+  <text x="1002" y="434" fill="#FFFFFF" font-size="11.5" opacity="0.8" font-weight="600">Crown &amp; Order</text>
+  <foreignObject x="1002" y="444" width="248" height="72">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="color:rgba(255,255,255,0.55);font-size:10.5px;line-height:1.6;font-family:Arial,sans-serif;">Capitals — Corinthian acanthus leaf, Ionic volute, Doric echinus, or custom — are produced with fine-detail GRC/GFRC casting. Each capital is engineered to transfer loads and provide visual authority.</div>
+  </foreignObject>
+
+  <rect x="1277" y="386" width="278" height="140" rx="2" fill="#FFFFFF" opacity="0.04" stroke="#FFFFFF" stroke-width="0.5" stroke-opacity="0.1"/>
+  <rect x="1277" y="386" width="3" height="140" fill="#D71920"/>
+  <text x="1294" y="412" fill="#D71920" font-size="9" font-weight="800" letter-spacing="2">04 — FACADE ROLE</text>
+  <text x="1294" y="434" fill="#FFFFFF" font-size="11.5" opacity="0.8" font-weight="600">Rhythm &amp; Framing</text>
+  <foreignObject x="1294" y="444" width="248" height="72">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="color:rgba(255,255,255,0.55);font-size:10.5px;line-height:1.6;font-family:Arial,sans-serif;">Columns define vertical rhythm, frame entrances, and establish architectural hierarchy on building facades. Column spacing, scale, and order are coordinated to the overall facade composition.</div>
+  </foreignObject>
+
+  <!-- Divider -->
+  <rect x="985" y="546" width="580" height="1" fill="#FFFFFF" opacity="0.08"/>
+
+  <!-- Callout reference list -->
+  <text x="985" y="574" fill="#FFFFFF" font-size="9" font-weight="700" letter-spacing="2" opacity="0.35">COMPONENT REFERENCES</text>
+
+  <circle cx="998" cy="604" r="10" fill="#D71920" opacity="0.15" stroke="#D71920" stroke-width="1"/>
+  <text x="998" y="608" fill="#D71920" font-size="9" font-weight="800" text-anchor="middle">1</text>
+  <text x="1016" y="608" fill="#FFFFFF" font-size="11" opacity="0.65">Column Shaft — vertical casing, fluted or smooth</text>
+
+  <circle cx="998" cy="632" r="10" fill="#D71920" opacity="0.15" stroke="#D71920" stroke-width="1"/>
+  <text x="998" y="636" fill="#D71920" font-size="9" font-weight="800" text-anchor="middle">2</text>
+  <text x="1016" y="636" fill="#FFFFFF" font-size="11" opacity="0.65">Base Profile — torus, plinth, and step moldings</text>
+
+  <circle cx="998" cy="660" r="10" fill="#D71920" opacity="0.15" stroke="#D71920" stroke-width="1"/>
+  <text x="998" y="664" fill="#D71920" font-size="9" font-weight="800" text-anchor="middle">3</text>
+  <text x="1016" y="664" fill="#FFFFFF" font-size="11" opacity="0.65">Capital Detail — classical or custom crown element</text>
+
+  <circle cx="998" cy="688" r="10" fill="#D71920" opacity="0.15" stroke="#D71920" stroke-width="1"/>
+  <text x="998" y="692" fill="#D71920" font-size="9" font-weight="800" text-anchor="middle">4</text>
+  <text x="1016" y="692" fill="#FFFFFF" font-size="11" opacity="0.65">Entrance Framing Role — portal and portico scope</text>
+
+  <circle cx="998" cy="716" r="10" fill="#D71920" opacity="0.15" stroke="#D71920" stroke-width="1"/>
+  <text x="998" y="720" fill="#D71920" font-size="9" font-weight="800" text-anchor="middle">5</text>
+  <text x="1016" y="720" fill="#FFFFFF" font-size="11" opacity="0.65">Vertical Rhythm — entablature and column spacing</text>
+
+  <circle cx="998" cy="740" r="10" fill="#D71920" opacity="0.15" stroke="#D71920" stroke-width="1"/>
+  <text x="998" y="744" fill="#D71920" font-size="9" font-weight="800" text-anchor="middle">6</text>
+  <text x="1016" y="744" fill="#FFFFFF" font-size="11" opacity="0.65">Decorative Character — order, finish, and expression</text>
+
+  <!-- Right panel bottom -->
+  <rect x="950" y="800" width="650" height="100" fill="#FFFFFF" opacity="0.03"/>
+  <rect x="950" y="800" width="650" height="1" fill="#FFFFFF" opacity="0.08"/>
+  <text x="985" y="835" fill="#FFFFFF" font-size="9" opacity="0.3" letter-spacing="0.5">DURRAKA FACTORY FOR INDUSTRY — GRC/GFRC MANUFACTURING</text>
+  <text x="985" y="855" fill="#FFFFFF" font-size="9" opacity="0.3" letter-spacing="0.5">durraka.com</text>
+  <rect x="985" y="868" width="32" height="2" fill="#D71920" opacity="0.5"/>
+</svg>
