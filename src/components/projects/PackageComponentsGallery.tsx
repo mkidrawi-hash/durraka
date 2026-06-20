@@ -423,12 +423,23 @@ function ComponentCard({
 
 // ─── Gallery (exported) ────────────────────────────────────────────────────────
 
-export function PackageComponentsGallery({ components }: { components: ComponentCard[] }) {
+export function PackageComponentsGallery({
+  components,
+  columns = 3,
+}: {
+  components: ComponentCard[]
+  columns?: 2 | 3
+}) {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
+
+  const gridClass =
+    columns === 2
+      ? 'grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6'
+      : 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6'
 
   return (
     <>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+      <div className={gridClass}>
         {components.map((component, i) => (
           <ComponentCard
             key={component.title}
