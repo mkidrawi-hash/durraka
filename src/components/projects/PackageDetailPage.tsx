@@ -162,6 +162,41 @@ export function PackageDetailPage({ data, components, guidance }: PackageDetailP
         </div>
       </section>
 
+      {/* ── 3.5 Related Visual References ── */}
+      <section className="bg-white py-10 sm:py-14 px-4 border-t border-gray-100">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+          <div>
+            <Eyebrow label="Gallery" />
+            <h2 className="text-2xl sm:text-3xl font-bold text-navy mb-3">
+              Related Visual References
+            </h2>
+            <p className="text-gray-500 text-base leading-relaxed max-w-xl">
+              Selected visual references related to this package.
+            </p>
+          </div>
+          <Link
+            href="/gallery"
+            className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-navy text-white text-sm font-semibold rounded-sm hover:bg-navy/90 transition-colors flex-shrink-0 w-full sm:w-auto"
+          >
+            <svg
+              className="w-4 h-4 flex-shrink-0"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+              />
+            </svg>
+            View Project Gallery
+          </Link>
+        </div>
+      </section>
+
       {/* ── 4. Package Overview ── */}
       <section className="bg-white py-10 sm:py-16 px-4 border-t border-gray-100">
         <div className="max-w-7xl mx-auto">
