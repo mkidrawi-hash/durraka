@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 import { SOCIAL_LINKS } from '@/lib/social-links'
+import { PackageComponentsGallery } from '@/components/projects/PackageComponentsGallery'
+import type { ComponentCard } from '@/components/projects/PackageComponentsGallery'
 
 export const metadata: Metadata = {
   title: 'Complete Facade Package — GRC/GFRC Architectural Scope | Durraka',
@@ -43,38 +44,7 @@ function WhatsAppIcon() {
   )
 }
 
-// ─── Component card image placeholder ─────────────────────────────────────────
-
-function ComponentImagePlaceholder({ label }: { label: string }) {
-  return (
-    <div className="h-44 sm:h-48 bg-navy/[0.04] border-b border-navy/[0.08] flex flex-col items-center justify-center gap-2">
-      <svg
-        className="w-6 h-6 text-navy/20"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-        aria-hidden="true"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1.5}
-          d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
-        />
-      </svg>
-      <p className="text-[9px] font-semibold tracking-widest uppercase text-navy/25">{label}</p>
-    </div>
-  )
-}
-
 // ─── Data ─────────────────────────────────────────────────────────────────────
-
-interface ComponentCard {
-  title: string
-  description: string
-  image: string | null
-  imageAlt?: string
-}
 
 const PACKAGE_COMPONENTS: ComponentCard[] = [
   {
@@ -279,39 +249,7 @@ export default function CompleteFacadePackagePage() {
             Typical components included in a complete GRC/GFRC facade package.
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-            {PACKAGE_COMPONENTS.map((component) => (
-              <div
-                key={component.title}
-                className="bg-white border border-gray-100 rounded-sm overflow-hidden shadow-sm"
-              >
-                {/* Image */}
-                {component.image ? (
-                  <div className="relative h-44 sm:h-48 overflow-hidden bg-[#F4F6F9]">
-                    <Image
-                      src={component.image}
-                      alt={component.imageAlt ?? component.title}
-                      fill
-                      className="object-cover object-left-top"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    />
-                  </div>
-                ) : (
-                  <ComponentImagePlaceholder label={component.title} />
-                )}
-
-                {/* Body */}
-                <div className="p-5">
-                  <h3 className="text-navy font-bold text-sm leading-snug mb-2">
-                    {component.title}
-                  </h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">
-                    {component.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <PackageComponentsGallery components={PACKAGE_COMPONENTS} />
         </div>
       </section>
 
