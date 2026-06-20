@@ -26,15 +26,31 @@ function Lightbox({
   const [pan, setPan] = useState({ x: 0, y: 0 })
 
   const imageAreaRef = useRef<HTMLDivElement>(null)
+  const imageWrapperRef = useRef<HTMLDivElement>(null)
   const isDragging = useRef(false)
   const dragStartPos = useRef({ x: 0, y: 0 })
   const panAtDragStart = useRef({ x: 0, y: 0 })
   const touchStartPos = useRef({ x: 0, y: 0 })
+  const touchStartTime = useRef(0)
   const touchStartDist = useRef<number | null>(null)
   const zoomAtPinchStart = useRef(1)
+  const lastTapTime = useRef(0)
 
   const current = components[index]
   const total = components.length
+
+  // Pan clamping — keeps image edges from going past the container boundary
+  const clampPan = (x: number, y: number, currentZoom: number) => {
+    const area = imageAreaRef.current
+    const wrapper = imageWrapperRef.current
+    if (!area || !wrapper) return { x, y }
+    const maxX = Math.max(0, (wrapper.clientWidth * currentZoom - area.clientWidth) / 2)
+    const maxY = Math.max(0, (wrapper.clientHeight * currentZoom - area.clientHeight) / 2)
+    return {
+      x: Math.max(-maxX, Math.min(maxX, x)),
+      y: Math.max(-maxY, Math.min(maxY, y)),
+    }
+  }
 
   // Stable zoom updater — uses functional setState to avoid stale closure
   const updateZoom = useCallback((delta: number, reset = false) => {
@@ -99,9 +115,9 @@ function Lightbox({
       })
     }
 
-    // Block browser-native pinch-to-zoom
+    // Block browser-native pinch-to-zoom and native scroll during pan
     const onTouchMove = (e: TouchEvent) => {
-      if (e.touches.length >= 2) e.preventDefault()
+      if (e.touches.length >= 2 || isDragging.current) e.preventDefault()
     }
 
     el.addEventListener('wheel', onWheel, { passive: false })
@@ -122,30 +138,66 @@ function Lightbox({
 
   const handleTouchStart = (e: React.TouchEvent) => {
     if (e.touches.length === 2) {
+      // Pinch start — cancel any single-finger drag
+      isDragging.current = false
       touchStartDist.current = getTouchDistance(e.touches)
       zoomAtPinchStart.current = zoom
+      panAtDragStart.current = { ...pan }
     } else if (e.touches.length === 1) {
       touchStartPos.current = { x: e.touches[0].clientX, y: e.touches[0].clientY }
+      touchStartTime.current = Date.now()
+      if (zoom > 1) {
+        // Zoomed in — single-finger pans the image
+        isDragging.current = true
+        panAtDragStart.current = { ...pan }
+      }
     }
   }
 
   const handleTouchMove = (e: React.TouchEvent) => {
     if (e.touches.length === 2 && touchStartDist.current !== null) {
+      // Pinch-to-zoom
       const dist = getTouchDistance(e.touches)
       const newZoom = Math.max(1, Math.min(4, zoomAtPinchStart.current * (dist / touchStartDist.current)))
       setZoom(newZoom)
-      if (newZoom <= 1) setPan({ x: 0, y: 0 })
+      setPan(newZoom <= 1 ? { x: 0, y: 0 } : clampPan(panAtDragStart.current.x, panAtDragStart.current.y, newZoom))
+    } else if (e.touches.length === 1 && isDragging.current) {
+      // Single-finger pan when zoomed
+      const dx = e.touches[0].clientX - touchStartPos.current.x
+      const dy = e.touches[0].clientY - touchStartPos.current.y
+      setPan(clampPan(panAtDragStart.current.x + dx, panAtDragStart.current.y + dy, zoom))
     }
   }
 
   const handleTouchEnd = (e: React.TouchEvent) => {
-    // Swipe to navigate (only when at base zoom)
-    if (e.changedTouches.length === 1 && e.touches.length === 0 && zoom <= 1.05) {
+    if (e.changedTouches.length === 1 && e.touches.length === 0) {
       const dx = e.changedTouches[0].clientX - touchStartPos.current.x
       const dy = e.changedTouches[0].clientY - touchStartPos.current.y
-      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 60) {
-        if (dx > 0) prev()
-        else next()
+      const elapsed = Date.now() - touchStartTime.current
+      const isTap = elapsed < 220 && Math.abs(dx) < 12 && Math.abs(dy) < 12
+
+      if (isDragging.current) {
+        // End of pan drag — swipe navigation suppressed
+        isDragging.current = false
+      } else if (isTap) {
+        const now = Date.now()
+        if (now - lastTapTime.current < 400) {
+          // Double-tap: toggle between 1× and 2.5×
+          setZoom(z => {
+            const next = z > 1.05 ? 1 : 2.5
+            if (next <= 1) setPan({ x: 0, y: 0 })
+            return next
+          })
+          lastTapTime.current = 0
+        } else {
+          lastTapTime.current = now
+        }
+      } else if (zoom <= 1.05) {
+        // Swipe navigation only when at base zoom
+        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 60) {
+          if (dx > 0) prev()
+          else next()
+        }
       }
     }
     if (e.touches.length < 2) touchStartDist.current = null
@@ -164,10 +216,11 @@ function Lightbox({
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!isDragging.current) return
-    setPan({
-      x: panAtDragStart.current.x + e.clientX - dragStartPos.current.x,
-      y: panAtDragStart.current.y + e.clientY - dragStartPos.current.y,
-    })
+    setPan(clampPan(
+      panAtDragStart.current.x + e.clientX - dragStartPos.current.x,
+      panAtDragStart.current.y + e.clientY - dragStartPos.current.y,
+      zoom,
+    ))
   }
 
   const handleMouseUp = () => {
@@ -179,8 +232,8 @@ function Lightbox({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex flex-col"
-      style={{ background: 'rgba(0,0,0,0.88)' }}
+      className="fixed inset-x-0 top-0 z-50 flex flex-col"
+      style={{ background: 'rgba(0,0,0,0.88)', height: '100dvh' }}
       role="dialog"
       aria-modal="true"
       aria-label={`Preview: ${current.title}`}
@@ -215,7 +268,11 @@ function Lightbox({
       <div
         ref={imageAreaRef}
         className="flex-1 relative overflow-hidden flex items-center justify-center"
-        style={{ cursor: zoom > 1 ? 'grab' : 'default' }}
+        style={{
+          cursor: zoom > 1 ? 'grab' : 'default',
+          touchAction: 'none',
+          overscrollBehavior: 'contain',
+        }}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
@@ -239,11 +296,11 @@ function Lightbox({
 
         {/* Zoomable image */}
         <div
+          ref={imageWrapperRef}
           className="select-none"
           style={{
-            transform: `scale(${zoom}) translate(${pan.x / zoom}px, ${pan.y / zoom}px)`,
+            transform: `translate3d(${pan.x}px, ${pan.y}px, 0) scale(${zoom})`,
             transformOrigin: 'center center',
-            // Only animate when not actively dragging (checked at render time via ref)
             transition: isDragging.current ? 'none' : 'transform 0.13s ease',
             willChange: 'transform',
           }}
