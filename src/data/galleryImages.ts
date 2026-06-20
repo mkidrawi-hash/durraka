@@ -1,240 +1,217 @@
 export type GalleryCategory =
-  | 'Facade Cladding'
+  | 'Grand Entrances'
+  | 'Facades & Cladding'
   | 'Domes'
-  | 'Cornices'
   | 'Mashrabiya'
   | 'Columns & Capitals'
+  | 'Cornices'
   | 'Decorative Elements'
-  | 'Villa & Palace'
-  | 'Heritage & Regional'
-  | 'Landmark & Government'
-  | 'Hospitality'
 
 export const GALLERY_FILTERS = [
   'All',
-  'Facade Cladding',
+  'Grand Entrances',
+  'Facades & Cladding',
   'Domes',
-  'Cornices',
   'Mashrabiya',
   'Columns & Capitals',
+  'Cornices',
   'Decorative Elements',
-  'Villa & Palace',
-  'Heritage & Regional',
-  'Landmark & Government',
-  'Hospitality',
 ] as const
 
 export type GalleryFilter = (typeof GALLERY_FILTERS)[number]
 
-export interface GalleryImage {
-  id: string
-  title: string
-  category: GalleryCategory
-  city: string
-  year: number
-  tags: string[]
-  description: string
-  image: string | null
-  publicSafe: true
-}
+export type GalleryImageStatus =
+  | 'Public Safe'
+  | 'Needs Editing'
+  | 'Internal Only'
+  | 'NDA Protected'
 
 // ─── Public-safe image registry ───────────────────────────────────────────────
 // Rules: no client names, no exact project names, no exact areas or quantities,
-// no contract values, no fixing or installation details, no anchors/brackets,
-// no screws, no confidential drawings or shop drawing details.
-// Only entries with publicSafe: true are rendered.
+// no contract values, no fixing or installation details, no anchors, brackets,
+// screws, or confidential drawings. Only status: "Public Safe" entries render.
+
+export interface GalleryImage {
+  id: string
+  title: string
+  city: string
+  year: string
+  category: GalleryCategory
+  packageType: string
+  components: string[]
+  description: string
+  image: string | null
+  alt: string
+  status: GalleryImageStatus
+}
 
 export const GALLERY_IMAGES: GalleryImage[] = [
   {
-    id: 'villa-facade-jeddah-2025-01',
-    title: 'Private Villa Facade, Jeddah, 2025',
-    category: 'Villa & Palace',
+    id: 'grand-entrance-jeddah-2025',
+    title: 'Grand Entrance Facade, Jeddah, 2025',
     city: 'Jeddah',
-    year: 2025,
-    tags: ['GRC', 'Facade Cladding', 'Residential'],
+    year: '2025',
+    category: 'Grand Entrances',
+    packageType: 'Complete Facade Package',
+    components: ['GRC', 'Columns', 'Arch', 'Cornices'],
     description:
-      'Full GRC facade cladding system including cornices, columns, and decorative panel elements for a private villa development.',
-    image: null,
-    publicSafe: true,
+      'Full GRC entrance facade with classical columns, arched opening, and decorative cornice band elements.',
+    image: '/images/projects/grand-entrance-gfrc.png',
+    alt: 'GRC grand entrance facade with classical columns and decorative arch',
+    status: 'Public Safe',
   },
   {
-    id: 'hospitality-facade-makkah-2025-01',
-    title: 'Hospitality Facade, Makkah, 2025',
-    category: 'Hospitality',
-    city: 'Makkah',
-    year: 2025,
-    tags: ['GFRC', 'Cornices', 'Large-Scale'],
-    description:
-      'Decorative GFRC cornice and facade panel system for a hospitality development. Classical profiles with contemporary surface detailing.',
-    image: null,
-    publicSafe: true,
-  },
-  {
-    id: 'landmark-facade-riyadh-2025-01',
-    title: 'Landmark Facade, Riyadh, 2025',
-    category: 'Landmark & Government',
+    id: 'facade-cladding-riyadh-2025',
+    title: 'Architectural Facade Cladding, Riyadh, 2025',
     city: 'Riyadh',
-    year: 2025,
-    tags: ['GRC', 'Columns', 'Landmark'],
+    year: '2025',
+    category: 'Facades & Cladding',
+    packageType: 'Facade & Cladding Package',
+    components: ['GFRC', 'Cladding Panels', 'Reveal Lines'],
     description:
-      'Column and capital elements fabricated for a landmark building facade in Riyadh. Corinthian-style capitals with full entablature profiles.',
-    image: null,
-    publicSafe: true,
+      'Large-format GFRC facade cladding with integrated shadow reveals and contemporary surface finish.',
+    image: '/images/projects/architectural-cladding-gfrc.png',
+    alt: 'GFRC architectural facade cladding panels with reveal lines',
+    status: 'Public Safe',
   },
   {
-    id: 'heritage-facade-makkah-region-2025-01',
-    title: 'Heritage-Inspired Facade, Makkah Region, 2025',
-    category: 'Heritage & Regional',
-    city: 'Makkah Region',
-    year: 2025,
-    tags: ['GRC', 'Mashrabiya', 'Heritage'],
-    description:
-      'Heritage-inspired mashrabiya screen and arch system referencing traditional Saudi architectural forms in GRC.',
-    image: null,
-    publicSafe: true,
-  },
-  {
-    id: 'custom-components-jeddah-2025-01',
-    title: 'Custom Architectural Components, Jeddah, 2025',
-    category: 'Decorative Elements',
+    id: 'dome-vault-jeddah-2024',
+    title: 'Dome & Vault Elements, Jeddah, 2024',
     city: 'Jeddah',
-    year: 2025,
-    tags: ['GFRC', 'Custom', 'Decorative'],
-    description:
-      'Bespoke GRC decorative components including medallions, keystones, and sculptural ornamental details for a mixed-use facade.',
-    image: null,
-    publicSafe: true,
-  },
-  {
-    id: 'dome-crown-jeddah-2024-01',
-    title: 'Dome & Crown Elements, Jeddah, 2024',
+    year: '2024',
     category: 'Domes',
-    city: 'Jeddah',
-    year: 2024,
-    tags: ['GRC', 'Dome', 'Crown'],
+    packageType: 'Dome Package',
+    components: ['GRC', 'Dome', 'Drum', 'Crown'],
     description:
-      'Segmented GRC dome and decorative crown elements. Compound-curved segments precision-manufactured for seamless assembly.',
-    image: null,
-    publicSafe: true,
+      'Segmented GRC dome with decorative drum band, cornice ring, and ribbed crown finial assembly.',
+    image: '/images/projects/dome-vault-gfrc.png',
+    alt: 'GRC dome and vault with ribbed crown and decorative drum',
+    status: 'Public Safe',
   },
   {
-    id: 'facade-cladding-riyadh-2024-01',
-    title: 'Facade Cladding System, Riyadh, 2024',
-    category: 'Facade Cladding',
-    city: 'Riyadh',
-    year: 2024,
-    tags: ['GFRC', 'Cladding', 'Commercial'],
-    description:
-      'Large-format GFRC facade cladding panels for a commercial development. Uniform texture finish with integrated reveal lines.',
-    image: null,
-    publicSafe: true,
-  },
-  {
-    id: 'mashrabiya-screens-jeddah-2024-01',
+    id: 'mashrabiya-jeddah-2024',
     title: 'Mashrabiya Screen System, Jeddah, 2024',
+    city: 'Jeddah',
+    year: '2024',
     category: 'Mashrabiya',
-    city: 'Jeddah',
-    year: 2024,
-    tags: ['GRC', 'Mashrabiya', 'Geometric'],
+    packageType: 'Heritage & Regional Package',
+    components: ['GFRC', 'Mashrabiya', 'Geometric Lattice'],
     description:
-      'Custom geometric mashrabiya screen panels with traditional hexagonal lattice patterns, cast in GFRC for precision and durability.',
-    image: null,
-    publicSafe: true,
+      'Custom GFRC mashrabiya screen panels with traditional hexagonal lattice pattern and arched frame.',
+    image: '/images/projects/mashrabiya-screen-gfrc.png',
+    alt: 'GFRC mashrabiya screen with hexagonal geometric lattice pattern',
+    status: 'Public Safe',
   },
   {
-    id: 'cornice-profiles-makkah-2024-01',
-    title: 'Cornice & Profile System, Makkah, 2024',
-    category: 'Cornices',
-    city: 'Makkah',
-    year: 2024,
-    tags: ['GRC', 'Cornice', 'Classical'],
-    description:
-      'Detailed classical cornice profiles and string course elements in GRC, including dentil moldings and fascia bands.',
-    image: null,
-    publicSafe: true,
-  },
-  {
-    id: 'columns-capitals-medina-2024-01',
-    title: 'Columns & Capitals, Madinah, 2024',
-    category: 'Columns & Capitals',
-    city: 'Madinah',
-    year: 2024,
-    tags: ['GFRC', 'Columns', 'Classical'],
-    description:
-      'Full GFRC column assemblies including fluted shafts, Corinthian-style capitals, base profiles, and entablature members.',
-    image: null,
-    publicSafe: true,
-  },
-  {
-    id: 'villa-facade-taif-2024-01',
-    title: 'Villa Facade Package, Taif, 2024',
-    category: 'Villa & Palace',
-    city: 'Taif',
-    year: 2024,
-    tags: ['GRC', 'Residential', 'Full Facade'],
-    description:
-      'Complete GRC villa facade package covering columns, cornices, arches, and decorative cladding panels.',
-    image: null,
-    publicSafe: true,
-  },
-  {
-    id: 'hospitality-cornices-makkah-2023-01',
-    title: 'Hospitality Cornices, Makkah, 2023',
-    category: 'Hospitality',
-    city: 'Makkah',
-    year: 2023,
-    tags: ['GFRC', 'Cornices', 'Hospitality'],
-    description:
-      'Decorative GFRC cornice and facade profile systems for a large hospitality development in Makkah.',
-    image: null,
-    publicSafe: true,
-  },
-  {
-    id: 'heritage-dome-riyadh-2023-01',
-    title: 'Heritage Dome, Riyadh, 2023',
-    category: 'Domes',
+    id: 'columns-capitals-riyadh-2025',
+    title: 'Column Portico, Riyadh, 2025',
     city: 'Riyadh',
-    year: 2023,
-    tags: ['GRC', 'Dome', 'Heritage'],
-    description:
-      'Heritage-inspired GRC dome structure with decorative drum, cornice ring, and finial. Ribbed profile referencing classical Islamic architecture.',
-    image: null,
-    publicSafe: true,
-  },
-  {
-    id: 'decorative-elements-jeddah-2023-01',
-    title: 'Decorative Facade Elements, Jeddah, 2023',
-    category: 'Decorative Elements',
-    city: 'Jeddah',
-    year: 2023,
-    tags: ['GFRC', 'Decorative', 'Custom'],
-    description:
-      'Custom GFRC decorative elements including arched panel inserts, ornamental borders, and facade accent pieces.',
-    image: null,
-    publicSafe: true,
-  },
-  {
-    id: 'landmark-columns-makkah-2023-01',
-    title: 'Landmark Columns, Makkah, 2023',
+    year: '2025',
     category: 'Columns & Capitals',
-    city: 'Makkah',
-    year: 2023,
-    tags: ['GRC', 'Columns', 'Landmark'],
+    packageType: 'Villa & Palace Package',
+    components: ['GFRC', 'Columns', 'Capitals', 'Entablature'],
     description:
-      'Monumental-scale GRC column elements for a landmark entrance facade. Classical proportions with bespoke capital detailing.',
-    image: null,
-    publicSafe: true,
+      'Full GFRC column assemblies including fluted shafts, classical capitals, and entablature members.',
+    image: '/images/projects/column-portico-gfrc.png',
+    alt: 'GFRC column portico with classical fluted shafts and decorative capitals',
+    status: 'Public Safe',
   },
   {
-    id: 'facade-cladding-jeddah-2023-01',
-    title: 'Residential Facade Cladding, Jeddah, 2023',
-    category: 'Facade Cladding',
-    city: 'Jeddah',
-    year: 2023,
-    tags: ['GFRC', 'Cladding', 'Residential'],
+    id: 'decorative-facade-makkah-2024',
+    title: 'Decorative Facade Elements, Makkah, 2024',
+    city: 'Makkah',
+    year: '2024',
+    category: 'Decorative Elements',
+    packageType: 'Custom Architectural Package',
+    components: ['GFRC', 'Ornamental', 'Custom Details'],
     description:
-      'GFRC facade cladding panel system with integrated reveal and shadow lines for a residential development.',
+      'Bespoke GRC ornamental facade elements including medallions, keystones, and surface detailing.',
+    image: '/images/projects/ornamental-facade-gfrc.png',
+    alt: 'GFRC decorative ornamental facade elements and medallions',
+    status: 'Public Safe',
+  },
+  {
+    id: 'cornice-makkah-2024',
+    title: 'Cornice Profile System, Makkah, 2024',
+    city: 'Makkah',
+    year: '2024',
+    category: 'Cornices',
+    packageType: 'Complete Facade Package',
+    components: ['GRC', 'Cornice', 'Dentil', 'String Course'],
+    description:
+      'Classical GRC cornice profiles with dentil molding band, fascia, and string course elements.',
     image: null,
-    publicSafe: true,
+    alt: 'GRC classical cornice with dentil molding and string course',
+    status: 'Public Safe',
+  },
+  {
+    id: 'grand-entrance-makkah-2024',
+    title: 'Hospitality Grand Entrance, Makkah, 2024',
+    city: 'Makkah',
+    year: '2024',
+    category: 'Grand Entrances',
+    packageType: 'Hospitality Package',
+    components: ['GRC', 'Arch', 'Pilasters', 'Cornice'],
+    description:
+      'Monumental GRC entrance with arched opening, pilasters, and projecting cornice hood.',
+    image: null,
+    alt: 'GRC hospitality grand entrance with arch and pilasters',
+    status: 'Public Safe',
+  },
+  {
+    id: 'facade-cladding-jeddah-2023',
+    title: 'Residential Facade Cladding, Jeddah, 2023',
+    city: 'Jeddah',
+    year: '2023',
+    category: 'Facades & Cladding',
+    packageType: 'Villa & Palace Package',
+    components: ['GFRC', 'Cladding', 'Reveals'],
+    description:
+      'GFRC facade cladding system with integrated reveal lines for a residential villa development.',
+    image: null,
+    alt: 'GFRC residential facade cladding with reveal lines',
+    status: 'Public Safe',
+  },
+  {
+    id: 'dome-riyadh-2023',
+    title: 'Heritage Dome, Riyadh, 2023',
+    city: 'Riyadh',
+    year: '2023',
+    category: 'Domes',
+    packageType: 'Heritage & Regional Package',
+    components: ['GRC', 'Dome', 'Heritage Detail'],
+    description:
+      'Heritage-inspired GRC dome with ribbed profile referencing classical Islamic architectural forms.',
+    image: null,
+    alt: 'GRC heritage dome with ribbed profile',
+    status: 'Public Safe',
+  },
+  {
+    id: 'mashrabiya-medina-2024',
+    title: 'Facade Mashrabiya Screens, Madinah, 2024',
+    city: 'Madinah',
+    year: '2024',
+    category: 'Mashrabiya',
+    packageType: 'Heritage & Regional Package',
+    components: ['GFRC', 'Mashrabiya', 'Arched Frame'],
+    description:
+      'Full-height arched GFRC mashrabiya screens with traditional geometric infill panel pattern.',
+    image: null,
+    alt: 'GFRC full-height arched mashrabiya screens',
+    status: 'Public Safe',
+  },
+  {
+    id: 'columns-makkah-2023',
+    title: 'Landmark Columns, Makkah, 2023',
+    city: 'Makkah',
+    year: '2023',
+    category: 'Columns & Capitals',
+    packageType: 'Landmark & Government Package',
+    components: ['GRC', 'Columns', 'Classical Capital'],
+    description:
+      'Monumental-scale GRC columns with bespoke classical capital detailing for a landmark entrance.',
+    image: null,
+    alt: 'GRC monumental landmark columns with classical capitals',
+    status: 'Public Safe',
   },
 ]
