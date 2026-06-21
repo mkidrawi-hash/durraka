@@ -3,9 +3,9 @@ import Link from 'next/link'
 import { SYSTEMS } from '@/lib/constants'
 
 export const metadata: Metadata = {
-  title: 'GFRC/GRC Capabilities',
+  title: 'GFRC/GRC Architectural Components | Durraka Factory',
   description:
-    'Explore Durraka\'s integrated GFRC/GRC manufacturing capabilities — cladding, mashrabiya screens, domes, cornices, columns, and decorative elements, combinable in any project scope.',
+    'Explore Durraka Factory\'s GFRC/GRC architectural components for façade cladding, mashrabiya screens, domes, cornices, columns, capitals, and bespoke decorative elements.',
 }
 
 export default function SystemsPage() {
@@ -18,9 +18,12 @@ export default function SystemsPage() {
             <div className="w-8 h-px bg-accent flex-shrink-0" />
             <span className="text-accent text-xs sm:text-sm font-semibold tracking-wider sm:tracking-widest uppercase">What We Manufacture</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">GFRC/GRC Capabilities</h1>
-          <p className="text-white/70 text-lg max-w-2xl">
-            Six integrated GFRC/GRC manufacturing capabilities — from cladding and columns to domes, cornices, mashrabiya screens, and custom decorative elements. Most project scopes combine several of these into a single integrated package.
+          <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">GFRC/GRC Architectural Components</h1>
+          <p className="text-white/70 text-lg max-w-2xl mb-5">
+            Engineered architectural components for façades, entrances, domes, screens, columns, cornices, and bespoke decorative elements.
+          </p>
+          <p className="text-white/45 text-sm max-w-2xl leading-relaxed border-l-2 border-accent/40 pl-4">
+            Most projects combine multiple GFRC/GRC components into one integrated architectural package, depending on the approved drawings, façade design, and project requirements.
           </p>
         </div>
       </div>
@@ -54,11 +57,11 @@ export default function SystemsPage() {
                     <div className="flex items-center gap-1.5">
                       <div className="w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0" />
                       <span className="text-[10px] text-white/40 tracking-widest uppercase">
-                        Custom engineering available
+                        Project-specific manufacturing
                       </span>
                     </div>
                     <span className="text-[10px] text-accent/70 group-hover:text-accent tracking-widest uppercase transition-colors">
-                      View System →
+                      View Component →
                     </span>
                   </div>
                 </div>

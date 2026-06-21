@@ -126,7 +126,7 @@ export default function SystemsOverview() {
             <span className="text-accent text-xs sm:text-sm font-semibold tracking-wider sm:tracking-widest uppercase whitespace-nowrap">What We Manufacture</span>
             <div className="w-8 h-px bg-accent flex-shrink-0" />
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-navy mb-4">GFRC/GRC Capabilities</h2>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-navy mb-4">GFRC/GRC Architectural Components</h2>
           <p className="text-gray-500 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
             Six integrated GFRC/GRC manufacturing capabilities — combined on any project scope to deliver a complete architectural façade package.
           </p>
@@ -157,7 +157,7 @@ export default function SystemsOverview() {
             href="/systems"
             className="inline-flex items-center justify-center gap-2 w-[80%] sm:w-auto min-h-[56px] px-8 py-4 bg-navy text-white font-semibold rounded-sm hover:bg-navy-light transition-colors"
           >
-            View All Capabilities
+            View All Components
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>

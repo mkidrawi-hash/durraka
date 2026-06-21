@@ -1,7 +1,7 @@
 export const NAV_LINKS = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
-  { label: 'Capabilities', href: '/systems' },
+  { label: 'Components', href: '/systems' },
   { label: 'Packages', href: '/projects' },
   { label: 'Project Gallery', href: '/gallery' },
   { label: 'Catalog', href: '/catalog' },
@@ -38,39 +38,39 @@ export const METRICS = [
 export const SYSTEMS = [
   {
     id: 'facade-cladding',
-    title: 'GFRC/GRC Cladding',
+    title: 'Façade Cladding Components',
     description:
-      'High-performance glass fibre reinforced concrete panels engineered for modern and heritage façades.',
+      'High-performance GFRC/GRC façade panels engineered for modern, heritage, and project-specific architectural elevations.',
   },
   {
     id: 'mashrabiya',
-    title: 'Mashrabiya & Facade Screens',
+    title: 'Mashrabiya & Screen Components',
     description:
       'Intricate perforated screens combining traditional Islamic geometry with contemporary manufacturing precision.',
   },
   {
     id: 'domes',
-    title: 'Domes & Crowns',
+    title: 'Domes & Vaulted Components',
     description:
-      'Architecturally significant domes and vaulted elements crafted with structural integrity and aesthetic refinement.',
+      'Architectural dome and vaulted elements crafted for landmark entrances, mosques, hospitality, and heritage-inspired projects.',
   },
   {
     id: 'cornices',
-    title: 'Cornices & Profiles',
+    title: 'Cornices, Profiles & Mouldings',
     description:
-      'Decorative cornices, moldings, and architectural profiles produced to exacting specifications.',
+      'Decorative cornices, mouldings, and architectural profiles produced to match project drawings and façade details.',
   },
   {
     id: 'columns',
-    title: 'Columns & Pilasters',
+    title: 'Columns, Capitals & Pilasters',
     description:
-      'Classical and contemporary columns and pilasters in GFRC, engineered for beauty and structural performance.',
+      'Classical and contemporary column components including shafts, capitals, bases, and pilasters.',
   },
   {
     id: 'custom',
-    title: 'Decorative & Custom Elements',
+    title: 'Bespoke Decorative Components',
     description:
-      'Bespoke architectural ornamentation designed and manufactured to project-specific requirements.',
+      'Custom GFRC/GRC architectural ornamentation developed for project-specific design requirements.',
   },
 ]
 
