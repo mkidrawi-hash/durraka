@@ -17,3 +17,21 @@ html {
 [dir='rtl'] {
   text-align: right;
 }
+
+/* Lock scroll on body when diagram modal is open */
+body.diagram-modal-open {
+  overflow: hidden;
+}
+
+/* Hide all floating widgets when diagram modal is open.
+   Covers: our data-floating attribute, third-party accessibility widgets,
+   WhatsApp buttons, and any element with "floating" in its class name. */
+body.diagram-modal-open [data-floating],
+body.diagram-modal-open [class*="accessibility"],
+body.diagram-modal-open [class*="floating"],
+body.diagram-modal-open [class*="whatsapp"],
+body.diagram-modal-open [class*="Accessibility"],
+body.diagram-modal-open [class*="Floating"],
+body.diagram-modal-open [class*="WhatsApp"] {
+  display: none !important;
+}

@@ -1,8 +1,9 @@
 export const NAV_LINKS = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
-  { label: 'Systems', href: '/systems' },
-  { label: 'Projects', href: '/projects' },
+  { label: 'Components', href: '/systems' },
+  { label: 'Packages', href: '/projects' },
+  { label: 'Project Gallery', href: '/gallery' },
   { label: 'Catalog', href: '/catalog' },
   { label: 'Contact', href: '/contact' },
 ]
@@ -37,39 +38,51 @@ export const METRICS = [
 export const SYSTEMS = [
   {
     id: 'facade-cladding',
-    title: 'GFRC/GRC Façade Cladding',
+    title: 'Façade Cladding Components',
     description:
-      'High-performance glass fibre reinforced concrete panels engineered for modern and heritage façades.',
+      'High-performance GFRC/GRC façade panels engineered for modern, heritage, and project-specific architectural elevations.',
+    image: null,
+    imageAlt: null,
   },
   {
     id: 'mashrabiya',
-    title: 'Mashrabiya Systems',
+    title: 'Mashrabiya & Screen Components',
     description:
       'Intricate perforated screens combining traditional Islamic geometry with contemporary manufacturing precision.',
+    image: '/images/projects/makkah-2023-mosque/makkah-2023-mosque-mashrabiya-001.jpg',
+    imageAlt: 'GFRC mashrabiya screens on a mosque facade · Makkah · 2023',
   },
   {
     id: 'domes',
-    title: 'Domes & Vaults',
+    title: 'Domes & Vaulted Components',
     description:
-      'Architecturally significant domes and vaulted elements crafted with structural integrity and aesthetic refinement.',
+      'Architectural dome and vaulted elements crafted for landmark entrances, mosques, hospitality, and heritage-inspired projects.',
+    image: '/images/projects/makkah-2023-mosque/makkah-2023-mosque-domes-001.jpg',
+    imageAlt: 'GRC dome elements on a mosque · Makkah · 2023',
   },
   {
     id: 'cornices',
-    title: 'Cornices & Profiles',
+    title: 'Cornices, Profiles & Mouldings',
     description:
-      'Decorative cornices, moldings, and architectural profiles produced to exacting specifications.',
+      'Decorative cornices, mouldings, and architectural profiles produced to match project drawings and façade details.',
+    image: null,
+    imageAlt: null,
   },
   {
     id: 'columns',
-    title: 'Columns & Pillars',
+    title: 'Columns, Capitals & Pilasters',
     description:
-      'Classical and contemporary columns in GFRC, engineered for beauty and structural performance.',
+      'Classical and contemporary column components including shafts, capitals, bases, and pilasters.',
+    image: '/images/projects/makkah-2023-mosque/makkah-2023-mosque-arches-columns-capitals-001.jpg',
+    imageAlt: 'GRC columns, arches, and decorative capitals on a mosque · Makkah · 2023',
   },
   {
     id: 'custom',
-    title: 'Custom Decorative Elements',
+    title: 'Bespoke Decorative Components',
     description:
-      'Bespoke architectural ornamentation designed and manufactured to project-specific requirements.',
+      'Custom GFRC/GRC architectural ornamentation developed for project-specific design requirements.',
+    image: '/images/projects/makkah-2023-mosque/makkah-2023-mosque-decorative-elements-001.jpg',
+    imageAlt: 'GRC bespoke decorative facade elements on a mosque · Makkah · 2023',
   },
 ]
 

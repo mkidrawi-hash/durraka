@@ -21,6 +21,7 @@ export default function FloatingWhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Contact Durraka on WhatsApp"
+      data-floating="true"
       style={{
         // Positioned well above the iPhone Safari bottom bar and safe-area
         bottom: 'calc(88px + env(safe-area-inset-bottom))',

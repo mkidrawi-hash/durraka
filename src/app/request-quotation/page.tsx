@@ -18,9 +18,9 @@ export default function RequestQuotationPage() {
   return (
     <div className="min-h-screen">
       {/* Page header */}
-      <div className="bg-navy py-20 sm:py-24 px-4">
+      <div className="bg-navy py-10 sm:py-24 px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-16 items-start">
 
             {/* Left: heading */}
             <div>
@@ -33,10 +33,19 @@ export default function RequestQuotationPage() {
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
                 Request a GFRC/GRC Quotation
               </h1>
-              <p className="text-white/70 text-base sm:text-lg">
+              <p className="text-white/70 text-base sm:text-lg mb-6">
                 Share your project requirements and our team will review the scope and contact you
                 with the next steps.
               </p>
+              <a
+                href="#rfq-form"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-white text-sm font-semibold rounded-sm hover:bg-accent-dark transition-colors"
+              >
+                Start RFQ
+                <svg className="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </a>
             </div>
 
             {/* Right: benefits */}
@@ -68,6 +77,7 @@ export default function RequestQuotationPage() {
         </div>
       </div>
 
+      <div id="rfq-form" />
       <RFQForm />
     </div>
   )

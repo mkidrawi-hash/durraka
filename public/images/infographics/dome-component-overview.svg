@@ -1,0 +1,253 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" font-family="'Segoe UI', Arial, sans-serif">
+  <!-- Background -->
+  <rect width="1600" height="900" fill="#FFFFFF"/>
+
+  <!-- Left panel brand bar -->
+  <rect x="0" y="0" width="950" height="48" fill="#071B3B"/>
+  <rect x="0" y="0" width="4" height="48" fill="#D71920"/>
+  <text x="20" y="30" fill="#FFFFFF" font-size="10" font-weight="700" letter-spacing="3" text-anchor="start" opacity="0.7">DURRAKA FACTORY FOR INDUSTRY</text>
+  <text x="920" y="30" fill="#D71920" font-size="10" font-weight="700" letter-spacing="2" text-anchor="end" opacity="0.9">GRC / GFRC</text>
+
+  <!-- Main illustration area background -->
+  <rect x="0" y="48" width="950" height="802" fill="#F4F6F9"/>
+
+  <!-- Grid lines subtle -->
+  <line x1="0" y1="48" x2="950" y2="48" stroke="#071B3B" stroke-width="0.3" opacity="0.1"/>
+  <line x1="0" y1="200" x2="950" y2="200" stroke="#071B3B" stroke-width="0.3" opacity="0.07"/>
+  <line x1="0" y1="400" x2="950" y2="400" stroke="#071B3B" stroke-width="0.3" opacity="0.07"/>
+  <line x1="0" y1="600" x2="950" y2="600" stroke="#071B3B" stroke-width="0.3" opacity="0.07"/>
+  <line x1="0" y1="800" x2="950" y2="800" stroke="#071B3B" stroke-width="0.3" opacity="0.07"/>
+  <line x1="200" y1="48" x2="200" y2="850" stroke="#071B3B" stroke-width="0.3" opacity="0.07"/>
+  <line x1="475" y1="48" x2="475" y2="850" stroke="#071B3B" stroke-width="0.3" opacity="0.07"/>
+  <line x1="750" y1="48" x2="750" y2="850" stroke="#071B3B" stroke-width="0.3" opacity="0.07"/>
+
+  <!-- ── DOME ARCHITECTURAL ILLUSTRATION ── -->
+
+  <!-- Ground line -->
+  <line x1="80" y1="760" x2="870" y2="760" stroke="#071B3B" stroke-width="1.5" opacity="0.25"/>
+
+  <!-- Building base / podium -->
+  <rect x="120" y="710" width="710" height="50" fill="#071B3B" opacity="0.08" rx="1"/>
+  <rect x="120" y="710" width="710" height="50" fill="none" stroke="#071B3B" stroke-width="1" opacity="0.2"/>
+  <!-- Podium detailing -->
+  <rect x="140" y="716" width="670" height="3" fill="#071B3B" opacity="0.1"/>
+  <rect x="140" y="750" width="670" height="3" fill="#071B3B" opacity="0.1"/>
+
+  <!-- Drum / base of dome (octagonal suggestion) -->
+  <!-- Main drum shape -->
+  <rect x="200" y="590" width="550" height="120" fill="#FFFFFF" stroke="#071B3B" stroke-width="1.5" opacity="1"/>
+  <!-- Drum vertical pilaster details -->
+  <rect x="200" y="590" width="12" height="120" fill="#071B3B" opacity="0.06"/>
+  <rect x="738" y="590" width="12" height="120" fill="#071B3B" opacity="0.06"/>
+  <rect x="270" y="590" width="8" height="120" fill="#071B3B" opacity="0.04"/>
+  <rect x="338" y="590" width="8" height="120" fill="#071B3B" opacity="0.04"/>
+  <rect x="406" y="590" width="8" height="120" fill="#071B3B" opacity="0.04"/>
+  <rect x="474" y="590" width="8" height="120" fill="#071B3B" opacity="0.04"/>
+  <rect x="542" y="590" width="8" height="120" fill="#071B3B" opacity="0.04"/>
+  <rect x="610" y="590" width="8" height="120" fill="#071B3B" opacity="0.04"/>
+  <rect x="678" y="590" width="8" height="120" fill="#071B3B" opacity="0.04"/>
+  <!-- Drum horizontal profile lines -->
+  <line x1="200" y1="606" x2="750" y2="606" stroke="#071B3B" stroke-width="1" opacity="0.15"/>
+  <line x1="200" y1="694" x2="750" y2="694" stroke="#071B3B" stroke-width="1" opacity="0.15"/>
+
+  <!-- Cornice / transition ring at dome base -->
+  <rect x="180" y="575" width="590" height="18" fill="#FFFFFF" stroke="#071B3B" stroke-width="1.5"/>
+  <!-- Cornice profile details -->
+  <rect x="180" y="575" width="590" height="4" fill="#071B3B" opacity="0.08"/>
+  <rect x="180" y="587" width="590" height="3" fill="#071B3B" opacity="0.06"/>
+  <rect x="180" y="589" width="590" height="2" fill="#D71920" opacity="0.6"/>
+
+  <!-- Second cornice ring -->
+  <rect x="195" y="558" width="560" height="18" fill="#FFFFFF" stroke="#071B3B" stroke-width="1.2"/>
+  <rect x="195" y="558" width="560" height="4" fill="#071B3B" opacity="0.07"/>
+  <rect x="195" y="570" width="560" height="2" fill="#071B3B" opacity="0.05"/>
+
+  <!-- Main dome hemisphere -->
+  <path d="M 210 558 Q 210 310 475 260 Q 740 310 740 558 Z" fill="#FFFFFF" stroke="#071B3B" stroke-width="2"/>
+
+  <!-- Dome surface rib lines (8 ribs) -->
+  <path d="M 475 260 Q 390 380 340 558" fill="none" stroke="#071B3B" stroke-width="0.8" opacity="0.25"/>
+  <path d="M 475 260 Q 355 400 300 558" fill="none" stroke="#071B3B" stroke-width="0.8" opacity="0.25"/>
+  <path d="M 475 260 Q 330 440 260 558" fill="none" stroke="#071B3B" stroke-width="0.8" opacity="0.25"/>
+  <path d="M 475 260 Q 560 380 610 558" fill="none" stroke="#071B3B" stroke-width="0.8" opacity="0.25"/>
+  <path d="M 475 260 Q 595 400 650 558" fill="none" stroke="#071B3B" stroke-width="0.8" opacity="0.25"/>
+  <path d="M 475 260 Q 620 440 690 558" fill="none" stroke="#071B3B" stroke-width="0.8" opacity="0.25"/>
+
+  <!-- Dome horizontal profile bands (latitude lines) -->
+  <path d="M 245 470 Q 475 420 705 470" fill="none" stroke="#071B3B" stroke-width="0.7" opacity="0.18"/>
+  <path d="M 222 515 Q 475 468 728 515" fill="none" stroke="#071B3B" stroke-width="0.7" opacity="0.18"/>
+  <path d="M 268 430 Q 475 375 682 430" fill="none" stroke="#071B3B" stroke-width="0.7" opacity="0.15"/>
+
+  <!-- Dome apex finial / lantern -->
+  <!-- Lantern base ring -->
+  <rect x="445" y="245" width="60" height="18" rx="2" fill="#FFFFFF" stroke="#071B3B" stroke-width="1.5"/>
+  <rect x="445" y="245" width="60" height="4" fill="#071B3B" opacity="0.08"/>
+  <!-- Lantern body -->
+  <rect x="455" y="195" width="40" height="52" fill="#FFFFFF" stroke="#071B3B" stroke-width="1.5"/>
+  <!-- Lantern windows -->
+  <rect x="462" y="205" width="10" height="16" rx="5" fill="#071B3B" opacity="0.07" stroke="#071B3B" stroke-width="0.8"/>
+  <rect x="478" y="205" width="10" height="16" rx="5" fill="#071B3B" opacity="0.07" stroke="#071B3B" stroke-width="0.8"/>
+  <!-- Lantern top ring -->
+  <rect x="450" y="188" width="50" height="10" rx="2" fill="#FFFFFF" stroke="#071B3B" stroke-width="1.2"/>
+  <!-- Finial spike -->
+  <line x1="475" y1="188" x2="475" y2="155" stroke="#071B3B" stroke-width="2"/>
+  <polygon points="475,142 469,162 481,162" fill="#D71920" stroke="#071B3B" stroke-width="1"/>
+  <!-- Finial ball -->
+  <circle cx="475" cy="170" r="7" fill="#FFFFFF" stroke="#071B3B" stroke-width="1.5"/>
+
+  <!-- Dome shadow under -->
+  <ellipse cx="475" cy="760" rx="310" ry="12" fill="#071B3B" opacity="0.06"/>
+
+  <!-- ── CALLOUT LINES & NUMBERS ── -->
+
+  <!-- Callout 1: Main Dome Form — top of dome -->
+  <line x1="475" y1="310" x2="100" y2="200" stroke="#D71920" stroke-width="1" opacity="0.7" stroke-dasharray="4,3"/>
+  <circle cx="475" cy="310" r="5" fill="#D71920"/>
+  <circle cx="100" cy="200" r="14" fill="#D71920"/>
+  <text x="100" y="205" fill="#FFFFFF" font-size="11" font-weight="800" text-anchor="middle">1</text>
+
+  <!-- Callout 2: Base Transition/Drum Area -->
+  <line x1="200" y1="640" x2="110" y2="570" stroke="#D71920" stroke-width="1" opacity="0.7" stroke-dasharray="4,3"/>
+  <circle cx="200" cy="640" r="5" fill="#D71920"/>
+  <circle cx="110" cy="570" r="14" fill="#D71920"/>
+  <text x="110" y="575" fill="#FFFFFF" font-size="11" font-weight="800" text-anchor="middle">2</text>
+
+  <!-- Callout 3: Decorative Profile / Cornice Ring -->
+  <line x1="400" y1="584" x2="880" y2="490" stroke="#D71920" stroke-width="1" opacity="0.7" stroke-dasharray="4,3"/>
+  <circle cx="400" cy="584" r="5" fill="#D71920"/>
+  <circle cx="880" cy="490" r="14" fill="#D71920"/>
+  <text x="880" y="495" fill="#FFFFFF" font-size="11" font-weight="800" text-anchor="middle">3</text>
+
+  <!-- Callout 4: Surface Finish / Texture Direction -->
+  <line x1="590" y1="420" x2="870" y2="355" stroke="#D71920" stroke-width="1" opacity="0.7" stroke-dasharray="4,3"/>
+  <circle cx="590" cy="420" r="5" fill="#D71920"/>
+  <circle cx="870" cy="355" r="14" fill="#D71920"/>
+  <text x="870" y="360" fill="#FFFFFF" font-size="11" font-weight="800" text-anchor="middle">4</text>
+
+  <!-- Callout 5: Architectural Expression / Apex -->
+  <line x1="475" y1="170" x2="870" y2="185" stroke="#D71920" stroke-width="1" opacity="0.7" stroke-dasharray="4,3"/>
+  <circle cx="475" cy="170" r="5" fill="#D71920"/>
+  <circle cx="870" cy="185" r="14" fill="#D71920"/>
+  <text x="870" y="190" fill="#FFFFFF" font-size="11" font-weight="800" text-anchor="middle">5</text>
+
+  <!-- Callout 6: Integration with Overall Facade -->
+  <line x1="475" y1="730" x2="870" y2="700" stroke="#D71920" stroke-width="1" opacity="0.7" stroke-dasharray="4,3"/>
+  <circle cx="475" cy="730" r="5" fill="#D71920"/>
+  <circle cx="870" cy="700" r="14" fill="#D71920"/>
+  <text x="870" y="705" fill="#FFFFFF" font-size="11" font-weight="800" text-anchor="middle">6</text>
+
+  <!-- Callout legend labels on left panel -->
+  <!-- Label 1 -->
+  <text x="126" y="173" fill="#071B3B" font-size="9" font-weight="700" letter-spacing="1" opacity="0.6">MAIN DOME FORM</text>
+  <!-- Label 2 -->
+  <text x="80" y="545" fill="#071B3B" font-size="9" font-weight="700" letter-spacing="1" opacity="0.6">DRUM AREA</text>
+  <!-- Label 3 -->
+  <text x="856" y="468" fill="#071B3B" font-size="9" font-weight="700" letter-spacing="1" text-anchor="end" opacity="0.6">CORNICE RING</text>
+  <!-- Label 4 -->
+  <text x="856" y="334" fill="#071B3B" font-size="9" font-weight="700" letter-spacing="1" text-anchor="end" opacity="0.6">SURFACE FINISH</text>
+  <!-- Label 5 -->
+  <text x="856" y="164" fill="#071B3B" font-size="9" font-weight="700" letter-spacing="1" text-anchor="end" opacity="0.6">APEX / FINIAL</text>
+  <!-- Label 6 -->
+  <text x="856" y="679" fill="#071B3B" font-size="9" font-weight="700" letter-spacing="1" text-anchor="end" opacity="0.6">FACADE BASE</text>
+
+  <!-- Left panel footer strip -->
+  <rect x="0" y="850" width="950" height="50" fill="#E8EBF0"/>
+  <rect x="0" y="850" width="950" height="1" fill="#071B3B" opacity="0.12"/>
+  <text x="30" y="871" fill="#071B3B" font-size="8.5" opacity="0.5" letter-spacing="0.5">For design understanding and early scope coordination only.</text>
+  <text x="30" y="886" fill="#071B3B" font-size="8.5" opacity="0.5" letter-spacing="0.5">Detailed fixing, connection, and installation information is excluded.</text>
+
+  <!-- Divider line -->
+  <rect x="947" y="0" width="3" height="900" fill="#D71920" opacity="0.85"/>
+
+  <!-- ── RIGHT PANEL ── -->
+  <rect x="950" y="0" width="650" height="900" fill="#071B3B"/>
+
+  <!-- Right panel top accent -->
+  <rect x="950" y="0" width="650" height="4" fill="#D71920"/>
+
+  <!-- Title block -->
+  <rect x="985" y="40" width="38" height="3" fill="#D71920"/>
+  <text x="985" y="90" fill="#FFFFFF" font-size="28" font-weight="800" letter-spacing="-0.5">Dome</text>
+  <text x="985" y="125" fill="#FFFFFF" font-size="28" font-weight="800" letter-spacing="-0.5">Component</text>
+  <text x="985" y="160" fill="#D71920" font-size="28" font-weight="800" letter-spacing="-0.5">Overview</text>
+
+  <!-- Subtitle -->
+  <text x="985" y="192" fill="#FFFFFF" font-size="11" opacity="0.45" letter-spacing="1.5">GRC / GFRC ARCHITECTURAL FEATURE</text>
+
+  <!-- Divider -->
+  <rect x="985" y="210" width="580" height="1" fill="#FFFFFF" opacity="0.08"/>
+
+  <!-- Content card 1 -->
+  <rect x="985" y="228" width="278" height="140" rx="2" fill="#FFFFFF" opacity="0.04" stroke="#FFFFFF" stroke-width="0.5" stroke-opacity="0.1"/>
+  <rect x="985" y="228" width="3" height="140" fill="#D71920"/>
+  <text x="1002" y="254" fill="#D71920" font-size="9" font-weight="800" letter-spacing="2">01 — MAIN DOME FORM</text>
+  <text x="1002" y="276" fill="#FFFFFF" font-size="11.5" opacity="0.8" font-weight="600">Hemispherical Crown</text>
+  <foreignObject x="1002" y="286" width="248" height="72">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="color:rgba(255,255,255,0.55);font-size:10.5px;line-height:1.6;font-family:Arial,sans-serif;">The primary dome shell defines the architectural crown and provides a continuous, self-supporting GRC/GFRC surface engineered to project drawings.</div>
+  </foreignObject>
+
+  <!-- Content card 2 -->
+  <rect x="1277" y="228" width="278" height="140" rx="2" fill="#FFFFFF" opacity="0.04" stroke="#FFFFFF" stroke-width="0.5" stroke-opacity="0.1"/>
+  <rect x="1277" y="228" width="3" height="140" fill="#D71920"/>
+  <text x="1294" y="254" fill="#D71920" font-size="9" font-weight="800" letter-spacing="2">02 — DRUM AREA</text>
+  <text x="1294" y="276" fill="#FFFFFF" font-size="11.5" opacity="0.8" font-weight="600">Base Transition Zone</text>
+  <foreignObject x="1294" y="286" width="248" height="72">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="color:rgba(255,255,255,0.55);font-size:10.5px;line-height:1.6;font-family:Arial,sans-serif;">The drum provides the vertical transition between the building structure and the dome spring line, articulated with pilasters, panels, or arcade elements.</div>
+  </foreignObject>
+
+  <!-- Content card 3 -->
+  <rect x="985" y="386" width="278" height="140" rx="2" fill="#FFFFFF" opacity="0.04" stroke="#FFFFFF" stroke-width="0.5" stroke-opacity="0.1"/>
+  <rect x="985" y="386" width="3" height="140" fill="#D71920"/>
+  <text x="1002" y="412" fill="#D71920" font-size="9" font-weight="800" letter-spacing="2">03 — CORNICE RING</text>
+  <text x="1002" y="434" fill="#FFFFFF" font-size="11.5" opacity="0.8" font-weight="600">Decorative Profile</text>
+  <foreignObject x="1002" y="444" width="248" height="72">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="color:rgba(255,255,255,0.55);font-size:10.5px;line-height:1.6;font-family:Arial,sans-serif;">Profile rings at the dome base and cornice transitions provide visual definition, shadow lines, and horizontal banding that reinforce the architectural hierarchy.</div>
+  </foreignObject>
+
+  <!-- Content card 4 -->
+  <rect x="1277" y="386" width="278" height="140" rx="2" fill="#FFFFFF" opacity="0.04" stroke="#FFFFFF" stroke-width="0.5" stroke-opacity="0.1"/>
+  <rect x="1277" y="386" width="3" height="140" fill="#D71920"/>
+  <text x="1294" y="412" fill="#D71920" font-size="9" font-weight="800" letter-spacing="2">04 — SURFACE &amp; APEX</text>
+  <text x="1294" y="434" fill="#FFFFFF" font-size="11.5" opacity="0.8" font-weight="600">Finish &amp; Crown Detail</text>
+  <foreignObject x="1294" y="444" width="248" height="72">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="color:rgba(255,255,255,0.55);font-size:10.5px;line-height:1.6;font-family:Arial,sans-serif;">The dome surface finish — smooth, textured, or ribbed — is applied per project specification. The apex finial or lantern provides the uppermost architectural termination point.</div>
+  </foreignObject>
+
+  <!-- Divider -->
+  <rect x="985" y="546" width="580" height="1" fill="#FFFFFF" opacity="0.08"/>
+
+  <!-- Callout reference list -->
+  <text x="985" y="574" fill="#FFFFFF" font-size="9" font-weight="700" letter-spacing="2" opacity="0.35">COMPONENT REFERENCES</text>
+
+  <!-- Ref items -->
+  <circle cx="998" cy="604" r="10" fill="#D71920" opacity="0.15" stroke="#D71920" stroke-width="1"/>
+  <text x="998" y="608" fill="#D71920" font-size="9" font-weight="800" text-anchor="middle">1</text>
+  <text x="1016" y="608" fill="#FFFFFF" font-size="11" opacity="0.65">Main Dome Form — hemispherical primary shell</text>
+
+  <circle cx="998" cy="632" r="10" fill="#D71920" opacity="0.15" stroke="#D71920" stroke-width="1"/>
+  <text x="998" y="636" fill="#D71920" font-size="9" font-weight="800" text-anchor="middle">2</text>
+  <text x="1016" y="636" fill="#FFFFFF" font-size="11" opacity="0.65">Base Transition / Drum Area — vertical support zone</text>
+
+  <circle cx="998" cy="660" r="10" fill="#D71920" opacity="0.15" stroke="#D71920" stroke-width="1"/>
+  <text x="998" y="664" fill="#D71920" font-size="9" font-weight="800" text-anchor="middle">3</text>
+  <text x="1016" y="664" fill="#FFFFFF" font-size="11" opacity="0.65">Decorative Profile — cornice rings and banding</text>
+
+  <circle cx="998" cy="688" r="10" fill="#D71920" opacity="0.15" stroke="#D71920" stroke-width="1"/>
+  <text x="998" y="692" fill="#D71920" font-size="9" font-weight="800" text-anchor="middle">4</text>
+  <text x="1016" y="692" fill="#FFFFFF" font-size="11" opacity="0.65">Surface Finish / Texture Direction — visual character</text>
+
+  <circle cx="998" cy="716" r="10" fill="#D71920" opacity="0.15" stroke="#D71920" stroke-width="1"/>
+  <text x="998" y="720" fill="#D71920" font-size="9" font-weight="800" text-anchor="middle">5</text>
+  <text x="1016" y="720" fill="#FFFFFF" font-size="11" opacity="0.65">Architectural Expression — apex finial and crown</text>
+
+  <circle cx="998" cy="740" r="10" fill="#D71920" opacity="0.15" stroke="#D71920" stroke-width="1"/>
+  <text x="998" y="744" fill="#D71920" font-size="9" font-weight="800" text-anchor="middle">6</text>
+  <text x="1016" y="744" fill="#FFFFFF" font-size="11" opacity="0.65">Integration with Overall Facade Design</text>
+
+  <!-- Right panel bottom -->
+  <rect x="950" y="800" width="650" height="100" fill="#FFFFFF" opacity="0.03"/>
+  <rect x="950" y="800" width="650" height="1" fill="#FFFFFF" opacity="0.08"/>
+  <text x="985" y="835" fill="#FFFFFF" font-size="9" opacity="0.3" letter-spacing="0.5">DURRAKA FACTORY FOR INDUSTRY — GRC/GFRC MANUFACTURING</text>
+  <text x="985" y="855" fill="#FFFFFF" font-size="9" opacity="0.3" letter-spacing="0.5">durraka.com</text>
+  <rect x="985" y="868" width="32" height="2" fill="#D71920" opacity="0.5"/>
+</svg>

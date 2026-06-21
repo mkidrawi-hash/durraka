@@ -3,7 +3,7 @@ import Link from 'next/link'
 import ProjectsGrid from './ProjectsGrid'
 
 export const metadata: Metadata = {
-  title: 'Projects',
+  title: 'Project Scope Packages — GFRC/GRC Integrated Scopes | Durraka',
   description:
     "Explore Durraka Factory's portfolio of GFRC/GRC façade projects delivered across Saudi Arabia.",
 }

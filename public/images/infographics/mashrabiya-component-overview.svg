@@ -1,0 +1,336 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" font-family="'Segoe UI', Arial, sans-serif">
+  <!-- Background -->
+  <rect width="1600" height="900" fill="#FFFFFF"/>
+
+  <!-- Left panel brand bar -->
+  <rect x="0" y="0" width="950" height="48" fill="#071B3B"/>
+  <rect x="0" y="0" width="4" height="48" fill="#D71920"/>
+  <text x="20" y="30" fill="#FFFFFF" font-size="10" font-weight="700" letter-spacing="3" text-anchor="start" opacity="0.7">DURRAKA FACTORY FOR INDUSTRY</text>
+  <text x="920" y="30" fill="#D71920" font-size="10" font-weight="700" letter-spacing="2" text-anchor="end" opacity="0.9">GRC / GFRC</text>
+
+  <!-- Main illustration area background -->
+  <rect x="0" y="48" width="950" height="802" fill="#F4F6F9"/>
+
+  <!-- Subtle grid -->
+  <line x1="0" y1="200" x2="950" y2="200" stroke="#071B3B" stroke-width="0.3" opacity="0.07"/>
+  <line x1="0" y1="400" x2="950" y2="400" stroke="#071B3B" stroke-width="0.3" opacity="0.07"/>
+  <line x1="0" y1="600" x2="950" y2="600" stroke="#071B3B" stroke-width="0.3" opacity="0.07"/>
+  <line x1="200" y1="48" x2="200" y2="850" stroke="#071B3B" stroke-width="0.3" opacity="0.07"/>
+  <line x1="475" y1="48" x2="475" y2="850" stroke="#071B3B" stroke-width="0.3" opacity="0.07"/>
+  <line x1="750" y1="48" x2="750" y2="850" stroke="#071B3B" stroke-width="0.3" opacity="0.07"/>
+
+  <!-- ── MASHRABIYA SCREEN ILLUSTRATION ── -->
+
+  <!-- Building facade wall frame -->
+  <rect x="80" y="90" width="790" height="670" fill="#FFFFFF" stroke="#071B3B" stroke-width="1.5" opacity="0.5"/>
+  <!-- Wall texture hatching -->
+  <line x1="80" y1="130" x2="220" y2="130" stroke="#071B3B" stroke-width="0.5" opacity="0.12"/>
+  <line x1="80" y1="170" x2="220" y2="170" stroke="#071B3B" stroke-width="0.5" opacity="0.12"/>
+  <line x1="80" y1="210" x2="220" y2="210" stroke="#071B3B" stroke-width="0.5" opacity="0.12"/>
+  <line x1="80" y1="250" x2="220" y2="250" stroke="#071B3B" stroke-width="0.5" opacity="0.12"/>
+  <line x1="80" y1="290" x2="220" y2="290" stroke="#071B3B" stroke-width="0.5" opacity="0.12"/>
+  <line x1="80" y1="330" x2="220" y2="330" stroke="#071B3B" stroke-width="0.5" opacity="0.12"/>
+  <line x1="80" y1="370" x2="220" y2="370" stroke="#071B3B" stroke-width="0.5" opacity="0.12"/>
+  <line x1="80" y1="410" x2="220" y2="410" stroke="#071B3B" stroke-width="0.5" opacity="0.12"/>
+  <line x1="80" y1="450" x2="220" y2="450" stroke="#071B3B" stroke-width="0.5" opacity="0.12"/>
+  <line x1="80" y1="490" x2="220" y2="490" stroke="#071B3B" stroke-width="0.5" opacity="0.12"/>
+  <line x1="80" y1="530" x2="220" y2="530" stroke="#071B3B" stroke-width="0.5" opacity="0.12"/>
+  <line x1="80" y1="570" x2="220" y2="570" stroke="#071B3B" stroke-width="0.5" opacity="0.12"/>
+  <line x1="80" y1="610" x2="220" y2="610" stroke="#071B3B" stroke-width="0.5" opacity="0.12"/>
+  <line x1="80" y1="650" x2="220" y2="650" stroke="#071B3B" stroke-width="0.5" opacity="0.12"/>
+  <line x1="80" y1="690" x2="220" y2="690" stroke="#071B3B" stroke-width="0.5" opacity="0.12"/>
+  <line x1="80" y1="730" x2="220" y2="730" stroke="#071B3B" stroke-width="0.5" opacity="0.12"/>
+  <!-- Right wall texture -->
+  <line x1="730" y1="130" x2="870" y2="130" stroke="#071B3B" stroke-width="0.5" opacity="0.12"/>
+  <line x1="730" y1="170" x2="870" y2="170" stroke="#071B3B" stroke-width="0.5" opacity="0.12"/>
+  <line x1="730" y1="210" x2="870" y2="210" stroke="#071B3B" stroke-width="0.5" opacity="0.12"/>
+  <line x1="730" y1="250" x2="870" y2="250" stroke="#071B3B" stroke-width="0.5" opacity="0.12"/>
+  <line x1="730" y1="290" x2="870" y2="290" stroke="#071B3B" stroke-width="0.5" opacity="0.12"/>
+  <line x1="730" y1="330" x2="870" y2="330" stroke="#071B3B" stroke-width="0.5" opacity="0.12"/>
+  <line x1="730" y1="370" x2="870" y2="370" stroke="#071B3B" stroke-width="0.5" opacity="0.12"/>
+  <line x1="730" y1="410" x2="870" y2="410" stroke="#071B3B" stroke-width="0.5" opacity="0.12"/>
+  <line x1="730" y1="450" x2="870" y2="450" stroke="#071B3B" stroke-width="0.5" opacity="0.12"/>
+  <line x1="730" y1="490" x2="870" y2="490" stroke="#071B3B" stroke-width="0.5" opacity="0.12"/>
+  <line x1="730" y1="530" x2="870" y2="530" stroke="#071B3B" stroke-width="0.5" opacity="0.12"/>
+  <line x1="730" y1="570" x2="870" y2="570" stroke="#071B3B" stroke-width="0.5" opacity="0.12"/>
+  <line x1="730" y1="610" x2="870" y2="610" stroke="#071B3B" stroke-width="0.5" opacity="0.12"/>
+  <line x1="730" y1="650" x2="870" y2="650" stroke="#071B3B" stroke-width="0.5" opacity="0.12"/>
+  <line x1="730" y1="690" x2="870" y2="690" stroke="#071B3B" stroke-width="0.5" opacity="0.12"/>
+  <line x1="730" y1="730" x2="870" y2="730" stroke="#071B3B" stroke-width="0.5" opacity="0.12"/>
+
+  <!-- Frame / border of mashrabiya panel -->
+  <rect x="220" y="90" width="510" height="670" fill="none" stroke="#071B3B" stroke-width="3"/>
+  <!-- Top arch of mashrabiya opening -->
+  <path d="M 220 280 Q 220 90 475 90 Q 730 90 730 280" fill="#FFFFFF" stroke="#071B3B" stroke-width="2"/>
+  <!-- Arch keystone -->
+  <polygon points="475,90 462,115 488,115" fill="#071B3B" opacity="0.15"/>
+  <rect x="465" y="90" width="20" height="25" fill="#071B3B" opacity="0.1"/>
+  <!-- Red arch accent line -->
+  <path d="M 228 280 Q 228 98 475 98 Q 722 98 722 280" fill="none" stroke="#D71920" stroke-width="1.5" opacity="0.4"/>
+
+  <!-- ── MASHRABIYA GEOMETRIC PATTERN (fills the rectangular lower portion) ── -->
+  <!-- Panel background -->
+  <rect x="220" y="280" width="510" height="480" fill="#FFFFFF"/>
+  <!-- Also the arched upper area -->
+  <path d="M 220 280 Q 220 90 475 90 Q 730 90 730 280 Z" fill="#FFFFFF"/>
+
+  <!-- Geometric pattern — octagonal star repeat -->
+  <!-- Row 1 -->
+  <!-- Star 1 -->
+  <polygon points="305,148 290,168 305,188 330,188 345,168 330,148" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+  <polygon points="305,148 317,158 317,178 305,188 293,178 293,158" fill="none" stroke="#071B3B" stroke-width="0.7" opacity="0.4"/>
+  <!-- Star 2 -->
+  <polygon points="405,148 390,168 405,188 430,188 445,168 430,148" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+  <polygon points="405,148 417,158 417,178 405,188 393,178 393,158" fill="none" stroke="#071B3B" stroke-width="0.7" opacity="0.4"/>
+  <!-- Star 3 -->
+  <polygon points="505,148 490,168 505,188 530,188 545,168 530,148" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+  <polygon points="505,148 517,158 517,178 505,188 493,178 493,158" fill="none" stroke="#071B3B" stroke-width="0.7" opacity="0.4"/>
+  <!-- Star 4 -->
+  <polygon points="605,148 590,168 605,188 630,188 645,168 630,148" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+  <polygon points="605,148 617,158 617,178 605,188 593,178 593,158" fill="none" stroke="#071B3B" stroke-width="0.7" opacity="0.4"/>
+
+  <!-- Row 1b (offset) -->
+  <polygon points="355,198 340,218 355,238 380,238 395,218 380,198" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+  <polygon points="455,198 440,218 455,238 480,238 495,218 480,198" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+  <polygon points="555,198 540,218 555,238 580,238 595,218 580,198" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+  <polygon points="655,198 640,218 655,238 680,238 695,218 680,198" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+
+  <!-- Geometric grid pattern rows 2-7 (simplified) -->
+  <!-- Row 2 -->
+  <polygon points="255,300 240,320 255,340 280,340 295,320 280,300" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+  <polygon points="355,300 340,320 355,340 380,340 395,320 380,300" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+  <polygon points="455,300 440,320 455,340 480,340 495,320 480,300" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+  <polygon points="555,300 540,320 555,340 580,340 595,320 580,300" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+  <polygon points="655,300 640,320 655,340 680,340 695,320 680,300" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+
+  <!-- Diagonal connecting lines in pattern -->
+  <line x1="295" y1="320" x2="340" y2="320" stroke="#071B3B" stroke-width="0.7" opacity="0.5"/>
+  <line x1="395" y1="320" x2="440" y2="320" stroke="#071B3B" stroke-width="0.7" opacity="0.5"/>
+  <line x1="495" y1="320" x2="540" y2="320" stroke="#071B3B" stroke-width="0.7" opacity="0.5"/>
+  <line x1="595" y1="320" x2="640" y2="320" stroke="#071B3B" stroke-width="0.7" opacity="0.5"/>
+  <line x1="280" y1="300" x2="355" y2="300" stroke="#071B3B" stroke-width="0.7" opacity="0.3"/>
+  <line x1="380" y1="300" x2="455" y2="300" stroke="#071B3B" stroke-width="0.7" opacity="0.3"/>
+  <line x1="480" y1="300" x2="555" y2="300" stroke="#071B3B" stroke-width="0.7" opacity="0.3"/>
+  <line x1="580" y1="300" x2="655" y2="300" stroke="#071B3B" stroke-width="0.7" opacity="0.3"/>
+
+  <!-- Row 2b (offset) -->
+  <polygon points="305,348 290,368 305,388 330,388 345,368 330,348" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+  <polygon points="405,348 390,368 405,388 430,388 445,368 430,348" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+  <polygon points="505,348 490,368 505,388 530,388 545,368 530,348" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+  <polygon points="605,348 590,368 605,388 630,388 645,368 630,348" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+
+  <!-- Row 3 -->
+  <polygon points="255,400 240,420 255,440 280,440 295,420 280,400" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+  <polygon points="355,400 340,420 355,440 380,440 395,420 380,400" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+  <polygon points="455,400 440,420 455,440 480,440 495,420 480,400" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+  <polygon points="555,400 540,420 555,440 580,440 595,420 580,400" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+  <polygon points="655,400 640,420 655,440 680,440 695,420 680,400" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+
+  <line x1="295" y1="420" x2="340" y2="420" stroke="#071B3B" stroke-width="0.7" opacity="0.5"/>
+  <line x1="395" y1="420" x2="440" y2="420" stroke="#071B3B" stroke-width="0.7" opacity="0.5"/>
+  <line x1="495" y1="420" x2="540" y2="420" stroke="#071B3B" stroke-width="0.7" opacity="0.5"/>
+  <line x1="595" y1="420" x2="640" y2="420" stroke="#071B3B" stroke-width="0.7" opacity="0.5"/>
+
+  <!-- Row 3b -->
+  <polygon points="305,448 290,468 305,488 330,488 345,468 330,448" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+  <polygon points="405,448 390,468 405,488 430,488 445,468 430,448" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+  <polygon points="505,448 490,468 505,488 530,488 545,468 530,448" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+  <polygon points="605,448 590,468 605,488 630,488 645,468 630,448" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+
+  <!-- Row 4 -->
+  <polygon points="255,500 240,520 255,540 280,540 295,520 280,500" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+  <polygon points="355,500 340,520 355,540 380,540 395,520 380,500" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+  <polygon points="455,500 440,520 455,540 480,540 495,520 480,500" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+  <polygon points="555,500 540,520 555,540 580,540 595,520 580,500" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+  <polygon points="655,500 640,520 655,540 680,540 695,520 680,500" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+
+  <line x1="295" y1="520" x2="340" y2="520" stroke="#071B3B" stroke-width="0.7" opacity="0.5"/>
+  <line x1="395" y1="520" x2="440" y2="520" stroke="#071B3B" stroke-width="0.7" opacity="0.5"/>
+  <line x1="495" y1="520" x2="540" y2="520" stroke="#071B3B" stroke-width="0.7" opacity="0.5"/>
+  <line x1="595" y1="520" x2="640" y2="520" stroke="#071B3B" stroke-width="0.7" opacity="0.5"/>
+
+  <!-- Row 4b -->
+  <polygon points="305,548 290,568 305,588 330,588 345,568 330,548" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+  <polygon points="405,548 390,568 405,588 430,588 445,568 430,548" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+  <polygon points="505,548 490,568 505,588 530,588 545,568 530,548" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+  <polygon points="605,548 590,568 605,588 630,588 645,568 630,548" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+
+  <!-- Row 5 -->
+  <polygon points="255,600 240,620 255,640 280,640 295,620 280,600" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+  <polygon points="355,600 340,620 355,640 380,640 395,620 380,600" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+  <polygon points="455,600 440,620 455,640 480,640 495,620 480,600" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+  <polygon points="555,600 540,620 555,640 580,640 595,620 580,600" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+  <polygon points="655,600 640,620 655,640 680,640 695,620 680,600" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+
+  <line x1="295" y1="620" x2="340" y2="620" stroke="#071B3B" stroke-width="0.7" opacity="0.5"/>
+  <line x1="395" y1="620" x2="440" y2="620" stroke="#071B3B" stroke-width="0.7" opacity="0.5"/>
+  <line x1="495" y1="620" x2="540" y2="620" stroke="#071B3B" stroke-width="0.7" opacity="0.5"/>
+  <line x1="595" y1="620" x2="640" y2="620" stroke="#071B3B" stroke-width="0.7" opacity="0.5"/>
+
+  <!-- Row 5b -->
+  <polygon points="305,648 290,668 305,688 330,688 345,668 330,648" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+  <polygon points="405,648 390,668 405,688 430,688 445,668 430,648" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+  <polygon points="505,648 490,668 505,688 530,688 545,668 530,648" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+  <polygon points="605,648 590,668 605,688 630,688 645,668 630,648" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+
+  <!-- Row 6 -->
+  <polygon points="255,700 240,720 255,740 280,740 295,720 280,700" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+  <polygon points="355,700 340,720 355,740 380,740 395,720 380,700" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+  <polygon points="455,700 440,720 455,740 480,740 495,720 480,700" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+  <polygon points="555,700 540,720 555,740 580,740 595,720 580,700" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+  <polygon points="655,700 640,720 655,740 680,740 695,720 680,700" fill="none" stroke="#071B3B" stroke-width="1.2"/>
+
+  <line x1="295" y1="720" x2="340" y2="720" stroke="#071B3B" stroke-width="0.7" opacity="0.5"/>
+  <line x1="395" y1="720" x2="440" y2="720" stroke="#071B3B" stroke-width="0.7" opacity="0.5"/>
+  <line x1="495" y1="720" x2="540" y2="720" stroke="#071B3B" stroke-width="0.7" opacity="0.5"/>
+  <line x1="595" y1="720" x2="640" y2="720" stroke="#071B3B" stroke-width="0.7" opacity="0.5"/>
+
+  <!-- Sun/light rays coming through (solar shading effect illustration) -->
+  <line x1="350" y1="300" x2="280" y2="760" stroke="#D71920" stroke-width="0.8" opacity="0.12"/>
+  <line x1="475" y1="280" x2="475" y2="760" stroke="#D71920" stroke-width="0.8" opacity="0.12"/>
+  <line x1="600" y1="300" x2="650" y2="760" stroke="#D71920" stroke-width="0.8" opacity="0.12"/>
+
+  <!-- Frame outline over the top -->
+  <rect x="220" y="280" width="510" height="480" fill="none" stroke="#071B3B" stroke-width="2"/>
+  <path d="M 220 280 Q 220 90 475 90 Q 730 90 730 280" fill="none" stroke="#071B3B" stroke-width="2.5"/>
+
+  <!-- Ground line -->
+  <line x1="60" y1="760" x2="900" y2="760" stroke="#071B3B" stroke-width="1.5" opacity="0.2"/>
+
+  <!-- ── CALLOUT LINES & NUMBERS ── -->
+
+  <!-- Callout 1: Screen Pattern Design — center of pattern -->
+  <line x1="455" y1="420" x2="140" y2="300" stroke="#D71920" stroke-width="1" opacity="0.7" stroke-dasharray="4,3"/>
+  <circle cx="455" cy="420" r="5" fill="#D71920"/>
+  <circle cx="140" cy="300" r="14" fill="#D71920"/>
+  <text x="140" y="305" fill="#FFFFFF" font-size="11" font-weight="800" text-anchor="middle">1</text>
+
+  <!-- Callout 2: Privacy Function — right side -->
+  <line x1="730" y1="500" x2="880" y2="430" stroke="#D71920" stroke-width="1" opacity="0.7" stroke-dasharray="4,3"/>
+  <circle cx="730" cy="500" r="5" fill="#D71920"/>
+  <circle cx="880" cy="430" r="14" fill="#D71920"/>
+  <text x="880" y="435" fill="#FFFFFF" font-size="11" font-weight="800" text-anchor="middle">2</text>
+
+  <!-- Callout 3: Solar Shading Effect — light rays area -->
+  <line x1="475" y1="600" x2="140" y2="640" stroke="#D71920" stroke-width="1" opacity="0.7" stroke-dasharray="4,3"/>
+  <circle cx="475" cy="600" r="5" fill="#D71920"/>
+  <circle cx="140" cy="640" r="14" fill="#D71920"/>
+  <text x="140" y="645" fill="#FFFFFF" font-size="11" font-weight="800" text-anchor="middle">3</text>
+
+  <!-- Callout 4: Facade Rhythm — right bottom -->
+  <line x1="680" y1="700" x2="880" y2="680" stroke="#D71920" stroke-width="1" opacity="0.7" stroke-dasharray="4,3"/>
+  <circle cx="680" cy="700" r="5" fill="#D71920"/>
+  <circle cx="880" cy="680" r="14" fill="#D71920"/>
+  <text x="880" y="685" fill="#FFFFFF" font-size="11" font-weight="800" text-anchor="middle">4</text>
+
+  <!-- Callout 5: Cultural/Regional Expression — arch top -->
+  <line x1="475" y1="130" x2="880" y2="190" stroke="#D71920" stroke-width="1" opacity="0.7" stroke-dasharray="4,3"/>
+  <circle cx="475" cy="130" r="5" fill="#D71920"/>
+  <circle cx="880" cy="190" r="14" fill="#D71920"/>
+  <text x="880" y="195" fill="#FFFFFF" font-size="11" font-weight="800" text-anchor="middle">5</text>
+
+  <!-- Callout 6: Integration with Openings — frame edge -->
+  <line x1="220" y1="430" x2="140" y2="500" stroke="#D71920" stroke-width="1" opacity="0.7" stroke-dasharray="4,3"/>
+  <circle cx="220" cy="430" r="5" fill="#D71920"/>
+  <circle cx="140" cy="500" r="14" fill="#D71920"/>
+  <text x="140" y="505" fill="#FFFFFF" font-size="11" font-weight="800" text-anchor="middle">6</text>
+
+  <!-- Callout labels -->
+  <text x="162" y="280" fill="#071B3B" font-size="9" font-weight="700" letter-spacing="1" opacity="0.6">PATTERN DESIGN</text>
+  <text x="862" y="412" fill="#071B3B" font-size="9" font-weight="700" letter-spacing="1" text-anchor="end" opacity="0.6">PRIVACY FUNCTION</text>
+  <text x="162" y="622" fill="#071B3B" font-size="9" font-weight="700" letter-spacing="1" opacity="0.6">SOLAR SHADING</text>
+  <text x="862" y="662" fill="#071B3B" font-size="9" font-weight="700" letter-spacing="1" text-anchor="end" opacity="0.6">FACADE RHYTHM</text>
+  <text x="862" y="172" fill="#071B3B" font-size="9" font-weight="700" letter-spacing="1" text-anchor="end" opacity="0.6">ARCH EXPRESSION</text>
+  <text x="162" y="482" fill="#071B3B" font-size="9" font-weight="700" letter-spacing="1" opacity="0.6">FRAME INTEGRATION</text>
+
+  <!-- Left panel footer strip -->
+  <rect x="0" y="850" width="950" height="50" fill="#E8EBF0"/>
+  <rect x="0" y="850" width="950" height="1" fill="#071B3B" opacity="0.12"/>
+  <text x="30" y="871" fill="#071B3B" font-size="8.5" opacity="0.5" letter-spacing="0.5">For design understanding and early scope coordination only.</text>
+  <text x="30" y="886" fill="#071B3B" font-size="8.5" opacity="0.5" letter-spacing="0.5">Detailed fixing, connection, and installation information is excluded.</text>
+
+  <!-- Divider line -->
+  <rect x="947" y="0" width="3" height="900" fill="#D71920" opacity="0.85"/>
+
+  <!-- ── RIGHT PANEL ── -->
+  <rect x="950" y="0" width="650" height="900" fill="#071B3B"/>
+  <rect x="950" y="0" width="650" height="4" fill="#D71920"/>
+
+  <!-- Title block -->
+  <rect x="985" y="40" width="38" height="3" fill="#D71920"/>
+  <text x="985" y="90" fill="#FFFFFF" font-size="26" font-weight="800" letter-spacing="-0.5">Mashrabiya</text>
+  <text x="985" y="125" fill="#FFFFFF" font-size="26" font-weight="800" letter-spacing="-0.5">Screen</text>
+  <text x="985" y="160" fill="#D71920" font-size="26" font-weight="800" letter-spacing="-0.5">Overview</text>
+  <text x="985" y="192" fill="#FFFFFF" font-size="11" opacity="0.45" letter-spacing="1.5">GRC / GFRC ARCHITECTURAL FEATURE</text>
+  <rect x="985" y="210" width="580" height="1" fill="#FFFFFF" opacity="0.08"/>
+
+  <!-- Content cards -->
+  <rect x="985" y="228" width="278" height="140" rx="2" fill="#FFFFFF" opacity="0.04" stroke="#FFFFFF" stroke-width="0.5" stroke-opacity="0.1"/>
+  <rect x="985" y="228" width="3" height="140" fill="#D71920"/>
+  <text x="1002" y="254" fill="#D71920" font-size="9" font-weight="800" letter-spacing="2">01 — PATTERN DESIGN</text>
+  <text x="1002" y="276" fill="#FFFFFF" font-size="11.5" opacity="0.8" font-weight="600">Geometric Screen Module</text>
+  <foreignObject x="1002" y="286" width="248" height="72">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="color:rgba(255,255,255,0.55);font-size:10.5px;line-height:1.6;font-family:Arial,sans-serif;">Geometric patterns are produced as GRC/GFRC panels, modularized to project dimensions. Star, lattice, arabesque, and custom motifs are manufactured from project drawings and pattern files.</div>
+  </foreignObject>
+
+  <rect x="1277" y="228" width="278" height="140" rx="2" fill="#FFFFFF" opacity="0.04" stroke="#FFFFFF" stroke-width="0.5" stroke-opacity="0.1"/>
+  <rect x="1277" y="228" width="3" height="140" fill="#D71920"/>
+  <text x="1294" y="254" fill="#D71920" font-size="9" font-weight="800" letter-spacing="2">02 — PRIVACY &amp; SHADING</text>
+  <text x="1294" y="276" fill="#FFFFFF" font-size="11.5" opacity="0.8" font-weight="600">Functional Screen Role</text>
+  <foreignObject x="1294" y="286" width="248" height="72">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="color:rgba(255,255,255,0.55);font-size:10.5px;line-height:1.6;font-family:Arial,sans-serif;">Mashrabiya screens provide controlled solar shading and visual privacy while allowing natural light diffusion and air circulation — functional performance integrated into the architectural facade.</div>
+  </foreignObject>
+
+  <rect x="985" y="386" width="278" height="140" rx="2" fill="#FFFFFF" opacity="0.04" stroke="#FFFFFF" stroke-width="0.5" stroke-opacity="0.1"/>
+  <rect x="985" y="386" width="3" height="140" fill="#D71920"/>
+  <text x="1002" y="412" fill="#D71920" font-size="9" font-weight="800" letter-spacing="2">03 — FACADE RHYTHM</text>
+  <text x="1002" y="434" fill="#FFFFFF" font-size="11.5" opacity="0.8" font-weight="600">Repetition &amp; Proportion</text>
+  <foreignObject x="1002" y="444" width="248" height="72">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="color:rgba(255,255,255,0.55);font-size:10.5px;line-height:1.6;font-family:Arial,sans-serif;">Screen modules repeat across the facade with consistent bay spacing, creating a unified architectural rhythm. Panel sizing, depth, and void-to-solid ratio are coordinated to project elevations.</div>
+  </foreignObject>
+
+  <rect x="1277" y="386" width="278" height="140" rx="2" fill="#FFFFFF" opacity="0.04" stroke="#FFFFFF" stroke-width="0.5" stroke-opacity="0.1"/>
+  <rect x="1277" y="386" width="3" height="140" fill="#D71920"/>
+  <text x="1294" y="412" fill="#D71920" font-size="9" font-weight="800" letter-spacing="2">04 — CULTURAL EXPRESSION</text>
+  <text x="1294" y="434" fill="#FFFFFF" font-size="11.5" opacity="0.8" font-weight="600">Regional Identity</text>
+  <foreignObject x="1294" y="444" width="248" height="72">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="color:rgba(255,255,255,0.55);font-size:10.5px;line-height:1.6;font-family:Arial,sans-serif;">GRC/GFRC Mashrabiya elements bring regional and cultural identity to contemporary facades — heritage motifs and arch forms are faithfully reproduced from design references and historical sources.</div>
+  </foreignObject>
+
+  <!-- Divider -->
+  <rect x="985" y="546" width="580" height="1" fill="#FFFFFF" opacity="0.08"/>
+
+  <!-- Callout reference list -->
+  <text x="985" y="574" fill="#FFFFFF" font-size="9" font-weight="700" letter-spacing="2" opacity="0.35">COMPONENT REFERENCES</text>
+
+  <circle cx="998" cy="604" r="10" fill="#D71920" opacity="0.15" stroke="#D71920" stroke-width="1"/>
+  <text x="998" y="608" fill="#D71920" font-size="9" font-weight="800" text-anchor="middle">1</text>
+  <text x="1016" y="608" fill="#FFFFFF" font-size="11" opacity="0.65">Screen Pattern Design — geometric motif and module</text>
+
+  <circle cx="998" cy="632" r="10" fill="#D71920" opacity="0.15" stroke="#D71920" stroke-width="1"/>
+  <text x="998" y="636" fill="#D71920" font-size="9" font-weight="800" text-anchor="middle">2</text>
+  <text x="1016" y="636" fill="#FFFFFF" font-size="11" opacity="0.65">Privacy Function — visual screening performance</text>
+
+  <circle cx="998" cy="660" r="10" fill="#D71920" opacity="0.15" stroke="#D71920" stroke-width="1"/>
+  <text x="998" y="664" fill="#D71920" font-size="9" font-weight="800" text-anchor="middle">3</text>
+  <text x="1016" y="664" fill="#FFFFFF" font-size="11" opacity="0.65">Solar Shading Effect — light and shadow control</text>
+
+  <circle cx="998" cy="688" r="10" fill="#D71920" opacity="0.15" stroke="#D71920" stroke-width="1"/>
+  <text x="998" y="692" fill="#D71920" font-size="9" font-weight="800" text-anchor="middle">4</text>
+  <text x="1016" y="692" fill="#FFFFFF" font-size="11" opacity="0.65">Facade Rhythm — bay repetition and proportion</text>
+
+  <circle cx="998" cy="716" r="10" fill="#D71920" opacity="0.15" stroke="#D71920" stroke-width="1"/>
+  <text x="998" y="720" fill="#D71920" font-size="9" font-weight="800" text-anchor="middle">5</text>
+  <text x="1016" y="720" fill="#FFFFFF" font-size="11" opacity="0.65">Cultural / Regional Expression — arch and motif identity</text>
+
+  <circle cx="998" cy="740" r="10" fill="#D71920" opacity="0.15" stroke="#D71920" stroke-width="1"/>
+  <text x="998" y="744" fill="#D71920" font-size="9" font-weight="800" text-anchor="middle">6</text>
+  <text x="1016" y="744" fill="#FFFFFF" font-size="11" opacity="0.65">Integration with Openings — frame and panel coordination</text>
+
+  <!-- Right panel bottom -->
+  <rect x="950" y="800" width="650" height="100" fill="#FFFFFF" opacity="0.03"/>
+  <rect x="950" y="800" width="650" height="1" fill="#FFFFFF" opacity="0.08"/>
+  <text x="985" y="835" fill="#FFFFFF" font-size="9" opacity="0.3" letter-spacing="0.5">DURRAKA FACTORY FOR INDUSTRY — GRC/GFRC MANUFACTURING</text>
+  <text x="985" y="855" fill="#FFFFFF" font-size="9" opacity="0.3" letter-spacing="0.5">durraka.com</text>
+  <rect x="985" y="868" width="32" height="2" fill="#D71920" opacity="0.5"/>
+</svg>
