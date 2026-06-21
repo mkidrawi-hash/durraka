@@ -1,129 +1,52 @@
 import type { Metadata } from 'next'
-import ImagePlaceholder from '@/components/ui/ImagePlaceholder'
+import Link from 'next/link'
+import ProjectsGrid from './ProjectsGrid'
 
 export const metadata: Metadata = {
   title: 'Projects',
   description:
-    'Explore Durraka Factory\'s portfolio of GFRC/GRC façade projects delivered across Saudi Arabia.',
+    "Explore Durraka Factory's portfolio of GFRC/GRC façade projects delivered across Saudi Arabia.",
 }
-
-const PROJECTS = [
-  {
-    id: 1,
-    title: 'Commercial Façade Package',
-    category: 'GFRC Façade Cladding',
-    location: 'Riyadh, KSA',
-    area: '12,400 m²',
-    year: '2023',
-    description:
-      'Full façade cladding system for a multi-storey mixed-use development, including panel fabrication, engineering coordination, and site delivery.',
-  },
-  {
-    id: 2,
-    title: 'Mashrabiya Screen Package',
-    category: 'Mashrabiya Systems',
-    location: 'Jeddah, KSA',
-    area: '3,800 m²',
-    year: '2023',
-    description:
-      'Custom geometric mashrabiya screens for a heritage-inspired retail and hospitality complex, designed to project-specific geometric specifications.',
-  },
-  {
-    id: 3,
-    title: 'Domes & Cornices Package',
-    category: 'Domes & Cornices',
-    location: 'Medina, KSA',
-    area: '6,200 m²',
-    year: '2022',
-    description:
-      'Decorative domes, cornices, and architectural ornamentation elements, engineered and manufactured to exacting design requirements.',
-  },
-  {
-    id: 4,
-    title: 'Residential Decorative Package',
-    category: 'Custom Decorative Elements',
-    location: 'Al Khobar, KSA',
-    area: '2,100 m²',
-    year: '2022',
-    description:
-      'Bespoke columns, cornices, and exterior decorative features for a high-end residential development, produced to custom profiles.',
-  },
-  {
-    id: 5,
-    title: 'Government Façade Package',
-    category: 'GFRC Façade Cladding',
-    location: 'Dammam, KSA',
-    area: '18,600 m²',
-    year: '2023',
-    description: 'Large-scale façade cladding system for a government administrative complex, including structural panel design and Kingdom-wide delivery.',
-  },
-  {
-    id: 6,
-    title: 'Hospitality Column Package',
-    category: 'Columns & Pillars',
-    location: 'Riyadh, KSA',
-    area: '900 m²',
-    year: '2022',
-    description:
-      'Custom GRC columns and pilasters for the entrance colonnade of a hospitality project, cast to bespoke classical profiles.',
-  },
-]
 
 export default function ProjectsPage() {
   return (
     <div className="min-h-screen">
       {/* Page header */}
-      <div className="bg-navy py-24 px-4">
+      <div className="bg-navy py-20 sm:py-28 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="inline-flex items-center gap-3 mb-4">
             <div className="w-8 h-px bg-accent" />
             <span className="text-accent text-sm font-semibold tracking-widest uppercase">Portfolio</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">Our Projects</h1>
-          <p className="text-white/70 text-lg max-w-2xl">
+          <h1 className="text-3xl sm:text-5xl font-bold text-white mb-4">Our Projects</h1>
+          <p className="text-white/70 text-base sm:text-lg max-w-2xl leading-relaxed">
             A selection of GFRC and GRC façade packages delivered across the Kingdom.
-            Project references are presented in abstract form due to confidentiality
-            obligations and client approval requirements.
           </p>
         </div>
       </div>
 
       {/* Projects grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {PROJECTS.map((project) => (
-            <div
-              key={project.id}
-              className="group bg-white border border-gray-100 rounded-sm overflow-hidden hover:shadow-xl transition-all duration-300"
-            >
-              <ImagePlaceholder
-                category="project"
-                alt={project.title}
-                className="h-48"
-                badge={project.category}
-              />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
+        <ProjectsGrid />
+      </div>
 
-              <div className="p-6">
-                <h3 className="text-navy font-bold text-lg mb-2 group-hover:text-accent transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-gray-500 text-sm mb-4 leading-relaxed">{project.description}</p>
-                <div className="flex items-center justify-between text-xs text-gray-400 border-t border-gray-50 pt-4">
-                  <span>{project.location}</span>
-                  <span>
-                    {project.area} &middot; {project.year}
-                  </span>
-                </div>
-              </div>
-            </div>
-          ))}
+      {/* CTA block */}
+      <div className="bg-gray-50 border-t border-gray-100 py-14 sm:py-20 px-4">
+        <div className="max-w-7xl mx-auto text-center">
+          <h2 className="text-xl sm:text-2xl font-bold text-navy mb-3">Have a similar project?</h2>
+          <p className="text-gray-500 text-sm sm:text-base max-w-lg mx-auto mb-8 leading-relaxed">
+            Share your project scope with our team and we will prepare a tailored package proposal.
+          </p>
+          <Link
+            href="/request-quotation"
+            className="inline-flex items-center justify-center gap-2 min-h-[52px] px-10 py-3.5 bg-accent text-white font-semibold rounded-sm hover:bg-accent-dark transition-colors text-sm sm:text-base"
+          >
+            Request Similar Package
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </Link>
         </div>
-
-        <p className="text-center text-gray-400 text-xs mt-12 max-w-xl mx-auto leading-relaxed">
-          Project references are presented in abstract form due to confidentiality obligations,
-          client approvals, and NDA requirements. Detailed project information is available on
-          request during the qualification process.
-        </p>
       </div>
     </div>
   )
