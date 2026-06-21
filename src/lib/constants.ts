@@ -41,16 +41,18 @@ export const SYSTEMS = [
     title: 'Façade Cladding Components',
     description:
       'High-performance GFRC/GRC façade panels engineered for modern, heritage, and project-specific architectural elevations.',
-    image: null,
-    imageAlt: null,
+    image: '/images/projects/kaec-2025-hospitality/kaec-2025-hospitality-courtyard-facade-001.jpg',
+    imageAlt: 'GFRC façade cladding components on a hospitality project · KAEC · 2025',
+    imageLocation: 'KAEC · 2025',
   },
   {
     id: 'mashrabiya',
     title: 'Mashrabiya & Screen Components',
     description:
       'Intricate perforated screens combining traditional Islamic geometry with contemporary manufacturing precision.',
-    image: '/images/projects/makkah-2023-mosque/makkah-2023-mosque-mashrabiya-001.jpg',
-    imageAlt: 'GFRC mashrabiya screens on a mosque facade · Makkah · 2023',
+    image: '/images/projects/kaec-2025-hospitality/kaec-2025-hospitality-facade-mashrabiya-001.jpg',
+    imageAlt: 'GFRC mashrabiya facade screens on a hospitality project · KAEC · 2025',
+    imageLocation: 'KAEC · 2025',
   },
   {
     id: 'domes',
@@ -59,6 +61,7 @@ export const SYSTEMS = [
       'Architectural dome and vaulted elements crafted for landmark entrances, mosques, hospitality, and heritage-inspired projects.',
     image: '/images/projects/makkah-2023-mosque/makkah-2023-mosque-domes-001.jpg',
     imageAlt: 'GRC dome elements on a mosque · Makkah · 2023',
+    imageLocation: 'Makkah · 2023',
   },
   {
     id: 'cornices',
@@ -67,6 +70,7 @@ export const SYSTEMS = [
       'Decorative cornices, mouldings, and architectural profiles produced to match project drawings and façade details.',
     image: null,
     imageAlt: null,
+    imageLocation: null,
   },
   {
     id: 'columns',
@@ -75,6 +79,7 @@ export const SYSTEMS = [
       'Classical and contemporary column components including shafts, capitals, bases, and pilasters.',
     image: '/images/projects/makkah-2023-mosque/makkah-2023-mosque-arches-columns-capitals-001.jpg',
     imageAlt: 'GRC columns, arches, and decorative capitals on a mosque · Makkah · 2023',
+    imageLocation: 'Makkah · 2023',
   },
   {
     id: 'custom',
@@ -83,6 +88,7 @@ export const SYSTEMS = [
       'Custom GFRC/GRC architectural ornamentation developed for project-specific design requirements.',
     image: '/images/projects/makkah-2023-mosque/makkah-2023-mosque-decorative-elements-001.jpg',
     imageAlt: 'GRC bespoke decorative facade elements on a mosque · Makkah · 2023',
+    imageLocation: 'Makkah · 2023',
   },
 ]
 
