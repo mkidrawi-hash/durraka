@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'Durraka Factory for Industry — a specialist GFRC/GRC façade manufacturer with 280,000 m² annual production capacity, serving projects across Saudi Arabia.',
+    'Durraka Factory for Industry — a specialist GFRC/GRC façade manufacturer with structured production operations and Kingdom-wide delivery, serving projects across Saudi Arabia.',
 }
 
 export default function AboutPage() {
@@ -33,7 +33,7 @@ export default function AboutPage() {
                 the Kingdom.
               </p>
               <p>
-                With an annual production capacity of 280,000 m² and 24/7 manufacturing operations, we are
+                With established GFRC/GRC manufacturing experience and structured production operations, we are
                 equipped to serve large-scale developments while maintaining the precision required for heritage
                 and luxury projects.
               </p>
@@ -73,7 +73,7 @@ export default function AboutPage() {
 
             <div className="grid grid-cols-2 gap-4">
               {[
-                { value: '280,000 m²', label: 'Annual Capacity' },
+                { value: 'Since 2008', label: 'GFRC/GRC Manufacturing' },
                 { value: '24/7', label: 'Operations' },
                 { value: 'Kingdom-wide', label: 'Project Delivery' },
                 { value: 'Custom', label: 'Project Engineering' },
