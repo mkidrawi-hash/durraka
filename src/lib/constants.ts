@@ -41,36 +41,48 @@ export const SYSTEMS = [
     title: 'Façade Cladding Components',
     description:
       'High-performance GFRC/GRC façade panels engineered for modern, heritage, and project-specific architectural elevations.',
+    image: null,
+    imageAlt: null,
   },
   {
     id: 'mashrabiya',
     title: 'Mashrabiya & Screen Components',
     description:
       'Intricate perforated screens combining traditional Islamic geometry with contemporary manufacturing precision.',
+    image: '/images/projects/makkah-2023-mosque/makkah-2023-mosque-mashrabiya-001.jpg',
+    imageAlt: 'GFRC mashrabiya screens on a mosque facade · Makkah · 2023',
   },
   {
     id: 'domes',
     title: 'Domes & Vaulted Components',
     description:
       'Architectural dome and vaulted elements crafted for landmark entrances, mosques, hospitality, and heritage-inspired projects.',
+    image: '/images/projects/makkah-2023-mosque/makkah-2023-mosque-domes-001.jpg',
+    imageAlt: 'GRC dome elements on a mosque · Makkah · 2023',
   },
   {
     id: 'cornices',
     title: 'Cornices, Profiles & Mouldings',
     description:
       'Decorative cornices, mouldings, and architectural profiles produced to match project drawings and façade details.',
+    image: null,
+    imageAlt: null,
   },
   {
     id: 'columns',
     title: 'Columns, Capitals & Pilasters',
     description:
       'Classical and contemporary column components including shafts, capitals, bases, and pilasters.',
+    image: '/images/projects/makkah-2023-mosque/makkah-2023-mosque-arches-columns-capitals-001.jpg',
+    imageAlt: 'GRC columns, arches, and decorative capitals on a mosque · Makkah · 2023',
   },
   {
     id: 'custom',
     title: 'Bespoke Decorative Components',
     description:
       'Custom GFRC/GRC architectural ornamentation developed for project-specific design requirements.',
+    image: '/images/projects/makkah-2023-mosque/makkah-2023-mosque-decorative-elements-001.jpg',
+    imageAlt: 'GRC bespoke decorative facade elements on a mosque · Makkah · 2023',
   },
 ]
 

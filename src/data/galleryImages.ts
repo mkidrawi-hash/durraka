@@ -46,6 +46,93 @@ export interface GalleryImage {
 }
 
 export const GALLERY_IMAGES: GalleryImage[] = [
+  // ── Makkah · 2023 ────────────────────────────────────────────────────────────
+  {
+    id: 'makkah-2023-domes-001',
+    title: 'Dome Elements, Makkah, 2023',
+    city: 'Makkah',
+    year: '2023',
+    category: 'Domes',
+    packageType: 'Heritage & Regional Package',
+    components: ['GRC', 'Dome', 'Drum'],
+    description:
+      'GRC dome and drum elements for a mosque project in Makkah. Compound-curved segmented assembly with decorative surface finish.',
+    image: '/images/projects/makkah-2023-mosque/makkah-2023-mosque-domes-001.jpg',
+    alt: 'GRC dome elements on a mosque facade, Makkah 2023',
+    status: 'Public Safe',
+  },
+  {
+    id: 'makkah-2023-mashrabiya-001',
+    title: 'Mashrabiya Screens, Makkah, 2023',
+    city: 'Makkah',
+    year: '2023',
+    category: 'Mashrabiya',
+    packageType: 'Heritage & Regional Package',
+    components: ['GFRC', 'Mashrabiya', 'Geometric Lattice'],
+    description:
+      'GFRC mashrabiya screen panels with traditional geometric pattern for a mosque project in Makkah.',
+    image: '/images/projects/makkah-2023-mosque/makkah-2023-mosque-mashrabiya-001.jpg',
+    alt: 'GFRC mashrabiya screens with geometric lattice pattern, Makkah 2023',
+    status: 'Public Safe',
+  },
+  {
+    id: 'makkah-2023-columns-001',
+    title: 'Arched Columns & Capitals, Makkah, 2023',
+    city: 'Makkah',
+    year: '2023',
+    category: 'Columns & Capitals',
+    packageType: 'Heritage & Regional Package',
+    components: ['GRC', 'Columns', 'Arch', 'Capitals'],
+    description:
+      'GRC columns with arched openings and decorative capitals for a mosque project in Makkah.',
+    image: '/images/projects/makkah-2023-mosque/makkah-2023-mosque-arches-columns-capitals-001.jpg',
+    alt: 'GRC arched columns and decorative capitals on a mosque, Makkah 2023',
+    status: 'Public Safe',
+  },
+  {
+    id: 'makkah-2023-columns-002',
+    title: 'Column Arcade Detail, Makkah, 2023',
+    city: 'Makkah',
+    year: '2023',
+    category: 'Columns & Capitals',
+    packageType: 'Heritage & Regional Package',
+    components: ['GRC', 'Columns', 'Arch'],
+    description:
+      'Detailed view of GRC column arcade with arched bays for a mosque project in Makkah.',
+    image: '/images/projects/makkah-2023-mosque/makkah-2023-mosque-arches-columns-capitals-002.jpg',
+    alt: 'GRC column arcade with arched bays on a mosque facade, Makkah 2023',
+    status: 'Public Safe',
+  },
+  {
+    id: 'makkah-2023-decorative-001',
+    title: 'Decorative Facade Elements, Makkah, 2023',
+    city: 'Makkah',
+    year: '2023',
+    category: 'Decorative Elements',
+    packageType: 'Heritage & Regional Package',
+    components: ['GRC', 'Ornamental', 'Surface Detail'],
+    description:
+      'Bespoke GRC decorative facade elements for a mosque project in Makkah, including ornamental surface details.',
+    image: '/images/projects/makkah-2023-mosque/makkah-2023-mosque-decorative-elements-001.jpg',
+    alt: 'GRC decorative facade elements on a mosque, Makkah 2023',
+    status: 'Public Safe',
+  },
+  {
+    id: 'makkah-2023-decorative-002',
+    title: 'Ornamental Detail, Makkah, 2023',
+    city: 'Makkah',
+    year: '2023',
+    category: 'Decorative Elements',
+    packageType: 'Heritage & Regional Package',
+    components: ['GRC', 'Ornamental', 'Heritage Detail'],
+    description:
+      'Close-up of GRC ornamental facade detailing for a mosque project in Makkah, referencing classical Islamic architectural forms.',
+    image: '/images/projects/makkah-2023-mosque/makkah-2023-mosque-decorative-elements-002.jpg',
+    alt: 'GRC ornamental facade detailing on a mosque, Makkah 2023',
+    status: 'Public Safe',
+  },
+
+  // ── Other projects ────────────────────────────────────────────────────────────
   {
     id: 'grand-entrance-jeddah-2025',
     title: 'Grand Entrance Facade, Jeddah, 2025',
