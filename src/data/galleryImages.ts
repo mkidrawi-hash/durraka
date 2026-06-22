@@ -6,9 +6,11 @@ export type GalleryCategory =
   | 'Columns & Capitals'
   | 'Cornices'
   | 'Decorative Elements'
+  | 'Hospitality'
 
 export const GALLERY_FILTERS = [
   'All',
+  'Hospitality',
   'Grand Entrances',
   'Facades & Cladding',
   'Domes',
@@ -46,6 +48,162 @@ export interface GalleryImage {
 }
 
 export const GALLERY_IMAGES: GalleryImage[] = [
+  // ── KAEC · 2025 ──────────────────────────────────────────────────────────────
+  {
+    id: 'kaec-2025-grand-entrance-001',
+    title: 'Grand Entrance, KAEC, 2025',
+    city: 'KAEC',
+    year: '2025',
+    category: 'Grand Entrances',
+    packageType: 'Hospitality Package',
+    components: ['GFRC', 'Grand Entrance', 'Arch', 'Facade Elements'],
+    description:
+      'GFRC/GRC grand entrance elements for a waterfront hospitality development in KAEC, featuring arched openings and decorative facade detailing.',
+    image: '/images/projects/kaec-2025-hospitality/kaec-2025-hospitality-grand-entrance-001.jpg',
+    alt: 'GFRC grand entrance facade elements for a hospitality project, KAEC 2025',
+    status: 'Public Safe',
+  },
+  {
+    id: 'kaec-2025-arrival-plaza-001',
+    title: 'Arrival Plaza Facade, KAEC, 2025',
+    city: 'KAEC',
+    year: '2025',
+    category: 'Grand Entrances',
+    packageType: 'Hospitality Package',
+    components: ['GFRC', 'Arrival Plaza', 'Facade Elements'],
+    description:
+      'Exterior architectural facade components at the arrival plaza of a resort-scale hospitality development in KAEC.',
+    image: '/images/projects/kaec-2025-hospitality/kaec-2025-hospitality-arrival-plaza-001.jpg',
+    alt: 'Architectural facade components at the arrival plaza of a hospitality project, KAEC 2025',
+    status: 'Public Safe',
+  },
+  {
+    id: 'kaec-2025-facade-mashrabiya-001',
+    title: 'Facade Mashrabiya Screens, KAEC, 2025',
+    city: 'KAEC',
+    year: '2025',
+    category: 'Mashrabiya',
+    packageType: 'Hospitality Package',
+    components: ['GFRC', 'Mashrabiya', 'Facade Screens'],
+    description:
+      'GFRC/GRC facade mashrabiya screen elements for a hospitality project in KAEC. Project-specific screen geometry integrated into the building facade.',
+    image: '/images/projects/kaec-2025-hospitality/kaec-2025-hospitality-facade-mashrabiya-001.jpg',
+    alt: 'GFRC mashrabiya facade screens on a hospitality building, KAEC 2025',
+    status: 'Public Safe',
+  },
+  {
+    id: 'kaec-2025-facade-screens-002',
+    title: 'Hospitality Facade Screens, KAEC, 2025',
+    city: 'KAEC',
+    year: '2025',
+    category: 'Mashrabiya',
+    packageType: 'Hospitality Package',
+    components: ['GFRC', 'Facade Screens', 'Architectural Screens'],
+    description:
+      'Hospitality facade featuring project-specific GFRC/GRC architectural screen components across the building elevation, KAEC.',
+    image: '/images/projects/kaec-2025-hospitality/kaec-2025-hospitality-facade-screens-002.jpg',
+    alt: 'GFRC architectural facade screen components on a hospitality building, KAEC 2025',
+    status: 'Public Safe',
+  },
+  {
+    id: 'kaec-2025-mashrabiya-facade-003',
+    title: 'Mashrabiya Facade Detail, KAEC, 2025',
+    city: 'KAEC',
+    year: '2025',
+    category: 'Mashrabiya',
+    packageType: 'Hospitality Package',
+    components: ['GFRC', 'Mashrabiya', 'Facade Detail'],
+    description:
+      'Detailed view of GFRC/GRC mashrabiya facade components on a hospitality development in KAEC, showing screen geometry and integration.',
+    image: '/images/projects/kaec-2025-hospitality/kaec-2025-hospitality-mashrabiya-facade-003.jpg',
+    alt: 'GFRC mashrabiya facade detail on a hospitality project, KAEC 2025',
+    status: 'Public Safe',
+  },
+  {
+    id: 'kaec-2025-facade-arches-screens-004',
+    title: 'Facade Arches & Screens, KAEC, 2025',
+    city: 'KAEC',
+    year: '2025',
+    category: 'Mashrabiya',
+    packageType: 'Hospitality Package',
+    components: ['GFRC', 'Arches', 'Facade Screens', 'Mashrabiya'],
+    description:
+      'GFRC/GRC facade arches and screen components combined across the hospitality building elevation in KAEC.',
+    image: '/images/projects/kaec-2025-hospitality/kaec-2025-hospitality-facade-arches-screens-004.jpg',
+    alt: 'GFRC facade arches and screen elements on a hospitality project, KAEC 2025',
+    status: 'Public Safe',
+  },
+  {
+    id: 'kaec-2025-courtyard-facade-001',
+    title: 'Courtyard Facade, KAEC, 2025',
+    city: 'KAEC',
+    year: '2025',
+    category: 'Facades & Cladding',
+    packageType: 'Hospitality Package',
+    components: ['GFRC', 'Facade Cladding', 'Courtyard'],
+    description:
+      'GFRC/GRC facade cladding and architectural components at the courtyard elevation of a hospitality development in KAEC.',
+    image: '/images/projects/kaec-2025-hospitality/kaec-2025-hospitality-courtyard-facade-001.jpg',
+    alt: 'GFRC facade cladding components at a hospitality courtyard elevation, KAEC 2025',
+    status: 'Public Safe',
+  },
+  {
+    id: 'kaec-2025-beachfront-overview-001',
+    title: 'Beachfront Facade Overview, KAEC, 2025',
+    city: 'KAEC',
+    year: '2025',
+    category: 'Hospitality',
+    packageType: 'Hospitality Package',
+    components: ['GFRC', 'Facade Scope', 'Beachfront'],
+    description:
+      'Overview of the beachfront facade scope for a resort-scale hospitality development in KAEC, showing the full extent of GFRC/GRC components.',
+    image: '/images/projects/kaec-2025-hospitality/kaec-2025-hospitality-beachfront-overview-001.jpg',
+    alt: 'Beachfront overview of a resort hospitality development with GFRC facade components, KAEC 2025',
+    status: 'Public Safe',
+  },
+  {
+    id: 'kaec-2025-landscape-courtyard-001',
+    title: 'Landscape & Courtyard Elements, KAEC, 2025',
+    city: 'KAEC',
+    year: '2025',
+    category: 'Hospitality',
+    packageType: 'Hospitality Package',
+    components: ['GFRC', 'Courtyard', 'Landscape Integration'],
+    description:
+      'Exterior architectural components at the landscaped courtyard of a waterfront hospitality project in KAEC.',
+    image: '/images/projects/kaec-2025-hospitality/kaec-2025-hospitality-landscape-courtyard-001.jpg',
+    alt: 'Landscaped courtyard with architectural facade elements at a hospitality project, KAEC 2025',
+    status: 'Public Safe',
+  },
+  {
+    id: 'kaec-2025-aerial-masterplan-001',
+    title: 'Resort Masterplan Overview, KAEC, 2025',
+    city: 'KAEC',
+    year: '2025',
+    category: 'Hospitality',
+    packageType: 'Hospitality Package',
+    components: ['GFRC', 'Resort Scope', 'Masterplan'],
+    description:
+      'Aerial masterplan view of a resort-scale hospitality development in KAEC, showing the full scope of architectural facade components supplied.',
+    image: '/images/projects/kaec-2025-hospitality/kaec-2025-hospitality-aerial-masterplan-001.jpg',
+    alt: 'Aerial masterplan view of a hospitality resort development with GFRC facade scope, KAEC 2025',
+    status: 'Public Safe',
+  },
+  {
+    id: 'kaec-2025-aerial-waterfront-001',
+    title: 'Waterfront Aerial View, KAEC, 2025',
+    city: 'KAEC',
+    year: '2025',
+    category: 'Hospitality',
+    packageType: 'Hospitality Package',
+    components: ['GFRC', 'Waterfront', 'Facade Scope'],
+    description:
+      'Aerial waterfront view of a hospitality development in KAEC, showing the scale of the integrated GFRC/GRC facade scope across the site.',
+    image: '/images/projects/kaec-2025-hospitality/kaec-2025-hospitality-aerial-waterfront-001.jpg',
+    alt: 'Aerial waterfront view of a resort hospitality development with GFRC facade components, KAEC 2025',
+    status: 'Public Safe',
+  },
+
   // ── Makkah · 2023 ────────────────────────────────────────────────────────────
   {
     id: 'makkah-2023-domes-001',

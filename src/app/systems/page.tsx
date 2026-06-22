@@ -43,6 +43,7 @@ export default function SystemsPage() {
             {SYSTEMS.map((system) => {
               const imgSrc: string | null = system.image
               const imgAlt: string | null = system.imageAlt
+              const imgLocation: string | null = system.imageLocation
               return (
                 <Link
                   key={system.id}
@@ -59,9 +60,11 @@ export default function SystemsPage() {
                         sizes="(max-width: 768px) 100vw, 50vw"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-navy/80 to-transparent" />
-                      <span className="absolute bottom-2 right-3 text-[9px] font-bold tracking-widest uppercase text-white/50">
-                        Makkah · 2023
-                      </span>
+                      {imgLocation && (
+                        <span className="absolute bottom-2 right-3 text-[9px] font-bold tracking-widest uppercase text-white/50">
+                          {imgLocation}
+                        </span>
+                      )}
                     </div>
                   )}
                   <div className="flex gap-5 p-6 sm:p-8">
