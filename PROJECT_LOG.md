@@ -77,6 +77,32 @@ Running log of all development sessions, decisions, and branch references.
 
 ---
 
+## Session 7 — Mixed Project Archive Batch 01 & 02 published
+
+**Branch:** `feat/publish-mixed-project-batches-01-02`  
+**Merged to main:** Pending
+
+- Published all owner-approved images from Mixed Project Archive Batch 01 and Batch 02 to the public Project Gallery
+- Image folders used:
+  - `public/images/projects/kaec-2025-hospitality/` — 11 images (KAEC · 2025, Hospitality/Resort)
+  - `public/images/projects/grand-arcade-facade-complex/` — 30 images (Saudi Arabia · Various)
+- Added 5 new `GalleryCategory` values: `Infrastructure`, `High-Rise / Towers`, `Architectural Details`, `Samples & Mockups`, `Civic Identity Elements`
+- Updated `GALLERY_FILTERS` to include all new categories
+- Added 30 new `GALLERY_IMAGES` entries in `src/data/galleryImages.ts` covering:
+  - Grand Arcade Facade Complex (9 entries) → Facades & Cladding + Grand Entrances
+  - Bridge Infrastructure Cladding (3 entries) → Infrastructure
+  - Tunnel Pattern Cladding (1 entry) → Infrastructure
+  - Civic Identity Elements (3 entries, incl. owner-approved logo panels) → Civic Identity Elements
+  - Mashrabiya Entry Screens (2 entries) → Mashrabiya
+  - Religious Facility Architectural Details (5 entries) → Grand Entrances + Domes + Mashrabiya + Architectural Details
+  - Urban High-Rise Tower (4 entries) → High-Rise / Towers
+  - Architectural Samples & Mockups (3 entries) → Samples & Mockups
+- All 41 images registered in `IMAGE_REGISTER.md` as `approved-website`
+- Logo-panel images published per owner approval; captions use neutral wording: "Project-specific decorative identity panel" / "Architectural signage feature"
+- No confidential client names, contract names, fixing details, quantities, or installation methodology exposed
+
+---
+
 ## Session 6 — Image placeholders (PR #7)
 
 **Branch:** `feat/image-placeholders`  
