@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 
 function FacadeIllustration({ uid }: { uid: string }) {
   const g = `pfg-${uid}`
@@ -108,6 +109,7 @@ type Project = {
   image: string
   objectPosition: string
   Illustration: IllustrationComponent
+  href?: string
 }
 
 const PROJECTS: Project[] = [
@@ -123,6 +125,7 @@ const PROJECTS: Project[] = [
     image: '/images/projects/ornamental-facade-gfrc.png',
     objectPosition: 'center',
     Illustration: FacadeIllustration,
+    href: '/packages/commercial-facade-package',
   },
   {
     id: 'proj-2',
@@ -194,9 +197,10 @@ const PROJECTS: Project[] = [
 function ProjectCard({ project }: { project: Project }) {
   const [imgError, setImgError] = useState(false)
   const { Illustration } = project
+  const cardClassName = "group bg-white rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-200/60"
 
-  return (
-    <div className="group bg-white rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-200/60">
+  const inner = (
+    <>
       <div className="relative overflow-hidden aspect-[5/4] sm:aspect-[4/3] bg-[#071B3B]">
         <Illustration uid={project.id} />
         <div className="absolute inset-0 bg-gradient-to-t from-[#071B3B]/70 via-transparent to-transparent" />
@@ -229,6 +233,20 @@ function ProjectCard({ project }: { project: Project }) {
           <span>{project.area} · {project.year}</span>
         </div>
       </div>
+    </>
+  )
+
+  if (project.href) {
+    return (
+      <Link href={project.href} className={cardClassName}>
+        {inner}
+      </Link>
+    )
+  }
+
+  return (
+    <div className={cardClassName}>
+      {inner}
     </div>
   )
 }
