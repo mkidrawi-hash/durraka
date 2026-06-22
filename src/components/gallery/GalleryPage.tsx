@@ -477,8 +477,11 @@ export function GalleryPage({ images }: { images: GalleryImage[] }) {
   const [activeFilter, setActiveFilter] = useState<GalleryFilter>('All')
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
 
-  // Only render public-safe entries
-  const safeImages = useMemo(() => images.filter((img) => img.status === 'Public Safe'), [images])
+  // Only render public-safe entries that have a real uploaded image
+  const safeImages = useMemo(
+    () => images.filter((img) => img.status === 'Public Safe' && img.image !== null),
+    [images],
+  )
 
   const filtered = useMemo(
     () => activeFilter === 'All' ? safeImages : safeImages.filter((img) => img.category === activeFilter),
