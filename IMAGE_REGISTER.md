@@ -84,10 +84,61 @@ Examples:
 
 ---
 
+## Internal / Pending Image Candidates
+
+Images received but **NOT** cleared for direct publication. Each is either (a) pending the
+required edits before it can go public, or (b) internal-only / NDA-protected and never public.
+
+> **Storage policy:** anything placed under `public/` is served publicly by Next.js at a real
+> URL. Internal-only / NDA binaries therefore live in `internal-assets/image-candidates/`
+> (outside `public/`) so they are never served. Promote a candidate to its target
+> `public/images/` folder only after its required edits are done **and** the Pre-Publish
+> Checklist passes.
+>
+> **NDA rule:** never show client names, official logos, holy-site names, or identifiable
+> project names. Keep every caption abstract and NDA-safe.
+
+### Batch 1 — Factory / process photos (2026-06-14)
+
+| Source file | Classification | Intended use | Caption | Required edits | Public? |
+|---|---|---|---|---|---|
+| `fac1.jpg` | `approved-after-editing` | Factory / Process section only | GFRC elements staged for project preparation and delivery. | Crop shadows & clutter; improve exposure. **Never use as hero.** | After editing |
+| `fac8.jpg` | `approved-after-editing` | About page or Factory / Process section | Factory preparation of custom GFRC architectural elements. | Crop around moulds; improve clarity; blur background people. | After editing |
+| `sitepic6.jpg` | `internal-docs` | Internal project-delivery reference only | — | Heavy crop & clean-up required before any public use. | **No — internal only** (site looks unfinished; not premium marketing) |
+
+### Batch 2 — Façade photos (2026-06-14)
+
+**Prepare first (priority order):** `6.jpg` → `2.jpg` → `3.jpg`.
+
+| Source file | Classification | Intended use | Caption | Required edits | Public? |
+|---|---|---|---|---|---|
+| `6.jpg` ⭐1 | `approved-after-editing` | Systems / Catalog / Home secondary | GFRC façade elements with arches, cornices, and decorative architectural details. | Crop bottom unfinished area; crop right scaffolding; improve contrast. | After cropping |
+| `2.jpg` ⭐2 | `approved-after-editing` | Systems / Projects | Architectural GFRC arches and decorative façade elements for large-scale developments. | Crop bottom vehicles & street; improve exposure. | After cropping |
+| `3.jpg` ⭐3 | `approved-after-editing` | Systems / Projects / Catalog | Custom GFRC façade cladding with traditional arch and ornamental details. | Crop bottom construction clutter; remove/avoid visible container; reduce scaffolding. | After cropping |
+| `1.jpg` | `approved-after-editing` | Projects / Systems | — | Crop vehicles & construction clutter; keep façade & arches. | After cropping |
+| `5.jpg` | `approved-after-editing` | Projects / Mashrabiya & Arches | — | Crop bottom cars & construction; straighten perspective if possible. | After cropping |
+| `9.jpg` | `approved-after-editing` | Project reference only — after cleaning | — | Crop cars, scaffolding, people, visible construction signs. | After cleaning |
+| `4.jpg` | `internal-docs` (NDA review) | Projects / Cultural & Religious — only after approval | — | Crop people, cars, scaffolding, clutter. Do not mention project or client name. | **Hold — NDA review required** |
+| `7.jpg` | `internal-docs` | Internal only | — | — | **No — NDA (visible official client logo)** |
+| `8.jpg` | `internal-docs` | Internal only | — | — | **No — NDA (client logo + delivery context)** |
+
+---
+
 ## Asset Log
 
 _Add a row here each time an image is classified or promoted._
 
 | File | Classification | Alt text | Added by | Date |
 |---|---|---|---|---|
-| — | — | — | — | — |
+| `fac1.jpg` | `approved-after-editing` | GFRC elements staged for project preparation and delivery. | mkidrawi | 2026-06-14 |
+| `fac8.jpg` | `approved-after-editing` | Factory preparation of custom GFRC architectural elements. | mkidrawi | 2026-06-14 |
+| `sitepic6.jpg` | `internal-docs` | Internal delivery reference — not for public use. | mkidrawi | 2026-06-14 |
+| `6.jpg` | `approved-after-editing` | GFRC façade elements with arches, cornices, and decorative architectural details. | mkidrawi | 2026-06-14 |
+| `2.jpg` | `approved-after-editing` | Architectural GFRC arches and decorative façade elements for large-scale developments. | mkidrawi | 2026-06-14 |
+| `3.jpg` | `approved-after-editing` | Custom GFRC façade cladding with traditional arch and ornamental details. | mkidrawi | 2026-06-14 |
+| `1.jpg` | `approved-after-editing` | GFRC façade with decorative arches. | mkidrawi | 2026-06-14 |
+| `5.jpg` | `approved-after-editing` | GFRC mashrabiya screens and arched façade detailing. | mkidrawi | 2026-06-14 |
+| `9.jpg` | `approved-after-editing` | GFRC façade project reference (internal until cleaned). | mkidrawi | 2026-06-14 |
+| `4.jpg` | `internal-docs` (NDA review) | Hold — NDA review required before any public use. | mkidrawi | 2026-06-14 |
+| `7.jpg` | `internal-docs` | Internal only — NDA (visible official client emblem). | mkidrawi | 2026-06-14 |
+| `8.jpg` | `internal-docs` | Internal only — NDA (visible official client emblem). | mkidrawi | 2026-06-14 |
