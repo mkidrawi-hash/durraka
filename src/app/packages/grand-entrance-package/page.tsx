@@ -1,110 +1,75 @@
 import type { Metadata } from 'next'
 import { PackageDetailLayout } from '@/components/packages/PackageDetailLayout'
-import type { PackageDetailData } from '@/components/packages/PackageDetailLayout'
-import { StickyMobileCTA } from './StickyMobileCTA'
+import type { PackagePageData } from '@/components/packages/PackageDetailLayout'
+import { GrandEntranceIllustration } from '@/components/packages/illustrations'
+import { StickyMobileCTA } from '@/components/packages/StickyMobileCTA'
 
 export const metadata: Metadata = {
   title: 'Grand Entrance Package — GFRC/GRC Architectural Entrances | Durraka',
   description:
-    'Monumental GFRC/GRC entrance systems for luxury villas, palaces, hotels, and landmark developments. Precision-engineered columns, arches, cornices, and custom architectural details.',
+    'Monumental GFRC/GRC entrance systems for luxury villas, palaces, hotels, and landmark developments. Columns, arches, cornices, and custom architectural details.',
 }
 
-const data: PackageDetailData = {
-  hero: {
-    eyebrow: 'Project Scope Package',
-    title: 'Grand Entrance & Gate Scope',
-    subtitle: 'Monumental entrances. Engineered in GFRC/GRC.',
-    description:
-      'An integrated GFRC/GRC scope for landmark entrance gates and arrival facades — combining columns, cornices, decorative frames, arches, and cladding into a single precision-manufactured package.',
-    ctaLabel: 'Request Similar Package',
-    ctaHref: '/request-quotation',
-    heroImage: '/images/projects/grand-entrance-gfrc.png',
-  },
-  overview: {
-    body: 'The Grand Entrance Package is designed for projects that demand architectural impact at the point of arrival. Durraka manufactures complete entrance systems in GFRC/GRC — columns, arches, cornices, decorative frames, and custom ornamental details — matched precisely to architectural intent and structural drawings. Each package is scoped from the submitted drawing set, reviewed by our engineering team, and manufactured to exacting standards for exterior installation.',
-    suitedFor: [
-      'Luxury villas and private residences',
-      'Royal palaces and government buildings',
-      'Hotels and hospitality developments',
-      'Gated compounds and master plans',
-      'Commercial landmarks and mixed-use towers',
-      'Heritage and culturally inspired projects',
-    ],
-  },
+const data: PackagePageData = {
+  title: 'Grand Entrance Package',
+  eyebrow: 'AI Concept Reference',
+  subtitle: 'Monumental entrances. Engineered in GFRC/GRC.',
+  heroDescription:
+    'An integrated GFRC/GRC scope for landmark entrance gates and arrival facades — combining columns, capitals, arches, cornices, decorative frames, and cladding into a single precision-manufactured architectural package.',
+  illustrativeArea: 'Approx. 1,200–3,500 m²',
+  visibleComponents: [
+    'Columns',
+    'Capitals',
+    'Arches',
+    'Cornices',
+    'Decorative panels',
+    'Entrance cladding',
+    'Mashrabiya / screen accents',
+  ],
+  HeroIllustration: GrandEntranceIllustration,
+  packageIntent:
+    'This package is designed for projects that demand architectural impact at the point of arrival. The focus is on creating a coordinated entrance composition — columns, arches, cornices, and feature panels — that reflects the architectural character of the development. Durraka engineers each entrance package from the submitted drawing set, confirming scope, dimensions, and component count before manufacture. The final delivery is a precision-cast GFRC/GRC system aligned to the approved design intent.',
+  suitableApplications: [
+    'Luxury villas and private residences',
+    'Royal palaces and government buildings',
+    'Hotels and hospitality developments',
+    'Gated compounds and master plans',
+    'Commercial landmarks and mixed-use towers',
+    'Heritage and culturally inspired projects',
+    'Institutional and civic complexes',
+  ],
   components: [
     { label: 'GFRC/GRC columns' },
+    { label: 'Capitals' },
     { label: 'Decorative frames and surrounds' },
     { label: 'Cornices and profile bands' },
     { label: 'Arches and keystone details' },
-    { label: 'Mashrabiya or patterned panels' },
+    { label: 'Mashrabiya or screen panels', note: 'When required by design' },
     { label: 'Domes or decorative crowns', note: 'When required by design' },
     { label: 'Custom architectural details' },
   ],
-  requiredDocs: [
+  designGuidanceAreas: [
     {
-      label: 'Architectural drawings',
-      description:
-        'Plans, elevations, and entrance layout drawings showing overall composition and dimensions.',
+      title: 'Entrance Composition Guidance',
+      body: 'Overall proportions, symmetry axis, and the relationship between the central arch, flanking columns, and wing elements.',
     },
     {
-      label: 'Elevations',
-      description:
-        'Exterior elevation drawings showing the entrance facade, height, and architectural details.',
+      title: 'Column & Arch Coordination',
+      body: 'Column height, shaft diameter, capital style, and arch geometry — coordinated to achieve the intended scale and visual weight.',
     },
     {
-      label: 'Sections',
-      description:
-        'Cross-section drawings to understand depth, profile, and layering of components.',
+      title: 'Cornice & Profile Alignment',
+      body: 'Cornice positions, profile depths, and horizontal bands that tie the entrance composition to the flanking wing elevations.',
     },
     {
-      label: 'Structural drawings',
-      description:
-        'Drawings showing the structural system and support conditions relevant to the entrance opening.',
+      title: 'Feature Panel Placement',
+      body: 'Location, scale, and integration of decorative panels, screen elements, and ornamental features within the overall gate composition.',
     },
     {
-      label: 'BOQ / quantity schedule',
-      description:
-        'Bill of quantities or quantity schedule to establish scope. Our team can estimate from drawings when not available.',
-    },
-    {
-      label: 'Reference images or design direction',
-      description:
-        'Mood boards, reference photographs, or notes on the intended architectural style and character.',
+      title: 'Finish Selection Guidance',
+      body: 'Finish direction for the entrance composition — including contrast between main elements, decorative details, and background cladding.',
     },
   ],
-  extractItems: [
-    {
-      source: 'Architectural drawings and elevations',
-      extracts: 'Approximate entrance width, height, and overall opening dimensions.',
-    },
-    {
-      source: 'BOQ / quantity schedule',
-      extracts:
-        'Scope quantities for each GFRC/GRC component — columns, arches, cornices, and details.',
-    },
-    {
-      source: 'Elevations, sections, and reference images',
-      extracts: 'Design style, façade intent, profile depth, and ornamental character.',
-    },
-    {
-      source: 'Full drawing package',
-      extracts:
-        'Manufacturing requirements — profiles, finishes, tolerances, and production sequence.',
-    },
-  ],
-  processSteps: [
-    'Drawing review',
-    'Concept and scope confirmation',
-    'Shop drawings',
-    'Mold preparation',
-    'GFRC/GRC manufacturing',
-    'Quality control',
-    'Delivery and installation coordination',
-  ],
-  ctaHeadline:
-    'Share your drawings and BOQ to receive a professional GFRC entrance quotation.',
-  ctaSubline:
-    'Our engineering team will review your package and return a detailed scope and pricing proposal.',
 }
 
 export default function GrandEntrancePackagePage() {
