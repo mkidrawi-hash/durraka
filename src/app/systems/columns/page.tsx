@@ -123,6 +123,13 @@ export default function ColumnsPage() {
         { label: 'Project Coordination Requirements', desc: 'Profile confirmation, delivery scheduling, and phasing requirements are agreed through project coordination before production commences.' },
       ],
       ctaTitle: 'Ready to Discuss Your Column & Pillar Package?',
+      heroTags: ['GFRC/GRC', 'Columns & Capitals', 'Classical Profiles', 'Entrance Systems'],
+      gallery: [
+        { src: '/images/projects/column-portico-gfrc.png', alt: 'GFRC column portico architectural elements', scope: 'Columns & Capitals', status: 'Completed' },
+        { src: '/images/projects/makkah-2023-mosque/makkah-2023-mosque-arches-columns-capitals-001.jpg', alt: 'GFRC arches, columns, and capitals', caption: 'Arches, columns, and capitals', location: 'Makkah, Saudi Arabia', year: '2023', scope: 'Columns & Capitals', status: 'Completed' },
+        { src: '/images/projects/makkah-2023-mosque/makkah-2023-mosque-arches-columns-capitals-002.jpg', alt: 'GFRC architectural columns and arches detail', caption: 'Column and arch detail', location: 'Makkah, Saudi Arabia', year: '2023', scope: 'Columns & Capitals', status: 'Completed' },
+        { src: '/images/projects/kaec-2025-hospitality/kaec-2025-hospitality-grand-entrance-001.jpg', alt: 'GFRC grand entrance facade with columns', caption: 'Grand entrance facade elements', location: 'KAEC, Saudi Arabia', year: '2025', scope: 'Grand Entrance', status: 'Completed' },
+      ],
     }} />
   )
 }

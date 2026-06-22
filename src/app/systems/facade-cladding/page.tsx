@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { FacadeCladdingRichLayout } from '@/components/systems/FacadeCladdingRichLayout'
 import type { FacadeContent } from '@/components/systems/FacadeCladdingRichLayout'
+import { PackageGallery } from '@/components/systems/PackageGallery'
+import type { LightboxImage } from '@/components/systems/ImageLightbox'
 
 export const metadata: Metadata = {
   title: 'GFRC / GRC Façade Cladding System — Durraka',
@@ -116,6 +118,24 @@ const content: FacadeContent = {
   },
 }
 
+const facadeGallery: LightboxImage[] = [
+  { src: '/images/projects/ornamental-facade-gfrc.png', alt: 'GFRC ornamental facade panels', scope: 'Facades & Cladding', status: 'Completed' },
+  { src: '/images/projects/kaec-2025-hospitality/kaec-2025-hospitality-arrival-plaza-001.jpg', alt: 'GFRC facade components at arrival plaza', caption: 'Façade cladding components at arrival plaza', location: 'KAEC, Saudi Arabia', year: '2025', scope: 'Facades & Cladding', status: 'Completed' },
+  { src: '/images/projects/kaec-2025-hospitality/kaec-2025-hospitality-courtyard-facade-001.jpg', alt: 'GFRC facade cladding at hospitality courtyard', caption: 'Courtyard elevation facade cladding', location: 'KAEC, Saudi Arabia', year: '2025', scope: 'Facades & Cladding', status: 'Completed' },
+  { src: '/images/projects/kaec-2025-hospitality/kaec-2025-hospitality-beachfront-overview-001.jpg', alt: 'Beachfront resort facade overview', caption: 'Resort beachfront facade overview', location: 'KAEC, Saudi Arabia', year: '2025', scope: 'Facades & Cladding', status: 'Completed' },
+  { src: '/images/projects/kaec-2025-hospitality/kaec-2025-hospitality-facade-arches-screens-004.jpg', alt: 'GFRC facade arches and screens', caption: 'Facade arches and screen elements', location: 'KAEC, Saudi Arabia', year: '2025', scope: 'Facades & Cladding', status: 'Completed' },
+]
+
 export default function FacadeCladdingPage() {
-  return <FacadeCladdingRichLayout content={content} heroImage="/images/projects/architectural-cladding-gfrc.png" />
+  return (
+    <>
+      <FacadeCladdingRichLayout content={content} heroImage="/images/projects/architectural-cladding-gfrc.png" />
+      <PackageGallery
+        id="gallery"
+        title="Project Gallery"
+        eyebrow="Selected GFRC/GRC Works"
+        entries={facadeGallery}
+      />
+    </>
+  )
 }

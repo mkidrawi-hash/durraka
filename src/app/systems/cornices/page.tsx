@@ -121,6 +121,12 @@ export default function CornicesPage() {
         { label: 'Project Coordination Requirements', desc: 'Profile design confirmation, run layouts, and delivery phasing are agreed through project coordination before production commences.' },
       ],
       ctaTitle: 'Ready to Discuss Your Cornice & Profile Package?',
+      heroTags: ['GFRC/GRC', 'Cornices & Profiles', 'Facade Definition', 'Architectural Bands'],
+      gallery: [
+        { src: '/images/projects/architectural-cladding-gfrc.png', alt: 'GFRC architectural cladding profiles', scope: 'Cornices & Profiles', status: 'Completed' },
+        { src: '/images/projects/makkah-2023-mosque/makkah-2023-mosque-decorative-elements-001.jpg', alt: 'GFRC decorative profiles and cornice elements', caption: 'Cornice and decorative profile elements', location: 'Makkah, Saudi Arabia', year: '2023', scope: 'Cornices & Profiles', status: 'Completed' },
+        { src: '/images/projects/kaec-2025-hospitality/kaec-2025-hospitality-landscape-courtyard-001.jpg', alt: 'GFRC facade elements at landscaped courtyard', caption: 'Facade profiles at courtyard elevation', location: 'KAEC, Saudi Arabia', year: '2025', scope: 'Cornices & Profiles', status: 'Completed' },
+      ],
     }} />
   )
 }

@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import { FinishSwatch } from './FinishSwatch'
 import { DiagramEnlarger } from './DiagramEnlarger'
+import { PackageGallery } from './PackageGallery'
+import type { LightboxImage } from './ImageLightbox'
 
 export const DEFAULT_FINISHES = [
   { type: 'smooth',      label: 'Smooth Finish',            desc: 'Clean architectural surface for contemporary façade expressions.' },
@@ -39,6 +41,7 @@ export type SystemPageData = {
   heroImage: string
   heroImageAlt: string
   heroObjectPosition?: string
+  heroTags?: string[]
   whatEyebrow?: string
   whatTitle: string
   whatBody: string
@@ -57,6 +60,7 @@ export type SystemPageData = {
   finishesIntro?: string
   ctaTitle: string
   ctaBody?: string
+  gallery?: LightboxImage[]
 }
 
 export function SystemPageLayout({ data }: { data: SystemPageData }) {
@@ -96,9 +100,21 @@ export function SystemPageLayout({ data }: { data: SystemPageData }) {
           <p className="text-accent font-semibold tracking-wide text-sm sm:text-base mb-4">
             {data.subtitle}
           </p>
-          <p className="text-white/70 text-sm sm:text-base leading-relaxed mb-8 max-w-xl">
+          <p className="text-white/70 text-sm sm:text-base leading-relaxed mb-5 max-w-xl">
             {data.heroDescription}
           </p>
+          {data.heroTags && data.heroTags.length > 0 && (
+            <div className="flex flex-wrap gap-2 mb-8">
+              {data.heroTags.map((tag) => (
+                <span
+                  key={tag}
+                  className="border border-white/30 text-white/70 text-[10px] font-semibold tracking-widest uppercase px-3 py-1 rounded-full"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
           <div className="flex flex-col sm:flex-row gap-3">
             <Link
               href="/request-quotation"
@@ -106,12 +122,21 @@ export function SystemPageLayout({ data }: { data: SystemPageData }) {
             >
               Request a Quotation
             </Link>
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center min-h-[52px] px-8 py-3.5 border border-white/40 text-white font-semibold rounded-sm hover:bg-white/10 transition-colors text-sm"
-            >
-              Download System Overview
-            </Link>
+            {data.gallery && data.gallery.length > 0 ? (
+              <a
+                href="#gallery"
+                className="inline-flex items-center justify-center min-h-[52px] px-8 py-3.5 border border-white/40 text-white font-semibold rounded-sm hover:bg-white/10 transition-colors text-sm"
+              >
+                View Gallery
+              </a>
+            ) : (
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center min-h-[52px] px-8 py-3.5 border border-white/40 text-white font-semibold rounded-sm hover:bg-white/10 transition-colors text-sm"
+              >
+                Download System Overview
+              </Link>
+            )}
           </div>
         </div>
       </div>
@@ -365,6 +390,16 @@ export function SystemPageLayout({ data }: { data: SystemPageData }) {
           </div>
         </div>
       </div>
+
+      {/* ── GALLERY ───────────────────────────────────────────────────────── */}
+      {data.gallery && data.gallery.length > 0 && (
+        <PackageGallery
+          id="gallery"
+          title="Project Gallery"
+          eyebrow="Selected GFRC/GRC Works"
+          entries={data.gallery}
+        />
+      )}
 
     </div>
   )

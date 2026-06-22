@@ -104,6 +104,14 @@ export default function MashrabiyaPage() {
         { label: 'Project Coordination Requirements', desc: 'Pattern confirmation, mockup review, and phasing requirements are agreed through project coordination prior to production.' },
       ],
       ctaTitle: 'Ready to Discuss Your Mashrabiya Package?',
+      heroTags: ['GFRC/GRC', 'Mashrabiya Systems', 'Privacy & Shading', 'Custom Patterns'],
+      gallery: [
+        { src: '/images/projects/mashrabiya-screen-gfrc.png', alt: 'GFRC mashrabiya screen panels', scope: 'Mashrabiya Screens', status: 'Completed' },
+        { src: '/images/projects/makkah-2023-mosque/makkah-2023-mosque-mashrabiya-001.jpg', alt: 'GFRC mashrabiya screen on religious facility', caption: 'Mashrabiya screen panels', location: 'Makkah, Saudi Arabia', year: '2023', scope: 'Mashrabiya Screens', status: 'Completed' },
+        { src: '/images/projects/kaec-2025-hospitality/kaec-2025-hospitality-facade-mashrabiya-001.jpg', alt: 'GFRC mashrabiya facade screens on hospitality building', caption: 'Mashrabiya facade screens', location: 'KAEC, Saudi Arabia', year: '2025', scope: 'Mashrabiya Screens', status: 'Completed' },
+        { src: '/images/projects/kaec-2025-hospitality/kaec-2025-hospitality-facade-screens-002.jpg', alt: 'GFRC facade screen components', caption: 'Architectural facade screen components', location: 'KAEC, Saudi Arabia', year: '2025', scope: 'Mashrabiya Screens', status: 'Completed' },
+        { src: '/images/projects/kaec-2025-hospitality/kaec-2025-hospitality-mashrabiya-facade-003.jpg', alt: 'GFRC mashrabiya facade detail', caption: 'Mashrabiya facade detail view', location: 'KAEC, Saudi Arabia', year: '2025', scope: 'Mashrabiya Screens', status: 'Completed' },
+      ],
     }} />
   )
 }

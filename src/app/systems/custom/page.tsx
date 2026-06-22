@@ -126,6 +126,12 @@ export default function CustomPage() {
         { label: 'Project Coordination Requirements', desc: 'Design confirmation, mockup approvals, and production scheduling are agreed through structured project coordination prior to manufacture.' },
       ],
       ctaTitle: 'Ready to Discuss Your Custom Element Package?',
+      heroTags: ['GFRC/GRC', 'Custom Elements', 'Bespoke Design', 'Ornamental Systems'],
+      gallery: [
+        { src: '/images/projects/grand-entrance-gfrc.png', alt: 'GFRC grand entrance decorative elements', scope: 'Custom Decorative', status: 'Completed' },
+        { src: '/images/projects/makkah-2023-mosque/makkah-2023-mosque-decorative-elements-002.jpg', alt: 'GFRC custom decorative architectural elements', caption: 'Custom decorative elements', location: 'Makkah, Saudi Arabia', year: '2023', scope: 'Custom Decorative', status: 'Completed' },
+        { src: '/images/projects/kaec-2025-hospitality/kaec-2025-hospitality-aerial-waterfront-001.jpg', alt: 'GFRC aerial view of waterfront resort development', caption: 'Aerial waterfront project overview', location: 'KAEC, Saudi Arabia', year: '2025', scope: 'Custom Decorative', status: 'Completed' },
+      ],
     }} />
   )
 }
