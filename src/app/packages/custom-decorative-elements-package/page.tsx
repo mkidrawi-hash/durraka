@@ -45,6 +45,14 @@ const data: PackagePageData = {
     { label: 'Facade accent features' },
     { label: 'Civic or institutional identity elements', note: 'Neutral caption — no confidential project names' },
   ],
+  infographics: [
+    {
+      title: 'Custom Decorative Elements Component Overview',
+      description: 'Bespoke GFRC/GRC decorative panels, ornamental relief elements, repeating motifs, and project-specific geometry — produced to custom design drawings for any architectural context.',
+      image: '/images/infographics/custom-decorative-component-overview.svg',
+      imageAlt: 'Custom decorative elements component overview — GRC/GFRC decorative panel and ornament diagram',
+    },
+  ],
   designGuidanceAreas: [
     {
       title: 'Ornament Intent',
