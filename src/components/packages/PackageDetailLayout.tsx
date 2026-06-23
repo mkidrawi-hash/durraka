@@ -1,7 +1,15 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { SOCIAL_LINKS } from '@/lib/social-links'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
+
+export interface InfographicBoard {
+  title: string
+  description: string
+  image: string
+  imageAlt: string
+}
 
 export interface PackagePageData {
   title: string
@@ -15,8 +23,7 @@ export interface PackagePageData {
   suitableApplications: string[]
   components: { label: string; note?: string }[]
   designGuidanceAreas: { title: string; body: string }[]
-  coordinationNotes: string[]
-  informationRequired: string[]
+  infographics?: InfographicBoard[]
 }
 
 // ─── Shared helpers ───────────────────────────────────────────────────────────
@@ -46,7 +53,7 @@ function WhatsAppIcon() {
   )
 }
 
-// ─── Shared section data ──────────────────────────────────────────────────────
+// ─── Hardcoded shared section data ────────────────────────────────────────────
 
 const QUICK_READ = [
   { icon: '◈', text: 'Custom architectural expression, matched to design intent' },
@@ -56,6 +63,15 @@ const QUICK_READ = [
   { icon: '◈', text: 'Technical review required before final quotation' },
 ]
 
+const COORDINATION_NOTES = [
+  'Architectural elevations and sections should be reviewed to understand component rhythm, opening positions, and visible edges.',
+  'Approximate areas, quantities, and repeated elements help define the pricing and technical review approach.',
+  'Finish direction, colour expectations, and visual references should be clarified before sampling.',
+  'Interface areas with other façade materials or building systems should be identified early.',
+  'Project location and site conditions may affect finish selection, logistics, and coordination requirements.',
+  'Final recommendations depend on approved drawings, specifications, and consultant or client requirements.',
+]
+
 const FINISH_DIRECTIONS = [
   { label: 'Smooth Finish', description: 'Fine-textured, paint-ready surface for clean contemporary facades.' },
   { label: 'Sandblasted Finish', description: 'Lightly abraded surface revealing the aggregate character.' },
@@ -63,6 +79,17 @@ const FINISH_DIRECTIONS = [
   { label: 'Stone-Like Finish', description: 'Aggregate and pigment combination to replicate natural stone.' },
   { label: 'Custom Colour Finish', description: 'Integral pigment to match RAL, NCS, or project colour specification.' },
   { label: 'Heritage Finish', description: 'Warm-toned, hand-textured surface for heritage and classical projects.' },
+]
+
+const INFORMATION_REQUIRED = [
+  'Architectural drawings and elevations',
+  'Approximate areas and quantities',
+  'Design intent images or references',
+  'Preferred finish direction',
+  'Project location',
+  'Timeline and programme',
+  'Consultant or client requirements',
+  'Any special design considerations',
 ]
 
 // ─── Main layout ──────────────────────────────────────────────────────────────
@@ -80,8 +107,7 @@ export function PackageDetailLayout({ data }: { data: PackagePageData }) {
     suitableApplications,
     components,
     designGuidanceAreas,
-    coordinationNotes,
-    informationRequired,
+    infographics,
   } = data
 
   return (
@@ -203,6 +229,44 @@ export function PackageDetailLayout({ data }: { data: PackagePageData }) {
         </div>
       </section>
 
+      {/* ── 5.5 Architecture Reference Boards ────────────────────────────── */}
+      {infographics && infographics.length > 0 && (
+        <section className="bg-[#F4F6F9] py-12 sm:py-18">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+            <Eyebrow label="Architecture Reference Boards" />
+            <h2 className="text-2xl sm:text-3xl font-bold text-navy mb-3">Component Architecture Boards</h2>
+            <p className="text-gray-500 text-base mb-10 max-w-2xl leading-relaxed">
+              Detailed architecture reference boards for the GFRC/GRC components in this package.
+            </p>
+            <div className="space-y-8">
+              {infographics.map((board) => (
+                <div key={board.image} className="bg-white border border-gray-100 rounded-sm overflow-hidden shadow-sm">
+                  <div className="px-5 py-4 border-b border-gray-100">
+                    <h3 className="text-navy font-bold text-base leading-snug">{board.title}</h3>
+                    <p className="text-gray-500 text-sm mt-1 leading-relaxed">{board.description}</p>
+                  </div>
+                  <div className="overflow-x-auto bg-[#F4F6F9]">
+                    <div style={{ minWidth: '700px' }}>
+                      <Image
+                        src={board.image}
+                        alt={board.imageAlt}
+                        width={1600}
+                        height={900}
+                        className="w-full h-auto block"
+                        unoptimized
+                      />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <p className="text-gray-400 text-xs mt-8 leading-relaxed max-w-2xl">
+              For design understanding and early scope coordination only. Detailed fixing, connection, and installation information is excluded.
+            </p>
+          </div>
+        </section>
+      )}
+
       {/* ── 6. Design Guidance Areas ──────────────────────────────────────── */}
       <section className="bg-white py-12 sm:py-18">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -234,7 +298,7 @@ export function PackageDetailLayout({ data }: { data: PackagePageData }) {
             Points to consider before initiating a technical review or pricing request.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {coordinationNotes.map((note, i) => (
+            {COORDINATION_NOTES.map((note, i) => (
               <div key={i} className="flex items-start gap-4 bg-white border border-gray-100 rounded-sm p-5">
                 <span className="text-[1.75rem] font-bold text-navy/10 leading-none flex-shrink-0 select-none tabular-nums" aria-hidden="true">
                   {String(i + 1).padStart(2, '0')}
@@ -272,7 +336,7 @@ export function PackageDetailLayout({ data }: { data: PackagePageData }) {
             Submit the following to receive an accurate GFRC/GRC scope and pricing proposal. Our engineering team will review and follow up promptly.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-5">
-            {informationRequired.map((item, i) => (
+            {INFORMATION_REQUIRED.map((item, i) => (
               <div key={item} className="flex items-center gap-3">
                 <div className="w-5 h-5 rounded-full bg-accent/12 border border-accent/25 flex items-center justify-center flex-shrink-0">
                   <CheckIcon />
