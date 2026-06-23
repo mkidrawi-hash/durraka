@@ -1,13 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import {
-  CommercialFacadeIllustration,
-  MashrabiyaScreenIllustration,
-  DomesCornicesIllustration,
-  GrandEntranceIllustration,
-  ColumnsCapitalsIllustration,
-  CustomDecorativeIllustration,
-} from '@/components/packages/illustrations'
+import Image from 'next/image'
 
 export const metadata: Metadata = {
   title: 'GFRC/GRC Architectural Packages | Durraka Factory',
@@ -23,7 +16,8 @@ type PackageEntry = {
   shortDescription: string
   illustrativeArea: string
   visibleComponents: string[]
-  Illustration: () => React.ReactElement
+  image: string
+  imageAlt: string
 }
 
 const PACKAGES: PackageEntry[] = [
@@ -34,7 +28,8 @@ const PACKAGES: PackageEntry[] = [
       'AI concept for a multi-storey commercial façade combining GFRC/GRC cladding panels, vertical rhythm, cornice lines, window surrounds, and controlled architectural expression.',
     illustrativeArea: 'Approx. 8,000–14,000 m²',
     visibleComponents: ['Façade cladding panels', 'Cornices / profiles', 'Window surrounds', 'Edge / corner expression', 'Decorative vertical elements'],
-    Illustration: CommercialFacadeIllustration,
+    image: '/images/packages/hospitality-commercial.webp',
+    imageAlt: 'Modern commercial building facade featuring GFRC/GRC architectural cladding, cornice lines, and controlled facade expression.',
   },
   {
     title: 'Mashrabiya Screen Package',
@@ -43,7 +38,8 @@ const PACKAGES: PackageEntry[] = [
       'AI concept showing project-specific mashrabiya screens integrated with facade openings, privacy control, shading, and decorative architectural identity.',
     illustrativeArea: 'Approx. 1,500–4,500 m²',
     visibleComponents: ['Mashrabiya screens', 'Window screens', 'Façade cladding', 'Decorative frames', 'Entrance screen panels'],
-    Illustration: MashrabiyaScreenIllustration,
+    image: '/images/packages/heritage-regional.webp',
+    imageAlt: 'Heritage villa facade with decorative GFRC/GRC mashrabiya screens integrated into facade openings for privacy and shading.',
   },
   {
     title: 'Domes & Cornices Package',
@@ -52,7 +48,8 @@ const PACKAGES: PackageEntry[] = [
       'AI concept for architectural domes, cornices, mouldings, and ornamental profiles for religious, hospitality, and heritage-inspired projects.',
     illustrativeArea: 'Approx. 2,000–6,500 m²',
     visibleComponents: ['Dome elements', 'Cornices', 'Mouldings', 'Arched openings', 'Decorative facade bands', 'Heritage profiles'],
-    Illustration: DomesCornicesIllustration,
+    image: '/images/packages/villa-palace-architectural.webp',
+    imageAlt: 'Palace and villa architecture featuring GFRC/GRC domes, ornamental cornices, heritage mouldings, and decorative arched profiles.',
   },
   {
     title: 'Grand Entrance Package',
@@ -61,7 +58,8 @@ const PACKAGES: PackageEntry[] = [
       'AI concept for a large-scale entrance combining columns, capitals, arches, cornices, decorative panels, and façade cladding into one integrated architectural package.',
     illustrativeArea: 'Approx. 1,200–3,500 m²',
     visibleComponents: ['Columns', 'Capitals', 'Arches', 'Cornices', 'Decorative panels', 'Entrance cladding'],
-    Illustration: GrandEntranceIllustration,
+    image: '/images/packages/grand-entrance-gate.webp',
+    imageAlt: 'Monumental grand arched entrance gate with GFRC/GRC columns, capitals, cornices, and integrated architectural facade cladding.',
   },
   {
     title: 'Columns & Capitals Package',
@@ -70,7 +68,8 @@ const PACKAGES: PackageEntry[] = [
       'AI concept showing GFRC/GRC columns, capitals, bases, pilasters, and entrance colonnades for classical, heritage, and contemporary architectural projects.',
     illustrativeArea: 'Approx. 800–2,500 m²',
     visibleComponents: ['Column shafts', 'Capitals', 'Bases', 'Pilasters', 'Arched colonnades', 'Decorative panels'],
-    Illustration: ColumnsCapitalsIllustration,
+    image: '/images/packages/landmark-government-facade.webp',
+    imageAlt: 'Landmark government building facade with classical GFRC/GRC columns, capitals, bases, and arched colonnade architectural elements.',
   },
   {
     title: 'Custom Decorative Elements Package',
@@ -79,29 +78,31 @@ const PACKAGES: PackageEntry[] = [
       'AI concept for bespoke GFRC/GRC decorative elements including ornamental panels, calligraphy-inspired features, identity panels, special frames, and project-specific architectural details.',
     illustrativeArea: 'Approx. 500–2,000 m²',
     visibleComponents: ['Decorative panels', 'Custom ornaments', 'Identity features', 'Calligraphy-inspired panels', 'Special frames'],
-    Illustration: CustomDecorativeIllustration,
+    image: '/images/packages/custom-architectural-components.webp',
+    imageAlt: 'Custom GFRC/GRC decorative facade panels featuring ornamental details, identity features, and bespoke architectural components.',
   },
 ]
 
 // ─── Card ──────────────────────────────────────────────────────────────────────
 
 function PackageCard({ pkg }: { pkg: PackageEntry }) {
-  const { Illustration } = pkg
   return (
     <Link
       href={pkg.href}
       className="group flex flex-col bg-white rounded-sm overflow-hidden border border-gray-200/70 shadow-sm hover:shadow-lg hover:border-navy/20 transition-all duration-300"
     >
-      {/* Illustration */}
+      {/* Package image */}
       <div className="relative overflow-hidden" style={{ aspectRatio: '16/10' }}>
-        <Illustration />
+        <Image
+          src={pkg.image}
+          alt={pkg.imageAlt}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-transparent to-transparent" aria-hidden="true" />
-        {/* AI Concept label */}
-        <span className="absolute top-3 left-3 text-[9px] font-bold tracking-widest uppercase text-white/60 bg-navy/60 border border-white/15 px-2 py-1 rounded-sm backdrop-blur-sm">
-          AI Concept Reference
-        </span>
         {/* Area badge */}
-        <span className="absolute bottom-3 right-3 text-[9px] font-semibold tracking-wider text-white/60">
+        <span className="absolute bottom-3 right-3 text-[9px] font-semibold tracking-wider text-white/70 bg-navy/50 px-2 py-0.5 rounded-sm backdrop-blur-sm">
           {pkg.illustrativeArea}
         </span>
       </div>
