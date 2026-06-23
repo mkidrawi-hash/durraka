@@ -118,3 +118,160 @@ Running log of all development sessions, decisions, and branch references.
 - Applied to `src/components/home/ProjectsPreview.tsx` — replaced grid-pattern div
 - Created `IMAGE_REGISTER.md` — classification guide, pre-publish checklist, folder targets, page slot inventory
 - Created `PROJECT_LOG.md` — this file
+
+---
+
+## Session 8 — Package infographic boards inline + Custom Decorative SVG (PR #20)
+
+**Branch:** `feat/project-infographic-boards`  
+**Merged to main:** Pending
+
+### What changed
+
+- Added `InfographicBoard` interface and `infographics?: InfographicBoard[]` field to `PackageDetailLayout.tsx`
+- Added inline Architecture Reference Boards section to `PackageDetailLayout` — renders SVG boards at full width using `<Image unoptimized>` with horizontal scroll on mobile (minWidth 700px)
+- Wired infographic boards to all 6 package pages:
+  - `domes-cornices-package` — dome + cornice boards
+  - `columns-capitals-package` — column-capital board
+  - `mashrabiya-screen-package` — mashrabiya board
+  - `commercial-facade-package` — cornice board
+  - `grand-entrance-package` — column-capital + cornice boards
+  - `custom-decorative-elements-package` — new custom decorative board
+- Created new SVG infographic board: `public/images/infographics/custom-decorative-component-overview.svg`
+  - 1600×900 board matching existing visual style
+  - Left panel: facade illustration with diamond lattice pattern, 8-petal rosette medallion, corner ornaments, 6 callout circles
+  - Right dark panel: title, 4 content cards, 6 reference lines
+  - NDA-safe labels only: Decorative Panel, Bespoke Ornament, Relief Pattern, Edge Profile, Repeating Motif, Project Geometry
+
+### Files changed
+- `src/components/packages/PackageDetailLayout.tsx`
+- `src/app/packages/domes-cornices-package/page.tsx`
+- `src/app/packages/columns-capitals-package/page.tsx`
+- `src/app/packages/mashrabiya-screen-package/page.tsx`
+- `src/app/packages/commercial-facade-package/page.tsx`
+- `src/app/packages/grand-entrance-package/page.tsx`
+- `src/app/packages/custom-decorative-elements-package/page.tsx`
+- `public/images/infographics/custom-decorative-component-overview.svg` (new)
+
+### Status
+Pushed to branch. Ready for visual review.
+
+### Next step
+Merge PR #20 after visual review on mobile and desktop.
+
+---
+
+## Session 9 — Bilingual EN/AR infographic page
+
+**Branch:** `feat/project-infographic-boards`  
+**Merged to main:** Pending
+
+### What changed
+
+- Created new route: `/infographic/gfrc-classical-columns`
+- New file: `src/app/infographic/gfrc-classical-columns/page.tsx`
+  - Server component with `export const metadata` for SEO
+  - Full bilingual English + Arabic infographic page
+  - Arabic rendered with `dir="rtl" lang="ar"` and system font stack (Cairo, Noto Kufi Arabic)
+  - No external Arabic font import needed
+- Sections: header (EN+AR title + intro + Durraka wordmark), hero image (21:9 cinematic crop, navy vignette), 4 feature blocks (2×2 grid with inline SVG illustrations), 5 finish swatches, navy CTA strip, footer
+- Inline SVG components: `ColumnIllustration`, `PrecisionIllustration`, `LightweightIllustration`, `WeatherIllustration`
+- Hero image: `public/images/infographics/gfrc-classical-columns-hero.png` (neoclassical columns, no people, NDA-safe)
+- No installation details, fixing systems, or confidential production methods anywhere
+
+### Files changed
+- `src/app/infographic/gfrc-classical-columns/page.tsx` (new)
+- `public/images/infographics/gfrc-classical-columns-hero.png` (new)
+
+### Status
+Pushed to branch. Ready for visual review.
+
+### Next step
+Share URL after deployment for client review.
+
+---
+
+## Session 10 — Premium package pages: modal system + component detail cards
+
+**Branch:** `feat/project-infographic-boards`  
+**Merged to main:** Pending
+
+### What changed
+
+**New shared components:**
+
+- `src/components/packages/ComponentDetailModal.tsx`
+  - `'use client'` modal with 7 tabs: Overview, Materials, Arch. Drawings, Shop Drawings, Finishes & Colors, Project Inputs, Scope & Deliverables
+  - ESC key close, backdrop tap close, body scroll lock
+  - Mobile: full-screen slide-up sheet. Desktop: centered max-w-4xl with max-height
+  - Tabs scroll horizontally on mobile (no tab truncation)
+  - Footer with Request Quotation CTA
+  - No installation details, fixing systems, or structural secrets in any tab
+
+- `src/components/packages/PremiumPackageLayout.tsx`
+  - `'use client'` reusable full-page layout for all 6 package pages
+  - Manages modal open/close state and active tab state
+  - Sections: Hero (navy, two CTAs), quick highlights strip, package overview + suitable-for sidebar, component cards grid, architecture reference boards, project review timeline (6 steps), finish directions, information required checklist, dark CTA section, disclaimer
+  - Component cards: unique inline SVG card illustration, short description, 3 tags, **View Details** button → opens modal
+
+**Per-package client.tsx files (all new):**
+
+Each file contains:
+- Package-specific SVG card illustrations (simple architectural line drawings)
+- Package-specific facade elevation hotspot diagram (used in modal Overview tab, shows A–F hotspot positions)
+- `ComponentDetail[]` array with 6–8 components, each with: id, title, shortDescription, tags, CardIllustration, hotspots (A–F), HotspotDiagram, and full tab data
+- `PremiumPackageData` object with reviewSteps, suitableApplications, infographics, etc.
+- Named export: `[PackageName]PackageClient`
+
+Files:
+- `src/app/packages/domes-cornices-package/client.tsx` (7 components: Main Dome, Cornice Profile, Crown Cornice, Decorative Band, Parapet Coping, Column Capital Connection, Entrance Arch)
+- `src/app/packages/columns-capitals-package/client.tsx` (7 components: Column Shaft, Capital, Base/Plinth, Pilaster, Arched Bay, Entablature, Spandrel Panel)
+- `src/app/packages/commercial-facade-package/client.tsx` (6 components: Cladding Panel, Cornice Band, Window Surround, Corner Expression, Vertical Fin, Custom Profile)
+- `src/app/packages/grand-entrance-package/client.tsx` (8 components: Entrance Column, Capital, Grand Arch, Gate Cornice, Decorative Frame, Feature Panel, Mashrabiya Accent, Custom Detail)
+- `src/app/packages/mashrabiya-screen-package/client.tsx` (6 components: Screen Panel, Window Insert, Entrance Screen, Background Cladding, Screen Frame, Custom Pattern)
+- `src/app/packages/custom-decorative-elements-package/client.tsx` (7 components: Geometric Panel, Calligraphic Panel, Identity Panel, Custom Frame, Ornamental Detail, Accent Feature, Civic Element)
+
+**Updated page.tsx files (server components):**
+
+All 6 package `page.tsx` files stripped to metadata + `<[PackageName]PackageClient />` + `<StickyMobileCTA />`. No data or logic in the server component.
+
+### Architecture notes
+
+- `page.tsx` stays a **server component** — exports `metadata` for SEO
+- All interactivity (modal, tabs, scroll lock) is in `'use client'` components
+- `PremiumPackageLayout` is reusable — to apply to a new package, create a `client.tsx` next to its `page.tsx` with the package's data and SVG illustrations
+- All shared tab content (Materials, Shop Drawings, Finishes, Inputs, Scope) is defined as `SHARED_*` constants and reused across all components in each package
+
+### Confidentiality
+
+- No fixing details, brackets, anchors, or structural calculations anywhere
+- Shop Drawings tab explicitly states these are not published publicly
+- All SVG illustrations are architectural reference drawings only — no connection details
+
+### Files changed
+- `src/components/packages/ComponentDetailModal.tsx` (new)
+- `src/components/packages/PremiumPackageLayout.tsx` (new)
+- `src/app/packages/domes-cornices-package/client.tsx` (new)
+- `src/app/packages/domes-cornices-package/page.tsx` (modified)
+- `src/app/packages/columns-capitals-package/client.tsx` (new)
+- `src/app/packages/columns-capitals-package/page.tsx` (modified)
+- `src/app/packages/commercial-facade-package/client.tsx` (new)
+- `src/app/packages/commercial-facade-package/page.tsx` (modified)
+- `src/app/packages/grand-entrance-package/client.tsx` (new)
+- `src/app/packages/grand-entrance-package/page.tsx` (modified)
+- `src/app/packages/mashrabiya-screen-package/client.tsx` (new)
+- `src/app/packages/mashrabiya-screen-package/page.tsx` (modified)
+- `src/app/packages/custom-decorative-elements-package/client.tsx` (new)
+- `src/app/packages/custom-decorative-elements-package/page.tsx` (modified)
+
+### Build status
+All 6 package pages build cleanly. No TypeScript errors, no lint warnings.
+
+### Status
+Pushed to `feat/project-infographic-boards`. Ready for visual review and merge.
+
+### Next step
+1. Visual review all 6 package pages on mobile and desktop
+2. Test modal: open, close, ESC, tab switching, scroll
+3. Merge PR #20 after approval
+4. Consider applying same premium modal system to project detail pages
