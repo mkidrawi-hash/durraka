@@ -45,6 +45,20 @@ const data: PackagePageData = {
     { label: 'Heritage profiles and ornamental details' },
     { label: 'Drum and lantern elements', note: 'Where required by design' },
   ],
+  infographics: [
+    {
+      title: 'Dome Component Overview',
+      description: 'Architectural dome features used to create skyline identity, landmark presence, and heritage-inspired roofline expression.',
+      image: '/images/infographics/dome-component-overview.svg',
+      imageAlt: 'Dome component overview — GRC/GFRC architectural dome diagram',
+    },
+    {
+      title: 'Cornice Component Overview',
+      description: 'Horizontal architectural profiles used at rooflines, parapets, edges, and facade transitions to define shadow lines and proportion.',
+      image: '/images/infographics/cornice-component-overview.svg',
+      imageAlt: 'Cornice component overview — GRC/GFRC cornice diagram',
+    },
+  ],
   designGuidanceAreas: [
     {
       title: 'Dome Geometry Intent',

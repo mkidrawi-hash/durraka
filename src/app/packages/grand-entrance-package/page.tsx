@@ -48,6 +48,20 @@ const data: PackagePageData = {
     { label: 'Domes or decorative crowns', note: 'When required by design' },
     { label: 'Custom architectural details' },
   ],
+  infographics: [
+    {
+      title: 'Column & Capital Component Overview',
+      description: 'Vertical architectural elements used at entrances, arcades, porticos, and facade features to create rhythm, formality, and decorative character.',
+      image: '/images/infographics/column-capital-component-overview.svg',
+      imageAlt: 'Column and capital component overview — GRC/GFRC column diagram',
+    },
+    {
+      title: 'Cornice Component Overview',
+      description: 'Horizontal architectural profiles used at rooflines, parapets, edges, and facade transitions to define shadow lines and proportion.',
+      image: '/images/infographics/cornice-component-overview.svg',
+      imageAlt: 'Cornice component overview — GRC/GFRC cornice diagram',
+    },
+  ],
   designGuidanceAreas: [
     {
       title: 'Entrance Composition Guidance',

@@ -43,6 +43,14 @@ const data: PackagePageData = {
     { label: 'Decorative vertical fins or elements' },
     { label: 'Custom profiles', note: 'Available on request — from architectural drawings' },
   ],
+  infographics: [
+    {
+      title: 'Cornice Component Overview',
+      description: 'Horizontal architectural profiles used at rooflines, parapets, edges, and facade transitions to define shadow lines and proportion.',
+      image: '/images/infographics/cornice-component-overview.svg',
+      imageAlt: 'Cornice component overview — GRC/GFRC cornice diagram',
+    },
+  ],
   designGuidanceAreas: [
     {
       title: 'Panel Layout Guidance',

@@ -43,6 +43,14 @@ const data: PackagePageData = {
     { label: 'Decorative frames and surrounds' },
     { label: 'Custom pattern panels', note: 'Designed to project-specific drawings' },
   ],
+  infographics: [
+    {
+      title: 'Mashrabiya Screen Component Overview',
+      description: 'Patterned GRC/GFRC screens used for privacy, filtered light, shading, facade rhythm, and cultural identity.',
+      image: '/images/infographics/mashrabiya-component-overview.svg',
+      imageAlt: 'Mashrabiya screen component overview — GRC/GFRC screen diagram',
+    },
+  ],
   designGuidanceAreas: [
     {
       title: 'Pattern Scale Guidance',

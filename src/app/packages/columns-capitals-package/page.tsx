@@ -45,6 +45,14 @@ const data: PackagePageData = {
     { label: 'Entablature and beam elements', note: 'Where required by design' },
     { label: 'Decorative spandrel panels' },
   ],
+  infographics: [
+    {
+      title: 'Column & Capital Component Overview',
+      description: 'Vertical architectural elements used at entrances, arcades, porticos, and facade features to create rhythm, formality, and decorative character.',
+      image: '/images/infographics/column-capital-component-overview.svg',
+      imageAlt: 'Column and capital component overview — GRC/GFRC column diagram',
+    },
+  ],
   designGuidanceAreas: [
     {
       title: 'Column Proportion Guidance',

@@ -1,7 +1,15 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { SOCIAL_LINKS } from '@/lib/social-links'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
+
+export interface InfographicBoard {
+  title: string
+  description: string
+  image: string
+  imageAlt: string
+}
 
 export interface PackagePageData {
   title: string
@@ -15,6 +23,7 @@ export interface PackagePageData {
   suitableApplications: string[]
   components: { label: string; note?: string }[]
   designGuidanceAreas: { title: string; body: string }[]
+  infographics?: InfographicBoard[]
 }
 
 // ─── Shared helpers ───────────────────────────────────────────────────────────
@@ -98,6 +107,7 @@ export function PackageDetailLayout({ data }: { data: PackagePageData }) {
     suitableApplications,
     components,
     designGuidanceAreas,
+    infographics,
   } = data
 
   return (
@@ -218,6 +228,44 @@ export function PackageDetailLayout({ data }: { data: PackagePageData }) {
           </div>
         </div>
       </section>
+
+      {/* ── 5.5 Architecture Reference Boards ────────────────────────────── */}
+      {infographics && infographics.length > 0 && (
+        <section className="bg-[#F4F6F9] py-12 sm:py-18">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+            <Eyebrow label="Architecture Reference Boards" />
+            <h2 className="text-2xl sm:text-3xl font-bold text-navy mb-3">Component Architecture Boards</h2>
+            <p className="text-gray-500 text-base mb-10 max-w-2xl leading-relaxed">
+              Detailed architecture reference boards for the GFRC/GRC components in this package.
+            </p>
+            <div className="space-y-8">
+              {infographics.map((board) => (
+                <div key={board.image} className="bg-white border border-gray-100 rounded-sm overflow-hidden shadow-sm">
+                  <div className="px-5 py-4 border-b border-gray-100">
+                    <h3 className="text-navy font-bold text-base leading-snug">{board.title}</h3>
+                    <p className="text-gray-500 text-sm mt-1 leading-relaxed">{board.description}</p>
+                  </div>
+                  <div className="overflow-x-auto bg-[#F4F6F9]">
+                    <div style={{ minWidth: '700px' }}>
+                      <Image
+                        src={board.image}
+                        alt={board.imageAlt}
+                        width={1600}
+                        height={900}
+                        className="w-full h-auto block"
+                        unoptimized
+                      />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <p className="text-gray-400 text-xs mt-8 leading-relaxed max-w-2xl">
+              For design understanding and early scope coordination only. Detailed fixing, connection, and installation information is excluded.
+            </p>
+          </div>
+        </section>
+      )}
 
       {/* ── 6. Design Guidance Areas ──────────────────────────────────────── */}
       <section className="bg-white py-12 sm:py-18">
