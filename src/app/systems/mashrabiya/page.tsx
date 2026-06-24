@@ -1,157 +1,140 @@
 import type { Metadata } from 'next'
-import { SystemBoardLayout } from '@/components/systems/SystemBoardLayout'
-import type { SystemBoardData } from '@/components/systems/SystemBoardLayout'
+import { SystemEnhancedLayout, type SystemEnhancedData } from '@/components/systems/SystemEnhancedLayout'
 
 export const metadata: Metadata = {
-  title: 'Mashrabiya Systems — Durraka',
+  title: 'Mashrabiya Screens System — GFRC/GRC Patterned Screens | Durraka',
   description:
-    'Custom GFRC / GRC mashrabiya screen systems — geometric and bespoke patterns for privacy, shading, and architectural identity on façades across Saudi Arabia.',
+    'GFRC/GRC patterned mashrabiya screens designed for privacy, shading, identity, and architectural façade expression. Modern and heritage-inspired pattern design. Manufactured in Saudi Arabia.',
 }
 
-function Diagram() {
+function SampleDrawing() {
   return (
-    <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full max-w-2xl mx-auto" aria-label="Simplified mashrabiya screen system diagram">
-      <rect width="400" height="300" fill="#F8F9FA" />
-      <line x1="40" y1="278" x2="360" y2="278" stroke="#071B3B" strokeWidth="2.5" />
-      <rect x="70" y="22" width="260" height="256" stroke="#071B3B" strokeWidth="1.6" fill="white" fillOpacity="0.6" />
-      <rect x="70" y="22" width="22" height="256" stroke="#071B3B" strokeWidth="1" fill="#071B3B" fillOpacity="0.06" />
-      <rect x="308" y="22" width="22" height="256" stroke="#071B3B" strokeWidth="1" fill="#071B3B" fillOpacity="0.06" />
-      <rect x="70" y="22" width="260" height="22" stroke="#071B3B" strokeWidth="1" fill="#071B3B" fillOpacity="0.06" />
-      <rect x="70" y="256" width="260" height="22" stroke="#071B3B" strokeWidth="1" fill="#071B3B" fillOpacity="0.06" />
-      {[80, 133, 186, 239].map((cy: number) =>
-        [130, 200, 270].map((cx: number) => (
-          <polygon
-            key={`${cx}-${cy}`}
-            points={`${cx},${cy - 26} ${cx + 26},${cy} ${cx},${cy + 26} ${cx - 26},${cy}`}
-            stroke="#071B3B" strokeWidth="0.9" fill="#071B3B" fillOpacity="0.04"
-          />
+    <svg viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full" aria-label="Sample mashrabiya pattern module — concept reference only">
+      <rect width="320" height="200" fill="#F8F9FA" />
+      {/* Screen frame */}
+      <rect x="40" y="20" width="240" height="165" stroke="#071B3B" strokeWidth="2" fill="white" fillOpacity="0.5" />
+      {/* Pattern grid - 6x4 modules */}
+      {[0,1,2,3,4,5].map(col =>
+        [0,1,2,3].map(row => {
+          const x = 48 + col * 37
+          const y = 28 + row * 38
+          return (
+            <g key={col+'-'+row}>
+              <rect x={x} y={y} width="30" height="30" stroke="#071B3B" strokeWidth="0.6" fill="none" />
+              {/* Inner diamond pattern */}
+              <path d={`M ${x+15} ${y+3} L ${x+27} ${y+15} L ${x+15} ${y+27} L ${x+3} ${y+15} Z`} stroke="#071B3B" strokeWidth="0.5" fill="#071B3B" fillOpacity="0.08" />
+              {/* Inner detail */}
+              <path d={`M ${x+15} ${y+8} L ${x+22} ${y+15} L ${x+15} ${y+22} L ${x+8} ${y+15} Z`} stroke="#071B3B" strokeWidth="0.4" fill="#071B3B" fillOpacity="0.06" />
+            </g>
+          )
+        })
+      )}
+      {/* Frame border emphasis */}
+      <rect x="40" y="20" width="240" height="165" stroke="#071B3B" strokeWidth="2" fill="none" />
+      {/* Labels */}
+      <text x="7" y="14" textAnchor="start" fontSize="5.5" fill="#D71920" fillOpacity="0.7" fontFamily="sans-serif" fontWeight="700">CONCEPT ONLY — NO FIXING DETAILS</text>
+      <text x="160" y="198" textAnchor="middle" fontSize="6.5" fill="#071B3B" fillOpacity="0.45" fontFamily="sans-serif" fontWeight="600">PATTERN MODULE REPETITION — SAMPLE ONLY</text>
+    </svg>
+  )
+}
+
+function SystemContext() {
+  return (
+    <svg viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full" aria-label="Mashrabiya screen system architectural context — concept only">
+      <rect width="320" height="200" fill="#F8F9FA" />
+      {/* Ground */}
+      <line x1="10" y1="188" x2="310" y2="188" stroke="#071B3B" strokeWidth="2" />
+      {/* Building facade */}
+      <rect x="30" y="35" width="260" height="153" fill="white" stroke="#071B3B" strokeWidth="1.5" fillOpacity="0.4" />
+      {/* Windows behind screens */}
+      <rect x="60" y="60" width="55" height="80" fill="#071B3B" fillOpacity="0.08" stroke="#071B3B" strokeWidth="0.8" />
+      <rect x="133" y="60" width="55" height="80" fill="#071B3B" fillOpacity="0.08" stroke="#071B3B" strokeWidth="0.8" />
+      <rect x="206" y="60" width="55" height="80" fill="#071B3B" fillOpacity="0.08" stroke="#071B3B" strokeWidth="0.8" />
+      {/* Screen zones - highlighted */}
+      <rect x="56" y="55" width="63" height="90" fill="#D71920" fillOpacity="0.12" stroke="#D71920" strokeWidth="1" strokeOpacity="0.5" />
+      <rect x="129" y="55" width="63" height="90" fill="#D71920" fillOpacity="0.12" stroke="#D71920" strokeWidth="1" strokeOpacity="0.5" />
+      <rect x="202" y="55" width="63" height="90" fill="#D71920" fillOpacity="0.12" stroke="#D71920" strokeWidth="1" strokeOpacity="0.5" />
+      {/* Screen pattern dots inside zones */}
+      {[68,141,214].map(sx =>
+        [64,72,80,88,96,104,112,120,128].map(sy => (
+          <circle key={sx+sy} cx={sx + 25} cy={sy} r="2.5" fill="#D71920" fillOpacity="0.2" />
         ))
       )}
-      <line x1="70" y1="150" x2="30" y2="150" stroke="#D71920" strokeWidth="0.8" strokeDasharray="4 2" />
-      <circle cx="21" cy="150" r="9" fill="#D71920" />
-      <text x="21" y="154" textAnchor="middle" fontSize="8.5" fontWeight="bold" fill="white" fontFamily="sans-serif">1</text>
-      <line x1="200" y1="54" x2="200" y2="11" stroke="#D71920" strokeWidth="0.8" strokeDasharray="4 2" />
-      <circle cx="200" cy="8" r="9" fill="#D71920" />
-      <text x="200" y="12" textAnchor="middle" fontSize="8.5" fontWeight="bold" fill="white" fontFamily="sans-serif">2</text>
-      <line x1="226" y1="133" x2="370" y2="133" stroke="#D71920" strokeWidth="0.8" strokeDasharray="4 2" />
-      <circle cx="379" cy="133" r="9" fill="#D71920" />
-      <text x="379" y="137" textAnchor="middle" fontSize="8.5" fontWeight="bold" fill="white" fontFamily="sans-serif">3</text>
-      <line x1="226" y1="186" x2="370" y2="186" stroke="#D71920" strokeWidth="0.8" strokeDasharray="4 2" />
-      <circle cx="379" cy="186" r="9" fill="#D71920" />
-      <text x="379" y="190" textAnchor="middle" fontSize="8.5" fontWeight="bold" fill="white" fontFamily="sans-serif">4</text>
-      <line x1="130" y1="239" x2="30" y2="270" stroke="#D71920" strokeWidth="0.8" strokeDasharray="4 2" />
-      <circle cx="21" cy="278" r="9" fill="#D71920" />
-      <text x="21" y="282" textAnchor="middle" fontSize="8.5" fontWeight="bold" fill="white" fontFamily="sans-serif">5</text>
-      <line x1="200" y1="22" x2="370" y2="11" stroke="#D71920" strokeWidth="0.8" strokeDasharray="4 2" />
-      <circle cx="379" cy="11" r="9" fill="#D71920" />
-      <text x="379" y="15" textAnchor="middle" fontSize="8.5" fontWeight="bold" fill="white" fontFamily="sans-serif">6</text>
+      {/* Labels */}
+      <text x="87" y="155" textAnchor="middle" fontSize="6.5" fill="#D71920" fillOpacity="0.75" fontFamily="sans-serif" fontWeight="700">SCREEN ZONE</text>
+      <text x="160" y="155" textAnchor="middle" fontSize="6.5" fill="#D71920" fillOpacity="0.75" fontFamily="sans-serif" fontWeight="700">SCREEN ZONE</text>
+      <text x="233" y="155" textAnchor="middle" fontSize="6.5" fill="#D71920" fillOpacity="0.75" fontFamily="sans-serif" fontWeight="700">SCREEN ZONE</text>
+      <text x="7" y="14" textAnchor="start" fontSize="5.5" fill="#071B3B" fillOpacity="0.4" fontFamily="sans-serif" fontWeight="600">SYSTEM CONTEXT — DESIGN COORDINATION AREA</text>
     </svg>
   )
 }
 
-function ScreenPatternDrawing() {
-  return (
-    <svg viewBox="0 0 120 100" className="w-full" fill="none" stroke="#071B3B" strokeWidth="0.9">
-      <rect width="120" height="100" fill="#F8F9FA" />
-      <rect x="10" y="10" width="100" height="80" stroke="#071B3B" strokeWidth="1.2" fill="white" fillOpacity="0.6" />
-      {[30, 55, 80].map((cy: number) =>
-        [35, 60, 85].map((cx: number) => (
-          <polygon
-            key={`${cx}-${cy}`}
-            points={`${cx},${cy - 10} ${cx + 10},${cy} ${cx},${cy + 10} ${cx - 10},${cy}`}
-            stroke="#071B3B" strokeWidth="0.7" fill="#071B3B" fillOpacity="0.04"
-          />
-        ))
-      )}
-    </svg>
-  )
-}
-
-function PanelSectionDrawing() {
-  return (
-    <svg viewBox="0 0 120 100" className="w-full" fill="none" stroke="#071B3B" strokeWidth="0.9">
-      <rect width="120" height="100" fill="#F8F9FA" />
-      <rect x="20" y="10" width="80" height="80" fill="white" fillOpacity="0.7" stroke="#071B3B" strokeWidth="0.9" />
-      <line x1="30" y1="10" x2="30" y2="90" stroke="#071B3B" strokeWidth="0.7" />
-      <line x1="90" y1="10" x2="90" y2="90" stroke="#071B3B" strokeWidth="0.7" />
-      <rect x="30" y="10" width="60" height="80" fill="#071B3B" fillOpacity="0.04" />
-    </svg>
-  )
-}
-
-function FrameProfileDrawing() {
-  return (
-    <svg viewBox="0 0 120 100" className="w-full" fill="none" stroke="#071B3B" strokeWidth="0.9">
-      <rect width="120" height="100" fill="#F8F9FA" />
-      <polygon points="20,80 20,20 35,20 35,35 80,35 80,80" fill="white" fillOpacity="0.8" stroke="#071B3B" strokeWidth="0.9" />
-    </svg>
-  )
-}
-
-function ModuleLayoutDrawing() {
-  return (
-    <svg viewBox="0 0 120 100" className="w-full" fill="none" stroke="#071B3B" strokeWidth="0.9">
-      <rect width="120" height="100" fill="#F8F9FA" />
-      <rect x="10" y="10" width="48" height="38" fill="white" fillOpacity="0.7" stroke="#071B3B" strokeWidth="0.9" />
-      <rect x="62" y="10" width="48" height="38" fill="white" fillOpacity="0.7" stroke="#071B3B" strokeWidth="0.9" />
-      <rect x="10" y="52" width="48" height="38" fill="white" fillOpacity="0.7" stroke="#071B3B" strokeWidth="0.9" />
-      <rect x="62" y="52" width="48" height="38" fill="white" fillOpacity="0.7" stroke="#071B3B" strokeWidth="0.9" />
-    </svg>
-  )
-}
-
-const boardData: SystemBoardData = {
-  title: 'Mashrabiya Systems',
-  boardTitle: 'Mashrabiya & Screen',
-  boardTagline: 'Geometric precision meets architectural identity',
-  breadcrumb: 'Mashrabiya',
-  subtitle: 'Geometric precision. Architectural identity.',
-  heroDescription: 'Custom GFRC / GRC mashrabiya screen systems — designed to project-specific geometric patterns for privacy, shading, and architectural character.',
+const data: SystemEnhancedData = {
+  title: 'Mashrabiya Screens System',
+  breadcrumb: 'Mashrabiya Screens',
+  heroDescription:
+    'GFRC/GRC patterned screens designed for privacy, shading, identity, and architectural façade expression — project-specific module coordination for modern and heritage-inspired designs.',
   heroImage: '/images/projects/mashrabiya-screen-gfrc.png',
-  heroImageAlt: 'Custom GFRC mashrabiya screen façade detail',
+  heroImageAlt: 'GFRC/GRC mashrabiya screen system — patterned façade screen expression',
   heroObjectPosition: 'center',
-  whatTitle: 'What is a Mashrabiya System?',
-  whatBody: 'A mashrabiya is an architectural screen element produced in GFRC / GRC with repeating geometric or custom lattice patterns. It provides privacy, solar shading, and visual identity while allowing light and air to pass through. Durraka produces mashrabiya systems in custom patterns ranging from traditional Islamic geometry to contemporary perforated designs.',
-  benefits: [
-    { label: 'Geometric Pattern Variety', desc: 'Traditional lattice, modern perforated, and custom geometric configurations can all be produced from project drawings.' },
-    { label: 'Privacy & Solar Shading', desc: 'Mashrabiya screens provide privacy and reduce solar gain while preserving natural light and ventilation.' },
-    { label: 'Architectural Identity', desc: 'Custom screen patterns become a defining architectural element — expressing design intent at building scale.' },
-    { label: 'Design Heritage', desc: 'Suitable for both heritage-inspired and contemporary architectural contexts across the Kingdom.' },
-    { label: 'Durable Exterior Performance', desc: 'GFRC / GRC construction ensures long-term durability in outdoor and semi-outdoor environments.' },
-    { label: 'Large Format Capability', desc: 'Modular panel system allows for large façade areas to be completed efficiently while maintaining pattern consistency.' },
+
+  photoTags: [
+    { n: 1, label: 'Pattern Module', xPct: 30, yPct: 38 },
+    { n: 2, label: 'Screen Rhythm', xPct: 60, yPct: 28 },
+    { n: 3, label: 'Privacy & Shading Expression', xPct: 45, yPct: 55 },
+    { n: 4, label: 'Opening Relationship', xPct: 72, yPct: 50 },
+    { n: 5, label: 'Façade Integration Zone', xPct: 25, yPct: 68 },
+    { n: 6, label: 'Finish Direction', xPct: 65, yPct: 72 },
   ],
-  Diagram,
-  callouts: [
-    { n: 1, label: 'Screen Frame', desc: 'Structural border enclosing the lattice panel field.' },
-    { n: 2, label: 'Geometric Pattern', desc: 'Repeating lattice or perforated pattern module across the screen area.' },
-    { n: 3, label: 'Panel Module', desc: 'Individual screen panel unit, produced and installed as a modular system.' },
-    { n: 4, label: 'Opening Configuration', desc: 'Size, shape, and rhythm of the openings within the lattice field.' },
-    { n: 5, label: 'Finish Direction', desc: 'Surface finish applied to the screen frame and lattice elements.' },
-    { n: 6, label: 'Project Coordination Review', desc: 'Pattern, module size, and installation scope confirmed through project review.' },
+
+  quickRead: [
+    { text: 'Custom pattern language and identity' },
+    { text: 'Privacy and shading expression' },
+    { text: 'Modern and heritage-inspired designs' },
+    { text: 'Project-specific module coordination' },
   ],
-  boardComponents: ['Screen panels', 'Geometric lattice patterns', 'Frame & border elements', 'Opening configurations', 'Panel module system', 'Custom pattern design'],
-  detailCards: [
-    { title: 'SCREEN PATTERN', Drawing: ScreenPatternDrawing, callouts: ['Lattice Pattern', 'Frame Border', 'Opening Cell'] },
-    { title: 'PANEL SECTION', Drawing: PanelSectionDrawing, callouts: ['Screen Depth', 'Pattern Zone', 'Frame Section'] },
-    { title: 'FRAME PROFILE', Drawing: FrameProfileDrawing, callouts: ['Frame Width', 'Profile Section', 'Return Depth'] },
-    { title: 'MODULE LAYOUT', Drawing: ModuleLayoutDrawing, callouts: ['Screen Module', 'Panel Joint', 'Field Area'] },
+
+  systemIntent:
+    'Designed to create patterned façade screens that balance visual identity, privacy, shading, and architectural rhythm — translating design intent into precision-manufactured GFRC/GRC screen panels.',
+
+  commonApplications:
+    'Residential projects, hospitality buildings, cultural projects, commercial façades, government buildings, and heritage-inspired developments.',
+
+  keyDesignConsiderations: [
+    'Pattern module and repetition',
+    'Screen openness and visual privacy',
+    'Relationship with windows and openings',
+    'Façade rhythm and alignment',
+    'Finish and colour direction',
+    'Coordination with project design intent',
   ],
-  applications: [
-    'Hotel & Resort Façades', 'Retail & Commercial Developments', 'Residential Buildings',
-    'Courtyard & Garden Screens', 'Heritage-Inspired Architecture', 'Government Buildings',
-    'Cultural & Civic Projects', 'Interior Feature Screens',
+
+  importantNote:
+    'This guide is for design and coordination purposes only. Final pattern geometry, panelisation, and project-specific engineering details are developed through approved submissions.',
+
+  infoRequiredCustom: [
+    'Pattern reference or design intent',
+    'Screen dimensions and approximate area',
+    'Architectural elevations',
+    'Opening locations',
+    'Preferred privacy / openness direction',
+    'Project location',
+    'Finish and colour direction',
+    'Consultant / client requirements',
   ],
+
   designGuidance: [
-    { label: 'Pattern Design Direction', desc: 'Pattern geometry is developed from project drawings or reference images and confirmed before production.' },
-    { label: 'Module & Panel Sizing', desc: 'Screen module dimensions are determined by façade area, pattern repeat, and coordination requirements.' },
-    { label: 'Depth & Relief Expression', desc: 'Screen depth and opening thickness are design decisions that affect light, shadow, and visual character.' },
-    { label: 'Frame & Border Expression', desc: 'Outer frame profile and border detailing are coordinated with the overall façade and architectural intent.' },
-    { label: 'Finish Selection Direction', desc: 'Finish direction is selected to complement the pattern and the surrounding building materials.' },
-    { label: 'Project Coordination Requirements', desc: 'Pattern confirmation, mockup review, and phasing requirements are agreed through project coordination prior to production.' },
+    { label: 'Pattern Module Design', desc: 'Module size, geometry, and repetition strategy.' },
+    { label: 'Screen Openness Ratio', desc: 'Balance between privacy, light, and visual transparency.' },
+    { label: 'Façade Rhythm', desc: 'Screen module alignment with building grid and openings.' },
+    { label: 'Frame & Border', desc: 'Perimeter frame, border return, and edge treatment.' },
+    { label: 'Finish Direction', desc: 'Surface finish for screen panels and frame elements.' },
+    { label: 'Coordination with Openings', desc: 'Screen placement relative to window and door openings.' },
   ],
-  ctaTitle: 'Ready to Discuss Your Mashrabiya Package?',
+
+  ctaTitle: 'Ready to Develop Your Mashrabiya Screen Design?',
 }
 
 export default function MashrabiyaPage() {
-  return <SystemBoardLayout data={boardData} />
+  return <SystemEnhancedLayout data={data} sampleDrawing={<SampleDrawing />} systemContext={<SystemContext />} />
 }

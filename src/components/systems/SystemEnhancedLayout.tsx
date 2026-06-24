@@ -1,0 +1,490 @@
+'use client'
+
+import { useState } from 'react'
+import Link from 'next/link'
+import type { ReactNode } from 'react'
+import { FinishSwatch } from './FinishSwatch'
+import { PhotoTagModal, type PhotoTag } from './PhotoTagModal'
+import { DEFAULT_FINISHES, DEFAULT_INFO_REQUIRED } from './SystemPageLayout'
+
+export type SystemEnhancedData = {
+  title: string
+  breadcrumb: string
+  heroDescription: string
+  heroImage: string
+  heroImageAlt: string
+  heroObjectPosition?: string
+  photoTags: PhotoTag[]
+  quickRead: { text: string }[]
+  systemIntent: string
+  commonApplications: string
+  keyDesignConsiderations: string[]
+  importantNote: string
+  infoRequiredCustom?: string[]
+  designGuidance: { label: string; desc: string }[]
+  ctaTitle: string
+  ctaBody?: string
+}
+
+const QUICK_ICONS = [
+  <svg key="a" viewBox="0 0 20 20" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="M10 3 L13 8 L18 8.5 L14 12 L15 17 L10 14.5 L5 17 L6 12 L2 8.5 L7 8 Z" strokeLinejoin="round" /></svg>,
+  <svg key="b" viewBox="0 0 20 20" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.2"><circle cx="10" cy="10" r="7" /><circle cx="10" cy="10" r="2" /><line x1="10" y1="3" x2="10" y2="1" /><line x1="10" y1="17" x2="10" y2="19" /><line x1="3" y1="10" x2="1" y2="10" /><line x1="17" y1="10" x2="19" y2="10" /></svg>,
+  <svg key="c" viewBox="0 0 20 20" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="M3 17 L10 3 L17 17" /><line x1="6" y1="12" x2="14" y2="12" /></svg>,
+  <svg key="d" viewBox="0 0 20 20" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.2"><rect x="3" y="3" width="14" height="14" rx="1" /><path d="M8 3v14M3 8h14" strokeOpacity="0.6" /></svg>,
+]
+
+function SectionLabel({ eyebrow, title }: { eyebrow: string; title: string }) {
+  return (
+    <div className="mb-8">
+      <div className="flex items-center gap-3 mb-3">
+        <div className="w-8 h-px bg-accent flex-shrink-0" />
+        <span className="text-accent text-xs font-semibold tracking-widest uppercase">{eyebrow}</span>
+      </div>
+      <h2 className="text-xl sm:text-2xl font-bold text-navy">{title}</h2>
+    </div>
+  )
+}
+
+export function SystemEnhancedLayout({
+  data,
+  sampleDrawing,
+  systemContext,
+}: {
+  data: SystemEnhancedData
+  sampleDrawing: ReactNode
+  systemContext: ReactNode
+}) {
+  const [modalOpen, setModalOpen] = useState(false)
+  const infoRequired = data.infoRequiredCustom ?? DEFAULT_INFO_REQUIRED
+  const finishes = DEFAULT_FINISHES
+
+  return (
+    <div className="min-h-screen bg-white">
+
+      {/* ── HERO ─────────────────────────────────────────────────────────────── */}
+      <div className="bg-[#FAFAF9] border-b border-navy/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-8 pb-10">
+
+          {/* Breadcrumb */}
+          <div className="flex items-center gap-2 mb-6">
+            <Link href="/" className="text-navy/40 text-xs hover:text-accent transition-colors">Home</Link>
+            <span className="text-navy/25 text-xs">/</span>
+            <Link href="/systems" className="text-navy/40 text-xs hover:text-accent transition-colors">Systems</Link>
+            <span className="text-navy/25 text-xs">/</span>
+            <span className="text-accent text-xs font-semibold">{data.breadcrumb}</span>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+            {/* Left: text */}
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-1 h-10 bg-accent flex-shrink-0 rounded-full" />
+                <div>
+                  <p className="text-accent text-[10px] font-bold tracking-widest uppercase">GFRC / GRC System</p>
+                  <h1 className="text-2xl sm:text-3xl font-bold text-navy tracking-tight leading-tight mt-0.5">
+                    {data.title}
+                  </h1>
+                </div>
+              </div>
+
+              <p className="text-gray-500 text-sm leading-relaxed mb-6 pl-4">{data.heroDescription}</p>
+
+              {/* Quick Read */}
+              <div className="grid grid-cols-2 gap-3 pl-4 mb-8">
+                {data.quickRead.slice(0, 4).map((item, i) => (
+                  <div key={i} className="flex items-start gap-2.5 bg-white border border-navy/10 p-3 rounded-sm hover:border-accent/30 transition-colors">
+                    <div className="text-accent/70 flex-shrink-0 mt-0.5">{QUICK_ICONS[i % 4]}</div>
+                    <p className="text-navy text-[11px] font-semibold leading-snug">{item.text}</p>
+                  </div>
+                ))}
+              </div>
+
+              {/* CTAs */}
+              <div className="flex flex-col sm:flex-row gap-3 pl-4">
+                <Link
+                  href="/request-quotation"
+                  className="inline-flex items-center justify-center min-h-[48px] px-8 py-3 bg-accent text-white font-semibold rounded-sm hover:bg-accent-dark transition-colors text-sm"
+                >
+                  Request a Quote
+                </Link>
+                <button
+                  onClick={() => setModalOpen(true)}
+                  className="inline-flex items-center justify-center min-h-[48px] px-8 py-3 border border-navy/30 text-navy font-semibold rounded-sm hover:border-accent hover:text-accent transition-colors text-sm gap-2"
+                >
+                  <svg className="w-4 h-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <circle cx="10" cy="10" r="7" />
+                    <path d="M7 10h6M10 7v6" strokeLinecap="round" />
+                  </svg>
+                  View System Details
+                </button>
+              </div>
+            </div>
+
+            {/* Right: photo with tags */}
+            <div>
+              <div
+                className="relative overflow-hidden rounded-sm border border-navy/10 cursor-pointer group"
+                onClick={() => setModalOpen(true)}
+                role="button"
+                aria-label="View system details — opens full image with information tags"
+                style={{ aspectRatio: '16/10' }}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={data.heroImage}
+                  alt={data.heroImageAlt}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  style={{ objectPosition: data.heroObjectPosition ?? 'center' }}
+                />
+                {/* Gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-navy/50 via-transparent to-transparent pointer-events-none" />
+                {/* Tags */}
+                {data.photoTags.map((tag) => (
+                  <div
+                    key={tag.n}
+                    className="absolute pointer-events-none"
+                    style={{ left: `${tag.xPct}%`, top: `${tag.yPct}%`, transform: 'translate(-50%, -50%)' }}
+                  >
+                    <div className="w-6 h-6 rounded-full bg-accent border-2 border-white/80 text-white text-[10px] font-bold flex items-center justify-center shadow-md">
+                      {tag.n}
+                    </div>
+                  </div>
+                ))}
+                {/* View overlay hint */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                  <div className="bg-navy/70 backdrop-blur-sm text-white text-xs font-semibold px-4 py-2 rounded-sm flex items-center gap-2">
+                    <svg className="w-4 h-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <circle cx="10" cy="10" r="3" />
+                      <path d="M1.5 10C3 6 6 3.5 10 3.5S17 6 18.5 10 14 16.5 10 16.5 3 14 1.5 10z" />
+                    </svg>
+                    View System Details
+                  </div>
+                </div>
+              </div>
+              {/* Tag hint strip */}
+              <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1.5 px-1">
+                {data.photoTags.map((tag) => (
+                  <div key={tag.n} className="flex items-center gap-1.5">
+                    <span className="w-4 h-4 rounded-full bg-accent text-white text-[8px] font-bold flex items-center justify-center flex-shrink-0">{tag.n}</span>
+                    <span className="text-navy/55 text-[10px]">{tag.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ── SYSTEM GUIDANCE OVERVIEW ─────────────────────────────────────────── */}
+      <div className="bg-white border-t border-navy/[0.08] px-4 sm:px-6 py-14 sm:py-20">
+        <div className="max-w-7xl mx-auto">
+          <SectionLabel eyebrow="System Guidance" title="System Guidance Overview" />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {/* System Intent */}
+            <div className="bg-[#F8F9FA] border border-navy/10 p-6 rounded-sm hover:border-accent/30 transition-colors md:col-span-2 lg:col-span-1">
+              <p className="text-[9px] font-bold tracking-widest uppercase text-accent mb-3">System Intent</p>
+              <p className="text-navy text-sm leading-relaxed">{data.systemIntent}</p>
+            </div>
+            {/* Common Applications */}
+            <div className="bg-[#F8F9FA] border border-navy/10 p-6 rounded-sm hover:border-accent/30 transition-colors">
+              <p className="text-[9px] font-bold tracking-widest uppercase text-accent mb-3">Common Applications</p>
+              <p className="text-navy/70 text-sm leading-relaxed">{data.commonApplications}</p>
+            </div>
+            {/* Key Design Considerations */}
+            <div className="bg-[#F8F9FA] border border-navy/10 p-6 rounded-sm hover:border-accent/30 transition-colors">
+              <p className="text-[9px] font-bold tracking-widest uppercase text-accent mb-3">Key Design Considerations</p>
+              <ul className="space-y-2">
+                {data.keyDesignConsiderations.map((item, i) => (
+                  <li key={i} className="flex items-start gap-2 text-navy/70 text-xs leading-relaxed">
+                    <div className="w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0 mt-1" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            {/* Finish Directions */}
+            <div className="bg-[#F8F9FA] border border-navy/10 p-6 rounded-sm hover:border-accent/30 transition-colors">
+              <p className="text-[9px] font-bold tracking-widest uppercase text-accent mb-3">Finish Directions</p>
+              <div className="grid grid-cols-4 gap-1.5">
+                {['smooth','sandblasted','textured','stone','concrete','colour','heritage','project'].map(t => (
+                  <div key={t} className="rounded-sm overflow-hidden aspect-[2/1]">
+                    <FinishSwatch type={t} />
+                  </div>
+                ))}
+              </div>
+              <p className="text-navy/50 text-[10px] mt-2 leading-relaxed">Custom colour and finish developed to project requirements.</p>
+            </div>
+            {/* Information Required */}
+            <div className="bg-[#F8F9FA] border border-navy/10 p-6 rounded-sm hover:border-accent/30 transition-colors">
+              <p className="text-[9px] font-bold tracking-widest uppercase text-accent mb-3">Information Required for Review</p>
+              <ul className="space-y-1.5">
+                {infoRequired.slice(0, 6).map((item, i) => (
+                  <li key={i} className="flex items-start gap-2 text-navy/70 text-xs">
+                    <div className="w-1.5 h-1.5 rounded-full bg-accent/60 flex-shrink-0 mt-1" />
+                    {item}
+                  </li>
+                ))}
+                {infoRequired.length > 6 && (
+                  <li className="text-navy/40 text-[10px] pl-3.5">+{infoRequired.length - 6} more items</li>
+                )}
+              </ul>
+            </div>
+            {/* Important Note */}
+            <div className="bg-navy/[0.03] border border-navy/15 p-6 rounded-sm">
+              <div className="flex items-start gap-2 mb-3">
+                <svg className="w-4 h-4 text-navy/40 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <p className="text-[9px] font-bold tracking-widest uppercase text-navy/50">Important Note</p>
+              </div>
+              <p className="text-navy/60 text-xs leading-relaxed">{data.importantNote}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ── FINISH OPTIONS ───────────────────────────────────────────────────── */}
+      <div className="bg-[#F8F9FA] border-t border-navy/[0.08] px-4 sm:px-6 py-14 sm:py-20">
+        <div className="max-w-7xl mx-auto">
+          <SectionLabel eyebrow="Material Finishes" title="Real Texture & Finish Options" />
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
+            {finishes.map((f) => (
+              <div key={f.type} className="group">
+                <div className="h-14 rounded-sm overflow-hidden border border-navy/10 group-hover:border-accent/40 transition-colors">
+                  <FinishSwatch type={f.type} />
+                </div>
+                <p className="text-navy text-[10px] font-semibold mt-2 leading-tight">{f.label}</p>
+                <p className="text-navy/50 text-[9px] mt-0.5 leading-relaxed line-clamp-2">{f.desc}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-navy/40 text-xs mt-6 leading-relaxed max-w-2xl">
+            All finish directions are reviewed on a project basis. Custom colour matching, special surface textures, and heritage-inspired finishes are available subject to project specification.
+          </p>
+        </div>
+      </div>
+
+      {/* ── SAMPLE DRAWING PREVIEW ───────────────────────────────────────────── */}
+      <div className="bg-white border-t border-navy/[0.08] px-4 sm:px-6 py-14 sm:py-20">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-10 items-center">
+            <div>
+              <SectionLabel eyebrow="Sample Drawing Preview" title="Public-Safe Drawing Reference" />
+              <p className="text-gray-500 text-sm leading-relaxed mb-6 -mt-4">
+                A simplified drawing reference showing the general architectural concept for this system. All drawings are public-safe concept references only — project-specific shop drawings, engineering details, and fixing systems are developed through the approved design coordination process.
+              </p>
+              <div className="flex items-start gap-2 bg-[#F8F9FA] border border-navy/10 p-4 rounded-sm">
+                <svg className="w-4 h-4 text-navy/40 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <p className="text-navy/55 text-xs leading-relaxed">
+                  This sample drawing is for design coordination guidance only. No installation, fixing, anchoring, or structural details are shown.
+                </p>
+              </div>
+            </div>
+            <div className="bg-[#F8F9FA] border border-navy/10 rounded-sm p-6">
+              <p className="text-[9px] font-bold tracking-widest uppercase text-navy/40 mb-4">SAMPLE DRAWING — CONCEPT REFERENCE ONLY</p>
+              <div className="bg-white border border-navy/[0.08] rounded-sm p-4">
+                {sampleDrawing}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ── SYSTEM CONTEXT PREVIEW ───────────────────────────────────────────── */}
+      <div className="bg-[#F8F9FA] border-t border-navy/[0.08] px-4 sm:px-6 py-14 sm:py-20">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-10 items-center">
+            <div className="order-2 lg:order-1 bg-white border border-navy/10 rounded-sm p-6">
+              <p className="text-[9px] font-bold tracking-widest uppercase text-navy/40 mb-4">SYSTEM CONTEXT — ARCHITECTURAL LOCATION</p>
+              <div className="bg-[#F8F9FA] border border-navy/[0.08] rounded-sm p-4">
+                {systemContext}
+              </div>
+            </div>
+            <div className="order-1 lg:order-2">
+              <SectionLabel eyebrow="System Context Preview" title="Architectural Coordination Zone" />
+              <p className="text-gray-500 text-sm leading-relaxed mb-6 -mt-4">
+                A high-level conceptual illustration showing where this system is typically located in an architectural composition. This is provided for design coordination awareness only.
+              </p>
+              <div className="space-y-3">
+                <div className="flex items-start gap-3 bg-white border border-navy/10 p-4 rounded-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0 mt-1.5" />
+                  <p className="text-navy/70 text-xs leading-relaxed">Shown as a schematic architectural location only — no fixing, structural, or installation detail is implied.</p>
+                </div>
+                <div className="flex items-start gap-3 bg-white border border-navy/10 p-4 rounded-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0 mt-1.5" />
+                  <p className="text-navy/70 text-xs leading-relaxed">Final coordination, engineering zones, and system placement are confirmed through project-specific approved drawings.</p>
+                </div>
+                <div className="flex items-start gap-3 bg-white border border-navy/10 p-4 rounded-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0 mt-1.5" />
+                  <p className="text-navy/70 text-xs leading-relaxed">Contact the Durraka team to discuss system coordination, design intent, and project-specific applications.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ── DESIGN GUIDANCE ──────────────────────────────────────────────────── */}
+      <div className="bg-white border-t border-navy/[0.08] px-4 sm:px-6 py-14 sm:py-20">
+        <div className="max-w-7xl mx-auto">
+          <SectionLabel eyebrow="Design Considerations" title="Design Guidance" />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {data.designGuidance.map((g, i) => (
+              <div key={g.label} className="bg-[#F8F9FA] border border-navy/10 p-6 rounded-sm hover:border-accent/40 hover:shadow-sm transition-all">
+                <div className="flex items-center gap-2 mb-4">
+                  <span className="text-accent text-[10px] font-bold font-mono tracking-widest">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <div className="flex-1 h-px bg-navy/10" />
+                </div>
+                <h3 className="text-navy font-bold text-sm mb-2 leading-snug">{g.label}</h3>
+                <p className="text-gray-500 text-xs leading-relaxed">{g.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* ── INFORMATION REQUIRED ─────────────────────────────────────────────── */}
+      <div className="bg-[#F8F9FA] border-t border-navy/[0.08] px-4 sm:px-6 py-14 sm:py-20">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+            <div>
+              <SectionLabel eyebrow="Getting Started" title="Information Required for Review" />
+              <p className="text-gray-500 text-sm leading-relaxed mb-8 -mt-4">
+                To prepare a tailored quotation or project review, the following information is typically required.
+              </p>
+              <Link
+                href="/request-quotation"
+                className="inline-flex items-center gap-2 min-h-[50px] px-8 py-3 bg-accent text-white font-semibold rounded-sm hover:bg-accent-dark transition-colors text-sm"
+              >
+                Request a Quotation
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-3">
+              {infoRequired.map((item) => (
+                <div key={item} className="flex items-start gap-2.5 bg-white border border-navy/[0.08] p-4 rounded-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0 mt-1.5" />
+                  <p className="text-navy/70 text-xs leading-relaxed">{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ── TECHNICAL NOTE ───────────────────────────────────────────────────── */}
+      <div className="bg-white border-t border-navy/10 px-4 sm:px-6 py-10">
+        <div className="max-w-7xl mx-auto">
+          <div className="border border-navy/15 bg-[#F8F9FA] p-6 rounded-sm">
+            <div className="flex items-start gap-3">
+              <svg className="w-4 h-4 text-navy/40 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <p className="text-navy/55 text-xs leading-relaxed">
+                <span className="font-semibold text-navy/70">Technical Note: </span>
+                This page is provided for material understanding, design guidance, and early project coordination only. Project-specific engineering details, shop drawings, fixing systems, and structural calculations are issued through approved project submissions where required. All images, drawings, and illustrations shown are concept references — they do not represent actual project deliverables or imply specific installation methodologies.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ── TALK TO A SPECIALIST ─────────────────────────────────────────────── */}
+      <div className="bg-navy/[0.03] border-t border-navy/10 px-4 sm:px-6 py-12">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="sm:col-span-2 lg:col-span-1">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-8 h-px bg-accent" />
+                <span className="text-accent text-[10px] font-bold tracking-widest uppercase">Project Support</span>
+              </div>
+              <h3 className="text-navy font-bold text-lg mb-2">Talk to a Specialist</h3>
+              <p className="text-navy/60 text-sm leading-relaxed">
+                Our technical team is available to discuss system options, design coordination, and project-specific requirements.
+              </p>
+            </div>
+            <div className="flex flex-col gap-3">
+              <div className="flex items-start gap-3 bg-white border border-navy/10 p-4 rounded-sm">
+                <svg className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <div>
+                  <p className="text-navy font-semibold text-xs mb-0.5">Send a Design Brief</p>
+                  <p className="text-navy/50 text-[10px]">Share your drawings or intent for a system review.</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3 bg-white border border-navy/10 p-4 rounded-sm">
+                <svg className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+                <div>
+                  <p className="text-navy font-semibold text-xs mb-0.5">WhatsApp Consultation</p>
+                  <p className="text-navy/50 text-[10px]">Quick consultation with our sales engineering team.</p>
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col justify-center gap-3">
+              <Link
+                href="/request-quotation"
+                className="inline-flex items-center justify-center min-h-[48px] px-6 py-3 bg-accent text-white font-semibold rounded-sm hover:bg-accent-dark transition-colors text-sm"
+              >
+                Request a Quotation
+              </Link>
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center min-h-[48px] px-6 py-3 border border-navy/25 text-navy font-semibold rounded-sm hover:border-accent hover:text-accent transition-colors text-sm"
+              >
+                Contact Our Team
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ── FINAL CTA ────────────────────────────────────────────────────────── */}
+      <div className="bg-navy px-4 sm:px-6 py-16 sm:py-20">
+        <div className="max-w-7xl mx-auto text-center">
+          <div className="flex items-center justify-center gap-3 mb-5">
+            <div className="w-8 h-px bg-accent" />
+            <span className="text-accent text-xs font-semibold tracking-widest uppercase">Start Your Project</span>
+            <div className="w-8 h-px bg-accent" />
+          </div>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">{data.ctaTitle}</h2>
+          <p className="text-white/65 text-sm sm:text-base max-w-2xl mx-auto mb-10 leading-relaxed">
+            {data.ctaBody ?? "Share your drawings, design intent, or project requirements and Durraka's team will help define the right GFRC / GRC scope for your project."}
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Link
+              href="/request-quotation"
+              className="inline-flex items-center justify-center min-h-[52px] px-10 py-3.5 bg-accent text-white font-semibold rounded-sm hover:bg-accent-dark transition-colors text-sm"
+            >
+              Request a Quotation
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center min-h-[52px] px-10 py-3.5 border border-white/40 text-white font-semibold rounded-sm hover:bg-white/10 transition-colors text-sm"
+            >
+              Speak to a Sales Engineer
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Photo tag modal */}
+      <PhotoTagModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        src={data.heroImage}
+        alt={data.heroImageAlt}
+        tags={data.photoTags}
+      />
+
+    </div>
+  )
+}
