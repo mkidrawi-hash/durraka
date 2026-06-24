@@ -237,12 +237,25 @@ export function PremiumPackageLayout({ data }: { data: PremiumPackageData }) {
             {componentDetails.map(comp => (
               <div
                 key={comp.id}
-                className="bg-white border border-gray-100 rounded-sm overflow-hidden shadow-sm flex flex-col"
+                className="bg-white border border-gray-100 rounded-sm overflow-hidden shadow-sm flex flex-col group"
               >
-                {/* Card illustration */}
-                <div className="bg-[#EEF0F5] px-6 py-5 flex items-center justify-center" style={{ minHeight: '150px' }}>
-                  <comp.CardIllustration />
-                </div>
+                {/* Card image or illustration */}
+                {comp.image ? (
+                  <div className="relative overflow-hidden" style={{ height: '192px' }}>
+                    <Image
+                      src={comp.image}
+                      alt={comp.imageAlt ?? comp.title}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy/50 via-transparent to-transparent" aria-hidden="true" />
+                  </div>
+                ) : (
+                  <div className="bg-[#EEF0F5] px-6 py-5 flex items-center justify-center" style={{ minHeight: '150px' }}>
+                    <comp.CardIllustration />
+                  </div>
+                )}
 
                 {/* Card body */}
                 <div className="flex-1 p-5 flex flex-col">
@@ -290,17 +303,14 @@ export function PremiumPackageLayout({ data }: { data: PremiumPackageData }) {
                     <h3 className="text-navy font-bold text-base leading-snug">{board.title}</h3>
                     <p className="text-gray-500 text-sm mt-1 leading-relaxed">{board.description}</p>
                   </div>
-                  <div className="overflow-x-auto bg-[#F4F6F9]">
-                    <div style={{ minWidth: '700px' }}>
-                      <Image
-                        src={board.image}
-                        alt={board.imageAlt}
-                        width={1600}
-                        height={900}
-                        className="w-full h-auto block"
-                        unoptimized
-                      />
-                    </div>
+                  <div className="relative w-full bg-[#F4F6F9]" style={{ aspectRatio: '16/9', minHeight: '300px' }}>
+                    <Image
+                      src={board.image}
+                      alt={board.imageAlt}
+                      fill
+                      sizes="(max-width: 1280px) 100vw, 1280px"
+                      className="object-cover"
+                    />
                   </div>
                 </div>
               ))}

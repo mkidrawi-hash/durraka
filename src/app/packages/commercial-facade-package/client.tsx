@@ -246,6 +246,8 @@ const FACADE_COMPONENTS: ComponentDetail[] = [
     title: 'Facade Cladding Panel',
     shortDescription: 'Main flat cladding panel in grid module — the primary field element of the commercial facade. Sets the surface rhythm, joint pattern, and base texture.',
     tags: ['Facade Panel', 'Cladding', 'GFRC Panel', 'Commercial'],
+    image: '/images/packages/hospitality-commercial.webp',
+    imageAlt: 'GFRC/GRC commercial facade cladding panels on multi-storey building exterior',
     CardIllustration: FacadeCladdingPanelSVG,
     HotspotDiagram: CommercialFacadeElevation,
     hotspots: [
@@ -268,6 +270,8 @@ const FACADE_COMPONENTS: ComponentDetail[] = [
     title: 'Cornice / Profile Band',
     shortDescription: 'Horizontal banding element at floor levels, parapets, or key facade transitions — establishes the primary shadow line and proportion rhythm.',
     tags: ['Cornice Band', 'Profile', 'Horizontal Rhythm', 'GFRC'],
+    image: '/images/packages/villa-palace-architectural.webp',
+    imageAlt: 'GFRC/GRC ornamental cornice profiles on heritage villa and palace architecture',
     CardIllustration: CorniceBandSVG,
     HotspotDiagram: CommercialFacadeElevation,
     hotspots: [
@@ -290,6 +294,8 @@ const FACADE_COMPONENTS: ComponentDetail[] = [
     title: 'Window Surround / Reveal',
     shortDescription: 'GFRC/GRC frame around window openings — head, jambs, and sill define the reveal depth, shadow profile, and glazing interface.',
     tags: ['Window Surround', 'Reveal', 'Jamb Detail', 'GFRC'],
+    image: '/images/packages/landmark-government-facade.webp',
+    imageAlt: 'GFRC/GRC window surrounds and reveals on landmark government building facade',
     CardIllustration: WindowSurroundSVG,
     HotspotDiagram: CommercialFacadeElevation,
     hotspots: [
@@ -312,6 +318,8 @@ const FACADE_COMPONENTS: ComponentDetail[] = [
     title: 'Edge / Corner Expression',
     shortDescription: 'Quoin or corner column element — resolves building edges and creates visual weight at facade corners.',
     tags: ['Corner Element', 'Quoin', 'Edge Detail', 'GFRC'],
+    image: '/images/packages/hospitality-commercial.webp',
+    imageAlt: 'GFRC/GRC edge and corner expression on commercial building facade',
     CardIllustration: CornerExpressionSVG,
     HotspotDiagram: CommercialFacadeElevation,
     hotspots: [
@@ -334,6 +342,8 @@ const FACADE_COMPONENTS: ComponentDetail[] = [
     title: 'Decorative Vertical Fin',
     shortDescription: 'Vertical rhythm element projecting from the facade — creates depth, shadow, and modular expression on commercial building elevations.',
     tags: ['Vertical Fin', 'Rhythm Element', 'Facade Depth', 'GFRC'],
+    image: '/images/packages/landmark-government-facade.webp',
+    imageAlt: 'GFRC/GRC decorative vertical elements on landmark government building exterior',
     CardIllustration: VerticalFinSVG,
     HotspotDiagram: CommercialFacadeElevation,
     hotspots: [
@@ -356,6 +366,8 @@ const FACADE_COMPONENTS: ComponentDetail[] = [
     title: 'Custom Bespoke Profile',
     shortDescription: 'Project-specific custom element — unique geometry or pattern confirmed from design intent drawings. Fabricated to the approved design.',
     tags: ['Custom Profile', 'Bespoke', 'Project-Specific', 'GFRC'],
+    image: '/images/packages/custom-architectural-components.webp',
+    imageAlt: 'Custom GFRC/GRC bespoke architectural components and decorative facade panels',
     CardIllustration: BespokeProfileSVG,
     HotspotDiagram: CommercialFacadeElevation,
     hotspots: [
@@ -412,8 +424,8 @@ const COMMERCIAL_FACADE_DATA: PremiumPackageData = {
     {
       title: 'Cornice Component Overview',
       description: 'Horizontal architectural profiles used at rooflines, parapets, edges, and facade transitions to define shadow lines and proportion.',
-      image: '/images/infographics/cornice-component-overview.svg',
-      imageAlt: 'Cornice component overview — GRC/GFRC cornice diagram',
+      image: '/images/packages/villa-palace-architectural.webp',
+      imageAlt: 'GFRC/GRC ornamental cornices and architectural profiles — heritage facade reference',
     },
   ],
   reviewSteps: REVIEW_STEPS,

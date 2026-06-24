@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useEffect, useCallback } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 
 // ─── Tab definitions ──────────────────────────────────────────────────────────
@@ -31,6 +32,8 @@ export interface ComponentDetail {
   shortDescription: string
   tags: string[]
   CardIllustration: () => React.ReactElement
+  image?: string
+  imageAlt?: string
   hotspots: ComponentHotspot[]
   HotspotDiagram?: () => React.ReactElement
   materials: string[]
@@ -155,6 +158,18 @@ export function ComponentDetailModal({ component, activeTab, onTabChange, onClos
             {/* Overview */}
             {activeTab === 'overview' && (
               <div>
+                {component.image && (
+                  <div className="relative overflow-hidden rounded-sm mb-5" style={{ height: '220px' }}>
+                    <Image
+                      src={component.image}
+                      alt={component.imageAlt ?? component.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 800px"
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent" aria-hidden="true" />
+                  </div>
+                )}
                 {component.HotspotDiagram && (
                   <div className="bg-[#F4F6F9] border border-gray-200 rounded-sm overflow-hidden mb-6">
                     <component.HotspotDiagram />
