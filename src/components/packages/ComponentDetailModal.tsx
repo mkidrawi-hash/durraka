@@ -1,8 +1,19 @@
 'use client'
 
-import React, { useEffect, useCallback } from 'react'
+import React, { useEffect, useCallback, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+
+// ─── Finish options ───────────────────────────────────────────────────────────
+
+export const COMPONENT_FINISHES = [
+  { id: 'white',  label: 'Smooth White', swatch: '#EDE9E1', overlay: 'rgba(252,248,240,0.08)' },
+  { id: 'sand',   label: 'Sand Buff',    swatch: '#C8A878', overlay: 'rgba(185,148,78,0.32)'  },
+  { id: 'grey',   label: 'Stone Grey',   swatch: '#7B8490', overlay: 'rgba(95,105,120,0.34)'  },
+  { id: 'custom', label: 'Custom',       swatch: '#B08858', overlay: 'rgba(155,108,55,0.26)'  },
+] as const
+
+export type FinishId = typeof COMPONENT_FINISHES[number]['id']
 
 // ─── Tab definitions ──────────────────────────────────────────────────────────
 
@@ -51,6 +62,7 @@ interface ModalProps {
   activeTab: ModalTabId
   onTabChange: (tab: ModalTabId) => void
   onClose: () => void
+  initialFinish?: FinishId
 }
 
 function CheckMark() {
@@ -63,7 +75,14 @@ function CheckMark() {
   )
 }
 
-export function ComponentDetailModal({ component, activeTab, onTabChange, onClose }: ModalProps) {
+export function ComponentDetailModal({ component, activeTab, onTabChange, onClose, initialFinish }: ModalProps) {
+  const [selectedFinish, setSelectedFinish] = useState<FinishId>(initialFinish ?? 'white')
+
+  // Sync finish when a new component is opened
+  useEffect(() => {
+    if (component) setSelectedFinish(initialFinish ?? 'white')
+  }, [component, initialFinish])
+
   // Scroll lock
   useEffect(() => {
     if (component) {
@@ -159,7 +178,7 @@ export function ComponentDetailModal({ component, activeTab, onTabChange, onClos
             {activeTab === 'overview' && (
               <div>
                 {component.image && (
-                  <div className="relative overflow-hidden rounded-sm mb-5" style={{ height: '220px' }}>
+                  <div className="relative overflow-hidden rounded-sm mb-4" style={{ height: '220px' }}>
                     <Image
                       src={component.image}
                       alt={component.imageAlt ?? component.title}
@@ -168,6 +187,34 @@ export function ComponentDetailModal({ component, activeTab, onTabChange, onClos
                       className="object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent" aria-hidden="true" />
+                    {/* Finish colour overlay */}
+                    <div
+                      className="absolute inset-0 pointer-events-none transition-colors duration-300"
+                      style={{ backgroundColor: COMPONENT_FINISHES.find(f => f.id === selectedFinish)?.overlay }}
+                      aria-hidden="true"
+                    />
+                    {/* Finish swatches */}
+                    <div className="absolute bottom-3 left-3 flex items-center gap-2">
+                      {COMPONENT_FINISHES.map(f => (
+                        <button
+                          key={f.id}
+                          onClick={() => setSelectedFinish(f.id)}
+                          title={f.label}
+                          className={[
+                            'w-5 h-5 rounded-full border-2 transition-all duration-200',
+                            selectedFinish === f.id
+                              ? 'border-white shadow-lg scale-110'
+                              : 'border-white/40 hover:border-white/80',
+                          ].join(' ')}
+                          style={{ backgroundColor: f.swatch }}
+                          aria-label={`${f.label} finish`}
+                          aria-pressed={selectedFinish === f.id}
+                        />
+                      ))}
+                      <span className="text-white text-[10px] font-semibold tracking-wide ml-1 drop-shadow-sm">
+                        {COMPONENT_FINISHES.find(f => f.id === selectedFinish)?.label}
+                      </span>
+                    </div>
                   </div>
                 )}
                 {component.HotspotDiagram && (

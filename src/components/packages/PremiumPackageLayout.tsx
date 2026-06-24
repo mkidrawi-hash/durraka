@@ -6,7 +6,9 @@ import Link from 'next/link'
 import { SOCIAL_LINKS } from '@/lib/social-links'
 import {
   ComponentDetailModal,
+  COMPONENT_FINISHES,
   type ComponentDetail,
+  type FinishId,
   type ModalTabId,
 } from './ComponentDetailModal'
 
@@ -97,6 +99,91 @@ const INFORMATION_REQUIRED = [
   'Site constraints or special requirements',
 ]
 
+// ─── Component card ───────────────────────────────────────────────────────────
+
+function ComponentCard({
+  comp,
+  onOpen,
+}: {
+  comp: ComponentDetail
+  onOpen: (comp: ComponentDetail, finish: FinishId) => void
+}) {
+  const [finish, setFinish] = useState<FinishId>('white')
+  const overlay = COMPONENT_FINISHES.find(f => f.id === finish)?.overlay ?? ''
+
+  return (
+    <div className="bg-white border border-gray-100 rounded-sm overflow-hidden shadow-sm flex flex-col group">
+      {comp.image ? (
+        <div className="relative overflow-hidden" style={{ height: '192px' }}>
+          <Image
+            src={comp.image}
+            alt={comp.imageAlt ?? comp.title}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-navy/50 via-transparent to-transparent" aria-hidden="true" />
+          {/* Finish colour overlay */}
+          <div
+            className="absolute inset-0 pointer-events-none transition-colors duration-300"
+            style={{ backgroundColor: overlay }}
+            aria-hidden="true"
+          />
+          {/* Finish swatches */}
+          <div className="absolute bottom-2.5 left-3 flex items-center gap-1.5">
+            {COMPONENT_FINISHES.map(f => (
+              <button
+                key={f.id}
+                onClick={e => { e.stopPropagation(); setFinish(f.id) }}
+                title={f.label}
+                className={[
+                  'w-4 h-4 rounded-full border-2 transition-all duration-200',
+                  finish === f.id
+                    ? 'border-white shadow-md scale-110'
+                    : 'border-white/40 hover:border-white/80',
+                ].join(' ')}
+                style={{ backgroundColor: f.swatch }}
+                aria-label={`${f.label} finish`}
+                aria-pressed={finish === f.id}
+              />
+            ))}
+          </div>
+        </div>
+      ) : (
+        <div className="bg-[#EEF0F5] px-6 py-5 flex items-center justify-center" style={{ minHeight: '150px' }}>
+          <comp.CardIllustration />
+        </div>
+      )}
+
+      <div className="flex-1 p-5 flex flex-col">
+        {comp.image && (
+          <p className="text-[9px] font-semibold text-navy/35 uppercase tracking-widest mb-1.5">
+            {COMPONENT_FINISHES.find(f => f.id === finish)?.label} Finish
+          </p>
+        )}
+        <h3 className="text-navy font-bold text-base leading-snug mb-2">{comp.title}</h3>
+        <p className="text-gray-500 text-sm leading-relaxed flex-1">{comp.shortDescription}</p>
+        <div className="flex flex-wrap gap-1.5 mt-3 mb-4">
+          {comp.tags.slice(0, 3).map(tag => (
+            <span key={tag} className="text-[10px] font-semibold bg-navy/6 text-navy/55 px-2 py-0.5 rounded-sm">
+              {tag}
+            </span>
+          ))}
+        </div>
+        <button
+          onClick={() => onOpen(comp, finish)}
+          className="w-full flex items-center justify-center gap-2 px-4 py-2.5 border border-navy/20 text-navy text-xs font-bold tracking-wide rounded-sm hover:bg-navy hover:text-white hover:border-navy transition-colors"
+        >
+          View Details
+          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  )
+}
+
 // ─── Main layout ──────────────────────────────────────────────────────────────
 
 export function PremiumPackageLayout({ data }: { data: PremiumPackageData }) {
@@ -117,9 +204,11 @@ export function PremiumPackageLayout({ data }: { data: PremiumPackageData }) {
 
   const [selectedComponent, setSelectedComponent] = useState<ComponentDetail | null>(null)
   const [activeTab, setActiveTab] = useState<ModalTabId>('overview')
+  const [cardFinish, setCardFinish] = useState<FinishId>('white')
 
-  const openModal = (component: ComponentDetail) => {
+  const openModal = (component: ComponentDetail, finish: FinishId = 'white') => {
     setSelectedComponent(component)
+    setCardFinish(finish)
     setActiveTab('overview')
   }
 
@@ -235,50 +324,7 @@ export function PremiumPackageLayout({ data }: { data: PremiumPackageData }) {
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {componentDetails.map(comp => (
-              <div
-                key={comp.id}
-                className="bg-white border border-gray-100 rounded-sm overflow-hidden shadow-sm flex flex-col group"
-              >
-                {/* Card image or illustration */}
-                {comp.image ? (
-                  <div className="relative overflow-hidden" style={{ height: '192px' }}>
-                    <Image
-                      src={comp.image}
-                      alt={comp.imageAlt ?? comp.title}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy/50 via-transparent to-transparent" aria-hidden="true" />
-                  </div>
-                ) : (
-                  <div className="bg-[#EEF0F5] px-6 py-5 flex items-center justify-center" style={{ minHeight: '150px' }}>
-                    <comp.CardIllustration />
-                  </div>
-                )}
-
-                {/* Card body */}
-                <div className="flex-1 p-5 flex flex-col">
-                  <h3 className="text-navy font-bold text-base leading-snug mb-2">{comp.title}</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed flex-1">{comp.shortDescription}</p>
-                  <div className="flex flex-wrap gap-1.5 mt-3 mb-4">
-                    {comp.tags.slice(0, 3).map(tag => (
-                      <span key={tag} className="text-[10px] font-semibold bg-navy/6 text-navy/55 px-2 py-0.5 rounded-sm">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <button
-                    onClick={() => openModal(comp)}
-                    className="w-full flex items-center justify-center gap-2 px-4 py-2.5 border border-navy/20 text-navy text-xs font-bold tracking-wide rounded-sm hover:bg-navy hover:text-white hover:border-navy transition-colors"
-                  >
-                    View Details
-                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </button>
-                </div>
-              </div>
+              <ComponentCard key={comp.id} comp={comp} onOpen={openModal} />
             ))}
           </div>
           <p className="text-gray-400 text-xs mt-8 leading-relaxed max-w-2xl">
@@ -448,6 +494,7 @@ export function PremiumPackageLayout({ data }: { data: PremiumPackageData }) {
         activeTab={activeTab}
         onTabChange={setActiveTab}
         onClose={closeModal}
+        initialFinish={cardFinish}
       />
 
     </div>
