@@ -298,6 +298,8 @@ const MASHRABIYA_COMPONENTS: ComponentDetail[] = [
     title: 'Mashrabiya Screen Panel',
     shortDescription: 'Primary full-height facade screen panel — project-specific geometric pattern combining privacy, solar shading, and architectural identity.',
     tags: ['Mashrabiya', 'Screen Panel', 'Privacy Screen', 'GFRC'],
+    image: '/images/packages/heritage-regional.webp',
+    imageAlt: 'GFRC/GRC mashrabiya screen panels on heritage and regional architecture facade',
     CardIllustration: MashrabiyaScreenPanelSVG,
     HotspotDiagram: MashrabiyaFacadeElevation,
     hotspots: [
@@ -320,6 +322,8 @@ const MASHRABIYA_COMPONENTS: ComponentDetail[] = [
     title: 'Window Screen Insert',
     shortDescription: 'Smaller screen sized to window opening — provides privacy and shade at aperture scale while maintaining visual pattern continuity.',
     tags: ['Window Screen', 'Aperture Screen', 'Privacy Insert', 'GFRC'],
+    image: '/images/packages/heritage-regional.webp',
+    imageAlt: 'GFRC/GRC window screen inserts on heritage building facade',
     CardIllustration: WindowScreenSVG,
     HotspotDiagram: MashrabiyaFacadeElevation,
     hotspots: [
@@ -342,6 +346,8 @@ const MASHRABIYA_COMPONENTS: ComponentDetail[] = [
     title: 'Decorative Entrance Screen',
     shortDescription: 'Prominent screen element at the entrance portal — features a central medallion within the pattern field for a focal arrival moment.',
     tags: ['Entrance Screen', 'Feature Screen', 'Portal', 'GFRC'],
+    image: '/images/packages/grand-entrance-gate.webp',
+    imageAlt: 'GFRC/GRC decorative entrance screen on grand arched gate',
     CardIllustration: EntranceScreenSVG,
     HotspotDiagram: MashrabiyaFacadeElevation,
     hotspots: [
@@ -364,6 +370,8 @@ const MASHRABIYA_COMPONENTS: ComponentDetail[] = [
     title: 'Facade Cladding Panel',
     shortDescription: 'Opaque background panels in the mashrabiya composition — provide contrast field for screen panels and complete the facade module.',
     tags: ['Background Panel', 'Cladding', 'Solid Panel', 'GFRC'],
+    image: '/images/packages/hospitality-commercial.webp',
+    imageAlt: 'GFRC/GRC background cladding panels on commercial and hospitality facade',
     CardIllustration: BackgroundCladdingSVG,
     HotspotDiagram: MashrabiyaFacadeElevation,
     hotspots: [
@@ -386,6 +394,8 @@ const MASHRABIYA_COMPONENTS: ComponentDetail[] = [
     title: 'Decorative Frame / Surround',
     shortDescription: 'Frame surrounding screen zones — creates visual boundary and ornamental transition between screen panels and background cladding.',
     tags: ['Screen Frame', 'Ornamental Surround', 'Border', 'GFRC'],
+    image: '/images/packages/villa-palace-architectural.webp',
+    imageAlt: 'GFRC/GRC ornamental screen frame and decorative surround on villa facade',
     CardIllustration: ScreenFrameSVG,
     HotspotDiagram: MashrabiyaFacadeElevation,
     hotspots: [
@@ -408,6 +418,8 @@ const MASHRABIYA_COMPONENTS: ComponentDetail[] = [
     title: 'Custom Pattern Panel',
     shortDescription: 'Bespoke project-specific pattern design — unique motif geometry developed from the project design intent and confirmed from drawings.',
     tags: ['Custom Pattern', 'Bespoke Screen', 'Project Pattern', 'GFRC'],
+    image: '/images/packages/custom-architectural-components.webp',
+    imageAlt: 'Custom GFRC/GRC bespoke pattern panels and decorative architectural components',
     CardIllustration: CustomPatternSVG,
     HotspotDiagram: MashrabiyaFacadeElevation,
     hotspots: [
@@ -464,8 +476,8 @@ const MASHRABIYA_SCREEN_DATA: PremiumPackageData = {
     {
       title: 'Mashrabiya Screen Component Overview',
       description: 'Patterned GRC/GFRC screens used for privacy, filtered light, shading, facade rhythm, and cultural identity.',
-      image: '/images/infographics/mashrabiya-component-overview.svg',
-      imageAlt: 'Mashrabiya screen component overview — GRC/GFRC screen diagram',
+      image: '/images/packages/heritage-regional.webp',
+      imageAlt: 'GFRC/GRC mashrabiya screens — heritage and regional architectural facade reference',
     },
   ],
   reviewSteps: REVIEW_STEPS,

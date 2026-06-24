@@ -314,6 +314,8 @@ const ENTRANCE_COMPONENTS: ComponentDetail[] = [
     title: 'Entrance Column',
     shortDescription: 'The flanking columns of a monumental gate — defines the vertical scale, shaft profile, and arrival character of the entrance.',
     tags: ['Entrance Column', 'Gate Column', 'GFRC Column', 'Monumental'],
+    image: '/images/packages/grand-entrance-gate.webp',
+    imageAlt: 'GFRC/GRC entrance columns on monumental grand gate architecture',
     CardIllustration: EntranceColumnSVG,
     HotspotDiagram: GrandEntranceFacadeElevation,
     hotspots: [
@@ -336,6 +338,8 @@ const ENTRANCE_COMPONENTS: ComponentDetail[] = [
     title: 'Column Capital',
     shortDescription: 'Capital at the top of entrance columns — elaborately detailed to match the monumental scale and character of the gate composition.',
     tags: ['Capital', 'Gate Capital', 'Classical', 'GFRC Capital'],
+    image: '/images/packages/landmark-government-facade.webp',
+    imageAlt: 'GFRC/GRC classical column capitals on landmark government building facade',
     CardIllustration: GateCapitalSVG,
     HotspotDiagram: GrandEntranceFacadeElevation,
     hotspots: [
@@ -358,6 +362,8 @@ const ENTRANCE_COMPONENTS: ComponentDetail[] = [
     title: 'Grand Entrance Arch',
     shortDescription: 'Main arch spanning between entrance columns — the focal arrival element with decorated keystone, arch ring, and soffit profile.',
     tags: ['Grand Arch', 'Entrance Arch', 'Keystone Arch', 'GFRC'],
+    image: '/images/packages/grand-entrance-gate.webp',
+    imageAlt: 'GFRC/GRC grand entrance arch with keystone on monumental gate',
     CardIllustration: GrandArchSVG,
     HotspotDiagram: GrandEntranceFacadeElevation,
     hotspots: [
@@ -380,6 +386,8 @@ const ENTRANCE_COMPONENTS: ComponentDetail[] = [
     title: 'Gate Cornice / Entablature',
     shortDescription: 'Cornice and entablature above the entrance columns and arch — establishes the horizontal crown of the gate composition.',
     tags: ['Gate Cornice', 'Entablature', 'Horizontal Profile', 'GFRC'],
+    image: '/images/packages/villa-palace-architectural.webp',
+    imageAlt: 'GFRC/GRC gate cornice and entablature on heritage palace architecture',
     CardIllustration: GateCorniceSVG,
     HotspotDiagram: GrandEntranceFacadeElevation,
     hotspots: [
@@ -402,6 +410,8 @@ const ENTRANCE_COMPONENTS: ComponentDetail[] = [
     title: 'Decorative Frame / Surround',
     shortDescription: 'Ornamental frame surrounding the gate opening — profiled jambs, head, and corner blocks enriching the entrance composition.',
     tags: ['Decorative Frame', 'Gate Surround', 'Ornamental', 'GFRC'],
+    image: '/images/packages/custom-architectural-components.webp',
+    imageAlt: 'Custom GFRC/GRC decorative frame and ornamental gate surround elements',
     CardIllustration: DecorativeFrameSVG,
     HotspotDiagram: GrandEntranceFacadeElevation,
     hotspots: [
@@ -424,6 +434,8 @@ const ENTRANCE_COMPONENTS: ComponentDetail[] = [
     title: 'Feature / Identity Panel',
     shortDescription: 'Decorative panel within the gate composition — carries identity, heraldic, or ornamental content at the principal arrival zone.',
     tags: ['Feature Panel', 'Identity', 'Decorative', 'GFRC Panel'],
+    image: '/images/packages/grand-entrance-gate.webp',
+    imageAlt: 'GFRC/GRC feature and identity panels on grand entrance gate composition',
     CardIllustration: FeaturePanelSVG,
     HotspotDiagram: GrandEntranceFacadeElevation,
     hotspots: [
@@ -446,6 +458,8 @@ const ENTRANCE_COMPONENTS: ComponentDetail[] = [
     title: 'Mashrabiya Screen Accent',
     shortDescription: 'Geometric screen element within the gate composition — flanking panels, upper zone, or side wings providing pattern depth and visual interest.',
     tags: ['Mashrabiya', 'Screen Accent', 'Gate Screen', 'GFRC'],
+    image: '/images/packages/heritage-regional.webp',
+    imageAlt: 'GFRC/GRC mashrabiya screen accent panels on heritage and regional architecture',
     CardIllustration: MashrabiyaAccentSVG,
     HotspotDiagram: GrandEntranceFacadeElevation,
     hotspots: [
@@ -468,6 +482,8 @@ const ENTRANCE_COMPONENTS: ComponentDetail[] = [
     title: 'Custom Architectural Detail',
     shortDescription: 'Project-specific bespoke element within the gate composition — unique geometry confirmed from design intent drawings.',
     tags: ['Custom Detail', 'Bespoke', 'Project-Specific', 'GFRC'],
+    image: '/images/packages/custom-architectural-components.webp',
+    imageAlt: 'Custom GFRC/GRC bespoke architectural detail and project-specific components',
     CardIllustration: CustomDetailSVG,
     HotspotDiagram: GrandEntranceFacadeElevation,
     hotspots: [
@@ -525,14 +541,14 @@ const GRAND_ENTRANCE_DATA: PremiumPackageData = {
     {
       title: 'Column & Capital Component Overview',
       description: 'Vertical architectural elements used at entrances, arcades, porticos, and facade features to create rhythm, formality, and decorative character.',
-      image: '/images/infographics/column-capital-component-overview.svg',
-      imageAlt: 'Column and capital component overview — GRC/GFRC column diagram',
+      image: '/images/packages/landmark-government-facade.webp',
+      imageAlt: 'GFRC/GRC columns and capitals — landmark government building facade reference',
     },
     {
       title: 'Cornice Component Overview',
       description: 'Horizontal architectural profiles used at rooflines, parapets, edges, and facade transitions to define shadow lines and proportion.',
-      image: '/images/infographics/cornice-component-overview.svg',
-      imageAlt: 'Cornice component overview — GRC/GFRC cornice diagram',
+      image: '/images/packages/villa-palace-architectural.webp',
+      imageAlt: 'GFRC/GRC ornamental cornices and architectural profiles — heritage facade reference',
     },
   ],
   reviewSteps: REVIEW_STEPS,

@@ -320,6 +320,8 @@ const DECORATIVE_COMPONENTS: ComponentDetail[] = [
     title: 'Decorative Geometric Panel',
     shortDescription: 'Panel with geometric pattern in relief — diamond lattice, interlocking geometry, or custom repeat motif adding visual depth to the facade.',
     tags: ['Geometric Panel', 'Decorative', 'Relief Pattern', 'GFRC'],
+    image: '/images/packages/custom-architectural-components.webp',
+    imageAlt: 'Custom GFRC/GRC geometric decorative panels with relief pattern on facade',
     CardIllustration: GeometricPanelSVG,
     HotspotDiagram: CustomDecorativeFacadeElevation,
     hotspots: [
@@ -342,6 +344,8 @@ const DECORATIVE_COMPONENTS: ComponentDetail[] = [
     title: 'Calligraphy-Inspired Panel',
     shortDescription: 'Panel with flowing calligraphic surface element — cultural identity through architectural relief without disclosing specific project content.',
     tags: ['Calligraphic', 'Cultural Element', 'Bespoke', 'GFRC'],
+    image: '/images/packages/custom-architectural-components.webp',
+    imageAlt: 'Custom GFRC/GRC calligraphy-inspired bespoke panels on architectural facade',
     CardIllustration: CalligraphicPanelSVG,
     HotspotDiagram: CustomDecorativeFacadeElevation,
     hotspots: [
@@ -364,6 +368,8 @@ const DECORATIVE_COMPONENTS: ComponentDetail[] = [
     title: 'Project Identity / Signage Panel',
     shortDescription: 'Panel carrying identity or civic feature — a single prominent motif at a scale appropriate to the building and viewing distance.',
     tags: ['Identity Panel', 'Feature Element', 'Civic', 'GFRC'],
+    image: '/images/packages/custom-architectural-components.webp',
+    imageAlt: 'Custom GFRC/GRC identity and signage panels on architectural facade',
     CardIllustration: IdentityPanelSVG,
     HotspotDiagram: CustomDecorativeFacadeElevation,
     hotspots: [
@@ -386,6 +392,8 @@ const DECORATIVE_COMPONENTS: ComponentDetail[] = [
     title: 'Custom Architectural Frame / Surround',
     shortDescription: 'Ornamental frame element — profiled jambs, head, and decorative corners creating a formal surround for openings, panels, or feature zones.',
     tags: ['Custom Frame', 'Surround', 'Ornamental Border', 'GFRC'],
+    image: '/images/packages/custom-architectural-components.webp',
+    imageAlt: 'Custom GFRC/GRC architectural frame and ornamental surround elements',
     CardIllustration: CustomFrameSVG,
     HotspotDiagram: CustomDecorativeFacadeElevation,
     hotspots: [
@@ -408,6 +416,8 @@ const DECORATIVE_COMPONENTS: ComponentDetail[] = [
     title: 'Special Ornamental Detail',
     shortDescription: 'Standalone decorative object or relief — rosette, boss, acanthus, or geometric form applied at accent positions on the facade or frame.',
     tags: ['Ornamental', 'Relief Detail', 'Applied Element', 'GFRC'],
+    image: '/images/packages/villa-palace-architectural.webp',
+    imageAlt: 'GFRC/GRC special ornamental relief details on heritage villa and palace architecture',
     CardIllustration: OrnamentalDetailSVG,
     HotspotDiagram: CustomDecorativeFacadeElevation,
     hotspots: [
@@ -430,6 +440,8 @@ const DECORATIVE_COMPONENTS: ComponentDetail[] = [
     title: 'Facade Accent Feature',
     shortDescription: 'Prominent standalone accent element — keyblock, console, or projecting form creating shadow depth and visual emphasis at key facade positions.',
     tags: ['Accent Element', 'Feature', 'Facade Detail', 'GFRC'],
+    image: '/images/packages/custom-architectural-components.webp',
+    imageAlt: 'Custom GFRC/GRC facade accent features and decorative architectural elements',
     CardIllustration: AccentFeatureSVG,
     HotspotDiagram: CustomDecorativeFacadeElevation,
     hotspots: [
@@ -452,6 +464,8 @@ const DECORATIVE_COMPONENTS: ComponentDetail[] = [
     title: 'Civic / Institutional Identity Element',
     shortDescription: 'Formal architectural element carrying civic or institutional identity — shield form, formal panel, or structured geometric composition for public buildings.',
     tags: ['Civic Element', 'Institutional', 'Identity Feature', 'GFRC'],
+    image: '/images/packages/landmark-government-facade.webp',
+    imageAlt: 'GFRC/GRC civic and institutional identity elements on landmark government building',
     CardIllustration: CivicIdentitySVG,
     HotspotDiagram: CustomDecorativeFacadeElevation,
     hotspots: [
@@ -508,8 +522,8 @@ const CUSTOM_DECORATIVE_DATA: PremiumPackageData = {
     {
       title: 'Custom Decorative Elements Component Overview',
       description: 'Bespoke GFRC/GRC decorative panels, ornamental relief elements, repeating motifs, and project-specific geometry — produced to custom design drawings for any architectural context.',
-      image: '/images/infographics/custom-decorative-component-overview.svg',
-      imageAlt: 'Custom decorative elements component overview — GRC/GFRC decorative panel and ornament diagram',
+      image: '/images/packages/custom-architectural-components.webp',
+      imageAlt: 'Custom GFRC/GRC decorative elements — bespoke architectural components facade reference',
     },
   ],
   reviewSteps: REVIEW_STEPS,
