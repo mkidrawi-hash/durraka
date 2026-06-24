@@ -92,7 +92,7 @@ function PackageCard({ pkg }: { pkg: PackageEntry }) {
       className="group flex flex-col bg-white rounded-sm overflow-hidden border border-gray-200/70 shadow-sm hover:shadow-lg hover:border-navy/20 transition-all duration-300"
     >
       {/* Package image */}
-      <div className="relative overflow-hidden" style={{ aspectRatio: '16/10' }}>
+      <div className="relative overflow-hidden h-48 sm:h-56" style={{ aspectRatio: '16/10' }}>
         <Image
           src={pkg.image}
           alt={pkg.imageAlt}
