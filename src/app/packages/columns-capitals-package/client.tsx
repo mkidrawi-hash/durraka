@@ -265,6 +265,8 @@ const COLUMNS_COMPONENTS: ComponentDetail[] = [
     title: 'Column Shaft',
     shortDescription: 'Round or square column shaft, plain or fluted. The primary vertical element of a colonnade — defines height, diameter, and facade rhythm.',
     tags: ['GFRC Column', 'Column Shaft', 'Round Section', 'Classical'],
+    image: '/images/packages/landmark-government-facade.webp',
+    imageAlt: 'GFRC/GRC classical column shafts on landmark government building facade',
     CardIllustration: ColumnShaftSVG,
     HotspotDiagram: ColumnsColonnadeFacadeElevation,
     hotspots: [
@@ -287,6 +289,8 @@ const COLUMNS_COMPONENTS: ComponentDetail[] = [
     title: 'Column Capital',
     shortDescription: 'Corinthian, Ionic, or contemporary capital — the ornamental head connecting shaft to entablature. Defines the architectural order of the colonnade.',
     tags: ['Capital', 'Classical Order', 'Corinthian', 'GFRC Capital'],
+    image: '/images/packages/landmark-government-facade.webp',
+    imageAlt: 'GFRC/GRC Corinthian capitals and classical column elements on landmark building',
     CardIllustration: CapitalSVG,
     HotspotDiagram: ColumnsColonnadeFacadeElevation,
     hotspots: [
@@ -309,6 +313,8 @@ const COLUMNS_COMPONENTS: ComponentDetail[] = [
     title: 'Column Base / Plinth',
     shortDescription: 'Base mouldings and plinth block — the transitional element between column shaft and floor. Establishes the classical base assembly profile.',
     tags: ['Column Base', 'Plinth', 'Base Moulding', 'GFRC'],
+    image: '/images/packages/landmark-government-facade.webp',
+    imageAlt: 'GFRC/GRC column base and plinth mouldings on government building facade',
     CardIllustration: ColumnBaseSVG,
     HotspotDiagram: ColumnsColonnadeFacadeElevation,
     hotspots: [
@@ -331,6 +337,8 @@ const COLUMNS_COMPONENTS: ComponentDetail[] = [
     title: 'Pilaster',
     shortDescription: 'Flat column element applied to wall surface — provides classical rhythm and visual depth without a freestanding column.',
     tags: ['Pilaster', 'Flat Column', 'Wall Element', 'GFRC'],
+    image: '/images/packages/landmark-government-facade.webp',
+    imageAlt: 'GFRC/GRC pilasters on landmark government building facade wall',
     CardIllustration: PilasterSVG,
     HotspotDiagram: ColumnsColonnadeFacadeElevation,
     hotspots: [
@@ -353,6 +361,8 @@ const COLUMNS_COMPONENTS: ComponentDetail[] = [
     title: 'Arched Colonnade Bay',
     shortDescription: 'Arched opening spanning between columns — creating the primary arcade bay of an entrance colonnade or portico.',
     tags: ['Colonnade', 'Arched Bay', 'Arcade', 'GFRC Arch'],
+    image: '/images/packages/grand-entrance-gate.webp',
+    imageAlt: 'GFRC/GRC arched colonnade bay and arcade on monumental entrance architecture',
     CardIllustration: ArchColonnadeSVG,
     HotspotDiagram: ColumnsColonnadeFacadeElevation,
     hotspots: [
@@ -375,6 +385,8 @@ const COLUMNS_COMPONENTS: ComponentDetail[] = [
     title: 'Entablature / Beam Element',
     shortDescription: 'The horizontal element above columns — comprising architrave, frieze, and cornice. Ties the colonnade and establishes the roofline datum.',
     tags: ['Entablature', 'Architrave', 'Frieze Beam', 'GFRC'],
+    image: '/images/packages/villa-palace-architectural.webp',
+    imageAlt: 'GFRC/GRC entablature and frieze beam elements on heritage palace architecture',
     CardIllustration: EntablatureSVG,
     HotspotDiagram: ColumnsColonnadeFacadeElevation,
     hotspots: [
@@ -397,6 +409,8 @@ const COLUMNS_COMPONENTS: ComponentDetail[] = [
     title: 'Decorative Spandrel Panel',
     shortDescription: 'Ornamental panel filling the arch spandrel zone — geometric, floral, or custom relief enriching the arcade or colonnade composition.',
     tags: ['Spandrel', 'Decorative Panel', 'Arch Fill', 'GFRC'],
+    image: '/images/packages/custom-architectural-components.webp',
+    imageAlt: 'Custom GFRC/GRC decorative spandrel panels and ornamental arch fill elements',
     CardIllustration: SpandrelPanelSVG,
     HotspotDiagram: ColumnsColonnadeFacadeElevation,
     hotspots: [
@@ -453,8 +467,8 @@ const COLUMNS_CAPITALS_DATA: PremiumPackageData = {
     {
       title: 'Column & Capital Component Overview',
       description: 'Vertical architectural elements used at entrances, arcades, porticos, and facade features to create rhythm, formality, and decorative character.',
-      image: '/images/infographics/column-capital-component-overview.svg',
-      imageAlt: 'Column and capital component overview — GRC/GFRC column diagram',
+      image: '/images/packages/landmark-government-facade.webp',
+      imageAlt: 'GFRC/GRC columns and capitals — landmark government building facade reference',
     },
   ],
   reviewSteps: REVIEW_STEPS,

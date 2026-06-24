@@ -300,6 +300,8 @@ const DOME_COMPONENTS: ComponentDetail[] = [
     title: 'Main Dome',
     shortDescription: 'The primary GFRC/GRC dome element — hemisphere geometry, drum section, and finial crown. Defines the skyline presence of the building.',
     tags: ['GFRC Dome', 'Structural Element', 'Heritage', 'Landmark'],
+    image: '/images/packages/villa-palace-architectural.webp',
+    imageAlt: 'GFRC/GRC architectural domes on heritage villa and palace buildings',
     CardIllustration: DomeSVG,
     HotspotDiagram: DomesHeritageFacadeElevation,
     hotspots: [
@@ -322,6 +324,8 @@ const DOME_COMPONENTS: ComponentDetail[] = [
     title: 'Cornice Profile',
     shortDescription: 'Horizontal GFRC/GRC cornice band — fascia, cyma, bed mold, and soffit. Establishes the primary shadow line and facade proportion.',
     tags: ['GFRC Cornice', 'Shadow Line', 'Horizontal Profile', 'Facade Band'],
+    image: '/images/packages/villa-palace-architectural.webp',
+    imageAlt: 'GFRC/GRC cornice profiles and horizontal facade bands on heritage architecture',
     CardIllustration: CorniceSVG,
     HotspotDiagram: DomesHeritageFacadeElevation,
     hotspots: [
@@ -344,6 +348,8 @@ const DOME_COMPONENTS: ComponentDetail[] = [
     title: 'Crown Cornice',
     shortDescription: 'The uppermost cornice element at roofline or parapet — wider cap projection with complex profile. Defines the architectural crown of the building.',
     tags: ['Crown Element', 'Roofline', 'Top Profile', 'GFRC'],
+    image: '/images/packages/villa-palace-architectural.webp',
+    imageAlt: 'GFRC/GRC crown cornice at roofline on villa and palace architecture',
     CardIllustration: CrownCorniceSVG,
     HotspotDiagram: DomesHeritageFacadeElevation,
     hotspots: [
@@ -366,6 +372,8 @@ const DOME_COMPONENTS: ComponentDetail[] = [
     title: 'Decorative Band / Frieze',
     shortDescription: 'Horizontal GFRC/GRC ornamental band — repeating geometric, classical, or bespoke pattern. Adds visual richness and proportion rhythm to the facade.',
     tags: ['Ornamental Band', 'Frieze', 'Repeating Pattern', 'GFRC'],
+    image: '/images/packages/villa-palace-architectural.webp',
+    imageAlt: 'GFRC/GRC ornamental decorative bands and frieze on heritage facade',
     CardIllustration: DecorativeBandSVG,
     HotspotDiagram: DomesHeritageFacadeElevation,
     hotspots: [
@@ -388,6 +396,8 @@ const DOME_COMPONENTS: ComponentDetail[] = [
     title: 'Parapet Coping',
     shortDescription: 'GFRC/GRC coping cap for parapets — overhang, throat/drip detail, and panel joints. Provides weather protection and defines the parapet roofline.',
     tags: ['Parapet', 'Coping', 'Weather Detail', 'GFRC'],
+    image: '/images/packages/landmark-government-facade.webp',
+    imageAlt: 'GFRC/GRC parapet coping elements on landmark and government building exterior',
     CardIllustration: ParapetCopingSVG,
     HotspotDiagram: DomesHeritageFacadeElevation,
     hotspots: [
@@ -410,6 +420,8 @@ const DOME_COMPONENTS: ComponentDetail[] = [
     title: 'Column Capital Connection',
     shortDescription: 'GFRC/GRC column capital element — abacus, echinus, and decorative body connecting shaft to entablature. Classical or contemporary profile.',
     tags: ['Column Capital', 'Classical Order', 'GFRC Column', 'Entrance Feature'],
+    image: '/images/packages/landmark-government-facade.webp',
+    imageAlt: 'GFRC/GRC column capitals and classical column elements on landmark building',
     CardIllustration: ColumnCapitalSVG,
     HotspotDiagram: DomesHeritageFacadeElevation,
     hotspots: [
@@ -432,6 +444,8 @@ const DOME_COMPONENTS: ComponentDetail[] = [
     title: 'Entrance Arch Transition',
     shortDescription: 'GFRC/GRC arch surround for entrance openings — arch ring, keystone, voussoir rhythm, and impost. Creates the primary arrival feature.',
     tags: ['Arch', 'Entrance Feature', 'Keystone', 'GFRC Arch'],
+    image: '/images/packages/grand-entrance-gate.webp',
+    imageAlt: 'GFRC/GRC entrance arch and keystone on grand monumental gate architecture',
     CardIllustration: EntranceArchSVG,
     HotspotDiagram: DomesHeritageFacadeElevation,
     hotspots: [
@@ -488,14 +502,14 @@ const DOMES_CORNICES_DATA: PremiumPackageData = {
     {
       title: 'Dome Component Overview',
       description: 'Architectural dome features used to create skyline identity, landmark presence, and heritage-inspired roofline expression.',
-      image: '/images/infographics/dome-component-overview.svg',
-      imageAlt: 'Dome component overview — GRC/GFRC architectural dome diagram',
+      image: '/images/packages/villa-palace-architectural.webp',
+      imageAlt: 'GFRC/GRC architectural domes — heritage villa and palace facade reference',
     },
     {
       title: 'Cornice Component Overview',
       description: 'Horizontal architectural profiles used at rooflines, parapets, edges, and facade transitions to define shadow lines and proportion.',
-      image: '/images/infographics/cornice-component-overview.svg',
-      imageAlt: 'Cornice component overview — GRC/GFRC cornice diagram',
+      image: '/images/packages/villa-palace-architectural.webp',
+      imageAlt: 'GFRC/GRC ornamental cornices and architectural profiles — heritage facade reference',
     },
   ],
   reviewSteps: REVIEW_STEPS,
