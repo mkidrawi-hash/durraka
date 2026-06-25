@@ -246,8 +246,7 @@ const sections = [
           </li>
           <li>
             <strong>CRM and project management tools:</strong> Enquiry data may be logged in
-            internal CRM systems (such as spreadsheet-based or cloud-based tools) to manage our
-            pipeline.
+            internal CRM and pipeline management systems to track and manage project enquiries.
           </li>
           <li>
             <strong>Website analytics:</strong> We may use analytics tools to understand aggregate
