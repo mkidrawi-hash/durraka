@@ -45,16 +45,20 @@ export interface CatalogRequestPayload {
 // NDA catalog id — never receives auto-access
 const NDA_CATALOG_ID = 'NDA Technical Annex Request'
 
-// Catalog download URLs — set these env vars in Vercel when PDFs are ready.
-// Leave unset (or empty) to show the manual-review success message instead.
-// Required env vars (all optional):
-//   CATALOG_B2B_URL   → URL for B2B Contractor / Consultant Detailed Catalog
-//   CATALOG_B2G_URL   → URL for B2G Prequalification Pack
-//   CATALOG_B2C_URL   → URL for B2C Villas & Palaces Visual Catalog
+// Catalog download URLs.
+// Env vars take precedence (set in Vercel for production URLs).
+// Fallback values point to the draft PDFs served from /public/catalogs/.
+// B2G and B2C fallbacks are empty — those catalogs are not yet produced.
+//   CATALOG_B2B_URL   → override for B2B Detailed Catalog (production)
+//   CATALOG_B2G_URL   → override for B2G Prequalification Pack (production)
+//   CATALOG_B2C_URL   → override for B2C Villas & Palaces Catalog (production)
 const CATALOG_URLS: Record<string, string | undefined> = {
-  'B2B Contractor / Consultant Detailed Catalog': process.env.CATALOG_B2B_URL,
-  'B2G / Government & Semi-Government Prequalification Pack': process.env.CATALOG_B2G_URL,
-  'B2C / Private Villas & Palaces Visual Catalog': process.env.CATALOG_B2C_URL,
+  'B2B Contractor / Consultant Detailed Catalog':
+    process.env.CATALOG_B2B_URL || '/catalogs/durraka-b2b-detailed-catalog-draft.pdf',
+  'B2G / Government & Semi-Government Prequalification Pack':
+    process.env.CATALOG_B2G_URL || undefined,
+  'B2C / Private Villas & Palaces Visual Catalog':
+    process.env.CATALOG_B2C_URL || undefined,
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
