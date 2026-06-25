@@ -44,6 +44,7 @@ const sections = [
         <p>This Site is owned and operated by:</p>
         <address className="not-italic text-gray-600 mt-3 pl-4 border-l-2 border-accent/30 space-y-0.5">
           <p className="font-semibold text-navy">Durraka Factory for Industry</p>
+          <p>Commercial Registration No. 4602002725</p>
           <p>Office 203, 2nd Floor</p>
           <p>JBSA 2372, Jeddah</p>
           <p>Kingdom of Saudi Arabia</p>
@@ -495,7 +496,7 @@ const sections = [
         </p>
         <address className="not-italic mt-3 space-y-1">
           <p className="font-semibold text-navy">Durraka Factory for Industry</p>
-          <p>Office 203, 2nd Floor, JBSA 2372, Jeddah, Saudi Arabia</p>
+          <p>CR No. 4602002725 · Office 203, 2nd Floor, JBSA 2372, Jeddah, Saudi Arabia</p>
           <p>
             Email:{' '}
             <a href="mailto:info@durraka.com" className="text-accent hover:underline font-medium">
