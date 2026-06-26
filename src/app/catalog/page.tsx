@@ -14,8 +14,8 @@ export const metadata: Metadata = {
 const PUBLIC_CATALOG = {
   name: 'Durraka Overview Catalog',
   type: 'Public',
-  url: '/catalogs/durraka-overview-catalog.pdf',
-  fileSizeLabel: 'PDF · Overview Edition',
+  url: '/catalogs/durraka-public-simple-catalog.pdf',
+  fileSizeLabel: 'PDF · 10 Pages · Overview Edition',
   covers: [
     'GFRC/GRC system categories — what we manufacture',
     'Application sectors: hospitality, commercial, government, residential, religious',
