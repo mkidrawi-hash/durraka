@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import PublicCatalogDownload from '@/components/catalog/PublicCatalogDownload'
-import GatedCatalogSection from '@/components/catalog/GatedCatalogSection'
+import DetailedCatalogRequestForm from '@/components/catalog/DetailedCatalogRequestForm'
 
 export const metadata: Metadata = {
   title: 'Product Catalog | Durraka Factory for Industry',
@@ -15,7 +15,7 @@ const PUBLIC_CATALOG = {
   name: 'Durraka Overview Catalog',
   type: 'Public',
   url: '/catalogs/durraka-public-simple-catalog.pdf',
-  fileSizeLabel: 'PDF · 10 Pages · Overview Edition',
+  fileSizeLabel: 'PDF · 13 Pages · 2026 Edition',
   covers: [
     'GFRC/GRC system categories — what we manufacture',
     'Application sectors: hospitality, commercial, government, residential, religious',
@@ -31,6 +31,17 @@ const PUBLIC_CATALOG = {
     'Project-specific pricing',
   ],
 }
+
+// ─── Detailed catalog definition ───────────────────────────────────────────────
+
+const DETAILED_CATALOG_INCLUDES = [
+  'System-specific technical references for all 6 GFRC categories',
+  'Dimensional guidance, profile types, and standard span ranges',
+  'QA/QC process overview and factory documentation standards',
+  'RFQ requirements and shop drawing submission guide',
+  'Surface finish specifications and available colour options',
+  'Project workflow from brief to site delivery',
+]
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
@@ -49,8 +60,8 @@ export default function CatalogPage() {
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">Product Catalog</h1>
           <p className="text-white/60 text-base sm:text-lg max-w-2xl leading-relaxed">
-            Download the public overview catalog free of charge. Detailed technical catalogs
-            and the NDA Technical Annex are available upon request.
+            Download the public overview catalog free of charge. The detailed technical catalog
+            is available upon request to qualified contractors, consultants, and developers.
           </p>
         </div>
       </div>
@@ -68,7 +79,7 @@ export default function CatalogPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 items-start">
 
-            {/* Left: info */}
+            {/* Left: info + download */}
             <div>
               <h2
                 id="public-catalog-heading"
@@ -89,6 +100,22 @@ export default function CatalogPage() {
                 pageSource="/catalog"
                 fileSizeLabel={PUBLIC_CATALOG.fileSizeLabel}
               />
+
+              {/* CTA bridge to detailed catalog */}
+              <div className="mt-6 pt-6 border-t border-gray-100">
+                <p className="text-xs text-gray-500 mb-2">
+                  Need technical specifications, system data, and QA/QC details?
+                </p>
+                <a
+                  href="#detailed-catalog"
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent-dark transition-colors"
+                >
+                  Request the Detailed Technical Catalog
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </a>
+              </div>
             </div>
 
             {/* Right: what's covered */}
@@ -127,12 +154,83 @@ export default function CatalogPage() {
                 </ul>
               </div>
             </div>
+
           </div>
         </section>
 
-        {/* ── Section 2 & 3: Gated Catalog Request ────────────────────────── */}
-        <section aria-labelledby="gated-catalog-heading">
-          <GatedCatalogSection />
+        {/* ── Section 2: Detailed Technical Catalog ───────────────────────── */}
+        <section id="detailed-catalog" aria-labelledby="detailed-catalog-heading">
+
+          <div className="flex items-center gap-3 mb-8">
+            <div className="w-6 h-px bg-accent" aria-hidden="true" />
+            <span className="text-accent text-xs font-semibold tracking-widest uppercase">
+              Gated Access
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-start">
+
+            {/* Left: what's inside (2/5 width on lg) */}
+            <div className="lg:col-span-2">
+              <h2
+                id="detailed-catalog-heading"
+                className="text-2xl sm:text-3xl font-bold text-navy mb-3 leading-snug"
+              >
+                Detailed Technical Catalog
+              </h2>
+              <p className="text-gray-500 text-sm leading-relaxed mb-6">
+                The B2B Detailed Catalog contains system-specific technical references,
+                QA/QC documentation standards, and project workflow detail —
+                available to contractors, consultants, developers, and design teams.
+              </p>
+
+              <div className="bg-navy rounded-sm p-5 sm:p-6">
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="w-4 h-px bg-accent" aria-hidden="true" />
+                  <span className="text-accent text-[10px] font-bold tracking-widest uppercase">
+                    What&rsquo;s Included
+                  </span>
+                </div>
+                <ul className="space-y-2.5">
+                  {DETAILED_CATALOG_INCLUDES.map((item) => (
+                    <li key={item} className="flex items-start gap-2.5">
+                      <svg
+                        className="w-3.5 h-3.5 text-accent flex-shrink-0 mt-0.5"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth={3}
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span className="text-white/70 text-xs leading-relaxed">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="border-t border-white/10 mt-5 pt-4">
+                  <p className="text-white/30 text-[10px] leading-relaxed">
+                    Access is reviewed and fulfilled within 1–2 business days.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right: form (3/5 width on lg) */}
+            <div className="lg:col-span-3">
+              <div className="bg-white border border-gray-100 rounded-sm p-6 sm:p-8">
+                <h3 className="text-base font-bold text-navy mb-1">
+                  Request Access
+                </h3>
+                <p className="text-gray-400 text-xs mb-6">
+                  Complete the form below. Fields marked <span className="text-accent">*</span> are required.
+                </p>
+                <DetailedCatalogRequestForm />
+              </div>
+            </div>
+
+          </div>
         </section>
 
         {/* ── Footer note ─────────────────────────────────────────────────── */}
