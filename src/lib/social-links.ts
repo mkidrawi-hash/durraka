@@ -5,8 +5,8 @@ const WHATSAPP_MESSAGE = encodeURIComponent(
 
 export const SOCIAL_LINKS = {
   linkedin: {
-    href: 'https://www.linkedin.com/company/durraka',
-    label: 'Visit Durraka on LinkedIn',
+    href: 'https://www.linkedin.com/in/durraka-factory-035a86296',
+    label: 'Visit Durraka Factory on LinkedIn',
   },
   whatsapp: {
     href: `https://wa.me/${WHATSAPP_PHONE}?text=${WHATSAPP_MESSAGE}`,
