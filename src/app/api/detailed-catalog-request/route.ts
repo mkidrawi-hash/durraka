@@ -1,67 +1,43 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { google } from 'googleapis'
 import { Resend } from 'resend'
+import { issueDownloadToken } from '@/lib/catalogToken'
 
-// ── Types ─────────────────────────────────────────────────────────────────────
+// ── Types ──────────────────────────────────────────────────────────────────────
 
-export interface CatalogRequestPayload {
+export interface DetailedCatalogPayload {
   fullName: string
   company: string
   email: string
   phone: string
   clientType: string
-  catalogRequested: string
-  projectLocation: string
   projectType: string
-  estimatedArea?: string
-  projectStage: string
+  interestedSystems: string[]
+  cityCountry: string
+  timeline: string
   notes?: string
-  consent: boolean
   website?: string // honeypot — must be empty
 }
 
 // ── Google Sheet column layout ─────────────────────────────────────────────────
-// Tab: "Catalog Requests"  (env: CATALOG_REQUESTS_TAB_NAME)
+// Tab: "Detailed Catalog Requests"  (env: DETAILED_CATALOG_REQUESTS_TAB_NAME)
 //
 // A  Timestamp (AST)
 // B  Reference
-// C  Request Type          → "Detailed Catalog" | "NDA Annex"
-// D  Catalog Requested
-// E  Full Name
-// F  Company / Organization
-// G  Email
-// H  Phone / WhatsApp
-// I  Client Type
-// J  Project Location / City
-// K  Project Type
-// L  Estimated Scope Area
-// M  Project Stage
-// N  Source Page
-// O  Download Status       → "Submitted" | "Auto-access granted" | "Manual approval required"
-// P  Notes
-// Q  User Agent
-// R  Referrer
-
-// NDA catalog id — never receives auto-access
-const NDA_CATALOG_ID = 'NDA Technical Annex Request'
-
-// Catalog download URLs.
-// Env vars take precedence (set in Vercel for production URLs).
-// NOTE: There are intentionally NO static /public fallbacks. The detailed B2B
-// catalog is no longer served as a static file — it is gated behind the
-// protected /api/detailed-catalog-download route. With no env var set, these
-// resolve to undefined and the request is logged for manual review.
-//   CATALOG_B2B_URL   → override for B2B Detailed Catalog (production)
-//   CATALOG_B2G_URL   → override for B2G Prequalification Pack (production)
-//   CATALOG_B2C_URL   → override for B2C Villas & Palaces Catalog (production)
-const CATALOG_URLS: Record<string, string | undefined> = {
-  'B2B Contractor / Consultant Detailed Catalog':
-    process.env.CATALOG_B2B_URL || undefined,
-  'B2G / Government & Semi-Government Prequalification Pack':
-    process.env.CATALOG_B2G_URL || undefined,
-  'B2C / Private Villas & Palaces Visual Catalog':
-    process.env.CATALOG_B2C_URL || undefined,
-}
+// C  Full Name
+// D  Company
+// E  Email
+// F  Phone / WhatsApp
+// G  Client Type
+// H  Project Type
+// I  Interested Systems
+// J  City / Country
+// K  Project Timeline
+// L  Message / Notes
+// M  Source Page
+// N  Download Status
+// O  User Agent
+// P  Referrer
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -72,7 +48,7 @@ function generateReference(): string {
     String(d.getUTCMonth() + 1).padStart(2, '0') +
     String(d.getUTCDate()).padStart(2, '0')
   const suffix = String(Math.floor(1000 + Math.random() * 9000))
-  return `CATLG-${date}-${suffix}`
+  return `DTLCAT-${date}-${suffix}`
 }
 
 function formatTimestamp(d: Date): string {
@@ -96,11 +72,9 @@ function sanitize(s: unknown): string {
 // ── Google Sheets ─────────────────────────────────────────────────────────────
 
 async function logToSheets(
-  timestamp: string,
   ref: string,
-  requestType: string,
-  catalogRequested: string,
-  p: CatalogRequestPayload,
+  timestamp: string,
+  p: DetailedCatalogPayload,
   downloadStatus: string,
   userAgent: string,
   referer: string,
@@ -108,7 +82,7 @@ async function logToSheets(
   const clientEmail = process.env.GOOGLE_SHEETS_CLIENT_EMAIL
   const privateKey = (process.env.GOOGLE_SHEETS_PRIVATE_KEY ?? '').replace(/\\n/g, '\n')
   const spreadsheetId = process.env.GOOGLE_SHEETS_SPREADSHEET_ID
-  const tabName = process.env.CATALOG_REQUESTS_TAB_NAME ?? 'Catalog Requests'
+  const tabName = process.env.DETAILED_CATALOG_REQUESTS_TAB_NAME ?? 'Detailed Catalog Requests'
 
   if (!clientEmail || !privateKey || !spreadsheetId) {
     throw new Error('Google Sheets env vars not configured')
@@ -124,27 +98,25 @@ async function logToSheets(
 
   await sheets.spreadsheets.values.append({
     spreadsheetId,
-    range: `${tabName}!A:R`,
+    range: `${tabName}!A:P`,
     valueInputOption: 'USER_ENTERED',
     requestBody: {
       values: [
         [
           timestamp,
           ref,
-          requestType,
-          catalogRequested,
           p.fullName,
           p.company,
           p.email,
           p.phone,
           p.clientType,
-          p.projectLocation,
           p.projectType,
-          p.estimatedArea ?? '',
-          p.projectStage,
+          p.interestedSystems.join(', '),
+          p.cityCountry,
+          p.timeline,
+          p.notes ?? '',
           'Durraka Website — /catalog',
           downloadStatus,
-          p.notes ?? '',
           userAgent,
           referer,
         ],
@@ -156,10 +128,9 @@ async function logToSheets(
 // ── Email notification ────────────────────────────────────────────────────────
 
 function buildEmailHTML(
-  p: CatalogRequestPayload,
+  p: DetailedCatalogPayload,
   ref: string,
   timestamp: string,
-  requestType: string,
   downloadStatus: string,
 ): string {
   const row = (label: string, value: string) =>
@@ -180,7 +151,7 @@ function buildEmailHTML(
   <div style="background:#071B3B;padding:22px 30px;border-left:5px solid #D71920">
     <div style="color:#fff;font-size:16px;font-weight:700;letter-spacing:2px">DURRAKA FACTORY FOR INDUSTRY</div>
     <div style="color:rgba(255,255,255,.45);font-size:10px;margin-top:3px;letter-spacing:3px;text-transform:uppercase">
-      New Catalog Request — ${requestType}
+      New Detailed Catalog Request
     </div>
   </div>
 
@@ -192,31 +163,25 @@ function buildEmailHTML(
 
   <div style="padding:22px 30px 28px">
 
-    ${section('Catalog Requested')}
-    <table style="width:100%;border-collapse:collapse">
-      ${row('Catalog', p.catalogRequested)}
-      ${row('Status', downloadStatus)}
-    </table>
-
     ${section('Contact Details')}
     <table style="width:100%;border-collapse:collapse">
       ${row('Full Name', p.fullName)}
-      ${row('Company / Org', p.company)}
+      ${row('Company', p.company)}
       ${row('Email', `<a href="mailto:${p.email}" style="color:#D71920;text-decoration:none">${p.email}</a>`)}
       ${row('Phone / WhatsApp', p.phone)}
-      ${row('Client Type', p.clientType)}
     </table>
 
     ${section('Project Details')}
     <table style="width:100%;border-collapse:collapse">
-      ${row('Project Location', p.projectLocation)}
+      ${row('Client Type', p.clientType)}
       ${row('Project Type', p.projectType)}
-      ${row('Estimated Area', p.estimatedArea ? p.estimatedArea + ' m²' : '—')}
-      ${row('Project Stage', p.projectStage)}
+      ${row('Interested Systems', p.interestedSystems.join(', '))}
+      ${row('City / Country', p.cityCountry)}
+      ${row('Project Timeline', p.timeline)}
     </table>
 
     ${p.notes
-      ? `${section('Notes')}
+      ? `${section('Message / Notes')}
          <div style="background:#f8f8f8;border-left:3px solid #D71920;padding:12px 14px;
            font-size:13px;line-height:1.75;color:#333">
            ${p.notes.replace(/\n/g, '<br>')}
@@ -224,7 +189,8 @@ function buildEmailHTML(
       : ''
     }
 
-    <div style="margin-top:24px;padding:12px 14px;background:#f0f4f9;font-size:11px;color:#666;line-height:1.7">
+    <div style="margin-top:24px;padding:10px 14px;background:#f0f4f9;font-size:11px;color:#666;line-height:1.7">
+      <b>Status:</b> ${downloadStatus}<br>
       <b>Source:</b> Durraka Website — /catalog
     </div>
 
@@ -238,40 +204,39 @@ function buildEmailHTML(
 
 export async function POST(req: NextRequest) {
   try {
-    const payload = (await req.json()) as CatalogRequestPayload
+    const payload = (await req.json()) as DetailedCatalogPayload
 
     // Honeypot
     if (payload.website) {
-      return NextResponse.json({ success: true, reference: 'CATLG-00000000-0000' })
+      return NextResponse.json({ success: true, reference: 'DTLCAT-00000000-0000' })
     }
 
     // Sanitize
-    const p: CatalogRequestPayload = {
+    const p: DetailedCatalogPayload = {
       fullName: sanitize(payload.fullName),
       company: sanitize(payload.company),
       email: sanitize(payload.email),
       phone: sanitize(payload.phone),
       clientType: sanitize(payload.clientType),
-      catalogRequested: sanitize(payload.catalogRequested),
-      projectLocation: sanitize(payload.projectLocation),
       projectType: sanitize(payload.projectType),
-      estimatedArea: payload.estimatedArea ? sanitize(payload.estimatedArea) : undefined,
-      projectStage: sanitize(payload.projectStage),
+      interestedSystems: Array.isArray(payload.interestedSystems)
+        ? payload.interestedSystems.map((s) => sanitize(s)).filter(Boolean)
+        : [],
+      cityCountry: sanitize(payload.cityCountry),
+      timeline: sanitize(payload.timeline),
       notes: payload.notes ? sanitize(payload.notes) : undefined,
-      consent: Boolean(payload.consent),
     }
 
     // Required field validation
-    const required: [keyof CatalogRequestPayload, string][] = [
+    const required: [keyof DetailedCatalogPayload, string][] = [
       ['fullName', 'Full name'],
-      ['company', 'Company or organization name'],
+      ['company', 'Company name'],
       ['email', 'Email address'],
-      ['phone', 'Phone or WhatsApp number'],
+      ['phone', 'Phone or WhatsApp'],
       ['clientType', 'Client type'],
-      ['catalogRequested', 'Catalog selection'],
-      ['projectLocation', 'Project location'],
       ['projectType', 'Project type'],
-      ['projectStage', 'Project stage'],
+      ['cityCountry', 'City / Country'],
+      ['timeline', 'Project timeline'],
     ]
 
     for (const [field, label] of required) {
@@ -280,22 +245,29 @@ export async function POST(req: NextRequest) {
       }
     }
 
+    if (p.interestedSystems.length === 0) {
+      return NextResponse.json(
+        { error: 'Please select at least one system of interest.' },
+        { status: 400 },
+      )
+    }
+
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(p.email)) {
-      return NextResponse.json({ error: 'Please enter a valid email address.' }, { status: 400 })
+      return NextResponse.json(
+        { error: 'Please enter a valid email address.' },
+        { status: 400 },
+      )
     }
 
-    if (!p.consent) {
-      return NextResponse.json({ error: 'Please confirm your consent to be contacted.' }, { status: 400 })
-    }
-
-    const isNDA = p.catalogRequested === NDA_CATALOG_ID
-    const catalogUrl = isNDA ? null : (CATALOG_URLS[p.catalogRequested] || null)
-    const requestType = isNDA ? 'NDA Annex' : 'Detailed Catalog'
-    const downloadStatus = isNDA
-      ? 'Manual approval required'
-      : catalogUrl
-        ? 'Auto-access granted'
-        : 'Submitted'
+    // Determine access — auto only if B2B URL is configured.
+    // We NEVER return the real file path/URL to the client. In auto-access mode
+    // we issue a short-lived, signed one-time token and hand back the protected
+    // download route URL. In manual mode no link is returned at all.
+    const autoAccess = Boolean(process.env.CATALOG_B2B_URL)
+    const catalogUrl = autoAccess
+      ? `/api/detailed-catalog-download?token=${encodeURIComponent(issueDownloadToken())}`
+      : null
+    const downloadStatus = autoAccess ? 'Auto-access granted' : 'Submitted — pending review'
 
     const reference = generateReference()
     const timestamp = formatTimestamp(new Date())
@@ -303,14 +275,14 @@ export async function POST(req: NextRequest) {
     const referer = req.headers.get('referer') ?? ''
 
     // Google Sheets log (non-blocking)
-    logToSheets(timestamp, reference, requestType, p.catalogRequested, p, downloadStatus, userAgent, referer).catch(
-      (err) => console.error('[CatalogRequest] Sheets log failed:', err),
+    logToSheets(reference, timestamp, p, downloadStatus, userAgent, referer).catch(
+      (err) => console.error('[DetailedCatalogRequest] Sheets log failed:', err),
     )
 
     // Email notification (non-blocking)
     const apiKey = process.env.EMAIL_SERVICE_API_KEY
     if (!apiKey) {
-      console.warn('[CatalogRequest] EMAIL_SERVICE_API_KEY not set — email skipped. Ref:', reference)
+      console.warn('[DetailedCatalogRequest] EMAIL_SERVICE_API_KEY not set — email skipped. Ref:', reference)
     } else {
       const resend = new Resend(apiKey)
       const recipient = process.env.RFQ_TO_EMAIL ?? 'info@durraka.com'
@@ -319,16 +291,19 @@ export async function POST(req: NextRequest) {
         .send({
           from: fromEmail,
           to: [recipient],
-          subject: `Catalog Request — ${p.catalogRequested} — ${reference}`,
-          html: buildEmailHTML(p, reference, timestamp, requestType, downloadStatus),
+          subject: `Detailed Catalog Request — ${reference}`,
+          html: buildEmailHTML(p, reference, timestamp, downloadStatus),
         })
-        .catch((err) => console.error('[CatalogRequest] Email send failed:', err))
+        .catch((err) => console.error('[DetailedCatalogRequest] Email send failed:', err))
     }
 
-    return NextResponse.json({ success: true, reference, isNDA, catalogUrl })
+    return NextResponse.json({ success: true, reference, catalogUrl })
   } catch (err) {
-    console.error('[CatalogRequest] Unhandled error:', err)
-    return NextResponse.json({ error: 'An unexpected error occurred. Please try again later.' }, { status: 500 })
+    console.error('[DetailedCatalogRequest] Unhandled error:', err)
+    return NextResponse.json(
+      { error: 'An unexpected error occurred. Please try again later.' },
+      { status: 500 },
+    )
   }
 }
 
