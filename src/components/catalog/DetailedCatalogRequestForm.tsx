@@ -59,7 +59,7 @@ interface FormData {
 }
 
 type FieldErrors = Partial<Record<keyof FormData, string>>
-type Status = 'idle' | 'submitting' | 'success-auto' | 'success-manual' | 'error'
+type Status = 'idle' | 'submitting' | 'success' | 'error'
 
 const INITIAL: FormData = {
   fullName: '',
@@ -107,7 +107,6 @@ export default function DetailedCatalogRequestForm() {
   const [status, setStatus] = useState<Status>('idle')
   const [apiError, setApiError] = useState('')
   const [reference, setReference] = useState('')
-  const [catalogUrl, setCatalogUrl] = useState<string | null>(null)
 
   const successRef = useRef<HTMLDivElement>(null)
   const errorRef = useRef<HTMLDivElement>(null)
@@ -118,7 +117,7 @@ export default function DetailedCatalogRequestForm() {
   // pinned near the footer. Explicitly centring the result card prevents the
   // "blank page / only footer" effect.
   useEffect(() => {
-    if (status === 'success-auto' || status === 'success-manual') {
+    if (status === 'success') {
       successRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
     } else if (status === 'error') {
       errorRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
@@ -174,15 +173,9 @@ export default function DetailedCatalogRequestForm() {
         return
       }
       setReference(data.reference ?? '')
-      // Auto-access only when a non-empty download URL is returned — never
-      // redirect to an empty/undefined URL.
-      if (typeof data.catalogUrl === 'string' && data.catalogUrl.trim() !== '') {
-        setCatalogUrl(data.catalogUrl)
-        setStatus('success-auto')
-      } else {
-        setCatalogUrl(null)
-        setStatus('success-manual')
-      }
+      // Manual-review only — there is no automatic access or download. Every
+      // successful submission shows the same pending-review confirmation.
+      setStatus('success')
     } catch {
       setApiError('Submission failed. Please try again or contact info@durraka.com.')
       setStatus('error')
@@ -195,12 +188,11 @@ export default function DetailedCatalogRequestForm() {
     setStatus('idle')
     setApiError('')
     setReference('')
-    setCatalogUrl(null)
   }
 
   // ── Success ───────────────────────────────────────────────────────────────────
 
-  if (status === 'success-auto' || status === 'success-manual') {
+  if (status === 'success') {
     return (
       <div
         ref={successRef}
@@ -216,29 +208,9 @@ export default function DetailedCatalogRequestForm() {
 
         <h3 className="text-xl font-bold text-navy mb-2">Request Received</h3>
 
-        {status === 'success-auto' && catalogUrl ? (
-          <>
-            <p className="text-gray-500 text-sm leading-relaxed mb-6">
-              Your request was received. Download the Detailed Technical Catalog below.
-            </p>
-            <a
-              href={catalogUrl}
-              className="inline-flex items-center gap-2 px-7 py-3 bg-accent text-white text-sm font-semibold rounded-sm hover:bg-accent-dark transition-colors"
-            >
-              <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-              </svg>
-              Download Detailed Catalog
-            </a>
-            <p className="text-[11px] text-gray-400 mt-4 leading-relaxed">
-              This download link is private and expires shortly. Please save the file after downloading.
-            </p>
-          </>
-        ) : (
-          <p className="text-gray-500 text-sm leading-relaxed">
-            Access request submitted. Our team will review and respond shortly.
-          </p>
-        )}
+        <p className="text-gray-500 text-sm leading-relaxed">
+          Access request submitted. Our team will review and respond shortly.
+        </p>
 
         {reference && (
           <p className="text-xs text-gray-400 mt-5">
@@ -488,7 +460,7 @@ export default function DetailedCatalogRequestForm() {
               Submitting…
             </>
           ) : (
-            'Request Detailed Catalog'
+            'Request Detailed Technical Catalog'
           )}
         </button>
       </div>

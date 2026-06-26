@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { google } from 'googleapis'
 import { Resend } from 'resend'
-import { issueDownloadToken } from '@/lib/catalogToken'
 
 // ── Types ──────────────────────────────────────────────────────────────────────
 
@@ -200,6 +199,35 @@ function buildEmailHTML(
 </html>`
 }
 
+/**
+ * Send the lead-notification email. Rejects if no API key is configured or the
+ * send fails, so the caller can treat email as a delivery sink that either
+ * succeeds or counts as failed (never silently skipped).
+ */
+async function sendNotificationEmail(
+  p: DetailedCatalogPayload,
+  reference: string,
+  timestamp: string,
+  downloadStatus: string,
+): Promise<void> {
+  const apiKey = process.env.EMAIL_SERVICE_API_KEY
+  if (!apiKey) {
+    throw new Error('EMAIL_SERVICE_API_KEY not configured')
+  }
+  const resend = new Resend(apiKey)
+  const recipient = process.env.RFQ_TO_EMAIL ?? 'info@durraka.com'
+  const fromEmail = process.env.RFQ_FROM_EMAIL ?? 'Durraka Catalog <no-reply@durraka.com>'
+  const { error } = await resend.emails.send({
+    from: fromEmail,
+    to: [recipient],
+    subject: `Detailed Catalog Request — ${reference}`,
+    html: buildEmailHTML(p, reference, timestamp, downloadStatus),
+  })
+  if (error) {
+    throw new Error(typeof error === 'string' ? error : JSON.stringify(error))
+  }
+}
+
 // ── Route handler ─────────────────────────────────────────────────────────────
 
 export async function POST(req: NextRequest) {
@@ -259,45 +287,51 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    // Determine access — auto only if B2B URL is configured.
-    // We NEVER return the real file path/URL to the client. In auto-access mode
-    // we issue a short-lived, signed one-time token and hand back the protected
-    // download route URL. In manual mode no link is returned at all.
-    const autoAccess = Boolean(process.env.CATALOG_B2B_URL)
-    const catalogUrl = autoAccess
-      ? `/api/detailed-catalog-download?token=${encodeURIComponent(issueDownloadToken())}`
-      : null
-    const downloadStatus = autoAccess ? 'Auto-access granted' : 'Submitted — pending review'
+    // Manual-review only. The detailed technical catalog is treated as a lead
+    // qualification request — there is NO automatic access or download. We never
+    // return a download link, and CATALOG_B2B_URL is intentionally not consulted.
+    const downloadStatus = 'Submitted — pending review'
 
     const reference = generateReference()
     const timestamp = formatTimestamp(new Date())
     const userAgent = req.headers.get('user-agent') ?? ''
     const referer = req.headers.get('referer') ?? ''
 
-    // Google Sheets log (non-blocking)
-    logToSheets(reference, timestamp, p, downloadStatus, userAgent, referer).catch(
-      (err) => console.error('[DetailedCatalogRequest] Sheets log failed:', err),
-    )
+    // Durable delivery. We do NOT silently swallow leads: the submission is only
+    // reported as successful if it was persisted to the Google Sheet and/or sent
+    // by email. If neither sink succeeds we log the full lead (recoverable from
+    // server logs) and return an error so the visitor is told to contact us
+    // directly rather than believing their request went through.
+    const [sheetOk, emailOk] = await Promise.all([
+      logToSheets(reference, timestamp, p, downloadStatus, userAgent, referer)
+        .then(() => true)
+        .catch((err) => {
+          console.error('[DetailedCatalogRequest] Sheets log failed:', err)
+          return false
+        }),
+      sendNotificationEmail(p, reference, timestamp, downloadStatus)
+        .then(() => true)
+        .catch((err) => {
+          console.error('[DetailedCatalogRequest] Email send failed:', err)
+          return false
+        }),
+    ])
 
-    // Email notification (non-blocking)
-    const apiKey = process.env.EMAIL_SERVICE_API_KEY
-    if (!apiKey) {
-      console.warn('[DetailedCatalogRequest] EMAIL_SERVICE_API_KEY not set — email skipped. Ref:', reference)
-    } else {
-      const resend = new Resend(apiKey)
-      const recipient = process.env.RFQ_TO_EMAIL ?? 'info@durraka.com'
-      const fromEmail = process.env.RFQ_FROM_EMAIL ?? 'Durraka Catalog <no-reply@durraka.com>'
-      resend.emails
-        .send({
-          from: fromEmail,
-          to: [recipient],
-          subject: `Detailed Catalog Request — ${reference}`,
-          html: buildEmailHTML(p, reference, timestamp, downloadStatus),
-        })
-        .catch((err) => console.error('[DetailedCatalogRequest] Email send failed:', err))
+    if (!sheetOk && !emailOk) {
+      console.error(
+        '[DetailedCatalogRequest] LEAD NOT DELIVERED — no sink succeeded. Recoverable lead:',
+        JSON.stringify({ reference, timestamp, ...p }),
+      )
+      return NextResponse.json(
+        {
+          error:
+            'We could not submit your request automatically. Please email info@durraka.com and our team will assist you directly.',
+        },
+        { status: 502 },
+      )
     }
 
-    return NextResponse.json({ success: true, reference, catalogUrl })
+    return NextResponse.json({ success: true, reference })
   } catch (err) {
     console.error('[DetailedCatalogRequest] Unhandled error:', err)
     return NextResponse.json(

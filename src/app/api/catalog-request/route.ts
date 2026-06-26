@@ -45,12 +45,11 @@ export interface CatalogRequestPayload {
 // NDA catalog id — never receives auto-access
 const NDA_CATALOG_ID = 'NDA Technical Annex Request'
 
-// Catalog download URLs.
+// Catalog download URLs (legacy gated-catalog flow).
 // Env vars take precedence (set in Vercel for production URLs).
 // NOTE: There are intentionally NO static /public fallbacks. The detailed B2B
-// catalog is no longer served as a static file — it is gated behind the
-// protected /api/detailed-catalog-download route. With no env var set, these
-// resolve to undefined and the request is logged for manual review.
+// catalog is never served as a static file. With no env var set these resolve
+// to undefined and the request is logged for manual review.
 //   CATALOG_B2B_URL   → override for B2B Detailed Catalog (production)
 //   CATALOG_B2G_URL   → override for B2G Prequalification Pack (production)
 //   CATALOG_B2C_URL   → override for B2C Villas & Palaces Catalog (production)
