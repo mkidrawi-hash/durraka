@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 
 // ── Constants ─────────────────────────────────────────────────────────────────
 
@@ -109,6 +109,22 @@ export default function DetailedCatalogRequestForm() {
   const [reference, setReference] = useState('')
   const [catalogUrl, setCatalogUrl] = useState<string | null>(null)
 
+  const successRef = useRef<HTMLDivElement>(null)
+  const errorRef = useRef<HTMLDivElement>(null)
+
+  // After a submission resolves, scroll the relevant card into view. On mobile
+  // the form is much taller than the success card, so once the form unmounts
+  // the page collapses and the browser would otherwise leave the viewport
+  // pinned near the footer. Explicitly centring the result card prevents the
+  // "blank page / only footer" effect.
+  useEffect(() => {
+    if (status === 'success-auto' || status === 'success-manual') {
+      successRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    } else if (status === 'error') {
+      errorRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    }
+  }, [status])
+
   function set(field: keyof FormData, value: string) {
     setForm((f) => ({ ...f, [field]: value }))
     if (errors[field]) setErrors((e) => ({ ...e, [field]: '' }))
@@ -153,19 +169,22 @@ export default function DetailedCatalogRequestForm() {
       })
       const data = await res.json()
       if (!res.ok) {
-        setApiError(data.error ?? 'An error occurred. Please try again.')
+        setApiError(data.error ?? 'Submission failed. Please try again or contact info@durraka.com.')
         setStatus('error')
         return
       }
       setReference(data.reference ?? '')
-      if (data.catalogUrl) {
+      // Auto-access only when a non-empty download URL is returned — never
+      // redirect to an empty/undefined URL.
+      if (typeof data.catalogUrl === 'string' && data.catalogUrl.trim() !== '') {
         setCatalogUrl(data.catalogUrl)
         setStatus('success-auto')
       } else {
+        setCatalogUrl(null)
         setStatus('success-manual')
       }
     } catch {
-      setApiError('Network error. Please check your connection and try again.')
+      setApiError('Submission failed. Please try again or contact info@durraka.com.')
       setStatus('error')
     }
   }
@@ -183,7 +202,12 @@ export default function DetailedCatalogRequestForm() {
 
   if (status === 'success-auto' || status === 'success-manual') {
     return (
-      <div className="text-center py-10 px-6 max-w-md mx-auto">
+      <div
+        ref={successRef}
+        role="status"
+        aria-live="polite"
+        className="text-center py-10 px-6 max-w-md mx-auto scroll-mt-24"
+      >
         <div className="w-12 h-12 rounded-full bg-green-50 border border-green-100 flex items-center justify-center mx-auto mb-5">
           <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
@@ -192,13 +216,13 @@ export default function DetailedCatalogRequestForm() {
 
         <h3 className="text-xl font-bold text-navy mb-2">Request Received</h3>
 
-        {status === 'success-auto' ? (
+        {status === 'success-auto' && catalogUrl ? (
           <>
             <p className="text-gray-500 text-sm leading-relaxed mb-6">
               Your request was received. Download the Detailed Technical Catalog below.
             </p>
             <a
-              href={catalogUrl!}
+              href={catalogUrl}
               className="inline-flex items-center gap-2 px-7 py-3 bg-accent text-white text-sm font-semibold rounded-sm hover:bg-accent-dark transition-colors"
             >
               <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true">
@@ -438,7 +462,12 @@ export default function DetailedCatalogRequestForm() {
 
       {/* API error */}
       {status === 'error' && apiError && (
-        <div className="mt-4 p-3 bg-red-50 border border-red-100 rounded-sm">
+        <div
+          ref={errorRef}
+          role="alert"
+          aria-live="assertive"
+          className="mt-4 p-3 bg-red-50 border border-red-100 rounded-sm scroll-mt-24"
+        >
           <p className="text-accent text-sm">{apiError}</p>
         </div>
       )}
