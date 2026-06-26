@@ -195,11 +195,10 @@ export default function DetailedCatalogRequestForm() {
         {status === 'success-auto' ? (
           <>
             <p className="text-gray-500 text-sm leading-relaxed mb-6">
-              Access has been granted. Click below to download the Detailed Technical Catalog.
+              Your request was received. Download the Detailed Technical Catalog below.
             </p>
             <a
               href={catalogUrl!}
-              download
               className="inline-flex items-center gap-2 px-7 py-3 bg-accent text-white text-sm font-semibold rounded-sm hover:bg-accent-dark transition-colors"
             >
               <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true">
@@ -207,10 +206,13 @@ export default function DetailedCatalogRequestForm() {
               </svg>
               Download Detailed Catalog
             </a>
+            <p className="text-[11px] text-gray-400 mt-4 leading-relaxed">
+              This download link is private and expires shortly. Please save the file after downloading.
+            </p>
           </>
         ) : (
           <p className="text-gray-500 text-sm leading-relaxed">
-            Your detailed catalog request has been received. Our team will review and respond shortly.
+            Access request submitted. Our team will review and respond shortly.
           </p>
         )}
 

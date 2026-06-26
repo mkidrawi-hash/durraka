@@ -47,14 +47,16 @@ const NDA_CATALOG_ID = 'NDA Technical Annex Request'
 
 // Catalog download URLs.
 // Env vars take precedence (set in Vercel for production URLs).
-// Fallback values point to the draft PDFs served from /public/catalogs/.
-// B2G and B2C fallbacks are empty — those catalogs are not yet produced.
+// NOTE: There are intentionally NO static /public fallbacks. The detailed B2B
+// catalog is no longer served as a static file — it is gated behind the
+// protected /api/detailed-catalog-download route. With no env var set, these
+// resolve to undefined and the request is logged for manual review.
 //   CATALOG_B2B_URL   → override for B2B Detailed Catalog (production)
 //   CATALOG_B2G_URL   → override for B2G Prequalification Pack (production)
 //   CATALOG_B2C_URL   → override for B2C Villas & Palaces Catalog (production)
 const CATALOG_URLS: Record<string, string | undefined> = {
   'B2B Contractor / Consultant Detailed Catalog':
-    process.env.CATALOG_B2B_URL || '/catalogs/durraka-b2b-detailed-catalog-draft.pdf',
+    process.env.CATALOG_B2B_URL || undefined,
   'B2G / Government & Semi-Government Prequalification Pack':
     process.env.CATALOG_B2G_URL || undefined,
   'B2C / Private Villas & Palaces Visual Catalog':

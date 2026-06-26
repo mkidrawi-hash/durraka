@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { google } from 'googleapis'
 import { Resend } from 'resend'
+import { issueDownloadToken } from '@/lib/catalogToken'
 
 // ── Types ──────────────────────────────────────────────────────────────────────
 
@@ -258,9 +259,15 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    // Determine access — auto only if B2B URL is configured
-    const catalogUrl = process.env.CATALOG_B2B_URL || null
-    const downloadStatus = catalogUrl ? 'Auto-access granted' : 'Submitted — pending review'
+    // Determine access — auto only if B2B URL is configured.
+    // We NEVER return the real file path/URL to the client. In auto-access mode
+    // we issue a short-lived, signed one-time token and hand back the protected
+    // download route URL. In manual mode no link is returned at all.
+    const autoAccess = Boolean(process.env.CATALOG_B2B_URL)
+    const catalogUrl = autoAccess
+      ? `/api/detailed-catalog-download?token=${encodeURIComponent(issueDownloadToken())}`
+      : null
+    const downloadStatus = autoAccess ? 'Auto-access granted' : 'Submitted — pending review'
 
     const reference = generateReference()
     const timestamp = formatTimestamp(new Date())
