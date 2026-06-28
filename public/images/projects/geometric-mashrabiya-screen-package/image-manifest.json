@@ -1,0 +1,28 @@
+[
+  {
+    "order": 1,
+    "source_file": "IMG_20220526_163312(1).jpg",
+    "upload_path": "public/images/projects/geometric-mashrabiya-screen-package/01-hero/geometric-mashrabiya-screen-hero-01.jpg",
+    "public_url": "/images/projects/geometric-mashrabiya-screen-package/01-hero/geometric-mashrabiya-screen-hero-01.jpg",
+    "width": 2048,
+    "height": 1536,
+    "category": "01-hero",
+    "recommended_use": "Best hero candidate after crop. Strong perspective showing full GFRC/GRC geometric mashrabiya screen depth and texture.",
+    "public_status": "Needs crop/review before public hero",
+    "alt_en": "GFRC/GRC geometric mashrabiya screen facade with terracotta finish and deep patterned lattice.",
+    "alt_ar": "واجهة مشربية هندسية من GFRC/GRC بملمس عميق وتشطيب ترابي."
+  },
+  {
+    "order": 2,
+    "source_file": "IMG_20220526_163528.jpg",
+    "upload_path": "public/images/projects/geometric-mashrabiya-screen-package/03-installation-progress/geometric-mashrabiya-screen-installation-progress-01.jpg",
+    "public_url": "/images/projects/geometric-mashrabiya-screen-package/03-installation-progress/geometric-mashrabiya-screen-installation-progress-01.jpg",
+    "width": 2048,
+    "height": 1536,
+    "category": "03-installation-progress",
+    "recommended_use": "Site progress reference. Useful for archive and internal project gallery; avoid as public hero unless cropped because workers/scaffolding/site materials are visible.",
+    "public_status": "Archive / internal or crop before public use",
+    "alt_en": "GFRC/GRC geometric mashrabiya screen installation progress with terracotta patterned panels.",
+    "alt_ar": "تقدم تنفيذ مشربية هندسية من GFRC/GRC بألواح زخرفية وتشطيب ترابي."
+  }
+]
