@@ -1,0 +1,64 @@
+{
+  "slug": "classic-red-stone-villa-gfrc-facade-package",
+  "title": "Classic Red Stone Villa | GFRC/GRC Facade, Arches & Cornices Package",
+  "title_ar": "فيلا كلاسيكية بالحجر الأحمر | باقة واجهات وأقواس وكرانيش GFRC/GRC",
+  "location": "Saudi Arabia",
+  "projectType": "Residential / Private Villa Architecture",
+  "suggestedCategories": [
+    "Facade Cladding",
+    "Cornices & Profiles",
+    "Columns & Capitals",
+    "Custom Decorative Elements",
+    "Project Gallery"
+  ],
+  "featuredImage": "01-hero/classic-red-stone-villa-gfrc-facade-hero-01.jpg",
+  "publicNote": "Recommended for archive and internal selection first. Images include watermark/construction context and should be cropped/cleaned before public publication.",
+  "images": [
+    {
+      "order": 1,
+      "source_file": "DSC02506.JPG",
+      "upload_path": "classic-red-stone-villa-gfrc-facade-package/01-hero/classic-red-stone-villa-gfrc-facade-hero-01.jpg",
+      "path": "01-hero/classic-red-stone-villa-gfrc-facade-hero-01.jpg",
+      "category": "hero",
+      "label": "Hero front façade and entrance view",
+      "public_status": "Needs Editing",
+      "alt": "Classic red stone villa façade with GFRC/GRC arches, columns, cornices, and balcony details",
+      "alt_ar": "واجهة فيلا كلاسيكية بعناصر GFRC/GRC تشمل الأقواس والكرانيش والأعمدة والتفاصيل الزخرفية",
+      "notes": "Strong front façade candidate, but includes repeated Durraka watermark and minor site/finishing context."
+    },
+    {
+      "order": 2,
+      "source_file": "DSC02492.JPG",
+      "upload_path": "classic-red-stone-villa-gfrc-facade-package/02-facade-overview/classic-red-stone-villa-gfrc-facade-overview-01.jpg",
+      "path": "02-facade-overview/classic-red-stone-villa-gfrc-facade-overview-01.jpg",
+      "category": "facade-overview",
+      "label": "Angled façade overview",
+      "public_status": "Needs Editing",
+      "alt": "Angled view of a classic villa façade with red stone cladding and white GFRC/GRC architectural elements",
+      "alt_ar": "واجهة فيلا كلاسيكية بعناصر GFRC/GRC تشمل الأقواس والكرانيش والأعمدة والتفاصيل الزخرفية",
+      "notes": "Good façade overview; includes site scaffolding and construction-stage context."
+    },
+    {
+      "order": 3,
+      "source_file": "DSC02506.JPG",
+      "upload_path": "classic-red-stone-villa-gfrc-facade-package/03-arches-columns-details/classic-red-stone-villa-arches-columns-detail-01.jpg",
+      "path": "03-arches-columns-details/classic-red-stone-villa-arches-columns-detail-01.jpg",
+      "category": "arches-columns-details",
+      "label": "Entrance arches and balcony detail",
+      "public_status": "Needs Editing",
+      "alt": "Entrance arches, balcony balustrade, columns, and cornice details in a classic villa GFRC/GRC façade",
+      "alt_ar": "واجهة فيلا كلاسيكية بعناصر GFRC/GRC تشمل الأقواس والكرانيش والأعمدة والتفاصيل الزخرفية",
+      "notes": "Duplicate crop/source reference for detail category; keep if site later needs a detail image."
+    }
+  ],
+  "archiveOriginals": [
+    {
+      "source_file": "DSC02492.JPG",
+      "upload_path": "public/images/projects/classic-red-stone-villa-gfrc-facade-package/99-archive-originals/DSC02492.JPG"
+    },
+    {
+      "source_file": "DSC02506.JPG",
+      "upload_path": "public/images/projects/classic-red-stone-villa-gfrc-facade-package/99-archive-originals/DSC02506.JPG"
+    }
+  ]
+}
