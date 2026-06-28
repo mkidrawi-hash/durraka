@@ -823,4 +823,129 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     alt: 'GFRC frame panel sample showing moulded frame detail and surface finish',
     status: 'Public Safe',
   },
+
+  // ── Sheikh Hamad bin Abdullah bin Jassim Al Thani Mosque · Al Aziziyah, Makkah ──
+  {
+    id: 'sheikh-hamad-al-thani-mosque-makkah-hero-001',
+    title: 'Sheikh Hamad bin Abdullah bin Jassim Al Thani Mosque – Al Aziziyah, Makkah',
+    city: 'Makkah',
+    year: '',
+    category: 'Domes',
+    packageType: 'Mosque GFRC/GRC Package',
+    components: ['GFRC', 'GRC', 'Domes', 'Minarets', 'Religious Architecture'],
+    description:
+      'Ornate GFRC/GRC mosque architecture featuring decorative domes, minarets, and carved façade ornamentation.',
+    image:
+      '/images/projects/sheikh-hamad-al-thani-mosque-makkah-gfrc-package/01-hero/sheikh-hamad-al-thani-mosque-makkah-hero-01.jpg',
+    alt: 'Sheikh Hamad bin Abdullah bin Jassim Al Thani Mosque in Al Aziziyah, Makkah, with ornate GFRC domes and minarets',
+    status: 'Public Safe',
+  },
+  {
+    id: 'sheikh-hamad-al-thani-mosque-makkah-minaret-detail-001',
+    title: 'Sheikh Hamad bin Abdullah bin Jassim Al Thani Mosque – Al Aziziyah, Makkah',
+    city: 'Makkah',
+    year: '',
+    category: 'Architectural Details',
+    packageType: 'Mosque GFRC/GRC Package',
+    components: ['GFRC', 'GRC', 'Minarets', 'Decorative Detail'],
+    description:
+      'Ornate GFRC/GRC minaret detailing with carved decorative surfaces and Islamic ornamentation.',
+    image:
+      '/images/projects/sheikh-hamad-al-thani-mosque-makkah-gfrc-package/03-minaret-details/sheikh-hamad-al-thani-mosque-makkah-minaret-detail-01.jpg',
+    alt: 'Ornate GFRC minaret detail at Sheikh Hamad bin Abdullah bin Jassim Al Thani Mosque, Al Aziziyah, Makkah',
+    status: 'Public Safe',
+  },
+  {
+    id: 'sheikh-hamad-al-thani-mosque-makkah-dome-detail-001',
+    title: 'Sheikh Hamad bin Abdullah bin Jassim Al Thani Mosque – Al Aziziyah, Makkah',
+    city: 'Makkah',
+    year: '',
+    category: 'Domes',
+    packageType: 'Mosque GFRC/GRC Package',
+    components: ['GFRC', 'GRC', 'Domes', 'Decorative Detail'],
+    description:
+      'Decorative GFRC/GRC mosque dome with ornamental relief and refined exterior finishing.',
+    image:
+      '/images/projects/sheikh-hamad-al-thani-mosque-makkah-gfrc-package/04-dome-details/sheikh-hamad-al-thani-mosque-makkah-dome-detail-01.jpg',
+    alt: 'Decorative GFRC dome detail at Sheikh Hamad bin Abdullah bin Jassim Al Thani Mosque, Al Aziziyah, Makkah',
+    status: 'Public Safe',
+  },
+
+  // ── Mosque Domes & Minaret · GFRC/GRC ──────────────────────────────────────────
+  {
+    id: 'mosque-domes-minaret-gfrc-hero-001',
+    title: 'Mosque Domes & Minaret, GFRC/GRC',
+    city: '',
+    year: '',
+    category: 'Domes',
+    packageType: 'Mosque GFRC/GRC Package',
+    components: ['GFRC', 'GRC', 'Domes', 'Minaret', 'Facade'],
+    description:
+      'GFRC/GRC mosque architecture with decorative domes, a detailed minaret, and ornamental façade elements.',
+    image:
+      '/images/projects/mosque-domes-minaret-gfrc-package/01-hero/mosque-domes-minaret-gfrc-hero-01.jpeg',
+    alt: 'GFRC/GRC mosque with decorative domes and a detailed minaret',
+    status: 'Public Safe',
+  },
+  {
+    id: 'mosque-domes-minaret-gfrc-dome-detail-001',
+    title: 'Decorative Mosque Dome, GFRC/GRC',
+    city: '',
+    year: '',
+    category: 'Domes',
+    packageType: 'Mosque GFRC/GRC Package',
+    components: ['GFRC', 'GRC', 'Dome', 'Decorative Detail'],
+    description:
+      'Decorative GFRC/GRC mosque dome showing ornamental relief and openwork detailing.',
+    image:
+      '/images/projects/mosque-domes-minaret-gfrc-package/02-dome-detail/mosque-gfrc-decorative-dome-detail-01.jpg',
+    alt: 'Decorative GFRC mosque dome with ornamental relief detailing',
+    status: 'Public Safe',
+  },
+  {
+    id: 'mosque-domes-minaret-gfrc-minaret-facade-001',
+    title: 'Mosque Minaret Façade, GFRC/GRC',
+    city: '',
+    year: '',
+    category: 'Architectural Details',
+    packageType: 'Mosque GFRC/GRC Package',
+    components: ['GFRC', 'GRC', 'Minaret', 'Facade Detail'],
+    description:
+      'GFRC/GRC minaret and façade detailing with refined Islamic architectural ornamentation.',
+    image:
+      '/images/projects/mosque-domes-minaret-gfrc-package/03-minaret-facade/mosque-gfrc-minaret-facade-view-01.jpeg',
+    alt: 'GFRC/GRC mosque minaret façade with decorative detailing',
+    status: 'Public Safe',
+  },
+  {
+    id: 'mosque-domes-minaret-gfrc-facade-overview-001',
+    title: 'Mosque Façade, GFRC/GRC',
+    city: '',
+    year: '',
+    category: 'Facades & Cladding',
+    packageType: 'Mosque GFRC/GRC Package',
+    components: ['GFRC', 'GRC', 'Facade Cladding', 'Cornices'],
+    description:
+      'GFRC/GRC mosque façade with cladding, cornices, and decorative architectural elements.',
+    image:
+      '/images/projects/mosque-domes-minaret-gfrc-package/03-facade-overview/mosque-gfrc-facade-overview-01.jpeg',
+    alt: 'GFRC/GRC mosque façade with cladding and decorative cornices',
+    status: 'Public Safe',
+  },
+
+  // ── Heritage GFRC/GRC Façade ───────────────────────────────────────────────────
+  {
+    id: 'heritage-gfrc-facade-hero-001',
+    title: 'Heritage GFRC/GRC Façade',
+    city: '',
+    year: '',
+    category: 'Facades & Cladding',
+    packageType: 'Heritage Facade Package',
+    components: ['GFRC', 'GRC', 'Facade Cladding', 'Arches', 'Cornices'],
+    description:
+      'Heritage-style GFRC/GRC façade package featuring arches, cornices, decorative screens, and patterned façade panels.',
+    image: '/images/projects/heritage-gfrc-facade-package/01-hero/heritage-gfrc-facade-hero-01.jpg',
+    alt: 'Heritage-style GFRC/GRC façade with arches, cornices, and decorative screen panels',
+    status: 'Public Safe',
+  },
 ]

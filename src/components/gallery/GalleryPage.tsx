@@ -330,7 +330,13 @@ function GalleryLightbox({
             <span className="text-[9px] font-bold tracking-widest uppercase px-2 py-0.5 bg-accent/20 border border-accent/30 text-accent rounded-sm">
               {current.category}
             </span>
-            <span className="text-white/35 text-[10px]">{current.city}, KSA &middot; {current.year}</span>
+            {(current.city || current.year) && (
+              <span className="text-white/35 text-[10px]">
+                {[current.city ? `${current.city}, KSA` : null, current.year || null]
+                  .filter(Boolean)
+                  .join(' · ')}
+              </span>
+            )}
           </div>
           <p className="text-white/50 text-xs sm:text-sm leading-relaxed max-w-2xl">{current.description}</p>
         </div>
@@ -419,9 +425,13 @@ function GalleryCard({ image, onOpen }: { image: GalleryImage; onOpen: () => voi
         <h3 className="text-[#071B3B] dark:text-white font-semibold text-sm leading-snug">
           {image.title}
         </h3>
-        <p className="text-gray-400 dark:text-white/40 text-xs font-medium">
-          {image.city}, KSA &middot; {image.year}
-        </p>
+        {(image.city || image.year) && (
+          <p className="text-gray-400 dark:text-white/40 text-xs font-medium">
+            {[image.city ? `${image.city}, KSA` : null, image.year || null]
+              .filter(Boolean)
+              .join(' · ')}
+          </p>
+        )}
         <p className="text-gray-500 dark:text-white/55 text-xs leading-relaxed">
           {image.description}
         </p>
