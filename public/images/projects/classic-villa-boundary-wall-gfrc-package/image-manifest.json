@@ -1,0 +1,54 @@
+[
+  {
+    "order": 1,
+    "source_file": "IMG_20221025_100500.jpg",
+    "upload_path": "public/images/projects/classic-villa-boundary-wall-gfrc-package/01-hero/classic-villa-boundary-wall-gfrc-hero-01.jpg",
+    "public_url": "/images/projects/classic-villa-boundary-wall-gfrc-package/01-hero/classic-villa-boundary-wall-gfrc-hero-01.jpg",
+    "width": 2048,
+    "height": 1536,
+    "category": "01-hero",
+    "recommended_use": "Best hero candidate: full boundary wall and main gate view.",
+    "public_status": "Public candidate - review crop/privacy before publishing",
+    "alt_en": "Classic GFRC/GRC villa boundary wall with decorative entrance gate, arches, cornices and ornamental relief details.",
+    "alt_ar": "سور فيلا كلاسيكي من GFRC/GRC مع بوابة دخول زخرفية وأقواس وكرانيش وتفاصيل بارزة."
+  },
+  {
+    "order": 2,
+    "source_file": "IMG_20221025_100437.jpg",
+    "upload_path": "public/images/projects/classic-villa-boundary-wall-gfrc-package/02-entrance-gate/classic-villa-boundary-wall-entrance-gate-01.jpg",
+    "public_url": "/images/projects/classic-villa-boundary-wall-gfrc-package/02-entrance-gate/classic-villa-boundary-wall-entrance-gate-01.jpg",
+    "width": 2048,
+    "height": 1536,
+    "category": "02-entrance-gate",
+    "recommended_use": "Main entrance gate with patterned GFRC/GRC arch surround and decorative panels.",
+    "public_status": "Public candidate - review crop/privacy before publishing",
+    "alt_en": "Classic GFRC/GRC villa boundary wall with decorative entrance gate, arches, cornices and ornamental relief details.",
+    "alt_ar": "سور فيلا كلاسيكي من GFRC/GRC مع بوابة دخول زخرفية وأقواس وكرانيش وتفاصيل بارزة."
+  },
+  {
+    "order": 3,
+    "source_file": "IMG_20221025_100443.jpg",
+    "upload_path": "public/images/projects/classic-villa-boundary-wall-gfrc-package/03-boundary-wall-details/classic-villa-boundary-wall-detail-01.jpg",
+    "public_url": "/images/projects/classic-villa-boundary-wall-gfrc-package/03-boundary-wall-details/classic-villa-boundary-wall-detail-01.jpg",
+    "width": 2048,
+    "height": 1536,
+    "category": "03-boundary-wall-details",
+    "recommended_use": "Boundary wall elevation with repeated arches, pilasters and decorative caps.",
+    "public_status": "Public candidate - review crop/privacy before publishing",
+    "alt_en": "Classic GFRC/GRC villa boundary wall with decorative entrance gate, arches, cornices and ornamental relief details.",
+    "alt_ar": "سور فيلا كلاسيكي من GFRC/GRC مع بوابة دخول زخرفية وأقواس وكرانيش وتفاصيل بارزة."
+  },
+  {
+    "order": 4,
+    "source_file": "IMG_20220515_103618.jpg",
+    "upload_path": "public/images/projects/classic-villa-boundary-wall-gfrc-package/04-cornices-ornaments/classic-villa-cornice-ornament-detail-01.jpg",
+    "public_url": "/images/projects/classic-villa-boundary-wall-gfrc-package/04-cornices-ornaments/classic-villa-cornice-ornament-detail-01.jpg",
+    "width": 2048,
+    "height": 1536,
+    "category": "04-cornices-ornaments",
+    "recommended_use": "Close facade detail showing cornice band, arch motifs, finials and ornamental relief.",
+    "public_status": "Public candidate - review crop/privacy before publishing",
+    "alt_en": "Classic GFRC/GRC villa boundary wall with decorative entrance gate, arches, cornices and ornamental relief details.",
+    "alt_ar": "سور فيلا كلاسيكي من GFRC/GRC مع بوابة دخول زخرفية وأقواس وكرانيش وتفاصيل بارزة."
+  }
+]
