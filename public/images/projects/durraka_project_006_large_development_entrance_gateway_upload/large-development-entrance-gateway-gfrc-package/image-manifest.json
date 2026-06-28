@@ -1,0 +1,28 @@
+[
+  {
+    "order": 1,
+    "source_file": "Picture2.png",
+    "upload_path": "public/images/projects/large-development-entrance-gateway-gfrc-package/01-hero/large-development-entrance-gateway-gfrc-hero-01.png",
+    "public_url": "/images/projects/large-development-entrance-gateway-gfrc-package/01-hero/large-development-entrance-gateway-gfrc-hero-01.png",
+    "width": 1255,
+    "height": 894,
+    "category": "01-hero",
+    "recommended_use": "Best hero candidate; wide gateway composition, but public branding/flags are visible and require review/crop before public use.",
+    "public_status": "Needs editing / client branding visible",
+    "alt_en": "Large development entrance gateway with GFRC/GRC arches, domes, cornices and tower elements.",
+    "alt_ar": "بوابة مشروع تطوير كبيرة بعناصر GFRC/GRC تشمل أقواس وقباب وكرانيش وأبراج زخرفية."
+  },
+  {
+    "order": 2,
+    "source_file": "11 (6).jpg",
+    "upload_path": "public/images/projects/large-development-entrance-gateway-gfrc-package/02-gateway-overview/large-development-entrance-gateway-gfrc-overview-01.jpg",
+    "public_url": "/images/projects/large-development-entrance-gateway-gfrc-package/02-gateway-overview/large-development-entrance-gateway-gfrc-overview-01.jpg",
+    "width": 640,
+    "height": 427,
+    "category": "02-gateway-overview",
+    "recommended_use": "Secondary overview image; suitable after crop/enhancement due lower resolution.",
+    "public_status": "Needs editing / lower resolution",
+    "alt_en": "Wide view of a GFRC/GRC entrance gateway with domed towers and landscaped approach.",
+    "alt_ar": "منظر عام لبوابة دخول بعناصر GFRC/GRC مع أبراج بقباب ومسار خارجي."
+  }
+]
