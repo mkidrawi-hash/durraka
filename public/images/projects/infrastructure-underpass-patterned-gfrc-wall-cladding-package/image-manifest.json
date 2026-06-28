@@ -1,0 +1,54 @@
+[
+  {
+    "order": 1,
+    "source_file": "WhatsApp Image 2025-02-26 at 11.40.53 AM (1).jpeg",
+    "upload_path": "public/images/projects/infrastructure-underpass-patterned-gfrc-wall-cladding-package/01-hero/infrastructure-underpass-patterned-gfrc-wall-cladding-hero-01.jpg",
+    "public_url": "/images/projects/infrastructure-underpass-patterned-gfrc-wall-cladding-package/01-hero/infrastructure-underpass-patterned-gfrc-wall-cladding-hero-01.jpg",
+    "width": 1200,
+    "height": 1600,
+    "category": "01-hero",
+    "recommended_use": "Best hero candidate. Wide external view of patterned GFRC wall cladding with good scale and repetition.",
+    "public_status": "Public candidate after crop",
+    "alt_en": "Infrastructure GFRC/GRC patterned wall cladding with geometric relief panels.",
+    "alt_ar": "كسوة جدارية GFRC/GRC لمشروع بنية تحتية بنقوش هندسية بارزة."
+  },
+  {
+    "order": 2,
+    "source_file": "WhatsApp Image 2025-02-26 at 11.40.53 AM.jpeg",
+    "upload_path": "public/images/projects/infrastructure-underpass-patterned-gfrc-wall-cladding-package/02-wall-cladding-overview/infrastructure-underpass-patterned-gfrc-wall-cladding-overview-01.jpg",
+    "public_url": "/images/projects/infrastructure-underpass-patterned-gfrc-wall-cladding-package/02-wall-cladding-overview/infrastructure-underpass-patterned-gfrc-wall-cladding-overview-01.jpg",
+    "width": 1200,
+    "height": 1600,
+    "category": "02-wall-cladding-overview",
+    "recommended_use": "Wide perspective showing long GFRC patterned cladding wall and structural context.",
+    "public_status": "Public candidate after crop",
+    "alt_en": "Infrastructure GFRC/GRC patterned wall cladding with geometric relief panels.",
+    "alt_ar": "كسوة جدارية GFRC/GRC لمشروع بنية تحتية بنقوش هندسية بارزة."
+  },
+  {
+    "order": 3,
+    "source_file": "WhatsApp Image 2025-02-26 at 11.40.52 AM (3).jpeg",
+    "upload_path": "public/images/projects/infrastructure-underpass-patterned-gfrc-wall-cladding-package/03-pattern-detail/infrastructure-underpass-patterned-gfrc-wall-cladding-detail-01.jpg",
+    "public_url": "/images/projects/infrastructure-underpass-patterned-gfrc-wall-cladding-package/03-pattern-detail/infrastructure-underpass-patterned-gfrc-wall-cladding-detail-01.jpg",
+    "width": 720,
+    "height": 1280,
+    "category": "03-pattern-detail",
+    "recommended_use": "Close-up pattern/detail view. Includes warning sign and site objects, so use after crop if public.",
+    "public_status": "Needs crop / archive",
+    "alt_en": "Infrastructure GFRC/GRC patterned wall cladding with geometric relief panels.",
+    "alt_ar": "كسوة جدارية GFRC/GRC لمشروع بنية تحتية بنقوش هندسية بارزة."
+  },
+  {
+    "order": 4,
+    "source_file": "WhatsApp Image 2025-02-26 at 11.40.52 AM (1).jpeg",
+    "upload_path": "public/images/projects/infrastructure-underpass-patterned-gfrc-wall-cladding-package/04-site-context-needs-crop/infrastructure-underpass-patterned-gfrc-wall-cladding-site-context-01.jpg",
+    "public_url": "/images/projects/infrastructure-underpass-patterned-gfrc-wall-cladding-package/04-site-context-needs-crop/infrastructure-underpass-patterned-gfrc-wall-cladding-site-context-01.jpg",
+    "width": 720,
+    "height": 1280,
+    "category": "04-site-context-needs-crop",
+    "recommended_use": "Site context view under structure with ceiling/utilities; needs crop/cleanup for public use.",
+    "public_status": "Needs crop / archive",
+    "alt_en": "Infrastructure GFRC/GRC patterned wall cladding with geometric relief panels.",
+    "alt_ar": "كسوة جدارية GFRC/GRC لمشروع بنية تحتية بنقوش هندسية بارزة."
+  }
+]
