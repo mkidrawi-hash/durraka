@@ -27,7 +27,6 @@ export const GALLERY_FILTERS = [
   'Infrastructure',
   'Architectural Details',
   'Samples & Mockups',
-  'Civic Identity Elements',
 ] as const
 
 export type GalleryFilter = (typeof GALLERY_FILTERS)[number]
@@ -155,62 +154,6 @@ export const GALLERY_IMAGES: GalleryImage[] = [
       'GFRC/GRC facade cladding and architectural components at the courtyard elevation of a hospitality development in KAEC.',
     image: '/images/projects/kaec-2025-hospitality/kaec-2025-hospitality-courtyard-facade-001.jpg',
     alt: 'GFRC facade cladding components at a hospitality courtyard elevation, KAEC',
-    status: 'Public Safe',
-  },
-  {
-    id: 'kaec-2025-beachfront-overview-001',
-    title: 'Beachfront Facade Overview, KAEC',
-    city: 'KAEC',
-    year: '',
-    category: 'Hospitality',
-    packageType: 'Hospitality Package',
-    components: ['GFRC', 'Facade Scope', 'Beachfront'],
-    description:
-      'Overview of the beachfront facade scope for a resort-scale hospitality development in KAEC, showing the full extent of GFRC/GRC components.',
-    image: '/images/projects/kaec-2025-hospitality/kaec-2025-hospitality-beachfront-overview-001.jpg',
-    alt: 'Beachfront overview of a resort hospitality development with GFRC facade components, KAEC',
-    status: 'Public Safe',
-  },
-  {
-    id: 'kaec-2025-landscape-courtyard-001',
-    title: 'Landscape & Courtyard Elements, KAEC',
-    city: 'KAEC',
-    year: '',
-    category: 'Hospitality',
-    packageType: 'Hospitality Package',
-    components: ['GFRC', 'Courtyard', 'Landscape Integration'],
-    description:
-      'Exterior architectural components at the landscaped courtyard of a waterfront hospitality project in KAEC.',
-    image: '/images/projects/kaec-2025-hospitality/kaec-2025-hospitality-landscape-courtyard-001.jpg',
-    alt: 'Landscaped courtyard with architectural facade elements at a hospitality project, KAEC',
-    status: 'Public Safe',
-  },
-  {
-    id: 'kaec-2025-aerial-masterplan-001',
-    title: 'Resort Masterplan Overview, KAEC',
-    city: 'KAEC',
-    year: '',
-    category: 'Hospitality',
-    packageType: 'Hospitality Package',
-    components: ['GFRC', 'Resort Scope', 'Masterplan'],
-    description:
-      'Aerial masterplan view of a resort-scale hospitality development in KAEC, showing the full scope of architectural facade components supplied.',
-    image: '/images/projects/kaec-2025-hospitality/kaec-2025-hospitality-aerial-masterplan-001.jpg',
-    alt: 'Aerial masterplan view of a hospitality resort development with GFRC facade scope, KAEC',
-    status: 'Public Safe',
-  },
-  {
-    id: 'kaec-2025-aerial-waterfront-001',
-    title: 'Waterfront Aerial View, KAEC',
-    city: 'KAEC',
-    year: '',
-    category: 'Hospitality',
-    packageType: 'Hospitality Package',
-    components: ['GFRC', 'Waterfront', 'Facade Scope'],
-    description:
-      'Aerial waterfront view of a hospitality development in KAEC, showing the scale of the integrated GFRC/GRC facade scope across the site.',
-    image: '/images/projects/kaec-2025-hospitality/kaec-2025-hospitality-aerial-waterfront-001.jpg',
-    alt: 'Aerial waterfront view of a resort hospitality development with GFRC facade components, KAEC',
     status: 'Public Safe',
   },
 
@@ -573,50 +516,6 @@ export const GALLERY_IMAGES: GalleryImage[] = [
       'GFRC/GRC patterned cladding panels applied to a tunnel or underpass structure, providing a decorative architectural surface treatment.',
     image: '/images/projects/grand-arcade-facade-complex/tunnel-pattern-cladding-001.jpg',
     alt: 'GFRC patterned cladding panels on a tunnel or underpass structure',
-    status: 'Public Safe',
-  },
-
-  // Civic Identity Elements
-  {
-    id: 'civic-identity-calligraphy-column-001',
-    title: 'Decorative Calligraphic Column',
-    city: 'Saudi Arabia',
-    year: 'Various',
-    category: 'Civic Identity Elements',
-    packageType: 'Civic & Landmark Package',
-    components: ['GFRC', 'Column', 'Calligraphy', 'Architectural Detail'],
-    description:
-      'GFRC/GRC column element featuring calligraphic decorative surface treatment for a civic or landmark project.',
-    image: '/images/projects/grand-arcade-facade-complex/civic-identity-calligraphy-column-001.jpg',
-    alt: 'GFRC decorative column with calligraphic surface treatment for a civic project',
-    status: 'Public Safe',
-  },
-  {
-    id: 'civic-identity-logo-panel-001',
-    title: 'Decorative Architectural Panel',
-    city: 'Saudi Arabia',
-    year: 'Various',
-    category: 'Civic Identity Elements',
-    packageType: 'Civic & Landmark Package',
-    components: ['GFRC', 'Decorative Panel', 'Architectural Detail'],
-    description:
-      'Custom GFRC/GRC decorative architectural panel for a civic or landmark project.',
-    image: '/images/projects/grand-arcade-facade-complex/civic-identity-logo-panel-001.jpg',
-    alt: 'Custom GFRC decorative architectural panel for a civic landmark project',
-    status: 'Public Safe',
-  },
-  {
-    id: 'civic-identity-logo-panel-002',
-    title: 'Decorative Architectural Feature',
-    city: 'Saudi Arabia',
-    year: 'Various',
-    category: 'Civic Identity Elements',
-    packageType: 'Civic & Landmark Package',
-    components: ['GFRC', 'Decorative Panel', 'Architectural Detail'],
-    description:
-      'GFRC/GRC decorative architectural feature element for a civic or institutional project.',
-    image: '/images/projects/grand-arcade-facade-complex/civic-identity-logo-panel-002.jpg',
-    alt: 'GFRC decorative architectural feature for a civic or institutional project',
     status: 'Public Safe',
   },
 
