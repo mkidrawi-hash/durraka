@@ -1,0 +1,56 @@
+{
+  "projectSlug": "private-villa-classic-gfrc-package",
+  "displayName": "Private Villa Classic GFRC Package",
+  "arabicDisplayName": "باقة فيلا كلاسيكية من GFRC",
+  "year": "2023",
+  "city": "Not specified",
+  "status": "Under Execution / Construction-stage imagery",
+  "confidentiality": "Needs Editing before public use",
+  "mainScope": [
+    "GFRC/GRC facade cladding",
+    "Arched window and entrance surrounds",
+    "Columns and capitals",
+    "Cornices and roofline profiles",
+    "Balustrades / railings",
+    "Decorative patterned panels"
+  ],
+  "websiteCategories": [
+    "Project Gallery",
+    "GRC Architectural Packages",
+    "Columns & Capitals",
+    "Cornices & Profiles",
+    "Custom Decorative Elements"
+  ],
+  "images": [
+    {
+      "path": "01-hero/private-villa-classic-gfrc-hero-01.jpg",
+      "role": "hero",
+      "publicUse": "Needs crop/editing",
+      "alt": "Classic private villa GFRC facade with arched windows, balcony rail, columns, and exterior decorative elements"
+    },
+    {
+      "path": "02-facade-overview/private-villa-classic-gfrc-facade-overview-01.jpg",
+      "role": "facade overview",
+      "publicUse": "Needs crop/editing",
+      "alt": "GFRC villa facade overview showing balcony balustrade, arched openings, cornices, and facade cladding"
+    },
+    {
+      "path": "03-entrance-arches/private-villa-classic-gfrc-entrance-arch-01.jpg",
+      "role": "entrance arches",
+      "publicUse": "Archive / secondary only unless cleaned",
+      "alt": "Large GFRC entrance arch with columns, cornices, and patterned decorative panels under construction"
+    },
+    {
+      "path": "04-columns-cornices/private-villa-classic-gfrc-column-cornice-detail-01.jpg",
+      "role": "detail",
+      "publicUse": "Useful detail image after crop/editing",
+      "alt": "GFRC columns, cornices, capitals, arched window surround, and balcony decorative details"
+    }
+  ],
+  "notesForClaude": [
+    "Do not expose exact location or client identity.",
+    "Do not describe as completed unless approved by owner; treat as construction-stage imagery.",
+    "Use captions focused on GFRC/GRC scope and architectural components only.",
+    "Avoid claiming structural or installation details not visible in images."
+  ]
+}
