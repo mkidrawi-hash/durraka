@@ -1,0 +1,80 @@
+[
+  {
+    "order": 1,
+    "source_file": "Picture76.png",
+    "upload_path": "public/images/projects/commercial-gfrc-facade-cladding-package/01-hero/commercial-gfrc-facade-cladding-hero-01.png",
+    "public_url": "/images/projects/commercial-gfrc-facade-cladding-package/01-hero/commercial-gfrc-facade-cladding-hero-01.png",
+    "width": 920,
+    "height": 689,
+    "category": "01-hero",
+    "recommended_use": "Hero candidate. Clear completed facade view showing GFRC/GRC vertical cladding fins and glass facade.",
+    "public_status": "Public candidate - review/crop before publishing",
+    "alt_en": "Commercial GFRC/GRC facade cladding with vertical architectural panels and glass elevation.",
+    "alt_ar": "واجهة تجارية من GFRC/GRC بألواح رأسية مع واجهة زجاجية حديثة."
+  },
+  {
+    "order": 2,
+    "source_file": "Picture75.png",
+    "upload_path": "public/images/projects/commercial-gfrc-facade-cladding-package/02-design-render/commercial-gfrc-facade-cladding-design-render-01.png",
+    "public_url": "/images/projects/commercial-gfrc-facade-cladding-package/02-design-render/commercial-gfrc-facade-cladding-design-render-01.png",
+    "width": 803,
+    "height": 602,
+    "category": "02-design-render",
+    "recommended_use": "Design/render reference showing intended commercial facade composition and vertical GFRC/GRC cladding elements.",
+    "public_status": "Public candidate - review/crop before publishing",
+    "alt_en": "Commercial GFRC/GRC facade cladding with vertical architectural panels and glass elevation.",
+    "alt_ar": "واجهة تجارية من GFRC/GRC بألواح رأسية مع واجهة زجاجية حديثة."
+  },
+  {
+    "order": 3,
+    "source_file": "Picture77.png",
+    "upload_path": "public/images/projects/commercial-gfrc-facade-cladding-package/03-facade-overview/commercial-gfrc-facade-cladding-overview-01.png",
+    "public_url": "/images/projects/commercial-gfrc-facade-cladding-package/03-facade-overview/commercial-gfrc-facade-cladding-overview-01.png",
+    "width": 928,
+    "height": 695,
+    "category": "03-facade-overview",
+    "recommended_use": "Side perspective overview showing completed commercial GFRC/GRC facade cladding and massing.",
+    "public_status": "Public candidate - review/crop before publishing",
+    "alt_en": "Commercial GFRC/GRC facade cladding with vertical architectural panels and glass elevation.",
+    "alt_ar": "واجهة تجارية من GFRC/GRC بألواح رأسية مع واجهة زجاجية حديثة."
+  },
+  {
+    "order": 4,
+    "source_file": "Picture75.png",
+    "upload_path": "public/images/projects/commercial-gfrc-facade-cladding-package/99-archive-originals/Picture75.png",
+    "public_url": "/images/projects/commercial-gfrc-facade-cladding-package/99-archive-originals/Picture75.png",
+    "width": 803,
+    "height": 602,
+    "category": "99-archive-originals",
+    "recommended_use": "Archive original only. Do not use directly on public page unless reviewed.",
+    "public_status": "Archive / internal reference",
+    "alt_en": "Original uploaded commercial GFRC/GRC facade reference image.",
+    "alt_ar": "صورة أصلية مرجعية لواجهة تجارية من GFRC/GRC."
+  },
+  {
+    "order": 5,
+    "source_file": "Picture76.png",
+    "upload_path": "public/images/projects/commercial-gfrc-facade-cladding-package/99-archive-originals/Picture76.png",
+    "public_url": "/images/projects/commercial-gfrc-facade-cladding-package/99-archive-originals/Picture76.png",
+    "width": 920,
+    "height": 689,
+    "category": "99-archive-originals",
+    "recommended_use": "Archive original only. Do not use directly on public page unless reviewed.",
+    "public_status": "Archive / internal reference",
+    "alt_en": "Original uploaded commercial GFRC/GRC facade reference image.",
+    "alt_ar": "صورة أصلية مرجعية لواجهة تجارية من GFRC/GRC."
+  },
+  {
+    "order": 6,
+    "source_file": "Picture77.png",
+    "upload_path": "public/images/projects/commercial-gfrc-facade-cladding-package/99-archive-originals/Picture77.png",
+    "public_url": "/images/projects/commercial-gfrc-facade-cladding-package/99-archive-originals/Picture77.png",
+    "width": 928,
+    "height": 695,
+    "category": "99-archive-originals",
+    "recommended_use": "Archive original only. Do not use directly on public page unless reviewed.",
+    "public_status": "Archive / internal reference",
+    "alt_en": "Original uploaded commercial GFRC/GRC facade reference image.",
+    "alt_ar": "صورة أصلية مرجعية لواجهة تجارية من GFRC/GRC."
+  }
+]
