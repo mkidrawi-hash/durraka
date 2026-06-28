@@ -1,0 +1,92 @@
+{
+  "slug": "commercial-hospitality-tower-gfrc-facade-package",
+  "title": "Commercial Hospitality Tower | GFRC/GRC Facade Cladding Package",
+  "title_ar": "برج فندقي/تجاري | باقة كسوة واجهات GFRC/GRC",
+  "location": "Saudi Arabia",
+  "projectType": "Commercial / Hospitality Architecture",
+  "suggestedCategories": [
+    "Facade Cladding",
+    "Commercial Projects",
+    "Hospitality",
+    "Project Gallery"
+  ],
+  "publicStatus": "Needs review before public publishing",
+  "featuredImage": "01-hero/commercial-hospitality-tower-gfrc-facade-hero-01.jpeg",
+  "notes": [
+    "Contains design/reference images and site/completed views. Label design references clearly if used.",
+    "Some images show surrounding buildings, street context, cars, crane, or site elements. Review/crop before final public use.",
+    "Do not mention client, hotel brand, or exact location unless approved."
+  ],
+  "images": [
+    {
+      "order": 1,
+      "source_file": "WhatsApp Image 2025-02-26 at 11.20.38 AM (1).jpeg",
+      "path": "01-hero/commercial-hospitality-tower-gfrc-facade-hero-01.jpeg",
+      "upload_path": "public/images/projects/commercial-hospitality-tower-gfrc-facade-package/01-hero/commercial-hospitality-tower-gfrc-facade-hero-01.jpeg",
+      "public_url": "/images/projects/commercial-hospitality-tower-gfrc-facade-package/01-hero/commercial-hospitality-tower-gfrc-facade-hero-01.jpeg",
+      "width": 1200,
+      "height": 1600,
+      "category": "hero",
+      "recommended_use": "Best hero candidate. Tall completed/site view showing full façade frame, arches, and GFRC/GRC cladding composition.",
+      "public_status": "Hero candidate - review/crop before publishing",
+      "alt": "Commercial hospitality tower façade with GFRC/GRC architectural cladding and arched podium details",
+      "alt_ar": "واجهة برج فندقي/تجاري مع عناصر كسوة معمارية من GFRC/GRC"
+    },
+    {
+      "order": 2,
+      "source_file": "WhatsApp Image 2025-02-26 at 11.20.38 AM.jpeg",
+      "path": "02-building-overview/commercial-hospitality-tower-gfrc-facade-overview-01.jpeg",
+      "upload_path": "public/images/projects/commercial-hospitality-tower-gfrc-facade-package/02-building-overview/commercial-hospitality-tower-gfrc-facade-overview-01.jpeg",
+      "public_url": "/images/projects/commercial-hospitality-tower-gfrc-facade-package/02-building-overview/commercial-hospitality-tower-gfrc-facade-overview-01.jpeg",
+      "width": 1200,
+      "height": 1600,
+      "category": "overview",
+      "recommended_use": "Wide street view showing project context and full tower massing.",
+      "public_status": "Needs review / crop before publishing",
+      "alt": "Wide exterior view of commercial hospitality tower with GFRC/GRC façade cladding",
+      "alt_ar": "واجهة برج فندقي/تجاري مع عناصر كسوة معمارية من GFRC/GRC"
+    },
+    {
+      "order": 3,
+      "source_file": "WhatsApp Image 2025-02-26 at 11.20.38 AM (2).jpeg",
+      "path": "02-building-overview/commercial-hospitality-tower-gfrc-facade-overview-02.jpeg",
+      "upload_path": "public/images/projects/commercial-hospitality-tower-gfrc-facade-package/02-building-overview/commercial-hospitality-tower-gfrc-facade-overview-02.jpeg",
+      "public_url": "/images/projects/commercial-hospitality-tower-gfrc-facade-package/02-building-overview/commercial-hospitality-tower-gfrc-facade-overview-02.jpeg",
+      "width": 1200,
+      "height": 1600,
+      "category": "overview",
+      "recommended_use": "Secondary angle showing façade, adjacent buildings, and project setting.",
+      "public_status": "Needs review / crop before publishing",
+      "alt": "Angled exterior view of commercial hospitality tower façade with GFRC/GRC cladding",
+      "alt_ar": "واجهة برج فندقي/تجاري مع عناصر كسوة معمارية من GFRC/GRC"
+    },
+    {
+      "order": 4,
+      "source_file": "vlcsnap-2024-11-06-09h57m48s756.png",
+      "path": "03-design-reference/commercial-hospitality-tower-gfrc-facade-design-reference-01.png",
+      "upload_path": "public/images/projects/commercial-hospitality-tower-gfrc-facade-package/03-design-reference/commercial-hospitality-tower-gfrc-facade-design-reference-01.png",
+      "public_url": "/images/projects/commercial-hospitality-tower-gfrc-facade-package/03-design-reference/commercial-hospitality-tower-gfrc-facade-design-reference-01.png",
+      "width": 262,
+      "height": 343,
+      "category": "design-reference",
+      "recommended_use": "Low-resolution design/render reference. Keep as archive or design context; label clearly if used.",
+      "public_status": "Needs review / crop before publishing",
+      "alt": "Design reference for commercial GFRC/GRC façade cladding package",
+      "alt_ar": "واجهة برج فندقي/تجاري مع عناصر كسوة معمارية من GFRC/GRC"
+    },
+    {
+      "order": 5,
+      "source_file": "vlcsnap-2024-11-06-09h58m06s524.png",
+      "path": "03-design-reference/commercial-hospitality-tower-gfrc-facade-design-reference-02.png",
+      "upload_path": "public/images/projects/commercial-hospitality-tower-gfrc-facade-package/03-design-reference/commercial-hospitality-tower-gfrc-facade-design-reference-02.png",
+      "public_url": "/images/projects/commercial-hospitality-tower-gfrc-facade-package/03-design-reference/commercial-hospitality-tower-gfrc-facade-design-reference-02.png",
+      "width": 170,
+      "height": 198,
+      "category": "design-reference",
+      "recommended_use": "Low-resolution design/reference image. Use only as supporting archive.",
+      "public_status": "Needs review / crop before publishing",
+      "alt": "Design reference elevation for commercial hospitality tower façade package",
+      "alt_ar": "واجهة برج فندقي/تجاري مع عناصر كسوة معمارية من GFRC/GRC"
+    }
+  ]
+}
