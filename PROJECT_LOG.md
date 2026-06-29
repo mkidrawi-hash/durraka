@@ -275,3 +275,40 @@ Pushed to `feat/project-infographic-boards`. Ready for visual review and merge.
 2. Test modal: open, close, ESC, tab switching, scroll
 3. Merge PR #20 after approval
 4. Consider applying same premium modal system to project detail pages
+
+---
+
+## Session — Social-Media-Center Image Audit (documentation-only)
+
+**Branch:** `main` (no code/data changes) · **No PR opened.**
+**Audit date:** 2026-06-29
+
+Documentation-only image review, classification, sanitization planning, and gallery
+project-grouping plan using the Social Media Command Center logic.
+
+- **Folders scanned:** `public/images/**` (projects, packages, infographics, logos),
+  repo-root stray images, and `private/held-gallery-review/**`.
+- **Total images reviewed:** 183
+- **Public-safe images:** 70
+- **Sanitizable images:** 28
+- **Needs manual review:** 28
+- **Rejected / internal-only:** 0 rejected + 50 internal-only (archive originals)
+- **HELD_FOR_REVIEW (excluded):** 7 (unchanged from Phase 2)
+- **Project groups found:** 22 folders (12 project packages, 3 legacy sets, 4 design-asset
+  groups, 2 held groups, 1 repo-root stray group)
+- **Rixos status:** **Not present in current repo / pending upload** — no rixos / rixsos /
+  ريكسوس match anywhere. No Rixos collection created; documented in GALLERY_GROUPING_PLAN.md.
+
+**Confirmations:**
+- ✅ No original images were modified, moved, overwritten, or deleted.
+- ✅ No sanitized derivative images were produced (image-editing tooling unavailable).
+- ✅ Public gallery data (`src/data/galleryImages.ts`) was NOT changed.
+- ✅ HELD_FOR_REVIEW images remain excluded from public use.
+
+**Files created:** `private/social-media-asset-review/` →
+IMAGE_AUDIT_MANIFEST.md, IMAGE_AUDIT_MANIFEST.csv, GALLERY_GROUPING_PLAN.md,
+GALLERY_GROUPING_PLAN.csv, SANITIZATION_PLAN.md, SANITIZED_OUTPUTS.md,
+NEEDS_MANUAL_REVIEW.md, REJECTED_FOR_PUBLIC_USE.md.
+
+**Next step:** provide image-editing tooling (sharp / ImageMagick / cwebp / exiftool) to
+produce sanitized derivatives, and upload Rixos images to a dedicated package folder.
