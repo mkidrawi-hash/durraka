@@ -312,3 +312,38 @@ NEEDS_MANUAL_REVIEW.md, REJECTED_FOR_PUBLIC_USE.md.
 
 **Next step:** provide image-editing tooling (sharp / ImageMagick / cwebp / exiftool) to
 produce sanitized derivatives, and upload Rixos images to a dedicated package folder.
+
+---
+
+## Session — Phase 1 Systems Alignment Patch
+
+**Branch:** `feat/phase-1-systems-alignment` · **No PR opened** (per instruction).
+
+Small alignment patch for the Systems section only (no Phase 2, no redesign).
+
+- **Canonical slug:** façade page moved to `/systems/gfrc-grc-facade-cladding`;
+  old `/systems/facade-cladding` now **308-redirects** (next.config `redirects()`).
+  `SYSTEMS` entries gained a `slug`; the systems list links via `slug`.
+- **Feature badges row:** added optional `featureBadges?: string[]` to
+  `SystemEnhancedData`; new distinct navy badge row renders below the hero.
+  Façade page: Architectural Freedom · Durable · Lightweight · Weather Resistant.
+- **Nav label:** "Components" → "Systems" (route stays `/systems`).
+- **Content organization:** façade page copy moved to
+  `src/content/en/systems/gfrc-grc-facade-cladding.ts` (pattern for future
+  `content/ar` — no Arabic added, other systems left inline as-is).
+- **Finish tiles:** no fake/AI textures introduced; existing SVG swatches kept;
+  heading "Real Texture & Finish Options" → "Finish Options & Directions" +
+  TODO comment that dedicated finish-texture photos are pending approval.
+
+**Deferred to Phase 2 (not implemented):** "Request Engineer Guidance" CTA,
+guidance forms/flows, coming-soon placeholder cards.
+
+**Checks:** tsc clean · lint clean · build ✓ (route generated) · runtime:
+`/systems` 200, `/systems/gfrc-grc-facade-cladding` 200, old slug 308→canonical,
+badges render, nav shows "Systems". No unsafe/confidential media introduced.
+
+**Files changed:** src/lib/constants.ts, src/app/systems/page.tsx,
+next.config.mjs, src/components/systems/SystemEnhancedLayout.tsx,
+src/content/en/systems/gfrc-grc-facade-cladding.ts (new),
+src/app/systems/gfrc-grc-facade-cladding/page.tsx (new),
+src/app/systems/facade-cladding/page.tsx (removed).

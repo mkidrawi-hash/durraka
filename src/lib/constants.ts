@@ -1,7 +1,7 @@
 export const NAV_LINKS = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
-  { label: 'Components', href: '/systems' },
+  { label: 'Systems', href: '/systems' },
   { label: 'Packages', href: '/packages' },
   { label: 'Project Gallery', href: '/gallery' },
   { label: 'Catalog', href: '/catalog' },
@@ -38,6 +38,9 @@ export const METRICS = [
 export const SYSTEMS = [
   {
     id: 'facade-cladding',
+    // Canonical detail-page slug. `id` is kept for the React key / backward
+    // compatibility; the old /systems/facade-cladding route 308-redirects here.
+    slug: 'gfrc-grc-facade-cladding',
     title: 'Façade Cladding Components',
     description:
       'High-performance GFRC/GRC façade panels engineered for modern, heritage, and project-specific architectural elevations.',
@@ -47,6 +50,7 @@ export const SYSTEMS = [
   },
   {
     id: 'mashrabiya',
+    slug: 'mashrabiya',
     title: 'Mashrabiya & Screen Components',
     description:
       'Intricate perforated screens combining traditional Islamic geometry with contemporary manufacturing precision.',
@@ -56,6 +60,7 @@ export const SYSTEMS = [
   },
   {
     id: 'domes',
+    slug: 'domes',
     title: 'Domes & Vaulted Components',
     description:
       'Architectural dome and vaulted elements crafted for landmark entrances, mosques, hospitality, and heritage-inspired projects.',
@@ -65,6 +70,7 @@ export const SYSTEMS = [
   },
   {
     id: 'cornices',
+    slug: 'cornices',
     title: 'Cornices, Profiles & Mouldings',
     description:
       'Decorative cornices, mouldings, and architectural profiles produced to match project drawings and façade details.',
@@ -74,6 +80,7 @@ export const SYSTEMS = [
   },
   {
     id: 'columns',
+    slug: 'columns',
     title: 'Columns, Capitals & Pilasters',
     description:
       'Classical and contemporary column components including shafts, capitals, bases, and pilasters.',
@@ -83,6 +90,7 @@ export const SYSTEMS = [
   },
   {
     id: 'custom',
+    slug: 'custom',
     title: 'Bespoke Decorative Components',
     description:
       'Custom GFRC/GRC architectural ornamentation developed for project-specific design requirements.',

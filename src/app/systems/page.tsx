@@ -47,7 +47,7 @@ export default function SystemsPage() {
               return (
                 <Link
                   key={system.id}
-                  href={`/systems/${system.id}`}
+                  href={`/systems/${system.slug}`}
                   className="group flex flex-col bg-white/[0.04] border border-white/[0.08] rounded-sm hover:border-accent/40 hover:bg-white/[0.07] transition-all duration-300 overflow-hidden"
                 >
                   {imgSrc && (
