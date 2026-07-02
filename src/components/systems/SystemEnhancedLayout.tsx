@@ -14,6 +14,8 @@ export type SystemEnhancedData = {
   heroImage: string
   heroImageAlt: string
   heroObjectPosition?: string
+  /** Optional distinct feature-badge row shown below the hero (reusable across systems). */
+  featureBadges?: string[]
   photoTags: PhotoTag[]
   quickRead: { text: string }[]
   systemIntent: string
@@ -175,6 +177,25 @@ export function SystemEnhancedLayout({
         </div>
       </div>
 
+      {/* ── FEATURE BADGES ROW ───────────────────────────────────────────────── */}
+      {data.featureBadges && data.featureBadges.length > 0 && (
+        <div className="bg-navy border-t border-white/[0.06] px-4 sm:px-6 py-5 sm:py-6">
+          <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
+            {data.featureBadges.map((badge) => (
+              <span
+                key={badge}
+                className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-4 py-2 text-white text-xs sm:text-sm font-semibold"
+              >
+                <svg className="w-3.5 h-3.5 text-accent flex-shrink-0" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
+                  <path d="M4 10.5l3.5 3.5L16 5.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                {badge}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* ── SYSTEM GUIDANCE OVERVIEW ─────────────────────────────────────────── */}
       <div className="bg-white border-t border-navy/[0.08] px-4 sm:px-6 py-14 sm:py-20">
         <div className="max-w-7xl mx-auto">
@@ -244,9 +265,14 @@ export function SystemEnhancedLayout({
       </div>
 
       {/* ── FINISH OPTIONS ───────────────────────────────────────────────────── */}
+      {/* NOTE: swatches below are CSS/SVG-generated representations of finish
+          DIRECTIONS (via <FinishSwatch/>), not photographs. Heading intentionally
+          avoids claiming "real texture" imagery.
+          TODO: dedicated real finish-texture photos are pending approval — wire
+          them in here only once approved public-safe assets are provided. */}
       <div className="bg-[#F8F9FA] border-t border-navy/[0.08] px-4 sm:px-6 py-14 sm:py-20">
         <div className="max-w-7xl mx-auto">
-          <SectionLabel eyebrow="Material Finishes" title="Real Texture & Finish Options" />
+          <SectionLabel eyebrow="Material Finishes" title="Finish Options & Directions" />
           <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
             {finishes.map((f) => (
               <div key={f.type} className="group">
