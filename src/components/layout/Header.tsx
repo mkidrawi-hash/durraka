@@ -5,6 +5,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { NAV_LINKS } from '@/lib/constants'
+import { localizeHref } from '@/lib/useLocale'
+import { commonContent } from '@/content/en/common'
+import { commonAr } from '@/content/ar/common'
 
 // The EN/AR language switcher is LIVE in all environments (owner decision).
 // `showLangToggle = previewMode || ARABIC_ENABLED`; with ARABIC_ENABLED = true it
@@ -46,6 +49,19 @@ export default function Header({ previewMode = false }: { previewMode?: boolean 
   // Never 404 from the toggle: link to the /ar equivalent only when it exists,
   // otherwise fall back to /ar (Arabic preview landing).
   const arHref = isArabic ? pathname : TRANSLATED_AR_ROUTES.has(enPath) ? `/ar${enPath}` : '/ar'
+
+  // Localized nav labels + CTA. Hrefs are /ar-prefixed on the Arabic subtree.
+  const locale = isArabic ? 'ar' : 'en'
+  const t = isArabic ? commonAr : commonContent
+  const navLabel: Record<string, string> = {
+    '/': t.nav.home,
+    '/about': t.nav.about,
+    '/systems': t.nav.systems,
+    '/packages': t.nav.packages,
+    '/gallery': t.nav.gallery,
+    '/catalog': t.nav.catalog,
+    '/contact': t.nav.contact,
+  }
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10)
@@ -101,19 +117,21 @@ export default function Header({ previewMode = false }: { previewMode?: boolean 
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-1">
-            {NAV_LINKS.map((link) => (
+            {NAV_LINKS.map((link) => {
+              const href = localizeHref(link.href, locale)
+              return (
               <Link
                 key={link.href}
-                href={link.href}
+                href={href}
                 className={`px-4 py-2 text-sm font-medium rounded-sm transition-all duration-200 ${
-                  pathname === link.href
+                  pathname === href
                     ? 'text-accent border-b-2 border-accent'
                     : 'text-navy/70 hover:text-navy hover:bg-navy/5'
                 }`}
               >
-                {link.label}
+                {navLabel[link.href]}
               </Link>
-            ))}
+            )})}
             {/* Desktop Language Switcher */}
             {showLangToggle && (
               <div className="hidden lg:flex items-center gap-2 ml-3">
@@ -126,10 +144,10 @@ export default function Header({ previewMode = false }: { previewMode?: boolean 
               </div>
             )}
             <Link
-              href="/request-quotation"
+              href={localizeHref('/request-quotation', locale)}
               className="ml-4 px-5 py-2.5 bg-accent text-white text-sm font-semibold rounded-sm hover:bg-accent-dark transition-colors"
             >
-              Request a Quotation
+              {t.cta.requestQuotation}
             </Link>
           </nav>
 
@@ -164,24 +182,26 @@ export default function Header({ previewMode = false }: { previewMode?: boolean 
       {mobileOpen && (
         <div className="lg:hidden bg-white border-t border-navy/10">
           <div className="px-4 py-4 flex flex-col gap-1">
-            {NAV_LINKS.map((link) => (
+            {NAV_LINKS.map((link) => {
+              const href = localizeHref(link.href, locale)
+              return (
               <Link
                 key={link.href}
-                href={link.href}
+                href={href}
                 className={`px-4 py-3 text-sm font-medium rounded-sm transition-colors ${
-                  pathname === link.href
+                  pathname === href
                     ? 'text-accent bg-accent/5'
                     : 'text-navy/70 hover:text-navy hover:bg-navy/5'
                 }`}
               >
-                {link.label}
+                {navLabel[link.href]}
               </Link>
-            ))}
+            )})}
             <Link
-              href="/request-quotation"
+              href={localizeHref('/request-quotation', locale)}
               className="mt-2 px-4 py-3 bg-accent text-white text-sm font-semibold rounded-sm text-center hover:bg-accent-dark transition-colors"
             >
-              Request a Quotation
+              {t.cta.requestQuotation}
             </Link>
             {/* Mobile dropdown language switcher */}
             {showLangToggle && (
