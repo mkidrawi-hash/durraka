@@ -612,3 +612,25 @@ reference the real project name — none are rendered or served on a page.
 **Verification:** grep of the served build (`.next` excluding `cache`) → **0** occurrences
 of the full mosque name and **0** gallery ", KSA"/"· Various" captions. typecheck ✓ ·
 lint ✓ · build ✓.
+
+---
+
+## Session — Navigation & terminology cleanup (Packages / Systems / Projects)
+
+**Branch:** `fix/nav-terminology` · one PR. Naming/links + one redirect only — no
+layout, flow, or API changes.
+
+- **Package detail pages (shared `PremiumPackageLayout`, all 6 packages):** hero anchor
+  button "View Components" → **"What's Included"** (anchor `#components` + existing
+  down-chevron unchanged → reads "What's Included ↓"); section heading "GFRC/GRC
+  Components" → **"What's Included in This Package"** (subheading + eyebrow unchanged).
+- **Homepage terminology:** Hero "View Components" → **"Explore Our Systems"** (→ /systems);
+  Capabilities "View All Components" → **"View All Systems"** (→ /systems); Packages
+  "View All Packages" link **/projects → /packages** (label unchanged).
+- **Legacy `/projects` retired (option a):** it mixed abstracted project claims with
+  concept imagery and duplicated `/gallery`, and was already out of the main nav/footer.
+  Added **301 redirects** `/projects → /gallery` and `/projects/:slug → /gallery` in
+  `next.config.mjs`. The old page/subpage files remain in the tree but are shadowed by the
+  redirects (safe to delete in a later cleanup).
+
+**Checks:** typecheck ✓ · lint ✓ · build ✓.

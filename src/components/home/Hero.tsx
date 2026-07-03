@@ -49,7 +49,7 @@ export default function Hero() {
               href="/systems"
               className="min-h-[56px] flex items-center justify-center px-8 py-3.5 border border-white/50 text-white font-semibold rounded-sm hover:bg-white/10 transition-colors text-base"
             >
-              View Components
+              Explore Our Systems
             </Link>
           </div>
         </div>
