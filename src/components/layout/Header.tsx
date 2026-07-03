@@ -22,6 +22,7 @@ const ARABIC_ENABLED = true
 const TRANSLATED_AR_ROUTES = new Set<string>([
   '/about',
   '/systems/gfrc-grc-facade-cladding',
+  '/systems/gfrc-grc-facade-cladding/engineer-guidance',
 ])
 
 function PreviewBadge({ className = '' }: { className?: string }) {
