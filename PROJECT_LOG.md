@@ -387,3 +387,28 @@ Completed the GFRC/GRC façade cladding detail page per master prompt 1B, on
 
 Note: the 404 the reviewer saw was because this branch was not merged to `main`.
 This is now ready as one PR for review/merge.
+
+### Deployment wiring check (2026-07-03)
+Investigated whether `mkidrawi-hash/durraka` reaches a live Vercel project.
+
+**Finding: (b) — the repo IS connected, to a project named `durraka`** (NOT the
+old `v0-durraka-factory-website`).
+- Vercel project: **durraka** · id `prj_K2Vqk0SjmiYEXL36AeExCpbbqzxL` ·
+  team `durraka-factory-for-industry`.
+- Evidence: Vercel bot preview comments on both PRs, status **Ready**:
+  - PR #29 inspector: vercel.com/durraka-factory-for-industry/durraka/ECcG5VwdanEf9ov9vEpw9msE8qx4
+  - PR #30 inspector: vercel.com/durraka-factory-for-industry/durraka/Aw2Px7hVEfP5bqBz2KkEWK64k4wx
+  - PR #30 preview: https://durraka-git-feat-phase-1-sy-948371-durraka-factory-for-industry.vercel.app
+- Why the earlier "no deployments since June 11": that was the OLD project
+  `v0-durraka-factory-website` (linked to the old repo). The current repo
+  deploys to the NEWER `durraka` project, which the earlier list_projects view
+  did not surface.
+- Repo has no `.vercel/`, no `vercel.json`, no GitHub Actions → deploys purely
+  via Vercel's dashboard Git integration (which is active for the `durraka` project).
+
+**Open item (domain):** confirm the custom domain (durraka.com) is attached to
+the `durraka` project, not the old `v0-durraka-factory-website`. The old project
+can be archived once confirmed.
+
+**Merge convention:** recent merges show `<title> (#NN)` on a single commit →
+**squash merge** is the repo convention.
