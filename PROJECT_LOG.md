@@ -582,3 +582,33 @@ var or tab. Enable Web Analytics in the Vercel project if not already on.
 
 **Checks:** typecheck ✓ · lint ✓ · build ✓. Lead-loss hardening, scoring, and controlled
 distribution untouched.
+
+---
+
+## Session — Gallery polish: filters, captions, titles, naming
+
+**Branch:** `fix/gallery-polish` · one PR. Display/copy only — no request flows, APIs,
+Sheets, lightbox behavior, or publish gate touched.
+
+- **Empty filters hidden:** `FilterBar` now renders `All` plus only categories with ≥ 1
+  published item (computed from the live counts), so Hospitality/Cornices (0 items) no
+  longer show and future categories appear automatically once they have content.
+- **Caption location cleanup:** added `formatLocation()` in `GalleryPage` — known city →
+  "City, Saudi Arabia", generic/empty city → "Saudi Arabia"; the placeholder year
+  "Various" is dropped. Eliminates the redundant "Saudi Arabia, KSA · Various" pattern.
+  No city invented.
+- **Duplicate titles distinguished + mosque anonymized:** the 3 identical mosque cards now
+  read "Landmark Mosque – Al Aziziyah, Makkah — {Exterior Elevation | Minaret Detail |
+  Dome & Ornament Detail}" (suffixes derived from each card's existing alt text); alt texts
+  anonymized to match. The real project name is removed from all rendered/served output.
+- **Page-title de-duplication:** stripped the baked-in brand tail from 27 per-page metadata
+  titles so the root `template: '%s | Durraka Factory'` adds the brand exactly once
+  ("<Page> | Durraka Factory"). Home keeps the root default.
+
+**Internal identifiers retained (per guardrail):** the source-folder name, the folder's
+`image-manifest.json` / `README.md` / `project-info.md`, and one source code comment still
+reference the real project name — none are rendered or served on a page.
+
+**Verification:** grep of the served build (`.next` excluding `cache`) → **0** occurrences
+of the full mosque name and **0** gallery ", KSA"/"· Various" captions. typecheck ✓ ·
+lint ✓ · build ✓.

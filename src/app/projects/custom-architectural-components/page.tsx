@@ -7,7 +7,7 @@ import { INFOGRAPHIC_CARDS, GUIDANCE_LIBRARY } from '@/lib/package-content'
 const PKG = getPackageBySlug('custom-architectural-components')
 
 export const metadata: Metadata = {
-  title: 'Custom Architectural Components — GRC/GFRC Package | Durraka',
+  title: 'Custom Architectural Components — GRC/GFRC Package',
   description: PKG?.shortDescription ?? '',
 }
 

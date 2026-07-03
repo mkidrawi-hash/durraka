@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { SystemEnhancedLayout, type SystemEnhancedData } from '@/components/systems/SystemEnhancedLayout'
 
 export const metadata: Metadata = {
-  title: 'Custom Decorative Elements System — GFRC/GRC Ornamental Architecture | Durraka',
+  title: 'Custom Decorative Elements System — GFRC/GRC Ornamental Architecture',
   description:
     'Project-specific GFRC/GRC decorative elements for entrances, façades, frames, arches, panels, and architectural features. Custom motifs and heritage-inspired ornamental manufacturing.',
 }

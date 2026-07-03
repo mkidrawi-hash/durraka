@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { SystemEnhancedLayout, type SystemEnhancedData } from '@/components/systems/SystemEnhancedLayout'
 
 export const metadata: Metadata = {
-  title: 'Mashrabiya Screens System — GFRC/GRC Patterned Screens | Durraka',
+  title: 'Mashrabiya Screens System — GFRC/GRC Patterned Screens',
   description:
     'GFRC/GRC patterned mashrabiya screens designed for privacy, shading, identity, and architectural façade expression. Modern and heritage-inspired pattern design. Manufactured in Saudi Arabia.',
 }

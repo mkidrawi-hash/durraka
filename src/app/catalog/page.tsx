@@ -4,7 +4,7 @@ import PublicCatalogDownload from '@/components/catalog/PublicCatalogDownload'
 import DetailedCatalogRequestForm from '@/components/catalog/DetailedCatalogRequestForm'
 
 export const metadata: Metadata = {
-  title: 'Product Catalog | Durraka Factory for Industry',
+  title: 'Product Catalog',
   description:
     'Download the Durraka Factory overview catalog for GFRC/GRC architectural systems — façade cladding, mashrabiya screens, domes, cornices, columns, and bespoke decorative elements.',
 }

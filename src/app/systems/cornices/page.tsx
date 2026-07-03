@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { SystemEnhancedLayout, type SystemEnhancedData } from '@/components/systems/SystemEnhancedLayout'
 
 export const metadata: Metadata = {
-  title: 'Cornices & Profiles System — GFRC/GRC Architectural Profiles | Durraka',
+  title: 'Cornices & Profiles System — GFRC/GRC Architectural Profiles',
   description:
     'GFRC/GRC cornices, bands, sill profiles, parapets, and façade lines for refined architectural definition. Heritage and contemporary profile manufacturing in Saudi Arabia.',
 }

@@ -7,7 +7,7 @@ import { INFOGRAPHIC_CARDS, GUIDANCE_LIBRARY } from '@/lib/package-content'
 const PKG = getPackageBySlug('complete-facade-package')
 
 export const metadata: Metadata = {
-  title: 'Complete Facade Package — GRC/GFRC Architectural Scope | Durraka',
+  title: 'Complete Facade Package — GRC/GFRC Architectural Scope',
   description:
     'Integrated GRC/GFRC scope covering cladding panels, columns, cornices, domes, mashrabiya screens, and custom architectural details across the full building facade.',
 }

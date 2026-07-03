@@ -7,7 +7,7 @@ import { INFOGRAPHIC_CARDS, GUIDANCE_LIBRARY } from '@/lib/package-content'
 const PKG = getPackageBySlug('heritage-regional-architecture')
 
 export const metadata: Metadata = {
-  title: 'Heritage & Regional Architecture — GRC/GFRC Package | Durraka',
+  title: 'Heritage & Regional Architecture — GRC/GFRC Package',
   description: PKG?.shortDescription ?? '',
 }
 

@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 export const metadata: Metadata = {
-  title: 'GFRC/GRC Architectural Packages | Durraka Factory',
+  title: 'GFRC/GRC Architectural Packages',
   description:
     'Explore AI concept references for Durraka Factory\'s GFRC/GRC architectural packages, including façade cladding, mashrabiya screens, domes, cornices, grand entrances, columns, capitals, and bespoke decorative elements.',
 }
