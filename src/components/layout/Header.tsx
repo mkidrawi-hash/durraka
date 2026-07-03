@@ -22,6 +22,8 @@ const ARABIC_ENABLED = true
 const TRANSLATED_AR_ROUTES = new Set<string>([
   '/about',
   '/contact',
+  '/privacy-policy',
+  '/terms-and-conditions',
   '/request-quotation',
   '/packages',
   '/packages/commercial-facade-package',
