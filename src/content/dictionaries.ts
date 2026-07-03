@@ -7,6 +7,7 @@ import type { Locale } from '@/lib/i18n'
 
 import { commonContent } from './en/common'
 import { aboutContent } from './en/about'
+import { contactContent } from './en/contact'
 import { homeContent } from './en/home'
 import { systemLayoutContent } from './en/systems-layout'
 import { rfqContent } from './en/rfq'
@@ -16,6 +17,7 @@ import { packagesContent } from './en/packages'
 
 import { commonAr } from './ar/common'
 import { aboutContentAr } from './ar/about'
+import { contactContentAr } from './ar/contact'
 import { homeContentAr } from './ar/home'
 import { systemLayoutContentAr } from './ar/systems-layout'
 import { rfqContentAr } from './ar/rfq'
@@ -28,6 +30,7 @@ const dictionaries = {
     common: commonContent,
     home: homeContent,
     about: aboutContent,
+    contact: contactContent,
     rfq: rfqContent,
     engineerGuidance: engineerGuidanceContent,
     systemLayout: systemLayoutContent,
@@ -38,6 +41,7 @@ const dictionaries = {
     common: commonAr,
     home: homeContentAr,
     about: aboutContentAr,
+    contact: contactContentAr,
     rfq: rfqContentAr,
     engineerGuidance: engineerGuidanceContentAr,
     systemLayout: systemLayoutContentAr,
