@@ -1,13 +1,13 @@
 import type { Metadata } from 'next'
 import { GalleryPage } from '@/components/gallery/GalleryPage'
 import { GALLERY_IMAGES } from '@/data/galleryImages'
+import { galleryContent } from '@/content/en/gallery'
 
 export const metadata: Metadata = {
-  title: 'Project Gallery',
-  description:
-    'Explore selected GRC / GFRC architectural works, facade components, textures, and project-based visual references.',
+  title: galleryContent.metaTitle,
+  description: galleryContent.metaDescription,
 }
 
 export default function GalleryRoute() {
-  return <GalleryPage images={GALLERY_IMAGES} />
+  return <GalleryPage images={GALLERY_IMAGES} locale="en" />
 }

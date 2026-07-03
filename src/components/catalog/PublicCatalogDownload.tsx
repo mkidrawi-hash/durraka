@@ -2,13 +2,19 @@
 
 import { useState } from 'react'
 import { trackEvent } from '@/lib/analytics'
+import { localizeHref, type Locale } from '@/lib/i18n'
+import { Ltr } from '@/components/i18n/Ltr'
+import { catalogContent } from '@/content/en/catalog'
+import { catalogContentAr } from '@/content/ar/catalog'
 
 interface Props {
+  // `catalogName`/`catalogType` are the canonical English identifiers stored to
+  // the download log / analytics — kept English on every locale (see i18n rule).
   catalogName: string
   catalogType: string
   downloadUrl: string
   pageSource: string
-  fileSizeLabel?: string
+  locale?: Locale
 }
 
 type Status = 'idle' | 'logging' | 'ready' | 'unavailable'
@@ -18,8 +24,9 @@ export default function PublicCatalogDownload({
   catalogType,
   downloadUrl,
   pageSource,
-  fileSizeLabel = 'PDF',
+  locale = 'en',
 }: Props) {
+  const t = (locale === 'ar' ? catalogContentAr : catalogContent).download
   const [status, setStatus] = useState<Status>('idle')
 
   async function handleDownload() {
@@ -80,7 +87,7 @@ export default function PublicCatalogDownload({
             <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
             </svg>
-            Download Overview Catalog
+            {t.button.idle}
           </>
         )}
         {status === 'logging' && (
@@ -89,7 +96,7 @@ export default function PublicCatalogDownload({
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
             </svg>
-            Preparing…
+            {t.button.preparing}
           </>
         )}
         {status === 'ready' && (
@@ -97,7 +104,7 @@ export default function PublicCatalogDownload({
             <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
             </svg>
-            Download Started
+            {t.button.started}
           </>
         )}
         {status === 'unavailable' && (
@@ -105,20 +112,21 @@ export default function PublicCatalogDownload({
             <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            Catalog Being Prepared
+            {t.button.unavailable}
           </>
         )}
       </button>
 
       {status === 'idle' && (
         <span className="text-gray-400 text-xs">
-          {fileSizeLabel} &middot; Free &middot; No registration required
+          <Ltr>{t.fileSizeLabel}</Ltr> &middot; {t.freeNoReg}
         </span>
       )}
       {status === 'unavailable' && (
         <span className="text-gray-500 text-xs">
-          The catalog file is not yet uploaded.{' '}
-          <a href="/contact" className="text-accent hover:underline">Contact us</a> for a copy.
+          {t.unavailablePre}
+          <a href={localizeHref('/contact', locale)} className="text-accent hover:underline">{t.unavailableLink}</a>
+          {t.unavailablePost}
         </span>
       )}
     </div>
