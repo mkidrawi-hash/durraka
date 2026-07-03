@@ -23,6 +23,12 @@ const TRANSLATED_AR_ROUTES = new Set<string>([
   '/about',
   '/contact',
   '/request-quotation',
+  '/systems',
+  '/systems/columns',
+  '/systems/cornices',
+  '/systems/custom',
+  '/systems/domes',
+  '/systems/mashrabiya',
   '/systems/gfrc-grc-facade-cladding',
   '/systems/gfrc-grc-facade-cladding/engineer-guidance',
 ])

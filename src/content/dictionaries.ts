@@ -9,6 +9,7 @@ import { commonContent } from './en/common'
 import { aboutContent } from './en/about'
 import { contactContent } from './en/contact'
 import { homeContent } from './en/home'
+import { systemsIndexContent } from './en/systems-index'
 import { systemLayoutContent } from './en/systems-layout'
 import { rfqContent } from './en/rfq'
 import { engineerGuidanceContent } from './en/systems/engineer-guidance'
@@ -19,6 +20,7 @@ import { commonAr } from './ar/common'
 import { aboutContentAr } from './ar/about'
 import { contactContentAr } from './ar/contact'
 import { homeContentAr } from './ar/home'
+import { systemsIndexContentAr } from './ar/systems-index'
 import { systemLayoutContentAr } from './ar/systems-layout'
 import { rfqContentAr } from './ar/rfq'
 import { engineerGuidanceContentAr } from './ar/systems/engineer-guidance'
@@ -34,6 +36,7 @@ const dictionaries = {
     rfq: rfqContent,
     engineerGuidance: engineerGuidanceContent,
     systemLayout: systemLayoutContent,
+    systemsIndex: systemsIndexContent,
     facadeCladding: facadeCladdingContent,
     packages: packagesContent,
   },
@@ -45,6 +48,7 @@ const dictionaries = {
     rfq: rfqContentAr,
     engineerGuidance: engineerGuidanceContentAr,
     systemLayout: systemLayoutContentAr,
+    systemsIndex: systemsIndexContentAr,
     facadeCladding: facadeCladdingContentAr,
     packages: packagesContentAr,
   },
