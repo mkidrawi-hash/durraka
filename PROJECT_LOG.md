@@ -347,3 +347,21 @@ next.config.mjs, src/components/systems/SystemEnhancedLayout.tsx,
 src/content/en/systems/gfrc-grc-facade-cladding.ts (new),
 src/app/systems/gfrc-grc-facade-cladding/page.tsx (new),
 src/app/systems/facade-cladding/page.tsx (removed).
+
+### Phase 1 completion note
+Reviewed and verified on `feat/phase-1-systems-alignment`:
+- Nav "Systems" (desktop + mobile via shared NAV_LINKS) · list links via `slug`
+  · façade card → `/systems/gfrc-grc-facade-cladding`.
+- Canonical page renders and imports copy from
+  `src/content/en/systems/gfrc-grc-facade-cladding.ts`.
+- Old `/systems/facade-cladding` → 308 permanent redirect (next.config).
+- `featureBadges?: string[]` typed + reusable; distinct badge row below hero,
+  separate from the hero photo callouts; optional field does not break the other
+  five system pages.
+- Added missing `typecheck` script (`tsc --noEmit`).
+- No stale English `/systems/facade-cladding` route remains (only the redirect
+  source). No sitemap/robots file exists, so no stale canonical reference.
+- lint ✓ · typecheck ✓ · build ✓.
+
+Known TODO (not Phase 1): `/ar/systems/facade-cladding` Arabic mirror still uses
+the old slug — align when Arabic content work begins (Phase 2+).
