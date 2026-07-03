@@ -116,9 +116,14 @@ function GalleryLightbox({
   const next = useCallback(() => goTo(index === total - 1 ? 0 : index + 1), [goTo, index, total])
 
   useEffect(() => {
+    // Lock body scroll while open, and return focus to the trigger on close.
     const was = document.body.style.overflow
+    const trigger = document.activeElement as HTMLElement | null
     document.body.style.overflow = 'hidden'
-    return () => { document.body.style.overflow = was }
+    return () => {
+      document.body.style.overflow = was
+      trigger?.focus?.()
+    }
   }, [])
 
   useEffect(() => {
@@ -489,7 +494,7 @@ export function GalleryPage({ images }: { images: GalleryImage[] }) {
 
   // Only render public-safe entries that have a real uploaded image
   const safeImages = useMemo(
-    () => images.filter((img) => img.status === 'Public Safe' && img.image !== null),
+    () => images.filter((img) => img.status === 'Public Safe' && img.approvedForWeb && img.image !== null),
     [images],
   )
 

@@ -519,3 +519,31 @@ request-only (no auto-download, no public file URL).
 `CATALOG_B2B_URL` is no longer used (safe to remove).
 
 **Checks:** typecheck ✓ · lint ✓ · build ✓. RFQ / engineer-guidance / Phase 1 untouched.
+
+---
+
+## Session — Phase 4B: Projects gallery (dual publish gate + hardened lightbox)
+
+**Branch:** `feat/phase-4b-gallery` · one PR. Extended the existing `/gallery`
+(no duplicate `/projects` gallery).
+
+- **Second publish gate — `approvedForWeb`:** added `approvedForWeb: boolean` to the
+  `GalleryImage` interface and set it on all 54 entries. An image now renders only
+  when `status === 'Public Safe'` **AND** `approvedForWeb === true` **AND**
+  `image !== null`. `status` still encodes confidentiality (Public Safe / Needs
+  Editing / Internal Only / NDA Protected); `approvedForWeb` is the explicit
+  owner sign-off toggle so a Public-Safe asset can be held back until cleared.
+- **Lightbox focus-return:** the mount/unmount effect now captures the triggering
+  element and restores focus to it on close (alongside the existing scroll-lock).
+  Already present and verified: ESC + arrow keys, zoom keys, `role="dialog"` +
+  `aria-modal`, backdrop-click + close button, `next/image` lazy-loading, and the
+  system filter chips.
+
+**Manual action (owner):** none — no new Sheet tab or env var. To publish a held
+image, flip its `approvedForWeb` to `true` (and confirm `status: 'Public Safe'`).
+
+**Confidentiality:** no fixing/installation, structural, pricing, or lead-scoring
+detail is exposed publicly; no public file links added beyond already-approved assets.
+
+**Checks:** typecheck ✓ · lint ✓ · build ✓ (`/gallery` compiles). RFQ /
+engineer-guidance / catalog / Phase 1 untouched.

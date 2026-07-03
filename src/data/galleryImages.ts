@@ -54,6 +54,11 @@ export interface GalleryImage {
   image: string | null
   alt: string
   status: GalleryImageStatus
+  // Second publish gate. An image renders only when status === 'Public Safe'
+  // AND approvedForWeb === true. `status` encodes confidentiality
+  // (Public Safe = public; others = internal/NDA); approvedForWeb is the
+  // explicit per-image sign-off that it is cleared for the website.
+  approvedForWeb: boolean
 }
 
 export const GALLERY_IMAGES: GalleryImage[] = [
@@ -71,6 +76,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: '/images/projects/kaec-2025-hospitality/kaec-2025-hospitality-grand-entrance-001.jpg',
     alt: 'GFRC grand entrance facade elements for a hospitality project, KAEC',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
   {
     id: 'kaec-2025-arrival-plaza-001',
@@ -85,6 +91,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: '/images/projects/kaec-2025-hospitality/kaec-2025-hospitality-arrival-plaza-001.jpg',
     alt: 'Architectural facade components at the arrival plaza of a hospitality project, KAEC',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
   {
     id: 'kaec-2025-facade-mashrabiya-001',
@@ -99,6 +106,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: '/images/projects/kaec-2025-hospitality/kaec-2025-hospitality-facade-mashrabiya-001.jpg',
     alt: 'GFRC mashrabiya facade screens on a hospitality building, KAEC',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
   {
     id: 'kaec-2025-facade-screens-002',
@@ -113,6 +121,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: '/images/projects/kaec-2025-hospitality/kaec-2025-hospitality-facade-screens-002.jpg',
     alt: 'GFRC architectural facade screen components on a hospitality building, KAEC',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
   {
     id: 'kaec-2025-mashrabiya-facade-003',
@@ -127,6 +136,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: '/images/projects/kaec-2025-hospitality/kaec-2025-hospitality-mashrabiya-facade-003.jpg',
     alt: 'GFRC mashrabiya facade detail on a hospitality project, KAEC',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
   {
     id: 'kaec-2025-facade-arches-screens-004',
@@ -141,6 +151,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: '/images/projects/kaec-2025-hospitality/kaec-2025-hospitality-facade-arches-screens-004.jpg',
     alt: 'GFRC facade arches and screen elements on a hospitality project, KAEC',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
   {
     id: 'kaec-2025-courtyard-facade-001',
@@ -155,6 +166,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: '/images/projects/kaec-2025-hospitality/kaec-2025-hospitality-courtyard-facade-001.jpg',
     alt: 'GFRC facade cladding components at a hospitality courtyard elevation, KAEC',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
 
   // ── Makkah · 2023 ────────────────────────────────────────────────────────────
@@ -171,6 +183,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: '/images/projects/makkah-2023-mosque/makkah-2023-mosque-domes-001.jpg',
     alt: 'GRC dome elements on a mosque facade, Makkah',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
   {
     id: 'makkah-2023-mashrabiya-001',
@@ -185,6 +198,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: '/images/projects/makkah-2023-mosque/makkah-2023-mosque-mashrabiya-001.jpg',
     alt: 'GFRC mashrabiya screens with geometric lattice pattern, Makkah',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
   {
     id: 'makkah-2023-columns-001',
@@ -199,6 +213,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: '/images/projects/makkah-2023-mosque/makkah-2023-mosque-arches-columns-capitals-001.jpg',
     alt: 'GRC arched columns and decorative capitals on a mosque, Makkah',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
   {
     id: 'makkah-2023-columns-002',
@@ -213,6 +228,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: '/images/projects/makkah-2023-mosque/makkah-2023-mosque-arches-columns-capitals-002.jpg',
     alt: 'GRC column arcade with arched bays on a mosque facade, Makkah',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
   {
     id: 'makkah-2023-decorative-001',
@@ -227,6 +243,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: '/images/projects/makkah-2023-mosque/makkah-2023-mosque-decorative-elements-001.jpg',
     alt: 'GRC decorative facade elements on a mosque, Makkah',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
   {
     id: 'makkah-2023-decorative-002',
@@ -241,6 +258,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: '/images/projects/makkah-2023-mosque/makkah-2023-mosque-decorative-elements-002.jpg',
     alt: 'GRC ornamental facade detailing on a mosque, Makkah',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
 
   // ── Placeholder entries (image: null — excluded from gallery render) ─────────
@@ -259,6 +277,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: null,
     alt: 'GRC classical cornice with dentil molding and string course',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
   {
     id: 'grand-entrance-makkah-2024',
@@ -273,6 +292,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: null,
     alt: 'GRC hospitality grand entrance with arch and pilasters',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
   {
     id: 'facade-cladding-jeddah-2023',
@@ -287,6 +307,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: null,
     alt: 'GFRC residential facade cladding with reveal lines',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
   {
     id: 'dome-riyadh-2023',
@@ -301,6 +322,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: null,
     alt: 'GRC heritage dome with ribbed profile',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
   {
     id: 'mashrabiya-medina-2024',
@@ -315,6 +337,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: null,
     alt: 'GFRC full-height arched mashrabiya screens',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
   {
     id: 'columns-makkah-2023',
@@ -329,6 +352,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: null,
     alt: 'GRC monumental landmark columns with classical capitals',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
 
   // ── Mixed Project Archive · Batch 01 & 02 · Saudi Arabia ─────────────────────
@@ -347,6 +371,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: '/images/projects/grand-arcade-facade-complex/grand-arcade-facade-overall-view-001.jpg',
     alt: 'Overall view of a grand arcade facade with GFRC cladding and arched bays',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
   {
     id: 'grand-arcade-facade-overall-view-002',
@@ -361,6 +386,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: '/images/projects/grand-arcade-facade-complex/grand-arcade-facade-overall-view-002.jpg',
     alt: 'Second view of a grand arcade facade with GFRC architectural components',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
   {
     id: 'grand-arcade-facade-wide-view-001',
@@ -375,6 +401,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: '/images/projects/grand-arcade-facade-complex/grand-arcade-facade-wide-view-001.jpg',
     alt: 'Wide view of a grand arcade GFRC facade with repeated arch rhythm',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
   {
     id: 'grand-arcade-facade-street-view-001',
@@ -389,6 +416,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: '/images/projects/grand-arcade-facade-complex/grand-arcade-facade-street-view-001.jpg',
     alt: 'Street-level view of a grand arcade facade with GFRC cladding',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
   {
     id: 'grand-arcade-facade-side-perspective-001',
@@ -403,6 +431,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: '/images/projects/grand-arcade-facade-complex/grand-arcade-facade-side-perspective-001.jpg',
     alt: 'Side perspective of a grand arcade facade showing GFRC cornice and cladding depth',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
   {
     id: 'grand-arcade-facade-main-block-001',
@@ -417,6 +446,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: '/images/projects/grand-arcade-facade-complex/grand-arcade-facade-main-block-001.jpg',
     alt: 'Main block elevation of an arcade facade with integrated GFRC cladding panels',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
   {
     id: 'grand-arcade-facade-institutional-view-001',
@@ -431,6 +461,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: '/images/projects/grand-arcade-facade-complex/grand-arcade-facade-institutional-view-001.jpg',
     alt: 'Institutional elevation of an arcade facade complex with GFRC cladding',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
   {
     id: 'grand-arcade-facade-colonnade-view-001',
@@ -445,6 +476,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: '/images/projects/grand-arcade-facade-complex/grand-arcade-facade-colonnade-view-001.jpg',
     alt: 'Arcade colonnade facade with GFRC columns and arched bays',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
   {
     id: 'grand-arcade-facade-arch-detail-001',
@@ -459,6 +491,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: '/images/projects/grand-arcade-facade-complex/grand-arcade-facade-arch-detail-001.jpg',
     alt: 'Close-up detail of a GFRC arcade facade arch with decorative moulding profiles',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
 
   // Bridge Infrastructure Cladding
@@ -475,6 +508,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: '/images/projects/grand-arcade-facade-complex/bridge-infrastructure-cladding-overall-view-001.jpg',
     alt: 'Overall view of GFRC infrastructure cladding on a bridge structure',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
   {
     id: 'bridge-infrastructure-cladding-long-view-001',
@@ -489,6 +523,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: '/images/projects/grand-arcade-facade-complex/bridge-infrastructure-cladding-long-view-001.jpg',
     alt: 'Longitudinal view of GFRC infrastructure cladding panels on a bridge',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
   {
     id: 'bridge-infrastructure-cladding-support-detail-001',
@@ -503,6 +538,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: '/images/projects/grand-arcade-facade-complex/bridge-infrastructure-cladding-support-detail-001.jpg',
     alt: 'Detail view of GFRC infrastructure cladding at a structural support point',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
   {
     id: 'tunnel-pattern-cladding-001',
@@ -517,6 +553,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: '/images/projects/grand-arcade-facade-complex/tunnel-pattern-cladding-001.jpg',
     alt: 'GFRC patterned cladding panels on a tunnel or underpass structure',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
 
   // Mashrabiya Entry Screens
@@ -533,6 +570,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: '/images/projects/grand-arcade-facade-complex/mashrabiya-entry-screen-doorway-001.jpg',
     alt: 'GFRC mashrabiya entry screen framing a doorway opening',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
   {
     id: 'mashrabiya-entry-screen-doorway-002',
@@ -547,6 +585,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: '/images/projects/grand-arcade-facade-complex/mashrabiya-entry-screen-doorway-002.jpg',
     alt: 'Second view of a GFRC mashrabiya entry screen panel with full geometry',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
 
   // Religious Facility Architectural Details
@@ -563,6 +602,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: '/images/projects/grand-arcade-facade-complex/mosque-architectural-details-main-entrance-001.jpg',
     alt: 'Main entrance facade of a religious facility with GFRC arched elements and decorative detailing',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
   {
     id: 'mosque-architectural-details-dome-interior-001',
@@ -577,6 +617,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: '/images/projects/grand-arcade-facade-complex/mosque-architectural-details-dome-interior-001.jpg',
     alt: 'Interior dome architectural detail with GFRC decorative geometric finish',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
   {
     id: 'mosque-architectural-details-lattice-window-001',
@@ -591,6 +632,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: '/images/projects/grand-arcade-facade-complex/mosque-architectural-details-lattice-window-001.jpg',
     alt: 'GFRC lattice window screen with traditional geometric pattern on a religious facility',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
   {
     id: 'mosque-architectural-details-screen-windows-001',
@@ -605,6 +647,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: '/images/projects/grand-arcade-facade-complex/mosque-architectural-details-screen-windows-001.jpg',
     alt: 'Row of GFRC screen window panels with geometric lattice pattern',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
   {
     id: 'mosque-architectural-details-minaret-001',
@@ -619,6 +662,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: '/images/projects/grand-arcade-facade-complex/mosque-architectural-details-minaret-001.jpg',
     alt: 'GFRC architectural detail of a minaret with decorative surface banding',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
 
   // Urban High-Rise Tower
@@ -635,6 +679,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: '/images/projects/grand-arcade-facade-complex/urban-high-rise-tower-full-height-view-001.jpg',
     alt: 'Full-height view of an urban high-rise tower with GFRC facade cladding',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
   {
     id: 'urban-high-rise-tower-corner-view-001',
@@ -649,6 +694,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: '/images/projects/grand-arcade-facade-complex/urban-high-rise-tower-corner-view-001.jpg',
     alt: 'Corner view of a high-rise tower with GFRC cladding and reveal lines',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
   {
     id: 'urban-high-rise-tower-corner-view-002',
@@ -663,6 +709,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: '/images/projects/grand-arcade-facade-complex/urban-high-rise-tower-corner-view-002.jpg',
     alt: 'Second corner view of a high-rise tower with GFRC facade cladding system',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
   {
     id: 'urban-high-rise-tower-street-view-001',
@@ -677,6 +724,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: '/images/projects/grand-arcade-facade-complex/urban-high-rise-tower-street-view-001.jpg',
     alt: 'Street-level view of a high-rise tower showing GFRC cladding and podium facade',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
 
   // Architectural Samples & Mockups
@@ -693,6 +741,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: '/images/projects/grand-arcade-facade-complex/architectural-sample-arched-screen-panel-001.jpg',
     alt: 'GFRC sample arched screen panel showing screen geometry and surface finish',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
   {
     id: 'architectural-sample-balustrade-001',
@@ -707,6 +756,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: '/images/projects/grand-arcade-facade-complex/architectural-sample-balustrade-001.jpg',
     alt: 'GFRC balustrade sample showing profile and baluster detail',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
   {
     id: 'architectural-sample-frame-panel-001',
@@ -721,6 +771,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: '/images/projects/grand-arcade-facade-complex/architectural-sample-frame-panel-001.jpg',
     alt: 'GFRC frame panel sample showing moulded frame detail and surface finish',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
 
   // ── Sheikh Hamad bin Abdullah bin Jassim Al Thani Mosque · Al Aziziyah, Makkah ──
@@ -738,6 +789,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
       '/images/projects/sheikh-hamad-al-thani-mosque-makkah-gfrc-package/01-hero/sheikh-hamad-al-thani-mosque-makkah-hero-01.jpg',
     alt: 'Sheikh Hamad bin Abdullah bin Jassim Al Thani Mosque in Al Aziziyah, Makkah, with ornate GFRC domes and minarets',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
   {
     id: 'sheikh-hamad-al-thani-mosque-makkah-minaret-detail-001',
@@ -753,6 +805,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
       '/images/projects/sheikh-hamad-al-thani-mosque-makkah-gfrc-package/03-minaret-details/sheikh-hamad-al-thani-mosque-makkah-minaret-detail-01.jpg',
     alt: 'Ornate GFRC minaret detail at Sheikh Hamad bin Abdullah bin Jassim Al Thani Mosque, Al Aziziyah, Makkah',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
   {
     id: 'sheikh-hamad-al-thani-mosque-makkah-dome-detail-001',
@@ -768,6 +821,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
       '/images/projects/sheikh-hamad-al-thani-mosque-makkah-gfrc-package/04-dome-details/sheikh-hamad-al-thani-mosque-makkah-dome-detail-01.jpg',
     alt: 'Decorative GFRC dome detail at Sheikh Hamad bin Abdullah bin Jassim Al Thani Mosque, Al Aziziyah, Makkah',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
 
   // ── Mosque Domes & Minaret · GFRC/GRC ──────────────────────────────────────────
@@ -785,6 +839,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
       '/images/projects/mosque-domes-minaret-gfrc-package/01-hero/mosque-domes-minaret-gfrc-hero-01.jpeg',
     alt: 'GFRC/GRC mosque with decorative domes and a detailed minaret',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
   {
     id: 'mosque-domes-minaret-gfrc-dome-detail-001',
@@ -800,6 +855,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
       '/images/projects/mosque-domes-minaret-gfrc-package/02-dome-detail/mosque-gfrc-decorative-dome-detail-01.jpg',
     alt: 'Decorative GFRC mosque dome with ornamental relief detailing',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
   {
     id: 'mosque-domes-minaret-gfrc-minaret-facade-001',
@@ -815,6 +871,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
       '/images/projects/mosque-domes-minaret-gfrc-package/03-minaret-facade/mosque-gfrc-minaret-facade-view-01.jpeg',
     alt: 'GFRC/GRC mosque minaret façade with decorative detailing',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
   {
     id: 'mosque-domes-minaret-gfrc-facade-overview-001',
@@ -830,6 +887,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
       '/images/projects/mosque-domes-minaret-gfrc-package/03-facade-overview/mosque-gfrc-facade-overview-01.jpeg',
     alt: 'GFRC/GRC mosque façade with cladding and decorative cornices',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
 
   // ── Heritage GFRC/GRC Façade ───────────────────────────────────────────────────
@@ -846,5 +904,6 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     image: '/images/projects/heritage-gfrc-facade-package/01-hero/heritage-gfrc-facade-hero-01.jpg',
     alt: 'Heritage-style GFRC/GRC façade with arches, cornices, and decorative screen panels',
     status: 'Public Safe',
+    approvedForWeb: true,
   },
 ]
