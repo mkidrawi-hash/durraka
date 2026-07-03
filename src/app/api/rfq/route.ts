@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 import { google } from 'googleapis'
+import { scoreLead, type LeadScoreResult } from '@/lib/leadScoring'
 
 export interface RFQPayload {
   fullName: string
@@ -14,6 +15,10 @@ export interface RFQPayload {
   projectType?: string
   estimatedArea?: string
   deliveryDate?: string
+  // Phase 3 conditional qualification fields (by project type)
+  scaleBand?: string
+  consultantAppointed?: string
+  targetStart?: string
   systemRequired: string
   notes?: string
   attachments?: Array<{ name: string; size: number; type: string; slot: string }>
@@ -171,6 +176,7 @@ async function appendToSheets(
   p: RFQPayload,
   ref: string,
   timestamp: string,
+  score: LeadScoreResult,
 ): Promise<void> {
   const clientEmail = process.env.GOOGLE_SHEETS_CLIENT_EMAIL
   const privateKey = (process.env.GOOGLE_SHEETS_PRIVATE_KEY ?? '').replace(/\\n/g, '\n')
@@ -193,11 +199,12 @@ async function appendToSheets(
 
   await sheets.spreadsheets.values.append({
     spreadsheetId,
-    range: `${tabName}!A:R`,
+    range: `${tabName}!A:Z`,
     valueInputOption: 'USER_ENTERED',
     requestBody: {
       values: [
         [
+          // A–R (existing order — unchanged)
           timestamp,
           ref,
           p.fullName,
@@ -216,6 +223,15 @@ async function appendToSheets(
           attachmentNames,
           p.largeFileLink ?? '',
           'Durraka Website',
+          // S–Z (Phase 3 — appended; internal qualification + scoring)
+          p.consultantAppointed ?? '',
+          p.scaleBand ?? '',
+          p.targetStart ?? '',
+          String(score.score),
+          score.tier,
+          score.segment,
+          score.routing,
+          score.followUpPriority,
         ],
       ],
     },
@@ -224,6 +240,23 @@ async function appendToSheets(
 
 // ── CRM / database hook (extend here to integrate a CRM or database) ──────────
 // async function saveToCRM(p: RFQPayload, ref: string): Promise<void> { ... }
+
+// Send the RFQ notification email. Rejects (throws) if unconfigured or on send
+// failure, so the caller can treat it as a sink that either succeeds or fails.
+async function sendRfqEmail(p: RFQPayload, ref: string, timestamp: string): Promise<void> {
+  const apiKey = process.env.EMAIL_SERVICE_API_KEY
+  if (!apiKey) throw new Error('EMAIL_SERVICE_API_KEY not configured')
+  const resend = new Resend(apiKey)
+  const recipient = process.env.RFQ_TO_EMAIL ?? 'info@durraka.com'
+  const fromEmail = process.env.RFQ_FROM_EMAIL ?? 'Durraka RFQ <no-reply@durraka.com>'
+  const { error } = await resend.emails.send({
+    from: fromEmail,
+    to: [recipient],
+    subject: `New RFQ — ${p.projectName} — ${ref}`,
+    html: buildEmailHTML(p, ref, timestamp),
+  })
+  if (error) throw new Error(typeof error === 'string' ? error : JSON.stringify(error))
+}
 
 // ── Route handler ─────────────────────────────────────────────────────────────
 
@@ -262,37 +295,50 @@ export async function POST(req: NextRequest) {
     const reference = generateReference()
     const timestamp = formatTimestamp(new Date())
 
-    // ── Email notification (non-blocking when unconfigured) ───────────────────
-    const apiKey = process.env.EMAIL_SERVICE_API_KEY
-    if (!apiKey) {
-      // Not configured — log for admin review, do not expose error to visitor
-      console.warn('[RFQ] EMAIL_SERVICE_API_KEY is not set — submission received but email skipped. Reference:', reference)
-    } else {
-      const resend = new Resend(apiKey)
-      const recipient = process.env.RFQ_TO_EMAIL ?? 'info@durraka.com'
-      const fromEmail = process.env.RFQ_FROM_EMAIL ?? 'Durraka RFQ <no-reply@durraka.com>'
-
-      const { error: emailError } = await resend.emails.send({
-        from: fromEmail,
-        to: [recipient],
-        subject: `New RFQ — ${payload.projectName} — ${reference}`,
-        html: buildEmailHTML(payload, reference, timestamp),
-      })
-
-      if (emailError) {
-        // Email failed — log for admin, still return success so submission is not lost
-        console.error('[RFQ] Email send error:', emailError, '— Reference:', reference)
-      }
-    }
-
-    // ── Google Sheets log (always non-blocking) ───────────────────────────────
-    appendToSheets(payload, reference, timestamp).catch((err) => {
-      console.error('[RFQ] Google Sheets append failed:', err)
+    // Server-side lead scoring. NEVER returned to the visitor and never in the
+    // client bundle (this module is imported only here, on the server).
+    const score = scoreLead({
+      clientType: payload.clientType,
+      projectType: payload.projectType,
+      scaleBand: payload.scaleBand,
+      targetStart: payload.targetStart,
+      consultantAppointed: payload.consultantAppointed,
+      projectLocation: payload.projectLocation,
     })
 
-    // ── CRM hook placeholder ──────────────────────────────────────────────────
-    // saveToCRM(payload, reference).catch((err) => console.error('[RFQ] CRM save failed:', err))
+    // Durable delivery — no silent lead loss. Await both sinks; the submission is
+    // only reported successful if at least one persisted. If neither did, log the
+    // full lead (recoverable from server logs) and return an error so the visitor
+    // is told to contact us directly rather than believing it went through.
+    const sheetsOk = await appendToSheets(payload, reference, timestamp, score)
+      .then(() => true)
+      .catch((err) => {
+        console.error('[RFQ] Google Sheets append failed:', err)
+        return false
+      })
 
+    const emailOk = await sendRfqEmail(payload, reference, timestamp)
+      .then(() => true)
+      .catch((err) => {
+        console.error('[RFQ] Email send failed:', err)
+        return false
+      })
+
+    if (!sheetsOk && !emailOk) {
+      console.error(
+        '[RFQ] LEAD NOT DELIVERED — no sink succeeded. Recoverable lead:',
+        JSON.stringify({ reference, timestamp, tier: score.tier, ...payload }),
+      )
+      return NextResponse.json(
+        {
+          error:
+            'We could not submit your request automatically. Please email info@durraka.com and our team will assist you directly.',
+        },
+        { status: 502 },
+      )
+    }
+
+    // score/tier/tags are intentionally NOT returned to the client.
     return NextResponse.json({ success: true, reference })
   } catch (err) {
     console.error('[RFQ] Unhandled error:', err)

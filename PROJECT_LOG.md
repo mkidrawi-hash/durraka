@@ -456,3 +456,36 @@ RFQ_TO_EMAIL, RFQ_FROM_EMAIL + new `ENGINEER_GUIDANCE_TAB_NAME` (default
 
 **Checks:** typecheck ✓ · lint ✓ · build ✓ (both routes generated). RFQ/lead-scoring
 and catalog-manual work untouched.
+
+---
+
+## Session — Phase 3: Smart RFQ Engine + Lead Qualification
+
+**Branch:** `feat/phase-3-rfq-upgrade` · one PR.
+
+Audit finding: the RFQ route had **no lead scoring** (the "existing scoring" was
+in the old v0 repo, never ported) and used **fire-and-forget** Sheets append.
+PR #27 was already **merged/closed** (not dangling).
+
+Upgrade (does not break /request-quotation):
+- **Reliability:** RFQ route now mirrors `/api/engineer-guidance` — awaits Sheets +
+  Resend, succeeds if ≥1 sink works, else logs full lead + returns **502** with an
+  email-fallback message. No silent lead loss.
+- **Conditional qualification fields** (shown once a project type is chosen):
+  Approximate Scale, Consultant Appointed?, Target Start (copy in
+  `src/content/en/rfq.ts`).
+- **Required Project Information checklist** — text-only section on
+  `/request-quotation` (no file uploads built).
+- **Lead scoring (server-only, new)** `src/lib/leadScoring.ts`: numeric score +
+  tier (Green/Amber/Red) + tags (Segment, Routing, Follow-up Priority). Rubric in
+  `docs/lead-scoring.md`. Written to RFQ Sheet columns V–Z (+ S–U for the new
+  fields). Existing columns A–R unchanged (append-only).
+- **Security:** scoring never imported client-side (verified — not in bundle) and
+  never returned in API responses. No pricing anywhere public.
+
+**Manual step (owner) — add these Sheet headers (S–Z) to the RFQ tab before use:**
+`S Consultant Appointed · T Scale Band · U Target Start · V Lead Score · W Tier ·
+X Segment · Y Routing · Z Follow-up Priority`.
+
+**Untouched:** engineer-guidance, catalog-manual, Phase 1 pages. No new deps.
+Checks: typecheck ✓ · lint ✓ · build ✓.
