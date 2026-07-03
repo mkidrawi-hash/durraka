@@ -612,3 +612,13 @@ reference the real project name — none are rendered or served on a page.
 **Verification:** grep of the served build (`.next` excluding `cache`) → **0** occurrences
 of the full mosque name and **0** gallery ", KSA"/"· Various" captions. typecheck ✓ ·
 lint ✓ · build ✓.
+
+**Follow-up (Fix 4 completion):** anonymized the public image *paths* too. Renamed the
+folder + 13 curated image files `sheikh-hamad-al-thani-mosque-makkah-*` →
+`landmark-mosque-aziziyah-makkah-*`, updated the 3 gallery image paths + the source
+comment. The three internal working docs (`README.md`, `project-info.md`,
+`image-manifest.json`) — which also leaked the Arabic name, capacity, and a prior codename —
+were moved out of the public tree into `private/project-media/…` (manifest path slugs
+updated). Repo grep excluding `private/` → **0** occurrences of the English name, the slug,
+the Arabic name, and the prior codename. Served build (`.next` excl. cache) → 0. Raw
+originals under `99-archive-originals/` were retained (no name in filenames; out of scope).
