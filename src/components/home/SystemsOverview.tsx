@@ -1,5 +1,8 @@
 import Link from 'next/link'
 import { SYSTEMS } from '@/lib/constants'
+import { getDictionary } from '@/content/dictionaries'
+import { localizeHref, type Locale } from '@/lib/i18n'
+import type { SystemId } from '@/content/en/home'
 
 const SYSTEM_ICONS: Record<string, React.ReactNode> = {
   // Façade Cladding — staggered panel elevation (running bond pattern)
@@ -115,7 +118,10 @@ const SYSTEM_ICONS: Record<string, React.ReactNode> = {
   ),
 }
 
-export default function SystemsOverview() {
+export default function SystemsOverview({ locale = 'en' }: { locale?: Locale }) {
+  const t = getDictionary(locale).home.systemsSection
+  const cards = getDictionary(locale).home.systems
+  const cta = getDictionary(locale).common.cta
   return (
     <section className="bg-white pt-[72px] pb-9 sm:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -123,12 +129,12 @@ export default function SystemsOverview() {
         <div className="text-center mb-8 sm:mb-14">
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="w-8 h-px bg-accent flex-shrink-0" />
-            <span className="text-accent text-xs sm:text-sm font-semibold tracking-wider sm:tracking-widest uppercase whitespace-nowrap">What We Manufacture</span>
+            <span className="text-accent text-xs sm:text-sm font-semibold tracking-wider sm:tracking-widest uppercase whitespace-nowrap">{t.eyebrow}</span>
             <div className="w-8 h-px bg-accent flex-shrink-0" />
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-navy mb-4">GFRC/GRC Architectural Components</h2>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-navy mb-4">{t.title}</h2>
           <p className="text-gray-500 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
-            Six integrated GFRC/GRC manufacturing capabilities — combined on any project scope to deliver a complete architectural façade package.
+            {t.subtitle}
           </p>
         </div>
 
@@ -142,9 +148,9 @@ export default function SystemsOverview() {
                 {SYSTEM_ICONS[system.id]}
               </div>
               <h3 className="text-navy font-bold text-xl sm:text-lg mb-2.5 group-hover:text-accent transition-colors leading-snug">
-                {system.title}
+                {cards[system.id as SystemId].title}
               </h3>
-              <p className="text-gray-500 text-[17px] sm:text-sm leading-[1.65]">{system.description}</p>
+              <p className="text-gray-500 text-[17px] sm:text-sm leading-[1.65]">{cards[system.id as SystemId].description}</p>
             </div>
           ))}
         </div>
@@ -154,10 +160,10 @@ export default function SystemsOverview() {
           style={{ paddingBottom: 'calc(64px + env(safe-area-inset-bottom))' }}
         >
           <Link
-            href="/systems"
+            href={localizeHref('/systems', locale)}
             className="inline-flex items-center justify-center gap-2 w-[80%] sm:w-auto min-h-[56px] px-8 py-4 bg-navy text-white font-semibold rounded-sm hover:bg-navy-light transition-colors"
           >
-            View All Systems
+            {cta.viewAllSystems}
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>

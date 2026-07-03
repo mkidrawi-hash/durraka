@@ -1,6 +1,11 @@
 import Link from 'next/link'
+import { getDictionary } from '@/content/dictionaries'
+import { localizeHref, type Locale } from '@/lib/i18n'
 
-export default function Hero() {
+export default function Hero({ locale = 'en' }: { locale?: Locale }) {
+  const t = getDictionary(locale).home.hero
+  const cta = getDictionary(locale).common.cta
+
   return (
     <section className="relative min-h-screen bg-navy flex items-center overflow-hidden">
       {/* Subtle geometric pattern */}
@@ -22,34 +27,32 @@ export default function Hero() {
           <div className="flex items-center gap-3 mb-5 sm:mb-8">
             <div className="w-8 h-px bg-accent flex-shrink-0" />
             <span className="text-accent text-xs sm:text-sm font-semibold tracking-wider sm:tracking-widest uppercase">
-              GFRC &amp; GRC Specialists — Saudi Arabia
+              {t.eyebrow}
             </span>
           </div>
 
           <h1 className="text-[28px] sm:text-5xl lg:text-6xl font-bold text-white leading-[1.15] mb-5 sm:mb-6">
-            Engineered GFRC
-            <span className="block text-accent">Architectural Systems</span>
-            <span className="block">for Landmark Projects</span>
+            {t.titleLine1}
+            <span className="block text-accent">{t.titleAccent}</span>
+            <span className="block">{t.titleLine3}</span>
           </h1>
 
           <p className="text-white/80 text-sm sm:text-lg leading-relaxed mb-8 sm:mb-10 max-w-2xl">
-            Durraka Factory for Industry manufactures GFRC façade cladding, mashrabiya panels,
-            cornices, domes, columns, decorative elements, and custom architectural systems for
-            projects across Saudi Arabia.
+            {t.description}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
             <Link
-              href="/request-quotation"
+              href={localizeHref('/request-quotation', locale)}
               className="min-h-[56px] flex items-center justify-center px-8 py-3.5 bg-accent text-white font-semibold rounded-sm hover:bg-accent-dark transition-colors text-base"
             >
-              Request a Quotation
+              {cta.requestQuotation}
             </Link>
             <Link
-              href="/systems"
+              href={localizeHref('/systems', locale)}
               className="min-h-[56px] flex items-center justify-center px-8 py-3.5 border border-white/50 text-white font-semibold rounded-sm hover:bg-white/10 transition-colors text-base"
             >
-              Explore Our Systems
+              {cta.exploreSystems}
             </Link>
           </div>
         </div>

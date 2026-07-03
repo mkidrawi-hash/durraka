@@ -14,6 +14,7 @@ export const commonContent = {
   cta: {
     requestQuotation: 'Request a Quotation',
     contactDurraka: 'Contact Durraka',
+    contactUs: 'Contact Us',
     viewPackage: 'View Package',
     viewAllSystems: 'View All Systems',
     viewAllPackages: 'View All Packages',

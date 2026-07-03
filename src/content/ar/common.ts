@@ -18,6 +18,7 @@ export const commonAr: Translatable<typeof commonContent> = {
   cta: {
     requestQuotation: 'اطلب عرض سعر',
     contactDurraka: 'تواصل مع دراكة',
+    contactUs: 'اتصل بنا',
     viewPackage: 'عرض الباقة',
     viewAllSystems: 'عرض جميع الأنظمة',
     viewAllPackages: 'عرض جميع الباقات',

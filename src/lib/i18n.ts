@@ -20,6 +20,13 @@ export function isRtl(locale: Locale): boolean {
   return dir(locale) === 'rtl'
 }
 
+// Prefix a root-relative href with /ar for the Arabic locale ("/" → "/ar").
+export function localizeHref(href: string, locale: Locale): string {
+  if (locale !== 'ar') return href
+  if (href === '/') return '/ar'
+  return href.startsWith('/') ? `/ar${href}` : href
+}
+
 // Structural-parity helper. An Arabic dictionary must have the SAME shape as its
 // English source — same keys, same nesting, same array/number positions — but
 // with translated (widened) string values. Typing an `ar` dictionary as
