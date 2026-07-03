@@ -741,3 +741,13 @@ terms not yet ratified. Re-scanned and aligned all 4 `src/content/ar/*` dictiona
 `الرسومات التنفيذية`→`المخططات التنفيذية` (shop drawings), and the GFRC rule (full term
 `الخرسانة المسلحة بالألياف الزجاجية (GFRC)` on first mention per page, plain `GFRC` after).
 Files remain `⚠️ MACHINE DRAFT` pending full owner review. typecheck ✓ · lint ✓ · build ✓.
+
+**Follow-up (preview toggle):** made the EN/AR switcher visible in **non-production only**
+(`VERCEL_ENV !== "production"` → preview + dev) for owner review; production stays hidden
+until `ARABIC_ENABLED = true` (the documented one-line launch switch). Root layout passes
+`previewMode` to `Header` (`showLangToggle = previewMode || ARABIC_ENABLED`). Added a
+`معاينة — قيد المراجعة` badge beside the toggle in preview mode. The toggle never 404s —
+links to `/ar<path>` only for `TRANSLATED_AR_ROUTES`, else falls back to a new `/ar` Arabic
+preview landing (`src/app/ar/page.tsx`). `/ar` subtree stays `noindex`. Verified: preview
+build shows toggle+badge, production build hides both. docs/i18n.md updated. typecheck ✓ ·
+lint ✓ · build ✓.

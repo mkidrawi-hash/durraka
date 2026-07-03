@@ -6,20 +6,46 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { NAV_LINKS } from '@/lib/constants'
 
-// Arabic content is not live yet — every /ar/* route currently 404s. Keep the
-// full i18n structure (routes, isArabic/enHref/arHref logic, /ar scaffold) in
-// place but hide the language switcher UI until Arabic ships. Flip this single
-// flag to true to bring the EN/AR toggle back.
+// The EN/AR language switcher is hidden in production until Arabic launches.
+// LAUNCH SWITCH (one line): when Arabic is ready, set ARABIC_ENABLED = true and
+// the toggle appears in production too. Until then it is shown ONLY in non-
+// production (preview + development) via the `previewMode` prop, so the owner can
+// review the Arabic experience on Vercel previews. The /ar subtree stays noindex.
 const ARABIC_ENABLED = false
 
-export default function Header() {
+// English routes that currently have a translated /ar equivalent. The toggle
+// links to /ar<path> for these; for any other page it falls back to /ar (never a
+// 404). Add entries here as pages are translated.
+const TRANSLATED_AR_ROUTES = new Set<string>(['/systems/gfrc-grc-facade-cladding'])
+
+function PreviewBadge({ className = '' }: { className?: string }) {
+  return (
+    <span
+      dir="rtl"
+      lang="ar"
+      title="Preview — under review (not launched)"
+      className={`inline-flex items-center whitespace-nowrap rounded-sm border border-amber-400 bg-amber-100 px-1.5 py-0.5 text-[9px] font-semibold text-amber-800 ${className}`}
+    >
+      معاينة — قيد المراجعة
+    </span>
+  )
+}
+
+export default function Header({ previewMode = false }: { previewMode?: boolean }) {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
 
+  // Show the switcher in non-production (preview/dev) always, and in production
+  // only once Arabic is launched.
+  const showLangToggle = previewMode || ARABIC_ENABLED
+
   const isArabic = pathname.startsWith('/ar')
-  const enHref = isArabic ? pathname.replace(/^\/ar/, '') || '/' : pathname
-  const arHref = isArabic ? pathname : `/ar${pathname}`
+  const enPath = isArabic ? pathname.replace(/^\/ar/, '') || '/' : pathname
+  const enHref = enPath
+  // Never 404 from the toggle: link to the /ar equivalent only when it exists,
+  // otherwise fall back to /ar (Arabic preview landing).
+  const arHref = isArabic ? pathname : TRANSLATED_AR_ROUTES.has(enPath) ? `/ar${enPath}` : '/ar'
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10)
@@ -62,11 +88,14 @@ export default function Header() {
           </Link>
 
           {/* Mobile Language Switcher — between logo and hamburger */}
-          {ARABIC_ENABLED && (
-            <div className="lg:hidden flex items-center mr-1 border border-navy/20 rounded-sm overflow-hidden">
-              <Link href={enHref} className={`px-2 py-1 text-[10px] font-bold tracking-widest uppercase transition-colors ${!isArabic ? 'bg-navy text-white' : 'text-navy/50'}`}>EN</Link>
-              <div className="w-px h-3 bg-navy/20" />
-              <Link href={arHref} className={`px-2 py-1 text-[10px] font-bold tracking-widest uppercase transition-colors ${isArabic ? 'bg-navy text-white' : 'text-navy/50'}`}>AR</Link>
+          {showLangToggle && (
+            <div className="lg:hidden flex items-center gap-1.5 mr-1">
+              {previewMode && <PreviewBadge />}
+              <div className="flex items-center border border-navy/20 rounded-sm overflow-hidden">
+                <Link href={enHref} className={`px-2 py-1 text-[10px] font-bold tracking-widest uppercase transition-colors ${!isArabic ? 'bg-navy text-white' : 'text-navy/50'}`}>EN</Link>
+                <div className="w-px h-3 bg-navy/20" />
+                <Link href={arHref} className={`px-2 py-1 text-[10px] font-bold tracking-widest uppercase transition-colors ${isArabic ? 'bg-navy text-white' : 'text-navy/50'}`}>AR</Link>
+              </div>
             </div>
           )}
 
@@ -86,11 +115,14 @@ export default function Header() {
               </Link>
             ))}
             {/* Desktop Language Switcher */}
-            {ARABIC_ENABLED && (
-              <div className="hidden lg:flex items-center ml-3 border border-navy/20 rounded-sm overflow-hidden">
-                <Link href={enHref} className={`px-2.5 py-1.5 text-[10px] font-bold tracking-widest uppercase transition-colors ${!isArabic ? 'bg-navy text-white' : 'text-navy/50 hover:text-navy hover:bg-navy/[0.06]'}`}>EN</Link>
-                <div className="w-px h-3 bg-navy/20" />
-                <Link href={arHref} className={`px-2.5 py-1.5 text-[10px] font-bold tracking-widest uppercase transition-colors ${isArabic ? 'bg-navy text-white' : 'text-navy/50 hover:text-navy hover:bg-navy/[0.06]'}`}>AR</Link>
+            {showLangToggle && (
+              <div className="hidden lg:flex items-center gap-2 ml-3">
+                {previewMode && <PreviewBadge />}
+                <div className="flex items-center border border-navy/20 rounded-sm overflow-hidden">
+                  <Link href={enHref} className={`px-2.5 py-1.5 text-[10px] font-bold tracking-widest uppercase transition-colors ${!isArabic ? 'bg-navy text-white' : 'text-navy/50 hover:text-navy hover:bg-navy/[0.06]'}`}>EN</Link>
+                  <div className="w-px h-3 bg-navy/20" />
+                  <Link href={arHref} className={`px-2.5 py-1.5 text-[10px] font-bold tracking-widest uppercase transition-colors ${isArabic ? 'bg-navy text-white' : 'text-navy/50 hover:text-navy hover:bg-navy/[0.06]'}`}>AR</Link>
+                </div>
               </div>
             )}
             <Link
@@ -152,14 +184,15 @@ export default function Header() {
               Request a Quotation
             </Link>
             {/* Mobile dropdown language switcher */}
-            {ARABIC_ENABLED && (
-              <div className="mt-3 pt-3 border-t border-navy/10 flex items-center gap-2">
+            {showLangToggle && (
+              <div className="mt-3 pt-3 border-t border-navy/10 flex items-center gap-2 flex-wrap">
                 <span className="text-navy/40 text-[10px] tracking-widest uppercase">Language</span>
                 <div className="flex items-center border border-navy/20 rounded-sm overflow-hidden">
                   <Link href={enHref} className={`px-3 py-1.5 text-[10px] font-bold tracking-widest uppercase transition-colors ${!isArabic ? 'bg-navy text-white' : 'text-navy/50'}`}>EN</Link>
                   <div className="w-px h-3 bg-navy/20" />
                   <Link href={arHref} className={`px-3 py-1.5 text-[10px] font-bold tracking-widest uppercase transition-colors ${isArabic ? 'bg-navy text-white' : 'text-navy/50'}`}>AR</Link>
                 </div>
+                {previewMode && <PreviewBadge />}
               </div>
             )}
           </div>
