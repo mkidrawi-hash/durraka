@@ -28,7 +28,7 @@ export const commonAr: Translatable<typeof commonContent> = {
     brandName: 'مصنع دراكة للصناعة',
     tagline: 'أنظمة معمارية من GFRC و GRC',
     description:
-      'الشركة السعودية المتخصصة في تصنيع تكسية الواجهات من GFRC و GRC، وأنظمة المشربيات، والقباب المعمارية، والأطواق، والعناصر الزخرفية المخصصة.',
+      'الشركة السعودية المتخصصة في تصنيع تكسية الواجهات من GFRC و GRC، وأنظمة المشربيات، والقباب المعمارية، والكرانيش، والعناصر الزخرفية المخصصة.',
     navigationHeading: 'التنقّل',
     legalHeading: 'قانوني',
     contactHeading: 'اتصل بنا',

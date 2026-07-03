@@ -12,6 +12,21 @@ const dict = getDictionary('ar')
 export const metadata: Metadata = {
   title: dict.facadeCladding.title,
   description: dict.facadeCladding.heroDescription,
+  keywords: [
+    'تكسية واجهات GFRC',
+    'تكسية واجهات GRC',
+    'ألواح خرسانية معمارية',
+    'واجهات مسلحة بالألياف الزجاجية',
+    'كرانيش GFRC',
+    'دُرّاكة',
+    'مصنع دراكة للصناعة',
+    'جدة',
+    'المملكة العربية السعودية',
+  ],
+  openGraph: {
+    title: dict.facadeCladding.title,
+    description: dict.facadeCladding.heroDescription,
+  },
 }
 
 export default function ArFacadeCladdingPage() {
@@ -20,6 +35,7 @@ export default function ArFacadeCladdingPage() {
       data={dict.facadeCladding}
       sampleDrawing={<SampleDrawing />}
       systemContext={<SystemContext />}
+      locale="ar"
     />
   )
 }

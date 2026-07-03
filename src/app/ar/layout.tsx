@@ -16,8 +16,17 @@ const plexArabic = IBM_Plex_Sans_Arabic({
 // The toggle is now live, but the Arabic copy is still machine-draft — keep the
 // /ar subtree OUT of search indexes until hreflang/SEO is added (next phase).
 // Removing this must be paired with hreflang; see docs/i18n.md.
+//
+// openGraph.locale = ar_SA and a bilingual site_name are inherited by every /ar
+// page (Next.js merges layout metadata into child pages); per-page titles,
+// descriptions, and keywords are set on each page.
 export const metadata: Metadata = {
   robots: { index: false, follow: false },
+  openGraph: {
+    locale: 'ar_SA',
+    siteName: 'مصنع دراكة للصناعة | Durraka Factory',
+    type: 'website',
+  },
 }
 
 export default function ArLayout({ children }: { children: React.ReactNode }) {

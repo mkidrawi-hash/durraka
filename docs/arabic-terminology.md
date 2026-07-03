@@ -21,6 +21,7 @@ of an approved term.
 | What's Included | ما تشمله الباقة | Package pages |
 | Durraka (brand) | دراكة | Always — transliteration, no diacritics |
 | Durraka Factory for Industry | مصنع دراكة للصناعة | Always |
+| Cornice / Cornices | الكورنيش / الكرانيش | Always — owner-approved; **do not** use طوق / أطواق |
 
 **Note.** These terminology decisions are **owner-approved**. Do not substitute synonyms or
 alternative phrasings for any term above. When a new recurring term is translated, add it to
@@ -36,7 +37,7 @@ yet** in the approved list. Please confirm or correct; approved rows will be pro
 |---|---|---|
 | Architectural drawings & elevations | الرسومات والمساقط المعمارية | RFQ checklist, façade info-required |
 | Quantities / BOQ (bill of quantities) | الكميات / جدول الكميات | Packages scope, RFQ |
-| Cornice / Profile | طوق / مقطع | Façade design guidance |
+| Profile (cornice section) | مقطع | Façade design guidance (Cornice itself is now approved: الكورنيش / الكرانيش) |
 | Window surround / reveal | إطار النافذة / التجويف | Façade design guidance |
 | Panel rhythm | إيقاع الألواح | Façade |
 | Consultant / Contractor / Developer | استشاري / مقاول / مطوّر | Engineer-guidance roles |
