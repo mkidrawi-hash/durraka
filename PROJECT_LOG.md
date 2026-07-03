@@ -732,3 +732,31 @@ terminology. Translating remaining pages, `hreflang`/SEO, removing `noindex`, an
 `ARABIC_ENABLED` are later steps gated on that review.
 
 **Checks:** typecheck ✓ · lint ✓ · build ✓.
+
+---
+
+## Session — Homepage package cards: mobile visual fix
+
+**Branch:** `fix/home-package-cards-mobile` · one PR · homepage only
+(`src/components/home/ProjectsPreview.tsx`).
+
+Problem: on mobile the 6 "Project Scope Packages" cards read as tall, dark navy blocks and
+needed excessive scrolling. Root cause (verified): the 6 `*-gfrc.png` images **do** load
+(they are dark AI concept renders), and the old gradient sat *behind* the image (no effect);
+the darkness came from the dark source images + the tall `5:4` mobile aspect.
+
+- **Overlay:** replaced the ineffective behind-image tint with a bottom-up gradient placed
+  **on top** of the image — `linear-gradient(to top, navy 0.88 → 0.32 @30% → transparent
+  @58%)`. Top ~55% of the image stays fully visible; only the tag zone darkens for contrast.
+  Tag also keeps its own `bg-[#071B3B]/85` pill, so the accent label passes contrast on the
+  lightest image.
+- **Mobile height:** image aspect `5/4` → **`16/10`** (≈22% shorter) so the six cards scan
+  quickly. Desktop unchanged (`sm:aspect-[4/3]`).
+- **Desktop check (reported):** same component, so it gains the improved bottom-up gradient;
+  desktop is a 3-column grid with 4:3 images and never had the viewport-per-card problem —
+  height left unchanged.
+- **Kept:** category/tag chips, VIEW PACKAGE link, card order, all copy — visual only.
+
+**Light/dark:** the section has no `dark:` classes (homepage is light-themed) — renders
+identically in both. **Checks:** typecheck ✓ · lint ✓ · build ✓ (aspect + gradient confirmed
+in built HTML/CSS).

@@ -182,12 +182,12 @@ function ProjectCard({ project }: { project: Project }) {
 
   const inner = (
     <div className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-200/60">
-      {/* Image area — taller on mobile, 4:3 on sm+ */}
-      <div className="relative overflow-hidden rounded-t-2xl aspect-[5/4] sm:aspect-[4/3] bg-[#071B3B]">
-        {/* Architectural illustration — always rendered as background / fallback */}
+      {/* Image area — capped to 16:10 on mobile (was 5:4) so the six cards scan
+          quickly; 4:3 on sm+ unchanged. */}
+      <div className="relative overflow-hidden rounded-t-2xl aspect-[16/10] sm:aspect-[4/3] bg-[#071B3B]">
+        {/* Architectural illustration — background / fallback until the image loads */}
         <Illustration uid={project.id} />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#071B3B]/45 via-transparent to-transparent" />
-        {/* Real project image — covers illustration when present */}
+        {/* Real project image — covers the illustration when present */}
         {!imgError && (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -199,6 +199,10 @@ function ProjectCard({ project }: { project: Project }) {
             onError={() => setImgError(true)}
           />
         )}
+        {/* Bottom-up gradient ON TOP of the image: the top ~55% stays fully
+            visible; only the bottom (tag zone) darkens to ~88% navy so the tag
+            stays legible on the lightest image — no full-card tint. */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(7,27,59,0.88)_0%,rgba(7,27,59,0.32)_30%,rgba(7,27,59,0)_58%)]" />
         {/* Tag badge */}
         <div className="absolute bottom-3 left-3 z-10">
           <span className="text-accent text-[10px] font-semibold tracking-wider uppercase leading-none bg-[#071B3B]/85 px-2.5 py-1 rounded-sm backdrop-blur-sm">
