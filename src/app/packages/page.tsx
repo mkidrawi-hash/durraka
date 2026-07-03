@@ -26,7 +26,7 @@ const PACKAGES: PackageEntry[] = [
     href: '/packages/commercial-facade-package',
     shortDescription:
       'AI concept for a multi-storey commercial façade combining GFRC/GRC cladding panels, vertical rhythm, cornice lines, window surrounds, and controlled architectural expression.',
-    illustrativeArea: 'Approx. 8,000–14,000 m²',
+    illustrativeArea: 'Large-scale multi-storey façades',
     visibleComponents: ['Façade cladding panels', 'Cornices / profiles', 'Window surrounds', 'Edge / corner expression', 'Decorative vertical elements'],
     image: '/images/packages/hospitality-commercial.webp',
     imageAlt: 'Modern commercial building facade featuring GFRC/GRC architectural cladding, cornice lines, and controlled facade expression.',
@@ -36,7 +36,7 @@ const PACKAGES: PackageEntry[] = [
     href: '/packages/mashrabiya-screen-package',
     shortDescription:
       'AI concept showing project-specific mashrabiya screens integrated with facade openings, privacy control, shading, and decorative architectural identity.',
-    illustrativeArea: 'Approx. 1,500–4,500 m²',
+    illustrativeArea: 'Screen & façade fields',
     visibleComponents: ['Mashrabiya screens', 'Window screens', 'Façade cladding', 'Decorative frames', 'Entrance screen panels'],
     image: '/images/packages/heritage-regional.webp',
     imageAlt: 'Heritage villa facade with decorative GFRC/GRC mashrabiya screens integrated into facade openings for privacy and shading.',
@@ -46,7 +46,7 @@ const PACKAGES: PackageEntry[] = [
     href: '/packages/domes-cornices-package',
     shortDescription:
       'AI concept for architectural domes, cornices, mouldings, and ornamental profiles for religious, hospitality, and heritage-inspired projects.',
-    illustrativeArea: 'Approx. 2,000–6,500 m²',
+    illustrativeArea: 'Domes, cornices & rooflines',
     visibleComponents: ['Dome elements', 'Cornices', 'Mouldings', 'Arched openings', 'Decorative facade bands', 'Heritage profiles'],
     image: '/images/packages/villa-palace-architectural.webp',
     imageAlt: 'Palace and villa architecture featuring GFRC/GRC domes, ornamental cornices, heritage mouldings, and decorative arched profiles.',
@@ -56,7 +56,7 @@ const PACKAGES: PackageEntry[] = [
     href: '/packages/grand-entrance-package',
     shortDescription:
       'AI concept for a large-scale entrance combining columns, capitals, arches, cornices, decorative panels, and façade cladding into one integrated architectural package.',
-    illustrativeArea: 'Approx. 1,200–3,500 m²',
+    illustrativeArea: 'Feature entrances & gateways',
     visibleComponents: ['Columns', 'Capitals', 'Arches', 'Cornices', 'Decorative panels', 'Entrance cladding'],
     image: '/images/packages/grand-entrance-gate.webp',
     imageAlt: 'Monumental grand arched entrance gate with GFRC/GRC columns, capitals, cornices, and integrated architectural facade cladding.',
@@ -66,7 +66,7 @@ const PACKAGES: PackageEntry[] = [
     href: '/packages/columns-capitals-package',
     shortDescription:
       'AI concept showing GFRC/GRC columns, capitals, bases, pilasters, and entrance colonnades for classical, heritage, and contemporary architectural projects.',
-    illustrativeArea: 'Approx. 800–2,500 m²',
+    illustrativeArea: 'Colonnades & porticos',
     visibleComponents: ['Column shafts', 'Capitals', 'Bases', 'Pilasters', 'Arched colonnades', 'Decorative panels'],
     image: '/images/packages/landmark-government-facade.webp',
     imageAlt: 'Landmark government building facade with classical GFRC/GRC columns, capitals, bases, and arched colonnade architectural elements.',
@@ -76,7 +76,7 @@ const PACKAGES: PackageEntry[] = [
     href: '/packages/custom-decorative-elements-package',
     shortDescription:
       'AI concept for bespoke GFRC/GRC decorative elements including ornamental panels, calligraphy-inspired features, identity panels, special frames, and project-specific architectural details.',
-    illustrativeArea: 'Approx. 500–2,000 m²',
+    illustrativeArea: 'Bespoke ornament & identity',
     visibleComponents: ['Decorative panels', 'Custom ornaments', 'Identity features', 'Calligraphy-inspired panels', 'Special frames'],
     image: '/images/packages/custom-architectural-components.webp',
     imageAlt: 'Custom GFRC/GRC decorative facade panels featuring ornamental details, identity features, and bespoke architectural components.',

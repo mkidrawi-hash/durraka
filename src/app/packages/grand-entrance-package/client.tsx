@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { PremiumPackageLayout } from '@/components/packages/PremiumPackageLayout'
-import type { PremiumPackageData } from '@/components/packages/PremiumPackageLayout'
+import type { PremiumPackageData, DesignDiagram } from '@/components/packages/PremiumPackageLayout'
 import type { ComponentDetail } from '@/components/packages/ComponentDetailModal'
 import { GrandEntranceIllustration } from '@/components/packages/illustrations'
 
@@ -516,13 +516,51 @@ const REVIEW_STEPS = [
 
 // ─── Package data ─────────────────────────────────────────────────────────────
 
+// Schematic design-intent elevation — a symmetrical portal: flanking columns,
+// arch, entablature, framed opening with a mashrabiya screen accent.
+const GRAND_ENTRANCE_DIAGRAM: DesignDiagram = {
+  kind: 'elevation',
+  viewBox: '0 0 400 320',
+  shapes: [
+    { kind: 'rect', x: 96, y: 150, w: 24, h: 142 }, // left shaft (1)
+    { kind: 'rect', x: 280, y: 150, w: 24, h: 142 }, // right shaft
+    { kind: 'rect', x: 90, y: 136, w: 36, h: 14 }, // left capital (2)
+    { kind: 'rect', x: 274, y: 136, w: 36, h: 14 }, // right capital
+    { kind: 'rect', x: 90, y: 286, w: 36, h: 8 }, // left base
+    { kind: 'rect', x: 274, y: 286, w: 36, h: 8 }, // right base
+    { kind: 'path', d: 'M126 136 A74 74 0 0 1 274 136', accent: true }, // arch (3)
+    { kind: 'rect', x: 80, y: 36, w: 240, h: 16, fill: true }, // entablature (4)
+    { kind: 'rect', x: 120, y: 136, w: 160, h: 156 }, // frame / surround (5)
+    { kind: 'rect', x: 176, y: 74, w: 48, h: 30 }, // identity panel (6)
+    { kind: 'rect', x: 150, y: 168, w: 100, h: 112 }, // mashrabiya screen field (7)
+    { kind: 'line', x1: 150, y1: 205, x2: 250, y2: 205 },
+    { kind: 'line', x1: 150, y1: 242, x2: 250, y2: 242 },
+    { kind: 'line', x1: 183, y1: 168, x2: 183, y2: 280 },
+    { kind: 'line', x1: 217, y1: 168, x2: 217, y2: 280 },
+    { kind: 'polyline', points: '192 64 200 52 208 64', accent: true }, // keystone detail (8)
+    { kind: 'line', x1: 86, y1: 292, x2: 314, y2: 292 }, // threshold
+  ],
+  callouts: [
+    { n: 1, label: 'Entrance Column', x: 108, y: 225 },
+    { n: 2, label: 'Column Capital', x: 108, y: 143 },
+    { n: 3, label: 'Grand Entrance Arch', x: 250, y: 82 },
+    { n: 4, label: 'Gate Cornice / Entablature', x: 300, y: 44 },
+    { n: 5, label: 'Decorative Frame / Surround', x: 122, y: 258 },
+    { n: 6, label: 'Feature / Identity Panel', x: 200, y: 89 },
+    { n: 7, label: 'Mashrabiya Screen Accent', x: 200, y: 258 },
+    { n: 8, label: 'Custom Architectural Detail', x: 200, y: 56 },
+  ],
+}
+
 const GRAND_ENTRANCE_DATA: PremiumPackageData = {
+  slug: 'grand-entrance-package',
+  designDiagram: GRAND_ENTRANCE_DIAGRAM,
   title: 'Grand Entrance Package',
   eyebrow: 'AI Concept Reference',
   subtitle: 'Monumental entrances. Engineered in GFRC/GRC.',
   heroDescription:
     'An integrated GFRC/GRC scope for landmark entrance gates and arrival facades — combining columns, capitals, arches, cornices, decorative frames, and cladding into a single precision-manufactured architectural package.',
-  illustrativeArea: 'Approx. 1,200–3,500 m²',
+  illustrativeArea: 'Feature entrances & gateways',
   visibleComponents: ['Columns', 'Capitals', 'Arches', 'Cornices', 'Decorative panels', 'Entrance cladding', 'Mashrabiya / screen accents'],
   HeroIllustration: GrandEntranceIllustration,
   packageIntent:

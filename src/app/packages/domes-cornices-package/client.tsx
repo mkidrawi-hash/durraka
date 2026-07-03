@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { PremiumPackageLayout } from '@/components/packages/PremiumPackageLayout'
-import type { PremiumPackageData } from '@/components/packages/PremiumPackageLayout'
+import type { PremiumPackageData, DesignDiagram } from '@/components/packages/PremiumPackageLayout'
 import type { ComponentDetail } from '@/components/packages/ComponentDetailModal'
 import { DomesCornicesIllustration } from '@/components/packages/illustrations'
 
@@ -478,13 +478,48 @@ const REVIEW_STEPS = [
 
 // ─── Full page data ───────────────────────────────────────────────────────────
 
+// Schematic design-intent profile — a dome on a drum over a corniced structure.
+// Silhouette/outline only: no section cut, no internal structure.
+const DOMES_CORNICES_DIAGRAM: DesignDiagram = {
+  kind: 'profile',
+  viewBox: '0 0 400 300',
+  shapes: [
+    { kind: 'rect', x: 70, y: 214, w: 260, h: 66 }, // base structure
+    { kind: 'rect', x: 66, y: 206, w: 268, h: 10, fill: true }, // cornice profile (2)
+    { kind: 'rect', x: 66, y: 198, w: 268, h: 8 }, // parapet coping (5)
+    { kind: 'rect', x: 80, y: 230, w: 240, h: 12, fill: true }, // frieze band (4)
+    { kind: 'path', d: 'M175 280 L175 252 A25 25 0 0 1 225 252 L225 280' }, // entrance arch (7)
+    { kind: 'rect', x: 150, y: 168, w: 100, h: 38 }, // drum
+    { kind: 'rect', x: 146, y: 160, w: 108, h: 9, fill: true }, // crown cornice ring (3)
+    { kind: 'path', d: 'M150 160 C150 108 172 72 200 72 C228 72 250 108 250 160' }, // main dome (1)
+    { kind: 'line', x1: 200, y1: 72, x2: 200, y2: 160 }, // rib
+    { kind: 'line', x1: 178, y1: 76, x2: 166, y2: 158 }, // rib
+    { kind: 'line', x1: 222, y1: 76, x2: 234, y2: 158 }, // rib
+    { kind: 'line', x1: 200, y1: 72, x2: 200, y2: 54 }, // finial stem
+    { kind: 'circle', cx: 200, cy: 50, r: 5, accent: true }, // finial
+    { kind: 'rect', x: 150, y: 204, w: 14, h: 12 }, // capital connection (6)
+    { kind: 'rect', x: 236, y: 204, w: 14, h: 12 },
+  ],
+  callouts: [
+    { n: 1, label: 'Main Dome', x: 200, y: 112 },
+    { n: 2, label: 'Cornice Profile', x: 300, y: 211 },
+    { n: 3, label: 'Crown Cornice', x: 254, y: 164 },
+    { n: 4, label: 'Decorative Band / Frieze', x: 300, y: 236 },
+    { n: 5, label: 'Parapet Coping', x: 92, y: 202 },
+    { n: 6, label: 'Column Capital Connection', x: 157, y: 210 },
+    { n: 7, label: 'Entrance Arch Transition', x: 200, y: 264 },
+  ],
+}
+
 const DOMES_CORNICES_DATA: PremiumPackageData = {
+  slug: 'domes-cornices-package',
+  designDiagram: DOMES_CORNICES_DIAGRAM,
   title: 'Domes & Cornices Package',
   eyebrow: 'AI Concept Reference',
   subtitle: 'Domes, cornices, and heritage profiles. Engineered in GFRC/GRC.',
   heroDescription:
     'GFRC/GRC domes, cornices, mouldings, and ornamental profiles — manufactured to project-specific design intent for religious, hospitality, and heritage-inspired architectural projects.',
-  illustrativeArea: 'Approx. 2,000–6,500 m²',
+  illustrativeArea: 'Domes, cornices & rooflines',
   visibleComponents: ['Dome elements', 'Cornices', 'Decorative bands', 'Arched openings', 'Parapet coping', 'Column capitals'],
   HeroIllustration: DomesCornicesIllustration,
   packageIntent:

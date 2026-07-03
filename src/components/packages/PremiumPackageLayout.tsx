@@ -4,6 +4,9 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { SOCIAL_LINKS } from '@/lib/social-links'
+import { packagesContent as PKG } from '@/content/en/packages'
+import { DesignIntentDiagram, type DesignDiagram } from './DesignIntentDiagram'
+export type { DesignDiagram } from './DesignIntentDiagram'
 import {
   ComponentDetailModal,
   COMPONENT_FINISHES,
@@ -11,6 +14,11 @@ import {
   type FinishId,
   type ModalTabId,
 } from './ComponentDetailModal'
+
+// Single controlled engineer-guidance flow (Phase 2). The package slug is passed
+// as a query param so the team can see which package prompted the request; the
+// route already logs the referer, so the source page is captured either way.
+const ENGINEER_GUIDANCE_PATH = '/systems/gfrc-grc-facade-cladding/engineer-guidance'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -42,6 +50,12 @@ export interface PremiumPackageData {
   componentDetails: ComponentDetail[]
   infographics?: InfographicBoard[]
   reviewSteps: ReviewStep[]
+  // Package slug — passed to the engineer-guidance CTA as context.
+  slug: string
+  // Schematic 2D design-intent diagram (arrangement only; no dimensions/sections).
+  designDiagram: DesignDiagram
+  // Optional real 3D render. When absent, a branded placeholder is shown.
+  conceptImageSrc?: string
 }
 
 // ─── Shared helpers ───────────────────────────────────────────────────────────
@@ -200,6 +214,9 @@ export function PremiumPackageLayout({ data }: { data: PremiumPackageData }) {
     componentDetails,
     infographics,
     reviewSteps,
+    slug,
+    designDiagram,
+    conceptImageSrc,
   } = data
 
   const [selectedComponent, setSelectedComponent] = useState<ComponentDetail | null>(null)
@@ -330,6 +347,83 @@ export function PremiumPackageLayout({ data }: { data: PremiumPackageData }) {
           <p className="text-gray-400 text-xs mt-8 leading-relaxed max-w-2xl">
             All component details are for sales-engineering reference only. Fixing methods, structural connections, and proprietary manufacturing details are not disclosed publicly.
           </p>
+        </div>
+      </section>
+
+      {/* ── 4b. Design intent — 2D schematic + 3D concept slot ───────────── */}
+      <section className="bg-white py-14 sm:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <Eyebrow label={PKG.designIntent.eyebrow} />
+          <h2 className="text-2xl sm:text-3xl font-bold text-navy mb-3">{PKG.designIntent.heading}</h2>
+          <p className="text-gray-500 text-base mb-10 max-w-2xl leading-relaxed">{PKG.designIntent.intro}</p>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-start">
+            {/* PART 1 — schematic 2D diagram */}
+            <DesignIntentDiagram diagram={designDiagram} title={title} />
+
+            {/* PART 2 — 3D concept slot: real image if provided, else branded placeholder */}
+            <div>
+              {conceptImageSrc ? (
+                <div className="relative w-full aspect-[4/3] rounded-sm overflow-hidden border border-navy/10">
+                  <Image
+                    src={conceptImageSrc}
+                    alt={`${title} — 3D concept render`}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                </div>
+              ) : (
+                <div className="w-full aspect-[4/3] rounded-sm border border-white/10 bg-gradient-to-br from-navy via-[#0a2247] to-[#05122a] flex flex-col items-center justify-center text-center px-6">
+                  <div className="w-14 h-14 rounded-full bg-white/[0.06] border border-white/15 flex items-center justify-center mb-4">
+                    <svg className="w-7 h-7 text-accent" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24" aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
+                    </svg>
+                  </div>
+                  <p className="text-white font-semibold text-sm tracking-wide">{PKG.concept3D.label}</p>
+                  <p className="text-white/45 text-xs mt-1.5 max-w-xs leading-relaxed">{PKG.concept3D.sublabel}</p>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 4c. Package scope & estimated quantities (controlled — no numbers) ── */}
+      <section className="bg-[#F4F6F9] py-14 sm:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <Eyebrow label={PKG.scope.eyebrow} />
+          <h2 className="text-2xl sm:text-3xl font-bold text-navy mb-3">{PKG.scope.heading}</h2>
+          <p className="text-gray-500 text-base mb-8 max-w-2xl leading-relaxed">{PKG.scope.intro}</p>
+
+          {/* Descriptive component list ONLY — no quantities, areas, or counts */}
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2.5 mb-10 max-w-3xl">
+            {componentDetails.map((comp) => (
+              <li key={comp.id} className="flex items-center gap-2.5 text-sm text-gray-700">
+                <CheckIcon />
+                {comp.title}
+              </li>
+            ))}
+          </ul>
+
+          {/* Bordered BOQ callout — represented by a CTA, never by numbers */}
+          <div className="border border-navy/15 rounded-sm bg-white p-6 sm:p-7 max-w-3xl">
+            <div className="flex items-start gap-3 mb-5">
+              <svg className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              <p className="text-gray-600 text-sm leading-relaxed">{PKG.scope.boqCallout}</p>
+            </div>
+            <Link
+              href={`${ENGINEER_GUIDANCE_PATH}?package=${slug}`}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-navy text-white text-sm font-semibold rounded-sm hover:bg-navy-light transition-colors"
+            >
+              {PKG.scope.ctaLabel}
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -481,7 +575,7 @@ export function PremiumPackageLayout({ data }: { data: PremiumPackageData }) {
               </svg>
               <p className="text-gray-400 text-xs leading-relaxed">
                 <span className="text-navy/60 font-semibold">Important Note — </span>
-                Visuals and component illustrations are AI-generated conceptual references for system presentation purposes only. Final project solutions depend on approved drawings, specifications, site conditions, and technical review. All component details shown are public-safe sales-engineering information.
+                {PKG.disclaimer}
               </p>
             </div>
           </div>

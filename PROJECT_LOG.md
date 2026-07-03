@@ -659,3 +659,39 @@ and `src/lib/{project-packages,package-content}.ts` — are now orphaned dead co
 place per "nothing else"; can be removed in a follow-up.
 
 **Checks:** typecheck ✓ · lint ✓ · build ✓ (no `/projects` route; redirects intact).
+
+---
+
+## Session — Package pages: design-intent diagrams + controlled BOQ (all 6)
+
+**Branch:** `feat/package-design-intent` · one shared template + six typed configs · one PR.
+No new dependencies (SVG hand-coded). Applies to all 6 packages via `PremiumPackageLayout`.
+
+**Confidentiality:** public pages show DESIGN INTENT only. Added a shared SVG renderer, a
+3D placeholder, a numbers-free scope section, and the mandated disclaimer — no fixing/
+structural/section detail, and **no numeric quantities/areas/prices** anywhere in the
+public output.
+
+- **PART 1 — 2D design-intent diagrams:** new `DesignIntentDiagram` shared SVG renderer
+  (navy `#071B3B` lines, red `#D71920` accents, white ground, thin weights) driven by a
+  typed `DesignDiagram` config per package. Six meaningfully different schematics with
+  numbered callouts mirroring each package's real "What's Included" list. Legend stacks
+  below on mobile; caption: "Schematic design-intent diagram. Indicative arrangement only —
+  not a construction or shop drawing."
+- **PART 2 — 3D concept slot:** branded navy-gradient placeholder ("3D Concept Render —
+  provided in the Engineer Guidance package on request"); renders a real image instead when
+  `conceptImageSrc` is set (no broken-image state, no faked render).
+- **PART 3 — controlled BOQ:** "Package Scope & Estimated Quantities" section = descriptive
+  component list only (no numbers) + bordered callout + "Request Engineer Guidance" CTA
+  linking to `…/engineer-guidance?package=<slug>`. EG form/route untouched.
+- **PART 4 — disclaimer:** replaced the page-end disclaimer with the mandated wording,
+  sourced from the new dictionary `src/content/en/packages.ts`.
+- **Confidentiality fix:** neutralized the numeric `illustrativeArea` (e.g. "Approx.
+  8,000–14,000 m²") on all 6 detail heroes **and** the `/packages` index cards → qualitative
+  descriptors (no digits).
+
+**Confidentiality grep (built package output):** zero `m²`/`mm`/`SAR`/`ريال` strings, zero
+area ranges, zero "Approx." figures. Residual comma-digits are only CSS `rgba()` color
+channels and SVG path/point coordinates — no quantity/area/price data.
+
+**Checks:** typecheck ✓ · lint ✓ · build ✓.

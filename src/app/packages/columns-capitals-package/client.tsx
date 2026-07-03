@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { PremiumPackageLayout } from '@/components/packages/PremiumPackageLayout'
-import type { PremiumPackageData } from '@/components/packages/PremiumPackageLayout'
+import type { PremiumPackageData, DesignDiagram } from '@/components/packages/PremiumPackageLayout'
 import type { ComponentDetail } from '@/components/packages/ComponentDetailModal'
 import { ColumnsCapitalsIllustration } from '@/components/packages/illustrations'
 
@@ -443,13 +443,48 @@ const REVIEW_STEPS = [
 
 // ─── Package data ─────────────────────────────────────────────────────────────
 
+// Schematic design-intent elevation — a colonnade rhythm: shafts, capitals,
+// bases, an engaged pilaster, one arched bay, and the entablature above.
+const COLUMNS_CAPITALS_DIAGRAM: DesignDiagram = {
+  kind: 'elevation',
+  viewBox: '0 0 400 300',
+  shapes: [
+    { kind: 'rect', x: 50, y: 60, w: 300, h: 20, fill: true }, // entablature (6)
+    { kind: 'rect', x: 90, y: 96, w: 22, h: 176 }, // shaft (1)
+    { kind: 'rect', x: 190, y: 96, w: 22, h: 176 },
+    { kind: 'rect', x: 290, y: 96, w: 22, h: 176 },
+    { kind: 'rect', x: 84, y: 80, w: 34, h: 16 }, // capital (2)
+    { kind: 'rect', x: 184, y: 80, w: 34, h: 16 },
+    { kind: 'rect', x: 284, y: 80, w: 34, h: 16 },
+    { kind: 'rect', x: 84, y: 264, w: 34, h: 8 }, // base / plinth (3)
+    { kind: 'rect', x: 184, y: 264, w: 34, h: 8 },
+    { kind: 'rect', x: 284, y: 264, w: 34, h: 8 },
+    { kind: 'rect', x: 40, y: 96, w: 14, h: 176 }, // pilaster (4)
+    { kind: 'rect', x: 36, y: 80, w: 22, h: 16 }, // pilaster capital
+    { kind: 'path', d: 'M112 96 A45 45 0 0 1 190 96', accent: true }, // arched bay (5)
+    { kind: 'circle', cx: 178, cy: 74, r: 7, accent: true }, // spandrel rosette (7)
+    { kind: 'line', x1: 40, y1: 272, x2: 330, y2: 272 }, // ground
+  ],
+  callouts: [
+    { n: 1, label: 'Column Shaft', x: 201, y: 180 },
+    { n: 2, label: 'Column Capital', x: 245, y: 88 },
+    { n: 3, label: 'Column Base / Plinth', x: 201, y: 268 },
+    { n: 4, label: 'Pilaster', x: 47, y: 180 },
+    { n: 5, label: 'Arched Colonnade Bay', x: 140, y: 66 },
+    { n: 6, label: 'Entablature / Beam Element', x: 300, y: 70 },
+    { n: 7, label: 'Decorative Spandrel Panel', x: 178, y: 74 },
+  ],
+}
+
 const COLUMNS_CAPITALS_DATA: PremiumPackageData = {
+  slug: 'columns-capitals-package',
+  designDiagram: COLUMNS_CAPITALS_DIAGRAM,
   title: 'Columns & Capitals Package',
   eyebrow: 'AI Concept Reference',
   subtitle: 'Colonnades, pilasters, and capitals. Engineered in GFRC/GRC.',
   heroDescription:
     'GFRC/GRC columns, capitals, bases, and pilasters — manufactured to architectural drawings for classical, heritage, and contemporary building entrances, colonnades, and facades.',
-  illustrativeArea: 'Approx. 800–2,500 m²',
+  illustrativeArea: 'Colonnades & porticos',
   visibleComponents: ['Column shafts', 'Capitals', 'Bases', 'Pilasters', 'Arched colonnades', 'Decorative panels'],
   HeroIllustration: ColumnsCapitalsIllustration,
   packageIntent:

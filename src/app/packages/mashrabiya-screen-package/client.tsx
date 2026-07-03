@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { PremiumPackageLayout } from '@/components/packages/PremiumPackageLayout'
-import type { PremiumPackageData } from '@/components/packages/PremiumPackageLayout'
+import type { PremiumPackageData, DesignDiagram } from '@/components/packages/PremiumPackageLayout'
 import type { ComponentDetail } from '@/components/packages/ComponentDetailModal'
 import { MashrabiyaScreenIllustration } from '@/components/packages/illustrations'
 
@@ -452,13 +452,55 @@ const REVIEW_STEPS = [
 
 // ─── Package data ─────────────────────────────────────────────────────────────
 
+// Schematic design-intent elevation — a framed mashrabiya screen field of
+// repeating lattice modules, with a window insert, an entrance screen, a solid
+// cladding panel, and one accent custom-pattern module.
+const MASHRABIYA_SCREEN_DIAGRAM: DesignDiagram = {
+  kind: 'elevation',
+  viewBox: '0 0 400 300',
+  shapes: [
+    { kind: 'rect', x: 60, y: 40, w: 280, h: 232 }, // frame / surround (5)
+    { kind: 'rect', x: 74, y: 54, w: 150, h: 150 }, // screen field (1)
+    { kind: 'line', x1: 124, y1: 54, x2: 124, y2: 204 },
+    { kind: 'line', x1: 174, y1: 54, x2: 174, y2: 204 },
+    { kind: 'line', x1: 74, y1: 104, x2: 224, y2: 104 },
+    { kind: 'line', x1: 74, y1: 154, x2: 224, y2: 154 },
+    { kind: 'polyline', points: '99 67 111 79 99 91 87 79 99 67' }, // module
+    { kind: 'polyline', points: '149 67 161 79 149 91 137 79 149 67' },
+    { kind: 'polyline', points: '199 67 211 79 199 91 187 79 199 67', accent: true }, // custom pattern (6)
+    { kind: 'polyline', points: '99 117 111 129 99 141 87 129 99 117' },
+    { kind: 'polyline', points: '149 117 161 129 149 141 137 129 149 117' },
+    { kind: 'polyline', points: '199 117 211 129 199 141 187 129 199 117' },
+    { kind: 'polyline', points: '99 167 111 179 99 191 87 179 99 167' },
+    { kind: 'polyline', points: '149 167 161 179 149 191 137 179 149 167' },
+    { kind: 'polyline', points: '199 167 211 179 199 191 187 179 199 167' },
+    { kind: 'rect', x: 244, y: 60, w: 80, h: 70 }, // window screen insert (2)
+    { kind: 'line', x1: 244, y1: 60, x2: 324, y2: 130 },
+    { kind: 'line', x1: 324, y1: 60, x2: 244, y2: 130 },
+    { kind: 'rect', x: 244, y: 146, w: 80, h: 60, fill: true }, // cladding panel (4)
+    { kind: 'path', d: 'M120 268 L120 236 A45 20 0 0 1 210 236 L210 268' }, // entrance screen (3)
+    { kind: 'line', x1: 143, y1: 240, x2: 187, y2: 268 },
+    { kind: 'line', x1: 187, y1: 240, x2: 143, y2: 268 },
+  ],
+  callouts: [
+    { n: 1, label: 'Mashrabiya Screen Panel', x: 149, y: 129 },
+    { n: 2, label: 'Window Screen Insert', x: 284, y: 95 },
+    { n: 3, label: 'Decorative Entrance Screen', x: 165, y: 252 },
+    { n: 4, label: 'Facade Cladding Panel', x: 284, y: 176 },
+    { n: 5, label: 'Decorative Frame / Surround', x: 320, y: 255 },
+    { n: 6, label: 'Custom Pattern Panel', x: 199, y: 79 },
+  ],
+}
+
 const MASHRABIYA_SCREEN_DATA: PremiumPackageData = {
+  slug: 'mashrabiya-screen-package',
+  designDiagram: MASHRABIYA_SCREEN_DIAGRAM,
   title: 'Mashrabiya Screen Package',
   eyebrow: 'AI Concept Reference',
   subtitle: 'Project-specific screens. Privacy, shading, and identity.',
   heroDescription:
     'GFRC/GRC mashrabiya screens designed to project-specific patterns — integrating privacy control, solar shading, and decorative architectural identity into a single manufactured scope.',
-  illustrativeArea: 'Approx. 1,500–4,500 m²',
+  illustrativeArea: 'Screen & façade fields',
   visibleComponents: ['Mashrabiya screens', 'Window screens', 'Facade cladding', 'Decorative frames', 'Entrance screen panels'],
   HeroIllustration: MashrabiyaScreenIllustration,
   packageIntent:
