@@ -47,7 +47,9 @@ export default function RootLayout({
   return (
     <html lang="en" dir="ltr">
       <body className={poppins.className}>
-        <Header />
+        {/* Preview/dev show the EN/AR toggle for owner review; production hides it
+            until Arabic launches (VERCEL_ENV is set by Vercel per environment). */}
+        <Header previewMode={process.env.VERCEL_ENV !== 'production'} />
         {/* pt matches fixed header height: 84px mobile, 80px (h-20) sm+ */}
         <main className="pt-[84px] sm:pt-20">{children}</main>
         <Footer />

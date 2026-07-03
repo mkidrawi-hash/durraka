@@ -760,3 +760,11 @@ the darkness came from the dark source images + the tall `5:4` mobile aspect.
 **Light/dark:** the section has no `dark:` classes (homepage is light-themed) — renders
 identically in both. **Checks:** typecheck ✓ · lint ✓ · build ✓ (aspect + gradient confirmed
 in built HTML/CSS).
+
+**Recovery:** PR #45's squash landed only the first foundation commit — the terminology
+alignment, preview-toggle (incl. the `/ar` landing), and production go-live commits were
+dropped, so `main` had `ARABIC_ENABLED=false` and no notice bar / `/ar` fallback. Restored
+the 11 affected files from the go-live commit `4accb4b` onto `fix/i18n-golive-recovery`:
+`ARABIC_ENABLED=true`, draft notice bar (`src/content/ar/common.ts` + ArLayout), glossary
++ aligned ar dicts, `/ar` landing (`src/app/ar/page.tsx`), Header preview/never-404 logic,
+docs. `/ar` kept `noindex`. typecheck ✓ · lint ✓ · build ✓.
