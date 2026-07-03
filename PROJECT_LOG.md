@@ -634,3 +634,28 @@ layout, flow, or API changes.
   redirects (safe to delete in a later cleanup).
 
 **Checks:** typecheck ✓ · lint ✓ · build ✓.
+
+---
+
+## Session — Cleanup: remove legacy /projects route files
+
+**Branch:** `chore/remove-legacy-projects` · one PR. Follow-up to #41 (301 redirects
+`/projects` + `/projects/:slug` → `/gallery`, verified in production).
+
+Deleted the legacy `/projects` page + subpage files now that the redirects fully cover the
+URLs. The `next.config.mjs` 301 redirects are **kept unchanged**.
+
+Removed (`src/app/projects/`): `page.tsx`, `ProjectsGrid.tsx`, `[slug]/page.tsx`, and the 6
+named subpages (complete-facade-package, custom-architectural-components,
+heritage-regional-architecture, hospitality-landmark-facades, landmark-government-facades,
+villa-palace-architecture).
+
+Confirmed nothing outside `src/app/projects/` imported these files, so the route deletes
+cleanly. `/projects` + `/projects/:slug` are now served solely by the 301 redirects.
+
+**Out of scope (flagged, not deleted):** the support modules used *only* by the removed
+route — `src/components/projects/{PackageDetailPage,ProjectDetailLayout,PackageComponentsGallery}.tsx`
+and `src/lib/{project-packages,package-content}.ts` — are now orphaned dead code. Left in
+place per "nothing else"; can be removed in a follow-up.
+
+**Checks:** typecheck ✓ · lint ✓ · build ✓ (no `/projects` route; redirects intact).
