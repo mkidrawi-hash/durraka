@@ -538,12 +538,6 @@ export default function TermsAndConditionsPage() {
       {/* Content */}
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
 
-        {/* PENDING_LEGAL_REVIEW — owner-approved binding-notice wording; the Arabic legal body below is MACHINE DRAFT */}
-        <div className="mb-10 rounded-sm border border-accent/30 bg-accent/5 p-4 text-sm text-navy/80 leading-relaxed">
-          هذه الترجمة العربية مقدمة لأغراض الإيضاح فقط. النسخة الإنجليزية هي النص المعتمد والملزم
-          قانونًا في حال وجود أي اختلاف.
-        </div>
-
         <p className="text-gray-600 leading-relaxed mb-12 text-base">
           بدخولك إلى الموقع الإلكتروني لمصنع دراكة للصناعة (&laquo;الموقع&raquo;) أو استخدامه، أو
           تقديم استفسار أو طلب عرض سعر، أو تنزيل أي مادة من هذا الموقع، فإنك توافق على الالتزام بهذه

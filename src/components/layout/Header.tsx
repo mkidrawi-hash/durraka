@@ -23,19 +23,6 @@ const ARABIC_ENABLED = true
 // separately by the toggle, so it's excluded here).
 const TRANSLATED_AR_ROUTES = new Set<string>(TRANSLATED_PATHS.filter((p) => p !== '/'))
 
-function PreviewBadge({ className = '' }: { className?: string }) {
-  return (
-    <span
-      dir="rtl"
-      lang="ar"
-      title="Preview — under review (not launched)"
-      className={`inline-flex items-center whitespace-nowrap rounded-sm border border-amber-400 bg-amber-100 px-1.5 py-0.5 text-[9px] font-semibold text-amber-800 ${className}`}
-    >
-      معاينة — قيد المراجعة
-    </span>
-  )
-}
-
 export default function Header({ previewMode = false }: { previewMode?: boolean }) {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
@@ -108,7 +95,6 @@ export default function Header({ previewMode = false }: { previewMode?: boolean 
           {/* Mobile Language Switcher — between logo and hamburger */}
           {showLangToggle && (
             <div className="lg:hidden flex items-center gap-1.5 mr-1">
-              {previewMode && <PreviewBadge />}
               <div className="flex items-center border border-navy/20 rounded-sm overflow-hidden">
                 <Link href={enHref} className={`px-2 py-1 text-[10px] font-bold tracking-widest uppercase transition-colors ${!isArabic ? 'bg-navy text-white' : 'text-navy/50'}`}>EN</Link>
                 <div className="w-px h-3 bg-navy/20" />
@@ -137,7 +123,6 @@ export default function Header({ previewMode = false }: { previewMode?: boolean 
             {/* Desktop Language Switcher */}
             {showLangToggle && (
               <div className="hidden lg:flex items-center gap-2 ml-3">
-                {previewMode && <PreviewBadge />}
                 <div className="flex items-center border border-navy/20 rounded-sm overflow-hidden">
                   <Link href={enHref} className={`px-2.5 py-1.5 text-[10px] font-bold tracking-widest uppercase transition-colors ${!isArabic ? 'bg-navy text-white' : 'text-navy/50 hover:text-navy hover:bg-navy/[0.06]'}`}>EN</Link>
                   <div className="w-px h-3 bg-navy/20" />
@@ -214,7 +199,6 @@ export default function Header({ previewMode = false }: { previewMode?: boolean 
                   <div className="w-px h-3 bg-navy/20" />
                   <Link href={arHref} className={`px-3 py-1.5 text-[10px] font-bold tracking-widest uppercase transition-colors ${isArabic ? 'bg-navy text-white' : 'text-navy/50'}`}>AR</Link>
                 </div>
-                {previewMode && <PreviewBadge />}
               </div>
             )}
           </div>
