@@ -6,6 +6,12 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { NAV_LINKS } from '@/lib/constants'
 
+// Arabic content is not live yet — every /ar/* route currently 404s. Keep the
+// full i18n structure (routes, isArabic/enHref/arHref logic, /ar scaffold) in
+// place but hide the language switcher UI until Arabic ships. Flip this single
+// flag to true to bring the EN/AR toggle back.
+const ARABIC_ENABLED = false
+
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
@@ -56,11 +62,13 @@ export default function Header() {
           </Link>
 
           {/* Mobile Language Switcher — between logo and hamburger */}
-          <div className="lg:hidden flex items-center mr-1 border border-navy/20 rounded-sm overflow-hidden">
-            <Link href={enHref} className={`px-2 py-1 text-[10px] font-bold tracking-widest uppercase transition-colors ${!isArabic ? 'bg-navy text-white' : 'text-navy/50'}`}>EN</Link>
-            <div className="w-px h-3 bg-navy/20" />
-            <Link href={arHref} className={`px-2 py-1 text-[10px] font-bold tracking-widest uppercase transition-colors ${isArabic ? 'bg-navy text-white' : 'text-navy/50'}`}>AR</Link>
-          </div>
+          {ARABIC_ENABLED && (
+            <div className="lg:hidden flex items-center mr-1 border border-navy/20 rounded-sm overflow-hidden">
+              <Link href={enHref} className={`px-2 py-1 text-[10px] font-bold tracking-widest uppercase transition-colors ${!isArabic ? 'bg-navy text-white' : 'text-navy/50'}`}>EN</Link>
+              <div className="w-px h-3 bg-navy/20" />
+              <Link href={arHref} className={`px-2 py-1 text-[10px] font-bold tracking-widest uppercase transition-colors ${isArabic ? 'bg-navy text-white' : 'text-navy/50'}`}>AR</Link>
+            </div>
+          )}
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-1">
@@ -78,11 +86,13 @@ export default function Header() {
               </Link>
             ))}
             {/* Desktop Language Switcher */}
-            <div className="hidden lg:flex items-center ml-3 border border-navy/20 rounded-sm overflow-hidden">
-              <Link href={enHref} className={`px-2.5 py-1.5 text-[10px] font-bold tracking-widest uppercase transition-colors ${!isArabic ? 'bg-navy text-white' : 'text-navy/50 hover:text-navy hover:bg-navy/[0.06]'}`}>EN</Link>
-              <div className="w-px h-3 bg-navy/20" />
-              <Link href={arHref} className={`px-2.5 py-1.5 text-[10px] font-bold tracking-widest uppercase transition-colors ${isArabic ? 'bg-navy text-white' : 'text-navy/50 hover:text-navy hover:bg-navy/[0.06]'}`}>AR</Link>
-            </div>
+            {ARABIC_ENABLED && (
+              <div className="hidden lg:flex items-center ml-3 border border-navy/20 rounded-sm overflow-hidden">
+                <Link href={enHref} className={`px-2.5 py-1.5 text-[10px] font-bold tracking-widest uppercase transition-colors ${!isArabic ? 'bg-navy text-white' : 'text-navy/50 hover:text-navy hover:bg-navy/[0.06]'}`}>EN</Link>
+                <div className="w-px h-3 bg-navy/20" />
+                <Link href={arHref} className={`px-2.5 py-1.5 text-[10px] font-bold tracking-widest uppercase transition-colors ${isArabic ? 'bg-navy text-white' : 'text-navy/50 hover:text-navy hover:bg-navy/[0.06]'}`}>AR</Link>
+              </div>
+            )}
             <Link
               href="/request-quotation"
               className="ml-4 px-5 py-2.5 bg-accent text-white text-sm font-semibold rounded-sm hover:bg-accent-dark transition-colors"
@@ -142,14 +152,16 @@ export default function Header() {
               Request a Quotation
             </Link>
             {/* Mobile dropdown language switcher */}
-            <div className="mt-3 pt-3 border-t border-navy/10 flex items-center gap-2">
-              <span className="text-navy/40 text-[10px] tracking-widest uppercase">Language</span>
-              <div className="flex items-center border border-navy/20 rounded-sm overflow-hidden">
-                <Link href={enHref} className={`px-3 py-1.5 text-[10px] font-bold tracking-widest uppercase transition-colors ${!isArabic ? 'bg-navy text-white' : 'text-navy/50'}`}>EN</Link>
-                <div className="w-px h-3 bg-navy/20" />
-                <Link href={arHref} className={`px-3 py-1.5 text-[10px] font-bold tracking-widest uppercase transition-colors ${isArabic ? 'bg-navy text-white' : 'text-navy/50'}`}>AR</Link>
+            {ARABIC_ENABLED && (
+              <div className="mt-3 pt-3 border-t border-navy/10 flex items-center gap-2">
+                <span className="text-navy/40 text-[10px] tracking-widest uppercase">Language</span>
+                <div className="flex items-center border border-navy/20 rounded-sm overflow-hidden">
+                  <Link href={enHref} className={`px-3 py-1.5 text-[10px] font-bold tracking-widest uppercase transition-colors ${!isArabic ? 'bg-navy text-white' : 'text-navy/50'}`}>EN</Link>
+                  <div className="w-px h-3 bg-navy/20" />
+                  <Link href={arHref} className={`px-3 py-1.5 text-[10px] font-bold tracking-widest uppercase transition-colors ${isArabic ? 'bg-navy text-white' : 'text-navy/50'}`}>AR</Link>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       )}
