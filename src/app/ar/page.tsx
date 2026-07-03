@@ -4,11 +4,13 @@ import Metrics from '@/components/home/Metrics'
 import SystemsOverview from '@/components/home/SystemsOverview'
 import ProjectsPreview from '@/components/home/ProjectsPreview'
 import RfqCTA from '@/components/home/RfqCTA'
+import { hreflangAlternates } from '@/lib/i18n-routes'
 
 export const metadata: Metadata = {
   title: { absolute: 'مصنع دراكة للصناعة | أنظمة واجهات GFRC و GRC' },
   description:
     'مصنع دراكة للصناعة — الشركة السعودية المتخصصة في تصنيع تكسية الواجهات وأنظمة GFRC و GRC المعمارية لمشاريع في جميع أنحاء المملكة العربية السعودية.',
+  alternates: hreflangAlternates('/', 'ar'),
 }
 
 export default function ArHomePage() {

@@ -7,7 +7,10 @@ import type { Locale } from '@/lib/i18n'
 
 import { commonContent } from './en/common'
 import { aboutContent } from './en/about'
+import { contactContent } from './en/contact'
 import { homeContent } from './en/home'
+import { systemsIndexContent } from './en/systems-index'
+import { systemLayoutContent } from './en/systems-layout'
 import { rfqContent } from './en/rfq'
 import { engineerGuidanceContent } from './en/systems/engineer-guidance'
 import { facadeCladdingContent } from './en/systems/gfrc-grc-facade-cladding'
@@ -15,7 +18,10 @@ import { packagesContent } from './en/packages'
 
 import { commonAr } from './ar/common'
 import { aboutContentAr } from './ar/about'
+import { contactContentAr } from './ar/contact'
 import { homeContentAr } from './ar/home'
+import { systemsIndexContentAr } from './ar/systems-index'
+import { systemLayoutContentAr } from './ar/systems-layout'
 import { rfqContentAr } from './ar/rfq'
 import { engineerGuidanceContentAr } from './ar/systems/engineer-guidance'
 import { facadeCladdingContentAr } from './ar/systems/gfrc-grc-facade-cladding'
@@ -26,8 +32,11 @@ const dictionaries = {
     common: commonContent,
     home: homeContent,
     about: aboutContent,
+    contact: contactContent,
     rfq: rfqContent,
     engineerGuidance: engineerGuidanceContent,
+    systemLayout: systemLayoutContent,
+    systemsIndex: systemsIndexContent,
     facadeCladding: facadeCladdingContent,
     packages: packagesContent,
   },
@@ -35,8 +44,11 @@ const dictionaries = {
     common: commonAr,
     home: homeContentAr,
     about: aboutContentAr,
+    contact: contactContentAr,
     rfq: rfqContentAr,
     engineerGuidance: engineerGuidanceContentAr,
+    systemLayout: systemLayoutContentAr,
+    systemsIndex: systemsIndexContentAr,
     facadeCladding: facadeCladdingContentAr,
     packages: packagesContentAr,
   },

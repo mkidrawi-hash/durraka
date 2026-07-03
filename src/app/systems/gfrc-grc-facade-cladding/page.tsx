@@ -11,6 +11,6 @@ export const metadata: Metadata = {
 
 export default function FacadeCladdingPage() {
   return (
-    <SystemEnhancedLayout data={facadeCladdingContent} sampleDrawing={<SampleDrawing />} systemContext={<SystemContext />} />
+    <SystemEnhancedLayout data={facadeCladdingContent} sampleDrawing={<SampleDrawing />} systemContext={<SystemContext />} locale="en" />
   )
 }

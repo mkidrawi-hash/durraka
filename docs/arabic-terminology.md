@@ -21,6 +21,7 @@ of an approved term.
 | What's Included | ما تشمله الباقة | Package pages |
 | Durraka (brand) | دراكة | Always — transliteration, no diacritics |
 | Durraka Factory for Industry | مصنع دراكة للصناعة | Always |
+| Cornice / Cornices | الكورنيش / الكرانيش | Always — owner-approved; **do not** use طوق / أطواق |
 
 **Note.** These terminology decisions are **owner-approved**. Do not substitute synonyms or
 alternative phrasings for any term above. When a new recurring term is translated, add it to
@@ -36,7 +37,7 @@ yet** in the approved list. Please confirm or correct; approved rows will be pro
 |---|---|---|
 | Architectural drawings & elevations | الرسومات والمساقط المعمارية | RFQ checklist, façade info-required |
 | Quantities / BOQ (bill of quantities) | الكميات / جدول الكميات | Packages scope, RFQ |
-| Cornice / Profile | طوق / مقطع | Façade design guidance |
+| Profile (cornice section) | مقطع | Façade design guidance (Cornice itself is now approved: الكورنيش / الكرانيش) |
 | Window surround / reveal | إطار النافذة / التجويف | Façade design guidance |
 | Panel rhythm | إيقاع الألواح | Façade |
 | Consultant / Contractor / Developer | استشاري / مقاول / مطوّر | Engineer-guidance roles |
@@ -44,6 +45,36 @@ yet** in the approved list. Please confirm or correct; approved rows will be pro
 | Submit Request | إرسال الطلب | Engineer-guidance CTA |
 | 3D Concept Render | عرض تصوّري ثلاثي الأبعاد | Packages 3D slot |
 | Reference number | الرقم المرجعي | Engineer-guidance confirmation |
+| Structural Drawings | الرسومات الإنشائية | RFQ attachments |
+| Reference Images / Renderings | صور مرجعية / أعمال تصوّرية | RFQ attachments |
+| Domes & Vaults | القباب والأقبية | RFQ system options |
+| Columns & Pillars | الأعمدة والدعامات | RFQ system options |
+| Cornices & Profiles | الكرانيش والمقاطع | RFQ system options |
+| Façade Consultant | استشاري واجهات | RFQ client-type roles |
+| Main Contractor / Subcontractor | مقاول رئيسي / مقاول من الباطن | RFQ client-type roles |
+| Developer / Owner | مطوّر / مالك | RFQ client-type roles |
+| Government Entity | جهة حكومية | RFQ client-type roles |
+| Request for Quotation (RFQ) | طلب عرض سعر | RFQ page + form |
+| Estimated Area | المساحة التقديرية | RFQ form |
+| Target Delivery Date | تاريخ التسليم المستهدف | RFQ form |
+| Large File Link | رابط ملف كبير | RFQ attachments |
+| Package(s) | باقة / باقات | Packages pages |
+| AI Concept Reference | مرجع تصوّري بالذكاء الاصطناعي | Package eyebrow |
+| Capital (column) | التاج | Columns/entrance packages |
+| Pilaster | دعامة جدارية | Columns package |
+| Column shaft | بدن العمود | Columns package |
+| Colonnade / Portico | رواق أعمدة / رواق مدخل | Columns package |
+| Window Surround / Reveal | إطار النافذة / التجويف | Package components |
+| Quoin / Corner element | ركن بارز / عنصر زاوية | Package components |
+| Vertical fin | زعنفة رأسية | Package components |
+| Moulding | حلية | Domes/cornices package |
+| Parapet | حاجز السطح | Package components |
+| Shadow line | خط الظل | Package components |
+| Calligraphy-inspired | مستوحى من الخط العربي | Custom decorative package |
+| Identity feature / panel | عنصر / لوح هوية | Custom decorative package |
+| Material Composition | تركيب المادة | Component modal |
+| Scope & Deliverables | النطاق والمخرجات | Component modal |
+| Visual Hotspots | النقاط المرئية | Component modal |
 
 ## How to use
 

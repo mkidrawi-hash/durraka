@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 export default function DomesCornicesPackagePage() {
   return (
     <>
-      <DomesCornicesPackageClient />
-      <StickyMobileCTA />
+      <DomesCornicesPackageClient locale="en" />
+      <StickyMobileCTA locale="en" />
     </>
   )
 }

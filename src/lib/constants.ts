@@ -1,3 +1,9 @@
+// Canonical production origin — used for metadataBase, sitemap, and hreflang
+// alternates. Overridable per environment via NEXT_PUBLIC_SITE_URL.
+export const SITE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://durraka.com'
+).replace(/\/$/, '')
+
 export const NAV_LINKS = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },

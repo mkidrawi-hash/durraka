@@ -5,14 +5,30 @@ import Link from 'next/link'
 import Image from 'next/image'
 import type { GalleryImage, GalleryFilter } from '@/data/galleryImages'
 import { GALLERY_FILTERS } from '@/data/galleryImages'
+import type { Locale, Translatable } from '@/lib/i18n'
+import { localizeHref } from '@/lib/i18n'
+import { Ltr } from '@/components/i18n/Ltr'
+import { galleryContent } from '@/content/en/gallery'
+import { galleryContentAr } from '@/content/ar/gallery'
+
+// The locale dictionary shape (English source widened to `string`). Both the EN
+// and AR dictionaries are assignable to this, so `t` can hold either.
+type GalleryDict = Translatable<typeof galleryContent>
+
+// Look up an image's localized display title/alt, falling back to the English
+// values baked into the data (the data stays the English source of truth).
+function imageMeta(t: GalleryDict, img: GalleryImage): { title: string; alt: string } {
+  const m = t.images[img.id as keyof GalleryDict['images']] as { title: string; alt: string } | undefined
+  return { title: m?.title ?? img.title, alt: m?.alt ?? img.alt }
+}
 
 // Assemble the caption location line. Normalizes the redundant "…, KSA" pattern:
-// a known city renders "City, Saudi Arabia"; a generic or empty city renders just
-// "Saudi Arabia". The placeholder year "Various" (and empty years) are omitted so
-// the caption never shows a vague date.
-function formatLocation(city: string, year: string): string {
+// a known city renders "City, {saudiArabia}"; a generic or empty city renders just
+// "{saudiArabia}". The placeholder year "Various" (and empty years) are omitted so
+// the caption never shows a vague date. City/year come from the data as-is.
+function formatLocation(city: string, year: string, saudiArabia: string): string {
   const c = (city ?? '').trim()
-  const place = !c || c.toLowerCase() === 'saudi arabia' ? 'Saudi Arabia' : `${c}, Saudi Arabia`
+  const place = !c || c.toLowerCase() === 'saudi arabia' ? saudiArabia : `${c}, ${saudiArabia}`
   const y = (year ?? '').trim()
   return y && y.toLowerCase() !== 'various' ? `${place} · ${y}` : place
 }
@@ -23,10 +39,12 @@ function FilterBar({
   active,
   counts,
   onChange,
+  t,
 }: {
   active: GalleryFilter
   counts: Record<string, number>
   onChange: (f: GalleryFilter) => void
+  t: GalleryDict
 }) {
   return (
     <div
@@ -53,7 +71,7 @@ function FilterBar({
                   : 'bg-white dark:bg-white/[0.06] border border-gray-200 dark:border-white/[0.12] text-gray-600 dark:text-white/65 hover:border-accent hover:text-accent dark:hover:border-accent dark:hover:text-accent',
               ].join(' ')}
             >
-              {filter}
+              {filter === 'All' ? t.filterAll : t.categoryLabels[filter]}
               {filter !== 'All' && (
                 <span
                   className={[
@@ -63,7 +81,7 @@ function FilterBar({
                       : 'bg-gray-100 dark:bg-white/[0.10] text-gray-400 dark:text-white/45',
                   ].join(' ')}
                 >
-                  {count}
+                  <Ltr>{count}</Ltr>
                 </span>
               )}
             </button>
@@ -80,10 +98,12 @@ function GalleryLightbox({
   images,
   initialIndex,
   onClose,
+  t,
 }: {
   images: GalleryImage[]
   initialIndex: number
   onClose: () => void
+  t: GalleryDict
 }) {
   const [index, setIndex] = useState(initialIndex)
   const [zoom, setZoom] = useState(1)
@@ -102,6 +122,7 @@ function GalleryLightbox({
 
   const current = images[index]
   const total = images.length
+  const currentMeta = imageMeta(t, current)
 
   const clampPan = (x: number, y: number, currentZoom: number) => {
     const area = imageAreaRef.current
@@ -261,24 +282,24 @@ function GalleryLightbox({
       style={{ background: 'rgba(4,15,34,0.95)', height: '100dvh' }}
       role="dialog"
       aria-modal="true"
-      aria-label={`Gallery preview: ${current.title}`}
+      aria-label={t.lightboxPreview.replace('{title}', currentMeta.title)}
     >
       {/* Header */}
       <div className="flex-shrink-0 bg-[#071B3B] border-b border-white/[0.08] px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
         <div className="min-w-0 flex-1">
           <p className="text-[#D71920] text-[9px] font-bold tracking-widest uppercase mb-0.5">
-            Project Gallery
+            {t.lightboxEyebrow}
           </p>
           <h2 className="text-white font-bold text-sm sm:text-base leading-tight truncate">
-            {current.title}
+            {currentMeta.title}
           </h2>
         </div>
         <div className="flex items-center gap-2.5 flex-shrink-0">
-          <span className="text-white/30 text-xs tabular-nums hidden sm:block">{index + 1} / {total}</span>
+          <span className="text-white/30 text-xs tabular-nums hidden sm:block"><Ltr>{index + 1} / {total}</Ltr></span>
           <button
             onClick={onClose}
             className="w-8 h-8 rounded-sm bg-white/[0.07] hover:bg-white/[0.16] border border-white/[0.12] flex items-center justify-center transition-colors"
-            aria-label="Close preview"
+            aria-label={t.lightboxClose}
           >
             <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -301,8 +322,8 @@ function GalleryLightbox({
         onTouchEnd={handleTouchEnd}
       >
         {total > 1 && (
-          <button onClick={prev} className="absolute left-3 sm:left-5 z-10 w-9 h-9 rounded-sm bg-[#071B3B]/90 hover:bg-[#071B3B] border border-white/[0.15] flex items-center justify-center transition-colors" aria-label="Previous">
-            <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+          <button onClick={prev} className="absolute start-3 sm:start-5 z-10 w-9 h-9 rounded-sm bg-[#071B3B]/90 hover:bg-[#071B3B] border border-white/[0.15] flex items-center justify-center transition-colors" aria-label={t.lightboxPrevious}>
+            <svg className="w-4 h-4 text-white rtl:-scale-x-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
           </button>
         )}
 
@@ -314,7 +335,7 @@ function GalleryLightbox({
           {current.image ? (
             <Image
               src={current.image}
-              alt={current.alt}
+              alt={currentMeta.alt}
               width={1600}
               height={1200}
               className="block w-auto h-auto rounded-sm shadow-2xl"
@@ -332,14 +353,14 @@ function GalleryLightbox({
                 <circle cx="8.5" cy="8.5" r="1.5" strokeWidth={1} />
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M21 15l-5-5L5 21" />
               </svg>
-              <p className="text-white/20 text-[10px] font-bold tracking-widest uppercase">Image coming soon</p>
+              <p className="text-white/20 text-[10px] font-bold tracking-widest uppercase">{t.imageComingSoon}</p>
             </div>
           )}
         </div>
 
         {total > 1 && (
-          <button onClick={next} className="absolute right-3 sm:right-5 z-10 w-9 h-9 rounded-sm bg-[#071B3B]/90 hover:bg-[#071B3B] border border-white/[0.15] flex items-center justify-center transition-colors" aria-label="Next">
-            <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+          <button onClick={next} className="absolute end-3 sm:end-5 z-10 w-9 h-9 rounded-sm bg-[#071B3B]/90 hover:bg-[#071B3B] border border-white/[0.15] flex items-center justify-center transition-colors" aria-label={t.lightboxNext}>
+            <svg className="w-4 h-4 text-white rtl:-scale-x-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
           </button>
         )}
       </div>
@@ -349,30 +370,30 @@ function GalleryLightbox({
         <div className="px-4 sm:px-6 pt-3 pb-2.5 border-b border-white/[0.06]">
           <div className="flex flex-wrap items-center gap-2 mb-1.5">
             <span className="text-[9px] font-bold tracking-widest uppercase px-2 py-0.5 bg-accent/20 border border-accent/30 text-accent rounded-sm">
-              {current.category}
+              {t.categoryLabels[current.category]}
             </span>
             <span className="text-white/35 text-[10px]">
-              {formatLocation(current.city, current.year)}
+              {formatLocation(current.city, current.year, t.locationSaudiArabia)}
             </span>
           </div>
           <p className="text-white/50 text-xs sm:text-sm leading-relaxed max-w-2xl">{current.description}</p>
         </div>
         <div className="px-4 sm:px-6 py-2.5 flex items-center justify-between gap-4">
-          <span className="text-white/25 text-xs tabular-nums">{index + 1} / {total}</span>
+          <span className="text-white/25 text-xs tabular-nums"><Ltr>{index + 1} / {total}</Ltr></span>
           <div className="flex items-center gap-1">
-            <button onClick={() => updateZoom(-0.5)} disabled={zoom <= 1} className="w-7 h-7 rounded-sm bg-white/[0.06] hover:bg-white/[0.14] border border-white/[0.10] flex items-center justify-center transition-colors disabled:opacity-25" aria-label="Zoom out">
+            <button onClick={() => updateZoom(-0.5)} disabled={zoom <= 1} className="w-7 h-7 rounded-sm bg-white/[0.06] hover:bg-white/[0.14] border border-white/[0.10] flex items-center justify-center transition-colors disabled:opacity-25" aria-label={t.lightboxZoomOut}>
               <svg className="w-3.5 h-3.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" /></svg>
             </button>
-            <button onClick={() => updateZoom(0, true)} className="h-7 px-2 rounded-sm bg-white/[0.06] hover:bg-white/[0.14] border border-white/[0.10] text-white/50 text-[10px] font-bold tracking-wide tabular-nums min-w-[2.75rem] text-center transition-colors" aria-label="Reset zoom">
-              {Math.round(zoom * 100)}%
+            <button onClick={() => updateZoom(0, true)} className="h-7 px-2 rounded-sm bg-white/[0.06] hover:bg-white/[0.14] border border-white/[0.10] text-white/50 text-[10px] font-bold tracking-wide tabular-nums min-w-[2.75rem] text-center transition-colors" aria-label={t.lightboxResetZoom}>
+              <Ltr>{Math.round(zoom * 100)}%</Ltr>
             </button>
-            <button onClick={() => updateZoom(0.5)} disabled={zoom >= 4} className="w-7 h-7 rounded-sm bg-white/[0.06] hover:bg-white/[0.14] border border-white/[0.10] flex items-center justify-center transition-colors disabled:opacity-25" aria-label="Zoom in">
+            <button onClick={() => updateZoom(0.5)} disabled={zoom >= 4} className="w-7 h-7 rounded-sm bg-white/[0.06] hover:bg-white/[0.14] border border-white/[0.10] flex items-center justify-center transition-colors disabled:opacity-25" aria-label={t.lightboxZoomIn}>
               <svg className="w-3.5 h-3.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" /></svg>
             </button>
           </div>
         </div>
         <p className="px-4 sm:px-6 pb-3 text-white/15 text-[9px] leading-relaxed">
-          For design reference only. Client names, exact project identities, quantities, contract values, fixing details, and confidential specifications are not disclosed.
+          {t.lightboxDisclosure}
         </p>
       </div>
     </div>
@@ -381,7 +402,8 @@ function GalleryLightbox({
 
 // ─── Gallery card ──────────────────────────────────────────────────────────────
 
-function GalleryCard({ image, onOpen }: { image: GalleryImage; onOpen: () => void }) {
+function GalleryCard({ image, onOpen, t }: { image: GalleryImage; onOpen: () => void; t: GalleryDict }) {
+  const meta = imageMeta(t, image)
   return (
     <article className="bg-white dark:bg-[#0e2e65] border border-gray-100 dark:border-white/[0.08] rounded-sm overflow-hidden shadow-sm hover:shadow-md dark:shadow-none transition-shadow group flex flex-col">
       {/* Image */}
@@ -389,13 +411,13 @@ function GalleryCard({ image, onOpen }: { image: GalleryImage; onOpen: () => voi
         onClick={onOpen}
         className="relative block w-full flex-shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D71920]"
         style={{ aspectRatio: '4/3' }}
-        aria-label={`Open preview: ${image.title}`}
+        aria-label={t.cardOpenPreview.replace('{title}', meta.title)}
       >
         {image.image ? (
           <>
             <Image
               src={image.image}
-              alt={image.alt}
+              alt={meta.alt}
               fill
               className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -409,7 +431,7 @@ function GalleryCard({ image, onOpen }: { image: GalleryImage; onOpen: () => voi
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                 </svg>
-                View
+                {t.cardView}
               </span>
             </div>
           </>
@@ -424,15 +446,15 @@ function GalleryCard({ image, onOpen }: { image: GalleryImage; onOpen: () => voi
               </svg>
             </div>
             <p className="text-[9px] font-bold tracking-widest uppercase text-[#071B3B]/25 dark:text-white/20">
-              Image coming soon
+              {t.imageComingSoon}
             </p>
           </div>
         )}
 
         {/* Category badge — always visible on image */}
-        <div className="absolute top-2.5 left-2.5">
+        <div className="absolute top-2.5 start-2.5">
           <span className="text-[8px] font-bold tracking-widest uppercase px-2 py-0.5 bg-[#071B3B]/80 dark:bg-[#071B3B]/90 text-white/85 rounded-sm backdrop-blur-sm">
-            {image.category}
+            {t.categoryLabels[image.category]}
           </span>
         </div>
       </button>
@@ -440,10 +462,10 @@ function GalleryCard({ image, onOpen }: { image: GalleryImage; onOpen: () => voi
       {/* Card body */}
       <div className="p-4 flex flex-col gap-2 flex-1">
         <h3 className="text-[#071B3B] dark:text-white font-semibold text-sm leading-snug">
-          {image.title}
+          {meta.title}
         </h3>
         <p className="text-gray-400 dark:text-white/40 text-xs font-medium">
-          {formatLocation(image.city, image.year)}
+          {formatLocation(image.city, image.year, t.locationSaudiArabia)}
         </p>
         <p className="text-gray-500 dark:text-white/55 text-xs leading-relaxed">
           {image.description}
@@ -466,7 +488,7 @@ function GalleryCard({ image, onOpen }: { image: GalleryImage; onOpen: () => voi
             onClick={onOpen}
             className="w-full py-2 rounded-sm text-[11px] font-bold tracking-widest uppercase text-[#071B3B]/50 dark:text-white/40 border border-[#071B3B]/10 dark:border-white/[0.08] hover:border-accent hover:text-accent dark:hover:border-accent dark:hover:text-accent transition-colors"
           >
-            View Project
+            {t.cardViewProject}
           </button>
         </div>
       </div>
@@ -476,7 +498,7 @@ function GalleryCard({ image, onOpen }: { image: GalleryImage; onOpen: () => voi
 
 // ─── Empty state ───────────────────────────────────────────────────────────────
 
-function EmptyState({ filter }: { filter: string }) {
+function EmptyState({ label, t }: { label: string; t: GalleryDict }) {
   return (
     <div className="col-span-full flex flex-col items-center justify-center py-20 gap-4">
       <div className="w-14 h-14 rounded-sm border border-gray-100 dark:border-white/[0.08] flex items-center justify-center bg-white dark:bg-white/[0.04]">
@@ -487,8 +509,8 @@ function EmptyState({ filter }: { filter: string }) {
         </svg>
       </div>
       <div className="text-center">
-        <p className="text-gray-500 dark:text-white/45 text-sm font-semibold mb-1">No references in this category yet</p>
-        <p className="text-gray-300 dark:text-white/25 text-xs">{filter} images will appear here when published.</p>
+        <p className="text-gray-500 dark:text-white/45 text-sm font-semibold mb-1">{t.emptyStateTitle}</p>
+        <p className="text-gray-300 dark:text-white/25 text-xs">{t.emptyStateSubtext.replace('{category}', label)}</p>
       </div>
     </div>
   )
@@ -496,7 +518,8 @@ function EmptyState({ filter }: { filter: string }) {
 
 // ─── Page (exported) ───────────────────────────────────────────────────────────
 
-export function GalleryPage({ images }: { images: GalleryImage[] }) {
+export function GalleryPage({ images, locale = 'en' }: { images: GalleryImage[]; locale?: Locale }) {
+  const t: GalleryDict = locale === 'ar' ? galleryContentAr : galleryContent
   const [activeFilter, setActiveFilter] = useState<GalleryFilter>('All')
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
 
@@ -524,26 +547,27 @@ export function GalleryPage({ images }: { images: GalleryImage[] }) {
     setLightboxIndex(null)
   }
 
+  const activeLabel = activeFilter === 'All' ? t.filterAll : t.categoryLabels[activeFilter]
+
   return (
     <>
       {/* ── Hero ── */}
       <section className="bg-[#071B3B] pt-14 sm:pt-20 pb-10 sm:pb-14 px-4">
         <div className="max-w-7xl mx-auto">
           <nav aria-label="Breadcrumb" className="flex items-center gap-2 mb-8 text-xs text-white/40">
-            <Link href="/" className="hover:text-white/70 transition-colors">Home</Link>
-            <span aria-hidden="true">›</span>
-            <span className="text-white/60">Project Gallery</span>
+            <Link href={localizeHref('/', locale)} className="hover:text-white/70 transition-colors">{t.breadcrumbHome}</Link>
+            <span aria-hidden="true" className="rtl:-scale-x-100">›</span>
+            <span className="text-white/60">{t.breadcrumbGallery}</span>
           </nav>
           <div className="flex items-center gap-3 mb-4">
             <div className="w-8 h-px bg-[#D71920] flex-shrink-0" aria-hidden="true" />
-            <span className="text-[#D71920] text-xs font-semibold tracking-widest uppercase">Visual References</span>
+            <span className="text-[#D71920] text-xs font-semibold tracking-widest uppercase">{t.eyebrow}</span>
           </div>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
-            Project Gallery
+            {t.title}
           </h1>
           <p className="text-white/60 text-base sm:text-lg leading-relaxed max-w-2xl">
-            Explore selected GRC / GFRC architectural works, facade components, textures, and
-            project-based visual references.
+            {t.intro}
           </p>
         </div>
       </section>
@@ -553,11 +577,11 @@ export function GalleryPage({ images }: { images: GalleryImage[] }) {
         <div className="max-w-7xl mx-auto">
           {/* Filters + count */}
           <div className="mb-8 space-y-3">
-            <FilterBar active={activeFilter} counts={counts} onChange={handleFilterChange} />
+            <FilterBar active={activeFilter} counts={counts} onChange={handleFilterChange} t={t} />
             <p className="text-gray-400 dark:text-white/35 text-xs tabular-nums">
               {filtered.length === 0
-                ? 'No references in this category'
-                : `${filtered.length} ${filtered.length === 1 ? 'reference' : 'references'}`}
+                ? t.countNone
+                : <><Ltr>{filtered.length}</Ltr> {filtered.length === 1 ? t.countSingular : t.countPlural}</>}
             </p>
           </div>
 
@@ -565,16 +589,14 @@ export function GalleryPage({ images }: { images: GalleryImage[] }) {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
             {filtered.length > 0
               ? filtered.map((img, i) => (
-                  <GalleryCard key={img.id} image={img} onOpen={() => setLightboxIndex(i)} />
+                  <GalleryCard key={img.id} image={img} onOpen={() => setLightboxIndex(i)} t={t} />
                 ))
-              : <EmptyState filter={activeFilter} />}
+              : <EmptyState label={activeLabel} t={t} />}
           </div>
 
           {/* Disclosure */}
           <p className="text-gray-300 dark:text-white/20 text-xs mt-10 leading-relaxed max-w-2xl">
-            All references are for design coordination purposes only. Client names, exact project identities,
-            contract values, quantities, fixing details, anchors, brackets, installation sequences, and
-            confidential specifications are not disclosed. Only public-safe selections are shown.
+            {t.galleryDisclosure}
           </p>
         </div>
       </section>
@@ -584,17 +606,17 @@ export function GalleryPage({ images }: { images: GalleryImage[] }) {
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-6">
           <div>
             <h2 className="text-xl sm:text-2xl font-bold text-white mb-2 leading-tight">
-              Have a project to discuss?
+              {t.ctaHeading}
             </h2>
             <p className="text-white/55 text-sm leading-relaxed max-w-lg">
-              Share your drawings and receive a project-specific GRC/GFRC quotation from our engineering team.
+              {t.ctaBody}
             </p>
           </div>
           <Link
-            href="/request-quotation"
+            href={localizeHref('/request-quotation', locale)}
             className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-accent text-white text-sm font-semibold rounded-sm hover:bg-accent-dark transition-colors flex-shrink-0 w-full sm:w-auto"
           >
-            Request a Quotation
+            {t.ctaButton}
           </Link>
         </div>
       </section>
@@ -605,6 +627,7 @@ export function GalleryPage({ images }: { images: GalleryImage[] }) {
           images={filtered}
           initialIndex={lightboxIndex}
           onClose={() => setLightboxIndex(null)}
+          t={t}
         />
       )}
     </>

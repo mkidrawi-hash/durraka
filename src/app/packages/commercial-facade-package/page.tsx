@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 export default function CommercialFacadePackagePage() {
   return (
     <>
-      <CommercialFacadePackageClient />
-      <StickyMobileCTA />
+      <CommercialFacadePackageClient locale="en" />
+      <StickyMobileCTA locale="en" />
     </>
   )
 }

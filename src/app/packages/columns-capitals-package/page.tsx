@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 export default function ColumnsCapitalsPackagePage() {
   return (
     <>
-      <ColumnsCapitalsPackageClient />
-      <StickyMobileCTA />
+      <ColumnsCapitalsPackageClient locale="en" />
+      <StickyMobileCTA locale="en" />
     </>
   )
 }

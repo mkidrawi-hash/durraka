@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { NAV_LINKS } from '@/lib/constants'
+import { TRANSLATED_PATHS } from '@/lib/i18n-routes'
 import { localizeHref } from '@/lib/useLocale'
 import { commonContent } from '@/content/en/common'
 import { commonAr } from '@/content/ar/common'
@@ -16,14 +17,11 @@ import { commonAr } from '@/content/ar/common'
 // added — see docs/i18n.md. To pull the toggle back, set this to false.
 const ARABIC_ENABLED = true
 
-// English routes that currently have a translated /ar equivalent. The toggle
-// links to /ar<path> for these; for any other page it falls back to /ar (never a
-// 404). Add entries here as pages are translated.
-const TRANSLATED_AR_ROUTES = new Set<string>([
-  '/about',
-  '/systems/gfrc-grc-facade-cladding',
-  '/systems/gfrc-grc-facade-cladding/engineer-guidance',
-])
+// English routes that have a translated /ar equivalent. The toggle links to
+// /ar<path> for these; for any other page it falls back to /ar (never a 404).
+// Sourced from the single route list in lib/i18n-routes ('/' is handled
+// separately by the toggle, so it's excluded here).
+const TRANSLATED_AR_ROUTES = new Set<string>(TRANSLATED_PATHS.filter((p) => p !== '/'))
 
 function PreviewBadge({ className = '' }: { className?: string }) {
   return (

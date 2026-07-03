@@ -6,6 +6,7 @@ import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import FloatingWhatsAppButton from '@/components/social/FloatingWhatsAppButton'
 import AttributionCapture from '@/components/analytics/AttributionCapture'
+import { SITE_URL } from '@/lib/constants'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -14,6 +15,7 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     default: 'Durraka Factory for Industry | GFRC & GRC Façade Solutions',
     template: '%s | Durraka Factory',

@@ -5,66 +5,11 @@ import { PremiumPackageLayout } from '@/components/packages/PremiumPackageLayout
 import type { PremiumPackageData, DesignDiagram } from '@/components/packages/PremiumPackageLayout'
 import type { ComponentDetail } from '@/components/packages/ComponentDetailModal'
 import { CommercialFacadeIllustration } from '@/components/packages/illustrations'
+import type { Locale } from '@/lib/i18n'
+import { commercialFacadeContent } from '@/content/en/packages/commercial-facade-package'
+import { commercialFacadeContentAr } from '@/content/ar/packages/commercial-facade-package'
 
-// ─── Shared data ──────────────────────────────────────────────────────────────
-
-const SHARED_MATERIALS = [
-  'GFRC/GRC architectural component — glass fibre reinforced concrete',
-  'Cement-based composite matrix with integral aggregate',
-  'Alkali-resistant glass fibre reinforcement throughout',
-  'Project-specific thickness and section profile, confirmed via shop drawings',
-  'Factory-cast component — manufactured under controlled conditions',
-  'Pigmented or natural cement finish, project-specific',
-]
-
-const SHARED_ARCH_DRAWINGS = [
-  'Elevation reference — profile position, height, and building integration',
-  'Section reference — component cross-section, projection, and depth',
-  'Profile outline drawing — detailed molding or surface geometry',
-  'Module rhythm — repeat spacing and panel joint positions',
-  'Interface detail — adjacent facade materials and build-up',
-  'Approved dimensions based on submitted project drawings',
-]
-
-const SHARED_SHOP_DRAWINGS = [
-  'Shop drawings required before production commences',
-  'Substrate and structural coordination by project team',
-  'Panelisation strategy and lifting method — confirmed at technical review',
-  'Installation sequence is project-specific and not disclosed publicly',
-  'Final shop drawing set remains project-confidential',
-]
-
-const SHARED_FINISHES = [
-  'Smooth architectural finish — fine-textured, paint-ready',
-  'Sandblasted finish — lightly abraded, aggregate-visible surface',
-  'Stone-like texture — aggregate and pigment to match natural stone',
-  'Textured / cast finish — ribbed, board-formed, or bespoke pattern',
-  'Heritage warm tone — warm aggregate, hand-finished appearance',
-  'Custom colour match — integral pigment to project RAL, NCS, or swatch',
-]
-
-const SHARED_INPUTS = [
-  'Architectural elevations and plan drawings',
-  'Sections through relevant facade areas',
-  'BOQ / quantity schedule if available',
-  'Structural drawings and substrate information',
-  'Finish and color references or samples',
-  'Available reference or inspiration images',
-  'Project location and construction timeline',
-  'Site constraints or logistics considerations',
-]
-
-const SHARED_SCOPE = [
-  'Component scope review — confirm elements, dimensions, and quantities',
-  'Shop drawing coordination — based on approved architectural drawings',
-  'Mold development — project-specific geometry and profile',
-  'GFRC/GRC manufacturing — factory production to confirmed drawings',
-  'Sample approval — finish sample submitted for project sign-off',
-  'Delivery coordination — scheduled to project programme',
-  'Installation coordination when required by contract scope',
-]
-
-// ─── Facade elevation diagram ─────────────────────────────────────────────────
+// ─── Facade elevation diagram (shared hotspot diagram) ────────────────────────
 
 function CommercialFacadeElevation() {
   return (
@@ -238,233 +183,95 @@ function BespokeProfileSVG() {
   )
 }
 
-// ─── Component data ───────────────────────────────────────────────────────────
+// ─── Non-text component meta (index-matched to content.components) ────────────
 
-const FACADE_COMPONENTS: ComponentDetail[] = [
-  {
-    id: 'facade-cladding-panel',
-    title: 'Facade Cladding Panel',
-    shortDescription: 'Main flat cladding panel in grid module — the primary field element of the commercial facade. Sets the surface rhythm, joint pattern, and base texture.',
-    tags: ['Facade Panel', 'Cladding', 'GFRC Panel', 'Commercial'],
-    image: '/images/packages/hospitality-commercial.webp',
-    imageAlt: 'GFRC/GRC commercial facade cladding panels on multi-storey building exterior',
-    CardIllustration: FacadeCladdingPanelSVG,
-    HotspotDiagram: CommercialFacadeElevation,
-    hotspots: [
-      { letter: 'A', label: 'Panel Face', description: 'The primary visible surface — finish, texture, and module dimension.' },
-      { letter: 'B', label: 'Horizontal Joint', description: 'Panel-to-panel joint lines creating visual banding across the facade.' },
-      { letter: 'C', label: 'Vertical Joint', description: 'Panel module spacing and column rhythm.' },
-      { letter: 'D', label: 'Corner Return', description: 'How panels wrap building corners.' },
-      { letter: 'E', label: 'Panel Module', description: 'Repeat unit size relative to floor-to-floor height.' },
-      { letter: 'F', label: 'Finish Reference', description: 'Surface and color specification — confirmed from approved sample.' },
-    ],
-    materials: SHARED_MATERIALS,
-    architecturalDrawings: SHARED_ARCH_DRAWINGS,
-    shopDrawings: SHARED_SHOP_DRAWINGS,
-    finishes: SHARED_FINISHES,
-    projectInputs: SHARED_INPUTS,
-    scopeDeliverables: SHARED_SCOPE,
-  },
-  {
-    id: 'cornice-profile-band',
-    title: 'Cornice / Profile Band',
-    shortDescription: 'Horizontal banding element at floor levels, parapets, or key facade transitions — establishes the primary shadow line and proportion rhythm.',
-    tags: ['Cornice Band', 'Profile', 'Horizontal Rhythm', 'GFRC'],
-    image: '/images/packages/villa-palace-architectural.webp',
-    imageAlt: 'GFRC/GRC ornamental cornice profiles on heritage villa and palace architecture',
-    CardIllustration: CorniceBandSVG,
-    HotspotDiagram: CommercialFacadeElevation,
-    hotspots: [
-      { letter: 'A', label: 'Crown Cap', description: 'Top of cornice — sits at floor level, parapet, or roofline.' },
-      { letter: 'B', label: 'Cornice Body', description: 'Main projecting mass — projection depth creates shadow line.' },
-      { letter: 'C', label: 'Profile Lines', description: 'Internal molding lines enriching the cornice face.' },
-      { letter: 'D', label: 'Band Positions', description: 'Cornice placed at every floor, alternate floors, or key transitions.' },
-      { letter: 'E', label: 'Cornice Width', description: 'Band height relative to facade panel height.' },
-      { letter: 'F', label: 'Finish Reference', description: 'Color and texture — confirmed from project specification.' },
-    ],
-    materials: SHARED_MATERIALS,
-    architecturalDrawings: SHARED_ARCH_DRAWINGS,
-    shopDrawings: SHARED_SHOP_DRAWINGS,
-    finishes: SHARED_FINISHES,
-    projectInputs: SHARED_INPUTS,
-    scopeDeliverables: SHARED_SCOPE,
-  },
-  {
-    id: 'window-surround-reveal',
-    title: 'Window Surround / Reveal',
-    shortDescription: 'GFRC/GRC frame around window openings — head, jambs, and sill define the reveal depth, shadow profile, and glazing interface.',
-    tags: ['Window Surround', 'Reveal', 'Jamb Detail', 'GFRC'],
-    image: '/images/packages/landmark-government-facade.webp',
-    imageAlt: 'GFRC/GRC window surrounds and reveals on landmark government building facade',
-    CardIllustration: WindowSurroundSVG,
-    HotspotDiagram: CommercialFacadeElevation,
-    hotspots: [
-      { letter: 'A', label: 'Head Detail', description: 'Lintel-like top member of surround.' },
-      { letter: 'B', label: 'Jamb Reveal', description: 'Side members — depth creates shadow and frames the glazing.' },
-      { letter: 'C', label: 'Sill Detail', description: 'Bottom of surround — profile and weathering edge.' },
-      { letter: 'D', label: 'Surround Width', description: 'Frame width relative to opening size.' },
-      { letter: 'E', label: 'Corner Mitre', description: 'How head and jamb meet at corners — clean mitre or overlap.' },
-      { letter: 'F', label: 'Finish Reference', description: 'Surface and color relative to panel field — confirmed from sample.' },
-    ],
-    materials: SHARED_MATERIALS,
-    architecturalDrawings: SHARED_ARCH_DRAWINGS,
-    shopDrawings: SHARED_SHOP_DRAWINGS,
-    finishes: SHARED_FINISHES,
-    projectInputs: SHARED_INPUTS,
-    scopeDeliverables: SHARED_SCOPE,
-  },
-  {
-    id: 'corner-expression',
-    title: 'Edge / Corner Expression',
-    shortDescription: 'Quoin or corner column element — resolves building edges and creates visual weight at facade corners.',
-    tags: ['Corner Element', 'Quoin', 'Edge Detail', 'GFRC'],
-    image: '/images/packages/hospitality-commercial.webp',
-    imageAlt: 'GFRC/GRC edge and corner expression on commercial building facade',
-    CardIllustration: CornerExpressionSVG,
-    HotspotDiagram: CommercialFacadeElevation,
-    hotspots: [
-      { letter: 'A', label: 'Corner Cap', description: 'Top of corner element — ties to cornice or parapet.' },
-      { letter: 'B', label: 'Quoin Face', description: 'Projecting face of corner block — alternates with the main panel field.' },
-      { letter: 'C', label: 'Corner Rhythm', description: 'Vertical spacing of quoin blocks or corner column modules.' },
-      { letter: 'D', label: 'Return Face', description: 'Short return face of corner elements visible from 45°.' },
-      { letter: 'E', label: 'Corner Base', description: 'Bottom of corner treatment — transition to plinth or ground.' },
-      { letter: 'F', label: 'Finish Reference', description: 'Quoin or corner element vs panel field contrast.' },
-    ],
-    materials: SHARED_MATERIALS,
-    architecturalDrawings: SHARED_ARCH_DRAWINGS,
-    shopDrawings: SHARED_SHOP_DRAWINGS,
-    finishes: SHARED_FINISHES,
-    projectInputs: SHARED_INPUTS,
-    scopeDeliverables: SHARED_SCOPE,
-  },
-  {
-    id: 'decorative-vertical-fin',
-    title: 'Decorative Vertical Fin',
-    shortDescription: 'Vertical rhythm element projecting from the facade — creates depth, shadow, and modular expression on commercial building elevations.',
-    tags: ['Vertical Fin', 'Rhythm Element', 'Facade Depth', 'GFRC'],
-    image: '/images/packages/landmark-government-facade.webp',
-    imageAlt: 'GFRC/GRC decorative vertical elements on landmark government building exterior',
-    CardIllustration: VerticalFinSVG,
-    HotspotDiagram: CommercialFacadeElevation,
-    hotspots: [
-      { letter: 'A', label: 'Fin Crown', description: 'Top termination detail — cap or angle cut.' },
-      { letter: 'B', label: 'Fin Body', description: 'Primary projection — depth and face width create shadow.' },
-      { letter: 'C', label: 'Fin Spacing', description: 'Centre-to-centre repeat along facade.' },
-      { letter: 'D', label: 'Fin Base', description: 'Bottom termination — lands on sill, plinth, or floor level.' },
-      { letter: 'E', label: 'Fin Profile', description: 'Cross-section of fin — rectangular, tapered, or profiled.' },
-      { letter: 'F', label: 'Finish Reference', description: 'Surface and color — confirmed from project specification.' },
-    ],
-    materials: SHARED_MATERIALS,
-    architecturalDrawings: SHARED_ARCH_DRAWINGS,
-    shopDrawings: SHARED_SHOP_DRAWINGS,
-    finishes: SHARED_FINISHES,
-    projectInputs: SHARED_INPUTS,
-    scopeDeliverables: SHARED_SCOPE,
-  },
-  {
-    id: 'custom-bespoke-profile',
-    title: 'Custom Bespoke Profile',
-    shortDescription: 'Project-specific custom element — unique geometry or pattern confirmed from design intent drawings. Fabricated to the approved design.',
-    tags: ['Custom Profile', 'Bespoke', 'Project-Specific', 'GFRC'],
-    image: '/images/packages/custom-architectural-components.webp',
-    imageAlt: 'Custom GFRC/GRC bespoke architectural components and decorative facade panels',
-    CardIllustration: BespokeProfileSVG,
-    HotspotDiagram: CommercialFacadeElevation,
-    hotspots: [
-      { letter: 'A', label: 'Profile Crown', description: 'Top of custom element — its cap or crown detail.' },
-      { letter: 'B', label: 'Profile Face', description: 'The main visible face — custom geometry or pattern.' },
-      { letter: 'C', label: 'Profile Return', description: 'Side and return faces confirming the full 3D form.' },
-      { letter: 'D', label: 'Interface Zone', description: 'Where custom element meets standard panels or cladding.' },
-      { letter: 'E', label: 'Custom Module', description: 'Repeat unit or single element, dimensions from drawings.' },
-      { letter: 'F', label: 'Finish Reference', description: 'Custom color and texture specification — confirmed from project.' },
-    ],
-    materials: SHARED_MATERIALS,
-    architecturalDrawings: SHARED_ARCH_DRAWINGS,
-    shopDrawings: SHARED_SHOP_DRAWINGS,
-    finishes: SHARED_FINISHES,
-    projectInputs: SHARED_INPUTS,
-    scopeDeliverables: SHARED_SCOPE,
-  },
+const COMPONENT_META = [
+  { id: 'facade-cladding-panel', CardIllustration: FacadeCladdingPanelSVG, image: '/images/packages/hospitality-commercial.webp' },
+  { id: 'cornice-profile-band', CardIllustration: CorniceBandSVG, image: '/images/packages/villa-palace-architectural.webp' },
+  { id: 'window-surround-reveal', CardIllustration: WindowSurroundSVG, image: '/images/packages/landmark-government-facade.webp' },
+  { id: 'corner-expression', CardIllustration: CornerExpressionSVG, image: '/images/packages/hospitality-commercial.webp' },
+  { id: 'decorative-vertical-fin', CardIllustration: VerticalFinSVG, image: '/images/packages/landmark-government-facade.webp' },
+  { id: 'custom-bespoke-profile', CardIllustration: BespokeProfileSVG, image: '/images/packages/custom-architectural-components.webp' },
 ]
 
-// ─── Review steps ─────────────────────────────────────────────────────────────
-
-const REVIEW_STEPS = [
-  { n: '1', title: 'Receive Drawings', description: 'Architectural elevations, facade sections, and panel layout drawings submitted for initial technical review.' },
-  { n: '2', title: 'Review Panel Layout & Banding', description: 'Durraka reviews module sizing, horizontal banding positions, and overall facade composition.' },
-  { n: '3', title: 'Confirm Window Surround & Edge Details', description: 'Surround profiles, reveal depths, corner treatments, and fin dimensions confirmed against drawings.' },
-  { n: '4', title: 'Shop Drawing Coordination', description: 'Shop drawings prepared for each component — coordinated with structure, substrate, and interfaces.' },
-  { n: '5', title: 'Confirm Finish & Sample', description: 'Finish direction, colour references, and sample requirements agreed before manufacturing.' },
-  { n: '6', title: 'Manufacture & Deliver', description: 'Approved GFRC/GRC components manufactured, QC inspected, and delivered to project programme.' },
+// Schematic design-intent elevation geometry (arrangement only; labels localized).
+const DIAGRAM_SHAPES: DesignDiagram['shapes'] = [
+  { kind: 'rect', x: 70, y: 46, w: 260, h: 226 },
+  { kind: 'rect', x: 70, y: 46, w: 260, h: 9, fill: true },
+  { kind: 'line', x1: 135, y1: 55, x2: 135, y2: 272 },
+  { kind: 'line', x1: 200, y1: 55, x2: 200, y2: 272 },
+  { kind: 'line', x1: 265, y1: 55, x2: 265, y2: 272 },
+  { kind: 'line', x1: 70, y1: 110, x2: 330, y2: 110 },
+  { kind: 'line', x1: 70, y1: 164, x2: 330, y2: 164 },
+  { kind: 'line', x1: 70, y1: 218, x2: 330, y2: 218 },
+  { kind: 'rect', x: 88, y: 72, w: 34, h: 28 },
+  { kind: 'rect', x: 93, y: 77, w: 24, h: 18 },
+  { kind: 'line', x1: 74, y1: 55, x2: 74, y2: 272, accent: true },
+  { kind: 'rect', x: 261, y: 55, w: 7, h: 217, accent: true },
+  { kind: 'polyline', points: '286 272 286 232 306 218 330 218', accent: true },
 ]
 
-// ─── Package data ─────────────────────────────────────────────────────────────
+const DIAGRAM_CALLOUT_POS = [
+  { n: 1, x: 167, y: 140 },
+  { n: 2, x: 305, y: 50 },
+  { n: 3, x: 105, y: 86 },
+  { n: 4, x: 74, y: 245 },
+  { n: 5, x: 265, y: 150 },
+  { n: 6, x: 306, y: 245 },
+]
 
-// Schematic design-intent elevation — a multi-storey façade grid. Arrangement
-// only: panel rhythm, cornice line, window surrounds, edge/fin expression.
-const COMMERCIAL_FACADE_DIAGRAM: DesignDiagram = {
-  kind: 'elevation',
-  viewBox: '0 0 400 300',
-  shapes: [
-    { kind: 'rect', x: 70, y: 46, w: 260, h: 226 },
-    { kind: 'rect', x: 70, y: 46, w: 260, h: 9, fill: true }, // cornice band (2)
-    { kind: 'line', x1: 135, y1: 55, x2: 135, y2: 272 },
-    { kind: 'line', x1: 200, y1: 55, x2: 200, y2: 272 },
-    { kind: 'line', x1: 265, y1: 55, x2: 265, y2: 272 },
-    { kind: 'line', x1: 70, y1: 110, x2: 330, y2: 110 },
-    { kind: 'line', x1: 70, y1: 164, x2: 330, y2: 164 },
-    { kind: 'line', x1: 70, y1: 218, x2: 330, y2: 218 },
-    { kind: 'rect', x: 88, y: 72, w: 34, h: 28 }, // window surround outer (3)
-    { kind: 'rect', x: 93, y: 77, w: 24, h: 18 }, // window reveal inner
-    { kind: 'line', x1: 74, y1: 55, x2: 74, y2: 272, accent: true }, // edge expression (4)
-    { kind: 'rect', x: 261, y: 55, w: 7, h: 217, accent: true }, // vertical fin (5)
-    { kind: 'polyline', points: '286 272 286 232 306 218 330 218', accent: true }, // custom profile (6)
-  ],
-  callouts: [
-    { n: 1, label: 'Facade Cladding Panel', x: 167, y: 140 },
-    { n: 2, label: 'Cornice / Profile Band', x: 305, y: 50 },
-    { n: 3, label: 'Window Surround / Reveal', x: 105, y: 86 },
-    { n: 4, label: 'Edge / Corner Expression', x: 74, y: 245 },
-    { n: 5, label: 'Decorative Vertical Fin', x: 265, y: 150 },
-    { n: 6, label: 'Custom Bespoke Profile', x: 306, y: 245 },
-  ],
+const INFOGRAPHIC_IMAGES = ['/images/packages/villa-palace-architectural.webp']
+
+function buildData(locale: Locale): PremiumPackageData {
+  const t = locale === 'ar' ? commercialFacadeContentAr : commercialFacadeContent
+  const s = t.shared
+
+  const componentDetails: ComponentDetail[] = COMPONENT_META.map((meta, i) => {
+    const c = t.components[i]
+    return {
+      id: meta.id,
+      title: c.title,
+      shortDescription: c.shortDescription,
+      tags: [...c.tags],
+      image: meta.image,
+      imageAlt: c.imageAlt,
+      CardIllustration: meta.CardIllustration,
+      HotspotDiagram: CommercialFacadeElevation,
+      hotspots: c.hotspots.map(h => ({ ...h })),
+      materials: [...s.materials],
+      architecturalDrawings: [...s.architecturalDrawings],
+      shopDrawings: [...s.shopDrawings],
+      finishes: [...s.finishes],
+      projectInputs: [...s.projectInputs],
+      scopeDeliverables: [...s.scopeDeliverables],
+    }
+  })
+
+  const designDiagram: DesignDiagram = {
+    kind: 'elevation',
+    viewBox: '0 0 400 300',
+    shapes: DIAGRAM_SHAPES,
+    callouts: DIAGRAM_CALLOUT_POS.map((p, i) => ({ ...p, label: t.diagramCallouts[i] })),
+  }
+
+  return {
+    slug: 'commercial-facade-package',
+    designDiagram,
+    title: t.title,
+    eyebrow: t.eyebrow,
+    subtitle: t.subtitle,
+    heroDescription: t.heroDescription,
+    illustrativeArea: t.illustrativeArea,
+    visibleComponents: [...t.visibleComponents],
+    HeroIllustration: CommercialFacadeIllustration,
+    packageIntent: t.packageIntent,
+    suitableApplications: [...t.suitableApplications],
+    componentDetails,
+    infographics: t.infographics.map((info, i) => ({ ...info, image: INFOGRAPHIC_IMAGES[i] })),
+    reviewSteps: t.reviewSteps.map(r => ({ ...r })),
+  }
 }
 
-const COMMERCIAL_FACADE_DATA: PremiumPackageData = {
-  slug: 'commercial-facade-package',
-  designDiagram: COMMERCIAL_FACADE_DIAGRAM,
-  title: 'Commercial Facade Package',
-  eyebrow: 'AI Concept Reference',
-  subtitle: 'Multi-storey exterior cladding. Engineered in GFRC/GRC.',
-  heroDescription:
-    'A complete GFRC/GRC scope for commercial building exteriors — combining facade cladding panels, cornice lines, window surrounds, vertical rhythm elements, and edge expression into a single precision-manufactured package.',
-  illustrativeArea: 'Large-scale multi-storey façades',
-  visibleComponents: ['Facade cladding panels', 'Cornices / profiles', 'Window surrounds', 'Edge / corner expression', 'Decorative vertical elements'],
-  HeroIllustration: CommercialFacadeIllustration,
-  packageIntent:
-    'This package is designed to help architects, consultants, developers, and project teams understand how GFRC/GRC components can be coordinated into a complete commercial facade cladding scope. The focus is on panel module rhythm, horizontal banding, window surround detailing, and controlled architectural expression. The final scope, dimensions, finishes, and engineering requirements are confirmed from submitted architectural drawings and project specifications during technical review.',
-  suitableApplications: [
-    'Multi-storey commercial offices',
-    'Mixed-use developments',
-    'Retail and hospitality towers',
-    'Corporate headquarters',
-    'Government administrative buildings',
-    'Educational and institutional buildings',
-  ],
-  componentDetails: FACADE_COMPONENTS,
-  infographics: [
-    {
-      title: 'Cornice Component Overview',
-      description: 'Horizontal architectural profiles used at rooflines, parapets, edges, and facade transitions to define shadow lines and proportion.',
-      image: '/images/packages/villa-palace-architectural.webp',
-      imageAlt: 'GFRC/GRC ornamental cornices and architectural profiles — heritage facade reference',
-    },
-  ],
-  reviewSteps: REVIEW_STEPS,
-}
-
-// ─── Export ───────────────────────────────────────────────────────────────────
-
-export function CommercialFacadePackageClient() {
-  return <PremiumPackageLayout data={COMMERCIAL_FACADE_DATA} />
+export function CommercialFacadePackageClient({ locale = 'en' }: { locale?: Locale }) {
+  return <PremiumPackageLayout data={buildData(locale)} locale={locale} />
 }

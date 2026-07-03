@@ -2,10 +2,13 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { SOCIAL_LINKS } from '@/lib/social-links'
+import { whatsappHref } from '@/lib/social-links'
+import { getDictionary } from '@/content/dictionaries'
+import { localizeHref, type Locale } from '@/lib/i18n'
 
-export function StickyMobileCTA() {
+export function StickyMobileCTA({ locale = 'en' }: { locale?: Locale }) {
   const [visible, setVisible] = useState(false)
+  const t = getDictionary(locale).packages.stickyCta
 
   useEffect(() => {
     const onScroll = () => setVisible(window.scrollY > 300)
@@ -26,16 +29,16 @@ export function StickyMobileCTA() {
     >
       <div className="flex items-center gap-2.5 px-4 py-3">
         <Link
-          href="/request-quotation"
+          href={localizeHref('/request-quotation', locale)}
           className="flex-1 min-h-[48px] flex items-center justify-center bg-accent text-white text-sm font-semibold rounded-sm hover:bg-accent-dark transition-colors"
         >
-          Request Consultation
+          {t.requestConsultation}
         </Link>
         <Link
-          href={SOCIAL_LINKS.whatsapp.href}
+          href={whatsappHref(locale)}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Chat on WhatsApp"
+          aria-label={t.whatsappAria}
           className="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-[#25D366] text-white rounded-sm hover:bg-[#1ebe5d] transition-colors"
         >
           <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5" aria-hidden="true">

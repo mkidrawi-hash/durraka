@@ -2,46 +2,10 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { getAttribution, trackEvent } from '@/lib/analytics'
-
-// ── Constants ─────────────────────────────────────────────────────────────────
-
-const CLIENT_TYPES = [
-  'Contractor',
-  'Consultant',
-  'Developer',
-  'Government / Semi-Government',
-  'Private Client',
-  'Designer / Architect',
-  'Other',
-] as const
-
-const PROJECT_TYPES = [
-  'Villa',
-  'Commercial',
-  'Hospitality',
-  'Mosque',
-  'Government / Civic',
-  'Residential Compound',
-  'Mixed-use',
-  'Other',
-] as const
-
-const SYSTEMS = [
-  'GFRC/GRC Façade Cladding',
-  'Cornices & Profiles',
-  'Domes & Vaults',
-  'Columns & Capitals',
-  'Mashrabiya Screens',
-  'Custom Decorative Elements',
-] as const
-
-const TIMELINES = [
-  'Immediate',
-  '1–3 months',
-  '3–6 months',
-  '6+ months',
-  'Not sure yet',
-] as const
+import { type Locale } from '@/lib/i18n'
+import { Ltr } from '@/components/i18n/Ltr'
+import { catalogContent } from '@/content/en/catalog'
+import { catalogContentAr } from '@/content/ar/catalog'
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -95,14 +59,19 @@ function Label({ children, required }: { children: React.ReactNode; required?: b
   return (
     <label className="block text-[11px] font-semibold text-navy uppercase tracking-wider mb-1.5">
       {children}
-      {required && <span className="text-accent ml-0.5">*</span>}
+      {required && <span className="text-accent ms-0.5">*</span>}
     </label>
   )
 }
 
 // ── Component ─────────────────────────────────────────────────────────────────
 
-export default function DetailedCatalogRequestForm() {
+export default function DetailedCatalogRequestForm({ locale = 'en' }: { locale?: Locale }) {
+  // English dict supplies the option VALUES stored to Sheets; the localized dict
+  // supplies display labels (same index order → same stored English value).
+  const EN = catalogContent.form
+  const t = (locale === 'ar' ? catalogContentAr : catalogContent).form
+
   const [form, setForm] = useState<FormData>(INITIAL)
   const [errors, setErrors] = useState<FieldErrors>({})
   const [status, setStatus] = useState<Status>('idle')
@@ -141,17 +110,18 @@ export default function DetailedCatalogRequestForm() {
   }
 
   function validate(): boolean {
+    const v = t.validation
     const e: FieldErrors = {}
-    if (!form.fullName.trim()) e.fullName = 'Full name is required.'
-    if (!form.company.trim()) e.company = 'Company name is required.'
-    if (!form.email.trim()) e.email = 'Email address is required.'
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = 'Please enter a valid email address.'
-    if (!form.phone.trim()) e.phone = 'Phone / WhatsApp is required.'
-    if (!form.clientType) e.clientType = 'Please select your client type.'
-    if (!form.projectType) e.projectType = 'Please select your project type.'
-    if (form.interestedSystems.length === 0) e.interestedSystems = 'Please select at least one system.'
-    if (!form.cityCountry.trim()) e.cityCountry = 'City / Country is required.'
-    if (!form.timeline) e.timeline = 'Please select your project timeline.'
+    if (!form.fullName.trim()) e.fullName = v.fullName
+    if (!form.company.trim()) e.company = v.company
+    if (!form.email.trim()) e.email = v.email
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = v.emailInvalid
+    if (!form.phone.trim()) e.phone = v.phone
+    if (!form.clientType) e.clientType = v.clientType
+    if (!form.projectType) e.projectType = v.projectType
+    if (form.interestedSystems.length === 0) e.interestedSystems = v.interestedSystems
+    if (!form.cityCountry.trim()) e.cityCountry = v.cityCountry
+    if (!form.timeline) e.timeline = v.timeline
     setErrors(e)
     return Object.keys(e).length === 0
   }
@@ -162,6 +132,9 @@ export default function DetailedCatalogRequestForm() {
     setStatus('submitting')
     setApiError('')
     try {
+      // `form` already holds the canonical English option VALUES (clientType,
+      // projectType, interestedSystems, timeline) — the localized labels are
+      // display-only — so the posted payload stays English on every locale.
       const res = await fetch('/api/detailed-catalog-request', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -169,7 +142,7 @@ export default function DetailedCatalogRequestForm() {
       })
       const data = await res.json()
       if (!res.ok) {
-        setApiError(data.error ?? 'Submission failed. Please try again or contact info@durraka.com.')
+        setApiError(data.error ?? t.validation.submitFailed)
         setStatus('error')
         trackEvent('catalog_request_submit_error', { status: res.status })
         return
@@ -183,7 +156,7 @@ export default function DetailedCatalogRequestForm() {
         projectType: form.projectType,
       })
     } catch {
-      setApiError('Submission failed. Please try again or contact info@durraka.com.')
+      setApiError(t.validation.submitFailed)
       setStatus('error')
       trackEvent('catalog_request_submit_error', { reason: 'network' })
     }
@@ -213,16 +186,16 @@ export default function DetailedCatalogRequestForm() {
           </svg>
         </div>
 
-        <h3 className="text-xl font-bold text-navy mb-2">Request Received</h3>
+        <h3 className="text-xl font-bold text-navy mb-2">{t.success.title}</h3>
 
         <p className="text-gray-500 text-sm leading-relaxed">
-          Access request submitted. Our team will review and respond shortly.
+          {t.success.body}
         </p>
 
         {reference && (
           <p className="text-xs text-gray-400 mt-5">
-            Reference:{' '}
-            <span className="font-mono text-accent">{reference}</span>
+            {t.success.referenceLabel}{' '}
+            <span className="font-mono text-accent"><Ltr>{reference}</Ltr></span>
           </p>
         )}
 
@@ -230,7 +203,7 @@ export default function DetailedCatalogRequestForm() {
           onClick={reset}
           className="mt-4 text-xs text-gray-400 hover:text-gray-600 underline underline-offset-2 transition-colors"
         >
-          Submit another request
+          {t.success.submitAnother}
         </button>
       </div>
     )
@@ -239,7 +212,7 @@ export default function DetailedCatalogRequestForm() {
   // ── Form ──────────────────────────────────────────────────────────────────────
 
   return (
-    <form onSubmit={handleSubmit} noValidate aria-label="Detailed catalog request form">
+    <form onSubmit={handleSubmit} noValidate aria-label={t.ariaLabel}>
       {/* Honeypot — hidden from real users */}
       <input
         type="text"
@@ -256,12 +229,12 @@ export default function DetailedCatalogRequestForm() {
 
         {/* Full Name */}
         <div>
-          <Label required>Full Name</Label>
+          <Label required>{t.labels.fullName}</Label>
           <input
             type="text"
             value={form.fullName}
             onChange={(e) => set('fullName', e.target.value)}
-            placeholder="Ahmed Al-Rashidi"
+            placeholder={t.placeholders.fullName}
             autoComplete="name"
             className={inputCls(errors.fullName)}
           />
@@ -270,12 +243,12 @@ export default function DetailedCatalogRequestForm() {
 
         {/* Company */}
         <div>
-          <Label required>Company Name</Label>
+          <Label required>{t.labels.company}</Label>
           <input
             type="text"
             value={form.company}
             onChange={(e) => set('company', e.target.value)}
-            placeholder="Al-Rashidi Engineering Co."
+            placeholder={t.placeholders.company}
             autoComplete="organization"
             className={inputCls(errors.company)}
           />
@@ -284,12 +257,13 @@ export default function DetailedCatalogRequestForm() {
 
         {/* Email */}
         <div>
-          <Label required>Email</Label>
+          <Label required>{t.labels.email}</Label>
           <input
             type="email"
+            dir="ltr"
             value={form.email}
             onChange={(e) => set('email', e.target.value)}
-            placeholder="ahmed@company.com"
+            placeholder={t.placeholders.email}
             autoComplete="email"
             className={inputCls(errors.email)}
           />
@@ -298,12 +272,13 @@ export default function DetailedCatalogRequestForm() {
 
         {/* Phone */}
         <div>
-          <Label required>Phone / WhatsApp</Label>
+          <Label required>{t.labels.phone}</Label>
           <input
             type="tel"
+            dir="ltr"
             value={form.phone}
             onChange={(e) => set('phone', e.target.value)}
-            placeholder="+966 5X XXX XXXX"
+            placeholder={t.placeholders.phone}
             autoComplete="tel"
             className={inputCls(errors.phone)}
           />
@@ -312,15 +287,15 @@ export default function DetailedCatalogRequestForm() {
 
         {/* Client Type */}
         <div>
-          <Label required>Client Type</Label>
+          <Label required>{t.labels.clientType}</Label>
           <select
             value={form.clientType}
             onChange={(e) => set('clientType', e.target.value)}
             className={inputCls(errors.clientType)}
           >
-            <option value="">Select…</option>
-            {CLIENT_TYPES.map((t) => (
-              <option key={t} value={t}>{t}</option>
+            <option value="">{t.selectPlaceholder}</option>
+            {EN.clientTypeOptions.map((value, i) => (
+              <option key={value} value={value}>{t.clientTypeOptions[i]}</option>
             ))}
           </select>
           <FieldError msg={errors.clientType} />
@@ -328,15 +303,15 @@ export default function DetailedCatalogRequestForm() {
 
         {/* Project Type */}
         <div>
-          <Label required>Project Type</Label>
+          <Label required>{t.labels.projectType}</Label>
           <select
             value={form.projectType}
             onChange={(e) => set('projectType', e.target.value)}
             className={inputCls(errors.projectType)}
           >
-            <option value="">Select…</option>
-            {PROJECT_TYPES.map((t) => (
-              <option key={t} value={t}>{t}</option>
+            <option value="">{t.selectPlaceholder}</option>
+            {EN.projectTypeOptions.map((value, i) => (
+              <option key={value} value={value}>{t.projectTypeOptions[i]}</option>
             ))}
           </select>
           <FieldError msg={errors.projectType} />
@@ -344,12 +319,12 @@ export default function DetailedCatalogRequestForm() {
 
         {/* City / Country */}
         <div>
-          <Label required>City / Country</Label>
+          <Label required>{t.labels.cityCountry}</Label>
           <input
             type="text"
             value={form.cityCountry}
             onChange={(e) => set('cityCountry', e.target.value)}
-            placeholder="Jeddah, Saudi Arabia"
+            placeholder={t.placeholders.cityCountry}
             autoComplete="address-level2"
             className={inputCls(errors.cityCountry)}
           />
@@ -358,15 +333,15 @@ export default function DetailedCatalogRequestForm() {
 
         {/* Timeline */}
         <div>
-          <Label required>Estimated Project Timeline</Label>
+          <Label required>{t.labels.timeline}</Label>
           <select
             value={form.timeline}
             onChange={(e) => set('timeline', e.target.value)}
             className={inputCls(errors.timeline)}
           >
-            <option value="">Select…</option>
-            {TIMELINES.map((t) => (
-              <option key={t} value={t}>{t}</option>
+            <option value="">{t.selectPlaceholder}</option>
+            {EN.timelineOptions.map((value, i) => (
+              <option key={value} value={value}>{t.timelineOptions[i]}</option>
             ))}
           </select>
           <FieldError msg={errors.timeline} />
@@ -376,22 +351,22 @@ export default function DetailedCatalogRequestForm() {
 
       {/* Interested Systems — multi-select */}
       <div className="mt-5">
-        <Label required>Interested Systems</Label>
+        <Label required>{t.labels.interestedSystems}</Label>
         <div
           role="group"
-          aria-label="Select systems of interest"
+          aria-label={t.systemsGroupAria}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2"
         >
-          {SYSTEMS.map((system) => {
-            const checked = form.interestedSystems.includes(system)
+          {EN.systemOptions.map((value, i) => {
+            const checked = form.interestedSystems.includes(value)
             return (
               <button
-                key={system}
+                key={value}
                 type="button"
                 aria-pressed={checked}
-                onClick={() => toggleSystem(system)}
+                onClick={() => toggleSystem(value)}
                 className={[
-                  'flex items-center gap-2.5 text-left px-3.5 py-2.5 border rounded-sm text-xs font-medium transition-all duration-150',
+                  'flex items-center gap-2.5 text-start px-3.5 py-2.5 border rounded-sm text-xs font-medium transition-all duration-150',
                   checked
                     ? 'border-accent bg-accent/5 text-navy'
                     : 'border-gray-200 bg-white text-gray-600 hover:border-gray-300 hover:bg-gray-50',
@@ -411,7 +386,7 @@ export default function DetailedCatalogRequestForm() {
                     </svg>
                   )}
                 </span>
-                {system}
+                {t.systemOptions[i]}
               </button>
             )
           })}
@@ -422,21 +397,21 @@ export default function DetailedCatalogRequestForm() {
       {/* Notes */}
       <div className="mt-5">
         <Label>
-          Message / Project Notes{' '}
-          <span className="text-gray-400 font-normal normal-case tracking-normal text-[11px]">(Optional)</span>
+          {t.labels.notes}{' '}
+          <span className="text-gray-400 font-normal normal-case tracking-normal text-[11px]">{t.labels.notesOptional}</span>
         </Label>
         <textarea
           value={form.notes}
           onChange={(e) => set('notes', e.target.value)}
           rows={3}
-          placeholder="Briefly describe your project or any specific requirements…"
+          placeholder={t.placeholders.notes}
           className="w-full border border-gray-200 rounded-sm px-3 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 bg-white focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-colors resize-none"
         />
       </div>
 
       {/* Privacy note */}
       <p className="text-[11px] text-gray-400 mt-2 leading-relaxed">
-        Your information is used only to process catalog access and project inquiries.
+        {t.privacyNote}
       </p>
 
       {/* API error */}
@@ -464,10 +439,10 @@ export default function DetailedCatalogRequestForm() {
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
               </svg>
-              Submitting…
+              {t.submitting}
             </>
           ) : (
-            'Request Detailed Catalog'
+            t.submit
           )}
         </button>
       </div>

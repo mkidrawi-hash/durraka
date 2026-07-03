@@ -5,64 +5,9 @@ import { PremiumPackageLayout } from '@/components/packages/PremiumPackageLayout
 import type { PremiumPackageData, DesignDiagram } from '@/components/packages/PremiumPackageLayout'
 import type { ComponentDetail } from '@/components/packages/ComponentDetailModal'
 import { DomesCornicesIllustration } from '@/components/packages/illustrations'
-
-// ─── Shared data (same across all GFRC/GRC components in this package) ────────
-
-const SHARED_MATERIALS = [
-  'GFRC/GRC architectural component — glass fibre reinforced concrete',
-  'Cement-based composite matrix with integral aggregate',
-  'Alkali-resistant glass fibre reinforcement throughout',
-  'Project-specific thickness and section profile, confirmed via shop drawings',
-  'Factory-cast component — manufactured under controlled conditions',
-  'Pigmented or natural cement finish, project-specific',
-]
-
-const SHARED_ARCH_DRAWINGS = [
-  'Elevation reference — profile position, height, and building integration',
-  'Section reference — component cross-section, projection, and depth',
-  'Profile outline drawing — detailed molding or surface geometry',
-  'Module rhythm — repeat spacing and panel joint positions',
-  'Interface detail — adjacent facade materials and build-up',
-  'Approved dimensions based on submitted project drawings',
-]
-
-const SHARED_SHOP_DRAWINGS = [
-  'Shop drawings required before production commences',
-  'Substrate and structural coordination by project team',
-  'Panelisation strategy and lifting method — confirmed at technical review',
-  'Installation sequence is project-specific and not disclosed publicly',
-  'Final shop drawing set remains project-confidential',
-]
-
-const SHARED_FINISHES = [
-  'Smooth architectural finish — fine-textured, paint-ready',
-  'Sandblasted finish — lightly abraded, aggregate-visible surface',
-  'Stone-like texture — aggregate and pigment to match natural stone',
-  'Textured / cast finish — ribbed, board-formed, or bespoke pattern',
-  'Heritage warm tone — warm aggregate, hand-finished appearance',
-  'Custom colour match — integral pigment to project RAL, NCS, or swatch',
-]
-
-const SHARED_INPUTS = [
-  'Architectural elevations and plan drawings',
-  'Sections through relevant facade areas',
-  'BOQ / quantity schedule if available',
-  'Structural drawings and substrate information',
-  'Finish and color references or samples',
-  'Available reference or inspiration images',
-  'Project location and construction timeline',
-  'Site constraints or logistics considerations',
-]
-
-const SHARED_SCOPE = [
-  'Component scope review — confirm elements, dimensions, and quantities',
-  'Shop drawing coordination — based on approved architectural drawings',
-  'Mold development — project-specific geometry and profile',
-  'GFRC/GRC manufacturing — factory production to confirmed drawings',
-  'Sample approval — finish sample submitted for project sign-off',
-  'Delivery coordination — scheduled to project programme',
-  'Installation coordination when required by contract scope',
-]
+import type { Locale } from '@/lib/i18n'
+import { domesCornicesContent } from '@/content/en/packages/domes-cornices-package'
+import { domesCornicesContentAr } from '@/content/ar/packages/domes-cornices-package'
 
 // ─── Shared heritage facade elevation diagram (used in all modal Overview tabs) ─
 
@@ -292,266 +237,103 @@ function EntranceArchSVG() {
   )
 }
 
-// ─── Component detail data ────────────────────────────────────────────────────
+// ─── Non-text component meta (index-matched to content.components) ────────────
 
-const DOME_COMPONENTS: ComponentDetail[] = [
-  {
-    id: 'main-dome',
-    title: 'Main Dome',
-    shortDescription: 'The primary GFRC/GRC dome element — hemisphere geometry, drum section, and finial crown. Defines the skyline presence of the building.',
-    tags: ['GFRC Dome', 'Structural Element', 'Heritage', 'Landmark'],
-    image: '/images/packages/villa-palace-architectural.webp',
-    imageAlt: 'GFRC/GRC architectural domes on heritage villa and palace buildings',
-    CardIllustration: DomeSVG,
-    HotspotDiagram: DomesHeritageFacadeElevation,
-    hotspots: [
-      { letter: 'A', label: 'Dome Crown / Upper Curve', description: 'The topmost surface and finial point — defines the skyline apex and overall dome silhouette.' },
-      { letter: 'B', label: 'Dome Base Cornice', description: 'The cornice profile at the base of the dome — transition from dome face to drum below.' },
-      { letter: 'C', label: 'Drum Decorative Band', description: 'Horizontal feature wrapping the drum perimeter — often echoes the main frieze below.' },
-      { letter: 'D', label: 'Parapet Relationship', description: 'How the dome visually relates to the flanking parapet elements at the same level.' },
-      { letter: 'E', label: 'Entry Axis Alignment', description: 'The visual axis connecting the arch crown below to the dome crown above — proportion reference.' },
-      { letter: 'F', label: 'Column-to-Dome Scale', description: 'The vertical proportion relationship between column capital height and dome base — classical proportion reference.' },
-    ],
-    materials: SHARED_MATERIALS,
-    architecturalDrawings: SHARED_ARCH_DRAWINGS,
-    shopDrawings: SHARED_SHOP_DRAWINGS,
-    finishes: SHARED_FINISHES,
-    projectInputs: SHARED_INPUTS,
-    scopeDeliverables: SHARED_SCOPE,
-  },
-  {
-    id: 'cornice-profile',
-    title: 'Cornice Profile',
-    shortDescription: 'Horizontal GFRC/GRC cornice band — fascia, cyma, bed mold, and soffit. Establishes the primary shadow line and facade proportion.',
-    tags: ['GFRC Cornice', 'Shadow Line', 'Horizontal Profile', 'Facade Band'],
-    image: '/images/packages/villa-palace-architectural.webp',
-    imageAlt: 'GFRC/GRC cornice profiles and horizontal facade bands on heritage architecture',
-    CardIllustration: CorniceSVG,
-    HotspotDiagram: DomesHeritageFacadeElevation,
-    hotspots: [
-      { letter: 'A', label: 'Upper Cornice at Dome', description: 'The cornice profile at dome drum level — the uppermost horizontal member on the facade.' },
-      { letter: 'B', label: 'Main Cornice — Primary Shadow', description: 'The principal horizontal cornice: projection depth, fascia, and soffit establish the dominant shadow line.' },
-      { letter: 'C', label: 'Cornice-Frieze Interface', description: 'Where the main cornice meets the decorative band below — the lower face of the cornice returns here.' },
-      { letter: 'D', label: 'Parapet Coping Profile', description: 'The uppermost cornice element — coping cap on the parapet, sheds water and defines the roofline.' },
-      { letter: 'E', label: 'Arch Cornice Return', description: 'The cornice profile returning around the arch opening — establishes visual continuity across the opening.' },
-      { letter: 'F', label: 'Capital Line Reference', description: 'The cornice aligns with or responds to the capital abacus line — a key horizontal datum.' },
-    ],
-    materials: SHARED_MATERIALS,
-    architecturalDrawings: SHARED_ARCH_DRAWINGS,
-    shopDrawings: SHARED_SHOP_DRAWINGS,
-    finishes: SHARED_FINISHES,
-    projectInputs: SHARED_INPUTS,
-    scopeDeliverables: SHARED_SCOPE,
-  },
-  {
-    id: 'crown-cornice',
-    title: 'Crown Cornice',
-    shortDescription: 'The uppermost cornice element at roofline or parapet — wider cap projection with complex profile. Defines the architectural crown of the building.',
-    tags: ['Crown Element', 'Roofline', 'Top Profile', 'GFRC'],
-    image: '/images/packages/villa-palace-architectural.webp',
-    imageAlt: 'GFRC/GRC crown cornice at roofline on villa and palace architecture',
-    CardIllustration: CrownCorniceSVG,
-    HotspotDiagram: DomesHeritageFacadeElevation,
-    hotspots: [
-      { letter: 'A', label: 'Crown Finial Reference', description: 'The crown cornice sits at or near this level — the highest horizontal element on the facade.' },
-      { letter: 'B', label: 'Main Crown Projection', description: 'The primary overhang of the crown cornice — projection depth relative to wall face below.' },
-      { letter: 'C', label: 'Crown-to-Frieze Return', description: 'How the crown cornice transitions down into the decorative frieze zone below it.' },
-      { letter: 'D', label: 'Parapet Cap Connection', description: 'The crown cornice terminates at parapet coping level — their interface and profile continuity.' },
-      { letter: 'E', label: 'Crown Arch Surround', description: 'Crown cornice profiles that form arch surrounds or door casings at ground floor entries.' },
-      { letter: 'F', label: 'Column Crown Alignment', description: 'The crown cornice aligns with the column abacus — the controlling horizontal datum.' },
-    ],
-    materials: SHARED_MATERIALS,
-    architecturalDrawings: SHARED_ARCH_DRAWINGS,
-    shopDrawings: SHARED_SHOP_DRAWINGS,
-    finishes: SHARED_FINISHES,
-    projectInputs: SHARED_INPUTS,
-    scopeDeliverables: SHARED_SCOPE,
-  },
-  {
-    id: 'decorative-band',
-    title: 'Decorative Band / Frieze',
-    shortDescription: 'Horizontal GFRC/GRC ornamental band — repeating geometric, classical, or bespoke pattern. Adds visual richness and proportion rhythm to the facade.',
-    tags: ['Ornamental Band', 'Frieze', 'Repeating Pattern', 'GFRC'],
-    image: '/images/packages/villa-palace-architectural.webp',
-    imageAlt: 'GFRC/GRC ornamental decorative bands and frieze on heritage facade',
-    CardIllustration: DecorativeBandSVG,
-    HotspotDiagram: DomesHeritageFacadeElevation,
-    hotspots: [
-      { letter: 'A', label: 'Drum Band — Upper Element', description: 'Decorative band wrapping the dome drum — the upper pattern application on the building.' },
-      { letter: 'B', label: 'Cornice-Band Interface', description: 'Where the cornice projection meets the top edge of the decorative frieze — a key joint line.' },
-      { letter: 'C', label: 'Primary Frieze Zone', description: 'The main decorative band — pattern repeat unit, relief depth, and height are confirmed here.' },
-      { letter: 'D', label: 'Parapet Band Return', description: 'Decorative band continuation at parapet level — smaller repeat or simplified profile.' },
-      { letter: 'E', label: 'Spandrel Infill Pattern', description: 'Decorative fill in the arch spandrel zone — pattern often related to the main frieze.' },
-      { letter: 'F', label: 'Capital-Level Band', description: 'A subsidiary band at capital level — echoes the main frieze at a different scale.' },
-    ],
-    materials: SHARED_MATERIALS,
-    architecturalDrawings: SHARED_ARCH_DRAWINGS,
-    shopDrawings: SHARED_SHOP_DRAWINGS,
-    finishes: SHARED_FINISHES,
-    projectInputs: SHARED_INPUTS,
-    scopeDeliverables: SHARED_SCOPE,
-  },
-  {
-    id: 'parapet-coping',
-    title: 'Parapet Coping',
-    shortDescription: 'GFRC/GRC coping cap for parapets — overhang, throat/drip detail, and panel joints. Provides weather protection and defines the parapet roofline.',
-    tags: ['Parapet', 'Coping', 'Weather Detail', 'GFRC'],
-    image: '/images/packages/landmark-government-facade.webp',
-    imageAlt: 'GFRC/GRC parapet coping elements on landmark and government building exterior',
-    CardIllustration: ParapetCopingSVG,
-    HotspotDiagram: DomesHeritageFacadeElevation,
-    hotspots: [
-      { letter: 'A', label: 'Dome Level Coping', description: 'Coping cap at dome drum level — may feature a rolled or decorative profile to match the dome character.' },
-      { letter: 'B', label: 'Cornice Returns to Coping', description: 'Where the main cornice line terminates or returns into the parapet coping at the ends.' },
-      { letter: 'C', label: 'Band-Coping Transition', description: 'The decorative band below meets the parapet face — the joint between ornament and coping above.' },
-      { letter: 'D', label: 'Primary Parapet Coping', description: 'The main coping cap — overhang dimension, drip groove, slope, and panel joint positions.' },
-      { letter: 'E', label: 'Arch Apex Coping', description: 'Coping or keystone cap at the top of an arch opening — may match parapet coping profile.' },
-      { letter: 'F', label: 'Column-to-Parapet Height', description: 'The vertical relationship between column capital and parapet coping — proportion reference.' },
-    ],
-    materials: SHARED_MATERIALS,
-    architecturalDrawings: SHARED_ARCH_DRAWINGS,
-    shopDrawings: SHARED_SHOP_DRAWINGS,
-    finishes: SHARED_FINISHES,
-    projectInputs: SHARED_INPUTS,
-    scopeDeliverables: SHARED_SCOPE,
-  },
-  {
-    id: 'column-capital',
-    title: 'Column Capital Connection',
-    shortDescription: 'GFRC/GRC column capital element — abacus, echinus, and decorative body connecting shaft to entablature. Classical or contemporary profile.',
-    tags: ['Column Capital', 'Classical Order', 'GFRC Column', 'Entrance Feature'],
-    image: '/images/packages/landmark-government-facade.webp',
-    imageAlt: 'GFRC/GRC column capitals and classical column elements on landmark building',
-    CardIllustration: ColumnCapitalSVG,
-    HotspotDiagram: DomesHeritageFacadeElevation,
-    hotspots: [
-      { letter: 'A', label: 'Capital-to-Dome Proportion', description: 'The vertical proportion from capital abacus to dome base — a key classical proportioning relationship.' },
-      { letter: 'B', label: 'Capital Line & Cornice Datum', description: 'The abacus top aligns with or generates the entablature / cornice datum — controlling horizontal.' },
-      { letter: 'C', label: 'Capital to Frieze Connection', description: 'The capital top connects to the frieze face — decorative band may align with capital plate.' },
-      { letter: 'D', label: 'Capital-Parapet Height', description: 'The height from column capital to parapet coping — defines the apparent floor-to-floor proportion.' },
-      { letter: 'E', label: 'Capital Rhythm at Entry', description: 'Column spacing and capital rhythm around the entrance arch — governs the intercolumniation.' },
-      { letter: 'F', label: 'Primary Capital Position', description: 'The main column capital — abacus width, echinus curve, decorative body, and shaft junction.' },
-    ],
-    materials: SHARED_MATERIALS,
-    architecturalDrawings: SHARED_ARCH_DRAWINGS,
-    shopDrawings: SHARED_SHOP_DRAWINGS,
-    finishes: SHARED_FINISHES,
-    projectInputs: SHARED_INPUTS,
-    scopeDeliverables: SHARED_SCOPE,
-  },
-  {
-    id: 'entrance-arch',
-    title: 'Entrance Arch Transition',
-    shortDescription: 'GFRC/GRC arch surround for entrance openings — arch ring, keystone, voussoir rhythm, and impost. Creates the primary arrival feature.',
-    tags: ['Arch', 'Entrance Feature', 'Keystone', 'GFRC Arch'],
-    image: '/images/packages/grand-entrance-gate.webp',
-    imageAlt: 'GFRC/GRC entrance arch and keystone on grand monumental gate architecture',
-    CardIllustration: EntranceArchSVG,
-    HotspotDiagram: DomesHeritageFacadeElevation,
-    hotspots: [
-      { letter: 'A', label: 'Arch-to-Dome Axis', description: 'The visual axis from arch crown to dome crown — the central composition line of the facade.' },
-      { letter: 'B', label: 'Arch & Cornice Alignment', description: 'The cornice line intersects with the arch surround — establishing the floor-level relationship.' },
-      { letter: 'C', label: 'Arch Spandrel Decoration', description: 'The spandrel zone between arch and frieze — often filled with decorative elements.' },
-      { letter: 'D', label: 'Arch-to-Parapet Height', description: 'Vertical proportion from arch crown to parapet top — governs the overall facade scale.' },
-      { letter: 'E', label: 'Arch Crown & Keystone', description: 'The crown of the arch — keystone geometry, projection, and decorative detail at the apex.' },
-      { letter: 'F', label: 'Arch Impost & Capital', description: 'Where the arch begins its curve — the impost block or capital transitioning to the arch ring.' },
-    ],
-    materials: SHARED_MATERIALS,
-    architecturalDrawings: SHARED_ARCH_DRAWINGS,
-    shopDrawings: SHARED_SHOP_DRAWINGS,
-    finishes: SHARED_FINISHES,
-    projectInputs: SHARED_INPUTS,
-    scopeDeliverables: SHARED_SCOPE,
-  },
+const COMPONENT_META = [
+  { id: 'main-dome', CardIllustration: DomeSVG, image: '/images/packages/villa-palace-architectural.webp' },
+  { id: 'cornice-profile', CardIllustration: CorniceSVG, image: '/images/packages/villa-palace-architectural.webp' },
+  { id: 'crown-cornice', CardIllustration: CrownCorniceSVG, image: '/images/packages/villa-palace-architectural.webp' },
+  { id: 'decorative-band', CardIllustration: DecorativeBandSVG, image: '/images/packages/villa-palace-architectural.webp' },
+  { id: 'parapet-coping', CardIllustration: ParapetCopingSVG, image: '/images/packages/landmark-government-facade.webp' },
+  { id: 'column-capital', CardIllustration: ColumnCapitalSVG, image: '/images/packages/landmark-government-facade.webp' },
+  { id: 'entrance-arch', CardIllustration: EntranceArchSVG, image: '/images/packages/grand-entrance-gate.webp' },
 ]
-
-// ─── Review steps ─────────────────────────────────────────────────────────────
-
-const REVIEW_STEPS = [
-  { n: '1', title: 'Receive Drawings', description: 'Architectural elevations, sections, and floor plans submitted for initial technical review.' },
-  { n: '2', title: 'Review Elevations & Sections', description: 'Durraka reviews dome geometry, cornice positions, profile rhythm, and ornamental element locations.' },
-  { n: '3', title: 'Identify Scope', description: 'Component types, quantities, module dimensions, and special elements are confirmed from the drawing set.' },
-  { n: '4', title: 'Shop Drawing Coordination', description: 'Shop drawings prepared for each component — coordinated with structure, substrate, and interfaces.' },
-  { n: '5', title: 'Confirm Finishes & Samples', description: 'Finish direction, colour references, and sample requirements agreed before manufacturing.' },
-  { n: '6', title: 'Manufacture & Deliver', description: 'Approved GFRC/GRC components manufactured, QC inspected, and delivered to project programme.' },
-]
-
-// ─── Full page data ───────────────────────────────────────────────────────────
 
 // Schematic design-intent profile — a dome on a drum over a corniced structure.
-// Silhouette/outline only: no section cut, no internal structure.
-const DOMES_CORNICES_DIAGRAM: DesignDiagram = {
-  kind: 'profile',
-  viewBox: '0 0 400 300',
-  shapes: [
-    { kind: 'rect', x: 70, y: 214, w: 260, h: 66 }, // base structure
-    { kind: 'rect', x: 66, y: 206, w: 268, h: 10, fill: true }, // cornice profile (2)
-    { kind: 'rect', x: 66, y: 198, w: 268, h: 8 }, // parapet coping (5)
-    { kind: 'rect', x: 80, y: 230, w: 240, h: 12, fill: true }, // frieze band (4)
-    { kind: 'path', d: 'M175 280 L175 252 A25 25 0 0 1 225 252 L225 280' }, // entrance arch (7)
-    { kind: 'rect', x: 150, y: 168, w: 100, h: 38 }, // drum
-    { kind: 'rect', x: 146, y: 160, w: 108, h: 9, fill: true }, // crown cornice ring (3)
-    { kind: 'path', d: 'M150 160 C150 108 172 72 200 72 C228 72 250 108 250 160' }, // main dome (1)
-    { kind: 'line', x1: 200, y1: 72, x2: 200, y2: 160 }, // rib
-    { kind: 'line', x1: 178, y1: 76, x2: 166, y2: 158 }, // rib
-    { kind: 'line', x1: 222, y1: 76, x2: 234, y2: 158 }, // rib
-    { kind: 'line', x1: 200, y1: 72, x2: 200, y2: 54 }, // finial stem
-    { kind: 'circle', cx: 200, cy: 50, r: 5, accent: true }, // finial
-    { kind: 'rect', x: 150, y: 204, w: 14, h: 12 }, // capital connection (6)
-    { kind: 'rect', x: 236, y: 204, w: 14, h: 12 },
-  ],
-  callouts: [
-    { n: 1, label: 'Main Dome', x: 200, y: 112 },
-    { n: 2, label: 'Cornice Profile', x: 300, y: 211 },
-    { n: 3, label: 'Crown Cornice', x: 254, y: 164 },
-    { n: 4, label: 'Decorative Band / Frieze', x: 300, y: 236 },
-    { n: 5, label: 'Parapet Coping', x: 92, y: 202 },
-    { n: 6, label: 'Column Capital Connection', x: 157, y: 210 },
-    { n: 7, label: 'Entrance Arch Transition', x: 200, y: 264 },
-  ],
+// Silhouette/outline only: no section cut, no internal structure. Labels localized.
+const DIAGRAM_SHAPES: DesignDiagram['shapes'] = [
+  { kind: 'rect', x: 70, y: 214, w: 260, h: 66 }, // base structure
+  { kind: 'rect', x: 66, y: 206, w: 268, h: 10, fill: true }, // cornice profile (2)
+  { kind: 'rect', x: 66, y: 198, w: 268, h: 8 }, // parapet coping (5)
+  { kind: 'rect', x: 80, y: 230, w: 240, h: 12, fill: true }, // frieze band (4)
+  { kind: 'path', d: 'M175 280 L175 252 A25 25 0 0 1 225 252 L225 280' }, // entrance arch (7)
+  { kind: 'rect', x: 150, y: 168, w: 100, h: 38 }, // drum
+  { kind: 'rect', x: 146, y: 160, w: 108, h: 9, fill: true }, // crown cornice ring (3)
+  { kind: 'path', d: 'M150 160 C150 108 172 72 200 72 C228 72 250 108 250 160' }, // main dome (1)
+  { kind: 'line', x1: 200, y1: 72, x2: 200, y2: 160 }, // rib
+  { kind: 'line', x1: 178, y1: 76, x2: 166, y2: 158 }, // rib
+  { kind: 'line', x1: 222, y1: 76, x2: 234, y2: 158 }, // rib
+  { kind: 'line', x1: 200, y1: 72, x2: 200, y2: 54 }, // finial stem
+  { kind: 'circle', cx: 200, cy: 50, r: 5, accent: true }, // finial
+  { kind: 'rect', x: 150, y: 204, w: 14, h: 12 }, // capital connection (6)
+  { kind: 'rect', x: 236, y: 204, w: 14, h: 12 },
+]
+
+const DIAGRAM_CALLOUT_POS = [
+  { n: 1, x: 200, y: 112 },
+  { n: 2, x: 300, y: 211 },
+  { n: 3, x: 254, y: 164 },
+  { n: 4, x: 300, y: 236 },
+  { n: 5, x: 92, y: 202 },
+  { n: 6, x: 157, y: 210 },
+  { n: 7, x: 200, y: 264 },
+]
+
+const INFOGRAPHIC_IMAGES = [
+  '/images/packages/villa-palace-architectural.webp',
+  '/images/packages/villa-palace-architectural.webp',
+]
+
+function buildData(locale: Locale): PremiumPackageData {
+  const t = locale === 'ar' ? domesCornicesContentAr : domesCornicesContent
+  const s = t.shared
+
+  const componentDetails: ComponentDetail[] = COMPONENT_META.map((meta, i) => {
+    const c = t.components[i]
+    return {
+      id: meta.id,
+      title: c.title,
+      shortDescription: c.shortDescription,
+      tags: [...c.tags],
+      image: meta.image,
+      imageAlt: c.imageAlt,
+      CardIllustration: meta.CardIllustration,
+      HotspotDiagram: DomesHeritageFacadeElevation,
+      hotspots: c.hotspots.map(h => ({ ...h })),
+      materials: [...s.materials],
+      architecturalDrawings: [...s.architecturalDrawings],
+      shopDrawings: [...s.shopDrawings],
+      finishes: [...s.finishes],
+      projectInputs: [...s.projectInputs],
+      scopeDeliverables: [...s.scopeDeliverables],
+    }
+  })
+
+  const designDiagram: DesignDiagram = {
+    kind: 'profile',
+    viewBox: '0 0 400 300',
+    shapes: DIAGRAM_SHAPES,
+    callouts: DIAGRAM_CALLOUT_POS.map((p, i) => ({ ...p, label: t.diagramCallouts[i] })),
+  }
+
+  return {
+    slug: 'domes-cornices-package',
+    designDiagram,
+    title: t.title,
+    eyebrow: t.eyebrow,
+    subtitle: t.subtitle,
+    heroDescription: t.heroDescription,
+    illustrativeArea: t.illustrativeArea,
+    visibleComponents: [...t.visibleComponents],
+    HeroIllustration: DomesCornicesIllustration,
+    packageIntent: t.packageIntent,
+    suitableApplications: [...t.suitableApplications],
+    componentDetails,
+    infographics: t.infographics.map((info, i) => ({ ...info, image: INFOGRAPHIC_IMAGES[i] })),
+    reviewSteps: t.reviewSteps.map(r => ({ ...r })),
+  }
 }
 
-const DOMES_CORNICES_DATA: PremiumPackageData = {
-  slug: 'domes-cornices-package',
-  designDiagram: DOMES_CORNICES_DIAGRAM,
-  title: 'Domes & Cornices Package',
-  eyebrow: 'AI Concept Reference',
-  subtitle: 'Domes, cornices, and heritage profiles. Engineered in GFRC/GRC.',
-  heroDescription:
-    'GFRC/GRC domes, cornices, mouldings, and ornamental profiles — manufactured to project-specific design intent for religious, hospitality, and heritage-inspired architectural projects.',
-  illustrativeArea: 'Domes, cornices & rooflines',
-  visibleComponents: ['Dome elements', 'Cornices', 'Decorative bands', 'Arched openings', 'Parapet coping', 'Column capitals'],
-  HeroIllustration: DomesCornicesIllustration,
-  packageIntent:
-    'This package is designed for projects where the dome, cornice, and ornamental profile form a primary architectural element — mosques, hospitality developments, heritage-inspired institutions, and high-value residential projects. The focus is on geometric intent, proportion, cornice line positioning, and profile rhythm. Durraka works from architectural drawings and reference imagery to define the manufacturing scope, including drum geometry, dome segment details, profile cross-sections, and arched facade elements. Technical review confirms all dimensions and finish requirements before manufacture.',
-  suitableApplications: [
-    'Mosques and religious facilities',
-    'Heritage-inspired hospitality projects',
-    'Palaces and government buildings',
-    'Luxury residential developments',
-    'Cultural centres and museums',
-    'Institutional and civic buildings',
-  ],
-  componentDetails: DOME_COMPONENTS,
-  infographics: [
-    {
-      title: 'Dome Component Overview',
-      description: 'Architectural dome features used to create skyline identity, landmark presence, and heritage-inspired roofline expression.',
-      image: '/images/packages/villa-palace-architectural.webp',
-      imageAlt: 'GFRC/GRC architectural domes — heritage villa and palace facade reference',
-    },
-    {
-      title: 'Cornice Component Overview',
-      description: 'Horizontal architectural profiles used at rooflines, parapets, edges, and facade transitions to define shadow lines and proportion.',
-      image: '/images/packages/villa-palace-architectural.webp',
-      imageAlt: 'GFRC/GRC ornamental cornices and architectural profiles — heritage facade reference',
-    },
-  ],
-  reviewSteps: REVIEW_STEPS,
-}
-
-// ─── Export ───────────────────────────────────────────────────────────────────
-
-export function DomesCornicesPackageClient() {
-  return <PremiumPackageLayout data={DOMES_CORNICES_DATA} />
+export function DomesCornicesPackageClient({ locale = 'en' }: { locale?: Locale }) {
+  return <PremiumPackageLayout data={buildData(locale)} locale={locale} />
 }

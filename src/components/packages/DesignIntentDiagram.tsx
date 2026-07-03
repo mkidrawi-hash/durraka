@@ -1,4 +1,5 @@
-import { packagesContent as C } from '@/content/en/packages'
+import { getDictionary } from '@/content/dictionaries'
+import type { Locale } from '@/lib/i18n'
 
 // ── Design-intent diagram — shared SVG renderer, one typed config per package ──
 // Draws arrangement/proportion ONLY. No dimensions, no section cuts, no fixing/
@@ -110,8 +111,9 @@ function CalloutMarker({ c }: { c: DiagramCallout }) {
   )
 }
 
-export function DesignIntentDiagram({ diagram, title }: { diagram: DesignDiagram; title: string }) {
-  const legendLabel = `${title} — schematic design-intent diagram`
+export function DesignIntentDiagram({ diagram, title, locale = 'en' }: { diagram: DesignDiagram; title: string; locale?: Locale }) {
+  const C = getDictionary(locale).packages
+  const legendLabel = `${title} — ${C.designIntent.ariaSuffix}`
   return (
     <figure className="m-0">
       {/* White architectural ground — readable in light and dark themes */}

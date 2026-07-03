@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 export default function CustomDecorativeElementsPackagePage() {
   return (
     <>
-      <CustomDecorativePackageClient />
-      <StickyMobileCTA />
+      <CustomDecorativePackageClient locale="en" />
+      <StickyMobileCTA locale="en" />
     </>
   )
 }

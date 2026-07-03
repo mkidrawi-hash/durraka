@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 export default function GrandEntrancePackagePage() {
   return (
     <>
-      <GrandEntrancePackageClient />
-      <StickyMobileCTA />
+      <GrandEntrancePackageClient locale="en" />
+      <StickyMobileCTA locale="en" />
     </>
   )
 }
