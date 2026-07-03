@@ -1,22 +1,23 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import EngineerGuidanceForm from '@/components/systems/EngineerGuidanceForm'
+import { engineerGuidanceContent as C } from '@/content/en/systems/engineer-guidance'
 
 export const metadata: Metadata = {
   title: 'Request Engineer Guidance — GFRC / GRC Façade Cladding | Durraka',
   description:
-    'Request engineer guidance for the GFRC/GRC façade cladding system. Guidance is issued through project-based engineering review after our team verifies your request.',
+    'Request engineer guidance for the GFRC/GRC façade cladding system. Guidance is issued through project-based engineering review after our team verifies your request. No document is auto-downloaded.',
 }
 
-// Phase 1 STUB route. The full Engineer Guidance request flow (form, reference
-// number, controlled distribution) is scoped for Phase 2. For now this page
-// explains the process and routes the visitor to the RFQ so nothing is lost.
-export default function EngineerGuidanceStubPage() {
+// Phase 2: controlled Engineer Guidance request flow. The site only collects a
+// request and issues a reference number — no document is auto-downloaded or
+// publicly hosted; Durraka sends guidance manually after verification.
+export default function EngineerGuidancePage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
       <div className="bg-navy px-4 sm:px-6 py-16 sm:py-20">
         <div className="max-w-3xl mx-auto">
-          {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-xs mb-5" aria-label="Breadcrumb">
             <Link href="/" className="text-white/45 hover:text-white transition-colors">Home</Link>
             <span className="text-white/30">›</span>
@@ -26,66 +27,29 @@ export default function EngineerGuidanceStubPage() {
               GFRC / GRC Façade Cladding
             </Link>
             <span className="text-white/30">›</span>
-            <span className="text-accent font-semibold">Engineer Guidance</span>
+            <span className="text-accent font-semibold">{C.breadcrumbLast}</span>
           </nav>
 
           <div className="flex items-center gap-3 mb-4">
             <div className="w-8 h-px bg-accent" />
-            <span className="text-accent text-xs font-semibold tracking-widest uppercase">Project-Based Review</span>
+            <span className="text-accent text-xs font-semibold tracking-widest uppercase">{C.eyebrow}</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-bold text-white mb-4">Request Engineer Guidance</h1>
-          <p className="text-white/60 text-base leading-relaxed max-w-2xl">
-            Engineer guidance for the GFRC / GRC façade cladding system is issued through
-            project-based engineering review. Our team verifies each request before responding.
-          </p>
+          <h1 className="text-3xl sm:text-4xl font-bold text-white mb-4">{C.title}</h1>
+          <p className="text-white/60 text-base leading-relaxed max-w-2xl">{C.intro}</p>
         </div>
       </div>
 
-      {/* Body */}
+      {/* Form */}
       <div className="px-4 sm:px-6 py-14 sm:py-20">
         <div className="max-w-3xl mx-auto">
-          <div className="border border-navy/15 bg-[#F8F9FA] rounded-sm p-6 sm:p-8">
-            <p className="text-navy/70 text-sm leading-relaxed mb-4">
-              The dedicated guidance request form is being finalised. In the meantime, share your
-              project details through our quotation request and our engineering team will follow up
-              with the right guidance for your scope.
+          <div className="bg-white border border-gray-100 rounded-sm p-6 sm:p-8 shadow-sm">
+            <h2 className="text-base font-bold text-navy mb-1">Request Details</h2>
+            <p className="text-gray-400 text-xs mb-6">
+              Fields marked <span className="text-accent">*</span> are required. No document is downloaded here —
+              our team reviews your request and responds.
             </p>
-            <ul className="space-y-2.5 mb-2">
-              {[
-                'Share drawings, elevations, or design intent references',
-                'Tell us the project location, type, and approximate scope',
-                'Our team reviews and responds with project-based guidance',
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-2.5 text-sm text-navy/70">
-                  <svg className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" strokeWidth={2.2} viewBox="0 0 24 24" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                  </svg>
-                  {item}
-                </li>
-              ))}
-            </ul>
+            <EngineerGuidanceForm />
           </div>
-
-          <div className="flex flex-col sm:flex-row gap-3 mt-8">
-            <Link
-              href="/request-quotation"
-              className="inline-flex items-center justify-center min-h-[48px] px-8 py-3 bg-accent text-white font-semibold rounded-sm hover:bg-accent-dark transition-colors text-sm"
-            >
-              Request a Quote
-            </Link>
-            <Link
-              href="/systems/gfrc-grc-facade-cladding"
-              className="inline-flex items-center justify-center min-h-[48px] px-8 py-3 border border-navy/25 text-navy font-semibold rounded-sm hover:border-accent hover:text-accent transition-colors text-sm"
-            >
-              Back to System
-            </Link>
-          </div>
-
-          <p className="text-navy/40 text-xs leading-relaxed mt-8">
-            Guidance is provided for design understanding and early coordination only.
-            Project-specific engineering details are issued through approved project submissions
-            where required.
-          </p>
         </div>
       </div>
     </div>
