@@ -6,12 +6,12 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { NAV_LINKS } from '@/lib/constants'
 
-// The EN/AR language switcher is hidden in production until Arabic launches.
-// LAUNCH SWITCH (one line): when Arabic is ready, set ARABIC_ENABLED = true and
-// the toggle appears in production too. Until then it is shown ONLY in non-
-// production (preview + development) via the `previewMode` prop, so the owner can
-// review the Arabic experience on Vercel previews. The /ar subtree stays noindex.
-const ARABIC_ENABLED = false
+// The EN/AR language switcher is LIVE in all environments (owner decision).
+// `showLangToggle = previewMode || ARABIC_ENABLED`; with ARABIC_ENABLED = true it
+// shows in production too. The Arabic copy is still machine-draft (a notice bar on
+// /ar pages says so), and the /ar subtree stays `noindex` until hreflang/SEO is
+// added — see docs/i18n.md. To pull the toggle back, set this to false.
+const ARABIC_ENABLED = true
 
 // English routes that currently have a translated /ar equivalent. The toggle
 // links to /ar<path> for these; for any other page it falls back to /ar (never a

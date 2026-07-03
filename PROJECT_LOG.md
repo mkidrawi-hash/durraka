@@ -751,3 +751,12 @@ links to `/ar<path>` only for `TRANSLATED_AR_ROUTES`, else falls back to a new `
 preview landing (`src/app/ar/page.tsx`). `/ar` subtree stays `noindex`. Verified: preview
 build shows toggle+badge, production build hides both. docs/i18n.md updated. typecheck ✓ ·
 lint ✓ · build ✓.
+
+**Follow-up (AR toggle go-live):** AR toggle enabled in production by owner decision;
+terminology review ongoing; draft notice bar active. Set `ARABIC_ENABLED = true`
+(`showLangToggle = previewMode || ARABIC_ENABLED` → always on). Added `src/content/ar/common.ts`
+(`draftNotice`) rendered as a slim navy notice bar on every `/ar` page:
+"النسخة العربية أولية وقيد التدقيق — للمحتوى المعتمد يرجى الرجوع للنسخة الإنجليزية". `/ar`
+subtree kept **`noindex`** (hreflang/SEO is next-phase; removing noindex is gated on it — no
+dead ends: the toggle links to `/ar<path>` only for translated routes, else falls back to
+the `/ar` landing). typecheck ✓ · lint ✓ · build ✓.
