@@ -732,3 +732,12 @@ terminology. Translating remaining pages, `hreflang`/SEO, removing `noindex`, an
 `ARABIC_ENABLED` are later steps gated on that review.
 
 **Checks:** typecheck ✓ · lint ✓ · build ✓.
+
+**Follow-up (terminology):** added `docs/arabic-terminology.md` — the owner-approved Arabic
+glossary (single source of truth) plus a "Proposed (pending approval)" table for recurring
+terms not yet ratified. Re-scanned and aligned all 4 `src/content/ar/*` dictionaries to it:
+`كسوة`→`تكسية الواجهات` (façade cladding), `مقصد التصميم`→`المفهوم التصميمي` (design intent),
+`(التوجيه/توجيه) هندسي`→`الدليل الاسترشادي للمهندسين` (engineer guidance),
+`الرسومات التنفيذية`→`المخططات التنفيذية` (shop drawings), and the GFRC rule (full term
+`الخرسانة المسلحة بالألياف الزجاجية (GFRC)` on first mention per page, plain `GFRC` after).
+Files remain `⚠️ MACHINE DRAFT` pending full owner review. typecheck ✓ · lint ✓ · build ✓.

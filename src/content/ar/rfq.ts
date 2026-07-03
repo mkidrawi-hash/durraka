@@ -1,5 +1,6 @@
 // ⚠️ MACHINE DRAFT — pending professional Arabic review. Do NOT expose publicly
 // until GFRC/GRC terminology is verified by the owner. Mirrors src/content/en/rfq.ts.
+// Terminology follows docs/arabic-terminology.md.
 
 import type { Translatable } from '@/lib/i18n'
 import { rfqContent } from '@/content/en/rfq'
@@ -18,11 +19,11 @@ export const rfqContentAr: Translatable<typeof rfqContent> = {
 
   checklist: {
     title: 'معلومات المشروع المطلوبة',
-    intro: 'لإعداد نطاق عمل وعرض أسعار دقيق، يُرجى تجهيز ما يلي:',
+    intro: 'لإعداد نطاق عمل وعرض سعر دقيق، يُرجى تجهيز ما يلي:',
     items: [
       'الرسومات والمساقط المعمارية',
       'المساحات والكميات التقريبية',
-      'صور أو مراجع لمقصد التصميم',
+      'صور أو مراجع للمفهوم التصميمي',
       'اتجاه التشطيب المُفضّل',
       'موقع المشروع',
       'الجدول الزمني للمشروع',
