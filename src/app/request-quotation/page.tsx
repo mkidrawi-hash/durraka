@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import RFQForm from '@/components/rfq/RFQForm'
+import { rfqContent } from '@/content/en/rfq'
 
 export const metadata: Metadata = {
   title: 'Request a GFRC/GRC Quotation',
@@ -74,6 +75,29 @@ export default function RequestQuotationPage() {
             </div>
 
           </div>
+        </div>
+      </div>
+
+      {/* Required Project Information — text-only checklist (no uploads) */}
+      <div className="bg-[#F8F9FA] border-b border-navy/[0.08] px-4 sm:px-6 py-12 sm:py-14">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex items-center gap-3 mb-3">
+            <div className="w-6 h-px bg-accent" />
+            <span className="text-accent text-xs font-semibold tracking-widest uppercase">Before You Start</span>
+          </div>
+          <h2 className="text-2xl font-bold text-navy mb-2">{rfqContent.checklist.title}</h2>
+          <p className="text-navy/60 text-sm mb-6 max-w-2xl">{rfqContent.checklist.intro}</p>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {rfqContent.checklist.items.map((item) => (
+              <li key={item} className="flex items-start gap-2.5 bg-white border border-navy/10 rounded-sm px-4 py-3">
+                <svg className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" strokeWidth={2.4} viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="text-navy/75 text-sm">{item}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="text-navy/45 text-xs mt-5 max-w-2xl leading-relaxed">{rfqContent.checklist.note}</p>
         </div>
       </div>
 

@@ -2,6 +2,7 @@
 
 import { useState, useRef, ChangeEvent, FormEvent } from 'react'
 import Link from 'next/link'
+import { rfqContent } from '@/content/en/rfq'
 
 const SYSTEMS_OPTIONS = [
   'GFRC/GRC Façade Cladding',
@@ -34,6 +35,10 @@ type FormData = {
   estimatedArea: string
   projectType: string
   deliveryDate: string
+  // Phase 3 conditional qualification fields (shown once a project type is chosen)
+  scaleBand: string
+  consultantAppointed: string
+  targetStart: string
   fullName: string
   jobTitle: string
   company: string
@@ -55,6 +60,9 @@ const EMPTY_FORM: FormData = {
   estimatedArea: '',
   projectType: '',
   deliveryDate: '',
+  scaleBand: '',
+  consultantAppointed: '',
+  targetStart: '',
   fullName: '',
   jobTitle: '',
   company: '',
@@ -339,6 +347,34 @@ export default function RFQForm() {
                 )}
               </select>
             </div>
+
+            {/* Phase 3 — conditional qualification fields (appear once a type is chosen) */}
+            {formData.projectType && (
+              <>
+                <div>
+                  <label className="block text-sm font-semibold text-navy mb-2">{rfqContent.qualification.scaleBand.label}</label>
+                  <select name="scaleBand" value={formData.scaleBand} onChange={handleChange} className={inputClass + ' bg-white'}>
+                    <option value="">{rfqContent.qualification.scaleBand.placeholder}</option>
+                    {rfqContent.qualification.scaleBand.options.map((o) => <option key={o}>{o}</option>)}
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold text-navy mb-2">{rfqContent.qualification.consultantAppointed.label}</label>
+                  <select name="consultantAppointed" value={formData.consultantAppointed} onChange={handleChange} className={inputClass + ' bg-white'}>
+                    <option value="">{rfqContent.qualification.consultantAppointed.placeholder}</option>
+                    {rfqContent.qualification.consultantAppointed.options.map((o) => <option key={o}>{o}</option>)}
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold text-navy mb-2">{rfqContent.qualification.targetStart.label}</label>
+                  <select name="targetStart" value={formData.targetStart} onChange={handleChange} className={inputClass + ' bg-white'}>
+                    <option value="">{rfqContent.qualification.targetStart.placeholder}</option>
+                    {rfqContent.qualification.targetStart.options.map((o) => <option key={o}>{o}</option>)}
+                  </select>
+                </div>
+              </>
+            )}
+
             <div>
               <label className="block text-sm font-semibold text-navy mb-2">
                 Target Delivery Date
