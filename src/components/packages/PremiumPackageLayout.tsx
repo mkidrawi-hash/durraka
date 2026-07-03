@@ -3,8 +3,9 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { SOCIAL_LINKS } from '@/lib/social-links'
-import { packagesContent as PKG } from '@/content/en/packages'
+import { whatsappHref } from '@/lib/social-links'
+import { getDictionary } from '@/content/dictionaries'
+import { localizeHref, type Locale } from '@/lib/i18n'
 import { DesignIntentDiagram, type DesignDiagram } from './DesignIntentDiagram'
 export type { DesignDiagram } from './DesignIntentDiagram'
 import {
@@ -85,45 +86,23 @@ function WhatsAppIcon() {
   )
 }
 
-const QUICK_READ = [
-  { icon: '◈', text: 'Custom architectural expression, matched to your design intent' },
-  { icon: '◈', text: 'Precision-engineered GFRC/GRC — manufactured in Saudi Arabia' },
-  { icon: '◈', text: 'Suitable for modern, heritage, and contemporary projects' },
-  { icon: '◈', text: 'Project-specific scope — engineered from your drawings' },
-  { icon: '◈', text: 'Technical review required before final quotation' },
-]
-
-const FINISH_DIRECTIONS = [
-  { label: 'Smooth Architectural Finish', description: 'Fine-textured, paint-ready surface for clean contemporary facades.' },
-  { label: 'Sandblasted Finish', description: 'Lightly abraded surface revealing the aggregate character.' },
-  { label: 'Stone-Like Texture', description: 'Aggregate and pigment combination to replicate natural stone.' },
-  { label: 'Textured / Cast Finish', description: 'Ribbed, board-formed, or custom cast texture from mould.' },
-  { label: 'Heritage Warm Tone', description: 'Warm-toned, hand-textured surface for classical heritage projects.' },
-  { label: 'Custom Colour Match', description: 'Integral pigment matched to RAL, NCS, or project specification.' },
-]
-
-const INFORMATION_REQUIRED = [
-  'Architectural elevations and drawings',
-  'Sections through key elements',
-  'BOQ / quantity schedule',
-  'Structural drawings',
-  'Finish and color references',
-  'Available reference images',
-  'Project location and timeline',
-  'Site constraints or special requirements',
-]
+const QUICK_READ_ICON = '◈'
 
 // ─── Component card ───────────────────────────────────────────────────────────
 
 function ComponentCard({
   comp,
   onOpen,
+  locale = 'en',
 }: {
   comp: ComponentDetail
   onOpen: (comp: ComponentDetail, finish: FinishId) => void
+  locale?: Locale
 }) {
   const [finish, setFinish] = useState<FinishId>('white')
   const overlay = COMPONENT_FINISHES.find(f => f.id === finish)?.overlay ?? ''
+  const L = getDictionary(locale).packages
+  const finishLabel = (id: FinishId) => L.modal.componentFinishes[COMPONENT_FINISHES.findIndex(f => f.id === id)] ?? id
 
   return (
     <div className="bg-white border border-gray-100 rounded-sm overflow-hidden shadow-sm flex flex-col group">
@@ -149,7 +128,7 @@ function ComponentCard({
               <button
                 key={f.id}
                 onClick={e => { e.stopPropagation(); setFinish(f.id) }}
-                title={f.label}
+                title={finishLabel(f.id)}
                 className={[
                   'w-4 h-4 rounded-full border-2 transition-all duration-200',
                   finish === f.id
@@ -157,7 +136,7 @@ function ComponentCard({
                     : 'border-white/40 hover:border-white/80',
                 ].join(' ')}
                 style={{ backgroundColor: f.swatch }}
-                aria-label={`${f.label} finish`}
+                aria-label={`${finishLabel(f.id)} ${L.modal.finishAriaSuffix}`}
                 aria-pressed={finish === f.id}
               />
             ))}
@@ -172,7 +151,7 @@ function ComponentCard({
       <div className="flex-1 p-5 flex flex-col">
         {comp.image && (
           <p className="text-[9px] font-semibold text-navy/35 uppercase tracking-widest mb-1.5">
-            {COMPONENT_FINISHES.find(f => f.id === finish)?.label} Finish
+            {finishLabel(finish)} {L.layout.finishSuffix}
           </p>
         )}
         <h3 className="text-navy font-bold text-base leading-snug mb-2">{comp.title}</h3>
@@ -188,8 +167,8 @@ function ComponentCard({
           onClick={() => onOpen(comp, finish)}
           className="w-full flex items-center justify-center gap-2 px-4 py-2.5 border border-navy/20 text-navy text-xs font-bold tracking-wide rounded-sm hover:bg-navy hover:text-white hover:border-navy transition-colors"
         >
-          View Details
-          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          {L.layout.viewDetails}
+          <svg className="w-3.5 h-3.5 rtl:-scale-x-100" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         </button>
@@ -200,7 +179,7 @@ function ComponentCard({
 
 // ─── Main layout ──────────────────────────────────────────────────────────────
 
-export function PremiumPackageLayout({ data }: { data: PremiumPackageData }) {
+export function PremiumPackageLayout({ data, locale = 'en' }: { data: PremiumPackageData; locale?: Locale }) {
   const {
     title,
     eyebrow,
@@ -218,6 +197,11 @@ export function PremiumPackageLayout({ data }: { data: PremiumPackageData }) {
     designDiagram,
     conceptImageSrc,
   } = data
+
+  const PKG = getDictionary(locale).packages
+  const L = PKG.layout
+  const quoteHref = localizeHref('/request-quotation', locale)
+  const engineerGuidanceHref = localizeHref(ENGINEER_GUIDANCE_PATH, locale)
 
   const [selectedComponent, setSelectedComponent] = useState<ComponentDetail | null>(null)
   const [activeTab, setActiveTab] = useState<ModalTabId>('overview')
@@ -242,7 +226,7 @@ export function PremiumPackageLayout({ data }: { data: PremiumPackageData }) {
         <div className="absolute inset-0 bg-gradient-to-b from-navy/20 via-navy/55 to-navy" aria-hidden="true" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 pt-14 sm:pt-20 pb-16 sm:pb-24">
           <nav aria-label="Breadcrumb" className="flex items-center gap-2 mb-8 text-xs text-white/40">
-            <Link href="/packages" className="hover:text-white/70 transition-colors">Packages</Link>
+            <Link href={localizeHref('/packages', locale)} className="hover:text-white/70 transition-colors">{L.breadcrumb}</Link>
             <span aria-hidden="true">›</span>
             <span className="text-white/60">{title}</span>
           </nav>
@@ -254,11 +238,11 @@ export function PremiumPackageLayout({ data }: { data: PremiumPackageData }) {
 
             <div className="flex flex-wrap gap-4 mb-10">
               <div className="bg-white/8 border border-white/15 rounded-sm px-4 py-3">
-                <p className="text-white/40 text-[9px] font-semibold tracking-widest uppercase mb-0.5">Illustrative Area</p>
+                <p className="text-white/40 text-[9px] font-semibold tracking-widest uppercase mb-0.5">{L.illustrativeArea}</p>
                 <p className="text-white font-semibold text-sm">{illustrativeArea}</p>
               </div>
               <div className="bg-white/8 border border-white/15 rounded-sm px-4 py-3">
-                <p className="text-white/40 text-[9px] font-semibold tracking-widest uppercase mb-1">Visible Components</p>
+                <p className="text-white/40 text-[9px] font-semibold tracking-widest uppercase mb-1">{L.visibleComponents}</p>
                 <div className="flex flex-wrap gap-1.5">
                   {visibleComponents.map(c => (
                     <span key={c} className="text-white/70 text-[10px] font-medium bg-white/10 px-2 py-0.5 rounded-sm">{c}</span>
@@ -269,11 +253,11 @@ export function PremiumPackageLayout({ data }: { data: PremiumPackageData }) {
 
             <div className="flex flex-col sm:flex-row items-start gap-3">
               <Link
-                href="/request-quotation"
+                href={quoteHref}
                 className="inline-flex items-center gap-2 px-7 py-3.5 bg-accent text-white text-sm font-semibold rounded-sm hover:bg-red-700 transition-colors"
               >
-                Request a Quote
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                {L.requestQuote}
+                <svg className="w-4 h-4 rtl:-scale-x-100" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </Link>
@@ -281,7 +265,7 @@ export function PremiumPackageLayout({ data }: { data: PremiumPackageData }) {
                 href="#components"
                 className="inline-flex items-center gap-2 px-7 py-3.5 bg-white/10 border border-white/25 text-white text-sm font-semibold rounded-sm hover:bg-white/20 transition-colors"
               >
-                What&apos;s Included
+                {L.whatsIncludedCta}
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
@@ -295,9 +279,9 @@ export function PremiumPackageLayout({ data }: { data: PremiumPackageData }) {
       <section className="bg-gray-50 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-            {QUICK_READ.map(({ icon, text }) => (
+            {L.quickRead.map((text) => (
               <div key={text} className="flex items-start gap-3">
-                <span className="text-accent text-base leading-none flex-shrink-0 mt-0.5" aria-hidden="true">{icon}</span>
+                <span className="text-accent text-base leading-none flex-shrink-0 mt-0.5" aria-hidden="true">{QUICK_READ_ICON}</span>
                 <p className="text-navy/70 text-xs leading-relaxed">{text}</p>
               </div>
             ))}
@@ -308,14 +292,14 @@ export function PremiumPackageLayout({ data }: { data: PremiumPackageData }) {
       {/* ── 3. Package overview ───────────────────────────────────────────── */}
       <section className="bg-white py-14 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <Eyebrow label="Package Overview" />
+          <Eyebrow label={L.overviewEyebrow} />
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-10 lg:gap-16 items-start">
             <div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-navy mb-6 leading-tight">What This Package Is Designed To Achieve</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold text-navy mb-6 leading-tight">{L.overviewHeading}</h2>
               <p className="text-gray-600 text-base sm:text-lg leading-relaxed">{packageIntent}</p>
             </div>
             <div className="bg-navy/4 border border-navy/10 rounded-sm p-6">
-              <p className="text-navy/40 text-[10px] font-semibold tracking-widest uppercase mb-4">Suitable For</p>
+              <p className="text-navy/40 text-[10px] font-semibold tracking-widest uppercase mb-4">{L.suitableFor}</p>
               <ul className="space-y-3">
                 {suitableApplications.map(app => (
                   <li key={app} className="flex items-start gap-2.5">
@@ -334,18 +318,18 @@ export function PremiumPackageLayout({ data }: { data: PremiumPackageData }) {
       {/* ── 4. Component cards ───────────────────────────────────────────── */}
       <section id="components" className="bg-[#F4F6F9] py-14 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <Eyebrow label="Package Components" />
-          <h2 className="text-2xl sm:text-3xl font-bold text-navy mb-3">What&apos;s Included in This Package</h2>
+          <Eyebrow label={L.componentsEyebrow} />
+          <h2 className="text-2xl sm:text-3xl font-bold text-navy mb-3">{L.componentsHeading}</h2>
           <p className="text-gray-500 text-base mb-10 max-w-2xl leading-relaxed">
-            Each component is precision-manufactured to project drawings. Click <strong className="text-navy font-semibold">View Details</strong> to explore materials, architectural references, finishes, and scope.
+            {L.componentsIntroPre} <strong className="text-navy font-semibold">{L.viewDetails}</strong> {L.componentsIntroPost}
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {componentDetails.map(comp => (
-              <ComponentCard key={comp.id} comp={comp} onOpen={openModal} />
+              <ComponentCard key={comp.id} comp={comp} onOpen={openModal} locale={locale} />
             ))}
           </div>
           <p className="text-gray-400 text-xs mt-8 leading-relaxed max-w-2xl">
-            All component details are for sales-engineering reference only. Fixing methods, structural connections, and proprietary manufacturing details are not disclosed publicly.
+            {L.componentsNote}
           </p>
         </div>
       </section>
@@ -359,7 +343,7 @@ export function PremiumPackageLayout({ data }: { data: PremiumPackageData }) {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-start">
             {/* PART 1 — schematic 2D diagram */}
-            <DesignIntentDiagram diagram={designDiagram} title={title} />
+            <DesignIntentDiagram diagram={designDiagram} title={title} locale={locale} />
 
             {/* PART 2 — 3D concept slot: real image if provided, else branded placeholder */}
             <div>
@@ -415,11 +399,11 @@ export function PremiumPackageLayout({ data }: { data: PremiumPackageData }) {
               <p className="text-gray-600 text-sm leading-relaxed">{PKG.scope.boqCallout}</p>
             </div>
             <Link
-              href={`${ENGINEER_GUIDANCE_PATH}?package=${slug}`}
+              href={`${engineerGuidanceHref}?package=${slug}`}
               className="inline-flex items-center gap-2 px-6 py-3 bg-navy text-white text-sm font-semibold rounded-sm hover:bg-navy-light transition-colors"
             >
               {PKG.scope.ctaLabel}
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <svg className="w-4 h-4 rtl:-scale-x-100" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </Link>
@@ -431,10 +415,10 @@ export function PremiumPackageLayout({ data }: { data: PremiumPackageData }) {
       {infographics && infographics.length > 0 && (
         <section className="bg-white py-14 sm:py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <Eyebrow label="Architecture Reference Boards" />
-            <h2 className="text-2xl sm:text-3xl font-bold text-navy mb-3">Component Architecture Boards</h2>
+            <Eyebrow label={L.boardsEyebrow} />
+            <h2 className="text-2xl sm:text-3xl font-bold text-navy mb-3">{L.boardsHeading}</h2>
             <p className="text-gray-500 text-base mb-10 max-w-2xl leading-relaxed">
-              Detailed architecture reference boards for the GFRC/GRC components in this package.
+              {L.boardsIntro}
             </p>
             <div className="space-y-8">
               {infographics.map(board => (
@@ -456,7 +440,7 @@ export function PremiumPackageLayout({ data }: { data: PremiumPackageData }) {
               ))}
             </div>
             <p className="text-gray-400 text-xs mt-8 leading-relaxed max-w-2xl">
-              For design understanding and early scope coordination only. Detailed fixing, connection, and installation information is excluded.
+              {L.boardsNote}
             </p>
           </div>
         </section>
@@ -465,10 +449,10 @@ export function PremiumPackageLayout({ data }: { data: PremiumPackageData }) {
       {/* ── 6. How a project is reviewed ─────────────────────────────────── */}
       <section className="bg-navy py-14 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <Eyebrow label="Our Process" />
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">How a Project Is Reviewed</h2>
+          <Eyebrow label={L.processEyebrow} />
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">{L.processHeading}</h2>
           <p className="text-white/55 text-base mb-12 max-w-2xl leading-relaxed">
-            From drawing submission to manufactured component — a clear, coordinated technical process.
+            {L.processIntro}
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0">
             {reviewSteps.map((step, i) => (
@@ -482,7 +466,7 @@ export function PremiumPackageLayout({ data }: { data: PremiumPackageData }) {
                   </span>
                   <div className="h-px flex-1 bg-white/15" aria-hidden="true" />
                   {i < reviewSteps.length - 1 && (
-                    <svg className="w-4 h-4 text-white/20 flex-shrink-0 hidden lg:block" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <svg className="w-4 h-4 text-white/20 flex-shrink-0 hidden lg:block rtl:-scale-x-100" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
                     </svg>
                   )}
@@ -498,10 +482,10 @@ export function PremiumPackageLayout({ data }: { data: PremiumPackageData }) {
       {/* ── 7. Available finishes ─────────────────────────────────────────── */}
       <section className="bg-gray-50 py-14 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <Eyebrow label="Finishes" />
-          <h2 className="text-2xl sm:text-3xl font-bold text-navy mb-10">Available Finish Directions</h2>
+          <Eyebrow label={L.finishesEyebrow} />
+          <h2 className="text-2xl sm:text-3xl font-bold text-navy mb-10">{L.finishesHeading}</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-            {FINISH_DIRECTIONS.map(finish => (
+            {L.finishDirections.map(finish => (
               <div key={finish.label} className="bg-white border border-gray-100 rounded-sm p-5 shadow-sm">
                 <div className="w-6 h-1 bg-accent/40 rounded-full mb-3" aria-hidden="true" />
                 <p className="text-navy font-semibold text-sm mb-1.5">{finish.label}</p>
@@ -515,13 +499,13 @@ export function PremiumPackageLayout({ data }: { data: PremiumPackageData }) {
       {/* ── 8. Information required ───────────────────────────────────────── */}
       <section className="bg-white py-14 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <Eyebrow label="Before We Can Quote" />
-          <h2 className="text-2xl sm:text-3xl font-bold text-navy mb-3">Information Required for Technical Review</h2>
+          <Eyebrow label={L.infoEyebrow} />
+          <h2 className="text-2xl sm:text-3xl font-bold text-navy mb-3">{L.infoHeading}</h2>
           <p className="text-gray-500 text-base mb-10 max-w-2xl leading-relaxed">
-            Submit the following for an accurate GFRC/GRC scope and pricing proposal. Our engineering team will review and follow up promptly.
+            {L.infoIntro}
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-4">
-            {INFORMATION_REQUIRED.map(item => (
+            {L.informationRequired.map(item => (
               <div key={item} className="flex items-center gap-3">
                 <div className="w-5 h-5 rounded-full bg-accent/12 border border-accent/25 flex items-center justify-center flex-shrink-0">
                   <CheckIcon />
@@ -537,28 +521,28 @@ export function PremiumPackageLayout({ data }: { data: PremiumPackageData }) {
       <section className="bg-navy py-16 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="max-w-3xl mx-auto text-center">
-            <p className="text-accent text-xs font-bold tracking-widest uppercase mb-4">Have a project to review?</p>
+            <p className="text-accent text-xs font-bold tracking-widest uppercase mb-4">{L.ctaKicker}</p>
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-5 leading-tight">
-              Ready to discuss your GFRC/GRC scope?
+              {L.ctaHeading}
             </h2>
             <p className="text-white/55 text-base sm:text-lg mb-10 leading-relaxed">
-              Share your drawings with our team. We will review the scope, confirm the components, and prepare a precise technical proposal.
+              {L.ctaBody}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
-                href="/request-quotation"
+                href={quoteHref}
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent text-white text-sm font-semibold rounded-sm hover:bg-red-700 transition-colors"
               >
-                Request a Quotation
+                {L.requestQuotation}
               </Link>
               <Link
-                href={SOCIAL_LINKS.whatsapp.href}
+                href={whatsappHref(locale)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 border border-white/25 text-white text-sm font-semibold rounded-sm hover:bg-white/20 transition-colors"
               >
                 <WhatsAppIcon />
-                Contact Durraka
+                {L.contactDurraka}
               </Link>
             </div>
           </div>
@@ -574,7 +558,7 @@ export function PremiumPackageLayout({ data }: { data: PremiumPackageData }) {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               <p className="text-gray-400 text-xs leading-relaxed">
-                <span className="text-navy/60 font-semibold">Important Note — </span>
+                <span className="text-navy/60 font-semibold">{L.importantNotePrefix} </span>
                 {PKG.disclaimer}
               </p>
             </div>
@@ -589,6 +573,7 @@ export function PremiumPackageLayout({ data }: { data: PremiumPackageData }) {
         onTabChange={setActiveTab}
         onClose={closeModal}
         initialFinish={cardFinish}
+        locale={locale}
       />
 
     </div>
