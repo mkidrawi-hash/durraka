@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import { engineerGuidanceContent as C } from '@/content/en/systems/engineer-guidance'
+import { getAttribution, trackEvent } from '@/lib/analytics'
 
 interface FormData {
   fullName: string
@@ -91,19 +92,22 @@ export default function EngineerGuidanceForm() {
       const res = await fetch('/api/engineer-guidance', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, attribution: getAttribution() }),
       })
       const data = await res.json()
       if (!res.ok) {
         setApiError(data.error ?? C.errorFallback)
         setStatus('error')
+        trackEvent('engineer_guidance_submit_error', { status: res.status })
         return
       }
       setReference(data.reference ?? '')
       setStatus('success')
+      trackEvent('engineer_guidance_submit', { role: form.role })
     } catch {
       setApiError(C.errorFallback)
       setStatus('error')
+      trackEvent('engineer_guidance_submit_error', { reason: 'network' })
     }
   }
 

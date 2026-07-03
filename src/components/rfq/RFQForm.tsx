@@ -3,6 +3,7 @@
 import { useState, useRef, ChangeEvent, FormEvent } from 'react'
 import Link from 'next/link'
 import { rfqContent } from '@/content/en/rfq'
+import { getAttribution, trackEvent } from '@/lib/analytics'
 
 const SYSTEMS_OPTIONS = [
   'GFRC/GRC Façade Cladding',
@@ -172,7 +173,7 @@ export default function RFQForm() {
       const res = await fetch('/api/rfq', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...formData, attachments }),
+        body: JSON.stringify({ ...formData, attachments, attribution: getAttribution() }),
       })
 
       const json = (await res.json()) as { success?: boolean; reference?: string; error?: string }
@@ -180,14 +181,21 @@ export default function RFQForm() {
       if (!res.ok || !json.success) {
         setErrorMessage(json.error ?? 'Submission failed. Please try again.')
         setSubmitState('error')
+        trackEvent('rfq_submit_error', { status: res.status })
         return
       }
 
       setReference(json.reference ?? '')
       setSubmitState('success')
+      trackEvent('rfq_submit', {
+        projectType: formData.projectType,
+        clientType: formData.clientType,
+        system: formData.systemRequired,
+      })
     } catch {
       setErrorMessage('A network error occurred. Please check your connection and try again.')
       setSubmitState('error')
+      trackEvent('rfq_submit_error', { reason: 'network' })
     }
   }
 

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
+import { getAttribution, trackEvent } from '@/lib/analytics'
 
 // ── Constants ─────────────────────────────────────────────────────────────────
 
@@ -164,21 +165,27 @@ export default function DetailedCatalogRequestForm() {
       const res = await fetch('/api/detailed-catalog-request', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, attribution: getAttribution() }),
       })
       const data = await res.json()
       if (!res.ok) {
         setApiError(data.error ?? 'Submission failed. Please try again or contact info@durraka.com.')
         setStatus('error')
+        trackEvent('catalog_request_submit_error', { status: res.status })
         return
       }
       setReference(data.reference ?? '')
       // Controlled distribution — no auto-download. Every successful submission
       // shows the same pending-review confirmation.
       setStatus('success')
+      trackEvent('catalog_request_submit', {
+        clientType: form.clientType,
+        projectType: form.projectType,
+      })
     } catch {
       setApiError('Submission failed. Please try again or contact info@durraka.com.')
       setStatus('error')
+      trackEvent('catalog_request_submit_error', { reason: 'network' })
     }
   }
 

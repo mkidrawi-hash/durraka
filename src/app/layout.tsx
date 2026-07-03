@@ -1,9 +1,11 @@
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import FloatingWhatsAppButton from '@/components/social/FloatingWhatsAppButton'
+import AttributionCapture from '@/components/analytics/AttributionCapture'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -50,6 +52,9 @@ export default function RootLayout({
         <main className="pt-[84px] sm:pt-20">{children}</main>
         <Footer />
         <FloatingWhatsAppButton />
+        {/* First-touch UTM capture + Vercel page-view / custom-event analytics */}
+        <AttributionCapture />
+        <Analytics />
       </body>
     </html>
   )

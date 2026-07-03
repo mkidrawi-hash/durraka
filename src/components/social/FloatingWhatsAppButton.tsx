@@ -1,5 +1,8 @@
+'use client'
+
 import Link from 'next/link'
 import { SOCIAL_LINKS } from '@/lib/social-links'
+import { trackEvent } from '@/lib/analytics'
 
 function WhatsAppIcon() {
   return (
@@ -22,6 +25,7 @@ export default function FloatingWhatsAppButton() {
       rel="noopener noreferrer"
       aria-label="Contact Durraka on WhatsApp"
       data-floating="true"
+      onClick={() => trackEvent('whatsapp_click', { placement: 'floating' })}
       style={{
         // Positioned well above the iPhone Safari bottom bar and safe-area
         bottom: 'calc(88px + env(safe-area-inset-bottom))',

@@ -547,3 +547,38 @@ detail is exposed publicly; no public file links added beyond already-approved a
 
 **Checks:** typecheck ✓ · lint ✓ · build ✓ (`/gallery` compiles). RFQ /
 engineer-guidance / catalog / Phase 1 untouched.
+
+---
+
+## Session — Phase 5: Analytics events + UTM attribution
+
+**Branch:** `feat/phase-5-analytics` · one PR. No dashboard UI in-app (reporting lives
+in the Vercel dashboard + the lead Sheets).
+
+- **Vercel Web Analytics:** added `@vercel/analytics` and mounted `<Analytics />` in the
+  root layout (page-views + custom events). **No GA4** (intentionally excluded — add only
+  with a confirmed measurement ID).
+- **First-touch attribution:** `src/lib/analytics.ts` (client) captures UTM
+  (`source/medium/campaign/term/content`), `gclid`, landing page, and referrer **once per
+  tab session** into `sessionStorage` (`durraka_attribution_v1`), via the
+  `AttributionCapture` component mounted in the layout. Best-effort, no PII, session-scoped
+  (no long-lived cookie).
+- **Custom events:** `trackEvent()` with a typed `AnalyticsEvent` union — `rfq_submit`
+  (+`_error`), `engineer_guidance_submit` (+`_error`), `catalog_request_submit`
+  (+`_error`), `catalog_download`, `whatsapp_click`; `phone_click`/`email_click` reserved.
+  Every event auto-merges first-touch attribution.
+- **Lead attribution in Sheets:** `src/lib/attribution.ts` (server-safe, no secrets) is the
+  single source of truth for shape + fixed column order. Each lead form now sends
+  `attribution` in its payload; routes sanitize it and append **8 columns**:
+  RFQ **AA–AH** (`A:AH`), Engineer Guidance & Catalog **Q–X** (`A:X`). Positional append —
+  data lands correctly even before headers exist.
+- **Docs:** `docs/analytics-events.md` — taxonomy, attribution model, sheet columns,
+  verification steps.
+
+**Manual action (owner):** add 8 header labels
+(`UTM Source · UTM Medium · UTM Campaign · UTM Term · UTM Content · GCLID · Landing Page ·
+Referrer`) to each lead tab (RFQ AA–AH; Guidance/Catalog Q–X). Cosmetic only — no new env
+var or tab. Enable Web Analytics in the Vercel project if not already on.
+
+**Checks:** typecheck ✓ · lint ✓ · build ✓. Lead-loss hardening, scoring, and controlled
+distribution untouched.

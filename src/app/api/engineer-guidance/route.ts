@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { google } from 'googleapis'
 import { Resend } from 'resend'
+import { attributionCells, sanitizeAttribution, type Attribution } from '@/lib/attribution'
 
 // ── Engineer Guidance Request — controlled distribution ─────────────────────────
 // CORE POLICY: no document is ever auto-downloaded or publicly hosted. This route
@@ -18,13 +19,16 @@ export interface EngineerGuidancePayload {
   approxScope?: string
   timeline: string
   notes?: string
+  attribution?: Attribution // first-touch UTM / referrer captured client-side
   website?: string // honeypot — must be empty
 }
 
-// Google Sheet tab "Engineer Guidance Requests" — 16 columns (A–P):
+// Google Sheet tab "Engineer Guidance Requests" — 16 columns (A–P) + Q–X:
 // A Timestamp · B Reference · C Full Name · D Company · E Role · F Email ·
 // G Phone · H Project Location · I Project Type · J Approx Scope · K Timeline ·
-// L Notes · M Source Page · N Status (default "New") · O User Agent · P Referrer
+// L Notes · M Source Page · N Status (default "New") · O User Agent · P Referrer ·
+// Q UTM Source · R UTM Medium · S UTM Campaign · T UTM Term · U UTM Content ·
+// V GCLID · W Landing Page · X Referrer (attribution)
 
 function sanitize(s: unknown): string {
   return String(s ?? '').trim().slice(0, 2000)
@@ -109,7 +113,8 @@ async function appendRow(
 ): Promise<void> {
   await sheets.spreadsheets.values.append({
     spreadsheetId,
-    range: `${tabName}!A:P`,
+    // A–P existing; Q–X appended for attribution (see docs/analytics-events.md).
+    range: `${tabName}!A:X`,
     valueInputOption: 'USER_ENTERED',
     requestBody: {
       values: [
@@ -130,6 +135,8 @@ async function appendRow(
           'New', // Status — managed internally by Durraka; the site never changes it.
           userAgent,
           referer,
+          // Q–X (Phase 5 — appended; marketing attribution)
+          ...attributionCells(p.attribution),
         ],
       ],
     },
@@ -198,6 +205,7 @@ export async function POST(req: NextRequest) {
       approxScope: payload.approxScope ? sanitize(payload.approxScope) : undefined,
       timeline: sanitize(payload.timeline),
       notes: payload.notes ? sanitize(payload.notes) : undefined,
+      attribution: sanitizeAttribution(payload.attribution),
     }
 
     const required: [keyof EngineerGuidancePayload, string][] = [
