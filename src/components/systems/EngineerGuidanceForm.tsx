@@ -2,7 +2,9 @@
 
 import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
-import { engineerGuidanceContent as C } from '@/content/en/systems/engineer-guidance'
+import { getDictionary } from '@/content/dictionaries'
+import { localizeHref, type Locale } from '@/lib/i18n'
+import { Ltr } from '@/components/i18n/Ltr'
 import { getAttribution, trackEvent } from '@/lib/analytics'
 
 interface FormData {
@@ -39,7 +41,7 @@ function Label({ children, required }: { children: React.ReactNode; required?: b
   return (
     <label className="block text-[11px] font-semibold text-navy uppercase tracking-wider mb-1.5">
       {children}
-      {required && <span className="text-accent ml-0.5">*</span>}
+      {required && <span className="text-accent ms-0.5">*</span>}
     </label>
   )
 }
@@ -48,7 +50,13 @@ function FieldError({ msg }: { msg?: string }) {
   return msg ? <p className="text-accent text-xs mt-1">{msg}</p> : null
 }
 
-export default function EngineerGuidanceForm() {
+export default function EngineerGuidanceForm({ locale = 'en' }: { locale?: Locale }) {
+  // English dict supplies the option VALUES stored to Sheets; the localized dict
+  // supplies display labels (same index order → same stored value).
+  const EN = getDictionary('en').engineerGuidance
+  const t = getDictionary(locale).engineerGuidance
+  const f = t.form
+
   const [form, setForm] = useState<FormData>(INITIAL)
   const [errors, setErrors] = useState<FieldErrors>({})
   const [status, setStatus] = useState<Status>('idle')
@@ -64,21 +72,22 @@ export default function EngineerGuidanceForm() {
   }, [status])
 
   function set(field: keyof FormData, value: string) {
-    setForm((f) => ({ ...f, [field]: value }))
+    setForm((fm) => ({ ...fm, [field]: value }))
     if (errors[field]) setErrors((e) => ({ ...e, [field]: '' }))
   }
 
   function validate(): boolean {
     const e: FieldErrors = {}
-    if (!form.fullName.trim()) e.fullName = 'Full name is required.'
-    if (!form.company.trim()) e.company = 'Company is required.'
-    if (!form.role) e.role = 'Please select your role.'
-    if (!form.email.trim()) e.email = 'Email address is required.'
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = 'Please enter a valid email address.'
-    if (!form.phone.trim()) e.phone = 'Phone / WhatsApp is required.'
-    if (!form.projectLocation.trim()) e.projectLocation = 'Project location is required.'
-    if (!form.projectType) e.projectType = 'Please select a project type.'
-    if (!form.timeline) e.timeline = 'Please select a timeline.'
+    const v = f.validation
+    if (!form.fullName.trim()) e.fullName = v.fullName
+    if (!form.company.trim()) e.company = v.company
+    if (!form.role) e.role = v.role
+    if (!form.email.trim()) e.email = v.email
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = v.emailInvalid
+    if (!form.phone.trim()) e.phone = v.phone
+    if (!form.projectLocation.trim()) e.projectLocation = v.projectLocation
+    if (!form.projectType) e.projectType = v.projectType
+    if (!form.timeline) e.timeline = v.timeline
     setErrors(e)
     return Object.keys(e).length === 0
   }
@@ -96,7 +105,7 @@ export default function EngineerGuidanceForm() {
       })
       const data = await res.json()
       if (!res.ok) {
-        setApiError(data.error ?? C.errorFallback)
+        setApiError(data.error ?? t.errorFallback)
         setStatus('error')
         trackEvent('engineer_guidance_submit_error', { status: res.status })
         return
@@ -105,7 +114,7 @@ export default function EngineerGuidanceForm() {
       setStatus('success')
       trackEvent('engineer_guidance_submit', { role: form.role })
     } catch {
-      setApiError(C.errorFallback)
+      setApiError(t.errorFallback)
       setStatus('error')
       trackEvent('engineer_guidance_submit_error', { reason: 'network' })
     }
@@ -123,89 +132,89 @@ export default function EngineerGuidanceForm() {
             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h3 className="text-xl font-bold text-navy mb-2">{C.confirmationTitle}</h3>
+        <h3 className="text-xl font-bold text-navy mb-2">{t.confirmationTitle}</h3>
         {reference && (
           <p className="text-sm text-gray-500 mb-1">
-            {C.confirmationReferenceLabel}:{' '}
-            <span className="font-mono font-semibold text-accent">{reference}</span>
+            {t.confirmationReferenceLabel}:{' '}
+            <Ltr className="font-mono font-semibold text-accent">{reference}</Ltr>
           </p>
         )}
-        <p className="text-gray-500 text-sm leading-relaxed">{C.confirmationBody}</p>
+        <p className="text-gray-500 text-sm leading-relaxed">{t.confirmationBody}</p>
         <button onClick={reset} className="mt-5 text-xs text-gray-400 hover:text-gray-600 underline underline-offset-2 transition-colors">
-          Submit another request
+          {f.submitAnother}
         </button>
       </div>
     )
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate aria-label="Engineer guidance request form">
+    <form onSubmit={handleSubmit} noValidate aria-label={f.ariaLabel}>
       {/* Honeypot */}
       <input type="text" name="website" value={form.website} onChange={(e) => set('website', e.target.value)} className="hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-4">
         <div>
-          <Label required>Full Name</Label>
+          <Label required>{f.labels.fullName}</Label>
           <input type="text" value={form.fullName} onChange={(e) => set('fullName', e.target.value)} autoComplete="name" className={inputCls(errors.fullName)} />
           <FieldError msg={errors.fullName} />
         </div>
         <div>
-          <Label required>Company</Label>
+          <Label required>{f.labels.company}</Label>
           <input type="text" value={form.company} onChange={(e) => set('company', e.target.value)} autoComplete="organization" className={inputCls(errors.company)} />
           <FieldError msg={errors.company} />
         </div>
         <div>
-          <Label required>Role</Label>
+          <Label required>{f.labels.role}</Label>
           <select value={form.role} onChange={(e) => set('role', e.target.value)} className={inputCls(errors.role)}>
-            <option value="">Select…</option>
-            {C.roles.map((r) => <option key={r} value={r}>{r}</option>)}
+            <option value="">{f.selectPlaceholder}</option>
+            {EN.roles.map((value, i) => <option key={value} value={value}>{t.roles[i]}</option>)}
           </select>
           <FieldError msg={errors.role} />
         </div>
         <div>
-          <Label required>Email</Label>
-          <input type="email" value={form.email} onChange={(e) => set('email', e.target.value)} autoComplete="email" className={inputCls(errors.email)} />
+          <Label required>{f.labels.email}</Label>
+          <input type="email" dir="ltr" value={form.email} onChange={(e) => set('email', e.target.value)} autoComplete="email" className={inputCls(errors.email)} />
           <FieldError msg={errors.email} />
         </div>
         <div>
-          <Label required>Phone / WhatsApp</Label>
-          <input type="tel" value={form.phone} onChange={(e) => set('phone', e.target.value)} autoComplete="tel" placeholder="+966 5X XXX XXXX" className={inputCls(errors.phone)} />
+          <Label required>{f.labels.phone}</Label>
+          <input type="tel" dir="ltr" value={form.phone} onChange={(e) => set('phone', e.target.value)} autoComplete="tel" placeholder={f.placeholders.phone} className={inputCls(errors.phone)} />
           <FieldError msg={errors.phone} />
         </div>
         <div>
-          <Label required>Project Location (City)</Label>
+          <Label required>{f.labels.projectLocation}</Label>
           <input type="text" value={form.projectLocation} onChange={(e) => set('projectLocation', e.target.value)} autoComplete="address-level2" className={inputCls(errors.projectLocation)} />
           <FieldError msg={errors.projectLocation} />
         </div>
         <div>
-          <Label required>Project Type</Label>
+          <Label required>{f.labels.projectType}</Label>
           <select value={form.projectType} onChange={(e) => set('projectType', e.target.value)} className={inputCls(errors.projectType)}>
-            <option value="">Select…</option>
-            {C.projectTypes.map((t) => <option key={t} value={t}>{t}</option>)}
+            <option value="">{f.selectPlaceholder}</option>
+            {EN.projectTypes.map((value, i) => <option key={value} value={value}>{t.projectTypes[i]}</option>)}
           </select>
           <FieldError msg={errors.projectType} />
         </div>
         <div>
-          <Label required>Timeline</Label>
+          <Label required>{f.labels.timeline}</Label>
           <select value={form.timeline} onChange={(e) => set('timeline', e.target.value)} className={inputCls(errors.timeline)}>
-            <option value="">Select…</option>
-            {C.timelines.map((t) => <option key={t} value={t}>{t}</option>)}
+            <option value="">{f.selectPlaceholder}</option>
+            {EN.timelines.map((value, i) => <option key={value} value={value}>{t.timelines[i]}</option>)}
           </select>
           <FieldError msg={errors.timeline} />
         </div>
       </div>
 
       <div className="mt-4">
-        <Label>Approximate Scope / Areas <span className="text-gray-400 font-normal normal-case tracking-normal text-[11px]">(Optional)</span></Label>
-        <input type="text" value={form.approxScope} onChange={(e) => set('approxScope', e.target.value)} placeholder="e.g. approximate façade areas or quantities" className={inputCls()} />
+        <Label>{f.labels.approxScope} <span className="text-gray-400 font-normal normal-case tracking-normal text-[11px]">{f.optional}</span></Label>
+        <input type="text" value={form.approxScope} onChange={(e) => set('approxScope', e.target.value)} placeholder={f.placeholders.approxScope} className={inputCls()} />
       </div>
 
       <div className="mt-4">
-        <Label>Notes <span className="text-gray-400 font-normal normal-case tracking-normal text-[11px]">(Optional)</span></Label>
-        <textarea value={form.notes} onChange={(e) => set('notes', e.target.value)} rows={3} placeholder="Briefly describe your project or design intent…" className="w-full border border-gray-200 rounded-sm px-3 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 bg-white focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-colors resize-none" />
+        <Label>{f.labels.notes} <span className="text-gray-400 font-normal normal-case tracking-normal text-[11px]">{f.optional}</span></Label>
+        <textarea value={form.notes} onChange={(e) => set('notes', e.target.value)} rows={3} placeholder={f.placeholders.notes} className="w-full border border-gray-200 rounded-sm px-3 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 bg-white focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent transition-colors resize-none" />
       </div>
 
-      <p className="text-[11px] text-gray-500 mt-4 leading-relaxed border-l-2 border-accent/40 pl-3">{C.consentLine}</p>
+      <p className="text-[11px] text-gray-500 mt-4 leading-relaxed border-s-2 border-accent/40 ps-3">{t.consentLine}</p>
 
       {status === 'error' && apiError && (
         <div ref={errorRef} role="alert" aria-live="assertive" className="mt-4 p-3 bg-red-50 border border-red-100 rounded-sm scroll-mt-24">
@@ -221,12 +230,12 @@ export default function EngineerGuidanceForm() {
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
               </svg>
-              Submitting…
+              {f.submitting}
             </>
-          ) : C.submitLabel}
+          ) : t.submitLabel}
         </button>
-        <Link href="/systems/gfrc-grc-facade-cladding" className="inline-flex items-center justify-center min-h-[48px] px-8 py-3 border border-navy/25 text-navy text-sm font-semibold rounded-sm hover:border-accent hover:text-accent transition-colors w-full sm:w-auto">
-          Back to System
+        <Link href={localizeHref('/systems/gfrc-grc-facade-cladding', locale)} className="inline-flex items-center justify-center min-h-[48px] px-8 py-3 border border-navy/25 text-navy text-sm font-semibold rounded-sm hover:border-accent hover:text-accent transition-colors w-full sm:w-auto">
+          {f.backToSystem}
         </Link>
       </div>
     </form>

@@ -24,4 +24,50 @@ export const engineerGuidanceContentAr: Translatable<typeof engineerGuidanceCont
   roles: ['استشاري', 'مقاول', 'مطوّر', 'جهة حكومية', 'أخرى'],
   projectTypes: ['تجاري', 'ضيافة', 'سكني', 'تراثي', 'مؤسسي', 'متعدد الاستخدامات'],
   timelines: ['فوري', '1–3 أشهر', '3–6 أشهر', 'أكثر من 6 أشهر', 'غير محدد بعد'],
+
+  form: {
+    ariaLabel: 'نموذج طلب الدليل الاسترشادي للمهندسين',
+    selectPlaceholder: 'اختر…',
+    optional: '(اختياري)',
+    labels: {
+      fullName: 'الاسم الكامل',
+      company: 'الشركة',
+      role: 'الصفة',
+      email: 'البريد الإلكتروني',
+      phone: 'الهاتف / واتساب',
+      projectLocation: 'موقع المشروع (المدينة)',
+      projectType: 'نوع المشروع',
+      timeline: 'الإطار الزمني',
+      approxScope: 'النطاق / المساحات التقريبية',
+      notes: 'ملاحظات',
+    },
+    placeholders: {
+      phone: '+966 5X XXX XXXX',
+      approxScope: 'مثال: مساحات أو كميات الواجهات التقريبية',
+      notes: 'صف مشروعك أو المفهوم التصميمي بإيجاز…',
+    },
+    submitting: 'جارٍ الإرسال…',
+    submitAnother: 'إرسال طلب آخر',
+    backToSystem: 'العودة إلى النظام',
+    validation: {
+      fullName: 'الاسم الكامل مطلوب.',
+      company: 'الشركة مطلوبة.',
+      role: 'يُرجى اختيار صفتك.',
+      email: 'البريد الإلكتروني مطلوب.',
+      emailInvalid: 'يُرجى إدخال بريد إلكتروني صحيح.',
+      phone: 'الهاتف / واتساب مطلوب.',
+      projectLocation: 'موقع المشروع مطلوب.',
+      projectType: 'يُرجى اختيار نوع المشروع.',
+      timeline: 'يُرجى اختيار الإطار الزمني.',
+    },
+  },
+
+  page: {
+    metaTitle: 'اطلب الدليل الاسترشادي للمهندسين — تكسية الواجهات GFRC',
+    metaDescription:
+      'اطلب الدليل الاسترشادي للمهندسين لنظام تكسية الواجهات من GFRC. يُصدر الدليل من خلال مراجعة هندسية قائمة على المشروع بعد تحقّق فريقنا من طلبك.',
+    requestDetails: 'تفاصيل الطلب',
+    requiredNotePre: 'الحقول المميّزة بـ',
+    requiredNotePost: 'مطلوبة. لا يتم تنزيل أي مستند هنا — يراجع فريقنا طلبك ويردّ عليك.',
+  },
 }

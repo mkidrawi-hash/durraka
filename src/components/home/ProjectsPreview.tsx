@@ -2,6 +2,9 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { getDictionary } from '@/content/dictionaries'
+import { localizeHref, type Locale } from '@/lib/i18n'
+import type { ProjectId } from '@/content/en/home'
 
 // Architectural illustrations — shown as fallback until real image loads
 
@@ -176,9 +179,12 @@ const FEATURED_PROJECTS: Project[] = [
   },
 ]
 
-function ProjectCard({ project }: { project: Project }) {
+function ProjectCard({ project, locale }: { project: Project; locale: Locale }) {
   const [imgError, setImgError] = useState(false)
   const { Illustration } = project
+  const c = getDictionary(locale).home.projects[project.id as ProjectId]
+  const cta = getDictionary(locale).common.cta
+  const href = project.href ? localizeHref(project.href, locale) : undefined
 
   const inner = (
     <div className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-200/60">
@@ -192,7 +198,7 @@ function ProjectCard({ project }: { project: Project }) {
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={project.image}
-            alt={project.title}
+            alt={c.title}
             className="absolute inset-0 w-full h-full object-cover"
             style={{ objectPosition: project.objectPosition }}
             loading="lazy"
@@ -206,21 +212,21 @@ function ProjectCard({ project }: { project: Project }) {
         {/* Tag badge */}
         <div className="absolute bottom-3 left-3 z-10">
           <span className="text-accent text-[10px] font-semibold tracking-wider uppercase leading-none bg-[#071B3B]/85 px-2.5 py-1 rounded-sm backdrop-blur-sm">
-            {project.tag}
+            {c.tag}
           </span>
         </div>
       </div>
 
       <div className="p-5">
         <h3 className="text-navy font-bold text-[17px] sm:text-[15px] leading-snug mb-2 group-hover:text-accent transition-colors">
-          {project.title}
+          {c.title}
         </h3>
         <p className="text-gray-400 text-[13px] sm:text-xs leading-relaxed mb-3">
-          {project.description}
+          {c.description}
         </p>
         {/* System capability chips */}
         <div className="flex flex-wrap gap-1.5 mb-3">
-          {project.systems.map((sys) => (
+          {c.systems.map((sys) => (
             <span
               key={sys}
               className="text-[9px] font-semibold tracking-widest uppercase px-2 py-0.5 bg-navy/[0.05] border border-navy/[0.08] text-navy/50 rounded-sm"
@@ -229,10 +235,10 @@ function ProjectCard({ project }: { project: Project }) {
             </span>
           ))}
         </div>
-        {project.href && (
+        {href && (
           <div className="pt-3 border-t border-gray-100 flex items-center justify-between">
             <span className="text-accent/50 group-hover:text-accent text-[11px] font-semibold tracking-wider uppercase transition-colors">
-              View Package
+              {cta.viewPackage}
             </span>
             <svg
               className="w-4 h-4 text-accent/30 group-hover:text-accent group-hover:translate-x-0.5 transition-all duration-200"
@@ -246,9 +252,9 @@ function ProjectCard({ project }: { project: Project }) {
     </div>
   )
 
-  if (project.href) {
+  if (href) {
     return (
-      <Link href={project.href} className="block">
+      <Link href={href} className="block">
         {inner}
       </Link>
     )
@@ -256,7 +262,9 @@ function ProjectCard({ project }: { project: Project }) {
   return inner
 }
 
-export default function ProjectsPreview() {
+export default function ProjectsPreview({ locale = 'en' }: { locale?: Locale }) {
+  const t = getDictionary(locale).home.projectsSection
+  const cta = getDictionary(locale).common.cta
   return (
     <section className="bg-gray-50 pt-14 pb-20 sm:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -264,27 +272,27 @@ export default function ProjectsPreview() {
         <div className="text-center mb-10 sm:mb-16">
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="w-8 h-px bg-accent flex-shrink-0" />
-            <span className="text-accent text-xs sm:text-sm font-semibold tracking-wider sm:tracking-widest uppercase whitespace-nowrap">Our Work</span>
+            <span className="text-accent text-xs sm:text-sm font-semibold tracking-wider sm:tracking-widest uppercase whitespace-nowrap">{t.eyebrow}</span>
             <div className="w-8 h-px bg-accent flex-shrink-0" />
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-navy mb-3">Project Scope Packages</h2>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-navy mb-3">{t.title}</h2>
           <p className="text-gray-500 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
-            Each project scope combines multiple GFRC/GRC capabilities into a single integrated package — matched to your architectural drawings and delivered across the Kingdom.
+            {t.subtitle}
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
           {FEATURED_PROJECTS.map((project) => (
-            <ProjectCard key={project.id} project={project} />
+            <ProjectCard key={project.id} project={project} locale={locale} />
           ))}
         </div>
 
         <div className="text-center mt-10 sm:mt-14">
           <Link
-            href="/packages"
+            href={localizeHref('/packages', locale)}
             className="inline-flex items-center gap-2 px-8 py-4 bg-accent text-white font-semibold rounded-sm hover:bg-accent-dark transition-colors text-sm sm:text-base shadow-md"
           >
-            View All Packages
+            {cta.viewAllPackages}
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
