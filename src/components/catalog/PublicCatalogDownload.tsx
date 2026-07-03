@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { trackEvent } from '@/lib/analytics'
 
 interface Props {
   catalogName: string
@@ -24,6 +25,10 @@ export default function PublicCatalogDownload({
   async function handleDownload() {
     if (status === 'logging') return
     setStatus('logging')
+
+    // Client-side analytics event (with attribution) — separate from the
+    // server-side lead log below; both are best-effort and never block download.
+    trackEvent('catalog_download', { catalog: catalogName, catalogType, pageSource })
 
     // Fire tracking — non-blocking, download proceeds regardless of tracking outcome
     fetch('/api/catalog-download', {

@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 import { google } from 'googleapis'
 import { scoreLead, type LeadScoreResult } from '@/lib/leadScoring'
+import { attributionCells, sanitizeAttribution, type Attribution } from '@/lib/attribution'
 
 export interface RFQPayload {
   fullName: string
@@ -26,6 +27,7 @@ export interface RFQPayload {
   fileLinkNotes?: string
   drawingsNotAvailable?: boolean
   needDrawingSupport?: boolean
+  attribution?: Attribution // first-touch UTM / referrer captured client-side
   website?: string // honeypot — must be empty
 }
 
@@ -199,7 +201,8 @@ async function appendToSheets(
 
   await sheets.spreadsheets.values.append({
     spreadsheetId,
-    range: `${tabName}!A:Z`,
+    // A–Z existing; AA–AH appended for attribution (see docs/analytics-events.md).
+    range: `${tabName}!A:AH`,
     valueInputOption: 'USER_ENTERED',
     requestBody: {
       values: [
@@ -232,6 +235,8 @@ async function appendToSheets(
           score.segment,
           score.routing,
           score.followUpPriority,
+          // AA–AH (Phase 5 — appended; marketing attribution)
+          ...attributionCells(p.attribution),
         ],
       ],
     },
@@ -291,6 +296,9 @@ export async function POST(req: NextRequest) {
         { status: 400 },
       )
     }
+
+    // Coerce untrusted attribution before it reaches the sheet append.
+    payload.attribution = sanitizeAttribution(payload.attribution)
 
     const reference = generateReference()
     const timestamp = formatTimestamp(new Date())
