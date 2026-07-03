@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { PremiumPackageLayout } from '@/components/packages/PremiumPackageLayout'
-import type { PremiumPackageData } from '@/components/packages/PremiumPackageLayout'
+import type { PremiumPackageData, DesignDiagram } from '@/components/packages/PremiumPackageLayout'
 import type { ComponentDetail } from '@/components/packages/ComponentDetailModal'
 import { CommercialFacadeIllustration } from '@/components/packages/illustrations'
 
@@ -400,13 +400,45 @@ const REVIEW_STEPS = [
 
 // ─── Package data ─────────────────────────────────────────────────────────────
 
+// Schematic design-intent elevation — a multi-storey façade grid. Arrangement
+// only: panel rhythm, cornice line, window surrounds, edge/fin expression.
+const COMMERCIAL_FACADE_DIAGRAM: DesignDiagram = {
+  kind: 'elevation',
+  viewBox: '0 0 400 300',
+  shapes: [
+    { kind: 'rect', x: 70, y: 46, w: 260, h: 226 },
+    { kind: 'rect', x: 70, y: 46, w: 260, h: 9, fill: true }, // cornice band (2)
+    { kind: 'line', x1: 135, y1: 55, x2: 135, y2: 272 },
+    { kind: 'line', x1: 200, y1: 55, x2: 200, y2: 272 },
+    { kind: 'line', x1: 265, y1: 55, x2: 265, y2: 272 },
+    { kind: 'line', x1: 70, y1: 110, x2: 330, y2: 110 },
+    { kind: 'line', x1: 70, y1: 164, x2: 330, y2: 164 },
+    { kind: 'line', x1: 70, y1: 218, x2: 330, y2: 218 },
+    { kind: 'rect', x: 88, y: 72, w: 34, h: 28 }, // window surround outer (3)
+    { kind: 'rect', x: 93, y: 77, w: 24, h: 18 }, // window reveal inner
+    { kind: 'line', x1: 74, y1: 55, x2: 74, y2: 272, accent: true }, // edge expression (4)
+    { kind: 'rect', x: 261, y: 55, w: 7, h: 217, accent: true }, // vertical fin (5)
+    { kind: 'polyline', points: '286 272 286 232 306 218 330 218', accent: true }, // custom profile (6)
+  ],
+  callouts: [
+    { n: 1, label: 'Facade Cladding Panel', x: 167, y: 140 },
+    { n: 2, label: 'Cornice / Profile Band', x: 305, y: 50 },
+    { n: 3, label: 'Window Surround / Reveal', x: 105, y: 86 },
+    { n: 4, label: 'Edge / Corner Expression', x: 74, y: 245 },
+    { n: 5, label: 'Decorative Vertical Fin', x: 265, y: 150 },
+    { n: 6, label: 'Custom Bespoke Profile', x: 306, y: 245 },
+  ],
+}
+
 const COMMERCIAL_FACADE_DATA: PremiumPackageData = {
+  slug: 'commercial-facade-package',
+  designDiagram: COMMERCIAL_FACADE_DIAGRAM,
   title: 'Commercial Facade Package',
   eyebrow: 'AI Concept Reference',
   subtitle: 'Multi-storey exterior cladding. Engineered in GFRC/GRC.',
   heroDescription:
     'A complete GFRC/GRC scope for commercial building exteriors — combining facade cladding panels, cornice lines, window surrounds, vertical rhythm elements, and edge expression into a single precision-manufactured package.',
-  illustrativeArea: 'Approx. 8,000–14,000 m²',
+  illustrativeArea: 'Large-scale multi-storey façades',
   visibleComponents: ['Facade cladding panels', 'Cornices / profiles', 'Window surrounds', 'Edge / corner expression', 'Decorative vertical elements'],
   HeroIllustration: CommercialFacadeIllustration,
   packageIntent:

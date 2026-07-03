@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { PremiumPackageLayout } from '@/components/packages/PremiumPackageLayout'
-import type { PremiumPackageData } from '@/components/packages/PremiumPackageLayout'
+import type { PremiumPackageData, DesignDiagram } from '@/components/packages/PremiumPackageLayout'
 import type { ComponentDetail } from '@/components/packages/ComponentDetailModal'
 import { CustomDecorativeIllustration } from '@/components/packages/illustrations'
 
@@ -498,13 +498,47 @@ const REVIEW_STEPS = [
 
 // ─── Package data ─────────────────────────────────────────────────────────────
 
+// Schematic design-intent composition — an ornament board: geometric,
+// calligraphic, and identity panels within a decorative surround, a horizontal
+// accent band, a relief medallion, and a civic identity element.
+const CUSTOM_DECORATIVE_DIAGRAM: DesignDiagram = {
+  kind: 'elevation',
+  viewBox: '0 0 400 300',
+  shapes: [
+    { kind: 'rect', x: 56, y: 40, w: 288, h: 232 }, // wall zone
+    { kind: 'rect', x: 66, y: 50, w: 268, h: 212 }, // decorative surround (4)
+    { kind: 'rect', x: 56, y: 150, w: 288, h: 20, fill: true }, // accent band (6)
+    { kind: 'rect', x: 74, y: 58, w: 80, h: 72 }, // geometric panel (1)
+    { kind: 'line', x1: 74, y1: 58, x2: 154, y2: 130 },
+    { kind: 'line', x1: 154, y1: 58, x2: 74, y2: 130 },
+    { kind: 'rect', x: 166, y: 58, w: 80, h: 72 }, // calligraphy panel (2)
+    { kind: 'path', d: 'M176 100 C190 82 200 108 214 92 C226 80 234 104 240 96' },
+    { kind: 'rect', x: 258, y: 58, w: 72, h: 72 }, // identity / signage panel (3)
+    { kind: 'circle', cx: 294, cy: 94, r: 16 },
+    { kind: 'circle', cx: 200, cy: 205, r: 26 }, // medallion (5)
+    { kind: 'circle', cx: 200, cy: 205, r: 13, accent: true },
+    { kind: 'polyline', points: '90 190 130 190 130 208 110 224 90 208 90 190' }, // civic element (7)
+  ],
+  callouts: [
+    { n: 1, label: 'Decorative Geometric Panel', x: 114, y: 94 },
+    { n: 2, label: 'Calligraphy-Inspired Panel', x: 206, y: 76 },
+    { n: 3, label: 'Project Identity / Signage Panel', x: 294, y: 94 },
+    { n: 4, label: 'Custom Architectural Frame / Surround', x: 320, y: 250 },
+    { n: 5, label: 'Special Ornamental Detail', x: 200, y: 205 },
+    { n: 6, label: 'Facade Accent Feature', x: 300, y: 160 },
+    { n: 7, label: 'Civic / Institutional Identity Element', x: 110, y: 205 },
+  ],
+}
+
 const CUSTOM_DECORATIVE_DATA: PremiumPackageData = {
+  slug: 'custom-decorative-elements-package',
+  designDiagram: CUSTOM_DECORATIVE_DIAGRAM,
   title: 'Custom Decorative Elements Package',
   eyebrow: 'AI Concept Reference',
   subtitle: 'Bespoke ornamental elements. Engineered in GFRC/GRC.',
   heroDescription:
     'Project-specific GFRC/GRC decorative panels, calligraphy-inspired features, identity elements, custom frames, and bespoke architectural details — manufactured to unique design drawings.',
-  illustrativeArea: 'Approx. 500–2,000 m²',
+  illustrativeArea: 'Bespoke ornament & identity',
   visibleComponents: ['Decorative panels', 'Custom ornaments', 'Identity features', 'Calligraphy-inspired panels', 'Special frames', 'Bespoke facade details'],
   HeroIllustration: CustomDecorativeIllustration,
   packageIntent:
