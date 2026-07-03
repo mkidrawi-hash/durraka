@@ -2,6 +2,8 @@
 // until GFRC/GRC terminology is verified by the owner. Some phrases are reused
 // from the earlier /ar facade stub; the rest are machine-drafted MSA.
 // Mirrors src/content/en/systems/gfrc-grc-facade-cladding.ts (SystemEnhancedData).
+// Terminology follows docs/arabic-terminology.md (GFRC full term on first mention
+// — the title — then plain "GFRC").
 //
 // Non-text fields (image paths, hrefs, finish `type` keys, tag numbers/positions)
 // are intentionally kept identical to the English source.
@@ -9,13 +11,13 @@
 import type { SystemEnhancedData } from '@/components/systems/SystemEnhancedLayout'
 
 export const facadeCladdingContentAr: SystemEnhancedData = {
-  title: 'نظام كسوة الواجهات GFRC / GRC',
-  breadcrumb: 'كسوة واجهات GFRC / GRC',
+  title: 'نظام تكسية الواجهات بالخرسانة المسلحة بالألياف الزجاجية (GFRC)',
+  breadcrumb: 'تكسية واجهات GFRC',
   heroDescription:
-    'نظام كسوة معماري عالي الأداء مصمَّم لواجهات متينة ومرنة في التصميم وخالدة عبر المشاريع الحديثة والتراثية والمعاصرة.',
+    'نظام تكسية معماري عالي الأداء مصمَّم لواجهات متينة ومرنة في التصميم وخالدة عبر المشاريع الحديثة والتراثية والمعاصرة.',
   heroImage: '/images/projects/architectural-cladding-gfrc.png',
   heroImageAlt:
-    'نظام كسوة واجهات معماري من GFRC/GRC يُظهر إيقاع الألواح وإطارات الفتحات والتعبير السطحي',
+    'نظام تكسية واجهات معماري من GFRC يُظهر إيقاع الألواح وإطارات الفتحات والتعبير السطحي',
   heroObjectPosition: 'center',
 
   featureBadges: ['حرية معمارية', 'متانة عالية', 'خفيف الوزن', 'مقاوم للعوامل الجوية'],
@@ -27,12 +29,12 @@ export const facadeCladdingContentAr: SystemEnhancedData = {
     { type: 'sandblasted', label: 'مصنفر بالرمل', desc: 'سطح مُنَقَّح ذو ملمس ومظهر معدني طبيعي.' },
     { type: 'textured', label: 'محبَّب', desc: 'ملمس سطحي مضبوط لإضفاء العمق والطابع البصري.' },
     { type: 'stone', label: 'شبيه بالحجر', desc: 'تشطيب معماري مستوحى من جماليات الحجر الطبيعي.' },
-    { type: 'colour', label: 'لون مخصص', desc: 'اتجاه لوني قائم على المشروع يُطوَّر ليطابق مقصد التصميم.' },
+    { type: 'colour', label: 'لون مخصص', desc: 'اتجاه لوني قائم على المشروع يُطوَّر ليطابق المفهوم التصميمي.' },
     { type: 'heritage', label: 'تراثي', desc: 'اتجاه تشطيب للّغة المعمارية التقليدية والإقليمية.' },
   ],
 
   photoTags: [
-    { n: 1, label: 'منطقة الكسوة المعمارية', xPct: 25, yPct: 45 },
+    { n: 1, label: 'منطقة التكسية المعمارية', xPct: 25, yPct: 45 },
     { n: 2, label: 'إيقاع الألواح ومحاذاتها', xPct: 58, yPct: 30 },
     { n: 3, label: 'تعبير إطار الفتحات', xPct: 42, yPct: 62 },
     { n: 4, label: 'معالجة الحواف والزوايا', xPct: 82, yPct: 38 },
@@ -42,7 +44,7 @@ export const facadeCladdingContentAr: SystemEnhancedData = {
 
   quickRead: [
     { text: 'تعبير معماري مخصص للواجهات' },
-    { text: 'مكوّنات GFRC/GRC مصنَّعة بدقة' },
+    { text: 'مكوّنات GFRC مصنَّعة بدقة' },
     { text: 'مناسب للمشاريع الحديثة والتراثية' },
     { text: 'تنسيق تصميمي خاص بكل مشروع' },
   ],
@@ -63,12 +65,12 @@ export const facadeCladdingContentAr: SystemEnhancedData = {
   ],
 
   importantNote:
-    'هذا التوجيه مُعدّ للفهم المبكر وإعداد عروض الأسعار وتنسيق التصميم. تُطوَّر الأبعاد النهائية والتفاصيل الهندسية والرسومات التنفيذية والمستندات الخاصة بالمشروع بعد مراجعة معلومات المشروع المعتمدة.',
+    'هذا الدليل الاسترشادي مُعدّ للفهم المبكر وإعداد عروض الأسعار وتنسيق التصميم. تُطوَّر الأبعاد النهائية والتفاصيل الهندسية والمخططات التنفيذية والمستندات الخاصة بالمشروع بعد مراجعة معلومات المشروع المعتمدة.',
 
   infoRequiredCustom: [
     'الرسومات والمساقط المعمارية',
     'المساحات والكميات التقريبية',
-    'صور أو مراجع لمقصد التصميم',
+    'صور أو مراجع للمفهوم التصميمي',
     'اتجاه التشطيب المُفضّل',
     'موقع المشروع',
     'الجدول الزمني للمشروع',
@@ -85,5 +87,5 @@ export const facadeCladdingContentAr: SystemEnhancedData = {
     { label: 'متطلبات التنسيق', desc: 'اعتبارات قياس فواصل الألواح ومقاومة العوامل الجوية.' },
   ],
 
-  ctaTitle: 'هل أنت مستعد لمناقشة باقة كسوة الواجهات الخاصة بك؟',
+  ctaTitle: 'هل أنت مستعد لمناقشة باقة تكسية الواجهات الخاصة بك؟',
 }
