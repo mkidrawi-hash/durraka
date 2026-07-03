@@ -16,6 +16,10 @@ const config: Config = {
         'accent-light': '#e84048',
         'accent-dark': '#a81219',
       },
+      fontFamily: {
+        // Applied on the /ar subtree via the ArLayout font variable.
+        arabic: ['var(--font-arabic)', 'system-ui', 'sans-serif'],
+      },
     },
   },
   plugins: [],
