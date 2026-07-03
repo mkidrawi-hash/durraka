@@ -21,6 +21,7 @@ const ARABIC_ENABLED = true
 // 404). Add entries here as pages are translated.
 const TRANSLATED_AR_ROUTES = new Set<string>([
   '/about',
+  '/request-quotation',
   '/systems/gfrc-grc-facade-cladding',
   '/systems/gfrc-grc-facade-cladding/engineer-guidance',
 ])

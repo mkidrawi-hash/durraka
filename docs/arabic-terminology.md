@@ -45,6 +45,19 @@ yet** in the approved list. Please confirm or correct; approved rows will be pro
 | Submit Request | إرسال الطلب | Engineer-guidance CTA |
 | 3D Concept Render | عرض تصوّري ثلاثي الأبعاد | Packages 3D slot |
 | Reference number | الرقم المرجعي | Engineer-guidance confirmation |
+| Structural Drawings | الرسومات الإنشائية | RFQ attachments |
+| Reference Images / Renderings | صور مرجعية / أعمال تصوّرية | RFQ attachments |
+| Domes & Vaults | القباب والأقبية | RFQ system options |
+| Columns & Pillars | الأعمدة والدعامات | RFQ system options |
+| Cornices & Profiles | الكرانيش والمقاطع | RFQ system options |
+| Façade Consultant | استشاري واجهات | RFQ client-type roles |
+| Main Contractor / Subcontractor | مقاول رئيسي / مقاول من الباطن | RFQ client-type roles |
+| Developer / Owner | مطوّر / مالك | RFQ client-type roles |
+| Government Entity | جهة حكومية | RFQ client-type roles |
+| Request for Quotation (RFQ) | طلب عرض سعر | RFQ page + form |
+| Estimated Area | المساحة التقديرية | RFQ form |
+| Target Delivery Date | تاريخ التسليم المستهدف | RFQ form |
+| Large File Link | رابط ملف كبير | RFQ attachments |
 
 ## How to use
 
