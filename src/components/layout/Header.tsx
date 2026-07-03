@@ -19,7 +19,10 @@ const ARABIC_ENABLED = true
 // English routes that currently have a translated /ar equivalent. The toggle
 // links to /ar<path> for these; for any other page it falls back to /ar (never a
 // 404). Add entries here as pages are translated.
-const TRANSLATED_AR_ROUTES = new Set<string>(['/systems/gfrc-grc-facade-cladding'])
+const TRANSLATED_AR_ROUTES = new Set<string>([
+  '/about',
+  '/systems/gfrc-grc-facade-cladding',
+])
 
 function PreviewBadge({ className = '' }: { className?: string }) {
   return (

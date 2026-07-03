@@ -17,14 +17,14 @@ export const commonAr: Translatable<typeof commonContent> = {
   },
   cta: {
     requestQuotation: 'اطلب عرض سعر',
-    contactDurraka: 'تواصل مع دُرّاكة',
+    contactDurraka: 'تواصل مع دراكة',
     viewPackage: 'عرض الباقة',
     viewAllSystems: 'عرض جميع الأنظمة',
     viewAllPackages: 'عرض جميع الباقات',
     exploreSystems: 'استكشف أنظمتنا',
   },
   footer: {
-    brandName: 'مصنع دُرّاكة للصناعة',
+    brandName: 'مصنع دراكة للصناعة',
     tagline: 'أنظمة معمارية من GFRC و GRC',
     description:
       'الشركة السعودية المتخصصة في تصنيع تكسية الواجهات من GFRC و GRC، وأنظمة المشربيات، والقباب المعمارية، والأطواق، والعناصر الزخرفية المخصصة.',

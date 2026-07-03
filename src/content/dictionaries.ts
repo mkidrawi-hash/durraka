@@ -6,12 +6,14 @@
 import type { Locale } from '@/lib/i18n'
 
 import { commonContent } from './en/common'
+import { aboutContent } from './en/about'
 import { rfqContent } from './en/rfq'
 import { engineerGuidanceContent } from './en/systems/engineer-guidance'
 import { facadeCladdingContent } from './en/systems/gfrc-grc-facade-cladding'
 import { packagesContent } from './en/packages'
 
 import { commonAr } from './ar/common'
+import { aboutContentAr } from './ar/about'
 import { rfqContentAr } from './ar/rfq'
 import { engineerGuidanceContentAr } from './ar/systems/engineer-guidance'
 import { facadeCladdingContentAr } from './ar/systems/gfrc-grc-facade-cladding'
@@ -20,6 +22,7 @@ import { packagesContentAr } from './ar/packages'
 const dictionaries = {
   en: {
     common: commonContent,
+    about: aboutContent,
     rfq: rfqContent,
     engineerGuidance: engineerGuidanceContent,
     facadeCladding: facadeCladdingContent,
@@ -27,6 +30,7 @@ const dictionaries = {
   },
   ar: {
     common: commonAr,
+    about: aboutContentAr,
     rfq: rfqContentAr,
     engineerGuidance: engineerGuidanceContentAr,
     facadeCladding: facadeCladdingContentAr,

@@ -19,6 +19,8 @@ of an approved term.
 | Shop Drawings | المخططات التنفيذية | Always |
 | Request Technical Review | اطلب مراجعة فنية | Buttons / CTAs |
 | What's Included | ما تشمله الباقة | Package pages |
+| Durraka (brand) | دراكة | Always — transliteration, no diacritics |
+| Durraka Factory for Industry | مصنع دراكة للصناعة | Always |
 
 **Note.** These terminology decisions are **owner-approved**. Do not substitute synonyms or
 alternative phrasings for any term above. When a new recurring term is translated, add it to
