@@ -456,7 +456,7 @@ const COMMERCIAL_FACADE_DATA: PremiumPackageData = {
     {
       title: 'Cornice Component Overview',
       description: 'Horizontal architectural profiles used at rooflines, parapets, edges, and facade transitions to define shadow lines and proportion.',
-      image: '/images/infographics/gfrc-classical-columns-hero.png',
+      image: '/images/packages/villa-palace-architectural.webp',
       imageAlt: 'GFRC/GRC ornamental cornices and architectural profiles — heritage facade reference',
     },
   ],

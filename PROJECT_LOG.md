@@ -723,3 +723,9 @@ channels and SVG path/point coordinates — no quantity/area/price data.
   beyond the "trivial" optional scope). URL slugs unchanged.
 
 **Checks:** typecheck ✓ · lint ✓ · build ✓.
+
+**Follow-up:** reverted the Commercial Façade reference board from the off-theme
+`gfrc-classical-columns-hero.png` stand-in back to `villa-palace-architectural` (cornice
+theme). Commercial Façade now matches every other page: the sole remaining reuse is the
+cornice card ↔ cornice board (same-theme, coherent). A dedicated cornice board image is
+still recommended for full uniqueness.
