@@ -264,7 +264,7 @@ export function PremiumPackageLayout({ data }: { data: PremiumPackageData }) {
                 href="#components"
                 className="inline-flex items-center gap-2 px-7 py-3.5 bg-white/10 border border-white/25 text-white text-sm font-semibold rounded-sm hover:bg-white/20 transition-colors"
               >
-                View Components
+                What&apos;s Included
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
@@ -318,7 +318,7 @@ export function PremiumPackageLayout({ data }: { data: PremiumPackageData }) {
       <section id="components" className="bg-[#F4F6F9] py-14 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <Eyebrow label="Package Components" />
-          <h2 className="text-2xl sm:text-3xl font-bold text-navy mb-3">GFRC/GRC Components</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-navy mb-3">What&apos;s Included in This Package</h2>
           <p className="text-gray-500 text-base mb-10 max-w-2xl leading-relaxed">
             Each component is precision-manufactured to project drawings. Click <strong className="text-navy font-semibold">View Details</strong> to explore materials, architectural references, finishes, and scope.
           </p>

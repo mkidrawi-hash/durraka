@@ -277,7 +277,7 @@ export default function ProjectsPreview() {
 
         <div className="text-center mt-10 sm:mt-14">
           <Link
-            href="/projects"
+            href="/packages"
             className="inline-flex items-center gap-2 px-8 py-4 bg-accent text-white font-semibold rounded-sm hover:bg-accent-dark transition-colors text-sm sm:text-base shadow-md"
           >
             View All Packages
