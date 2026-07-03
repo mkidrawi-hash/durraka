@@ -322,7 +322,7 @@ const MASHRABIYA_COMPONENTS: ComponentDetail[] = [
     title: 'Window Screen Insert',
     shortDescription: 'Smaller screen sized to window opening — provides privacy and shade at aperture scale while maintaining visual pattern continuity.',
     tags: ['Window Screen', 'Aperture Screen', 'Privacy Insert', 'GFRC'],
-    image: '/images/packages/heritage-regional.webp',
+    image: '/images/packages/landmark-government-facade.webp',
     imageAlt: 'GFRC/GRC window screen inserts on heritage building facade',
     CardIllustration: WindowScreenSVG,
     HotspotDiagram: MashrabiyaFacadeElevation,

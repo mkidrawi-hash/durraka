@@ -695,3 +695,31 @@ area ranges, zero "Approx." figures. Residual comma-digits are only CSS `rgba()`
 channels and SVG path/point coordinates — no quantity/area/price data.
 
 **Checks:** typecheck ✓ · lint ✓ · build ✓.
+
+---
+
+## Session — Pre-merge QA fixes: package images, legal cross-refs, WhatsApp a11y
+
+**Branch:** `feat/package-design-intent` (same branch, added commit — not merged).
+
+- **Fix 1 — duplicate component images:** reassigned image references across all 6 package
+  pages so every card uses a thematically-appropriate image. **Zero cross-theme duplicates
+  remain.** Constraint noted: only **6 package images** exist (`/public/images/packages/`)
+  for pages with up to 8 cards + 2 boards, so full page-wide uniqueness is impossible.
+  Commercial Façade is now fully distinct (6 cards + 1 board = 7 unique, using the
+  `gfrc-classical-columns-hero.png` infographic for the reference board). On 7–8 card pages
+  the only remaining repeats are **same-theme** (a reference board sharing its own family's
+  image with the matching card, or two same-family cards). **Recommend commissioning ~4–6
+  more package images** to reach full uniqueness (esp. a dedicated cornice board image).
+- **Fix 2 — legal cross-references:** corrected 4 broken "Section N" references —
+  Privacy §10 & §12 contact refs (13 → **14** Contact), Privacy cookies ref (8 → **9**
+  Cookies), Terms §10 Force-Majeure ref (13 → **14**). Verified all other refs
+  (Privacy §8; Terms §12 jurisdiction) already correct.
+- **Fix 3 — WhatsApp a11y:** already satisfied in code — `FloatingWhatsAppButton` has
+  `aria-label="Contact Durraka on WhatsApp"` and the icon is `aria-hidden="true"` (added
+  earlier; the reviewed preview predated it). No change required.
+- **Optional — Façade:** standardized the Commercial Façade **H1** (`Facade` → `Façade`)
+  to match its metadata. Component-card labels/body left as-is (full 71-occurrence sweep is
+  beyond the "trivial" optional scope). URL slugs unchanged.
+
+**Checks:** typecheck ✓ · lint ✓ · build ✓.

@@ -318,7 +318,7 @@ const FACADE_COMPONENTS: ComponentDetail[] = [
     title: 'Edge / Corner Expression',
     shortDescription: 'Quoin or corner column element — resolves building edges and creates visual weight at facade corners.',
     tags: ['Corner Element', 'Quoin', 'Edge Detail', 'GFRC'],
-    image: '/images/packages/hospitality-commercial.webp',
+    image: '/images/packages/heritage-regional.webp',
     imageAlt: 'GFRC/GRC edge and corner expression on commercial building facade',
     CardIllustration: CornerExpressionSVG,
     HotspotDiagram: CommercialFacadeElevation,
@@ -342,7 +342,7 @@ const FACADE_COMPONENTS: ComponentDetail[] = [
     title: 'Decorative Vertical Fin',
     shortDescription: 'Vertical rhythm element projecting from the facade — creates depth, shadow, and modular expression on commercial building elevations.',
     tags: ['Vertical Fin', 'Rhythm Element', 'Facade Depth', 'GFRC'],
-    image: '/images/packages/landmark-government-facade.webp',
+    image: '/images/packages/grand-entrance-gate.webp',
     imageAlt: 'GFRC/GRC decorative vertical elements on landmark government building exterior',
     CardIllustration: VerticalFinSVG,
     HotspotDiagram: CommercialFacadeElevation,
@@ -433,7 +433,7 @@ const COMMERCIAL_FACADE_DIAGRAM: DesignDiagram = {
 const COMMERCIAL_FACADE_DATA: PremiumPackageData = {
   slug: 'commercial-facade-package',
   designDiagram: COMMERCIAL_FACADE_DIAGRAM,
-  title: 'Commercial Facade Package',
+  title: 'Commercial Façade Package',
   eyebrow: 'AI Concept Reference',
   subtitle: 'Multi-storey exterior cladding. Engineered in GFRC/GRC.',
   heroDescription:
@@ -456,7 +456,7 @@ const COMMERCIAL_FACADE_DATA: PremiumPackageData = {
     {
       title: 'Cornice Component Overview',
       description: 'Horizontal architectural profiles used at rooflines, parapets, edges, and facade transitions to define shadow lines and proportion.',
-      image: '/images/packages/villa-palace-architectural.webp',
+      image: '/images/infographics/gfrc-classical-columns-hero.png',
       imageAlt: 'GFRC/GRC ornamental cornices and architectural profiles — heritage facade reference',
     },
   ],

@@ -362,7 +362,7 @@ const ENTRANCE_COMPONENTS: ComponentDetail[] = [
     title: 'Grand Entrance Arch',
     shortDescription: 'Main arch spanning between entrance columns — the focal arrival element with decorated keystone, arch ring, and soffit profile.',
     tags: ['Grand Arch', 'Entrance Arch', 'Keystone Arch', 'GFRC'],
-    image: '/images/packages/grand-entrance-gate.webp',
+    image: '/images/packages/heritage-regional.webp',
     imageAlt: 'GFRC/GRC grand entrance arch with keystone on monumental gate',
     CardIllustration: GrandArchSVG,
     HotspotDiagram: GrandEntranceFacadeElevation,
@@ -434,7 +434,7 @@ const ENTRANCE_COMPONENTS: ComponentDetail[] = [
     title: 'Feature / Identity Panel',
     shortDescription: 'Decorative panel within the gate composition — carries identity, heraldic, or ornamental content at the principal arrival zone.',
     tags: ['Feature Panel', 'Identity', 'Decorative', 'GFRC Panel'],
-    image: '/images/packages/grand-entrance-gate.webp',
+    image: '/images/packages/hospitality-commercial.webp',
     imageAlt: 'GFRC/GRC feature and identity panels on grand entrance gate composition',
     CardIllustration: FeaturePanelSVG,
     HotspotDiagram: GrandEntranceFacadeElevation,
@@ -579,7 +579,7 @@ const GRAND_ENTRANCE_DATA: PremiumPackageData = {
     {
       title: 'Column & Capital Component Overview',
       description: 'Vertical architectural elements used at entrances, arcades, porticos, and facade features to create rhythm, formality, and decorative character.',
-      image: '/images/packages/landmark-government-facade.webp',
+      image: '/images/infographics/gfrc-classical-columns-hero.png',
       imageAlt: 'GFRC/GRC columns and capitals — landmark government building facade reference',
     },
     {

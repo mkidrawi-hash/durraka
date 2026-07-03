@@ -109,7 +109,7 @@ const sections = [
           <li>IP address (logged by hosting infrastructure)</li>
           <li>Browser type, device type, and operating system</li>
           <li>Pages visited, referral URL, and session duration</li>
-          <li>Cookie identifiers (see Section 8 below)</li>
+          <li>Cookie identifiers (see Section 9 below)</li>
         </ul>
         <p className="mt-3">
           Automatically collected technical data is aggregated and is not used to identify
@@ -347,7 +347,7 @@ const sections = [
         <p>
           The Saudi Personal Data Protection Law grants you the following rights in respect of
           your personal data held by us. To exercise any of these rights, please contact us using
-          the details in Section 13.
+          the details in Section 14.
         </p>
         <ul>
           <li>
@@ -437,7 +437,7 @@ const sections = [
         This website is intended for business and professional use. We do not knowingly collect
         personal data from individuals under the age of 18. If you believe a minor has submitted
         personal data through our website, please contact us immediately using the details in
-        Section 13 and we will promptly delete the information.
+        Section 14 and we will promptly delete the information.
       </p>
     ),
   },

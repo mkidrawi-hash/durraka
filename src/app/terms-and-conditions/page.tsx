@@ -359,7 +359,7 @@ const sections = [
           </li>
           <li>
             Delay or failure in performance arising from causes beyond our reasonable control
-            (see also Section 13 — Force Majeure).
+            (see also Section 14 — Force Majeure).
           </li>
         </ul>
         <p>
