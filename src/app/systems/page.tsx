@@ -45,9 +45,8 @@ export default function SystemsPage() {
               const imgAlt: string | null = system.imageAlt
               const imgLocation: string | null = system.imageLocation
               return (
-                <Link
+                <div
                   key={system.id}
-                  href={`/systems/${system.slug}`}
                   className="group flex flex-col bg-white/[0.04] border border-white/[0.08] rounded-sm hover:border-accent/40 hover:bg-white/[0.07] transition-all duration-300 overflow-hidden"
                 >
                   {imgSrc && (
@@ -76,20 +75,30 @@ export default function SystemsPage() {
                         {system.title}
                       </h2>
                       <p className="text-white/50 text-sm leading-relaxed">{system.description}</p>
-                      <div className="flex items-center gap-3 mt-2 flex-wrap">
-                        <div className="flex items-center gap-1.5">
-                          <div className="w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0" />
-                          <span className="text-[10px] text-white/40 tracking-widest uppercase">
-                            Project-specific manufacturing
-                          </span>
-                        </div>
-                        <span className="text-[10px] text-accent/70 group-hover:text-accent tracking-widest uppercase transition-colors">
-                          View Component →
+                      <div className="flex items-center gap-1.5 mt-3">
+                        <div className="w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0" />
+                        <span className="text-[10px] text-white/40 tracking-widest uppercase">
+                          Project-specific manufacturing
                         </span>
+                      </div>
+                      {/* CTAs: Explore System (primary) + Request Technical Review (secondary) */}
+                      <div className="flex flex-col sm:flex-row gap-3 mt-5">
+                        <Link
+                          href={`/systems/${system.slug}`}
+                          className="inline-flex items-center justify-center min-h-[44px] px-5 py-2.5 bg-accent text-white text-sm font-semibold rounded-sm hover:bg-accent-dark transition-colors"
+                        >
+                          Explore System
+                        </Link>
+                        <Link
+                          href="/request-quotation"
+                          className="inline-flex items-center justify-center min-h-[44px] px-5 py-2.5 border border-white/25 text-white/80 text-sm font-semibold rounded-sm hover:border-accent hover:text-white transition-colors"
+                        >
+                          Request Technical Review
+                        </Link>
                       </div>
                     </div>
                   </div>
-                </Link>
+                </div>
               )
             })}
           </div>

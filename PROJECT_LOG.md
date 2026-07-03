@@ -365,3 +365,25 @@ Reviewed and verified on `feat/phase-1-systems-alignment`:
 
 Known TODO (not Phase 1): `/ar/systems/facade-cladding` Arabic mirror still uses
 the old slug — align when Arabic content work begins (Phase 2+).
+
+### Phase 1 completion — Section 1B detail page
+Completed the GFRC/GRC façade cladding detail page per master prompt 1B, on
+`feat/phase-1-systems-alignment` (same branch/PR):
+- Added Engineer Guidance **stub route** `/systems/gfrc-grc-facade-cladding/engineer-guidance`
+  (Phase-1 placeholder → routes to RFQ; full flow is Phase 2). Hero secondary CTA
+  now "Request Engineer Guidance" (via optional `engineerGuidanceHref`).
+- Added "Request More Information" block (→ Request Quote / RFQ).
+- Wired "Talk to a Specialist" to WhatsApp (+966 12 619 2224 via SOCIAL_LINKS).
+- Finish tiles: added optional `finishes` on the content type; façade now shows the
+  6 requested directions (Smooth · Sandblasted · Textured · Stone-Like · Custom
+  Color · Heritage) as clean SVG/data tiles (no fake photos).
+- Systems list cards now use two CTAs: **Explore System** (→ detail) + **Request
+  Technical Review** (→ RFQ), applied to all cards.
+- Footer address already correct (Office 203, 2nd Floor, JBSA 2372, Jeddah, Saudi
+  Arabia via CONTACT_INFO) — no change.
+- Reuse preserved: everything renders from the typed `SystemEnhancedData` content
+  object. RFQ/lead-scoring API untouched.
+- lint ✓ · typecheck ✓ · build ✓ (both routes generated).
+
+Note: the 404 the reviewer saw was because this branch was not merged to `main`.
+This is now ready as one PR for review/merge.

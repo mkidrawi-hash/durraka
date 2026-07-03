@@ -21,6 +21,20 @@ export const facadeCladdingContent: SystemEnhancedData = {
   // Distinct feature badges row (rendered below the hero, before deeper content).
   featureBadges: ['Architectural Freedom', 'Durable', 'Lightweight', 'Weather Resistant'],
 
+  // Secondary hero CTA → Engineer Guidance stub route (full flow is Phase 2).
+  engineerGuidanceHref: '/systems/gfrc-grc-facade-cladding/engineer-guidance',
+
+  // Six finish directions (clean SVG/data tiles — not photographs).
+  // TODO: dedicated real finish-texture photos are pending approval.
+  finishes: [
+    { type: 'smooth', label: 'Smooth', desc: 'Clean architectural surface for contemporary façade expressions.' },
+    { type: 'sandblasted', label: 'Sandblasted', desc: 'Refined textured surface with a natural mineral appearance.' },
+    { type: 'textured', label: 'Textured', desc: 'Controlled surface texture for depth and visual character.' },
+    { type: 'stone', label: 'Stone-Like', desc: 'Architectural finish inspired by natural stone aesthetics.' },
+    { type: 'colour', label: 'Custom Color', desc: 'Project-based colour direction developed to match design intent.' },
+    { type: 'heritage', label: 'Heritage', desc: 'Finish direction for traditional and regional architectural language.' },
+  ],
+
   photoTags: [
     { n: 1, label: 'Architectural Cladding Zone', xPct: 25, yPct: 45 },
     { n: 2, label: 'Panel Rhythm & Alignment', xPct: 58, yPct: 30 },
