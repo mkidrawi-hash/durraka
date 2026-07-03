@@ -412,3 +412,47 @@ can be archived once confirmed.
 
 **Merge convention:** recent merges show `<title> (#NN)` on a single commit →
 **squash merge** is the repo convention.
+
+---
+
+## Session — Phase 2: Engineer Guidance Request System
+
+**Branch:** `feat/phase-2-engineer-guidance` (from clean main after PR #30 merged).
+**PR:** held — opens only after the Sheets tab + env are set up (owner action).
+
+Controlled-distribution request flow. NO document is auto-downloaded or publicly
+hosted; the site records the request + issues a reference; Durraka sends guidance
+MANUALLY after verification. No public file link/URL/attachment anywhere.
+
+- New `POST /api/engineer-guidance` — sanitise → validate → honeypot → Sheets
+  append + Resend email. **No silent lead loss:** both sinks awaited; success only
+  if ≥1 succeeds; if none → full lead logged + HTTP 502 telling the visitor to
+  email info@durraka.com.
+- **Reference `EG-YYYY-NNNN`:** derived from the **MAX existing reference** in the
+  reference column (+1), zero-padded — a deleted/blank row can never cause a
+  duplicate. **Fallback `EG-YYYY-T####`** (T + last 4 epoch digits) — visually
+  distinct so it can never collide with a sequential number.
+- Sheets tab **"Engineer Guidance Requests"** (env `ENGINEER_GUIDANCE_TAB_NAME`),
+  16 columns A–P incl. Status (default "New"; site never changes it).
+- Stub page replaced with the request form (`EngineerGuidanceForm`, dictionary
+  copy in `src/content/en/systems/engineer-guidance.ts`). Confirmation shows the
+  reference number.
+- Internal master template `private/engineer-guidance/gfrc-grc-facade-cladding.md`
+  (public-safe design guidance only; no fixing/anchor/subframe/mix-design).
+
+**Operational rules (agreed):**
+- Rows in the Engineer Guidance tab are **never deleted — only marked `Declined`**
+  (protects the MAX-reference sequence from ever reusing a number).
+- Status flow (internal only): New → Under Review → Approved → Sent → Declined.
+
+**Security note:** nothing under `private/` is imported by any client/src code
+(verified — does not enter the JS bundle) and it lives outside `/public` (not
+served). ⚠️ If this repo is ever made **public**, `private/` contents become
+visible in the repository — review/relocate internal material before that.
+
+**Env required (no secrets committed):** existing GOOGLE_SHEETS_*, EMAIL_SERVICE_API_KEY,
+RFQ_TO_EMAIL, RFQ_FROM_EMAIL + new `ENGINEER_GUIDANCE_TAB_NAME` (default
+"Engineer Guidance Requests").
+
+**Checks:** typecheck ✓ · lint ✓ · build ✓ (both routes generated). RFQ/lead-scoring
+and catalog-manual work untouched.
