@@ -58,6 +58,23 @@ yet** in the approved list. Please confirm or correct; approved rows will be pro
 | Estimated Area | المساحة التقديرية | RFQ form |
 | Target Delivery Date | تاريخ التسليم المستهدف | RFQ form |
 | Large File Link | رابط ملف كبير | RFQ attachments |
+| Package(s) | باقة / باقات | Packages pages |
+| AI Concept Reference | مرجع تصوّري بالذكاء الاصطناعي | Package eyebrow |
+| Capital (column) | التاج | Columns/entrance packages |
+| Pilaster | دعامة جدارية | Columns package |
+| Column shaft | بدن العمود | Columns package |
+| Colonnade / Portico | رواق أعمدة / رواق مدخل | Columns package |
+| Window Surround / Reveal | إطار النافذة / التجويف | Package components |
+| Quoin / Corner element | ركن بارز / عنصر زاوية | Package components |
+| Vertical fin | زعنفة رأسية | Package components |
+| Moulding | حلية | Domes/cornices package |
+| Parapet | حاجز السطح | Package components |
+| Shadow line | خط الظل | Package components |
+| Calligraphy-inspired | مستوحى من الخط العربي | Custom decorative package |
+| Identity feature / panel | عنصر / لوح هوية | Custom decorative package |
+| Material Composition | تركيب المادة | Component modal |
+| Scope & Deliverables | النطاق والمخرجات | Component modal |
+| Visual Hotspots | النقاط المرئية | Component modal |
 
 ## How to use
 
