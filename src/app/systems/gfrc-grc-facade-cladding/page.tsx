@@ -3,7 +3,7 @@ import { SystemEnhancedLayout } from '@/components/systems/SystemEnhancedLayout'
 import { facadeCladdingContent } from '@/content/en/systems/gfrc-grc-facade-cladding'
 
 export const metadata: Metadata = {
-  title: 'GFRC / GRC Façade Cladding System — Durraka',
+  title: 'GFRC / GRC Façade Cladding System',
   description:
     'High-performance GFRC/GRC façade cladding system designed for durable, design-flexible, and timeless façades. Panel systems, cornice profiles, window surrounds, and custom architectural expression.',
 }

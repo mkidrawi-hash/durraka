@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | Durraka Factory for Industry',
+  title: 'Privacy Policy',
   description:
     'Privacy Policy of Durraka Factory for Industry — how we collect, process, and protect personal data in compliance with the Saudi Personal Data Protection Law (PDPL) and applicable GCC regulations.',
 }

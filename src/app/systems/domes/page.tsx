@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { SystemEnhancedLayout, type SystemEnhancedData } from '@/components/systems/SystemEnhancedLayout'
 
 export const metadata: Metadata = {
-  title: 'Domes & Vaults System — GFRC/GRC Architectural Domes | Durraka',
+  title: 'Domes & Vaults System — GFRC/GRC Architectural Domes',
   description:
     'Lightweight GFRC/GRC dome and vault elements for heritage-inspired, institutional, hospitality, and landmark architectural projects. Custom geometry and curvature. Manufactured in Saudi Arabia.',
 }

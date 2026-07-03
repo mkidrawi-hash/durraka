@@ -7,7 +7,7 @@ import { INFOGRAPHIC_CARDS, GUIDANCE_LIBRARY } from '@/lib/package-content'
 const PKG = getPackageBySlug('hospitality-landmark-facades')
 
 export const metadata: Metadata = {
-  title: 'Hospitality & Landmark Facades — GRC/GFRC Package | Durraka',
+  title: 'Hospitality & Landmark Facades — GRC/GFRC Package',
   description: PKG?.shortDescription ?? '',
 }
 

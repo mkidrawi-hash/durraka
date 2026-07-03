@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'GFRC Classical Column Systems — Durraka Factory',
+  title: 'GFRC Classical Column Systems',
   description:
     'Premium bilingual reference guide for GFRC/GRC classical column and capital systems. English and Arabic architectural infographic by Durraka Factory for Industry.',
 }

@@ -4,7 +4,7 @@ import EngineerGuidanceForm from '@/components/systems/EngineerGuidanceForm'
 import { engineerGuidanceContent as C } from '@/content/en/systems/engineer-guidance'
 
 export const metadata: Metadata = {
-  title: 'Request Engineer Guidance — GFRC / GRC Façade Cladding | Durraka',
+  title: 'Request Engineer Guidance — GFRC / GRC Façade Cladding',
   description:
     'Request engineer guidance for the GFRC/GRC façade cladding system. Guidance is issued through project-based engineering review after our team verifies your request. No document is auto-downloaded.',
 }

@@ -7,7 +7,7 @@ import { INFOGRAPHIC_CARDS, GUIDANCE_LIBRARY } from '@/lib/package-content'
 const PKG = getPackageBySlug('villa-palace-architecture')
 
 export const metadata: Metadata = {
-  title: 'Villa & Palace Architecture — GRC/GFRC Package | Durraka',
+  title: 'Villa & Palace Architecture — GRC/GFRC Package',
   description: PKG?.shortDescription ?? '',
 }
 

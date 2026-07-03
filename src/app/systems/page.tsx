@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { SYSTEMS } from '@/lib/constants'
 
 export const metadata: Metadata = {
-  title: 'GFRC/GRC Architectural Components | Durraka Factory',
+  title: 'GFRC/GRC Architectural Components',
   description:
     'Explore Durraka Factory\'s GFRC/GRC architectural components for façade cladding, mashrabiya screens, domes, cornices, columns, capitals, and bespoke decorative elements.',
 }

@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { SystemEnhancedLayout, type SystemEnhancedData } from '@/components/systems/SystemEnhancedLayout'
 
 export const metadata: Metadata = {
-  title: 'Columns & Capitals System — GFRC/GRC Architectural Columns | Durraka',
+  title: 'Columns & Capitals System — GFRC/GRC Architectural Columns',
   description:
     'Architectural GFRC/GRC columns, capitals, shafts, and bases for refined façade and entrance compositions. Custom column profiles for entrances, arcades, and heritage-inspired architecture.',
 }

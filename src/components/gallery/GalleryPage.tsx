@@ -6,6 +6,17 @@ import Image from 'next/image'
 import type { GalleryImage, GalleryFilter } from '@/data/galleryImages'
 import { GALLERY_FILTERS } from '@/data/galleryImages'
 
+// Assemble the caption location line. Normalizes the redundant "…, KSA" pattern:
+// a known city renders "City, Saudi Arabia"; a generic or empty city renders just
+// "Saudi Arabia". The placeholder year "Various" (and empty years) are omitted so
+// the caption never shows a vague date.
+function formatLocation(city: string, year: string): string {
+  const c = (city ?? '').trim()
+  const place = !c || c.toLowerCase() === 'saudi arabia' ? 'Saudi Arabia' : `${c}, Saudi Arabia`
+  const y = (year ?? '').trim()
+  return y && y.toLowerCase() !== 'various' ? `${place} · ${y}` : place
+}
+
 // ─── Filter bar ────────────────────────────────────────────────────────────────
 
 function FilterBar({
@@ -23,7 +34,12 @@ function FilterBar({
       style={{ scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' } as React.CSSProperties}
     >
       <div className="flex items-center gap-2 min-w-max">
-        {GALLERY_FILTERS.map((filter) => {
+        {GALLERY_FILTERS
+          // Only show "All" plus categories that currently have ≥ 1 published
+          // item. Counts come from the published set, so a future category
+          // appears automatically once it has content (and empty ones vanish).
+          .filter((filter) => filter === 'All' || (counts[filter] ?? 0) >= 1)
+          .map((filter) => {
           const isActive = filter === active
           const count = counts[filter] ?? 0
           return (
@@ -335,13 +351,9 @@ function GalleryLightbox({
             <span className="text-[9px] font-bold tracking-widest uppercase px-2 py-0.5 bg-accent/20 border border-accent/30 text-accent rounded-sm">
               {current.category}
             </span>
-            {(current.city || current.year) && (
-              <span className="text-white/35 text-[10px]">
-                {[current.city ? `${current.city}, KSA` : null, current.year || null]
-                  .filter(Boolean)
-                  .join(' · ')}
-              </span>
-            )}
+            <span className="text-white/35 text-[10px]">
+              {formatLocation(current.city, current.year)}
+            </span>
           </div>
           <p className="text-white/50 text-xs sm:text-sm leading-relaxed max-w-2xl">{current.description}</p>
         </div>
@@ -430,13 +442,9 @@ function GalleryCard({ image, onOpen }: { image: GalleryImage; onOpen: () => voi
         <h3 className="text-[#071B3B] dark:text-white font-semibold text-sm leading-snug">
           {image.title}
         </h3>
-        {(image.city || image.year) && (
-          <p className="text-gray-400 dark:text-white/40 text-xs font-medium">
-            {[image.city ? `${image.city}, KSA` : null, image.year || null]
-              .filter(Boolean)
-              .join(' · ')}
-          </p>
-        )}
+        <p className="text-gray-400 dark:text-white/40 text-xs font-medium">
+          {formatLocation(image.city, image.year)}
+        </p>
         <p className="text-gray-500 dark:text-white/55 text-xs leading-relaxed">
           {image.description}
         </p>

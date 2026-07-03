@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Terms & Conditions | Durraka Factory for Industry',
+  title: 'Terms & Conditions',
   description:
     'Terms and Conditions governing use of the Durraka Factory for Industry website, RFQ submissions, and all related services — governed by the laws of the Kingdom of Saudi Arabia.',
 }
