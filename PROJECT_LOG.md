@@ -489,3 +489,33 @@ X Segment · Y Routing · Z Follow-up Priority`.
 
 **Untouched:** engineer-guidance, catalog-manual, Phase 1 pages. No new deps.
 Checks: typecheck ✓ · lint ✓ · build ✓.
+
+---
+
+## Session — Phase 4A: Catalog gating (controlled distribution)
+
+**Branch:** `feat/phase-4a-catalog-gating` · one PR.
+
+Consolidated the tangled catalog request flow to the engineer-guidance controlled
+pattern. Public simple catalog stays a direct download; specialized catalogs are
+request-only (no auto-download, no public file URL).
+
+- **`detailed-catalog-request` rewritten (controlled):** removed the auto-access
+  path (`CATALOG_B2B_URL` + token), hardened sinks (await Sheets + Resend, 502 if
+  none — no silent lead loss), reference now **`CAT-YYYY-NNNN`** (MAX-based;
+  `CAT-YYYY-T####` fallback), tab **"Catalog Requests (Specialized)"**
+  (env `CATALOG_SPECIALIZED_TAB_NAME`), Status column default **"New"**. Returns
+  only `{ success, reference }` — never a file link.
+- **Retired:** `api/detailed-catalog-download` (token download), `lib/catalogToken.ts`,
+  the orphaned `api/catalog-request` route + `GatedCatalogSection` component. Reverted
+  the `next.config` file-tracing (download route gone).
+- **`DetailedCatalogRequestForm`:** removed the auto-download success state — always
+  shows pending-review confirmation with the reference.
+- `private/catalogs/durraka-b2b-detailed-catalog-draft.pdf` remains archived (not
+  served, not linked); team sends specialized catalogs manually.
+
+**Manual action (owner) before merge:** create Sheet tab "Catalog Requests
+(Specialized)" with headers A–P and (optional) set `CATALOG_SPECIALIZED_TAB_NAME`.
+`CATALOG_B2B_URL` is no longer used (safe to remove).
+
+**Checks:** typecheck ✓ · lint ✓ · build ✓. RFQ / engineer-guidance / Phase 1 untouched.
