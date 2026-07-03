@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 export default function MashrabiyaScreenPackagePage() {
   return (
     <>
-      <MashrabiyaScreenPackageClient />
-      <StickyMobileCTA />
+      <MashrabiyaScreenPackageClient locale="en" />
+      <StickyMobileCTA locale="en" />
     </>
   )
 }

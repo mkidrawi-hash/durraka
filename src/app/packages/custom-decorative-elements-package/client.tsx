@@ -5,64 +5,9 @@ import { PremiumPackageLayout } from '@/components/packages/PremiumPackageLayout
 import type { PremiumPackageData, DesignDiagram } from '@/components/packages/PremiumPackageLayout'
 import type { ComponentDetail } from '@/components/packages/ComponentDetailModal'
 import { CustomDecorativeIllustration } from '@/components/packages/illustrations'
-
-// ─── Shared data ──────────────────────────────────────────────────────────────
-
-const SHARED_MATERIALS = [
-  'GFRC/GRC architectural component — glass fibre reinforced concrete',
-  'Cement-based composite matrix with integral aggregate',
-  'Alkali-resistant glass fibre reinforcement throughout',
-  'Project-specific thickness and section profile, confirmed via shop drawings',
-  'Factory-cast component — manufactured under controlled conditions',
-  'Pigmented or natural cement finish, project-specific',
-]
-
-const SHARED_ARCH_DRAWINGS = [
-  'Elevation reference — profile position, height, and building integration',
-  'Section reference — component cross-section, projection, and depth',
-  'Profile outline drawing — detailed molding or surface geometry',
-  'Module rhythm — repeat spacing and panel joint positions',
-  'Interface detail — adjacent facade materials and build-up',
-  'Approved dimensions based on submitted project drawings',
-]
-
-const SHARED_SHOP_DRAWINGS = [
-  'Shop drawings required before production commences',
-  'Substrate and structural coordination by project team',
-  'Panelisation strategy and lifting method — confirmed at technical review',
-  'Installation sequence is project-specific and not disclosed publicly',
-  'Final shop drawing set remains project-confidential',
-]
-
-const SHARED_FINISHES = [
-  'Smooth architectural finish — fine-textured, paint-ready',
-  'Sandblasted finish — lightly abraded, aggregate-visible surface',
-  'Stone-like texture — aggregate and pigment to match natural stone',
-  'Textured / cast finish — ribbed, board-formed, or bespoke pattern',
-  'Heritage warm tone — warm aggregate, hand-finished appearance',
-  'Custom colour match — integral pigment to project RAL, NCS, or swatch',
-]
-
-const SHARED_INPUTS = [
-  'Architectural elevations and plan drawings',
-  'Sections through relevant facade areas',
-  'BOQ / quantity schedule if available',
-  'Structural drawings and substrate information',
-  'Finish and color references or samples',
-  'Available reference or inspiration images',
-  'Project location and construction timeline',
-  'Site constraints or logistics considerations',
-]
-
-const SHARED_SCOPE = [
-  'Component scope review — confirm elements, dimensions, and quantities',
-  'Shop drawing coordination — based on approved architectural drawings',
-  'Mold development — project-specific geometry and profile',
-  'GFRC/GRC manufacturing — factory production to confirmed drawings',
-  'Sample approval — finish sample submitted for project sign-off',
-  'Delivery coordination — scheduled to project programme',
-  'Installation coordination when required by contract scope',
-]
+import type { Locale } from '@/lib/i18n'
+import { customDecorativeContent } from '@/content/en/packages/custom-decorative-elements-package'
+import { customDecorativeContentAr } from '@/content/ar/packages/custom-decorative-elements-package'
 
 // ─── Facade elevation diagram ─────────────────────────────────────────────────
 
@@ -312,259 +257,101 @@ function CivicIdentitySVG() {
   )
 }
 
-// ─── Component data ───────────────────────────────────────────────────────────
+// ─── Non-text component meta (index-matched to content.components) ────────────
 
-const DECORATIVE_COMPONENTS: ComponentDetail[] = [
-  {
-    id: 'decorative-geometric-panel',
-    title: 'Decorative Geometric Panel',
-    shortDescription: 'Panel with geometric pattern in relief — diamond lattice, interlocking geometry, or custom repeat motif adding visual depth to the facade.',
-    tags: ['Geometric Panel', 'Decorative', 'Relief Pattern', 'GFRC'],
-    image: '/images/packages/custom-architectural-components.webp',
-    imageAlt: 'Custom GFRC/GRC geometric decorative panels with relief pattern on facade',
-    CardIllustration: GeometricPanelSVG,
-    HotspotDiagram: CustomDecorativeFacadeElevation,
-    hotspots: [
-      { letter: 'A', label: 'Panel Face', description: 'The flat background of panel from which pattern projects.' },
-      { letter: 'B', label: 'Pattern Repeat', description: 'Base geometric unit — size and orientation.' },
-      { letter: 'C', label: 'Relief Depth', description: 'How far pattern projects from panel face — determines shadow.' },
-      { letter: 'D', label: 'Panel Border', description: 'Edge frame or border terminating the pattern field.' },
-      { letter: 'E', label: 'Panel Module', description: 'Individual panel size — how many fit in the facade zone.' },
-      { letter: 'F', label: 'Finish Reference', description: 'Panel face and relief surface color — confirmed from approved sample.' },
-    ],
-    materials: SHARED_MATERIALS,
-    architecturalDrawings: SHARED_ARCH_DRAWINGS,
-    shopDrawings: SHARED_SHOP_DRAWINGS,
-    finishes: SHARED_FINISHES,
-    projectInputs: SHARED_INPUTS,
-    scopeDeliverables: SHARED_SCOPE,
-  },
-  {
-    id: 'calligraphy-panel',
-    title: 'Calligraphy-Inspired Panel',
-    shortDescription: 'Panel with flowing calligraphic surface element — cultural identity through architectural relief without disclosing specific project content.',
-    tags: ['Calligraphic', 'Cultural Element', 'Bespoke', 'GFRC'],
-    image: '/images/packages/custom-architectural-components.webp',
-    imageAlt: 'Custom GFRC/GRC calligraphy-inspired bespoke panels on architectural facade',
-    CardIllustration: CalligraphicPanelSVG,
-    HotspotDiagram: CustomDecorativeFacadeElevation,
-    hotspots: [
-      { letter: 'A', label: 'Calligraphic Stroke', description: 'The main flowing line — its width, depth, and visual weight.' },
-      { letter: 'B', label: 'Background Field', description: 'The plain or textured panel surface behind the element.' },
-      { letter: 'C', label: 'Stroke Relief', description: 'How far the stroke element projects — bold or subtle.' },
-      { letter: 'D', label: 'Compositional Balance', description: 'How the element sits centered or dynamically within panel.' },
-      { letter: 'E', label: 'Panel Scale', description: 'Panel size relative to calligraphic element — viewed at what distance.' },
-      { letter: 'F', label: 'Finish Reference', description: 'Stroke color/texture vs panel background.' },
-    ],
-    materials: SHARED_MATERIALS,
-    architecturalDrawings: SHARED_ARCH_DRAWINGS,
-    shopDrawings: SHARED_SHOP_DRAWINGS,
-    finishes: SHARED_FINISHES,
-    projectInputs: SHARED_INPUTS,
-    scopeDeliverables: SHARED_SCOPE,
-  },
-  {
-    id: 'identity-panel',
-    title: 'Project Identity / Signage Panel',
-    shortDescription: 'Panel carrying identity or civic feature — a single prominent motif at a scale appropriate to the building and viewing distance.',
-    tags: ['Identity Panel', 'Feature Element', 'Civic', 'GFRC'],
-    image: '/images/packages/custom-architectural-components.webp',
-    imageAlt: 'Custom GFRC/GRC identity and signage panels on architectural facade',
-    CardIllustration: IdentityPanelSVG,
-    HotspotDiagram: CustomDecorativeFacadeElevation,
-    hotspots: [
-      { letter: 'A', label: 'Motif Centre', description: 'The primary identity mark — its geometric composition.' },
-      { letter: 'B', label: 'Background Field', description: 'The plain field framing the identity element.' },
-      { letter: 'C', label: 'Relief Depth', description: 'Depth of identity element projection for legibility.' },
-      { letter: 'D', label: 'Panel Position', description: 'Where identity panel sits in the overall composition.' },
-      { letter: 'E', label: 'Lighting Consideration', description: 'How the element reads under raking or ambient light.' },
-      { letter: 'F', label: 'Finish Reference', description: 'Identity element and field color.' },
-    ],
-    materials: SHARED_MATERIALS,
-    architecturalDrawings: SHARED_ARCH_DRAWINGS,
-    shopDrawings: SHARED_SHOP_DRAWINGS,
-    finishes: SHARED_FINISHES,
-    projectInputs: SHARED_INPUTS,
-    scopeDeliverables: SHARED_SCOPE,
-  },
-  {
-    id: 'custom-frame',
-    title: 'Custom Architectural Frame / Surround',
-    shortDescription: 'Ornamental frame element — profiled jambs, head, and decorative corners creating a formal surround for openings, panels, or feature zones.',
-    tags: ['Custom Frame', 'Surround', 'Ornamental Border', 'GFRC'],
-    image: '/images/packages/custom-architectural-components.webp',
-    imageAlt: 'Custom GFRC/GRC architectural frame and ornamental surround elements',
-    CardIllustration: CustomFrameSVG,
-    HotspotDiagram: CustomDecorativeFacadeElevation,
-    hotspots: [
-      { letter: 'A', label: 'Frame Crown', description: 'Top member — may have special ornamental feature.' },
-      { letter: 'B', label: 'Jamb Profile', description: 'Side members — their cross-section and decorative detail.' },
-      { letter: 'C', label: 'Corner Treatment', description: 'Corner rosette, block, or special detail element.' },
-      { letter: 'D', label: 'Frame Projection', description: 'How much frame projects from surrounding wall surface.' },
-      { letter: 'E', label: 'Opening Size', description: 'The framed opening or panel area within the surround.' },
-      { letter: 'F', label: 'Finish Reference', description: 'Frame color/texture vs surrounding facade.' },
-    ],
-    materials: SHARED_MATERIALS,
-    architecturalDrawings: SHARED_ARCH_DRAWINGS,
-    shopDrawings: SHARED_SHOP_DRAWINGS,
-    finishes: SHARED_FINISHES,
-    projectInputs: SHARED_INPUTS,
-    scopeDeliverables: SHARED_SCOPE,
-  },
-  {
-    id: 'ornamental-detail',
-    title: 'Special Ornamental Detail',
-    shortDescription: 'Standalone decorative object or relief — rosette, boss, acanthus, or geometric form applied at accent positions on the facade or frame.',
-    tags: ['Ornamental', 'Relief Detail', 'Applied Element', 'GFRC'],
-    image: '/images/packages/villa-palace-architectural.webp',
-    imageAlt: 'GFRC/GRC special ornamental relief details on heritage villa and palace architecture',
-    CardIllustration: OrnamentalDetailSVG,
-    HotspotDiagram: CustomDecorativeFacadeElevation,
-    hotspots: [
-      { letter: 'A', label: 'Ornament Body', description: 'Main form — rosette, boss, acanthus, or geometric.' },
-      { letter: 'B', label: 'Relief Character', description: 'Depth and modelling of the ornamental form.' },
-      { letter: 'C', label: 'Ornament Scale', description: 'Size relative to surrounding facade — focal or background.' },
-      { letter: 'D', label: 'Background Integration', description: 'How the element is applied to or integrated with surrounding panel.' },
-      { letter: 'E', label: 'Element Repeat', description: 'Whether single accent or repeating pattern.' },
-      { letter: 'F', label: 'Finish Reference', description: 'Ornament color vs field.' },
-    ],
-    materials: SHARED_MATERIALS,
-    architecturalDrawings: SHARED_ARCH_DRAWINGS,
-    shopDrawings: SHARED_SHOP_DRAWINGS,
-    finishes: SHARED_FINISHES,
-    projectInputs: SHARED_INPUTS,
-    scopeDeliverables: SHARED_SCOPE,
-  },
-  {
-    id: 'facade-accent-feature',
-    title: 'Facade Accent Feature',
-    shortDescription: 'Prominent standalone accent element — keyblock, console, or projecting form creating shadow depth and visual emphasis at key facade positions.',
-    tags: ['Accent Element', 'Feature', 'Facade Detail', 'GFRC'],
-    image: '/images/packages/custom-architectural-components.webp',
-    imageAlt: 'Custom GFRC/GRC facade accent features and decorative architectural elements',
-    CardIllustration: AccentFeatureSVG,
-    HotspotDiagram: CustomDecorativeFacadeElevation,
-    hotspots: [
-      { letter: 'A', label: 'Feature Position', description: 'Where the accent element sits on the facade.' },
-      { letter: 'B', label: 'Feature Profile', description: 'Cross-section or elevation form of the accent.' },
-      { letter: 'C', label: 'Feature Scale', description: 'Visual weight relative to surrounding facade elements.' },
-      { letter: 'D', label: 'Shadow Play', description: 'The shadow pattern the element creates — at what time of day.' },
-      { letter: 'E', label: 'Structure Interface', description: 'How accent element attaches to facade substrate.' },
-      { letter: 'F', label: 'Finish Reference', description: 'Accent element vs field contrast.' },
-    ],
-    materials: SHARED_MATERIALS,
-    architecturalDrawings: SHARED_ARCH_DRAWINGS,
-    shopDrawings: SHARED_SHOP_DRAWINGS,
-    finishes: SHARED_FINISHES,
-    projectInputs: SHARED_INPUTS,
-    scopeDeliverables: SHARED_SCOPE,
-  },
-  {
-    id: 'civic-identity-element',
-    title: 'Civic / Institutional Identity Element',
-    shortDescription: 'Formal architectural element carrying civic or institutional identity — shield form, formal panel, or structured geometric composition for public buildings.',
-    tags: ['Civic Element', 'Institutional', 'Identity Feature', 'GFRC'],
-    image: '/images/packages/landmark-government-facade.webp',
-    imageAlt: 'GFRC/GRC civic and institutional identity elements on landmark government building',
-    CardIllustration: CivicIdentitySVG,
-    HotspotDiagram: CustomDecorativeFacadeElevation,
-    hotspots: [
-      { letter: 'A', label: 'Identity Zone', description: 'The primary area carrying the identity element.' },
-      { letter: 'B', label: 'Geometric Composition', description: 'The formal structure of the civic element.' },
-      { letter: 'C', label: 'Scale Reference', description: 'Size relative to building — readable at what distance.' },
-      { letter: 'D', label: 'Symmetry Axis', description: 'Central axis of composition — alignment precision.' },
-      { letter: 'E', label: 'Surround Treatment', description: 'Framing or border of the civic element.' },
-      { letter: 'F', label: 'Finish Reference', description: 'Approved color palette for civic usage.' },
-    ],
-    materials: SHARED_MATERIALS,
-    architecturalDrawings: SHARED_ARCH_DRAWINGS,
-    shopDrawings: SHARED_SHOP_DRAWINGS,
-    finishes: SHARED_FINISHES,
-    projectInputs: SHARED_INPUTS,
-    scopeDeliverables: SHARED_SCOPE,
-  },
+const COMPONENT_META = [
+  { id: 'decorative-geometric-panel', CardIllustration: GeometricPanelSVG, image: '/images/packages/custom-architectural-components.webp' },
+  { id: 'calligraphy-panel', CardIllustration: CalligraphicPanelSVG, image: '/images/packages/custom-architectural-components.webp' },
+  { id: 'identity-panel', CardIllustration: IdentityPanelSVG, image: '/images/packages/custom-architectural-components.webp' },
+  { id: 'custom-frame', CardIllustration: CustomFrameSVG, image: '/images/packages/custom-architectural-components.webp' },
+  { id: 'ornamental-detail', CardIllustration: OrnamentalDetailSVG, image: '/images/packages/villa-palace-architectural.webp' },
+  { id: 'facade-accent-feature', CardIllustration: AccentFeatureSVG, image: '/images/packages/custom-architectural-components.webp' },
+  { id: 'civic-identity-element', CardIllustration: CivicIdentitySVG, image: '/images/packages/landmark-government-facade.webp' },
 ]
 
-// ─── Review steps ─────────────────────────────────────────────────────────────
-
-const REVIEW_STEPS = [
-  { n: '1', title: 'Receive Design Intent', description: 'Architectural drawings, design intent images, and bespoke element descriptions submitted for initial review.' },
-  { n: '2', title: 'Review Custom Elements', description: 'Durraka reviews each decorative element — geometry, scale, relief depth, and facade position.' },
-  { n: '3', title: 'Confirm Relief, Scale & Geometry', description: 'Motif form, projection depth, panel size, and interface conditions confirmed against design intent.' },
-  { n: '4', title: 'Shop Drawing Coordination', description: 'Shop drawings prepared for each bespoke component — coordinated with facade substrate and structure.' },
-  { n: '5', title: 'Sample Approval', description: 'Physical sample or prototype submitted for approval — finish, relief depth, and motif confirmed.' },
-  { n: '6', title: 'Manufacture & Deliver', description: 'Approved GFRC/GRC decorative components manufactured, QC inspected, and delivered to programme.' },
+// Schematic design-intent composition geometry (arrangement only; labels localized).
+// An ornament board: geometric, calligraphic, and identity panels within a decorative
+// surround, a horizontal accent band, a relief medallion, and a civic identity element.
+const DIAGRAM_SHAPES: DesignDiagram['shapes'] = [
+  { kind: 'rect', x: 56, y: 40, w: 288, h: 232 }, // wall zone
+  { kind: 'rect', x: 66, y: 50, w: 268, h: 212 }, // decorative surround (4)
+  { kind: 'rect', x: 56, y: 150, w: 288, h: 20, fill: true }, // accent band (6)
+  { kind: 'rect', x: 74, y: 58, w: 80, h: 72 }, // geometric panel (1)
+  { kind: 'line', x1: 74, y1: 58, x2: 154, y2: 130 },
+  { kind: 'line', x1: 154, y1: 58, x2: 74, y2: 130 },
+  { kind: 'rect', x: 166, y: 58, w: 80, h: 72 }, // calligraphy panel (2)
+  { kind: 'path', d: 'M176 100 C190 82 200 108 214 92 C226 80 234 104 240 96' },
+  { kind: 'rect', x: 258, y: 58, w: 72, h: 72 }, // identity / signage panel (3)
+  { kind: 'circle', cx: 294, cy: 94, r: 16 },
+  { kind: 'circle', cx: 200, cy: 205, r: 26 }, // medallion (5)
+  { kind: 'circle', cx: 200, cy: 205, r: 13, accent: true },
+  { kind: 'polyline', points: '90 190 130 190 130 208 110 224 90 208 90 190' }, // civic element (7)
 ]
 
-// ─── Package data ─────────────────────────────────────────────────────────────
+const DIAGRAM_CALLOUT_POS = [
+  { n: 1, x: 114, y: 94 },
+  { n: 2, x: 206, y: 76 },
+  { n: 3, x: 294, y: 94 },
+  { n: 4, x: 320, y: 250 },
+  { n: 5, x: 200, y: 205 },
+  { n: 6, x: 300, y: 160 },
+  { n: 7, x: 110, y: 205 },
+]
 
-// Schematic design-intent composition — an ornament board: geometric,
-// calligraphic, and identity panels within a decorative surround, a horizontal
-// accent band, a relief medallion, and a civic identity element.
-const CUSTOM_DECORATIVE_DIAGRAM: DesignDiagram = {
-  kind: 'elevation',
-  viewBox: '0 0 400 300',
-  shapes: [
-    { kind: 'rect', x: 56, y: 40, w: 288, h: 232 }, // wall zone
-    { kind: 'rect', x: 66, y: 50, w: 268, h: 212 }, // decorative surround (4)
-    { kind: 'rect', x: 56, y: 150, w: 288, h: 20, fill: true }, // accent band (6)
-    { kind: 'rect', x: 74, y: 58, w: 80, h: 72 }, // geometric panel (1)
-    { kind: 'line', x1: 74, y1: 58, x2: 154, y2: 130 },
-    { kind: 'line', x1: 154, y1: 58, x2: 74, y2: 130 },
-    { kind: 'rect', x: 166, y: 58, w: 80, h: 72 }, // calligraphy panel (2)
-    { kind: 'path', d: 'M176 100 C190 82 200 108 214 92 C226 80 234 104 240 96' },
-    { kind: 'rect', x: 258, y: 58, w: 72, h: 72 }, // identity / signage panel (3)
-    { kind: 'circle', cx: 294, cy: 94, r: 16 },
-    { kind: 'circle', cx: 200, cy: 205, r: 26 }, // medallion (5)
-    { kind: 'circle', cx: 200, cy: 205, r: 13, accent: true },
-    { kind: 'polyline', points: '90 190 130 190 130 208 110 224 90 208 90 190' }, // civic element (7)
-  ],
-  callouts: [
-    { n: 1, label: 'Decorative Geometric Panel', x: 114, y: 94 },
-    { n: 2, label: 'Calligraphy-Inspired Panel', x: 206, y: 76 },
-    { n: 3, label: 'Project Identity / Signage Panel', x: 294, y: 94 },
-    { n: 4, label: 'Custom Architectural Frame / Surround', x: 320, y: 250 },
-    { n: 5, label: 'Special Ornamental Detail', x: 200, y: 205 },
-    { n: 6, label: 'Facade Accent Feature', x: 300, y: 160 },
-    { n: 7, label: 'Civic / Institutional Identity Element', x: 110, y: 205 },
-  ],
-}
+const INFOGRAPHIC_IMAGES = ['/images/packages/custom-architectural-components.webp']
 
-const CUSTOM_DECORATIVE_DATA: PremiumPackageData = {
-  slug: 'custom-decorative-elements-package',
-  designDiagram: CUSTOM_DECORATIVE_DIAGRAM,
-  title: 'Custom Decorative Elements Package',
-  eyebrow: 'AI Concept Reference',
-  subtitle: 'Bespoke ornamental elements. Engineered in GFRC/GRC.',
-  heroDescription:
-    'Project-specific GFRC/GRC decorative panels, calligraphy-inspired features, identity elements, custom frames, and bespoke architectural details — manufactured to unique design drawings.',
-  illustrativeArea: 'Bespoke ornament & identity',
-  visibleComponents: ['Decorative panels', 'Custom ornaments', 'Identity features', 'Calligraphy-inspired panels', 'Special frames', 'Bespoke facade details'],
-  HeroIllustration: CustomDecorativeIllustration,
-  packageIntent:
-    'This package is designed for projects that require bespoke decorative GFRC/GRC elements beyond standard facade cladding — custom ornamental panels, identity features, calligraphy-inspired surfaces, civic signage elements, and architecturally significant detail work. Each element is scoped from project-specific design drawings and confirmed during the technical review process.',
-  suitableApplications: [
-    'Civic landmarks and cultural institutions',
-    'Hospitality and destination developments',
-    'Religious and heritage facilities',
-    'Government and institutional buildings',
-    'Luxury residential and villa projects',
-    'Mixed-use developments with identity features',
-  ],
-  componentDetails: DECORATIVE_COMPONENTS,
-  infographics: [
-    {
-      title: 'Custom Decorative Elements Component Overview',
-      description: 'Bespoke GFRC/GRC decorative panels, ornamental relief elements, repeating motifs, and project-specific geometry — produced to custom design drawings for any architectural context.',
-      image: '/images/packages/custom-architectural-components.webp',
-      imageAlt: 'Custom GFRC/GRC decorative elements — bespoke architectural components facade reference',
-    },
-  ],
-  reviewSteps: REVIEW_STEPS,
+function buildData(locale: Locale): PremiumPackageData {
+  const t = locale === 'ar' ? customDecorativeContentAr : customDecorativeContent
+  const s = t.shared
+
+  const componentDetails: ComponentDetail[] = COMPONENT_META.map((meta, i) => {
+    const c = t.components[i]
+    return {
+      id: meta.id,
+      title: c.title,
+      shortDescription: c.shortDescription,
+      tags: [...c.tags],
+      image: meta.image,
+      imageAlt: c.imageAlt,
+      CardIllustration: meta.CardIllustration,
+      HotspotDiagram: CustomDecorativeFacadeElevation,
+      hotspots: c.hotspots.map(h => ({ ...h })),
+      materials: [...s.materials],
+      architecturalDrawings: [...s.architecturalDrawings],
+      shopDrawings: [...s.shopDrawings],
+      finishes: [...s.finishes],
+      projectInputs: [...s.projectInputs],
+      scopeDeliverables: [...s.scopeDeliverables],
+    }
+  })
+
+  const designDiagram: DesignDiagram = {
+    kind: 'elevation',
+    viewBox: '0 0 400 300',
+    shapes: DIAGRAM_SHAPES,
+    callouts: DIAGRAM_CALLOUT_POS.map((p, i) => ({ ...p, label: t.diagramCallouts[i] })),
+  }
+
+  return {
+    slug: 'custom-decorative-elements-package',
+    designDiagram,
+    title: t.title,
+    eyebrow: t.eyebrow,
+    subtitle: t.subtitle,
+    heroDescription: t.heroDescription,
+    illustrativeArea: t.illustrativeArea,
+    visibleComponents: [...t.visibleComponents],
+    HeroIllustration: CustomDecorativeIllustration,
+    packageIntent: t.packageIntent,
+    suitableApplications: [...t.suitableApplications],
+    componentDetails,
+    infographics: t.infographics.map((info, i) => ({ ...info, image: INFOGRAPHIC_IMAGES[i] })),
+    reviewSteps: t.reviewSteps.map(r => ({ ...r })),
+  }
 }
 
 // ─── Export ───────────────────────────────────────────────────────────────────
 
-export function CustomDecorativePackageClient() {
-  return <PremiumPackageLayout data={CUSTOM_DECORATIVE_DATA} />
+export function CustomDecorativePackageClient({ locale = 'en' }: { locale?: Locale }) {
+  return <PremiumPackageLayout data={buildData(locale)} locale={locale} />
 }

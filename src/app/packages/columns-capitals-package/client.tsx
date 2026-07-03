@@ -5,66 +5,11 @@ import { PremiumPackageLayout } from '@/components/packages/PremiumPackageLayout
 import type { PremiumPackageData, DesignDiagram } from '@/components/packages/PremiumPackageLayout'
 import type { ComponentDetail } from '@/components/packages/ComponentDetailModal'
 import { ColumnsCapitalsIllustration } from '@/components/packages/illustrations'
+import type { Locale } from '@/lib/i18n'
+import { columnsCapitalsContent } from '@/content/en/packages/columns-capitals-package'
+import { columnsCapitalsContentAr } from '@/content/ar/packages/columns-capitals-package'
 
-// ─── Shared data ──────────────────────────────────────────────────────────────
-
-const SHARED_MATERIALS = [
-  'GFRC/GRC architectural component — glass fibre reinforced concrete',
-  'Cement-based composite matrix with integral aggregate',
-  'Alkali-resistant glass fibre reinforcement throughout',
-  'Project-specific thickness and section profile, confirmed via shop drawings',
-  'Factory-cast component — manufactured under controlled conditions',
-  'Pigmented or natural cement finish, project-specific',
-]
-
-const SHARED_ARCH_DRAWINGS = [
-  'Elevation reference — profile position, height, and building integration',
-  'Section reference — component cross-section, projection, and depth',
-  'Profile outline drawing — detailed molding or surface geometry',
-  'Module rhythm — repeat spacing and panel joint positions',
-  'Interface detail — adjacent facade materials and build-up',
-  'Approved dimensions based on submitted project drawings',
-]
-
-const SHARED_SHOP_DRAWINGS = [
-  'Shop drawings required before production commences',
-  'Substrate and structural coordination by project team',
-  'Panelisation strategy and lifting method — confirmed at technical review',
-  'Installation sequence is project-specific and not disclosed publicly',
-  'Final shop drawing set remains project-confidential',
-]
-
-const SHARED_FINISHES = [
-  'Smooth architectural finish — fine-textured, paint-ready',
-  'Sandblasted finish — lightly abraded, aggregate-visible surface',
-  'Stone-like texture — aggregate and pigment to match natural stone',
-  'Textured / cast finish — ribbed, board-formed, or bespoke pattern',
-  'Heritage warm tone — warm aggregate, hand-finished appearance',
-  'Custom colour match — integral pigment to project RAL, NCS, or swatch',
-]
-
-const SHARED_INPUTS = [
-  'Architectural elevations and plan drawings',
-  'Sections through relevant facade areas',
-  'BOQ / quantity schedule if available',
-  'Structural drawings and substrate information',
-  'Finish and color references or samples',
-  'Available reference or inspiration images',
-  'Project location and construction timeline',
-  'Site constraints or logistics considerations',
-]
-
-const SHARED_SCOPE = [
-  'Component scope review — confirm elements, dimensions, and quantities',
-  'Shop drawing coordination — based on approved architectural drawings',
-  'Mold development — project-specific geometry and profile',
-  'GFRC/GRC manufacturing — factory production to confirmed drawings',
-  'Sample approval — finish sample submitted for project sign-off',
-  'Delivery coordination — scheduled to project programme',
-  'Installation coordination when required by contract scope',
-]
-
-// ─── Facade elevation diagram ─────────────────────────────────────────────────
+// ─── Facade elevation diagram (shared hotspot diagram) ────────────────────────
 
 function ColumnsColonnadeFacadeElevation() {
   return (
@@ -257,260 +202,100 @@ function SpandrelPanelSVG() {
   )
 }
 
-// ─── Component data ───────────────────────────────────────────────────────────
+// ─── Non-text component meta (index-matched to content.components) ────────────
 
-const COLUMNS_COMPONENTS: ComponentDetail[] = [
-  {
-    id: 'column-shaft',
-    title: 'Column Shaft',
-    shortDescription: 'Round or square column shaft, plain or fluted. The primary vertical element of a colonnade — defines height, diameter, and facade rhythm.',
-    tags: ['GFRC Column', 'Column Shaft', 'Round Section', 'Classical'],
-    image: '/images/packages/landmark-government-facade.webp',
-    imageAlt: 'GFRC/GRC classical column shafts on landmark government building facade',
-    CardIllustration: ColumnShaftSVG,
-    HotspotDiagram: ColumnsColonnadeFacadeElevation,
-    hotspots: [
-      { letter: 'A', label: 'Shaft Crown', description: 'Top of shaft where capital begins — controls shaft height datum and capital alignment.' },
-      { letter: 'B', label: 'Entasis', description: 'Subtle outward curve along shaft — classical proportioning device for visual correction.' },
-      { letter: 'C', label: 'Module Rhythm', description: 'Column-to-column spacing across the colonnade bay — intercolumniation reference.' },
-      { letter: 'D', label: 'Shaft Base', description: 'Where shaft meets base — section transition and plinth alignment.' },
-      { letter: 'E', label: 'Fluting Reference', description: 'Direction and count of fluted channels if applicable to the design.' },
-      { letter: 'F', label: 'Finish Reference', description: 'Color and surface texture of the shaft face — confirmed against approved sample.' },
-    ],
-    materials: SHARED_MATERIALS,
-    architecturalDrawings: SHARED_ARCH_DRAWINGS,
-    shopDrawings: SHARED_SHOP_DRAWINGS,
-    finishes: SHARED_FINISHES,
-    projectInputs: SHARED_INPUTS,
-    scopeDeliverables: SHARED_SCOPE,
-  },
-  {
-    id: 'column-capital',
-    title: 'Column Capital',
-    shortDescription: 'Corinthian, Ionic, or contemporary capital — the ornamental head connecting shaft to entablature. Defines the architectural order of the colonnade.',
-    tags: ['Capital', 'Classical Order', 'Corinthian', 'GFRC Capital'],
-    image: '/images/packages/landmark-government-facade.webp',
-    imageAlt: 'GFRC/GRC Corinthian capitals and classical column elements on landmark building',
-    CardIllustration: CapitalSVG,
-    HotspotDiagram: ColumnsColonnadeFacadeElevation,
-    hotspots: [
-      { letter: 'A', label: 'Abacus', description: 'Flat top slab transitioning to entablature — controlling horizontal datum of the colonnade.' },
-      { letter: 'B', label: 'Capital Body', description: 'Main ornamental zone — acanthus, volutes, or geometric form defining the order.' },
-      { letter: 'C', label: 'Echinus', description: 'Lower curved transition connecting capital body to shaft — classical proportioning.' },
-      { letter: 'D', label: 'Shaft Junction', description: 'Capital base meets shaft top — no visible joint line desired.' },
-      { letter: 'E', label: 'Capital Width', description: 'Abacus width relative to shaft diameter — proportion check.' },
-      { letter: 'F', label: 'Finish Reference', description: 'Capital surface detail and pigment — confirmed from project specification.' },
-    ],
-    materials: SHARED_MATERIALS,
-    architecturalDrawings: SHARED_ARCH_DRAWINGS,
-    shopDrawings: SHARED_SHOP_DRAWINGS,
-    finishes: SHARED_FINISHES,
-    projectInputs: SHARED_INPUTS,
-    scopeDeliverables: SHARED_SCOPE,
-  },
-  {
-    id: 'column-base',
-    title: 'Column Base / Plinth',
-    shortDescription: 'Base mouldings and plinth block — the transitional element between column shaft and floor. Establishes the classical base assembly profile.',
-    tags: ['Column Base', 'Plinth', 'Base Moulding', 'GFRC'],
-    image: '/images/packages/landmark-government-facade.webp',
-    imageAlt: 'GFRC/GRC column base and plinth mouldings on government building facade',
-    CardIllustration: ColumnBaseSVG,
-    HotspotDiagram: ColumnsColonnadeFacadeElevation,
-    hotspots: [
-      { letter: 'A', label: 'Base Crown', description: 'Upper torus moulding — top of base assembly transitioning to shaft.' },
-      { letter: 'B', label: 'Scotia', description: 'Concave between-moulding — creates shadow line and visual separation.' },
-      { letter: 'C', label: 'Lower Torus', description: 'Lower convex moulding — sits on plinth block.' },
-      { letter: 'D', label: 'Plinth Block', description: 'Flat square base pad — sets the column on the floor or pedestal.' },
-      { letter: 'E', label: 'Height Reference', description: 'Total base height relative to column shaft height — proportion reference.' },
-      { letter: 'F', label: 'Finish Reference', description: 'Pigment and surface matching shaft above — confirmed from sample.' },
-    ],
-    materials: SHARED_MATERIALS,
-    architecturalDrawings: SHARED_ARCH_DRAWINGS,
-    shopDrawings: SHARED_SHOP_DRAWINGS,
-    finishes: SHARED_FINISHES,
-    projectInputs: SHARED_INPUTS,
-    scopeDeliverables: SHARED_SCOPE,
-  },
-  {
-    id: 'pilaster',
-    title: 'Pilaster',
-    shortDescription: 'Flat column element applied to wall surface — provides classical rhythm and visual depth without a freestanding column.',
-    tags: ['Pilaster', 'Flat Column', 'Wall Element', 'GFRC'],
-    image: '/images/packages/landmark-government-facade.webp',
-    imageAlt: 'GFRC/GRC pilasters on landmark government building facade wall',
-    CardIllustration: PilasterSVG,
-    HotspotDiagram: ColumnsColonnadeFacadeElevation,
-    hotspots: [
-      { letter: 'A', label: 'Pilaster Capital', description: 'Decorative head detail — matches column capital or simplified version.' },
-      { letter: 'B', label: 'Pilaster Face', description: 'The projecting flat face — projection depth from wall surface.' },
-      { letter: 'C', label: 'Pilaster Width', description: 'Width in proportion to wall bay and intercolumniation.' },
-      { letter: 'D', label: 'Plinth Base', description: 'Pilaster base detail matching floor line.' },
-      { letter: 'E', label: 'Wall Interface', description: 'How pilaster edges meet surrounding cladding panels.' },
-      { letter: 'F', label: 'Finish Reference', description: 'Surface and colour — confirmed from project specification.' },
-    ],
-    materials: SHARED_MATERIALS,
-    architecturalDrawings: SHARED_ARCH_DRAWINGS,
-    shopDrawings: SHARED_SHOP_DRAWINGS,
-    finishes: SHARED_FINISHES,
-    projectInputs: SHARED_INPUTS,
-    scopeDeliverables: SHARED_SCOPE,
-  },
-  {
-    id: 'arched-colonnade-bay',
-    title: 'Arched Colonnade Bay',
-    shortDescription: 'Arched opening spanning between columns — creating the primary arcade bay of an entrance colonnade or portico.',
-    tags: ['Colonnade', 'Arched Bay', 'Arcade', 'GFRC Arch'],
-    image: '/images/packages/grand-entrance-gate.webp',
-    imageAlt: 'GFRC/GRC arched colonnade bay and arcade on monumental entrance architecture',
-    CardIllustration: ArchColonnadeSVG,
-    HotspotDiagram: ColumnsColonnadeFacadeElevation,
-    hotspots: [
-      { letter: 'A', label: 'Arch Crown', description: 'Keystone at arch apex — profile and projection.' },
-      { letter: 'B', label: 'Arch Soffit', description: 'Inner curved face of arch — depth and profile detail.' },
-      { letter: 'C', label: 'Column Spacing', description: 'Clear dimension between shaft faces — intercolumniation.' },
-      { letter: 'D', label: 'Impost Block', description: 'Capital top or separate block receiving arch thrust.' },
-      { letter: 'E', label: 'Arch Rise', description: 'Proportion of arch height to span width.' },
-      { letter: 'F', label: 'Finish Reference', description: 'Arch and column matching or contrasting finishes.' },
-    ],
-    materials: SHARED_MATERIALS,
-    architecturalDrawings: SHARED_ARCH_DRAWINGS,
-    shopDrawings: SHARED_SHOP_DRAWINGS,
-    finishes: SHARED_FINISHES,
-    projectInputs: SHARED_INPUTS,
-    scopeDeliverables: SHARED_SCOPE,
-  },
-  {
-    id: 'entablature',
-    title: 'Entablature / Beam Element',
-    shortDescription: 'The horizontal element above columns — comprising architrave, frieze, and cornice. Ties the colonnade and establishes the roofline datum.',
-    tags: ['Entablature', 'Architrave', 'Frieze Beam', 'GFRC'],
-    image: '/images/packages/villa-palace-architectural.webp',
-    imageAlt: 'GFRC/GRC entablature and frieze beam elements on heritage palace architecture',
-    CardIllustration: EntablatureSVG,
-    HotspotDiagram: ColumnsColonnadeFacadeElevation,
-    hotspots: [
-      { letter: 'A', label: 'Cornice Top', description: 'Upper cornice cap — projection and profile.' },
-      { letter: 'B', label: 'Frieze Zone', description: 'Middle band — plain or decorated.' },
-      { letter: 'C', label: 'Architrave', description: 'Lower flat beam resting on columns.' },
-      { letter: 'D', label: 'Cornice Projection', description: 'How far entablature projects past column face.' },
-      { letter: 'E', label: 'Module Alignment', description: 'How entablature aligns with column centres.' },
-      { letter: 'F', label: 'Finish Reference', description: 'Surface and colour relative to columns.' },
-    ],
-    materials: SHARED_MATERIALS,
-    architecturalDrawings: SHARED_ARCH_DRAWINGS,
-    shopDrawings: SHARED_SHOP_DRAWINGS,
-    finishes: SHARED_FINISHES,
-    projectInputs: SHARED_INPUTS,
-    scopeDeliverables: SHARED_SCOPE,
-  },
-  {
-    id: 'decorative-spandrel-panel',
-    title: 'Decorative Spandrel Panel',
-    shortDescription: 'Ornamental panel filling the arch spandrel zone — geometric, floral, or custom relief enriching the arcade or colonnade composition.',
-    tags: ['Spandrel', 'Decorative Panel', 'Arch Fill', 'GFRC'],
-    image: '/images/packages/custom-architectural-components.webp',
-    imageAlt: 'Custom GFRC/GRC decorative spandrel panels and ornamental arch fill elements',
-    CardIllustration: SpandrelPanelSVG,
-    HotspotDiagram: ColumnsColonnadeFacadeElevation,
-    hotspots: [
-      { letter: 'A', label: 'Spandrel Zone', description: 'The curved infill area between arch and surrounding frame.' },
-      { letter: 'B', label: 'Panel Motif', description: 'The decorative pattern or relief — its scale and depth.' },
-      { letter: 'C', label: 'Panel Edge', description: 'How panel edges meet arch profile and surrounding elements.' },
-      { letter: 'D', label: 'Relief Depth', description: 'Projection of decorative elements from panel face.' },
-      { letter: 'E', label: 'Panel Joint', description: 'Module lines within the spandrel if multiple panels.' },
-      { letter: 'F', label: 'Finish Reference', description: 'Surface and pigment confirmed from project specification.' },
-    ],
-    materials: SHARED_MATERIALS,
-    architecturalDrawings: SHARED_ARCH_DRAWINGS,
-    shopDrawings: SHARED_SHOP_DRAWINGS,
-    finishes: SHARED_FINISHES,
-    projectInputs: SHARED_INPUTS,
-    scopeDeliverables: SHARED_SCOPE,
-  },
+const COMPONENT_META = [
+  { id: 'column-shaft', CardIllustration: ColumnShaftSVG, image: '/images/packages/landmark-government-facade.webp' },
+  { id: 'column-capital', CardIllustration: CapitalSVG, image: '/images/packages/landmark-government-facade.webp' },
+  { id: 'column-base', CardIllustration: ColumnBaseSVG, image: '/images/packages/landmark-government-facade.webp' },
+  { id: 'pilaster', CardIllustration: PilasterSVG, image: '/images/packages/landmark-government-facade.webp' },
+  { id: 'arched-colonnade-bay', CardIllustration: ArchColonnadeSVG, image: '/images/packages/grand-entrance-gate.webp' },
+  { id: 'entablature', CardIllustration: EntablatureSVG, image: '/images/packages/villa-palace-architectural.webp' },
+  { id: 'decorative-spandrel-panel', CardIllustration: SpandrelPanelSVG, image: '/images/packages/custom-architectural-components.webp' },
 ]
-
-// ─── Review steps ─────────────────────────────────────────────────────────────
-
-const REVIEW_STEPS = [
-  { n: '1', title: 'Receive Drawings', description: 'Architectural elevations, sections, and plan drawings submitted for initial technical review.' },
-  { n: '2', title: 'Review Elevation & Section', description: 'Durraka reviews column heights, capital styles, base profiles, and colonnade bay dimensions.' },
-  { n: '3', title: 'Confirm Column & Capital Profile', description: 'Capital order, shaft diameter, fluting, and base moulding confirmed against the drawing set.' },
-  { n: '4', title: 'Shop Drawing Coordination', description: 'Shop drawings prepared for each component — coordinated with structure, substrate, and interfaces.' },
-  { n: '5', title: 'Confirm Finish & Sample', description: 'Finish direction, colour references, and sample requirements agreed before manufacturing.' },
-  { n: '6', title: 'Manufacture & Deliver', description: 'Approved GFRC/GRC components manufactured, QC inspected, and delivered to project programme.' },
-]
-
-// ─── Package data ─────────────────────────────────────────────────────────────
 
 // Schematic design-intent elevation — a colonnade rhythm: shafts, capitals,
 // bases, an engaged pilaster, one arched bay, and the entablature above.
-const COLUMNS_CAPITALS_DIAGRAM: DesignDiagram = {
-  kind: 'elevation',
-  viewBox: '0 0 400 300',
-  shapes: [
-    { kind: 'rect', x: 50, y: 60, w: 300, h: 20, fill: true }, // entablature (6)
-    { kind: 'rect', x: 90, y: 96, w: 22, h: 176 }, // shaft (1)
-    { kind: 'rect', x: 190, y: 96, w: 22, h: 176 },
-    { kind: 'rect', x: 290, y: 96, w: 22, h: 176 },
-    { kind: 'rect', x: 84, y: 80, w: 34, h: 16 }, // capital (2)
-    { kind: 'rect', x: 184, y: 80, w: 34, h: 16 },
-    { kind: 'rect', x: 284, y: 80, w: 34, h: 16 },
-    { kind: 'rect', x: 84, y: 264, w: 34, h: 8 }, // base / plinth (3)
-    { kind: 'rect', x: 184, y: 264, w: 34, h: 8 },
-    { kind: 'rect', x: 284, y: 264, w: 34, h: 8 },
-    { kind: 'rect', x: 40, y: 96, w: 14, h: 176 }, // pilaster (4)
-    { kind: 'rect', x: 36, y: 80, w: 22, h: 16 }, // pilaster capital
-    { kind: 'path', d: 'M112 96 A45 45 0 0 1 190 96', accent: true }, // arched bay (5)
-    { kind: 'circle', cx: 178, cy: 74, r: 7, accent: true }, // spandrel rosette (7)
-    { kind: 'line', x1: 40, y1: 272, x2: 330, y2: 272 }, // ground
-  ],
-  callouts: [
-    { n: 1, label: 'Column Shaft', x: 201, y: 180 },
-    { n: 2, label: 'Column Capital', x: 245, y: 88 },
-    { n: 3, label: 'Column Base / Plinth', x: 201, y: 268 },
-    { n: 4, label: 'Pilaster', x: 47, y: 180 },
-    { n: 5, label: 'Arched Colonnade Bay', x: 140, y: 66 },
-    { n: 6, label: 'Entablature / Beam Element', x: 300, y: 70 },
-    { n: 7, label: 'Decorative Spandrel Panel', x: 178, y: 74 },
-  ],
+const DIAGRAM_SHAPES: DesignDiagram['shapes'] = [
+  { kind: 'rect', x: 50, y: 60, w: 300, h: 20, fill: true }, // entablature (6)
+  { kind: 'rect', x: 90, y: 96, w: 22, h: 176 }, // shaft (1)
+  { kind: 'rect', x: 190, y: 96, w: 22, h: 176 },
+  { kind: 'rect', x: 290, y: 96, w: 22, h: 176 },
+  { kind: 'rect', x: 84, y: 80, w: 34, h: 16 }, // capital (2)
+  { kind: 'rect', x: 184, y: 80, w: 34, h: 16 },
+  { kind: 'rect', x: 284, y: 80, w: 34, h: 16 },
+  { kind: 'rect', x: 84, y: 264, w: 34, h: 8 }, // base / plinth (3)
+  { kind: 'rect', x: 184, y: 264, w: 34, h: 8 },
+  { kind: 'rect', x: 284, y: 264, w: 34, h: 8 },
+  { kind: 'rect', x: 40, y: 96, w: 14, h: 176 }, // pilaster (4)
+  { kind: 'rect', x: 36, y: 80, w: 22, h: 16 }, // pilaster capital
+  { kind: 'path', d: 'M112 96 A45 45 0 0 1 190 96', accent: true }, // arched bay (5)
+  { kind: 'circle', cx: 178, cy: 74, r: 7, accent: true }, // spandrel rosette (7)
+  { kind: 'line', x1: 40, y1: 272, x2: 330, y2: 272 }, // ground
+]
+
+const DIAGRAM_CALLOUT_POS = [
+  { n: 1, x: 201, y: 180 },
+  { n: 2, x: 245, y: 88 },
+  { n: 3, x: 201, y: 268 },
+  { n: 4, x: 47, y: 180 },
+  { n: 5, x: 140, y: 66 },
+  { n: 6, x: 300, y: 70 },
+  { n: 7, x: 178, y: 74 },
+]
+
+const INFOGRAPHIC_IMAGES = ['/images/packages/landmark-government-facade.webp']
+
+function buildData(locale: Locale): PremiumPackageData {
+  const t = locale === 'ar' ? columnsCapitalsContentAr : columnsCapitalsContent
+  const s = t.shared
+
+  const componentDetails: ComponentDetail[] = COMPONENT_META.map((meta, i) => {
+    const c = t.components[i]
+    return {
+      id: meta.id,
+      title: c.title,
+      shortDescription: c.shortDescription,
+      tags: [...c.tags],
+      image: meta.image,
+      imageAlt: c.imageAlt,
+      CardIllustration: meta.CardIllustration,
+      HotspotDiagram: ColumnsColonnadeFacadeElevation,
+      hotspots: c.hotspots.map(h => ({ ...h })),
+      materials: [...s.materials],
+      architecturalDrawings: [...s.architecturalDrawings],
+      shopDrawings: [...s.shopDrawings],
+      finishes: [...s.finishes],
+      projectInputs: [...s.projectInputs],
+      scopeDeliverables: [...s.scopeDeliverables],
+    }
+  })
+
+  const designDiagram: DesignDiagram = {
+    kind: 'elevation',
+    viewBox: '0 0 400 300',
+    shapes: DIAGRAM_SHAPES,
+    callouts: DIAGRAM_CALLOUT_POS.map((p, i) => ({ ...p, label: t.diagramCallouts[i] })),
+  }
+
+  return {
+    slug: 'columns-capitals-package',
+    designDiagram,
+    title: t.title,
+    eyebrow: t.eyebrow,
+    subtitle: t.subtitle,
+    heroDescription: t.heroDescription,
+    illustrativeArea: t.illustrativeArea,
+    visibleComponents: [...t.visibleComponents],
+    HeroIllustration: ColumnsCapitalsIllustration,
+    packageIntent: t.packageIntent,
+    suitableApplications: [...t.suitableApplications],
+    componentDetails,
+    infographics: t.infographics.map((info, i) => ({ ...info, image: INFOGRAPHIC_IMAGES[i] })),
+    reviewSteps: t.reviewSteps.map(r => ({ ...r })),
+  }
 }
 
-const COLUMNS_CAPITALS_DATA: PremiumPackageData = {
-  slug: 'columns-capitals-package',
-  designDiagram: COLUMNS_CAPITALS_DIAGRAM,
-  title: 'Columns & Capitals Package',
-  eyebrow: 'AI Concept Reference',
-  subtitle: 'Colonnades, pilasters, and capitals. Engineered in GFRC/GRC.',
-  heroDescription:
-    'GFRC/GRC columns, capitals, bases, and pilasters — manufactured to architectural drawings for classical, heritage, and contemporary building entrances, colonnades, and facades.',
-  illustrativeArea: 'Colonnades & porticos',
-  visibleComponents: ['Column shafts', 'Capitals', 'Bases', 'Pilasters', 'Arched colonnades', 'Decorative panels'],
-  HeroIllustration: ColumnsCapitalsIllustration,
-  packageIntent:
-    'This package is designed for projects that feature columns, pilasters, or colonnades as a primary architectural element. The scope covers the full column assembly — base, shaft, and capital — along with associated pilasters, arched bays, and decorative panel elements. Each column is dimensioned and profiled from the submitted architectural drawings. Durraka works with the project team to confirm the capital style, shaft diameter, fluting or plain finish, and integration with surrounding entablature and base course elements.',
-  suitableApplications: [
-    'Entrance colonnades and porticos',
-    'Luxury villas and private residences',
-    'Hotels and hospitality developments',
-    'Government and institutional buildings',
-    'Heritage and classical architecture',
-    'Cultural centres and mixed-use developments',
-  ],
-  componentDetails: COLUMNS_COMPONENTS,
-  infographics: [
-    {
-      title: 'Column & Capital Component Overview',
-      description: 'Vertical architectural elements used at entrances, arcades, porticos, and facade features to create rhythm, formality, and decorative character.',
-      image: '/images/packages/landmark-government-facade.webp',
-      imageAlt: 'GFRC/GRC columns and capitals — landmark government building facade reference',
-    },
-  ],
-  reviewSteps: REVIEW_STEPS,
-}
-
-// ─── Export ───────────────────────────────────────────────────────────────────
-
-export function ColumnsCapitalsPackageClient() {
-  return <PremiumPackageLayout data={COLUMNS_CAPITALS_DATA} />
+export function ColumnsCapitalsPackageClient({ locale = 'en' }: { locale?: Locale }) {
+  return <PremiumPackageLayout data={buildData(locale)} locale={locale} />
 }
