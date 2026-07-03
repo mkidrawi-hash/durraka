@@ -94,10 +94,10 @@ export function SystemEnhancedLayout({
                 </div>
               </div>
 
-              <p className="text-gray-500 text-sm leading-relaxed mb-6 pl-4">{data.heroDescription}</p>
+              <p className="text-gray-500 text-sm leading-relaxed mb-6 ps-4">{data.heroDescription}</p>
 
               {/* Quick Read */}
-              <div className="grid grid-cols-2 gap-3 pl-4 mb-8">
+              <div className="grid grid-cols-2 gap-3 ps-4 mb-8">
                 {data.quickRead.slice(0, 4).map((item, i) => (
                   <div key={i} className="flex items-start gap-2.5 bg-white border border-navy/10 p-3 rounded-sm hover:border-accent/30 transition-colors">
                     <div className="text-accent/70 flex-shrink-0 mt-0.5">{QUICK_ICONS[i % 4]}</div>
@@ -107,7 +107,7 @@ export function SystemEnhancedLayout({
               </div>
 
               {/* CTAs */}
-              <div className="flex flex-col sm:flex-row gap-3 pl-4">
+              <div className="flex flex-col sm:flex-row gap-3 ps-4">
                 <Link
                   href="/request-quotation"
                   className="inline-flex items-center justify-center min-h-[48px] px-8 py-3 bg-accent text-white font-semibold rounded-sm hover:bg-accent-dark transition-colors text-sm"
@@ -281,7 +281,7 @@ export function SystemEnhancedLayout({
                   </li>
                 ))}
                 {infoRequired.length > 6 && (
-                  <li className="text-navy/40 text-[10px] pl-3.5">+{infoRequired.length - 6} more items</li>
+                  <li className="text-navy/40 text-[10px] ps-3.5">+{infoRequired.length - 6} more items</li>
                 )}
               </ul>
             </div>

@@ -695,3 +695,40 @@ area ranges, zero "Approx." figures. Residual comma-digits are only CSS `rgba()`
 channels and SVG path/point coordinates — no quantity/area/price data.
 
 **Checks:** typecheck ✓ · lint ✓ · build ✓.
+
+---
+
+## Session — Arabic i18n foundation (structure + RTL; toggle stays hidden)
+
+**Branch:** `feat/i18n-foundation` · one PR. `ARABIC_ENABLED` remains **false**; no
+public `/ar` link added; `/ar` subtree is `noindex`. Machine-draft Arabic pending owner review.
+
+**Routing decision — Option A (`/ar` route-prefix).** English at root, Arabic under
+`/ar/…` as explicit routes. Chosen over an `app/[locale]` restructure because it is
+additive and leaves the English site untouched. Trade-off: root `<html>` can't be
+per-route on the server, so `ArLayout` sets an inner `dir="rtl" lang="ar"` plus a client
+helper (`LocaleHtmlAttrs`) that flips `<html dir/lang>` at runtime. **The `app/[locale]`
+migration (for correct SSR `<html>` + one shared page tree) is documented as a deferred
+future step in `docs/i18n.md`, to be done when Arabic goes public.**
+
+**Font decision — IBM Plex Sans Arabic** (`next/font/google`), exposed as `--font-arabic`
+and mapped to a Tailwind `font-arabic` family, scoped to `/ar` only. English keeps Poppins.
+
+- **i18n primitives:** `src/lib/i18n.ts` (`locales`, `Locale`, `defaultLocale`, `dir`,
+  `isRtl`, and the `Translatable<T>` parity helper).
+- **Dictionaries:** `src/content/ar/*` mirrors all 4 `src/content/en/*` files, each typed
+  against its English source (parity enforced at compile time), each headed with a
+  `⚠️ MACHINE DRAFT` marker. `src/content/dictionaries.ts` exposes `getDictionary(locale)`.
+- **RTL mechanism:** `ArLayout` sets direction + font; `SystemEnhancedLayout` converted to
+  logical spacing (`pl-` → `ps-`) so it mirrors automatically (English unaffected).
+- **Reference implementation:** `/ar/systems/gfrc-grc-facade-cladding` renders the same
+  shared `SystemEnhancedLayout` as English (visuals extracted to
+  `components/systems/facade-cladding-visuals`), driven by `getDictionary('ar')`. The prior
+  divergent `/ar/systems/facade-cladding` stub was retired for a single shared component.
+- **Docs:** `docs/i18n.md` (routing model, font, parity, RTL conventions, review checkpoint).
+
+**Review checkpoint:** `src/content/ar/*` is handed to the owner to correct GFRC/GRC
+terminology. Translating remaining pages, `hreflang`/SEO, removing `noindex`, and flipping
+`ARABIC_ENABLED` are later steps gated on that review.
+
+**Checks:** typecheck ✓ · lint ✓ · build ✓.
