@@ -5,7 +5,8 @@ import Link from 'next/link'
 import type { ReactNode } from 'react'
 import { FinishSwatch } from './FinishSwatch'
 import { PhotoTagModal, type PhotoTag } from './PhotoTagModal'
-import { DEFAULT_FINISHES, DEFAULT_INFO_REQUIRED } from './SystemPageLayout'
+import { DEFAULT_FINISHES, DEFAULT_INFO_REQUIRED, type FinishItem } from './SystemPageLayout'
+import { SOCIAL_LINKS } from '@/lib/social-links'
 
 export type SystemEnhancedData = {
   title: string
@@ -16,6 +17,10 @@ export type SystemEnhancedData = {
   heroObjectPosition?: string
   /** Optional distinct feature-badge row shown below the hero (reusable across systems). */
   featureBadges?: string[]
+  /** Optional secondary hero CTA → Engineer Guidance stub route (Phase 2 stub). */
+  engineerGuidanceHref?: string
+  /** Optional finish tiles override; falls back to DEFAULT_FINISHES. */
+  finishes?: FinishItem[]
   photoTags: PhotoTag[]
   quickRead: { text: string }[]
   systemIntent: string
@@ -58,7 +63,7 @@ export function SystemEnhancedLayout({
 }) {
   const [modalOpen, setModalOpen] = useState(false)
   const infoRequired = data.infoRequiredCustom ?? DEFAULT_INFO_REQUIRED
-  const finishes = DEFAULT_FINISHES
+  const finishes = data.finishes ?? DEFAULT_FINISHES
 
   return (
     <div className="min-h-screen bg-white">
@@ -109,16 +114,28 @@ export function SystemEnhancedLayout({
                 >
                   Request a Quote
                 </Link>
-                <button
-                  onClick={() => setModalOpen(true)}
-                  className="inline-flex items-center justify-center min-h-[48px] px-8 py-3 border border-navy/30 text-navy font-semibold rounded-sm hover:border-accent hover:text-accent transition-colors text-sm gap-2"
-                >
-                  <svg className="w-4 h-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <circle cx="10" cy="10" r="7" />
-                    <path d="M7 10h6M10 7v6" strokeLinecap="round" />
-                  </svg>
-                  View System Details
-                </button>
+                {data.engineerGuidanceHref ? (
+                  <Link
+                    href={data.engineerGuidanceHref}
+                    className="inline-flex items-center justify-center min-h-[48px] px-8 py-3 border border-navy/30 text-navy font-semibold rounded-sm hover:border-accent hover:text-accent transition-colors text-sm gap-2"
+                  >
+                    <svg className="w-4 h-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <path d="M10 2.5 3 6v4c0 3.5 2.8 6.5 7 7.5 4.2-1 7-4 7-7.5V6l-7-3.5z" strokeLinejoin="round" />
+                    </svg>
+                    Request Engineer Guidance
+                  </Link>
+                ) : (
+                  <button
+                    onClick={() => setModalOpen(true)}
+                    className="inline-flex items-center justify-center min-h-[48px] px-8 py-3 border border-navy/30 text-navy font-semibold rounded-sm hover:border-accent hover:text-accent transition-colors text-sm gap-2"
+                  >
+                    <svg className="w-4 h-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <circle cx="10" cy="10" r="7" />
+                      <path d="M7 10h6M10 7v6" strokeLinecap="round" />
+                    </svg>
+                    View System Details
+                  </button>
+                )}
               </div>
             </div>
 
@@ -195,6 +212,24 @@ export function SystemEnhancedLayout({
           </div>
         </div>
       )}
+
+      {/* ── REQUEST MORE INFORMATION ─────────────────────────────────────────── */}
+      <div className="bg-[#F8F9FA] border-t border-navy/[0.08] px-4 sm:px-6 py-10 sm:py-12">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
+          <div>
+            <h3 className="text-navy font-bold text-lg sm:text-xl mb-1">Request More Information</h3>
+            <p className="text-navy/60 text-sm leading-relaxed max-w-xl">
+              Tell us about your project and our team will assist you with design coordination and a project-based scope.
+            </p>
+          </div>
+          <Link
+            href="/request-quotation"
+            className="inline-flex items-center justify-center min-h-[48px] px-8 py-3 bg-accent text-white font-semibold rounded-sm hover:bg-accent-dark transition-colors text-sm flex-shrink-0"
+          >
+            Request Quote
+          </Link>
+        </div>
+      </div>
 
       {/* ── SYSTEM GUIDANCE OVERVIEW ─────────────────────────────────────────── */}
       <div className="bg-white border-t border-navy/[0.08] px-4 sm:px-6 py-14 sm:py-20">
@@ -456,17 +491,23 @@ export function SystemEnhancedLayout({
               </div>
             </div>
             <div className="flex flex-col justify-center gap-3">
+              <a
+                href={SOCIAL_LINKS.whatsapp.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={SOCIAL_LINKS.whatsapp.label}
+                className="inline-flex items-center justify-center gap-2 min-h-[48px] px-6 py-3 bg-accent text-white font-semibold rounded-sm hover:bg-accent-dark transition-colors text-sm"
+              >
+                <svg className="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884" />
+                </svg>
+                Talk to a Specialist
+              </a>
               <Link
                 href="/request-quotation"
-                className="inline-flex items-center justify-center min-h-[48px] px-6 py-3 bg-accent text-white font-semibold rounded-sm hover:bg-accent-dark transition-colors text-sm"
-              >
-                Request a Quotation
-              </Link>
-              <Link
-                href="/contact"
                 className="inline-flex items-center justify-center min-h-[48px] px-6 py-3 border border-navy/25 text-navy font-semibold rounded-sm hover:border-accent hover:text-accent transition-colors text-sm"
               >
-                Contact Our Team
+                Request a Quotation
               </Link>
             </div>
           </div>

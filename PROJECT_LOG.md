@@ -347,3 +347,68 @@ next.config.mjs, src/components/systems/SystemEnhancedLayout.tsx,
 src/content/en/systems/gfrc-grc-facade-cladding.ts (new),
 src/app/systems/gfrc-grc-facade-cladding/page.tsx (new),
 src/app/systems/facade-cladding/page.tsx (removed).
+
+### Phase 1 completion note
+Reviewed and verified on `feat/phase-1-systems-alignment`:
+- Nav "Systems" (desktop + mobile via shared NAV_LINKS) · list links via `slug`
+  · façade card → `/systems/gfrc-grc-facade-cladding`.
+- Canonical page renders and imports copy from
+  `src/content/en/systems/gfrc-grc-facade-cladding.ts`.
+- Old `/systems/facade-cladding` → 308 permanent redirect (next.config).
+- `featureBadges?: string[]` typed + reusable; distinct badge row below hero,
+  separate from the hero photo callouts; optional field does not break the other
+  five system pages.
+- Added missing `typecheck` script (`tsc --noEmit`).
+- No stale English `/systems/facade-cladding` route remains (only the redirect
+  source). No sitemap/robots file exists, so no stale canonical reference.
+- lint ✓ · typecheck ✓ · build ✓.
+
+Known TODO (not Phase 1): `/ar/systems/facade-cladding` Arabic mirror still uses
+the old slug — align when Arabic content work begins (Phase 2+).
+
+### Phase 1 completion — Section 1B detail page
+Completed the GFRC/GRC façade cladding detail page per master prompt 1B, on
+`feat/phase-1-systems-alignment` (same branch/PR):
+- Added Engineer Guidance **stub route** `/systems/gfrc-grc-facade-cladding/engineer-guidance`
+  (Phase-1 placeholder → routes to RFQ; full flow is Phase 2). Hero secondary CTA
+  now "Request Engineer Guidance" (via optional `engineerGuidanceHref`).
+- Added "Request More Information" block (→ Request Quote / RFQ).
+- Wired "Talk to a Specialist" to WhatsApp (+966 12 619 2224 via SOCIAL_LINKS).
+- Finish tiles: added optional `finishes` on the content type; façade now shows the
+  6 requested directions (Smooth · Sandblasted · Textured · Stone-Like · Custom
+  Color · Heritage) as clean SVG/data tiles (no fake photos).
+- Systems list cards now use two CTAs: **Explore System** (→ detail) + **Request
+  Technical Review** (→ RFQ), applied to all cards.
+- Footer address already correct (Office 203, 2nd Floor, JBSA 2372, Jeddah, Saudi
+  Arabia via CONTACT_INFO) — no change.
+- Reuse preserved: everything renders from the typed `SystemEnhancedData` content
+  object. RFQ/lead-scoring API untouched.
+- lint ✓ · typecheck ✓ · build ✓ (both routes generated).
+
+Note: the 404 the reviewer saw was because this branch was not merged to `main`.
+This is now ready as one PR for review/merge.
+
+### Deployment wiring check (2026-07-03)
+Investigated whether `mkidrawi-hash/durraka` reaches a live Vercel project.
+
+**Finding: (b) — the repo IS connected, to a project named `durraka`** (NOT the
+old `v0-durraka-factory-website`).
+- Vercel project: **durraka** · id `prj_K2Vqk0SjmiYEXL36AeExCpbbqzxL` ·
+  team `durraka-factory-for-industry`.
+- Evidence: Vercel bot preview comments on both PRs, status **Ready**:
+  - PR #29 inspector: vercel.com/durraka-factory-for-industry/durraka/ECcG5VwdanEf9ov9vEpw9msE8qx4
+  - PR #30 inspector: vercel.com/durraka-factory-for-industry/durraka/Aw2Px7hVEfP5bqBz2KkEWK64k4wx
+  - PR #30 preview: https://durraka-git-feat-phase-1-sy-948371-durraka-factory-for-industry.vercel.app
+- Why the earlier "no deployments since June 11": that was the OLD project
+  `v0-durraka-factory-website` (linked to the old repo). The current repo
+  deploys to the NEWER `durraka` project, which the earlier list_projects view
+  did not surface.
+- Repo has no `.vercel/`, no `vercel.json`, no GitHub Actions → deploys purely
+  via Vercel's dashboard Git integration (which is active for the `durraka` project).
+
+**Open item (domain):** confirm the custom domain (durraka.com) is attached to
+the `durraka` project, not the old `v0-durraka-factory-website`. The old project
+can be archived once confirmed.
+
+**Merge convention:** recent merges show `<title> (#NN)` on a single commit →
+**squash merge** is the repo convention.
