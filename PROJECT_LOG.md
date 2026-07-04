@@ -613,6 +613,18 @@ reference the real project name — none are rendered or served on a page.
 of the full mosque name and **0** gallery ", KSA"/"· Various" captions. typecheck ✓ ·
 lint ✓ · build ✓.
 
+**Follow-up (Fix 4 completion):** anonymized the public image *paths* too. Renamed the
+folder + 13 curated image files `sheikh-hamad-al-thani-mosque-makkah-*` →
+`landmark-mosque-aziziyah-makkah-*`, updated the 3 gallery image paths + the source
+comment. The three internal working docs (`README.md`, `project-info.md`,
+`image-manifest.json`) — which also leaked the Arabic name, capacity, and a prior codename —
+were moved out of the public tree into `private/project-media/…` (manifest path slugs
+updated). Repo grep excluding `private/` → **0** occurrences of the English name, the slug,
+the Arabic name, and the prior codename. Served build (`.next` excl. cache) → 0. Raw
+originals under `99-archive-originals/` were retained (no name in filenames; out of scope).
+
+**Re-land addendum (this PR):** the original commit was dropped by the #40 squash and is re-landed here from `fix/gallery-polish`. Additionally, the entire `99-archive-originals/` folder (14 raw `DSC_*.jpg`) is now MOVED OUT of `public/` into `private/project-media/landmark-mosque-aziziyah-makkah-gfrc-package/99-archive-originals/` — raw originals are no longer publicly served. Gallery image ids and the en/ar gallery dictionary keys (added later by the i18n work) are renamed to the anonymized slug as well.
+
 ---
 
 ## Session — Navigation & terminology cleanup (Packages / Systems / Projects)

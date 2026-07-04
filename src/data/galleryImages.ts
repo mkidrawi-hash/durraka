@@ -774,9 +774,9 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     approvedForWeb: true,
   },
 
-  // ── Sheikh Hamad bin Abdullah bin Jassim Al Thani Mosque · Al Aziziyah, Makkah ──
+  // ── Landmark Mosque · Al Aziziyah, Makkah ──
   {
-    id: 'sheikh-hamad-al-thani-mosque-makkah-hero-001',
+    id: 'landmark-mosque-aziziyah-makkah-hero-001',
     title: 'Landmark Mosque – Al Aziziyah, Makkah — Exterior Elevation',
     city: 'Makkah',
     year: '',
@@ -786,13 +786,13 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     description:
       'Ornate GFRC/GRC mosque architecture featuring decorative domes, minarets, and carved façade ornamentation.',
     image:
-      '/images/projects/sheikh-hamad-al-thani-mosque-makkah-gfrc-package/01-hero/sheikh-hamad-al-thani-mosque-makkah-hero-01.jpg',
+      '/images/projects/landmark-mosque-aziziyah-makkah-gfrc-package/01-hero/landmark-mosque-aziziyah-makkah-hero-01.jpg',
     alt: 'Landmark Mosque in Al Aziziyah, Makkah, with ornate GFRC domes and minarets',
     status: 'Public Safe',
     approvedForWeb: true,
   },
   {
-    id: 'sheikh-hamad-al-thani-mosque-makkah-minaret-detail-001',
+    id: 'landmark-mosque-aziziyah-makkah-minaret-detail-001',
     title: 'Landmark Mosque – Al Aziziyah, Makkah — Minaret Detail',
     city: 'Makkah',
     year: '',
@@ -802,13 +802,13 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     description:
       'Ornate GFRC/GRC minaret detailing with carved decorative surfaces and Islamic ornamentation.',
     image:
-      '/images/projects/sheikh-hamad-al-thani-mosque-makkah-gfrc-package/03-minaret-details/sheikh-hamad-al-thani-mosque-makkah-minaret-detail-01.jpg',
+      '/images/projects/landmark-mosque-aziziyah-makkah-gfrc-package/03-minaret-details/landmark-mosque-aziziyah-makkah-minaret-detail-01.jpg',
     alt: 'Ornate GFRC minaret detail at Landmark Mosque, Al Aziziyah, Makkah',
     status: 'Public Safe',
     approvedForWeb: true,
   },
   {
-    id: 'sheikh-hamad-al-thani-mosque-makkah-dome-detail-001',
+    id: 'landmark-mosque-aziziyah-makkah-dome-detail-001',
     title: 'Landmark Mosque – Al Aziziyah, Makkah — Dome & Ornament Detail',
     city: 'Makkah',
     year: '',
@@ -818,7 +818,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     description:
       'Decorative GFRC/GRC mosque dome with ornamental relief and refined exterior finishing.',
     image:
-      '/images/projects/sheikh-hamad-al-thani-mosque-makkah-gfrc-package/04-dome-details/sheikh-hamad-al-thani-mosque-makkah-dome-detail-01.jpg',
+      '/images/projects/landmark-mosque-aziziyah-makkah-gfrc-package/04-dome-details/landmark-mosque-aziziyah-makkah-dome-detail-01.jpg',
     alt: 'Decorative GFRC dome detail at Landmark Mosque, Al Aziziyah, Makkah',
     status: 'Public Safe',
     approvedForWeb: true,
