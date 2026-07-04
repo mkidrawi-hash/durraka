@@ -251,15 +251,15 @@ export const galleryContentAr: Translatable<typeof galleryContent> = {
       title: 'عيّنة لوح بإطار',
       alt: 'عيّنة لوح بإطار بنظام GFRC تُظهر تفاصيل الإطار المصبوب والتشطيب السطحي',
     },
-    'sheikh-hamad-al-thani-mosque-makkah-hero-001': {
+    'landmark-mosque-aziziyah-makkah-hero-001': {
       title: 'مسجد مميّز – العزيزية، مكة — الواجهة الخارجية',
       alt: 'مسجد مميّز في العزيزية، مكة، بقباب ومآذن مزخرفة بنظام GFRC',
     },
-    'sheikh-hamad-al-thani-mosque-makkah-minaret-detail-001': {
+    'landmark-mosque-aziziyah-makkah-minaret-detail-001': {
       title: 'مسجد مميّز – العزيزية، مكة — تفصيل المئذنة',
       alt: 'تفصيل مئذنة مزخرفة بنظام GFRC في مسجد مميّز، العزيزية، مكة',
     },
-    'sheikh-hamad-al-thani-mosque-makkah-dome-detail-001': {
+    'landmark-mosque-aziziyah-makkah-dome-detail-001': {
       title: 'مسجد مميّز – العزيزية، مكة — تفصيل القبة والزخرفة',
       alt: 'تفصيل قبة زخرفية بنظام GFRC في مسجد مميّز، العزيزية، مكة',
     },

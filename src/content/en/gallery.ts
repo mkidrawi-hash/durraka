@@ -262,15 +262,15 @@ export const galleryContent = {
       title: 'Frame Panel Sample',
       alt: 'GFRC frame panel sample showing moulded frame detail and surface finish',
     },
-    'sheikh-hamad-al-thani-mosque-makkah-hero-001': {
+    'landmark-mosque-aziziyah-makkah-hero-001': {
       title: 'Landmark Mosque – Al Aziziyah, Makkah — Exterior Elevation',
       alt: 'Landmark Mosque in Al Aziziyah, Makkah, with ornate GFRC domes and minarets',
     },
-    'sheikh-hamad-al-thani-mosque-makkah-minaret-detail-001': {
+    'landmark-mosque-aziziyah-makkah-minaret-detail-001': {
       title: 'Landmark Mosque – Al Aziziyah, Makkah — Minaret Detail',
       alt: 'Ornate GFRC minaret detail at Landmark Mosque, Al Aziziyah, Makkah',
     },
-    'sheikh-hamad-al-thani-mosque-makkah-dome-detail-001': {
+    'landmark-mosque-aziziyah-makkah-dome-detail-001': {
       title: 'Landmark Mosque – Al Aziziyah, Makkah — Dome & Ornament Detail',
       alt: 'Decorative GFRC dome detail at Landmark Mosque, Al Aziziyah, Makkah',
     },
