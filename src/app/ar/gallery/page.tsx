@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { GalleryPage } from '@/components/gallery/GalleryPage'
-import { GALLERY_IMAGES } from '@/data/galleryImages'
+import { GALLERY_IMAGES, publishedGalleryImages } from '@/data/galleryImages'
 import { galleryContentAr } from '@/content/ar/gallery'
 
 export const metadata: Metadata = {
@@ -23,5 +23,5 @@ export const metadata: Metadata = {
 }
 
 export default function ArGalleryPage() {
-  return <GalleryPage images={GALLERY_IMAGES} locale="ar" />
+  return <GalleryPage images={publishedGalleryImages(GALLERY_IMAGES)} locale="ar" />
 }
