@@ -3,8 +3,8 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import type { GalleryImage, GalleryFilter } from '@/data/galleryImages'
-import { GALLERY_FILTERS } from '@/data/galleryImages'
+import type { GalleryImage, GalleryFilter, GalleryProject } from '@/data/galleryImages'
+import { GALLERY_FILTERS, GALLERY_PROJECTS } from '@/data/galleryImages'
 import type { Locale, Translatable } from '@/lib/i18n'
 import { localizeHref } from '@/lib/i18n'
 import { Ltr } from '@/components/i18n/Ltr'
@@ -400,61 +400,83 @@ function GalleryLightbox({
   )
 }
 
-// ─── Gallery card ──────────────────────────────────────────────────────────────
+// ─── Project card ──────────────────────────────────────────────────────────────
+// One card per PROJECT (cover image + title + city · year + system tags + photo
+// count). Clicking anywhere opens the existing lightbox scoped to the project's
+// photo set. Mobile-first: 16/10 cover, gradient only over the lower text zone.
 
-function GalleryCard({ image, onOpen, t }: { image: GalleryImage; onOpen: () => void; t: GalleryDict }) {
-  const meta = imageMeta(t, image)
+export interface GalleryProjectView {
+  project: GalleryProject
+  members: GalleryImage[]
+  cover: GalleryImage
+  categories: GalleryImage['category'][]
+}
+
+// Project meta line: localized city (never raw), year only when set — the data
+// never carries "Various" here (registry rule), so nothing vague can render.
+function projectMeta(t: GalleryDict, p: GalleryProject): string {
+  const city = p.city ? (t.cityLabels[p.city as keyof GalleryDict['cityLabels']] ?? p.city) : ''
+  if (city && p.year) return `${city} · ${p.year}`
+  return city
+}
+
+function ProjectCard({ view, onOpen, t }: { view: GalleryProjectView; onOpen: () => void; t: GalleryDict }) {
+  const { project, members, cover, categories } = view
+  const title = (t.projects[project.slug as keyof GalleryDict['projects']] as { title: string } | undefined)?.title ?? project.slug
+  const coverMeta = imageMeta(t, cover)
+  const meta = projectMeta(t, project)
+  const count = members.length
   return (
     <article className="bg-white dark:bg-[#0e2e65] border border-gray-100 dark:border-white/[0.08] rounded-sm overflow-hidden shadow-sm hover:shadow-md dark:shadow-none transition-shadow group flex flex-col">
-      {/* Image */}
+      {/* Cover */}
       <button
         onClick={onOpen}
         className="relative block w-full flex-shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D71920]"
-        style={{ aspectRatio: '4/3' }}
-        aria-label={t.cardOpenPreview.replace('{title}', meta.title)}
+        style={{ aspectRatio: '16/10' }}
+        aria-label={t.cardOpenProject.replace('{title}', title)}
       >
-        {image.image ? (
-          <>
-            <Image
-              src={image.image}
-              alt={meta.alt}
-              fill
-              className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            />
-            {/* Hover overlay */}
-            <div className="absolute inset-0 bg-[#071B3B]/0 group-hover:bg-[#071B3B]/32 transition-colors duration-300" />
-            {/* View label */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="inline-flex items-center gap-1.5 bg-[#071B3B]/90 border border-white/20 text-white rounded-sm px-3 py-1.5 text-[10px] font-bold tracking-widest uppercase backdrop-blur-sm shadow-lg opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200">
-                <svg className="w-3 h-3 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                </svg>
-                {t.cardView}
-              </span>
-            </div>
-          </>
-        ) : (
-          /* Premium "coming soon" placeholder */
-          <div className="absolute inset-0 bg-[#071B3B]/[0.04] dark:bg-white/[0.04] group-hover:bg-[#071B3B]/[0.07] dark:group-hover:bg-white/[0.07] transition-colors flex flex-col items-center justify-center gap-3">
-            <div className="w-11 h-11 rounded-sm border border-[#071B3B]/[0.10] dark:border-white/[0.12] flex items-center justify-center bg-white/60 dark:bg-white/[0.04]">
-              <svg className="w-5 h-5 text-[#071B3B]/25 dark:text-white/25" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                <rect x="3" y="3" width="18" height="18" rx="2" strokeWidth={1.5} />
-                <circle cx="8.5" cy="8.5" r="1.5" strokeWidth={1.5} />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 15l-5-5L5 21" />
-              </svg>
-            </div>
-            <p className="text-[9px] font-bold tracking-widest uppercase text-[#071B3B]/25 dark:text-white/20">
-              {t.imageComingSoon}
-            </p>
+        {cover.image && (
+          <Image
+            src={cover.image}
+            alt={coverMeta.alt}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          />
+        )}
+        {/* Legibility gradient — lower text zone only (keeps the photo bright) */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: 'linear-gradient(to top, rgba(7,27,59,0.72) 0%, rgba(7,27,59,0.28) 26%, transparent 52%)' }}
+          aria-hidden="true"
+        />
+        {/* Hover view label */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <span className="inline-flex items-center gap-1.5 bg-[#071B3B]/90 border border-white/20 text-white rounded-sm px-3 py-1.5 text-[10px] font-bold tracking-widest uppercase backdrop-blur-sm shadow-lg opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200">
+            <svg className="w-3 h-3 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            </svg>
+            {t.cardViewProject}
+          </span>
+        </div>
+        {/* Samples badge (top) */}
+        {project.samplesBadge && (
+          <div className="absolute top-2.5 start-2.5">
+            <span className="text-[8px] font-bold tracking-widest uppercase px-2 py-0.5 bg-accent/90 text-white rounded-sm backdrop-blur-sm">
+              {t.samplesBadge}
+            </span>
           </div>
         )}
-
-        {/* Category badge — always visible on image */}
-        <div className="absolute top-2.5 start-2.5">
-          <span className="text-[8px] font-bold tracking-widest uppercase px-2 py-0.5 bg-[#071B3B]/80 dark:bg-[#071B3B]/90 text-white/85 rounded-sm backdrop-blur-sm">
-            {t.categoryLabels[image.category]}
+        {/* Photo count chip (bottom end, inside the gradient zone) */}
+        <div className="absolute bottom-2.5 end-2.5">
+          <span className="inline-flex items-center gap-1 text-[9px] font-bold tracking-widest uppercase px-2 py-0.5 bg-[#071B3B]/75 text-white/90 rounded-sm backdrop-blur-sm">
+            <svg className="w-3 h-3 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="2" strokeWidth={1.5} />
+              <circle cx="8.5" cy="8.5" r="1.5" strokeWidth={1.5} />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 15l-5-5L5 21" />
+            </svg>
+            <Ltr>{count}</Ltr> {count === 1 ? t.photoCountSingular : t.photoCountPlural}
           </span>
         </div>
       </button>
@@ -462,22 +484,21 @@ function GalleryCard({ image, onOpen, t }: { image: GalleryImage; onOpen: () => 
       {/* Card body */}
       <div className="p-4 flex flex-col gap-2 flex-1">
         <h3 className="text-[#071B3B] dark:text-white font-semibold text-sm leading-snug">
-          {meta.title}
+          {title}
         </h3>
-        <p className="text-gray-400 dark:text-white/40 text-xs font-medium">
-          {formatLocation(image.city, image.year, t.locationSaudiArabia)}
-        </p>
-        <p className="text-gray-500 dark:text-white/55 text-xs leading-relaxed">
-          {image.description}
-        </p>
-        {image.components.length > 0 && (
+        {meta && (
+          <p className="text-gray-400 dark:text-white/40 text-xs font-medium">
+            {meta}
+          </p>
+        )}
+        {categories.length > 0 && (
           <div className="flex flex-wrap gap-1 pt-0.5">
-            {image.components.map((tag) => (
+            {categories.map((tag) => (
               <span
                 key={tag}
                 className="text-[9px] font-semibold tracking-widest uppercase px-1.5 py-0.5 bg-gray-50 dark:bg-white/[0.06] border border-gray-100 dark:border-white/[0.08] text-gray-400 dark:text-white/40 rounded-sm"
               >
-                {tag}
+                {t.categoryLabels[tag]}
               </span>
             ))}
           </div>
@@ -521,30 +542,59 @@ function EmptyState({ label, t }: { label: string; t: GalleryDict }) {
 export function GalleryPage({ images, locale = 'en' }: { images: GalleryImage[]; locale?: Locale }) {
   const t: GalleryDict = locale === 'ar' ? galleryContentAr : galleryContent
   const [activeFilter, setActiveFilter] = useState<GalleryFilter>('All')
-  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
+  const [openProject, setOpenProject] = useState<GalleryProjectView | null>(null)
 
-  // Only render public-safe entries that have a real uploaded image
+  // Publish gate (unchanged) + grouping layer: only public-safe entries with a
+  // real uploaded image AND a projectSlug render. Ungrouped entries stay in the
+  // data but never reach the page (see docs/gallery-ungrouped-backlog.md).
   const safeImages = useMemo(
-    () => images.filter((img) => img.status === 'Public Safe' && img.approvedForWeb && img.image !== null),
+    () =>
+      images.filter(
+        (img) => img.status === 'Public Safe' && img.approvedForWeb && img.image !== null && img.projectSlug,
+      ),
     [images],
   )
 
+  // Assemble project views from the registry, in registry order. A project with
+  // zero publishable members simply doesn't render.
+  const projects = useMemo<GalleryProjectView[]>(() => {
+    return GALLERY_PROJECTS.flatMap((project) => {
+      const members = safeImages.filter((img) => img.projectSlug === project.slug)
+      if (members.length === 0) return []
+      const cover = members.find((img) => img.id === project.coverImageId) ?? members[0]
+      const categories = [...new Set(members.map((img) => img.category))]
+      return [{ project, members, cover, categories }]
+    })
+  }, [safeImages])
+
+  // Category filters act on PROJECTS: a project matches a category if any of its
+  // photos carries it. Counts are matching-project counts.
   const filtered = useMemo(
-    () => activeFilter === 'All' ? safeImages : safeImages.filter((img) => img.category === activeFilter),
-    [safeImages, activeFilter],
+    () =>
+      activeFilter === 'All'
+        ? projects
+        : projects.filter((p) => p.categories.includes(activeFilter as GalleryImage['category'])),
+    [projects, activeFilter],
   )
 
   const counts = useMemo(() => {
-    const result: Record<string, number> = { All: safeImages.length }
-    for (const img of safeImages) {
-      result[img.category] = (result[img.category] ?? 0) + 1
+    const result: Record<string, number> = { All: projects.length }
+    for (const p of projects) {
+      for (const cat of p.categories) {
+        result[cat] = (result[cat] ?? 0) + 1
+      }
     }
     return result
-  }, [safeImages])
+  }, [projects])
+
+  const visiblePhotoCount = useMemo(
+    () => filtered.reduce((sum, p) => sum + p.members.length, 0),
+    [filtered],
+  )
 
   const handleFilterChange = (f: GalleryFilter) => {
     setActiveFilter(f)
-    setLightboxIndex(null)
+    setOpenProject(null)
   }
 
   const activeLabel = activeFilter === 'All' ? t.filterAll : t.categoryLabels[activeFilter]
@@ -581,15 +631,21 @@ export function GalleryPage({ images, locale = 'en' }: { images: GalleryImage[];
             <p className="text-gray-400 dark:text-white/35 text-xs tabular-nums">
               {filtered.length === 0
                 ? t.countNone
-                : <><Ltr>{filtered.length}</Ltr> {filtered.length === 1 ? t.countSingular : t.countPlural}</>}
+                : (
+                  <>
+                    <Ltr>{filtered.length}</Ltr> {filtered.length === 1 ? t.projectCountSingular : t.projectCountPlural}
+                    {' · '}
+                    <Ltr>{visiblePhotoCount}</Ltr> {visiblePhotoCount === 1 ? t.photoCountSingular : t.photoCountPlural}
+                  </>
+                )}
             </p>
           </div>
 
-          {/* Grid */}
+          {/* Project grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
             {filtered.length > 0
-              ? filtered.map((img, i) => (
-                  <GalleryCard key={img.id} image={img} onOpen={() => setLightboxIndex(i)} t={t} />
+              ? filtered.map((view) => (
+                  <ProjectCard key={view.project.slug} view={view} onOpen={() => setOpenProject(view)} t={t} />
                 ))
               : <EmptyState label={activeLabel} t={t} />}
           </div>
@@ -621,12 +677,12 @@ export function GalleryPage({ images, locale = 'en' }: { images: GalleryImage[];
         </div>
       </section>
 
-      {/* Lightbox */}
-      {lightboxIndex !== null && (
+      {/* Lightbox — scoped to the opened project's photo set */}
+      {openProject !== null && (
         <GalleryLightbox
-          images={filtered}
-          initialIndex={lightboxIndex}
-          onClose={() => setLightboxIndex(null)}
+          images={openProject.members}
+          initialIndex={0}
+          onClose={() => setOpenProject(null)}
           t={t}
         />
       )}

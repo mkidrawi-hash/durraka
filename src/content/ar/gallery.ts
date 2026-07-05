@@ -20,6 +20,10 @@ export const galleryContentAr: Translatable<typeof galleryContent> = {
   countNone: 'لا توجد مراجع في هذه الفئة',
   countSingular: 'مرجع',
   countPlural: 'مراجع',
+  projectCountSingular: 'مشروع',
+  projectCountPlural: 'مشاريع',
+  photoCountSingular: 'صورة',
+  photoCountPlural: 'صور',
 
   emptyStateTitle: 'لا توجد مراجع في هذه الفئة بعد',
   emptyStateSubtext: 'ستظهر صور {category} هنا عند نشرها.',
@@ -29,6 +33,27 @@ export const galleryContentAr: Translatable<typeof galleryContent> = {
   cardView: 'عرض',
   cardViewProject: 'عرض المشروع',
   cardOpenPreview: 'فتح المعاينة: {title}',
+  cardOpenProject: 'فتح صور المشروع: {title}',
+
+  samplesBadge: 'عيّنات',
+
+  projects: {
+    'kaec-2025-hospitality': { title: 'واجهات مشروع ضيافة' },
+    'makkah-2023-heritage-mosque': { title: 'عناصر مسجد تراثي' },
+    'landmark-mosque-aziziyah': { title: 'مسجد مميّز – العزيزية' },
+    'mosque-domes-minaret': { title: 'قباب ومئذنة مسجد' },
+    'grand-arcade-facade': { title: 'مجمع واجهة الرواق الكبير' },
+    'infrastructure-cladding': { title: 'تكسية بنية تحتية — جسر ونفق' },
+    'urban-high-rise-tower': { title: 'واجهة برج شاهق' },
+    'mashrabiya-entry-screens': { title: 'مشربيات المداخل' },
+    'architectural-samples': { title: 'عيّنات ونماذج معمارية' },
+  },
+
+  cityLabels: {
+    KAEC: 'مدينة الملك عبدالله الاقتصادية',
+    Makkah: 'مكة المكرمة',
+    'Saudi Arabia': 'المملكة العربية السعودية',
+  },
 
   lightboxEyebrow: 'معرض المشاريع',
   lightboxPreview: 'معاينة المعرض: {title}',

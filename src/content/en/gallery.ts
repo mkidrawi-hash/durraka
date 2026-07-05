@@ -24,6 +24,11 @@ export const galleryContent = {
   countNone: 'No references in this category',
   countSingular: 'reference',
   countPlural: 'references',
+  // Project-grouped count line pieces ("N projects · M photos").
+  projectCountSingular: 'project',
+  projectCountPlural: 'projects',
+  photoCountSingular: 'photo',
+  photoCountPlural: 'photos',
 
   emptyStateTitle: 'No references in this category yet',
   emptyStateSubtext: '{category} images will appear here when published.',
@@ -33,6 +38,30 @@ export const galleryContent = {
   cardView: 'View',
   cardViewProject: 'View Project',
   cardOpenPreview: 'Open preview: {title}',
+  cardOpenProject: 'Open project photos: {title}',
+
+  // Badge shown instead of city · year on sample-collection projects.
+  samplesBadge: 'Samples',
+
+  // ── Project display titles (keyed by GALLERY_PROJECTS slug) ──
+  projects: {
+    'kaec-2025-hospitality': { title: 'Hospitality Development Facades' },
+    'makkah-2023-heritage-mosque': { title: 'Heritage Mosque Elements' },
+    'landmark-mosque-aziziyah': { title: 'Landmark Mosque – Al Aziziyah' },
+    'mosque-domes-minaret': { title: 'Mosque Domes & Minaret' },
+    'grand-arcade-facade': { title: 'Grand Arcade Facade Complex' },
+    'infrastructure-cladding': { title: 'Infrastructure Cladding — Bridge & Tunnel' },
+    'urban-high-rise-tower': { title: 'High-Rise Tower Facade' },
+    'mashrabiya-entry-screens': { title: 'Mashrabiya Entry Screens' },
+    'architectural-samples': { title: 'Architectural Samples & Mockups' },
+  },
+
+  // City display labels for project meta lines (keyed by the data value).
+  cityLabels: {
+    KAEC: 'KAEC',
+    Makkah: 'Makkah',
+    'Saudi Arabia': 'Saudi Arabia',
+  },
 
   // ── Lightbox ──
   lightboxEyebrow: 'Project Gallery',

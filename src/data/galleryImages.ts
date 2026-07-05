@@ -59,12 +59,54 @@ export interface GalleryImage {
   // (Public Safe = public; others = internal/NDA); approvedForWeb is the
   // explicit per-image sign-off that it is cleared for the website.
   approvedForWeb: boolean
+  // Third layer (grouping — on top of the publish gate, not a replacement):
+  // the project this image belongs to (see GALLERY_PROJECTS). Images WITHOUT a
+  // projectSlug are UNGROUPED and do not render in the gallery; they stay in
+  // this registry so the owner can group them later — see
+  // docs/gallery-ungrouped-backlog.md.
+  projectSlug?: string
 }
+
+// ─── Project registry ─────────────────────────────────────────────────────────
+// The gallery renders PROJECT cards; each project's photo set opens in the
+// lightbox. Display titles are localized in the en/ar gallery dictionaries
+// (keyed by slug). `city`/`year` are shown only when set — never "Various".
+// `samplesBadge` projects show a "Samples" badge instead of city · year.
+
+export interface GalleryProject {
+  slug: string
+  city?: string
+  year?: string
+  samplesBadge?: boolean
+  coverImageId: string
+}
+
+// Server-side pre-filter for the gallery pages: publish gate (unchanged) +
+// grouping layer. Passing this (instead of the full registry) keeps hidden /
+// ungrouped entries out of the serialized page payload entirely.
+export function publishedGalleryImages(images: GalleryImage[]): GalleryImage[] {
+  return images.filter(
+    (img) => img.status === 'Public Safe' && img.approvedForWeb && img.image !== null && img.projectSlug,
+  )
+}
+
+export const GALLERY_PROJECTS: GalleryProject[] = [
+  { slug: 'kaec-2025-hospitality', city: 'KAEC', year: '2025', coverImageId: 'kaec-2025-grand-entrance-001' },
+  { slug: 'makkah-2023-heritage-mosque', city: 'Makkah', year: '2023', coverImageId: 'makkah-2023-domes-001' },
+  { slug: 'landmark-mosque-aziziyah', city: 'Makkah', coverImageId: 'landmark-mosque-aziziyah-makkah-hero-001' },
+  { slug: 'mosque-domes-minaret', coverImageId: 'mosque-domes-minaret-gfrc-hero-001' },
+  { slug: 'grand-arcade-facade', city: 'Saudi Arabia', coverImageId: 'grand-arcade-facade-overall-view-001' },
+  { slug: 'infrastructure-cladding', city: 'Saudi Arabia', coverImageId: 'bridge-infrastructure-cladding-overall-view-001' },
+  { slug: 'urban-high-rise-tower', city: 'Saudi Arabia', coverImageId: 'urban-high-rise-tower-full-height-view-001' },
+  { slug: 'mashrabiya-entry-screens', city: 'Saudi Arabia', coverImageId: 'mashrabiya-entry-screen-doorway-001' },
+  { slug: 'architectural-samples', samplesBadge: true, coverImageId: 'architectural-sample-arched-screen-panel-001' },
+]
 
 export const GALLERY_IMAGES: GalleryImage[] = [
   // ── KAEC · 2025 ──────────────────────────────────────────────────────────────
   {
     id: 'kaec-2025-grand-entrance-001',
+    projectSlug: 'kaec-2025-hospitality',
     title: 'Grand Entrance, KAEC',
     city: 'KAEC',
     year: '',
@@ -80,6 +122,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   },
   {
     id: 'kaec-2025-arrival-plaza-001',
+    projectSlug: 'kaec-2025-hospitality',
     title: 'Arrival Plaza Facade, KAEC',
     city: 'KAEC',
     year: '',
@@ -95,6 +138,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   },
   {
     id: 'kaec-2025-facade-mashrabiya-001',
+    projectSlug: 'kaec-2025-hospitality',
     title: 'Facade Mashrabiya Screens, KAEC',
     city: 'KAEC',
     year: '',
@@ -110,6 +154,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   },
   {
     id: 'kaec-2025-facade-screens-002',
+    projectSlug: 'kaec-2025-hospitality',
     title: 'Hospitality Facade Screens, KAEC',
     city: 'KAEC',
     year: '',
@@ -125,6 +170,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   },
   {
     id: 'kaec-2025-mashrabiya-facade-003',
+    projectSlug: 'kaec-2025-hospitality',
     title: 'Mashrabiya Facade Detail, KAEC',
     city: 'KAEC',
     year: '',
@@ -140,6 +186,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   },
   {
     id: 'kaec-2025-facade-arches-screens-004',
+    projectSlug: 'kaec-2025-hospitality',
     title: 'Facade Arches & Screens, KAEC',
     city: 'KAEC',
     year: '',
@@ -155,6 +202,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   },
   {
     id: 'kaec-2025-courtyard-facade-001',
+    projectSlug: 'kaec-2025-hospitality',
     title: 'Courtyard Facade, KAEC',
     city: 'KAEC',
     year: '',
@@ -172,6 +220,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   // ── Makkah · 2023 ────────────────────────────────────────────────────────────
   {
     id: 'makkah-2023-domes-001',
+    projectSlug: 'makkah-2023-heritage-mosque',
     title: 'Dome Elements, Makkah',
     city: 'Makkah',
     year: '',
@@ -187,6 +236,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   },
   {
     id: 'makkah-2023-mashrabiya-001',
+    projectSlug: 'makkah-2023-heritage-mosque',
     title: 'Mashrabiya Screens, Makkah',
     city: 'Makkah',
     year: '',
@@ -202,6 +252,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   },
   {
     id: 'makkah-2023-columns-001',
+    projectSlug: 'makkah-2023-heritage-mosque',
     title: 'Arched Columns & Capitals, Makkah',
     city: 'Makkah',
     year: '',
@@ -217,6 +268,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   },
   {
     id: 'makkah-2023-columns-002',
+    projectSlug: 'makkah-2023-heritage-mosque',
     title: 'Column Arcade Detail, Makkah',
     city: 'Makkah',
     year: '',
@@ -232,6 +284,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   },
   {
     id: 'makkah-2023-decorative-001',
+    projectSlug: 'makkah-2023-heritage-mosque',
     title: 'Decorative Facade Elements, Makkah',
     city: 'Makkah',
     year: '',
@@ -247,6 +300,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   },
   {
     id: 'makkah-2023-decorative-002',
+    projectSlug: 'makkah-2023-heritage-mosque',
     title: 'Ornamental Detail, Makkah',
     city: 'Makkah',
     year: '',
@@ -265,7 +319,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   // These are reserved data records for future project photos.
   // GalleryPage filters out null-image entries, so none of these are displayed.
   {
-    id: 'cornice-makkah-2024',
+    id: 'cornice-makkah-2024', // UNGROUPED — hidden from gallery; see docs/gallery-ungrouped-backlog.md
     title: 'Cornice Profile System, Makkah, 2024',
     city: 'Makkah',
     year: '2024',
@@ -280,7 +334,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     approvedForWeb: true,
   },
   {
-    id: 'grand-entrance-makkah-2024',
+    id: 'grand-entrance-makkah-2024', // UNGROUPED — hidden from gallery; see docs/gallery-ungrouped-backlog.md
     title: 'Hospitality Grand Entrance, Makkah, 2024',
     city: 'Makkah',
     year: '2024',
@@ -295,7 +349,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     approvedForWeb: true,
   },
   {
-    id: 'facade-cladding-jeddah-2023',
+    id: 'facade-cladding-jeddah-2023', // UNGROUPED — hidden from gallery; see docs/gallery-ungrouped-backlog.md
     title: 'Residential Facade Cladding, Jeddah, 2023',
     city: 'Jeddah',
     year: '2023',
@@ -310,7 +364,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     approvedForWeb: true,
   },
   {
-    id: 'dome-riyadh-2023',
+    id: 'dome-riyadh-2023', // UNGROUPED — hidden from gallery; see docs/gallery-ungrouped-backlog.md
     title: 'Heritage Dome, Riyadh, 2023',
     city: 'Riyadh',
     year: '2023',
@@ -325,7 +379,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     approvedForWeb: true,
   },
   {
-    id: 'mashrabiya-medina-2024',
+    id: 'mashrabiya-medina-2024', // UNGROUPED — hidden from gallery; see docs/gallery-ungrouped-backlog.md
     title: 'Facade Mashrabiya Screens, Madinah, 2024',
     city: 'Madinah',
     year: '2024',
@@ -340,7 +394,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     approvedForWeb: true,
   },
   {
-    id: 'columns-makkah-2023',
+    id: 'columns-makkah-2023', // UNGROUPED — hidden from gallery; see docs/gallery-ungrouped-backlog.md
     title: 'Landmark Columns, Makkah, 2023',
     city: 'Makkah',
     year: '2023',
@@ -360,9 +414,10 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   // Grand Arcade Facade Complex
   {
     id: 'grand-arcade-facade-overall-view-001',
+    projectSlug: 'grand-arcade-facade',
     title: 'Grand Arcade Facade, Overall View',
     city: 'Saudi Arabia',
-    year: 'Various',
+    year: '',
     category: 'Facades & Cladding',
     packageType: 'Complete Facade Package',
     components: ['GFRC', 'Facade Cladding', 'Arcade', 'Arches'],
@@ -375,9 +430,10 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   },
   {
     id: 'grand-arcade-facade-overall-view-002',
+    projectSlug: 'grand-arcade-facade',
     title: 'Grand Arcade Facade, Second View',
     city: 'Saudi Arabia',
-    year: 'Various',
+    year: '',
     category: 'Facades & Cladding',
     packageType: 'Complete Facade Package',
     components: ['GFRC', 'Facade Cladding', 'Arcade'],
@@ -390,9 +446,10 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   },
   {
     id: 'grand-arcade-facade-wide-view-001',
+    projectSlug: 'grand-arcade-facade',
     title: 'Grand Arcade Facade, Wide View',
     city: 'Saudi Arabia',
-    year: 'Various',
+    year: '',
     category: 'Facades & Cladding',
     packageType: 'Complete Facade Package',
     components: ['GFRC', 'Facade Cladding', 'Arcade', 'Colonnade'],
@@ -405,9 +462,10 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   },
   {
     id: 'grand-arcade-facade-street-view-001',
+    projectSlug: 'grand-arcade-facade',
     title: 'Grand Arcade Facade, Street View',
     city: 'Saudi Arabia',
-    year: 'Various',
+    year: '',
     category: 'Facades & Cladding',
     packageType: 'Complete Facade Package',
     components: ['GFRC', 'Facade Cladding', 'Street Frontage'],
@@ -420,9 +478,10 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   },
   {
     id: 'grand-arcade-facade-side-perspective-001',
+    projectSlug: 'grand-arcade-facade',
     title: 'Grand Arcade Facade, Side Perspective',
     city: 'Saudi Arabia',
-    year: 'Various',
+    year: '',
     category: 'Facades & Cladding',
     packageType: 'Complete Facade Package',
     components: ['GFRC', 'Facade Cladding', 'Perspective View'],
@@ -435,9 +494,10 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   },
   {
     id: 'grand-arcade-facade-main-block-001',
+    projectSlug: 'grand-arcade-facade',
     title: 'Grand Arcade Facade, Main Block',
     city: 'Saudi Arabia',
-    year: 'Various',
+    year: '',
     category: 'Facades & Cladding',
     packageType: 'Complete Facade Package',
     components: ['GFRC', 'Facade Cladding', 'Main Elevation'],
@@ -449,10 +509,10 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     approvedForWeb: true,
   },
   {
-    id: 'grand-arcade-facade-institutional-view-001',
+    id: 'grand-arcade-facade-institutional-view-001', // UNGROUPED — hidden from gallery; see docs/gallery-ungrouped-backlog.md
     title: 'Grand Arcade Facade, Institutional',
     city: 'Saudi Arabia',
-    year: 'Various',
+    year: '',
     category: 'Facades & Cladding',
     packageType: 'Landmark & Government Package',
     components: ['GFRC', 'Facade Cladding', 'Institutional'],
@@ -465,9 +525,10 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   },
   {
     id: 'grand-arcade-facade-colonnade-view-001',
+    projectSlug: 'grand-arcade-facade',
     title: 'Arcade Colonnade Facade',
     city: 'Saudi Arabia',
-    year: 'Various',
+    year: '',
     category: 'Grand Entrances',
     packageType: 'Landmark & Government Package',
     components: ['GFRC', 'Colonnade', 'Columns', 'Arches'],
@@ -480,9 +541,10 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   },
   {
     id: 'grand-arcade-facade-arch-detail-001',
+    projectSlug: 'grand-arcade-facade',
     title: 'Arcade Facade Arch Detail',
     city: 'Saudi Arabia',
-    year: 'Various',
+    year: '',
     category: 'Facades & Cladding',
     packageType: 'Complete Facade Package',
     components: ['GFRC', 'Arch', 'Facade Detail', 'Mouldings'],
@@ -497,9 +559,10 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   // Bridge Infrastructure Cladding
   {
     id: 'bridge-infrastructure-cladding-overall-view-001',
+    projectSlug: 'infrastructure-cladding',
     title: 'Infrastructure Cladding, Overall View',
     city: 'Saudi Arabia',
-    year: 'Various',
+    year: '',
     category: 'Infrastructure',
     packageType: 'Infrastructure Package',
     components: ['GFRC', 'Infrastructure Cladding', 'Bridge'],
@@ -512,9 +575,10 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   },
   {
     id: 'bridge-infrastructure-cladding-long-view-001',
+    projectSlug: 'infrastructure-cladding',
     title: 'Infrastructure Cladding, Long View',
     city: 'Saudi Arabia',
-    year: 'Various',
+    year: '',
     category: 'Infrastructure',
     packageType: 'Infrastructure Package',
     components: ['GFRC', 'Infrastructure Cladding', 'Bridge'],
@@ -527,9 +591,10 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   },
   {
     id: 'bridge-infrastructure-cladding-support-detail-001',
+    projectSlug: 'infrastructure-cladding',
     title: 'Infrastructure Cladding, Structural Detail',
     city: 'Saudi Arabia',
-    year: 'Various',
+    year: '',
     category: 'Infrastructure',
     packageType: 'Infrastructure Package',
     components: ['GFRC', 'Infrastructure Cladding', 'Structural Detail'],
@@ -542,9 +607,10 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   },
   {
     id: 'tunnel-pattern-cladding-001',
+    projectSlug: 'infrastructure-cladding',
     title: 'Tunnel Pattern Cladding',
     city: 'Saudi Arabia',
-    year: 'Various',
+    year: '',
     category: 'Infrastructure',
     packageType: 'Infrastructure Package',
     components: ['GFRC', 'Tunnel Cladding', 'Pattern Surface'],
@@ -559,9 +625,10 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   // Mashrabiya Entry Screens
   {
     id: 'mashrabiya-entry-screen-doorway-001',
+    projectSlug: 'mashrabiya-entry-screens',
     title: 'Mashrabiya Entry Screen, Doorway',
     city: 'Saudi Arabia',
-    year: 'Various',
+    year: '',
     category: 'Mashrabiya',
     packageType: 'Heritage & Regional Package',
     components: ['GFRC', 'Mashrabiya', 'Entry Screen', 'Doorway'],
@@ -574,9 +641,10 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   },
   {
     id: 'mashrabiya-entry-screen-doorway-002',
+    projectSlug: 'mashrabiya-entry-screens',
     title: 'Mashrabiya Entry Screen, Second View',
     city: 'Saudi Arabia',
-    year: 'Various',
+    year: '',
     category: 'Mashrabiya',
     packageType: 'Heritage & Regional Package',
     components: ['GFRC', 'Mashrabiya', 'Entry Screen'],
@@ -590,10 +658,10 @@ export const GALLERY_IMAGES: GalleryImage[] = [
 
   // Religious Facility Architectural Details
   {
-    id: 'mosque-architectural-details-main-entrance-001',
+    id: 'mosque-architectural-details-main-entrance-001', // UNGROUPED — hidden from gallery; see docs/gallery-ungrouped-backlog.md
     title: 'Religious Facility Main Entrance',
     city: 'Saudi Arabia',
-    year: 'Various',
+    year: '',
     category: 'Grand Entrances',
     packageType: 'Heritage & Regional Package',
     components: ['GFRC', 'Grand Entrance', 'Arch', 'Decorative Elements'],
@@ -605,10 +673,10 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     approvedForWeb: true,
   },
   {
-    id: 'mosque-architectural-details-dome-interior-001',
+    id: 'mosque-architectural-details-dome-interior-001', // UNGROUPED — hidden from gallery; see docs/gallery-ungrouped-backlog.md
     title: 'Dome Interior Architectural Detail',
     city: 'Saudi Arabia',
-    year: 'Various',
+    year: '',
     category: 'Domes',
     packageType: 'Heritage & Regional Package',
     components: ['GFRC', 'Dome', 'Interior', 'Decorative Finish'],
@@ -620,10 +688,10 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     approvedForWeb: true,
   },
   {
-    id: 'mosque-architectural-details-lattice-window-001',
+    id: 'mosque-architectural-details-lattice-window-001', // UNGROUPED — hidden from gallery; see docs/gallery-ungrouped-backlog.md
     title: 'Lattice Window Screen Detail',
     city: 'Saudi Arabia',
-    year: 'Various',
+    year: '',
     category: 'Mashrabiya',
     packageType: 'Heritage & Regional Package',
     components: ['GFRC', 'Mashrabiya', 'Lattice Window', 'Geometric Pattern'],
@@ -635,10 +703,10 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     approvedForWeb: true,
   },
   {
-    id: 'mosque-architectural-details-screen-windows-001',
+    id: 'mosque-architectural-details-screen-windows-001', // UNGROUPED — hidden from gallery; see docs/gallery-ungrouped-backlog.md
     title: 'Screen Windows, Geometric Pattern',
     city: 'Saudi Arabia',
-    year: 'Various',
+    year: '',
     category: 'Mashrabiya',
     packageType: 'Heritage & Regional Package',
     components: ['GFRC', 'Screen Windows', 'Geometric Lattice'],
@@ -650,10 +718,10 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     approvedForWeb: true,
   },
   {
-    id: 'mosque-architectural-details-minaret-001',
+    id: 'mosque-architectural-details-minaret-001', // UNGROUPED — hidden from gallery; see docs/gallery-ungrouped-backlog.md
     title: 'Minaret Architectural Detail',
     city: 'Saudi Arabia',
-    year: 'Various',
+    year: '',
     category: 'Architectural Details',
     packageType: 'Heritage & Regional Package',
     components: ['GFRC', 'Minaret', 'Architectural Detail'],
@@ -668,9 +736,10 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   // Urban High-Rise Tower
   {
     id: 'urban-high-rise-tower-full-height-view-001',
+    projectSlug: 'urban-high-rise-tower',
     title: 'High-Rise Tower, Full Height View',
     city: 'Saudi Arabia',
-    year: 'Various',
+    year: '',
     category: 'High-Rise / Towers',
     packageType: 'Complete Facade Package',
     components: ['GFRC', 'Tower Cladding', 'High-Rise Facade'],
@@ -683,9 +752,10 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   },
   {
     id: 'urban-high-rise-tower-corner-view-001',
+    projectSlug: 'urban-high-rise-tower',
     title: 'High-Rise Tower, Corner View',
     city: 'Saudi Arabia',
-    year: 'Various',
+    year: '',
     category: 'High-Rise / Towers',
     packageType: 'Complete Facade Package',
     components: ['GFRC', 'Tower Cladding', 'Corner Detail'],
@@ -698,9 +768,10 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   },
   {
     id: 'urban-high-rise-tower-corner-view-002',
+    projectSlug: 'urban-high-rise-tower',
     title: 'High-Rise Tower, Corner View 2',
     city: 'Saudi Arabia',
-    year: 'Various',
+    year: '',
     category: 'High-Rise / Towers',
     packageType: 'Complete Facade Package',
     components: ['GFRC', 'Tower Cladding', 'Corner Detail'],
@@ -713,9 +784,10 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   },
   {
     id: 'urban-high-rise-tower-street-view-001',
+    projectSlug: 'urban-high-rise-tower',
     title: 'High-Rise Tower, Street View',
     city: 'Saudi Arabia',
-    year: 'Various',
+    year: '',
     category: 'High-Rise / Towers',
     packageType: 'Complete Facade Package',
     components: ['GFRC', 'Tower Cladding', 'Street Level'],
@@ -730,9 +802,10 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   // Architectural Samples & Mockups
   {
     id: 'architectural-sample-arched-screen-panel-001',
+    projectSlug: 'architectural-samples',
     title: 'Arched Screen Panel Sample',
     city: 'Saudi Arabia',
-    year: 'Various',
+    year: '',
     category: 'Samples & Mockups',
     packageType: 'Custom Architectural Package',
     components: ['GFRC', 'Arched Screen', 'Sample Panel'],
@@ -745,9 +818,10 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   },
   {
     id: 'architectural-sample-balustrade-001',
+    projectSlug: 'architectural-samples',
     title: 'Balustrade Sample',
     city: 'Saudi Arabia',
-    year: 'Various',
+    year: '',
     category: 'Samples & Mockups',
     packageType: 'Custom Architectural Package',
     components: ['GFRC', 'Balustrade', 'Sample'],
@@ -760,9 +834,10 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   },
   {
     id: 'architectural-sample-frame-panel-001',
+    projectSlug: 'architectural-samples',
     title: 'Frame Panel Sample',
     city: 'Saudi Arabia',
-    year: 'Various',
+    year: '',
     category: 'Samples & Mockups',
     packageType: 'Custom Architectural Package',
     components: ['GFRC', 'Frame Panel', 'Sample'],
@@ -777,6 +852,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   // ── Landmark Mosque · Al Aziziyah, Makkah ──
   {
     id: 'landmark-mosque-aziziyah-makkah-hero-001',
+    projectSlug: 'landmark-mosque-aziziyah',
     title: 'Landmark Mosque – Al Aziziyah, Makkah — Exterior Elevation',
     city: 'Makkah',
     year: '',
@@ -793,6 +869,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   },
   {
     id: 'landmark-mosque-aziziyah-makkah-minaret-detail-001',
+    projectSlug: 'landmark-mosque-aziziyah',
     title: 'Landmark Mosque – Al Aziziyah, Makkah — Minaret Detail',
     city: 'Makkah',
     year: '',
@@ -809,6 +886,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   },
   {
     id: 'landmark-mosque-aziziyah-makkah-dome-detail-001',
+    projectSlug: 'landmark-mosque-aziziyah',
     title: 'Landmark Mosque – Al Aziziyah, Makkah — Dome & Ornament Detail',
     city: 'Makkah',
     year: '',
@@ -827,6 +905,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   // ── Mosque Domes & Minaret · GFRC/GRC ──────────────────────────────────────────
   {
     id: 'mosque-domes-minaret-gfrc-hero-001',
+    projectSlug: 'mosque-domes-minaret',
     title: 'Mosque Domes & Minaret, GFRC/GRC',
     city: '',
     year: '',
@@ -843,6 +922,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   },
   {
     id: 'mosque-domes-minaret-gfrc-dome-detail-001',
+    projectSlug: 'mosque-domes-minaret',
     title: 'Decorative Mosque Dome, GFRC/GRC',
     city: '',
     year: '',
@@ -859,6 +939,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   },
   {
     id: 'mosque-domes-minaret-gfrc-minaret-facade-001',
+    projectSlug: 'mosque-domes-minaret',
     title: 'Mosque Minaret Façade, GFRC/GRC',
     city: '',
     year: '',
@@ -875,6 +956,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   },
   {
     id: 'mosque-domes-minaret-gfrc-facade-overview-001',
+    projectSlug: 'mosque-domes-minaret',
     title: 'Mosque Façade, GFRC/GRC',
     city: '',
     year: '',
@@ -892,7 +974,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
 
   // ── Heritage GFRC/GRC Façade ───────────────────────────────────────────────────
   {
-    id: 'heritage-gfrc-facade-hero-001',
+    id: 'heritage-gfrc-facade-hero-001', // UNGROUPED — hidden from gallery; see docs/gallery-ungrouped-backlog.md
     title: 'Heritage GFRC/GRC Façade',
     city: '',
     year: '',
