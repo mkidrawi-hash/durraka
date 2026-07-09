@@ -38,6 +38,10 @@ export const galleryContentAr: Translatable<typeof galleryContent> = {
   samplesBadge: 'عيّنات',
 
   projects: {
+    'beachfront-hotel-resort-jeddah': {
+      title: 'فندق ومنتجع الواجهة البحرية – جدة',
+      chips: ['شاشات المشربية', 'تكسية الواجهات', 'الكرانيش والمقاطع', 'عناصر زخرفية'],
+    },
     'kaec-2025-hospitality': { title: 'واجهات مشروع ضيافة' },
     'makkah-2023-heritage-mosque': { title: 'عناصر مسجد تراثي' },
     'landmark-mosque-aziziyah': { title: 'مسجد مميّز – العزيزية' },
@@ -50,6 +54,7 @@ export const galleryContentAr: Translatable<typeof galleryContent> = {
   },
 
   cityLabels: {
+    Jeddah: 'جدة',
     KAEC: 'مدينة الملك عبدالله الاقتصادية',
     Makkah: 'مكة المكرمة',
     'Saudi Arabia': 'المملكة العربية السعودية',
@@ -92,6 +97,42 @@ export const galleryContentAr: Translatable<typeof galleryContent> = {
   },
 
   images: {
+    'beachfront-hotel-resort-mashrabiya-facade-01': {
+      title: 'واجهة المشربية',
+      alt: 'واجهة شاشات مشربية من GFRC على مبنى منتجع على الواجهة البحرية، جدة',
+    },
+    'beachfront-hotel-resort-arched-pool-courtyard-02': {
+      title: 'فناء المسبح المقوّس',
+      alt: 'واجهات فناء مقوّسة من GFRC حول شرفة مسبح المنتجع، جدة',
+    },
+    'beachfront-hotel-resort-mashrabiya-balconies-03': {
+      title: 'شرفات المشربية',
+      alt: 'شاشات مشربية من GFRC على شرفات واجهة المنتجع، جدة',
+    },
+    'beachfront-hotel-resort-seafront-elevation-04': {
+      title: 'الواجهة البحرية',
+      alt: 'واجهة GFRC للمنتجع المطلة على البحر، جدة',
+    },
+    'beachfront-hotel-resort-entrance-axis-07': {
+      title: 'محور المدخل',
+      alt: 'رواق مدخل من GFRC على محور الوصول لمنتجع على الواجهة البحرية، جدة',
+    },
+    'beachfront-hotel-resort-resort-aerial-08': {
+      title: 'منظر جوي للمنتجع',
+      alt: 'منظر جوي لمنتجع على الواجهة البحرية بعناصر واجهات GFRC، جدة',
+    },
+    'beachfront-hotel-resort-villas-golf-aerial-09': {
+      title: 'منظر جوي للفلل والجولف',
+      alt: 'منظر جوي لفلل المنتجع وملعب الجولف، جدة',
+    },
+    'beachfront-hotel-resort-masterplan-aerial-10': {
+      title: 'منظر جوي للمخطط العام',
+      alt: 'منظر جوي للمخطط العام لتطوير ضيافة على الواجهة البحرية، جدة',
+    },
+    'beachfront-hotel-resort-colonnade-mashrabiya-11': {
+      title: 'الرواق وشاشات المشربية',
+      alt: 'رواق من GFRC بشاشات مشربية في منتجع على الواجهة البحرية، جدة',
+    },
     'kaec-2025-grand-entrance-001': {
       title: 'المدخل الكبير، KAEC',
       alt: 'عناصر واجهة المدخل الكبير بنظام GFRC لمشروع ضيافة، KAEC',

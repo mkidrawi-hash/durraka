@@ -422,7 +422,13 @@ function projectMeta(t: GalleryDict, p: GalleryProject): string {
 
 function ProjectCard({ view, onOpen, t }: { view: GalleryProjectView; onOpen: () => void; t: GalleryDict }) {
   const { project, members, cover, categories } = view
-  const title = (t.projects[project.slug as keyof GalleryDict['projects']] as { title: string } | undefined)?.title ?? project.slug
+  const entry = t.projects[project.slug as keyof GalleryDict['projects']] as
+    | { title: string; chips?: string[] }
+    | undefined
+  const title = entry?.title ?? project.slug
+  // Optional exact-wording chip override from the dictionary (display only —
+  // category filters still act on the member images' real categories).
+  const chipLabels = entry?.chips ?? categories.map((tag) => t.categoryLabels[tag])
   const coverMeta = imageMeta(t, cover)
   const meta = projectMeta(t, project)
   const count = members.length
@@ -491,14 +497,14 @@ function ProjectCard({ view, onOpen, t }: { view: GalleryProjectView; onOpen: ()
             {meta}
           </p>
         )}
-        {categories.length > 0 && (
+        {chipLabels.length > 0 && (
           <div className="flex flex-wrap gap-1 pt-0.5">
-            {categories.map((tag) => (
+            {chipLabels.map((label) => (
               <span
-                key={tag}
+                key={label}
                 className="text-[9px] font-semibold tracking-widest uppercase px-1.5 py-0.5 bg-gray-50 dark:bg-white/[0.06] border border-gray-100 dark:border-white/[0.08] text-gray-400 dark:text-white/40 rounded-sm"
               >
-                {t.categoryLabels[tag]}
+                {label}
               </span>
             ))}
           </div>

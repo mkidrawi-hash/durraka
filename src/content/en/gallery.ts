@@ -44,7 +44,14 @@ export const galleryContent = {
   samplesBadge: 'Samples',
 
   // ── Project display titles (keyed by GALLERY_PROJECTS slug) ──
+  // `chips` (optional) overrides the derived category tags on the project card
+  // with exact display wording — display only; filters still act on the real
+  // image categories.
   projects: {
+    'beachfront-hotel-resort-jeddah': {
+      title: 'Beachfront Hotel & Resort – Jeddah',
+      chips: ['Mashrabiya Screens', 'Facade Cladding', 'Cornices & Profiles', 'Decorative Elements'] as string[],
+    },
     'kaec-2025-hospitality': { title: 'Hospitality Development Facades' },
     'makkah-2023-heritage-mosque': { title: 'Heritage Mosque Elements' },
     'landmark-mosque-aziziyah': { title: 'Landmark Mosque – Al Aziziyah' },
@@ -58,6 +65,7 @@ export const galleryContent = {
 
   // City display labels for project meta lines (keyed by the data value).
   cityLabels: {
+    Jeddah: 'Jeddah',
     KAEC: 'KAEC',
     Makkah: 'Makkah',
     'Saudi Arabia': 'Saudi Arabia',
@@ -107,6 +115,42 @@ export const galleryContent = {
 
   // ── Per-image display copy (keyed by GALLERY_IMAGES id) ──
   images: {
+    'beachfront-hotel-resort-mashrabiya-facade-01': {
+      title: 'Mashrabiya Facade',
+      alt: 'GFRC mashrabiya screen facade on a beachfront resort building, Jeddah',
+    },
+    'beachfront-hotel-resort-arched-pool-courtyard-02': {
+      title: 'Arched Pool Courtyard',
+      alt: 'Arched GFRC courtyard facades around a resort pool terrace, Jeddah',
+    },
+    'beachfront-hotel-resort-mashrabiya-balconies-03': {
+      title: 'Mashrabiya Balconies',
+      alt: 'GFRC mashrabiya balcony screens on a resort facade, Jeddah',
+    },
+    'beachfront-hotel-resort-seafront-elevation-04': {
+      title: 'Seafront Elevation',
+      alt: 'Seafront GFRC facade elevation of a beachfront resort, Jeddah',
+    },
+    'beachfront-hotel-resort-entrance-axis-07': {
+      title: 'Entrance Axis',
+      alt: 'GFRC entrance colonnade along the arrival axis of a beachfront resort, Jeddah',
+    },
+    'beachfront-hotel-resort-resort-aerial-08': {
+      title: 'Resort Aerial View',
+      alt: 'Aerial view of a beachfront resort with GFRC facade elements, Jeddah',
+    },
+    'beachfront-hotel-resort-villas-golf-aerial-09': {
+      title: 'Villas & Golf Aerial',
+      alt: 'Aerial view of resort villas and golf landscape, Jeddah',
+    },
+    'beachfront-hotel-resort-masterplan-aerial-10': {
+      title: 'Masterplan Aerial',
+      alt: 'Masterplan aerial of a beachfront hospitality development, Jeddah',
+    },
+    'beachfront-hotel-resort-colonnade-mashrabiya-11': {
+      title: 'Colonnade & Mashrabiya Screens',
+      alt: 'GFRC colonnade with mashrabiya screens at a beachfront resort, Jeddah',
+    },
     'kaec-2025-grand-entrance-001': {
       title: 'Grand Entrance, KAEC',
       alt: 'GFRC grand entrance facade elements for a hospitality project, KAEC',
