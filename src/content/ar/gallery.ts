@@ -113,10 +113,6 @@ export const galleryContentAr: Translatable<typeof galleryContent> = {
       title: 'الواجهة البحرية',
       alt: 'واجهة GFRC للمنتجع المطلة على البحر، جدة',
     },
-    'beachfront-hotel-resort-entrance-axis-07': {
-      title: 'محور المدخل',
-      alt: 'رواق مدخل من GFRC على محور الوصول لمنتجع على الواجهة البحرية، جدة',
-    },
     'beachfront-hotel-resort-resort-aerial-08': {
       title: 'منظر جوي للمنتجع',
       alt: 'منظر جوي لمنتجع على الواجهة البحرية بعناصر واجهات GFRC، جدة',

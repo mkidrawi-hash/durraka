@@ -1,5 +1,5 @@
 // One-shot ingest for the "Beachfront Hotel & Resort – Jeddah" gallery group.
-// Reads the 9 approved originals from ./gallery-upload/, then:
+// Reads the 8 approved originals from ./gallery-upload/, then:
 //   1. DEDUPE: md5-hashes each source and compares against EVERY image already
 //      in public/ and private/ — aborts on any collision (never overwrites).
 //   2. OPTIMIZE: sharp → max 1920px wide (no upscale), .jpg q82 + .webp q80
@@ -25,7 +25,6 @@ const FILES = {
   'durraka-hospitality-arched-pool-courtyard-jeddah-2026-02.jpg': 'beachfront-hotel-resort-arched-pool-courtyard-02',
   'durraka-hospitality-mashrabiya-balconies-jeddah-2026-03.jpg': 'beachfront-hotel-resort-mashrabiya-balconies-03',
   'durraka-hospitality-seafront-elevation-jeddah-2026-04.jpg': 'beachfront-hotel-resort-seafront-elevation-04',
-  'durraka-hospitality-entrance-axis-jeddah-2026-07.jpg': 'beachfront-hotel-resort-entrance-axis-07',
   'durraka-hospitality-resort-aerial-jeddah-2026-08.jpg': 'beachfront-hotel-resort-resort-aerial-08',
   'durraka-hospitality-villas-golf-aerial-jeddah-2026-09.jpg': 'beachfront-hotel-resort-villas-golf-aerial-09',
   'durraka-hospitality-masterplan-aerial-jeddah-2026-10.jpg': 'beachfront-hotel-resort-masterplan-aerial-10',
@@ -68,7 +67,7 @@ if (collision) {
   console.error('ABORT — duplicates found; nothing written.')
   process.exit(1)
 }
-console.log(`dedupe: 9/9 unique vs ${repoHashes.size} existing repo images ✓`)
+console.log(`dedupe: 8/8 unique vs ${repoHashes.size} existing repo images ✓`)
 
 // ── 2 + 3. optimize + archive ──
 mkdirSync(OUT_DIR, { recursive: true })
@@ -88,5 +87,5 @@ for (const [src, out] of Object.entries(FILES)) {
       `${out}.jpg ${(j / 1024).toFixed(0)}KB + .webp ${(w / 1024).toFixed(0)}KB @ ${width}px`,
   )
 }
-console.log('archive: 9 originals copied untouched to ' + ARCHIVE_DIR + ' ✓')
+console.log('archive: 8 originals copied untouched to ' + ARCHIVE_DIR + ' ✓')
 console.log('DONE')

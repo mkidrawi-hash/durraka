@@ -780,3 +780,35 @@ the 11 affected files from the go-live commit `4accb4b` onto `fix/i18n-golive-re
 `ARABIC_ENABLED=true`, draft notice bar (`src/content/ar/common.ts` + ArLayout), glossary
 + aligned ar dicts, `/ar` landing (`src/app/ar/page.tsx`), Header preview/never-404 logic,
 docs. `/ar` kept `noindex`. typecheck ✓ · lint ✓ · build ✓.
+---
+
+## Session — Gallery: project groups (PR #55) + Beachfront Hotel & Resort – Jeddah
+
+**Branch:** `feat/gallery-project-groups` (PR #55, merged) → `feat/gallery-beachfront-jeddah`  
+**Merged to main:** PR #55 yes (merge commit `a66a739`); Jeddah PR pending
+
+**Gallery restructure (PR #55, logged retroactively):**
+- Grouped 41 published photos into 9 project cards (registry `GALLERY_PROJECTS` +
+  `projectSlug` on images); publish gate unchanged — grouping is a layer on top
+- Project-scoped lightbox; category filters act on projects; zero-count filters hidden
+- "Architectural Samples & Mockups" project renders a "Samples" badge instead of city · year
+- 13 ungrouped/unverified entries hidden at the data layer only, documented in
+  `docs/gallery-ungrouped-backlog.md` (incl. the 5-image unidentified mosque set)
+- Grand-arcade group re-verified image by image (1 outlier orphaned); the two mosque
+  projects confirmed visually as different buildings; no "Various" years anywhere
+- Full EN/AR parity for project titles, badges, counts
+
+**Beachfront Hotel & Resort – Jeddah (this branch):**
+- New 10th project group: Jeddah · 2026, Hospitality & Commercial Landmark Scope,
+  cover `colonnade-mashrabiya-11`; header now reads 10 projects · 49 photos
+- 8 photos ingested from owner's Google Drive via `scripts/ingest-beachfront-jeddah.mjs`:
+  md5 dedupe vs all 122 existing repo images, sharp-optimized (≤1920px, JPG q82 + WebP q80,
+  sources are 1600×900), originals archived untouched in
+  `private/project-media/beachfront-hotel-resort-jeddah/99-archive-originals/`
+- NDA visual pass excluded 3 of the 11 source images: 05 entrance-gate (operator brand
+  lettering being installed + workers), 06 landscape-water-features (active work zone,
+  workers), 07 entrance-axis (legible operator monument sign at gate) — owner to supply
+  edited versions before these can be published
+- Card chips override (display-only, per-project `chips` in dicts): Mashrabiya Screens ·
+  Facade Cladding · Cornices & Profiles · Decorative Elements (AR per glossary)
+- EN/AR titles/alts for all 8 images; `cityLabels.Jeddah`

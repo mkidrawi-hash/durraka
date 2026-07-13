@@ -131,10 +131,6 @@ export const galleryContent = {
       title: 'Seafront Elevation',
       alt: 'Seafront GFRC facade elevation of a beachfront resort, Jeddah',
     },
-    'beachfront-hotel-resort-entrance-axis-07': {
-      title: 'Entrance Axis',
-      alt: 'GFRC entrance colonnade along the arrival axis of a beachfront resort, Jeddah',
-    },
     'beachfront-hotel-resort-resort-aerial-08': {
       title: 'Resort Aerial View',
       alt: 'Aerial view of a beachfront resort with GFRC facade elements, Jeddah',

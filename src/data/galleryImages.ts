@@ -170,22 +170,6 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     approvedForWeb: true,
   },
   {
-    id: 'beachfront-hotel-resort-entrance-axis-07',
-    projectSlug: 'beachfront-hotel-resort-jeddah',
-    title: 'Entrance Axis',
-    city: 'Jeddah',
-    year: '2026',
-    category: 'Grand Entrances',
-    packageType: 'Hospitality & Commercial Landmark Scope',
-    components: ['GFRC', 'Grand Entrance', 'Colonnade'],
-    description:
-      'Main arrival axis of the resort — GFRC/GRC entrance colonnade and facade elements leading to the principal building.',
-    image: '/images/projects/beachfront-hotel-resort-jeddah/beachfront-hotel-resort-entrance-axis-07.jpg',
-    alt: 'GFRC entrance colonnade along the arrival axis of a beachfront resort, Jeddah',
-    status: 'Public Safe',
-    approvedForWeb: true,
-  },
-  {
     id: 'beachfront-hotel-resort-resort-aerial-08',
     projectSlug: 'beachfront-hotel-resort-jeddah',
     title: 'Resort Aerial View',
