@@ -1,16 +1,16 @@
 # Durraka Factory Website — Claude Code Notes
 
-## Pending Action (do from laptop/desktop)
+## Deployment (Vercel — connected 2026-07-13)
 
-**Connect Vercel to this repo so deploys are automatic:**
+This repo (**mkidrawi-hash/durraka**) is connected to the Vercel project
+**durraka** (team *Durraka Factory for Industry*). Every push to `main`
+auto-deploys to production at **durraka.vercel.app**; feature branches get
+preview deployments automatically.
 
-1. Go to vercel.com → open project **v0-durraka-factory-website**
-2. Settings → Git → **Disconnect** current repo
-3. Connect Git Repository → GitHub → select **mkidrawi-hash/durraka**
-4. Production branch: **main**
-5. Save → Vercel will auto-deploy immediately
-
-After this, every push to `main` in this repo triggers a Vercel deploy automatically.
+Note: the older Vercel project **v0-durraka-factory-website** is still tied to
+the legacy `v0-durraka-factory-website` repo and is NOT this site's production —
+don't deploy there. If a custom domain is added later, attach it to the
+**durraka** project.
 
 ---
 
