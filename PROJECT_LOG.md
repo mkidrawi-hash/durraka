@@ -812,3 +812,11 @@ docs. `/ar` kept `noindex`. typecheck ✓ · lint ✓ · build ✓.
 - Card chips override (display-only, per-project `chips` in dicts): Mashrabiya Screens ·
   Facade Cladding · Cornices & Profiles · Decorative Elements (AR per glossary)
 - EN/AR titles/alts for all 8 images; `cityLabels.Jeddah`
+
+**Addendum (same day):** owner asked to complete the batch — published NDA-safe
+edited versions of the two salvageable excluded images: 06 landscape-water-features
+(cropped to the water-feature core, 800×570 — gate/worker, wrapped materials, and
+work zone removed) and 07 entrance-axis (operator monument sign blurred beyond
+legibility; full 1600×900). 05 entrance-gate remains excluded (brand lettering
+being installed mid-frame — needs proper retouching). Totals now
+10 projects · 51 photos (+ 13 hidden = 64). Untouched originals archived.
