@@ -36,3 +36,6 @@ next-env.d.ts
 
 # Claude Code
 .claude/
+
+# local staging for gallery uploads (originals live in Drive + private/ archive)
+gallery-upload/
