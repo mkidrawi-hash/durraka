@@ -820,3 +820,12 @@ work zone removed) and 07 entrance-axis (operator monument sign blurred beyond
 legibility; full 1600×900). 05 entrance-gate remains excluded (brand lettering
 being installed mid-frame — needs proper retouching). Totals now
 10 projects · 51 photos (+ 13 hidden = 64). Untouched originals archived.
+
+---
+
+## Session — Launch-readiness audit (read-only, 2026-07-23)
+
+Full pre-DNS-migration audit run (build/repo, env, backend flows, routes,
+mobile/dark/print, SEO). Report delivered in session; no code changes.
+Key blockers: Vercel env-var verification, prod E2E of the 3 lead flows,
+Wix-slug redirect map.
